@@ -6,3 +6,7 @@
 !Project.toml
 *.jld2
 Manifest.toml
+
+# Keep curated benchmark results under version control.
+!results/**/*.json
+!results/**/*.md
