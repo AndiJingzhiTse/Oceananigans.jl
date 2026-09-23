@@ -1,32 +1,15 @@
-# Distributed CPU benchmark scaling
+# Distributed CPU MPI efficiency
 
-```mermaid
-xychart-beta
-    title "Earth ocean benchmark: time per simulated unit"
-    x-axis "MPI ranks / CPU cores" [1, 2, 4, 8, 16]
-    y-axis "Time per unit (ms)" 0 --> 70000
-    line [66266.96, 46150.35, 31254.41, 15739.47, 9113.13]
-```
+MPI efficiency is calculated as `speedup / number of cores × 100%`, where `speedup = one core time / parallel time`. The one core measurement is the baseline. Perfect linear scaling has 100% efficiency at every core count.
 
-The values are the slowest rank at each core count, which determines the elapsed time of the synchronized distributed simulation.
+![Measured and theoretical MPI efficiency by CPU core count](mpi_efficiency.svg)
 
-| CPU cores | Time per unit (ms) |
-|---:|---:|
-| 1 | 66,266.96 |
-| 2 | 46,150.35 |
-| 4 | 31,254.41 |
-| 8 | 15,739.47 |
-| 16 | 9,113.13 |
+| CPU cores | Time per unit (ms) | Speedup | Measured efficiency | Theoretical efficiency |
+|---:|---:|---:|---:|---:|
+| 1 | 66,266.96 | 1.000 | 100.0% | 100.0% |
+| 2 | 46,150.35 | 1.436 | 71.8% | 100.0% |
+| 4 | 31,254.41 | 2.120 | 53.0% | 100.0% |
+| 8 | 15,739.47 | 4.210 | 52.6% | 100.0% |
+| 16 | 9,113.13 | 7.272 | 45.4% | 100.0% |
 
-## Experimental and theoretical scaling factor
-
-The scaling factor is `time at 2N cores / time at N cores`. Doubling the core count theoretically halves the time, so the theoretical factor is 0.5. Circles show the experimental factor and crosses show the theoretical factor.
-
-![Distributed CPU experimental and theoretical scaling factor scatterplot](scaling_factor_scatter.svg)
-
-| Core transition | Experimental factor | Theoretical factor |
-|---|---:|---:|
-| 1 → 2 | 0.6964 | 0.5000 |
-| 2 → 4 | 0.6772 | 0.5000 |
-| 4 → 8 | 0.5036 | 0.5000 |
-| 8 → 16 | 0.5790 | 0.5000 |
+The measured time is the slowest MPI rank at each core count, which determines the elapsed time of the synchronized distributed simulation.
