@@ -115,5 +115,44 @@
       },
       "timestamp": "2026-09-17T14:57:00.519"
     }
+  },
+  {
+    "name": "EarthOcean_lat_lon_1440x720x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr",
+    "group": "",
+    "float_type": "Float64",
+    "grid_size": [
+      1440,
+      720,
+      50
+    ],
+    "time_steps": 10,
+    "samples": 5,
+    "Δt": 60.0,
+    "total_time_seconds": 423.0832933,
+    "time_per_step_seconds": 8.115035729999999,
+    "time_per_step_median_seconds": 8.438133689999999,
+    "time_per_step_max_seconds": 8.76072715,
+    "steps_per_second": 0.12322804646480591,
+    "grid_points_per_second": 6.388141928735538e6,
+    "gpu_memory_used": 14787814944,
+    "metadata": {
+      "julia_version": "1.12.7",
+      "oceananigans_version": "0.113.0",
+      "architecture": "GPU{CUDABackend}",
+      "gpu_name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+      "cuda_version": "12.9.0",
+      "cpu_model": "AMD Ryzen 9 9955HX 16-Core Processor            (znver5)",
+      "num_threads": 1,
+      "hostname": "Andi-5070ti",
+      "package_versions": {
+        "Adapt": "4.7.1",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.14",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.42",
+        "LLVM": "9.13.1"
+      },
+      "timestamp": "2026-09-23T15:03:13.006"
+    }
   }
 ]

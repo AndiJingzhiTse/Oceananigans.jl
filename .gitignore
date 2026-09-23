@@ -41,12 +41,15 @@ node_modules
 # Plots
 *.png
 *.svg
+!benchmarking/results/**/scaling_factor_scatter.svg
+!benchmarking/results/**/pie_chart.svg
 *.gif
 *.mp4
 
 # Benchmark output
 *.html
 *.json
+!benchmarking/results/**/results.json
 *.bson
 
 # Profiler output

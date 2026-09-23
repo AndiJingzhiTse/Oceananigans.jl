@@ -1,0 +1,41 @@
+[
+  {
+    "name": "EarthOcean_tripolar_360x180x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr",
+    "group": "",
+    "float_type": "Float64",
+    "grid_size": [
+      360,
+      180,
+      50
+    ],
+    "time_steps": 2,
+    "samples": 1,
+    "Δt": 60.0,
+    "total_time_seconds": 0.6085711,
+    "time_per_step_seconds": 0.30428555,
+    "time_per_step_median_seconds": 0.30428555,
+    "time_per_step_max_seconds": 0.30428555,
+    "steps_per_second": 3.286386750866086,
+    "grid_points_per_second": 1.0647893072806118e7,
+    "gpu_memory_used": 1041114010,
+    "metadata": {
+      "julia_version": "1.12.7",
+      "oceananigans_version": "0.113.0",
+      "architecture": "GPU{CUDABackend}",
+      "gpu_name": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+      "cuda_version": "12.9.0",
+      "cpu_model": "AMD Ryzen 9 9955HX 16-Core Processor            (znver5)",
+      "num_threads": 1,
+      "hostname": "Andi-5070ti",
+      "package_versions": {
+        "Adapt": "4.7.1",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.14",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.42",
+        "LLVM": "9.13.1"
+      },
+      "timestamp": "2026-09-23T15:08:21.303"
+    }
+  }
+]
