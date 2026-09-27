@@ -3,7 +3,8 @@ set -euo pipefail
 
 # Run inside an allocation or on the GPUs and cores assigned to you.
 suite=${1:-all}
-repo_root=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
+script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+repo_root=$(cd "$script_dir/../../.." && pwd)
 cd "$repo_root"
 dry_run=${DRY_RUN:-0}
 julia_bin=${JULIA_BIN:-julia}
@@ -12,7 +13,7 @@ nsys_bin=${NSYS_BIN:-nsys}
 cpu_counts=${CPU_COUNTS:-"1 2 4 8 16"}
 gpu_counts=${GPU_COUNTS:-"1 2 4"}
 profile_cpu_threads=${PROFILE_CPU_THREADS:-1}
-output_root=${OUTPUT_ROOT:-"$repo_root/benchmarking/results/Rondeau"}
+output_root=${OUTPUT_ROOT:-"$script_dir"}
 run_root="$output_root/$(date -u +%Y-%m-%dT%H%M%SZ)_${suite}_$$"
 export OPENBLAS_NUM_THREADS=1
 export OMP_NUM_THREADS=1
@@ -54,7 +55,19 @@ partition_for() {
 }
 
 if [[ "$dry_run" != 1 ]]; then
-    command -v "$julia_bin" >/dev/null
+    required_tools=("$julia_bin")
+    if [[ "$suite" == all || "$suite" == cpu_scaling || "$suite" == gpu_scaling ]]; then
+        required_tools+=("$mpi_bin")
+    fi
+    if [[ "$suite" == all || "$suite" == nsys_gpu || "$suite" == nsys_cpu ]]; then
+        required_tools+=("$nsys_bin")
+    fi
+    for tool in "${required_tools[@]}"; do
+        if ! command -v "$tool" >/dev/null; then
+            printf 'Required tool not found: %s. Load the benchmark environment first.\n' "$tool" >&2
+            exit 1
+        fi
+    done
     mkdir -p "$run_root"
     git rev-parse HEAD > "$run_root/revision.txt"
     git status --short > "$run_root/working_tree.txt"
@@ -97,7 +110,7 @@ if [[ "$suite" == all || "$suite" == cpu_scaling ]]; then
     for count in $cpu_counts; do
         partition=$(partition_for "$count")
         run_command "$mpi_bin" -n "$count" --map-by core --bind-to core --report-bindings \
-            "$julia_bin" --threads=1 --project=benchmarking benchmarking/check_rondeau_mpi.jl CPU "$count"
+            "$julia_bin" --threads=1 --project=benchmarking "$script_dir/check_rondeau_mpi.jl" CPU "$count"
         benchmark "cpu_scaling/${count}_cores" "$mpi_bin" -n "$count" \
             --map-by core --bind-to core --report-bindings \
             "$julia_bin" --threads=1 "${common[@]}" "${timing[@]}" \
@@ -112,7 +125,7 @@ if [[ "$suite" == all || "$suite" == gpu_scaling ]]; then
     for count in $gpu_counts; do
         partition=$(partition_for "$count")
         run_command "$mpi_bin" -n "$count" --map-by core --bind-to core --report-bindings \
-            "$julia_bin" --threads=1 --project=benchmarking benchmarking/check_rondeau_mpi.jl GPU "$count"
+            "$julia_bin" --threads=1 --project=benchmarking "$script_dir/check_rondeau_mpi.jl" GPU "$count"
         benchmark "gpu_scaling/${count}_gpus" "$mpi_bin" -n "$count" \
             --map-by core --bind-to core --report-bindings \
             "$julia_bin" --threads=1 "${common[@]}" "${timing[@]}" \

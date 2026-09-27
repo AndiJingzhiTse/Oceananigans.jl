@@ -15,6 +15,16 @@ Timing runs use Float64, WENOVectorInvariantDefault, WENO7, CATKE, SplitRungeKut
 
 The CPU resolution series reproduces the original change in geometry at 720. It therefore does not measure pure resolution scaling. CPU runs use one Julia thread, including each MPI rank. The saved CPU Nsight result also reports one thread; set `PROFILE_CPU_THREADS=16` if you want an additional comparison with 16 threads.
 
+## Configured Rondeau account
+
+For the configured `ajtse` account, load the installed benchmark tools into an existing terminal:
+
+```bash
+source ~/.config/oceananigans/rondeau-env.sh
+```
+
+New Bash terminals load this file automatically through `~/.bashrc` and `~/.bash_profile`. It selects Julia 1.12.7, CUDA-aware Open MPI 4.1.7, Nsight Systems 2024.5.1, and the installed CUDA 12.3.2 toolkit. The benchmarking environment has its own MPI library preferences in `benchmarking/LocalPreferences.toml`. The system `/usr/bin/mpiexec` does not have CUDA support; use the launcher selected by this environment. CUDA.jl is configured to use CUDA 12.3 artifacts. The account also has an OpenMPI artifact override in `~/.julia/artifacts/Overrides.toml`, so NetCDF/HDF5 dependencies use the same installed MPI library rather than mixing bundled Open MPI 5 with system Open MPI 4. This override applies to the account's Julia depot.
+
 ## Prepare the environment
 
 Use the repository revision and Julia version used for the laptop results when possible. The saved results used Julia 1.12.7. Check available resources and tools in your Rondeau terminal:
@@ -55,34 +65,34 @@ Start in the repository root on Rondeau, optionally inside `tmux` so a disconnec
 Preview all commands without launching jobs or creating outputs:
 
 ```bash
-DRY_RUN=1 bash benchmarking/run_rondeau_suite.sh all
+DRY_RUN=1 bash benchmarking/results/rondeau/run_rondeau_suite.sh all
 ```
 
 Run the complete suite, including scaling across 1, 2, and 4 GPUs:
 
 ```bash
-CUDA_VISIBLE_DEVICES=0,1,2,3 bash benchmarking/run_rondeau_suite.sh all
+CUDA_VISIBLE_DEVICES=0,1,2,3 bash benchmarking/results/rondeau/run_rondeau_suite.sh all
 ```
 
 Or launch each series separately:
 
 ```bash
-bash benchmarking/run_rondeau_suite.sh cpu_resolution
-CUDA_VISIBLE_DEVICES=0 bash benchmarking/run_rondeau_suite.sh gpu_resolution
-CPU_COUNTS="1 2 4 8 16" bash benchmarking/run_rondeau_suite.sh cpu_scaling
-CUDA_VISIBLE_DEVICES=0,1,2,3 bash benchmarking/run_rondeau_suite.sh gpu_scaling
-CUDA_VISIBLE_DEVICES=0 bash benchmarking/run_rondeau_suite.sh nsys_gpu
-bash benchmarking/run_rondeau_suite.sh nsys_cpu
+bash benchmarking/results/rondeau/run_rondeau_suite.sh cpu_resolution
+CUDA_VISIBLE_DEVICES=0 bash benchmarking/results/rondeau/run_rondeau_suite.sh gpu_resolution
+CPU_COUNTS="1 2 4 8 16" bash benchmarking/results/rondeau/run_rondeau_suite.sh cpu_scaling
+CUDA_VISIBLE_DEVICES=0,1,2,3 bash benchmarking/results/rondeau/run_rondeau_suite.sh gpu_scaling
+CUDA_VISIBLE_DEVICES=0 bash benchmarking/results/rondeau/run_rondeau_suite.sh nsys_gpu
+bash benchmarking/results/rondeau/run_rondeau_suite.sh nsys_cpu
 ```
 
 Supported MPI counts and partitions are 1 → 1 × 1 × 1, 2 → 1 × 2 × 1, 4 → 2 × 2 × 1, 8 → 2 × 4 × 1, and 16 → 4 × 4 × 1. The default GPU scaling counts are 1, 2, and 4. Every MPI rank uses one GPU; the global grid stays fixed across counts. Oceananigans assigns the first N GPUs from the visible list to an N rank run.
 
-Each invocation creates a unique folder under `benchmarking/results/Rondeau/`. Every configuration has its own `results.json`, generated `results.md`, and `run.log`. The suite also records the repository revision, Julia version, working tree status, CPU information, GPU topology, and the environment manifest when available. MPI results contain one record per rank; use the slowest rank to compute run time, speedup, and efficiency.
+Each invocation creates a unique folder under `benchmarking/results/rondeau/`. Every configuration has its own `results.json`, generated `results.md`, and `run.log`. The suite also records the repository revision, Julia version, working tree status, CPU information, GPU topology, and the environment manifest when available. MPI results contain one record per rank; use the slowest rank to compute run time, speedup, and efficiency.
 
 Nsight captures and exported databases can be several gigabytes. Store large outputs on the shared data volume by setting `OUTPUT_ROOT` to your directory there:
 
 ```bash
-OUTPUT_ROOT=/mnt/autofs/sutton.math/fsys2/ajtse/benchmark_results/Rondeau CUDA_VISIBLE_DEVICES=0,1,2,3 bash benchmarking/run_rondeau_suite.sh all
+OUTPUT_ROOT=/mnt/autofs/sutton.math/fsys2/ajtse/benchmark_results/Rondeau CUDA_VISIBLE_DEVICES=0,1,2,3 bash benchmarking/results/rondeau/run_rondeau_suite.sh all
 ```
 
-Replace the userid and path if needed. The small reports can later be copied into `benchmarking/results/Rondeau/` for comparison. Large profile files remain ignored by Git. Open `profile.nsys-rep` in Nsight Systems. GPU kernel summaries are exported beside the captures and can be grouped into Gc, Gu, Gv, and all other kernels.
+Replace the userid and path if needed. The small reports can later be copied into `benchmarking/results/rondeau/` for comparison. Large profile files remain ignored by Git. Open `profile.nsys-rep` in Nsight Systems. GPU kernel summaries are exported beside the captures and can be grouped into Gc, Gu, Gv, and all other kernels.
