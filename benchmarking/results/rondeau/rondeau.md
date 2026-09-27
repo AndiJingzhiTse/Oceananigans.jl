@@ -2,6 +2,37 @@
 
 Run `run_rondeau_suite.sh` from a Bash terminal on Rondeau. It can run one series at a time or all series sequentially. It uses the saved Andi 5070 Ti results to choose matching settings.
 
+## Plot saved results
+
+The [2026-09-27 plots](2026-09-27_all/plots.md) show simulation speed against
+CPU/GPU resolution and CPU/GPU rank count, scaling factors and MPI efficiency,
+and Nsight activity pies. Recreate the SVG charts and Markdown tables using
+Python 3 with matplotlib:
+
+```bash
+python3 benchmarking/results/rondeau/plot_rondeau_results.py
+```
+
+Pass another run folder as the positional argument to plot a different complete
+suite. The generator reads saved JSON, GPU kernel summaries, and the CPU sample
+summary; it does not launch benchmarks. To regenerate the CPU sample summary
+from a local Nsight capture first:
+
+```bash
+source ~/.config/oceananigans/rondeau-env.sh
+nsys export --type=sqlite --output=/tmp/rondeau-cpu.sqlite \
+    benchmarking/results/rondeau/2026-09-27_all/nsys_cpu/720x360x50/profile.nsys-rep
+python3 benchmarking/results/rondeau/plot_rondeau_results.py --cpu-sqlite /tmp/rondeau-cpu.sqlite
+```
+
+GPU pies sum kernel durations using the Andi Gc/Gu/Gv/Others grouping. The CPU
+pie counts exclusive leaf-frame samples, grouped by resolved kernel, LLVM,
+Julia runtime, other Julia code, other resolved code, or unresolved frames.
+Runtime samples can include compilation, garbage collection, and dispatch.
+Both capture types include startup and warmup. CPU sample percentages and GPU
+kernel-duration percentages measure different activity and should not be
+compared directly.
+
 | Series | Global grids or rank counts | Geometry |
 |---|---|---|
 | CPU resolution | 180 × 90 × 50, 360 × 180 × 50, 720 × 360 × 50 | Latitude longitude for 180 and 360; tripolar for 720 |
