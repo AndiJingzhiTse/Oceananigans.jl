@@ -201,9 +201,22 @@ z
     </g>
    </g>
    <g id="line2d_17">
-    <path d="M 51.05 45.494545
-L 493.2 45.494545
+    <path d="M 71.147727 45.494545
+L 272.125 45.494545
+L 473.102273 45.494545
 " clip-path="url(#p476eec49de)" style="fill: none; stroke-dasharray: 5.55,2.4; stroke-dashoffset: 0; stroke: #808080; stroke-width: 1.5"/>
+    <defs>
+     <path id="m5426aa5257" d="M -3 3
+L 3 -3
+M -3 -3
+L 3 3
+" style="stroke: #808080"/>
+    </defs>
+    <g clip-path="url(#p476eec49de)">
+     <use xlink:href="#m5426aa5257" x="71.147727" y="45.494545" style="fill: #808080; stroke: #808080"/>
+     <use xlink:href="#m5426aa5257" x="272.125" y="45.494545" style="fill: #808080; stroke: #808080"/>
+     <use xlink:href="#m5426aa5257" x="473.102273" y="45.494545" style="fill: #808080; stroke: #808080"/>
+    </g>
    </g>
    <g id="patch_3">
     <path d="M 51.05 246.04
@@ -226,15 +239,15 @@ L 493.2 25.44
 " style="fill: none; stroke: #000000; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="text_12">
-    <text style="font: 12px 'sans-serif'; text-anchor: middle" x="272.125" y="19.44" transform="rotate(-0, 272.125, 19.44)">Rondeau — GPU scaling</text>
+    <text style="font: 12px 'sans-serif'; text-anchor: middle" x="272.125" y="19.44" transform="rotate(-0, 272.125, 19.44)">Rondeau — GPU scaling MPI efficiency</text>
    </g>
    <g id="legend_1">
     <g id="patch_7">
      <path d="M 58.05 241.04
-L 138.89375 241.04
-Q 140.89375 241.04 140.89375 239.04
-L 140.89375 210.68375
-Q 140.89375 208.68375 138.89375 208.68375
+L 211.014063 241.04
+Q 213.014063 241.04 213.014063 239.04
+L 213.014063 210.68375
+Q 213.014063 208.68375 211.014063 208.68375
 L 58.05 208.68375
 Q 56.05 208.68375 56.05 210.68375
 L 56.05 239.04
@@ -252,16 +265,19 @@ L 80.05 216.782187
      </g>
     </g>
     <g id="text_13">
-     <text style="font: 10px 'sans-serif'; text-anchor: start" x="88.05" y="220.282187" transform="rotate(-0, 88.05, 220.282187)">Measured</text>
+     <text style="font: 10px 'sans-serif'; text-anchor: start" x="88.05" y="220.282187" transform="rotate(-0, 88.05, 220.282187)">Measured MPI efficiency</text>
     </g>
     <g id="line2d_19">
      <path d="M 60.05 231.460312
 L 70.05 231.460312
 L 80.05 231.460312
 " style="fill: none; stroke-dasharray: 5.55,2.4; stroke-dashoffset: 0; stroke: #808080; stroke-width: 1.5"/>
+     <g>
+      <use xlink:href="#m5426aa5257" x="70.05" y="231.460312" style="fill: #808080; stroke: #808080"/>
+     </g>
     </g>
     <g id="text_14">
-     <text style="font: 10px 'sans-serif'; text-anchor: start" x="88.05" y="234.960312" transform="rotate(-0, 88.05, 234.960312)">Ideal</text>
+     <text style="font: 10px 'sans-serif'; text-anchor: start" x="88.05" y="234.960312" transform="rotate(-0, 88.05, 234.960312)">Ideal (100%)</text>
     </g>
    </g>
   </g>

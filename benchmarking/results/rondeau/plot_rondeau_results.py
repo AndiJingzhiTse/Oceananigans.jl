@@ -7,7 +7,6 @@ Requires matplotlib. No benchmarks are launched by this script.
 import argparse
 import csv
 import json
-import math
 import sqlite3
 from pathlib import Path
 
@@ -37,54 +36,48 @@ def performance(root, series, distributed=False):
     counts = [int(p.name.split("_" if distributed else "x")[0]) for p in configs]
     times = [timing(p) for p in configs]
     labels = [str(n) if distributed else p.name.replace("x", " × ") for n, p in zip(counts, configs)]
-    chart_labels = [label + "\n" + ("Tripolar" if n == 720 else "Latitude longitude")
-                    for label, n in zip(labels, counts)] if series == "cpu_resolution" else labels
     title = series.replace("_", " ").replace("cpu", "CPU").replace("gpu", "GPU")
-    x = range(len(counts))
-    fig, ax = plt.subplots(figsize=(8, 4.5))
-    ax.plot(x, [1 / t for t in times], "o-", label="Measured")
-    if distributed:
-        ax.plot(x, [n / times[0] for n in counts], "x--", color="gray", label="Ideal linear scaling")
-        ax.legend()
-    ax.set(xticks=list(x), xticklabels=chart_labels, ylabel="Simulation steps per second", title=f"Rondeau — {title}",
-           xlabel=("CPU MPI ranks (one thread per rank)" if series == "cpu_scaling" else "GPUs (one MPI rank per GPU)")
-           if distributed else "Grid resolution (50 vertical levels)")
-    ax.grid(axis="y", alpha=.25)
-    ax.set_ylim(bottom=0)
-    save(fig, folder / "speed.svg")
     notes = "Timings use the slowest MPI rank at each count." if distributed else "Timings use the saved minimum time per step."
     if series == "cpu_resolution":
         notes += " The 180 and 360 grids use latitude longitude geometry; 720 uses tripolar geometry."
     elif series == "gpu_resolution":
         notes += " All grids use latitude longitude geometry."
-    md = [f"# Rondeau {title}", "", "![Simulation speed](speed.svg)", "", notes, "",
-          "Speed means simulation steps per second (the reciprocal of step time). Each step advances 60 simulated seconds. These timing runs use Float64, 2 warmup steps, and 5 samples of 10 steps.", ""]
+    md = [f"# Rondeau {title}", "", notes,
+          "These timing runs use Float64, 60 simulated seconds per step, 2 warmup steps, and 5 samples of 10 steps.", ""]
     if distributed:
         speeds = [times[0] / t for t in times]
         efficiencies = [s / n * 100 for s, n in zip(speeds, counts)]
         fig, ax = plt.subplots(figsize=(7, 4))
-        ax.plot(x, efficiencies, "o-", label="Measured")
-        ax.axhline(100, color="gray", linestyle="--", label="Ideal")
+        x = range(len(counts))
+        ax.plot(x, efficiencies, "o-", label="Measured MPI efficiency")
+        ax.plot(x, [100] * len(counts), "x--", color="gray", label="Ideal (100%)")
         ax.set(xticks=list(x), xticklabels=labels, xlabel="CPU ranks" if series == "cpu_scaling" else "GPUs",
-               ylabel="MPI efficiency (%)", title=f"Rondeau — {title}", ylim=(0, 110))
+               ylabel="MPI efficiency (%)", title=f"Rondeau — {title} MPI efficiency", ylim=(0, 110))
         ax.legend(); ax.grid(axis="y", alpha=.25)
         save(fig, folder / "mpi_efficiency.svg")
-        md += ["![MPI efficiency](mpi_efficiency.svg)", "", "Efficiency = one-rank time / parallel time / rank count × 100%.", "",
-               "| Count | Seconds per step | Steps per second | Speedup | Efficiency |", "|---:|---:|---:|---:|---:|"]
-        md += [f"| {n} | {t:.6f} | {1/t:.6f} | {s:.3f}× | {e:.1f}% |" for n,t,s,e in zip(counts,times,speeds,efficiencies)]
+        md += ["![Measured and ideal MPI efficiency](mpi_efficiency.svg)", "",
+               "| " + ("CPU ranks" if series == "cpu_scaling" else "GPUs") + " | Seconds per step | Steps per second | Speedup | MPI efficiency | Ideal efficiency |",
+               "|---:|---:|---:|---:|---:|---:|"]
+        md += [f"| {n} | {t:.6f} | {1/t:.6f} | {s:.3f}× | {e:.1f}% | 100.0% |" for n,t,s,e in zip(counts,times,speeds,efficiencies)]
+        md += ["", "MPI efficiency = (one-rank step time ÷ current step time) ÷ rank count × 100%. The one-rank measurement is the baseline. The table uses the slowest MPI rank at each count."]
     else:
         factors = [b/a for a,b in zip(times, times[1:])]
+        transitions = [f"{a} → {b}" for a,b in zip(counts, counts[1:])]
+        x = range(len(factors))
         fig, ax = plt.subplots(figsize=(7, 4))
-        ax.scatter(range(len(factors)), factors, label="Measured time ratio")
-        ax.scatter(range(len(factors)), [4]*len(factors), marker="x", label="Grid point ratio (4×)")
-        ax.set(xticks=list(range(len(factors))), xticklabels=[f"{a} → {b}" for a,b in zip(counts,counts[1:])],
-               ylabel="Time / grid point ratio", xlabel="Horizontal resolution increase", title=f"Rondeau — {title}")
+        ax.scatter(x, factors, label="Measured time ratio")
+        ax.scatter(x, [4]*len(factors), marker="x", color="gray", label="Grid point ratio (4×)")
+        ax.set(xticks=list(x), xticklabels=transitions,
+               ylabel="Step-time scaling factor (×)", xlabel="Horizontal resolution transition",
+               title=f"Rondeau — {title} scaling factor", ylim=(0, max(4, *factors) * 1.12))
         ax.legend(); ax.grid(axis="y", alpha=.25)
         save(fig, folder / "scaling_factor_scatter.svg")
-        md += ["![Adjacent resolution scaling](scaling_factor_scatter.svg)", "",
-               "| Grid | Grid points | Seconds per step | Steps per second | Time ratio to previous |", "|---|---:|---:|---:|---:|"]
-        md += [f"| {label} | {math.prod(map(int,p.name.split('x'))):,} | {t:.6f} | {1/t:.6f} | {times[i]/times[i-1]:.3f}× |" if i else
-               f"| {label} | {math.prod(map(int,p.name.split('x'))):,} | {t:.6f} | {1/t:.6f} | — |" for i,(p,label,t) in enumerate(zip(configs,labels,times))]
+        md += ["![Step-time scaling factor](scaling_factor_scatter.svg)", "",
+               "| Resolution transition | From time (s/step) | To time (s/step) | Measured scaling factor | Grid point ratio |",
+               "|---|---:|---:|---:|---:|"]
+        md += [f"| {transition} | {a:.6f} | {b:.6f} | {factor:.3f}× | 4.000× |"
+               for transition,a,b,factor in zip(transitions,times,times[1:],factors)]
+        md += ["", "Scaling factor = time per step at the larger resolution ÷ time per step at the smaller resolution. For example, 10 → 45 seconds gives 4.5×. The 4× reference is the ratio of horizontal grid points between adjacent configurations."]
     (folder / "plot.md").write_text("\n".join(md) + "\n")
 
 
@@ -169,6 +162,13 @@ def cpu_summary(database, root):
             writer.writerow([symbol, module, unresolved, count, cpu_category(symbol, module, unresolved)])
 
 
+def report_table(path):
+    lines = path.read_text().splitlines()
+    start = next(i for i, line in enumerate(lines) if line.startswith("| "))
+    end = next((i for i in range(start, len(lines)) if not lines[i].startswith("|")), len(lines))
+    return "\n".join(lines[start:end])
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("run_folder", nargs="?", type=Path, default=Path(__file__).parent / "2026-09-27_all")
@@ -180,14 +180,25 @@ def main():
     for series in ("cpu_resolution", "gpu_resolution", "cpu_scaling", "gpu_scaling"):
         performance(root, series, "scaling" in series)
     profiles(root)
-    (root / "plots.md").write_text("# Rondeau benchmark plots\n\n"
-        "Charts follow the Andi 5070 Ti reference grouping and scaling definitions.\n\n"
-        "| Series | Report | Speed | Scaling |\n|---|---|---|---|\n" +
-        "\n".join(f"| {s.replace('_', ' ')} | [Report]({s}/plot.md) | [Chart]({s}/speed.svg) | [Chart]({s}/{'mpi_efficiency' if 'scaling' in s else 'scaling_factor_scatter'}.svg) |" for s in ("cpu_resolution", "gpu_resolution", "cpu_scaling", "gpu_scaling")) +
-        "\n\nProfiles: [GPU 360](nsys_gpu/360x180x50/plot.md), [GPU 720](nsys_gpu/720x360x50/plot.md), [CPU 720](nsys_cpu/720x360x50/plot.md).\n\n" +
-        "\n\n".join(f"## {s.replace('_', ' ').replace('cpu', 'CPU').replace('gpu', 'GPU')}\n\n![Simulation speed]({s}/speed.svg)" for s in ("cpu_resolution", "gpu_resolution", "cpu_scaling", "gpu_scaling")) +
-        "\n\n## Nsight profiles\n\nGPU pies show summed kernel duration; the CPU pie shows exclusive leaf-frame sample counts. Captures include compilation, startup, warmup and measured steps. See individual reports for definitions and source data.\n\n" +
-        "\n\n".join(f"![{label}]({path}/pie_chart.svg)" for label,path in [("GPU 360 × 180 × 50", "nsys_gpu/360x180x50"), ("GPU 720 × 360 × 50", "nsys_gpu/720x360x50"), ("CPU 720 × 360 × 50", "nsys_cpu/720x360x50")]) + "\n")
+    sections = ["# Rondeau benchmark plots", "",
+                "Resolution points show the ratio of adjacent step times. MPI efficiency uses the one-rank step time as its baseline, as in the Andi 5070 Ti reference. The data table directly follows each chart.", ""]
+    for series in ("cpu_resolution", "gpu_resolution", "cpu_scaling", "gpu_scaling"):
+        name = series.replace("_", " ").replace("cpu", "CPU").replace("gpu", "GPU")
+        chart = "mpi_efficiency.svg" if "scaling" in series else "scaling_factor_scatter.svg"
+        report = root / series / "plot.md"
+        sections += [f"## {name}", "", f"![{name} chart]({series}/{chart})", "",
+                     report_table(report), ""]
+        if series == "cpu_resolution":
+            sections += ["The 360 → 720 CPU comparison also changes the grid from latitude longitude to tripolar geometry.", ""]
+        sections += [f"[Method and source data]({series}/plot.md)", ""]
+    sections += ["## Nsight profiles", "",
+                 "GPU pies use summed kernel durations; the CPU pie uses exclusive leaf-frame sample counts. The captures include startup, compilation, warmup and measured steps.", ""]
+    for label, path in [("GPU 360 × 180 × 50", "nsys_gpu/360x180x50"),
+                        ("GPU 720 × 360 × 50", "nsys_gpu/720x360x50"),
+                        ("CPU 720 × 360 × 50", "nsys_cpu/720x360x50")]:
+        sections += [f"### {label}", "", f"![{label} activity pie]({path}/pie_chart.svg)", "",
+                     report_table(root / path / "plot.md"), "", f"[Method and source data]({path}/plot.md)", ""]
+    (root / "plots.md").write_text("\n".join(sections))
 
 
 if __name__ == "__main__":

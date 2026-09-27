@@ -1,16 +1,14 @@
 # Rondeau GPU resolution
 
-![Simulation speed](speed.svg)
-
 Timings use the saved minimum time per step. All grids use latitude longitude geometry.
+These timing runs use Float64, 60 simulated seconds per step, 2 warmup steps, and 5 samples of 10 steps.
 
-Speed means simulation steps per second (the reciprocal of step time). Each step advances 60 simulated seconds. These timing runs use Float64, 2 warmup steps, and 5 samples of 10 steps.
+![Step-time scaling factor](scaling_factor_scatter.svg)
 
-![Adjacent resolution scaling](scaling_factor_scatter.svg)
-
-| Grid | Grid points | Seconds per step | Steps per second | Time ratio to previous |
+| Resolution transition | From time (s/step) | To time (s/step) | Measured scaling factor | Grid point ratio |
 |---|---:|---:|---:|---:|
-| 180 × 90 × 50 | 810,000 | 0.011853 | 84.365500 | — |
-| 360 × 180 × 50 | 3,240,000 | 0.033800 | 29.585654 | 2.852× |
-| 720 × 360 × 50 | 12,960,000 | 0.125816 | 7.948143 | 3.722× |
-| 1440 × 720 × 50 | 51,840,000 | 0.503266 | 1.987020 | 4.000× |
+| 180 → 360 | 0.011853 | 0.033800 | 2.852× | 4.000× |
+| 360 → 720 | 0.033800 | 0.125816 | 3.722× | 4.000× |
+| 720 → 1440 | 0.125816 | 0.503266 | 4.000× | 4.000× |
+
+Scaling factor = time per step at the larger resolution ÷ time per step at the smaller resolution. For example, 10 → 45 seconds gives 4.5×. The 4× reference is the ratio of horizontal grid points between adjacent configurations.

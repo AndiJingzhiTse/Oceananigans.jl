@@ -4,8 +4,8 @@ Run `run_rondeau_suite.sh` from a Bash terminal on Rondeau. It can run one serie
 
 ## Plot saved results
 
-The [2026-09-27 plots](2026-09-27_all/plots.md) show simulation speed against
-CPU/GPU resolution and CPU/GPU rank count, scaling factors and MPI efficiency,
+The [2026-09-27 plots](2026-09-27_all/plots.md) show step-time scaling factors across
+CPU/GPU resolutions and MPI efficiency across CPU/GPU rank counts,
 and Nsight activity pies. Recreate the SVG charts and Markdown tables using
 Python 3 with matplotlib:
 

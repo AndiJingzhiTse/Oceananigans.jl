@@ -1,7 +1,7 @@
 # Rondeau suite — 2026-09-27
 
-[Charts and performance tables](plots.md) cover CPU/GPU resolution, CPU/GPU
-MPI scaling, and Nsight activity breakdowns. See the
+[Charts and performance tables](plots.md) cover adjacent CPU/GPU resolution scaling factors, CPU/GPU
+MPI efficiency, and Nsight activity breakdowns. See the
 [plotting instructions](../rondeau.md#plot-saved-results) to regenerate them.
 
 Started at **2026-09-27 02:58:35 UTC** (2026-09-26 22:58:35 Toronto time).
