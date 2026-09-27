@@ -11,7 +11,7 @@ Run `run_rondeau_suite.sh` from a Bash terminal on Rondeau. It can run one serie
 | Nsight GPU | 360 × 180 × 50, 720 × 360 × 50 | Tripolar |
 | Nsight CPU | 720 × 360 × 50 | Tripolar |
 
-Timing runs use Float64, WENOVectorInvariantDefault, WENO7, CATKE, SplitRungeKutta3, tracers T and S, a 60 second simulation time step, 2 warmup steps, and 5 samples of 10 steps. Nsight runs use 2 warmup steps and 1 sample of 2 steps. The captured timeline includes startup, compilation, model construction, warmup, and measurement; it is not restricted to the timed window.
+Timing runs use Float64, WENOVectorInvariantDefault, WENO7, CATKE, SplitRungeKutta3, tracers T and S, a 60 second simulation time step, 2 warmup steps, and 5 samples of 10 steps. Nsight runs use 2 warmup steps and 1 sample of 2 steps. CPU profiling uses a sampling period of 1,000,000 CPU cycles with DWARF backtraces. The captured timeline includes startup, compilation, model construction, warmup, and measurement; it is not restricted to the timed window.
 
 The CPU resolution series reproduces the original change in geometry at 720. It therefore does not measure pure resolution scaling. CPU runs use one Julia thread, including each MPI rank. The saved CPU Nsight result also reports one thread; set `PROFILE_CPU_THREADS=16` if you want an additional comparison with 16 threads.
 
@@ -47,10 +47,10 @@ Instantiate and precompile before launching MPI processes:
 julia --project=benchmarking -e 'using Pkg; Pkg.instantiate(); Pkg.precompile()'
 ```
 
-For MPI scaling, load the server's CUDA aware Open MPI installation and configure MPI.jl to use it. If MPIPreferences is not available in the benchmarking environment, add it there, then select the system library:
+For MPI scaling, load the server's CUDA aware Open MPI installation and configure MPI.jl to use it. MPIPreferences is included in the benchmarking environment. Select the system library:
 
 ```bash
-julia --project=benchmarking -e 'using Pkg; Pkg.add("MPIPreferences"); using MPIPreferences; MPIPreferences.use_system_binary()'
+julia --project=benchmarking -e 'using MPIPreferences; MPIPreferences.use_system_binary()'
 julia --project=benchmarking -e 'using MPI; MPI.versioninfo(); println("CUDA aware MPI: ", MPI.has_cuda())'
 ```
 

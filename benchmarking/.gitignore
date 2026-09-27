@@ -11,3 +11,6 @@ Manifest.toml
 # Keep curated benchmark results under version control.
 !results/**/*.json
 !results/**/*.md
+
+# Machine-specific Julia preferences.
+LocalPreferences.toml

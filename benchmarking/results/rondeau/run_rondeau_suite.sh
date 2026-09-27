@@ -148,7 +148,7 @@ fi
 if [[ "$suite" == all || "$suite" == nsys_cpu ]]; then
     run_command "$nsys_bin" status --environment
     benchmark "nsys_cpu/720x360x50" "$nsys_bin" profile --trace=nvtx --sample=process-tree \
-        --cpuctxsw=process-tree --sampling-frequency=1000 --backtrace=auto --resolve-symbols=true \
+        --cpuctxsw=process-tree --sampling-period=1000000 --backtrace=dwarf --resolve-symbols=true \
         --output="$run_root/nsys_cpu/720x360x50/profile" \
         "$julia_bin" --threads="$profile_cpu_threads" "${common[@]}" "${profiling[@]}" \
         --device=CPU --size=720x360x50 --grid_type=tripolar
