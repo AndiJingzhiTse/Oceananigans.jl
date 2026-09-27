@@ -1,0 +1,162 @@
+[
+  {
+    "name": "EarthOcean_tripolar_720x360x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr",
+    "group": "",
+    "float_type": "Float64",
+    "grid_size": [
+      360,
+      180,
+      50
+    ],
+    "time_steps": 10,
+    "samples": 5,
+    "Δt": 60.0,
+    "total_time_seconds": 1782.2771904279998,
+    "time_per_step_seconds": 35.602953604999996,
+    "time_per_step_median_seconds": 35.6514838527,
+    "time_per_step_max_seconds": 35.6936259952,
+    "steps_per_second": 0.028087557316018925,
+    "grid_points_per_second": 91003.68570390131,
+    "gpu_memory_used": 0,
+    "metadata": {
+      "julia_version": "1.12.7",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{CPU, false, Partition{Int64, Int64, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "AMD EPYC 7713 64-Core Processor (znver3)",
+      "num_threads": 1,
+      "hostname": "rondeau",
+      "package_versions": {
+        "Adapt": "4.7.1",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.14",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.42",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-09-27T08:22:37.420"
+    },
+    "rank": 0
+  },
+  {
+    "name": "EarthOcean_tripolar_720x360x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr",
+    "group": "",
+    "float_type": "Float64",
+    "grid_size": [
+      360,
+      180,
+      50
+    ],
+    "time_steps": 10,
+    "samples": 5,
+    "Δt": 60.0,
+    "total_time_seconds": 1782.2840362529998,
+    "time_per_step_seconds": 35.6040252908,
+    "time_per_step_median_seconds": 35.651360652,
+    "time_per_step_max_seconds": 35.6939684672,
+    "steps_per_second": 0.02808671187688426,
+    "grid_points_per_second": 91000.946481105,
+    "gpu_memory_used": 0,
+    "metadata": {
+      "julia_version": "1.12.7",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{CPU, false, Partition{Int64, Int64, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "AMD EPYC 7713 64-Core Processor (znver3)",
+      "num_threads": 1,
+      "hostname": "rondeau",
+      "package_versions": {
+        "Adapt": "4.7.1",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.14",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.42",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-09-27T08:22:37.381"
+    },
+    "rank": 1
+  },
+  {
+    "name": "EarthOcean_tripolar_720x360x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr",
+    "group": "",
+    "float_type": "Float64",
+    "grid_size": [
+      360,
+      180,
+      50
+    ],
+    "time_steps": 10,
+    "samples": 5,
+    "Δt": 60.0,
+    "total_time_seconds": 1782.2823992920003,
+    "time_per_step_seconds": 35.604443308,
+    "time_per_step_median_seconds": 35.6515024961,
+    "time_per_step_max_seconds": 35.6938767892,
+    "steps_per_second": 0.028086382122292836,
+    "grid_points_per_second": 90999.8780762288,
+    "gpu_memory_used": 0,
+    "metadata": {
+      "julia_version": "1.12.7",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{CPU, false, Partition{Int64, Int64, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "AMD EPYC 7713 64-Core Processor (znver3)",
+      "num_threads": 1,
+      "hostname": "rondeau",
+      "package_versions": {
+        "Adapt": "4.7.1",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.14",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.42",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-09-27T08:22:37.367"
+    },
+    "rank": 2
+  },
+  {
+    "name": "EarthOcean_tripolar_720x360x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr",
+    "group": "",
+    "float_type": "Float64",
+    "grid_size": [
+      360,
+      180,
+      50
+    ],
+    "time_steps": 10,
+    "samples": 5,
+    "Δt": 60.0,
+    "total_time_seconds": 1782.278039969,
+    "time_per_step_seconds": 35.603501891600004,
+    "time_per_step_median_seconds": 35.653836448099995,
+    "time_per_step_max_seconds": 35.6944149405,
+    "steps_per_second": 0.028087124773418192,
+    "grid_points_per_second": 91002.28426587494,
+    "gpu_memory_used": 0,
+    "metadata": {
+      "julia_version": "1.12.7",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{CPU, false, Partition{Int64, Int64, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "AMD EPYC 7713 64-Core Processor (znver3)",
+      "num_threads": 1,
+      "hostname": "rondeau",
+      "package_versions": {
+        "Adapt": "4.7.1",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.14",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.42",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-09-27T08:22:37.353"
+    },
+    "rank": 3
+  }
+]

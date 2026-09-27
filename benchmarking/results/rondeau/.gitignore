@@ -1,0 +1,11 @@
+# Keep raw console logs and local working-tree snapshots on the server.
+*.log
+
+# Preserve the small environment snapshots for curated runs.
+!**/revision.txt
+!**/julia_version.txt
+!**/hostname.txt
+!**/cpu_info.txt
+!**/gpu_info.txt
+!**/gpu_topology.txt
+!**/Manifest.toml

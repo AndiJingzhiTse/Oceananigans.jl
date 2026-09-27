@@ -1,0 +1,41 @@
+[
+  {
+    "name": "EarthOcean_lat_lon_180x90x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr",
+    "group": "",
+    "float_type": "Float64",
+    "grid_size": [
+      180,
+      90,
+      50
+    ],
+    "time_steps": 10,
+    "samples": 5,
+    "Δt": 60.0,
+    "total_time_seconds": 156.840140382,
+    "time_per_step_seconds": 3.1260013961,
+    "time_per_step_median_seconds": 3.1366495504,
+    "time_per_step_max_seconds": 3.1505983673999998,
+    "steps_per_second": 0.31989748988839234,
+    "grid_points_per_second": 259116.96680959777,
+    "gpu_memory_used": 0,
+    "metadata": {
+      "julia_version": "1.12.7",
+      "oceananigans_version": "0.113.0",
+      "architecture": "CPU",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "AMD EPYC 7713 64-Core Processor (znver3)",
+      "num_threads": 1,
+      "hostname": "rondeau",
+      "package_versions": {
+        "Adapt": "4.7.1",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.14",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.42",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-09-27T03:03:38.062"
+    }
+  }
+]
