@@ -6,7 +6,7 @@ Run `run_rondeau_suite.sh` from a Bash terminal on Rondeau. It can run one serie
 |---|---|---|
 | CPU resolution | 180 × 90 × 50, 360 × 180 × 50, 720 × 360 × 50 | Latitude longitude for 180 and 360; tripolar for 720 |
 | GPU resolution | 180 × 90 × 50, 360 × 180 × 50, 720 × 360 × 50, 1440 × 720 × 50 | Latitude longitude |
-| CPU MPI scaling | 720 × 360 × 50 on 1, 2, 4, 8, 16 ranks | Tripolar |
+| CPU MPI scaling | 720 × 360 × 50 on 1, 2, 4, 8, 16, 32, 64, 128 ranks | Tripolar |
 | GPU MPI scaling | 720 × 360 × 50 on 1, 2, 4 GPUs | Tripolar |
 | Nsight GPU | 360 × 180 × 50, 720 × 360 × 50 | Tripolar |
 | Nsight CPU | 720 × 360 × 50 | Tripolar |
@@ -79,13 +79,13 @@ Or launch each series separately:
 ```bash
 bash benchmarking/results/rondeau/run_rondeau_suite.sh cpu_resolution
 CUDA_VISIBLE_DEVICES=0 bash benchmarking/results/rondeau/run_rondeau_suite.sh gpu_resolution
-CPU_COUNTS="1 2 4 8 16" bash benchmarking/results/rondeau/run_rondeau_suite.sh cpu_scaling
+CPU_COUNTS="1 2 4 8 16 32 64 128" bash benchmarking/results/rondeau/run_rondeau_suite.sh cpu_scaling
 CUDA_VISIBLE_DEVICES=0,1,2,3 bash benchmarking/results/rondeau/run_rondeau_suite.sh gpu_scaling
 CUDA_VISIBLE_DEVICES=0 bash benchmarking/results/rondeau/run_rondeau_suite.sh nsys_gpu
 bash benchmarking/results/rondeau/run_rondeau_suite.sh nsys_cpu
 ```
 
-Supported MPI counts and partitions are 1 → 1 × 1 × 1, 2 → 1 × 2 × 1, 4 → 2 × 2 × 1, 8 → 2 × 4 × 1, and 16 → 4 × 4 × 1. The default GPU scaling counts are 1, 2, and 4. Every MPI rank uses one GPU; the global grid stays fixed across counts. Oceananigans assigns the first N GPUs from the visible list to an N rank run.
+Supported MPI counts and partitions are 1 → 1 × 1 × 1, 2 → 1 × 2 × 1, 4 → 2 × 2 × 1, 8 → 2 × 4 × 1, 16 → 4 × 4 × 1, 32 → 8 × 4 × 1, 64 → 8 × 8 × 1, and 128 → 16 × 8 × 1. The default GPU scaling counts are 1, 2, and 4. Every MPI rank uses one GPU; the global grid stays fixed across counts. Oceananigans assigns the first N GPUs from the visible list to an N rank run.
 
 Each invocation creates a unique folder under `benchmarking/results/rondeau/`. Every configuration has its own `results.json`, generated `results.md`, and `run.log`. The suite also records the repository revision, Julia version, working tree status, CPU information, GPU topology, and the environment manifest when available. MPI results contain one record per rank; use the slowest rank to compute run time, speedup, and efficiency.
 

@@ -10,7 +10,7 @@ dry_run=${DRY_RUN:-0}
 julia_bin=${JULIA_BIN:-julia}
 mpi_bin=${MPIEXEC:-mpiexec}
 nsys_bin=${NSYS_BIN:-nsys}
-cpu_counts=${CPU_COUNTS:-"1 2 4 8 16"}
+cpu_counts=${CPU_COUNTS:-"1 2 4 8 16 32 64 128"}
 gpu_counts=${GPU_COUNTS:-"1 2 4"}
 profile_cpu_threads=${PROFILE_CPU_THREADS:-1}
 output_root=${OUTPUT_ROOT:-"$script_dir"}
@@ -50,7 +50,10 @@ partition_for() {
         4) printf '2x2x1' ;;
         8) printf '2x4x1' ;;
         16) printf '4x4x1' ;;
-        *) printf 'Supported rank counts: 1 2 4 8 16; got %s\n' "$1" >&2; return 2 ;;
+        32) printf '8x4x1' ;;
+        64) printf '8x8x1' ;;
+        128) printf '16x8x1' ;;
+        *) printf 'Supported rank counts: 1 2 4 8 16 32 64 128; got %s\n' "$1" >&2; return 2 ;;
     esac
 }
 

@@ -12,7 +12,7 @@ Hardware and Julia version snapshots are stored beside this file.
 |---|---|---|
 | CPU resolution | 180 × 90 × 50, 360 × 180 × 50, 720 × 360 × 50 | Complete |
 | GPU resolution | 180 × 90 × 50, 360 × 180 × 50, 720 × 360 × 50, 1440 × 720 × 50 | Complete |
-| CPU MPI scaling | 1, 2, 4, 8, 16 ranks on 720 × 360 × 50 | Complete |
+| CPU MPI scaling | 1, 2, 4, 8, 16, 32, 64, 128 ranks on 720 × 360 × 50 | Complete |
 | GPU MPI scaling | 1, 2, 4 GPUs on 720 × 360 × 50 | Complete |
 | GPU profiling | 360 × 180 × 50, 720 × 360 × 50 | Complete |
 | CPU profiling | 720 × 360 × 50 | Failed before launching Julia |
@@ -30,3 +30,20 @@ The corrected CPU benchmark profile has not been rerun.
 
 Raw logs and large profile files remain in this folder locally. Commands in
 historical logs refer to the original folder name.
+
+## CPU scaling extension
+
+The 32-, 64-, and 128-rank cases were added in a targeted CPU scaling invocation
+on 2026-09-27. All earlier result and report files were preserved byte for byte.
+[Extension provenance](run_metadata/2026-09-27T200418Z_cpu_scaling/README.md)
+records the command, revision, launcher changes, and environment snapshots.
+The package manifest matches the original suite snapshot.
+
+Step times below use the slowest rank; speedup is relative to the existing
+one-rank MPI case (99.773 seconds per step).
+
+| Ranks | Partition | Local grid | Seconds per step | Speedup |
+|---|---|---|---|---|
+| 32 | 8 × 4 × 1 | 90 × 90 × 50 | 5.836 | 17.10× |
+| 64 | 8 × 8 × 1 | 90 × 45 × 50 | 3.784 | 26.37× |
+| 128 | 16 × 8 × 1 | 45 × 45 × 50 | 2.142 | 46.58× |

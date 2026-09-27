@@ -1,0 +1,13 @@
+diff --git a/benchmarking/results/rondeau/run_rondeau_suite.sh b/benchmarking/results/rondeau/run_rondeau_suite.sh
+index 216d71f99..e621ef8ef 100644
+--- a/benchmarking/results/rondeau/run_rondeau_suite.sh
++++ b/benchmarking/results/rondeau/run_rondeau_suite.sh
+@@ -13 +13 @@ nsys_bin=${NSYS_BIN:-nsys}
+-cpu_counts=${CPU_COUNTS:-"1 2 4 8 16"}
++cpu_counts=${CPU_COUNTS:-"1 2 4 8 16 32 64 128"}
+@@ -53 +53,4 @@ partition_for() {
+-        *) printf 'Supported rank counts: 1 2 4 8 16; got %s\n' "$1" >&2; return 2 ;;
++        32) printf '8x4x1' ;;
++        64) printf '8x8x1' ;;
++        128) printf '16x8x1' ;;
++        *) printf 'Supported rank counts: 1 2 4 8 16 32 64 128; got %s\n' "$1" >&2; return 2 ;;
