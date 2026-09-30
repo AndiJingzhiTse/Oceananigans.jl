@@ -1,5 +1,23 @@
 # Rondeau benchmark plots
 
+## Benchmark configuration
+
+All timing cases call `earth_ocean` through `benchmarking/run_benchmarks.jl`. Grid dimensions below are global; MPI partitions split the horizontal grid across ranks.
+
+| Series | Global resolution | `grid_type` passed to `earth_ocean` | Grid constructed | MPI ranks |
+|---|---|---|---|---|
+| CPU resolution | 180 × 90 × 50; 360 × 180 × 50 | `lat_lon` | Plain `LatitudeLongitudeGrid`, no bathymetry | 1 |
+| CPU resolution | 720 × 360 × 50 | `tripolar` | `TripolarGrid` with immersed partial-cell bathymetry | 1 |
+| GPU resolution | 180 × 90 × 50; 360 × 180 × 50; 720 × 360 × 50; 1440 × 720 × 50 | `lat_lon` | Plain `LatitudeLongitudeGrid`, no bathymetry | 1 |
+| CPU scaling default | 360 × 180 × 50 | `tripolar` | `TripolarGrid` with immersed partial-cell bathymetry | 1, 2, 4, 8, 16, 32, 64, 128 |
+| CPU scaling fine | 720 × 360 × 50 | `tripolar` | `TripolarGrid` with immersed partial-cell bathymetry | 1, 2, 4, 8, 16, 32, 64, 128 |
+| GPU scaling fine | 720 × 360 × 50 | `tripolar` | `TripolarGrid` with immersed partial-cell bathymetry | 1, 2, 4 |
+| GPU scaling super fine | 1440 × 720 × 50 | `lat_lon` | Plain `LatitudeLongitudeGrid`, no bathymetry | 1, 2, 4 |
+
+All timing runs pass `float_type=Float64`, `zstar_coordinate=false`, `momentum_advection=WENOVectorInvariantDefault`, `tracer_advection=WENO7`, `closure=CATKE`, `timestepper=SplitRungeKutta3`, and `tracers=T,S` to the runner. The runner passes the corresponding objects and the listed dimensions and grid type to `earth_ocean`. Timing uses `dt=60` simulated seconds, 2 warmup steps, and 5 samples of 10 steps; each CPU rank has one Julia thread. `earth_ocean` uses a 7-cell halo, exponentially spaced vertical levels over 5000 m, a split explicit free surface with 30 substeps, TEOS-10 seawater buoyancy, and spherical Coriolis. The latitude longitude domain spans 0–360° longitude and −80–85° latitude. These are model settings, not extra command-line arguments.
+
+The 1440 GPU scaling run uses `lat_lon` because the benchmark bathymetry dataset has no 1440 × 720 tripolar file. Its timings therefore differ in both resolution and grid type from GPU scaling fine; compare MPI efficiency within each series.
+
 Resolution points show the ratio of adjacent step times. MPI efficiency uses the one-rank step time as its baseline, as in the Andi 5070 Ti reference. The data table directly follows each chart.
 
 ## CPU resolution
@@ -27,9 +45,28 @@ The 360 → 720 CPU comparison also changes the grid from latitude longitude to 
 
 [Method and source data](gpu_resolution/plot.md)
 
-## CPU scaling
+## CPU scaling default
 
-![CPU scaling chart](cpu_scaling/mpi_efficiency.svg)
+![CPU scaling default chart](cpu_scaling_default/mpi_efficiency.svg)
+
+| CPU ranks | Seconds per step | Steps per second | Speedup | MPI efficiency | Ideal efficiency |
+|---:|---:|---:|---:|---:|---:|
+| 1 | 25.226968 | 0.039640 | 1.000× | 100.0% | 100.0% |
+| 2 | 15.939943 | 0.062735 | 1.583× | 79.1% | 100.0% |
+| 4 | 8.648960 | 0.115621 | 2.917× | 72.9% | 100.0% |
+| 8 | 4.970663 | 0.201180 | 5.075× | 63.4% | 100.0% |
+| 16 | 2.949576 | 0.339032 | 8.553× | 53.5% | 100.0% |
+| 32 | 1.635220 | 0.611539 | 15.427× | 48.2% | 100.0% |
+| 64 | 1.222766 | 0.817818 | 20.631× | 32.2% | 100.0% |
+| 128 | 0.822501 | 1.215805 | 30.671× | 24.0% | 100.0% |
+
+At 64 and 128 CPU ranks the 360 × 180 horizontal grid does not divide evenly; the last partitions receive the leftover cells, and the chart uses the slowest rank. The 128-rank partition is 8 × 16 × 1 to keep x evenly divided across the tripolar fold.
+
+[Method and source data](cpu_scaling_default/plot.md)
+
+## CPU scaling fine
+
+![CPU scaling fine chart](cpu_scaling_fine/mpi_efficiency.svg)
 
 | CPU ranks | Seconds per step | Steps per second | Speedup | MPI efficiency | Ideal efficiency |
 |---:|---:|---:|---:|---:|---:|
@@ -42,11 +79,11 @@ The 360 → 720 CPU comparison also changes the grid from latitude longitude to 
 | 64 | 3.783972 | 0.264273 | 26.367× | 41.2% | 100.0% |
 | 128 | 2.141795 | 0.466898 | 46.584× | 36.4% | 100.0% |
 
-[Method and source data](cpu_scaling/plot.md)
+[Method and source data](cpu_scaling_fine/plot.md)
 
-## GPU scaling
+## GPU scaling fine
 
-![GPU scaling chart](gpu_scaling/mpi_efficiency.svg)
+![GPU scaling fine chart](gpu_scaling_fine/mpi_efficiency.svg)
 
 | GPUs | Seconds per step | Steps per second | Speedup | MPI efficiency | Ideal efficiency |
 |---:|---:|---:|---:|---:|---:|
@@ -54,9 +91,23 @@ The 360 → 720 CPU comparison also changes the grid from latitude longitude to 
 | 2 | 0.083338 | 11.999351 | 1.603× | 80.2% | 100.0% |
 | 4 | 0.060002 | 16.666225 | 2.227× | 55.7% | 100.0% |
 
-[Method and source data](gpu_scaling/plot.md)
+[Method and source data](gpu_scaling_fine/plot.md)
+
+## GPU scaling super fine
+
+![GPU scaling super fine chart](gpu_scaling_super_fine/mpi_efficiency.svg)
+
+| GPUs | Seconds per step | Steps per second | Speedup | MPI efficiency | Ideal efficiency |
+|---:|---:|---:|---:|---:|---:|
+| 1 | 0.503440 | 1.986335 | 1.000× | 100.0% | 100.0% |
+| 2 | 0.257514 | 3.883282 | 1.955× | 97.7% | 100.0% |
+| 4 | 0.140908 | 7.096807 | 3.573× | 89.3% | 100.0% |
+
+[Method and source data](gpu_scaling_super_fine/plot.md)
 
 ## Nsight profiles
+
+These profiling cases use `tripolar` grids with immersed partial-cell bathymetry and the same model parameters above, but use 2 warmup steps and 1 sample of 2 steps.
 
 GPU pies use summed kernel durations; the CPU pie uses exclusive leaf-frame sample counts. The captures include startup, compilation, warmup and measured steps.
 

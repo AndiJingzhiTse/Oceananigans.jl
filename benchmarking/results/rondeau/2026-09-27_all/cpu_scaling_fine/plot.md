@@ -1,6 +1,6 @@
-# Rondeau CPU scaling
+# Rondeau CPU scaling fine
 
-Timings use the slowest MPI rank at each count.
+Timings use the slowest MPI rank at each count. Global grid: 720 × 360 × 50, tripolar with partial-cell bathymetry.
 These timing runs use Float64, 60 simulated seconds per step, 2 warmup steps, and 5 samples of 10 steps.
 
 ![Measured and ideal MPI efficiency](mpi_efficiency.svg)

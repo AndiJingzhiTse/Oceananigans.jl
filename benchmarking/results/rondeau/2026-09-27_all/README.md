@@ -16,8 +16,10 @@ Hardware and Julia version snapshots are stored beside this file.
 |---|---|---|
 | CPU resolution | 180 × 90 × 50, 360 × 180 × 50, 720 × 360 × 50 | Complete |
 | GPU resolution | 180 × 90 × 50, 360 × 180 × 50, 720 × 360 × 50, 1440 × 720 × 50 | Complete |
-| CPU MPI scaling | 1, 2, 4, 8, 16, 32, 64, 128 ranks on 720 × 360 × 50 | Complete |
-| GPU MPI scaling | 1, 2, 4 GPUs on 720 × 360 × 50 | Complete |
+| CPU MPI scaling default | 1, 2, 4, 8, 16, 32, 64, 128 ranks on 360 × 180 × 50 | Complete after targeted runs |
+| CPU MPI scaling fine | 1, 2, 4, 8, 16, 32, 64, 128 ranks on 720 × 360 × 50 | Complete |
+| GPU MPI scaling fine | 1, 2, 4 GPUs on 720 × 360 × 50 | Complete |
+| GPU MPI scaling super fine | 1, 2, 4 GPUs on 1440 × 720 × 50 | Complete after targeted run |
 | GPU profiling | 360 × 180 × 50, 720 × 360 × 50 | Complete |
 | CPU profiling | 720 × 360 × 50 | Complete after targeted rerun |
 
@@ -26,6 +28,11 @@ profiles also include `kernel_summary_cuda_gpu_kern_sum.csv`. Profiling timings
 use fewer steps and samples than the timing series; compare the timing series
 for performance measurements. For MPI results, use the slowest rank's step time.
 CPU resolution switches from latitude longitude to tripolar geometry at 720.
+Both CPU scaling series use tripolar geometry; GPU scaling fine uses tripolar
+geometry and GPU scaling super fine uses plain latitude longitude geometry.
+The benchmark bathymetry dataset has no 1440 × 720 tripolar file.
+The 360 × 180 × 50 CPU resolution result is a different case from CPU scaling
+default: it uses a plain latitude longitude grid without bathymetry.
 
 The original CPU profiler launch rejected `--sampling-frequency=1000`. The
 corrected case was rerun separately with `--sampling-period=1000000` and
@@ -52,3 +59,19 @@ one-rank MPI case (99.773 seconds per step).
 | 32 | 8 × 4 × 1 | 90 × 90 × 50 | 5.836 | 17.10× |
 | 64 | 8 × 8 × 1 | 90 × 45 × 50 | 3.784 | 26.37× |
 | 128 | 16 × 8 × 1 | 45 × 45 × 50 | 2.142 | 46.58× |
+
+## GPU super fine scaling extension
+
+The 1440 × 720 × 50 latitude longitude run was added on 2026-09-30.
+[Run provenance](run_metadata/2026-09-30T023910Z_gpu_scaling_super_fine/README.md)
+records the MPI/GPU checks, CPU binding, environment, and individual results.
+The one-GPU time of 0.503440 seconds per step agrees with the saved GPU
+resolution result at the same grid (0.503266 seconds per step).
+
+## CPU default scaling extension
+
+The 360 × 180 × 50 tripolar scaling run was added on 2026-09-30.
+[Run provenance](run_metadata/2026-09-30T014142Z_cpu_scaling_default/README.md)
+records the per-rank grid sizes and the 128-rank partition retry. The final
+128-rank time is 0.822501 seconds per step, or 30.671× speedup and 24.0% MPI
+efficiency relative to the new one-rank baseline.

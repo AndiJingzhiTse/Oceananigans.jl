@@ -37,14 +37,16 @@ compared directly.
 |---|---|---|
 | CPU resolution | 180 × 90 × 50, 360 × 180 × 50, 720 × 360 × 50 | Latitude longitude for 180 and 360; tripolar for 720 |
 | GPU resolution | 180 × 90 × 50, 360 × 180 × 50, 720 × 360 × 50, 1440 × 720 × 50 | Latitude longitude |
-| CPU MPI scaling | 720 × 360 × 50 on 1, 2, 4, 8, 16, 32, 64, 128 ranks | Tripolar |
-| GPU MPI scaling | 720 × 360 × 50 on 1, 2, 4 GPUs | Tripolar |
+| CPU MPI scaling default | 360 × 180 × 50 on 1, 2, 4, 8, 16, 32, 64, 128 ranks | Tripolar |
+| CPU MPI scaling fine | 720 × 360 × 50 on 1, 2, 4, 8, 16, 32, 64, 128 ranks | Tripolar |
+| GPU MPI scaling fine | 720 × 360 × 50 on 1, 2, 4 GPUs | Tripolar |
+| GPU MPI scaling super fine | 1440 × 720 × 50 on 1, 2, 4 GPUs | Latitude longitude |
 | Nsight GPU | 360 × 180 × 50, 720 × 360 × 50 | Tripolar |
 | Nsight CPU | 720 × 360 × 50 | Tripolar |
 
 Timing runs use Float64, WENOVectorInvariantDefault, WENO7, CATKE, SplitRungeKutta3, tracers T and S, a 60 second simulation time step, 2 warmup steps, and 5 samples of 10 steps. Nsight runs use 2 warmup steps and 1 sample of 2 steps. CPU profiling uses a sampling period of 1,000,000 CPU cycles with DWARF backtraces. The captured timeline includes startup, compilation, model construction, warmup, and measurement; it is not restricted to the timed window.
 
-The CPU resolution series reproduces the original change in geometry at 720. It therefore does not measure pure resolution scaling. CPU runs use one Julia thread, including each MPI rank. The saved CPU Nsight result also reports one thread; set `PROFILE_CPU_THREADS=16` if you want an additional comparison with 16 threads.
+The CPU resolution series reproduces the original change in geometry at 720. It therefore does not measure pure resolution scaling. The GPU super fine series uses a plain latitude longitude grid because the benchmark bathymetry dataset has no 1440 × 720 tripolar file. Compare MPI efficiency within each GPU series; the fine and super fine step times change both resolution and grid type. CPU runs use one Julia thread, including each MPI rank. The saved CPU Nsight result also reports one thread; set `PROFILE_CPU_THREADS=16` if you want an additional comparison with 16 threads.
 
 ## Configured Rondeau account
 
@@ -110,13 +112,15 @@ Or launch each series separately:
 ```bash
 bash benchmarking/results/rondeau/run_rondeau_suite.sh cpu_resolution
 CUDA_VISIBLE_DEVICES=0 bash benchmarking/results/rondeau/run_rondeau_suite.sh gpu_resolution
-CPU_COUNTS="1 2 4 8 16 32 64 128" bash benchmarking/results/rondeau/run_rondeau_suite.sh cpu_scaling
-CUDA_VISIBLE_DEVICES=0,1,2,3 bash benchmarking/results/rondeau/run_rondeau_suite.sh gpu_scaling
+CPU_COUNTS="1 2 4 8 16 32 64 128" bash benchmarking/results/rondeau/run_rondeau_suite.sh cpu_scaling_default
+CPU_COUNTS="1 2 4 8 16 32 64 128" bash benchmarking/results/rondeau/run_rondeau_suite.sh cpu_scaling_fine
+CUDA_VISIBLE_DEVICES=0,1,2,3 bash benchmarking/results/rondeau/run_rondeau_suite.sh gpu_scaling_fine
+CUDA_VISIBLE_DEVICES=0,1,2,3 bash benchmarking/results/rondeau/run_rondeau_suite.sh gpu_scaling_super_fine
 CUDA_VISIBLE_DEVICES=0 bash benchmarking/results/rondeau/run_rondeau_suite.sh nsys_gpu
 bash benchmarking/results/rondeau/run_rondeau_suite.sh nsys_cpu
 ```
 
-Supported MPI counts and partitions are 1 → 1 × 1 × 1, 2 → 1 × 2 × 1, 4 → 2 × 2 × 1, 8 → 2 × 4 × 1, 16 → 4 × 4 × 1, 32 → 8 × 4 × 1, 64 → 8 × 8 × 1, and 128 → 16 × 8 × 1. The default GPU scaling counts are 1, 2, and 4. Every MPI rank uses one GPU; the global grid stays fixed across counts. Oceananigans assigns the first N GPUs from the visible list to an N rank run.
+Supported MPI counts and partitions are 1 → 1 × 1 × 1, 2 → 1 × 2 × 1, 4 → 2 × 2 × 1, 8 → 2 × 4 × 1, 16 → 4 × 4 × 1, 32 → 8 × 4 × 1, 64 → 8 × 8 × 1, and 128 → 16 × 8 × 1 on the 720 CPU grid. The 360 CPU grid uses 8 × 16 × 1 at 128 ranks to keep its tripolar x direction evenly partitioned. The default GPU scaling counts are 1, 2, and 4. Every MPI rank uses one GPU; the global grid stays fixed across counts. Oceananigans assigns the first N GPUs from the visible list to an N rank run.
 
 Each invocation creates a unique folder under `benchmarking/results/rondeau/`. Every configuration has its own `results.json`, generated `results.md`, and `run.log`. The suite also records the repository revision, Julia version, working tree status, CPU information, GPU topology, and the environment manifest when available. MPI results contain one record per rank; use the slowest rank to compute run time, speedup, and efficiency.
 

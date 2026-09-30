@@ -16,6 +16,13 @@ import matplotlib.pyplot as plt
 
 plt.rcParams.update({"svg.hashsalt": "rondeau", "svg.fonttype": "none"})
 
+SERIES = ("cpu_resolution", "gpu_resolution", "cpu_scaling_default", "cpu_scaling_fine",
+          "gpu_scaling_fine", "gpu_scaling_super_fine")
+
+
+def title_for(series):
+    return series.replace("_", " ").replace("cpu", "CPU").replace("gpu", "GPU")
+
 
 def save(fig, path):
     fig.tight_layout()
@@ -36,12 +43,23 @@ def performance(root, series, distributed=False):
     counts = [int(p.name.split("_" if distributed else "x")[0]) for p in configs]
     times = [timing(p) for p in configs]
     labels = [str(n) if distributed else p.name.replace("x", " × ") for n, p in zip(counts, configs)]
-    title = series.replace("_", " ").replace("cpu", "CPU").replace("gpu", "GPU")
+    title = title_for(series)
     notes = "Timings use the slowest MPI rank at each count." if distributed else "Timings use the saved minimum time per step."
     if series == "cpu_resolution":
         notes += " The 180 and 360 grids use latitude longitude geometry; 720 uses tripolar geometry."
     elif series == "gpu_resolution":
         notes += " All grids use latitude longitude geometry."
+    elif series == "cpu_scaling_default":
+        notes += (" Global grid: 360 × 180 × 50, tripolar with partial-cell bathymetry."
+                  " At 64 and 128 ranks the last partitions receive the leftover cells,"
+                  " so local grid sizes vary by rank. The 128-rank partition is 8 × 16 × 1"
+                  " to keep x evenly divided across the tripolar fold.")
+    elif series == "cpu_scaling_fine":
+        notes += " Global grid: 720 × 360 × 50, tripolar with partial-cell bathymetry."
+    elif series == "gpu_scaling_fine":
+        notes += " Global grid: 720 × 360 × 50, tripolar with partial-cell bathymetry."
+    elif series == "gpu_scaling_super_fine":
+        notes += " Global grid: 1440 × 720 × 50, plain latitude longitude without bathymetry."
     md = [f"# Rondeau {title}", "", notes,
           "These timing runs use Float64, 60 simulated seconds per step, 2 warmup steps, and 5 samples of 10 steps.", ""]
     if distributed:
@@ -51,12 +69,12 @@ def performance(root, series, distributed=False):
         x = range(len(counts))
         ax.plot(x, efficiencies, "o-", label="Measured MPI efficiency")
         ax.plot(x, [100] * len(counts), "x--", color="gray", label="Ideal (100%)")
-        ax.set(xticks=list(x), xticklabels=labels, xlabel="CPU ranks" if series == "cpu_scaling" else "GPUs",
+        ax.set(xticks=list(x), xticklabels=labels, xlabel="CPU ranks" if series.startswith("cpu_scaling") else "GPUs",
                ylabel="MPI efficiency (%)", title=f"Rondeau — {title} MPI efficiency", ylim=(0, 110))
         ax.legend(); ax.grid(axis="y", alpha=.25)
         save(fig, folder / "mpi_efficiency.svg")
         md += ["![Measured and ideal MPI efficiency](mpi_efficiency.svg)", "",
-               "| " + ("CPU ranks" if series == "cpu_scaling" else "GPUs") + " | Seconds per step | Steps per second | Speedup | MPI efficiency | Ideal efficiency |",
+               "| " + ("CPU ranks" if series.startswith("cpu_scaling") else "GPUs") + " | Seconds per step | Steps per second | Speedup | MPI efficiency | Ideal efficiency |",
                "|---:|---:|---:|---:|---:|---:|"]
         md += [f"| {n} | {t:.6f} | {1/t:.6f} | {s:.3f}× | {e:.1f}% | 100.0% |" for n,t,s,e in zip(counts,times,speeds,efficiencies)]
         md += ["", "MPI efficiency = (one-rank step time ÷ current step time) ÷ rank count × 100%. The one-rank measurement is the baseline. The table uses the slowest MPI rank at each count."]
@@ -177,21 +195,59 @@ def main():
     root = args.run_folder
     if args.cpu_sqlite:
         cpu_summary(args.cpu_sqlite, root)
-    for series in ("cpu_resolution", "gpu_resolution", "cpu_scaling", "gpu_scaling"):
+    available_series = tuple(series for series in SERIES
+                             if (root / series).is_dir()
+                             and any((folder / "results.json").exists()
+                                     for folder in (root / series).iterdir() if folder.is_dir()))
+    for series in available_series:
         performance(root, series, "scaling" in series)
     profiles(root)
     sections = ["# Rondeau benchmark plots", "",
+                "## Benchmark configuration", "",
+                "All timing cases call `earth_ocean` through `benchmarking/run_benchmarks.jl`."
+                " Grid dimensions below are global; MPI partitions split the horizontal grid across ranks.", "",
+                "| Series | Global resolution | `grid_type` passed to `earth_ocean` | Grid constructed | MPI ranks |",
+                "|---|---|---|---|---|",
+                "| CPU resolution | 180 × 90 × 50; 360 × 180 × 50 | `lat_lon` | Plain `LatitudeLongitudeGrid`, no bathymetry | 1 |",
+                "| CPU resolution | 720 × 360 × 50 | `tripolar` | `TripolarGrid` with immersed partial-cell bathymetry | 1 |",
+                "| GPU resolution | 180 × 90 × 50; 360 × 180 × 50; 720 × 360 × 50; 1440 × 720 × 50 | `lat_lon` | Plain `LatitudeLongitudeGrid`, no bathymetry | 1 |",
+                "| CPU scaling default | 360 × 180 × 50 | `tripolar` | `TripolarGrid` with immersed partial-cell bathymetry | 1, 2, 4, 8, 16, 32, 64, 128 |",
+                "| CPU scaling fine | 720 × 360 × 50 | `tripolar` | `TripolarGrid` with immersed partial-cell bathymetry | 1, 2, 4, 8, 16, 32, 64, 128 |",
+                "| GPU scaling fine | 720 × 360 × 50 | `tripolar` | `TripolarGrid` with immersed partial-cell bathymetry | 1, 2, 4 |",
+                "| GPU scaling super fine | 1440 × 720 × 50 | `lat_lon` | Plain `LatitudeLongitudeGrid`, no bathymetry | 1, 2, 4 |", "",
+                "All timing runs pass `float_type=Float64`, `zstar_coordinate=false`,"
+                " `momentum_advection=WENOVectorInvariantDefault`, `tracer_advection=WENO7`,"
+                " `closure=CATKE`, `timestepper=SplitRungeKutta3`, and `tracers=T,S` to the runner."
+                " The runner passes the corresponding objects and the listed dimensions and grid type"
+                " to `earth_ocean`. Timing uses `dt=60` simulated seconds, 2 warmup steps,"
+                " and 5 samples of 10 steps; each CPU rank has one Julia thread."
+                " `earth_ocean` uses a 7-cell halo, exponentially spaced vertical levels over 5000 m,"
+                " a split explicit free surface with 30 substeps, TEOS-10 seawater buoyancy,"
+                " and spherical Coriolis. The latitude longitude domain spans 0–360° longitude"
+                " and −80–85° latitude. These are model settings, not extra command-line arguments.", "",
+                "The 1440 GPU scaling run uses `lat_lon` because the benchmark bathymetry dataset"
+                " has no 1440 × 720 tripolar file. Its timings therefore differ in both resolution"
+                " and grid type from GPU scaling fine; compare MPI efficiency within each series.", "",
                 "Resolution points show the ratio of adjacent step times. MPI efficiency uses the one-rank step time as its baseline, as in the Andi 5070 Ti reference. The data table directly follows each chart.", ""]
-    for series in ("cpu_resolution", "gpu_resolution", "cpu_scaling", "gpu_scaling"):
-        name = series.replace("_", " ").replace("cpu", "CPU").replace("gpu", "GPU")
+    missing_series = [title_for(series) for series in SERIES if series not in available_series]
+    if missing_series:
+        sections += ["Results pending: " + ", ".join(missing_series) + ".", ""]
+    for series in available_series:
+        name = title_for(series)
         chart = "mpi_efficiency.svg" if "scaling" in series else "scaling_factor_scatter.svg"
         report = root / series / "plot.md"
         sections += [f"## {name}", "", f"![{name} chart]({series}/{chart})", "",
                      report_table(report), ""]
         if series == "cpu_resolution":
             sections += ["The 360 → 720 CPU comparison also changes the grid from latitude longitude to tripolar geometry.", ""]
+        elif series == "cpu_scaling_default":
+            sections += ["At 64 and 128 CPU ranks the 360 × 180 horizontal grid does not divide evenly;"
+                         " the last partitions receive the leftover cells, and the chart uses the slowest rank."
+                         " The 128-rank partition is 8 × 16 × 1 to keep x evenly divided across the tripolar fold.", ""]
         sections += [f"[Method and source data]({series}/plot.md)", ""]
     sections += ["## Nsight profiles", "",
+                 "These profiling cases use `tripolar` grids with immersed partial-cell bathymetry"
+                 " and the same model parameters above, but use 2 warmup steps and 1 sample of 2 steps.", "",
                  "GPU pies use summed kernel durations; the CPU pie uses exclusive leaf-frame sample counts. The captures include startup, compilation, warmup and measured steps.", ""]
     for label, path in [("GPU 360 × 180 × 50", "nsys_gpu/360x180x50"),
                         ("GPU 720 × 360 × 50", "nsys_gpu/720x360x50"),

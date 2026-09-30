@@ -19,7 +19,7 @@ export OPENBLAS_NUM_THREADS=1
 export OMP_NUM_THREADS=1
 
 case "$suite" in
-    all|cpu_resolution|gpu_resolution|cpu_scaling|gpu_scaling|nsys_gpu|nsys_cpu) ;;
+    all|cpu_resolution|gpu_resolution|cpu_scaling_default|cpu_scaling_fine|cpu_scaling|gpu_scaling_fine|gpu_scaling_super_fine|gpu_scaling|nsys_gpu|nsys_cpu) ;;
     *) printf 'Unknown suite: %s\n' "$suite" >&2; exit 2 ;;
 esac
 
@@ -44,6 +44,11 @@ benchmark() {
 }
 
 partition_for() {
+    # Keep x evenly partitioned across the tripolar fold on the 360 grid.
+    if [[ "$1" == 128 && "${2:-}" == 360x180x50 ]]; then
+        printf '8x16x1'
+        return
+    fi
     case "$1" in
         1) printf '1x1x1' ;;
         2) printf '1x2x1' ;;
@@ -59,7 +64,7 @@ partition_for() {
 
 if [[ "$dry_run" != 1 ]]; then
     required_tools=("$julia_bin")
-    if [[ "$suite" == all || "$suite" == cpu_scaling || "$suite" == gpu_scaling ]]; then
+    if [[ "$suite" == all || "$suite" == cpu_scaling* || "$suite" == gpu_scaling* ]]; then
         required_tools+=("$mpi_bin")
     fi
     if [[ "$suite" == all || "$suite" == nsys_gpu || "$suite" == nsys_cpu ]]; then
@@ -109,30 +114,43 @@ if [[ "$suite" == all || "$suite" == gpu_resolution ]]; then
     done
 fi
 
-if [[ "$suite" == all || "$suite" == cpu_scaling ]]; then
-    for count in $cpu_counts; do
-        partition=$(partition_for "$count")
-        run_command "$mpi_bin" -n "$count" --map-by core --bind-to core --report-bindings \
-            "$julia_bin" --threads=1 --project=benchmarking "$script_dir/check_rondeau_mpi.jl" CPU "$count"
-        benchmark "cpu_scaling/${count}_cores" "$mpi_bin" -n "$count" \
-            --map-by core --bind-to core --report-bindings \
-            "$julia_bin" --threads=1 "${common[@]}" "${timing[@]}" \
-            --device=CPU --size=720x360x50 --grid_type=tripolar --distributed --partition="$partition"
+if [[ "$suite" == all || "$suite" == cpu_scaling || "$suite" == cpu_scaling_default || "$suite" == cpu_scaling_fine ]]; then
+    cpu_sizes=()
+    [[ "$suite" == all || "$suite" == cpu_scaling || "$suite" == cpu_scaling_default ]] && cpu_sizes+=("cpu_scaling_default:360x180x50")
+    [[ "$suite" == all || "$suite" == cpu_scaling || "$suite" == cpu_scaling_fine ]] && cpu_sizes+=("cpu_scaling_fine:720x360x50")
+    for config in "${cpu_sizes[@]}"; do
+        series=${config%%:*}
+        size=${config#*:}
+        for count in $cpu_counts; do
+            partition=$(partition_for "$count" "$size")
+            run_command "$mpi_bin" -n "$count" --map-by core --bind-to core --report-bindings \
+                "$julia_bin" --threads=1 --project=benchmarking "$script_dir/check_rondeau_mpi.jl" CPU "$count"
+            benchmark "$series/${count}_cores" "$mpi_bin" -n "$count" \
+                --map-by core --bind-to core --report-bindings \
+                "$julia_bin" --threads=1 "${common[@]}" "${timing[@]}" \
+                --device=CPU --size="$size" --grid_type=tripolar --distributed --partition="$partition"
+        done
     done
 fi
 
-if [[ "$suite" == all || "$suite" == gpu_scaling ]]; then
+if [[ "$suite" == all || "$suite" == gpu_scaling || "$suite" == gpu_scaling_fine || "$suite" == gpu_scaling_super_fine ]]; then
     (
     # Required by some MPI implementations that use CUDA's legacy IPC APIs.
     export JULIA_CUDA_MEMORY_POOL=none
-    for count in $gpu_counts; do
-        partition=$(partition_for "$count")
-        run_command "$mpi_bin" -n "$count" --map-by core --bind-to core --report-bindings \
-            "$julia_bin" --threads=1 --project=benchmarking "$script_dir/check_rondeau_mpi.jl" GPU "$count"
-        benchmark "gpu_scaling/${count}_gpus" "$mpi_bin" -n "$count" \
-            --map-by core --bind-to core --report-bindings \
-            "$julia_bin" --threads=1 "${common[@]}" "${timing[@]}" \
-            --device=GPU --size=720x360x50 --grid_type=tripolar --distributed --partition="$partition"
+    gpu_sizes=()
+    [[ "$suite" == all || "$suite" == gpu_scaling || "$suite" == gpu_scaling_fine ]] && gpu_sizes+=("gpu_scaling_fine:720x360x50:tripolar")
+    [[ "$suite" == all || "$suite" == gpu_scaling || "$suite" == gpu_scaling_super_fine ]] && gpu_sizes+=("gpu_scaling_super_fine:1440x720x50:lat_lon")
+    for config in "${gpu_sizes[@]}"; do
+        IFS=: read -r series size grid <<< "$config"
+        for count in $gpu_counts; do
+            partition=$(partition_for "$count" "$size")
+            run_command "$mpi_bin" -n "$count" --map-by core --bind-to core --report-bindings \
+                "$julia_bin" --threads=1 --project=benchmarking "$script_dir/check_rondeau_mpi.jl" GPU "$count"
+            benchmark "$series/${count}_gpus" "$mpi_bin" -n "$count" \
+                --map-by core --bind-to core --report-bindings \
+                "$julia_bin" --threads=1 "${common[@]}" "${timing[@]}" \
+                --device=GPU --size="$size" --grid_type="$grid" --distributed --partition="$partition"
+        done
     done
     )
 fi
