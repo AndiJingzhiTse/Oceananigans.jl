@@ -1,0 +1,41 @@
+[
+  {
+    "name": "EarthOcean_tripolar_360x180x50_F32_WENOVectorInvariantDefault_WENO7_CATKE_0tr",
+    "group": "no_tracers",
+    "float_type": "Float32",
+    "grid_size": [
+      360,
+      180,
+      50
+    ],
+    "time_steps": 10,
+    "samples": 5,
+    "Δt": 60.0,
+    "total_time_seconds": 0.9175243009999999,
+    "time_per_step_seconds": 0.0165654042,
+    "time_per_step_median_seconds": 0.0165874256,
+    "time_per_step_max_seconds": 0.024406997399999998,
+    "steps_per_second": 60.36677330215703,
+    "grid_points_per_second": 1.9558834549898878e8,
+    "gpu_memory_used": 414441882,
+    "metadata": {
+      "julia_version": "1.12.7",
+      "oceananigans_version": "0.113.0",
+      "architecture": "GPU{CUDABackend}",
+      "gpu_name": "NVIDIA A100-SXM4-40GB",
+      "cuda_version": "12.3.0",
+      "cpu_model": "AMD EPYC 7713 64-Core Processor (znver3)",
+      "num_threads": 1,
+      "hostname": "rondeau",
+      "package_versions": {
+        "Adapt": "4.7.1",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.14",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.42",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-09-30T04:12:22.293"
+    }
+  }
+]

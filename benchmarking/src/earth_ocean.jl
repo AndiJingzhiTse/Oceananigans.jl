@@ -15,6 +15,8 @@ using SeawaterPolynomials.TEOS10: TEOS10EquationOfState
                 momentum_advection = WENOVectorInvariant(),
                 tracer_advection = WENO(order=7),
                 zstar_coordinate = false,
+                coriolis = HydrostaticSphericalCoriolis(),
+                buoyancy = SeawaterBuoyancy(equation_of_state=TEOS10EquationOfState()),
                 closure = CATKEVerticalDiffusivity(),
                 timestepper = :SplitRungeKutta3,
                 tracers = (:T, :S))
@@ -32,6 +34,8 @@ with realistic Earth bathymetry.
 - `zstar_coordinate`: zstar if `true`, z coordinate if `false`
 - `momentum_advection`: Momentum advection scheme (default: `WENOVectorInvariant()`)
 - `tracer_advection`: Tracer advection scheme (default: `WENO(order=7)`)
+- `coriolis`: Coriolis force (default: `HydrostaticSphericalCoriolis()`; `nothing` disables it)
+- `buoyancy`: Buoyancy formulation (default: seawater TEOS10; `nothing` disables it)
 - `closure`: Turbulence closure (default: `CATKEVerticalDiffusivity()`)
 - `timestepper`: Time stepping scheme (default: `:SplitRungeKutta3`)
 - `tracers`: Tuple of tracer names (default: `(:T, :S)`)
@@ -43,6 +47,8 @@ function earth_ocean(arch = CPU();
                      zstar_coordinate = false,
                      momentum_advection = WENOVectorInvariant(),
                      tracer_advection = WENO(order=7),
+                     coriolis = HydrostaticSphericalCoriolis(),
+                     buoyancy = SeawaterBuoyancy(equation_of_state=TEOS10EquationOfState()),
                      closure = CATKEVerticalDiffusivity(),
                      timestepper = :SplitRungeKutta3,
                      tracers = (:T, :S))
@@ -88,8 +94,6 @@ function earth_ocean(arch = CPU();
     end
 
     free_surface = SplitExplicitFreeSurface(; substeps=30)
-    buoyancy = SeawaterBuoyancy(equation_of_state=TEOS10EquationOfState())
-    coriolis = HydrostaticSphericalCoriolis()
 
     model = HydrostaticFreeSurfaceModel(grid;
         momentum_advection,

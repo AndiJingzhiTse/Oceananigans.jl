@@ -2,6 +2,8 @@ validate_buoyancy(::Nothing, tracers) = nothing
 
 required_tracers(::Nothing) = ()
 
+@inline top_buoyancy_flux(i, j, grid, ::Nothing, top_tracer_bcs, clock, fields) = zero(grid)
+
 @inline buoyancy_perturbationᶜᶜᶜ(i, j, k, grid, ::Nothing, C) = zero(grid)
 
 @inline ∂xᵣ_b(i, j, k, grid, ::Nothing, C) = zero(grid)

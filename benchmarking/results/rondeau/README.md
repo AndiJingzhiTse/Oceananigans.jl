@@ -5,6 +5,7 @@
 | Run | Status | Results |
 |---|---|---|
 | [2026-09-27 suite](2026-09-27_all/README.md) | All timing series and profiles complete | [Charts](2026-09-27_all/plots.md), CPU/GPU resolution, MPI scaling, and Nsight summaries |
+| [Component ablation](2026-09-30T034053Z_component_ablation_671689/README.md) | Six GPU runs complete | Baseline and five component-disabled timing cases at 360×180×50 |
 
 Curated runs retain JSON results, generated Markdown reports, GPU kernel summaries,
 CPU sample summaries, charts, and small environment snapshots. Raw `run.log` files, working-tree snapshots,

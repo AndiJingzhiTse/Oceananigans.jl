@@ -39,6 +39,7 @@ using Oceananigans
 using Oceananigans.DistributedComputations: Distributed, Partition, @root, @onrank, @handshake, mpi_rank, mpi_size
 
 using CUDA
+using SeawaterPolynomials.TEOS10: TEOS10EquationOfState
 
 using Oceananigans.TurbulenceClosures: CATKEVerticalDiffusivity, SmagorinskyLilly,
     IsopycnalSkewSymmetricDiffusivity, HorizontalScalarBiharmonicDiffusivity
@@ -125,6 +126,16 @@ function parse_commandline()
             arg_type = String
             default = "CATKE"
 
+        "--coriolis"
+            help = "Coriolis force: spherical or nothing"
+            arg_type = String
+            default = "spherical"
+
+        "--buoyancy"
+            help = "Buoyancy: seawater or nothing"
+            arg_type = String
+            default = "seawater"
+
         "--timestepper"
             help = "Time stepping scheme: SplitRungeKutta3, QuasiAdamsBashforth2"
             arg_type = String
@@ -197,7 +208,7 @@ function parse_commandline()
             default = "T"
 
         "--tracers"
-            help = "Tracer names as comma-separated list (e.g., T,S or T,S,C1,C2,C3)"
+            help = "Tracer names as comma-separated list (e.g., T,S), or nothing for no user tracers"
             arg_type = String
             default = "T,S"
 
@@ -295,6 +306,18 @@ function make_closure(name, FT)
     error("Unknown closure: $name. Use nothing, CATKE, SmagorinskyLilly, CATKE+Biharmonic, CATKE+GM+Biharmonic.")
 end
 
+function make_coriolis(name)
+    name == "nothing" && return nothing
+    name == "spherical" && return HydrostaticSphericalCoriolis()
+    error("Unknown coriolis: $name. Use spherical or nothing.")
+end
+
+function make_buoyancy(name)
+    name == "nothing" && return nothing
+    name == "seawater" && return SeawaterBuoyancy(equation_of_state=TEOS10EquationOfState())
+    error("Unknown buoyancy: $name. Use seawater or nothing.")
+end
+
 make_timestepper(name) = Symbol(name)
 
 #####
@@ -335,7 +358,7 @@ function run_benchmarks(args)
     grid_types = [s for s in parse_list(args["grid_type"])]
     zstar_coordinates = [lowercase(s) == "true" for s in parse_list(args["zstar_coordinate"])]
     timestepper = make_timestepper(args["timestepper"])
-    tracers = Tuple(Symbol(strip(s)) for s in split(args["tracers"], ","))
+    tracers = args["tracers"] == "nothing" ? () : Tuple(Symbol(strip(s)) for s in split(args["tracers"], ","))
 
     group = args["group"]
 
@@ -378,6 +401,8 @@ function run_benchmarks(args)
         println("Momentum advection: ", momentum_advections)
         println("Tracer advection: ", tracer_advections)
         println("Closures: ", closures)
+        println("Coriolis: ", args["coriolis"])
+        println("Buoyancy: ", args["buoyancy"])
         println("Tracers: ", tracers)
         println("Timestepper: ", timestepper)
         if mode == "benchmark"
@@ -429,6 +454,8 @@ function run_benchmarks(args)
         momentum_advection = make_momentum_advection(mom_adv_name, FT)
         tracer_advection = make_tracer_advection(trc_adv_name, FT)
         closure = make_closure(cls_name, FT)
+        coriolis = make_coriolis(args["coriolis"])
+        buoyancy = make_buoyancy(args["buoyancy"])
 
         # Create model
         if case == "earth_ocean"
@@ -439,6 +466,8 @@ function run_benchmarks(args)
                 zstar_coordinate,
                 momentum_advection,
                 tracer_advection,
+                coriolis,
+                buoyancy,
                 closure,
                 tracers,
                 timestepper
