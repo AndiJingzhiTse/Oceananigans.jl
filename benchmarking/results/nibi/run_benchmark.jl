@@ -23,3 +23,4 @@ rank == 0 && println("PASS: $ranks distinct GPUs and CUDA-aware MPI")
 MPI.Barrier(comm)
 
 include(joinpath(@__DIR__, "..", "..", "run_benchmarks.jl"))
+main()  # The suite's PROGRAM_FILE guard does not run when included by this wrapper.
