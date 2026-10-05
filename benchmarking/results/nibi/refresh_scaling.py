@@ -32,7 +32,7 @@ def refresh(folder, counts):
             raise RuntimeError(accounting.stdout)
         records = {r[0]: r for line in accounting.stdout.splitlines()
                    if len(r := line.split("|")) >= 4}
-        queue = run("squeue", "-h", "-j", ",".join(ids), "-o", "%i|%T|%R|%S")
+        queue = run("squeue", "--start", "-h", "-j", ",".join(ids), "-o", "%i|%T|%R|%S")
         if queue.returncode:
             raise RuntimeError(queue.stdout)
         queued = {r[0]: r for line in queue.stdout.splitlines()

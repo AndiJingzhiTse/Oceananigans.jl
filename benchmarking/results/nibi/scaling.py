@@ -151,7 +151,7 @@ def main():
                 state = record[1].split()[0].rstrip("+")
                 attempt.update(state=state, exit_code=record[2], reason=record[3])
                 if state == "PENDING":
-                    queue = command("squeue", "-h", "-j", attempt["job_id"], "-o", "%i|%T|%R|%S")
+                    queue = command("squeue", "--start", "-h", "-j", attempt["job_id"], "-o", "%i|%T|%R|%S")
                     (folder / "queue.txt").write_text(queue.stdout)
                     if queue.stdout.strip():
                         attempt["reason"] = queue.stdout.strip().split("|")[2]
