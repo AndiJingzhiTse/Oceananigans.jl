@@ -51,6 +51,25 @@ The sweep stops at the first failure. Repeating the command resumes live jobs,
 skips completed counts after validating every rank, and retries failed counts.
 Use `--counts=...` to restrict a retry. Scheduler wait is kept distinct from
 benchmark failure; the controller does not call a queued job a failed run.
+Previous attempt files are archived under `previous_attempts/<job_id>/`
+before a retry. `--time-limit=00:20:00` overrides the default wall time.
+
+To queue and monitor independent counts concurrently:
+
+```bash
+python3 benchmarking/results/nibi/scaling.py \
+    benchmarking/results/nibi/2026-10-05_gpu_scaling \
+    --counts=8,16,64,128 --time-limit=00:20:00 --submit-only
+module load python/3.11 scipy-stack/2025a
+python3 benchmarking/results/nibi/refresh_scaling.py \
+    benchmarking/results/nibi/2026-10-05_gpu_scaling --watch --commit
+```
+
+The refresher updates `retry_status.md`, validates completed jobs, and
+regenerates the plot. `--commit` creates a local commit when all selected
+jobs have terminated, provided the branch is unchanged and the index is
+clear. It does not push. `finalize.sbatch` can run the same refresher with
+an `afterany` dependency on all GPU jobs so finalization survives logout.
 
 The plot uses `T₁ / (N × Tₙ) × 100%`, with the slowest rank's fastest window
 as in the reference. It also shows median-based efficiency and timing spread.
