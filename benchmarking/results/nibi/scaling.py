@@ -6,6 +6,7 @@ import json
 import math
 from pathlib import Path
 import subprocess
+import shutil
 import time
 
 SCRIPT_DIR = Path(__file__).resolve().parent
@@ -66,6 +67,20 @@ def main():
         parser.error("GPU counts must be unique and ascending")
     run_dir = args.run_dir.resolve()
     run_dir.mkdir(parents=True, exist_ok=True)
+    metadata = run_dir / "run_metadata"
+    if not metadata.exists():
+        metadata.mkdir()
+        for name in ("Project.toml", "Manifest.toml", "LocalPreferences.toml"):
+            shutil.copy2(SCRIPT_DIR / "environment" / name, metadata / name)
+        for name in ("benchmark.sbatch", "run_benchmark.jl", "scaling.py", "plot_scaling.py"):
+            shutil.copy2(SCRIPT_DIR / name, metadata / name)
+        repository = SCRIPT_DIR.parents[2]
+        (metadata / "revision.txt").write_text(command("git", "-C", str(repository), "rev-parse", "HEAD").stdout)
+        (metadata / "working_tree.txt").write_text(command("git", "-C", str(repository), "status", "--short").stdout)
+        drac_root = Path(__import__("os").environ.get("DRAC_ROOT", str(Path.home() / "Oceananigans-DRAC")))
+        shutil.copy2(drac_root / "src" / "drac_mpi.jl", metadata / "drac_mpi.jl")
+        (metadata / "drac_revision.txt").write_text(command("git", "-C", str(drac_root), "rev-parse", "HEAD").stdout)
+        (metadata / "partitions.txt").write_text(command("sinfo", "-o", "%P %a %l %D %G").stdout)
     attempts_path = run_dir / "attempts.csv"
     attempts = list(csv.DictReader(attempts_path.open())) if attempts_path.exists() else []
 
