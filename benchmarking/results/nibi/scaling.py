@@ -63,6 +63,7 @@ def main():
     parser.add_argument("--counts", default="1,2,4,8,16,32,64,128,256,512")
     parser.add_argument("--poll-seconds", type=int, default=30)
     parser.add_argument("--submit-only", action="store_true", help="Queue counts without waiting; rerun without this option to monitor")
+    parser.add_argument("--time-limit", help="Slurm time limit for newly submitted jobs, e.g. 00:20:00")
     args = parser.parse_args()
     counts = [int(n) for n in args.counts.split(",")]
     if not counts or any(n < 1 or n & (n - 1) for n in counts):
@@ -108,13 +109,21 @@ def main():
         if previous and previous["state"] in ("SUBMITTED", "PENDING", "RUNNING"):
             attempt = previous
         else:
+            if previous and previous["job_id"]:
+                archive = folder / "previous_attempts" / previous["job_id"]
+                archive.mkdir(parents=True, exist_ok=True)
+                for path in folder.iterdir():
+                    if path.is_file():
+                        shutil.move(str(path), str(archive / path.name))
             attempt = dict(zip(FIELDS, (count, nodes, partition, "", "", "", "")))
             attempts.append(attempt)
+            time_args = [f"--time={args.time_limit}"] if args.time_limit else []
             submit = command("sbatch", "--parsable", f"--account={args.account}",
                              f"--nodes={nodes}", f"--ntasks={count}",
                              f"--ntasks-per-node={ranks_per_node}",
                              "--mem=0" if count >= 8 else "--mem=64G",
                              f"--job-name=nibi_scale_{count}", f"--output={folder}/job.out",
+                             *time_args,
                              str(SCRIPT_DIR / "benchmark.sbatch"), str(folder), partition, str(SCRIPT_DIR))
             (folder / "submission.txt").write_text(submit.stdout)
             if submit.returncode:
