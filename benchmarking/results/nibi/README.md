@@ -32,7 +32,9 @@ system MPI. `run_benchmark.jl` loads NetCDF first, then calls the documented
 See [the Nibi guide](../../../../Oceananigans-DRAC/docs/nibi.md) in the
 adjacent Oceananigans-DRAC checkout.
 
-The controller submits one job at a time, using up to eight GPUs per node,
+The controller normally submits one job at a time. `--submit-only` queues all
+requested counts first; rerun without that flag to monitor and validate them.
+Jobs use up to eight GPUs per node,
 eight CPUs per rank, and 45 minutes per job. Full GPU nodes request `--mem=0`;
 partial nodes request 64 GiB host memory. Horizontal partitions are balanced
 and divide both global dimensions exactly; the 1/2/4-GPU partitions match

@@ -61,6 +61,7 @@ def main():
     parser.add_argument("--account", default="def-fpoulin_gpu")
     parser.add_argument("--counts", default="1,2,4,8,16,32,64,128,256,512")
     parser.add_argument("--poll-seconds", type=int, default=30)
+    parser.add_argument("--submit-only", action="store_true", help="Queue counts without waiting; rerun without this option to monitor")
     args = parser.parse_args()
     counts = [int(n) for n in args.counts.split(",")]
     if not counts or any(n < 1 or n & (n - 1) for n in counts):
@@ -121,6 +122,9 @@ def main():
             attempt.update(job_id=job_line.strip().split(";")[0], state="SUBMITTED")
             save_attempts(run_dir, attempts)
             print(f"{count} GPUs: job {attempt['job_id']}, partition {partition}", flush=True)
+
+        if args.submit_only:
+            continue
 
         while True:
             accounting = command("sacct", "-X", "-n", "-P", "-j", attempt["job_id"],
