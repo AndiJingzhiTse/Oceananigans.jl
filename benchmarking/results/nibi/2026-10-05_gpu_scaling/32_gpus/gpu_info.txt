@@ -1,0 +1,108 @@
+g14.nibi.sharcnet
+name, uuid, driver_version, memory.total [MiB]
+NVIDIA H100 80GB HBM3, GPU-6224c7be-ae9b-5a24-fc2f-fdc6921b2e2a, 580.82.07, 81559 MiB
+g16.nibi.sharcnet
+g17.nibi.sharcnet
+g18.nibi.sharcnet
+	[4mGPU0	NIC0	NIC1	NIC2	NIC3	CPU Affinity	NUMA Affinity	GPU NUMA ID[0m
+name, uuid, driver_version, memory.total [MiB]
+NVIDIA H100 80GB HBM3, GPU-0c228a7f-a2d9-ba3b-5ce0-3ca8f1eaeeba, 580.82.07, 81559 MiB
+name, uuid, driver_version, memory.total [MiB]
+NVIDIA H100 80GB HBM3, GPU-acbeb83e-4fc9-c8ce-4af1-6498ccf81f90, 580.82.07, 81559 MiB
+name, uuid, driver_version, memory.total [MiB]
+NVIDIA H100 80GB HBM3, GPU-3953fcef-b031-5513-a8c2-c0dbae6c058b, 580.82.07, 81559 MiB
+GPU0	 X 	SYS	SYS	NODE	NODE	0-7	0		N/A
+NIC0	SYS	 X 	PIX	NODE	NODE				
+NIC1	SYS	PIX	 X 	NODE	NODE				
+NIC2	NODE	NODE	NODE	 X 	PIX				
+NIC3	NODE	NODE	NODE	PIX	 X 				
+
+Legend:
+
+  X    = Self
+  SYS  = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)
+  NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node
+  PHB  = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)
+  PXB  = Connection traversing multiple PCIe bridges (without traversing the PCIe Host Bridge)
+  PIX  = Connection traversing at most a single PCIe bridge
+  NV#  = Connection traversing a bonded set of # NVLinks
+
+NIC Legend:
+
+  NIC0: mlx5_0
+  NIC1: mlx5_1
+  NIC2: mlx5_2
+  NIC3: mlx5_3
+
+	[4mGPU0	NIC0	NIC1	NIC2	NIC3	CPU Affinity	NUMA Affinity	GPU NUMA ID[0m
+	[4mGPU0	NIC0	NIC1	NIC2	NIC3	CPU Affinity	NUMA Affinity	GPU NUMA ID[0m
+	[4mGPU0	NIC0	NIC1	NIC2	NIC3	CPU Affinity	NUMA Affinity	GPU NUMA ID[0m
+GPU0	 X 	SYS	SYS	NODE	NODE	0-7	0		N/A
+NIC0	SYS	 X 	PIX	NODE	NODE				
+NIC1	SYS	PIX	 X 	NODE	NODE				
+NIC2	NODE	NODE	NODE	 X 	PIX				
+NIC3	NODE	NODE	NODE	PIX	 X 				
+
+Legend:
+
+  X    = Self
+  SYS  = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)
+  NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node
+  PHB  = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)
+  PXB  = Connection traversing multiple PCIe bridges (without traversing the PCIe Host Bridge)
+  PIX  = Connection traversing at most a single PCIe bridge
+  NV#  = Connection traversing a bonded set of # NVLinks
+
+NIC Legend:
+
+  NIC0: mlx5_0
+  NIC1: mlx5_1
+  NIC2: mlx5_2
+  NIC3: mlx5_3
+
+GPU0	 X 	NODE	NODE	SYS	SYS	0-7	0		N/A
+NIC0	NODE	 X 	PIX	SYS	SYS				
+NIC1	NODE	PIX	 X 	SYS	SYS				
+NIC2	SYS	SYS	SYS	 X 	PIX				
+NIC3	SYS	SYS	SYS	PIX	 X 				
+
+Legend:
+
+  X    = Self
+  SYS  = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)
+  NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node
+  PHB  = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)
+  PXB  = Connection traversing multiple PCIe bridges (without traversing the PCIe Host Bridge)
+  PIX  = Connection traversing at most a single PCIe bridge
+  NV#  = Connection traversing a bonded set of # NVLinks
+
+NIC Legend:
+
+  NIC0: mlx5_0
+  NIC1: mlx5_1
+  NIC2: mlx5_2
+  NIC3: mlx5_3
+
+GPU0	 X 	SYS	SYS	NODE	NODE	0-7	0		N/A
+NIC0	SYS	 X 	PIX	NODE	NODE				
+NIC1	SYS	PIX	 X 	NODE	NODE				
+NIC2	NODE	NODE	NODE	 X 	PIX				
+NIC3	NODE	NODE	NODE	PIX	 X 				
+
+Legend:
+
+  X    = Self
+  SYS  = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)
+  NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node
+  PHB  = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)
+  PXB  = Connection traversing multiple PCIe bridges (without traversing the PCIe Host Bridge)
+  PIX  = Connection traversing at most a single PCIe bridge
+  NV#  = Connection traversing a bonded set of # NVLinks
+
+NIC Legend:
+
+  NIC0: mlx5_0
+  NIC1: mlx5_1
+  NIC2: mlx5_2
+  NIC3: mlx5_3
+

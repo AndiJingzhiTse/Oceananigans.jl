@@ -1,0 +1,3 @@
+Command: sbatch --test-only --account=def-fpoulin_gpu --nodes=32 --ntasks=256 --ntasks-per-node=8 --mem=0 /home/anditse/Oceananigans.jl/benchmarking/results/nibi/benchmark.sbatch /home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-05_gpu_scaling/256_gpus 16x16x1 /home/anditse/Oceananigans.jl/benchmarking/results/nibi
+Exit code: 1
+allocation failure: Requested node configuration is not available

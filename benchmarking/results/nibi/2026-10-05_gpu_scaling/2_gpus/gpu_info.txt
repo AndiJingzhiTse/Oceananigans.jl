@@ -1,0 +1,27 @@
+g10.nibi.sharcnet
+name, uuid, driver_version, memory.total [MiB]
+NVIDIA H100 80GB HBM3, GPU-455e0ba4-d469-0e66-a602-5bd2f3dad815, 580.82.07, 81559 MiB
+	[4mGPU0	NIC0	NIC1	NIC2	NIC3	CPU Affinity	NUMA Affinity	GPU NUMA ID[0m
+GPU0	 X 	SYS	SYS	NODE	NODE	0-7	0		N/A
+NIC0	SYS	 X 	PIX	NODE	NODE				
+NIC1	SYS	PIX	 X 	NODE	NODE				
+NIC2	NODE	NODE	NODE	 X 	PIX				
+NIC3	NODE	NODE	NODE	PIX	 X 				
+
+Legend:
+
+  X    = Self
+  SYS  = Connection traversing PCIe as well as the SMP interconnect between NUMA nodes (e.g., QPI/UPI)
+  NODE = Connection traversing PCIe as well as the interconnect between PCIe Host Bridges within a NUMA node
+  PHB  = Connection traversing PCIe as well as a PCIe Host Bridge (typically the CPU)
+  PXB  = Connection traversing multiple PCIe bridges (without traversing the PCIe Host Bridge)
+  PIX  = Connection traversing at most a single PCIe bridge
+  NV#  = Connection traversing a bonded set of # NVLinks
+
+NIC Legend:
+
+  NIC0: mlx5_0
+  NIC1: mlx5_1
+  NIC2: mlx5_2
+  NIC3: mlx5_3
+

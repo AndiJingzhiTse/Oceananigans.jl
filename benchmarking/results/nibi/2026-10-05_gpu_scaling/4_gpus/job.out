@@ -1,0 +1,74 @@
+The following modules were not unloaded:
+  (Use "module --force purge" to unload all):
+
+  1) CCconfig        6)  ucx/1.14.1         11) flexiblas/3.3.1
+  2) gentoo/2023     7)  libfabric/1.18.0   12) imkl/2023.2.0
+  3) gcccore/.12.3   8)  pmix/4.2.4         13) StdEnv/2023
+  4) gcc/12.3        9)  ucc/1.2.0
+  5) hwloc/2.9.1     10) openmpi/4.1.5
+Oceananigans-DRAC environment (Nibi): repo=/home/anditse/Oceananigans-DRAC, depot=/scratch/anditse/julia_depot
+srun: Step created for StepId=23239534.1
+rank 1 on g13.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID 32d1a46d-38de-e40f-d546-b7589e37b777
+rank 2 on g13.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID 6fba7179-ac02-98cf-c73b-f04343e2e163
+rank 0 on g13.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID 59c0abef-b010-043a-a259-c23cb144257d
+rank 3 on g13.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID ab8bf088-f28f-f553-0c6c-734c38dedbb0
+PASS: 4 distinct GPUs and CUDA-aware MPI
+[ Info: Distributed run: 4 ranks (x=2, y=2, z=1)
+===============================================================================================
+Oceananigans Benchmark Suite
+===============================================================================================
+Date: 2026-10-05T04:44:13.962
+Mode: benchmark
+Case: earth_ocean
+Grid types: SubString{String}["lat_lon"]
+Architecture: Distributed{CUDAGPU} on 2×2×1 across 4 = 2×2×1 ranks:
+├── local_rank: 0 of 0-3
+├── local_index: [1, 1, 1]
+└── connectivity: east=2 west=2 north=1 south=1 southwest=3 southeast=3 northwest=3 northeast=3
+Distributed: true
+Partition: (2, 2, 1) (4 ranks)
+Sizes: [(1440, 720, 200)]
+Float types: DataType[Float64]
+Momentum advection: SubString{String}["WENOVectorInvariantDefault"]
+Tracer advection: SubString{String}["WENO7"]
+Closures: SubString{String}["CATKE"]
+Coriolis: spherical
+Buoyancy: seawater
+Tracers: (:T, :S)
+Timestepper: SplitRungeKutta3
+Time steps: 10 × 5 windows (warmup: 2)
+Δt: 60.0 s
+===============================================================================================
+
+
+----------------------------------------------------------------------
+Running: EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr
+----------------------------------------------------------------------
+[ Info: Benchmark: EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr
+┌ Info:   Architecture: Distributed{CUDAGPU} on 2×2×1 across 4 = 2×2×1 ranks:
+│ ├── local_rank: 0 of 0-3
+│ ├── local_index: [1, 1, 1]
+└ └── connectivity: east=2 west=2 north=1 south=1 southwest=3 southeast=3 northwest=3 northeast=3
+[ Info:   Float type: Float64
+[ Info:   Grid size: 720 × 360 × 200 (51840000 points)
+[ Info:   Time step: 60.0 s
+[ Info:   Warmup steps: 2
+[ Info:   Benchmark steps: 10 × 5 windows
+[ Info:   Running warmup...
+[ Info:   Running benchmark...
+[ Info:   Results:
+[ Info:     Total time: 13.482 s
+[ Info:     Time per step: 0.266107 s (min of 5 windows; median 0.267753 s, max 0.279086 s)
+[ Info:     Grid points/s: 1.95e+08
+
+=======================================================================================================================================
+BENCHMARK SUMMARY
+=======================================================================================================================================
+
+Benchmark                                                  Float         Grid Time/unit (ms)    Units/s        Points/s       Size           Chunks
+---------------------------------------------------------------------------------------------------------------------------------------
+EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr  Float64  720×360×200       266.1073       3.76        1.95e+08          —                —
+=======================================================================================================================================
+Results saved to: /home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-05_gpu_scaling/4_gpus/results.json
+Markdown report saved to: /home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-05_gpu_scaling/4_gpus/results.md
+Benchmarks completed at 2026-10-05T04:48:33.429Z

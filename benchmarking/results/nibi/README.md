@@ -5,6 +5,9 @@ This sweep runs the global **1440 × 720 × 200** earth-ocean model on
 It matches `../rondeau/2026-09-27_all/gpu_scaling_super_fine` except for
 the requested vertical resolution and Nibi's hardware/software environment.
 
+The [2026-10-05 run report](2026-10-05_gpu_scaling/README.md) records the
+measurements, missing queued counts, and the limits encountered.
+
 Settings: latitude–longitude without bathymetry, Float64,
 WENOVectorInvariantDefault momentum, WENO7 tracers, CATKE, T/S,
 SplitRungeKutta3, Δt = 60 s, two warmup steps, five windows of ten steps.

@@ -1,0 +1,13 @@
+gpus,nodes,partition,job_id,state,exit_code,reason
+1,1,1x1x1,23239281,INVALID_RESULTS,0:0,Transport check passed; benchmark main() was not invoked by include guard. Fixed and rerun.
+2,1,1x2x1,23239389,INVALID_RESULTS,0:0,Transport check passed; benchmark main() was not invoked by include guard. Fixed and rerun.
+4,1,2x2x1,23239390,INVALID_RESULTS,0:0,Transport check passed; benchmark main() was not invoked by include guard. Fixed and rerun.
+8,1,4x2x1,23239392,CANCELLED,0:0,Cancelled while pending per user instruction to finish with largest completed count. Queue reason (Priority); estimated start 2026-10-05T03:20:00 America/Toronto.
+16,2,4x4x1,23239393,CANCELLED,0:0,Cancelled while pending per user instruction to finish with largest completed count. Queue reason (Priority); estimated start 2026-10-05T01:30:00 America/Toronto.
+32,4,8x4x1,23239394,COMPLETED,0:0,None
+64,8,8x8x1,23239396,CANCELLED,0:0,Cancelled while pending per user instruction to finish with largest completed count. Queue reason (Priority); estimated start 2026-10-05T03:10:00 America/Toronto.
+1,1,1x1x1,23239532,COMPLETED,0:0,None
+2,1,1x2x1,23239533,COMPLETED,0:0,None
+4,1,2x2x1,23239534,COMPLETED,0:0,None
+128,16,16x8x1,,FEASIBILITY_ONLY,0,Slurm test accepted; estimated start 2026-10-06T21:24:21 America/Toronto. Not submitted because user requested no long queue wait.
+256,32,16x16x1,,SUBMISSION_FAILED,1,sbatch: error: Batch job submission failed: Requested node configuration is not available

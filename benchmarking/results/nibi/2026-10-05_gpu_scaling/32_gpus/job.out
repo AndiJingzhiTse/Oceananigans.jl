@@ -1,0 +1,101 @@
+The following modules were not unloaded:
+  (Use "module --force purge" to unload all):
+
+  1) CCconfig        6)  ucx/1.14.1         11) flexiblas/3.3.1
+  2) gentoo/2023     7)  libfabric/1.18.0   12) imkl/2023.2.0
+  3) gcccore/.12.3   8)  pmix/4.2.4         13) StdEnv/2023
+  4) gcc/12.3        9)  ucc/1.2.0
+  5) hwloc/2.9.1     10) openmpi/4.1.5
+Oceananigans-DRAC environment (Nibi): repo=/home/anditse/Oceananigans-DRAC, depot=/scratch/anditse/julia_depot
+rank 2 on g14.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID e012a576-bbff-3d57-aa7e-0bc974fa0422
+rank 6 on g14.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID 1eaf342c-129d-0982-074a-3f5fcb8e1671
+rank 1 on g14.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID 20b8314e-7b81-d2b6-ae8c-0356997dc9c5
+rank 0 on g14.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID 6224c7be-ae9b-5a24-fc2f-fdc6921b2e2a
+rank 3 on g14.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID 6ad2655b-f289-a676-7b0b-b9a9a9053fbb
+rank 7 on g14.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID 1f632aa8-6e81-349a-659f-aa2514556486
+rank 4 on g14.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID f5c2593a-1bb1-4848-cc36-a14daca2cc05
+rank 5 on g14.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID 8453befd-fb4c-c7f6-6edf-8b7e390eb582
+rank 19 on g17.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID 0fda35cf-b4f1-1d6b-9d7f-91b87ae1548a
+rank 20 on g17.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID 3a131626-1a2b-dcb7-2538-d94e40d616d0
+rank 16 on g17.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID acbeb83e-4fc9-c8ce-4af1-6498ccf81f90
+rank 21 on g17.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID c01e30d0-bdb2-9c87-91b7-a87daf8bab8f
+rank 23 on g17.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID 7b54dc26-f814-c38c-9ad0-3f80e0a3e536
+rank 18 on g17.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID 996c672b-f5d7-cd22-290a-7d0686456d24
+rank 22 on g17.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID 3f15e3d1-d7ee-fb26-d029-d60d67d9dcb5
+rank 17 on g17.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID 8f3cdc9f-aa1a-584c-e581-f3234f025a69
+rank 24 on g18.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID 3953fcef-b031-5513-a8c2-c0dbae6c058b
+rank 30 on g18.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID a89fb68a-e377-1f22-ae9e-a21a4efc6e09
+rank 10 on g16.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID 4dc0e73b-46fc-999c-0e8e-382d67c3c63c
+rank 12 on g16.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID 14b99db5-063b-c330-805c-423c729da46c
+rank 13 on g16.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID 8f711b26-a32d-361c-85eb-8d60f6d75971
+rank 8 on g16.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID 0c228a7f-a2d9-ba3b-5ce0-3ca8f1eaeeba
+rank 14 on g16.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID 03e2f6d5-300f-1fc0-6001-5773146d43d1
+rank 15 on g16.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID 4bb25909-51b6-3c6e-ea38-478b27538123
+rank 11 on g16.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID 0dee680f-76d8-4577-9c1a-088557131e1f
+rank 9 on g16.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID 9c7432f4-701a-12c9-fa03-e28a50c39658
+rank 27 on g18.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID 82d4e35e-0288-523b-f75b-4bb8bd815604
+rank 25 on g18.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID ce0c2c0e-5ae4-82e5-e3f5-1be930ef3daf
+rank 26 on g18.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID 8b4b941d-284e-2cf8-2e7e-abc84cc720c2
+rank 31 on g18.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID f44c5426-dc23-eec9-4554-2d40f426fe47
+rank 29 on g18.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID 55463b9d-b78f-1ea1-bab7-df28d97154a5
+rank 28 on g18.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID 48f03abd-daad-268c-7de8-a77204414a1e
+PASS: 32 distinct GPUs and CUDA-aware MPI
+[ Info: Distributed run: 32 ranks (x=8, y=4, z=1)
+===============================================================================================
+Oceananigans Benchmark Suite
+===============================================================================================
+Date: 2026-10-05T04:44:31.114
+Mode: benchmark
+Case: earth_ocean
+Grid types: SubString{String}["lat_lon"]
+Architecture: Distributed{CUDAGPU} on 8×4×1 across 32 = 8×4×1 ranks:
+├── local_rank: 0 of 0-31
+├── local_index: [1, 1, 1]
+└── connectivity: east=4 west=28 north=1 south=3 southwest=31 southeast=7 northwest=29 northeast=5
+Distributed: true
+Partition: (8, 4, 1) (32 ranks)
+Sizes: [(1440, 720, 200)]
+Float types: DataType[Float64]
+Momentum advection: SubString{String}["WENOVectorInvariantDefault"]
+Tracer advection: SubString{String}["WENO7"]
+Closures: SubString{String}["CATKE"]
+Coriolis: spherical
+Buoyancy: seawater
+Tracers: (:T, :S)
+Timestepper: SplitRungeKutta3
+Time steps: 10 × 5 windows (warmup: 2)
+Δt: 60.0 s
+===============================================================================================
+
+
+----------------------------------------------------------------------
+Running: EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr
+----------------------------------------------------------------------
+[ Info: Benchmark: EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr
+┌ Info:   Architecture: Distributed{CUDAGPU} on 8×4×1 across 32 = 8×4×1 ranks:
+│ ├── local_rank: 0 of 0-31
+│ ├── local_index: [1, 1, 1]
+└ └── connectivity: east=4 west=28 north=1 south=3 southwest=31 southeast=7 northwest=29 northeast=5
+[ Info:   Float type: Float64
+[ Info:   Grid size: 180 × 180 × 200 (6480000 points)
+[ Info:   Time step: 60.0 s
+[ Info:   Warmup steps: 2
+[ Info:   Benchmark steps: 10 × 5 windows
+[ Info:   Running warmup...
+[ Info:   Running benchmark...
+[ Info:   Results:
+[ Info:     Total time: 9.135 s
+[ Info:     Time per step: 0.098315 s (min of 5 windows; median 0.147122 s, max 0.383322 s)
+[ Info:     Grid points/s: 6.59e+07
+
+=======================================================================================================================================
+BENCHMARK SUMMARY
+=======================================================================================================================================
+
+Benchmark                                                  Float         Grid Time/unit (ms)    Units/s        Points/s       Size           Chunks
+---------------------------------------------------------------------------------------------------------------------------------------
+EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr  Float64  180×180×200        98.3152      10.17        6.59e+07          —                —
+=======================================================================================================================================
+Results saved to: /home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-05_gpu_scaling/32_gpus/results.json
+Markdown report saved to: /home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-05_gpu_scaling/32_gpus/results.md
+Benchmarks completed at 2026-10-05T04:50:09.158Z

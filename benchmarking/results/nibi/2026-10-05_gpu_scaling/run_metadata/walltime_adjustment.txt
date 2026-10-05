@@ -1,0 +1,1 @@
+Jobs were submitted with a 45-minute limit. Pending measured runs were shortened to 15 minutes with scontrol update to fit backfill windows. Pending 8/16-GPU requests were later shortened to 8 minutes but still did not start. Benchmark parameters remained unchanged: 2 warmup steps, 5 windows of 10 steps. Per-job slurm_job.txt records the measured run allocation.

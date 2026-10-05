@@ -1,0 +1,30 @@
+JobId=23239533 JobName=nibi_scale_2
+   UserId=anditse(3165591) GroupId=anditse(3165591) MCS_label=N/A
+   Priority=1282184 Nice=0 Account=def-fpoulin_gpu QOS=normal
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:00:06 TimeLimit=00:45:00 TimeMin=N/A
+   SubmitTime=2026-10-05T00:40:34 EligibleTime=2026-10-05T00:40:34
+   AccrueTime=2026-10-05T00:40:34
+   StartTime=2026-10-05T00:43:30 EndTime=2026-10-05T01:28:30 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-05T00:43:30 Scheduler=Backfill
+   Partition=gpubase_bygpu_b1 AllocNode:Sid=l4:2938505
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=g10
+   BatchHost=g10
+   NumNodes=1 NumCPUs=16 NumTasks=2 CPUs/Task=8 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=16,mem=64G,node=1,billing=24400,gres/gpu=2,gres/gpu:h100=2
+   AllocTRES=cpu=16,mem=64G,node=1,billing=24400,gres/gpu=2,gres/gpu:h100=2
+   Socks/Node=* NtasksPerN:B:S:C=2:0:*:* CoreSpec=*
+   MinCPUsNode=16 MinMemoryNode=64G MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)
+   Command=/home/anditse/Oceananigans.jl/benchmarking/results/nibi/benchmark.sbatch
+   SubmitLine=sbatch --parsable --account=def-fpoulin_gpu --nodes=1 --ntasks=2 --ntasks-per-node=2 --mem=64G --job-name=nibi_scale_2 --output=/home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-05_gpu_scaling/2_gpus/job.out /home/anditse/Oceananigans.jl/benchmarking/results/nibi/benchmark.sbatch /home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-05_gpu_scaling/2_gpus 1x2x1 /home/anditse/Oceananigans.jl/benchmarking/results/nibi
+   WorkDir=/home/anditse/Oceananigans.jl
+   StdErr=
+   StdIn=/dev/null
+   StdOut=/home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-05_gpu_scaling/2_gpus/job.out
+   TresBind=gres/gpu:per_task:1
+   TresPerTask=cpu=8,gres/gpu:h100:1
+

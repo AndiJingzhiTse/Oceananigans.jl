@@ -1,0 +1,14 @@
+The following modules were not unloaded:
+  (Use "module --force purge" to unload all):
+
+  1) CCconfig        6)  ucx/1.14.1         11) flexiblas/3.3.1
+  2) gentoo/2023     7)  libfabric/1.18.0   12) imkl/2023.2.0
+  3) gcccore/.12.3   8)  pmix/4.2.4         13) StdEnv/2023
+  4) gcc/12.3        9)  ucc/1.2.0
+  5) hwloc/2.9.1     10) openmpi/4.1.5
+Oceananigans-DRAC environment (Nibi): repo=/home/anditse/Oceananigans-DRAC, depot=/scratch/anditse/julia_depot
+rank 2 on g13.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID 6fba7179-ac02-98cf-c73b-f04343e2e163
+rank 0 on g13.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID 59c0abef-b010-043a-a259-c23cb144257d
+rank 3 on g13.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID ab8bf088-f28f-f553-0c6c-734c38dedbb0
+rank 1 on g13.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID 32d1a46d-38de-e40f-d546-b7589e37b777
+PASS: 4 distinct GPUs and CUDA-aware MPI

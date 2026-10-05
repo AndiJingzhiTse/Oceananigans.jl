@@ -1,0 +1,74 @@
+The following modules were not unloaded:
+  (Use "module --force purge" to unload all):
+
+  1) CCconfig        6)  ucx/1.14.1         11) flexiblas/3.3.1
+  2) gentoo/2023     7)  libfabric/1.18.0   12) imkl/2023.2.0
+  3) gcccore/.12.3   8)  pmix/4.2.4         13) StdEnv/2023
+  4) gcc/12.3        9)  ucc/1.2.0
+  5) hwloc/2.9.1     10) openmpi/4.1.5
+Oceananigans-DRAC environment (Nibi): repo=/home/anditse/Oceananigans-DRAC, depot=/scratch/anditse/julia_depot
+rank 0 on g8.nibi.sharcnet: NVIDIA H100 80GB HBM3, UUID 057d49ee-42ba-56cb-5b00-9097502f20e7
+PASS: 1 distinct GPUs and CUDA-aware MPI
+┌ Warning: We are building a Distributed architecture on a single MPI rank. 
+│ This can occur when MPI is incorrectly configured. 
+│ See https://juliaparallel.org/MPI.jl/stable/configuration/ for more details.
+└ @ Oceananigans.DistributedComputations ~/Oceananigans.jl/src/DistributedComputations/distributed_architectures.jl:275
+[ Info: Distributed run: 1 ranks (x=1, y=1, z=1)
+===============================================================================================
+Oceananigans Benchmark Suite
+===============================================================================================
+Date: 2026-10-05T04:44:24.138
+Mode: benchmark
+Case: earth_ocean
+Grid types: SubString{String}["lat_lon"]
+Architecture: Distributed{CUDAGPU} on 1×1×1 across 1 rank:
+├── local_rank: 0 of 0-0
+├── local_index: [1, 1, 1]
+└── connectivity:
+Distributed: true
+Partition: (1, 1, 1) (1 ranks)
+Sizes: [(1440, 720, 200)]
+Float types: DataType[Float64]
+Momentum advection: SubString{String}["WENOVectorInvariantDefault"]
+Tracer advection: SubString{String}["WENO7"]
+Closures: SubString{String}["CATKE"]
+Coriolis: spherical
+Buoyancy: seawater
+Tracers: (:T, :S)
+Timestepper: SplitRungeKutta3
+Time steps: 10 × 5 windows (warmup: 2)
+Δt: 60.0 s
+===============================================================================================
+
+
+----------------------------------------------------------------------
+Running: EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr
+----------------------------------------------------------------------
+[ Info: Benchmark: EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr
+┌ Info:   Architecture: Distributed{CUDAGPU} on 1×1×1 across 1 rank:
+│ ├── local_rank: 0 of 0-0
+│ ├── local_index: [1, 1, 1]
+└ └── connectivity:
+[ Info:   Float type: Float64
+[ Info:   Grid size: 1440 × 720 × 200 (207360000 points)
+[ Info:   Time step: 60.0 s
+[ Info:   Warmup steps: 2
+[ Info:   Benchmark steps: 10 × 5 windows
+[ Info:   Running warmup...
+[ Info:   Running benchmark...
+[ Info:   Results:
+[ Info:     Total time: 51.091 s
+[ Info:     Time per step: 1.021135 s (min of 5 windows; median 1.021461 s, max 1.023709 s)
+[ Info:     Grid points/s: 2.03e+08
+
+=======================================================================================================================================
+BENCHMARK SUMMARY
+=======================================================================================================================================
+
+Benchmark                                                  Float         Grid Time/unit (ms)    Units/s        Points/s       Size           Chunks
+---------------------------------------------------------------------------------------------------------------------------------------
+EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr  Float64 1440×720×200      1021.1346       0.98        2.03e+08          —                —
+=======================================================================================================================================
+Results saved to: /home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-05_gpu_scaling/1_gpus/results.json
+Markdown report saved to: /home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-05_gpu_scaling/1_gpus/results.md
+Benchmarks completed at 2026-10-05T04:47:24.044Z
