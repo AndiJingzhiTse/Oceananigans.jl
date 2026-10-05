@@ -121,13 +121,17 @@ def main():
             try:
                 fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
                 done = refresh(folder, counts)
-                if done and args.commit:
-                    commit_results(folder, args.branch)
             except (BlockingIOError, subprocess.TimeoutExpired, RuntimeError) as error:
                 print(f"Refresh deferred: {error}", flush=True)
                 if not args.watch:
                     raise SystemExit(1)
                 done = False
+            else:
+                if done and args.commit:
+                    try:
+                        commit_results(folder, args.branch)
+                    except RuntimeError as error:
+                        raise SystemExit(str(error))
         if done or not args.watch:
             break
         time.sleep(args.poll_seconds)

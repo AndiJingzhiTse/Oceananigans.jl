@@ -7,6 +7,8 @@ the requested vertical resolution and Nibi's hardware/software environment.
 
 The [2026-10-05 run report](2026-10-05_gpu_scaling/README.md) records the
 measurements, missing queued counts, and the limits encountered.
+The [follow-up status](2026-10-05_gpu_scaling/retry_status.md) tracks
+the subsequent 8-, 16-, 64-, and 128-GPU attempts.
 
 Settings: latitude–longitude without bathymetry, Float64,
 WENOVectorInvariantDefault momentum, WENO7 tracers, CATKE, T/S,
