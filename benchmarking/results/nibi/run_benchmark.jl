@@ -18,7 +18,7 @@ receive_buffer = CUDA.zeros(Float64, 1024)
 source = mod(rank - 1, ranks)
 MPI.Sendrecv!(send_buffer, receive_buffer, comm; dest=mod(rank + 1, ranks), source)
 correct = all(Array(receive_buffer) .== source)
-MPI.Allreduce(correct, &, comm) || error("CUDA-aware MPI ring check failed")
+MPI.Allreduce(correct ? 1 : 0, MPI.MIN, comm) == 1 || error("CUDA-aware MPI ring check failed")
 rank == 0 && println("PASS: $ranks distinct GPUs and CUDA-aware MPI")
 MPI.Barrier(comm)
 
