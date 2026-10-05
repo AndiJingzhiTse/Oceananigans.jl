@@ -2,6 +2,7 @@
 """Submit and monitor a resumable power-of-two strong-scaling sweep on Nibi."""
 import argparse
 import csv
+import fcntl
 import json
 import math
 import os
@@ -70,6 +71,11 @@ def main():
         parser.error("GPU counts must be unique and ascending")
     run_dir = args.run_dir.resolve()
     run_dir.mkdir(parents=True, exist_ok=True)
+    lock = (run_dir / ".controller.lock").open("w")
+    try:
+        fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError:
+        raise SystemExit(f"Another controller is already monitoring {run_dir}")
     metadata = run_dir / "run_metadata"
     if not metadata.exists():
         metadata.mkdir()
@@ -135,6 +141,11 @@ def main():
             if record and len(record) >= 4:
                 state = record[1].split()[0].rstrip("+")
                 attempt.update(state=state, exit_code=record[2], reason=record[3])
+                if state == "PENDING":
+                    queue = command("squeue", "-h", "-j", attempt["job_id"], "-o", "%i|%T|%R|%S")
+                    (folder / "queue.txt").write_text(queue.stdout)
+                    if queue.stdout.strip():
+                        attempt["reason"] = queue.stdout.strip().split("|")[2]
                 save_attempts(run_dir, attempts)
                 if state in ("COMPLETED", "FAILED", "CANCELLED", "TIMEOUT", "OUT_OF_MEMORY",
                              "NODE_FAIL", "PREEMPTED", "BOOT_FAIL", "DEADLINE", "REVOKED"):
