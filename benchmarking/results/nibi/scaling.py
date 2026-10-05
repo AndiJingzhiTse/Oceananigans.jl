@@ -4,7 +4,9 @@ import argparse
 import csv
 import json
 import math
+import os
 from pathlib import Path
+import re
 import subprocess
 import shutil
 import time
@@ -77,7 +79,7 @@ def main():
         repository = SCRIPT_DIR.parents[2]
         (metadata / "revision.txt").write_text(command("git", "-C", str(repository), "rev-parse", "HEAD").stdout)
         (metadata / "working_tree.txt").write_text(command("git", "-C", str(repository), "status", "--short").stdout)
-        drac_root = Path(__import__("os").environ.get("DRAC_ROOT", str(Path.home() / "Oceananigans-DRAC")))
+        drac_root = Path(os.environ.get("DRAC_ROOT", str(Path.home() / "Oceananigans-DRAC")))
         shutil.copy2(drac_root / "src" / "drac_mpi.jl", metadata / "drac_mpi.jl")
         (metadata / "drac_revision.txt").write_text(command("git", "-C", str(drac_root), "rev-parse", "HEAD").stdout)
         (metadata / "partitions.txt").write_text(command("sinfo", "-o", "%P %a %l %D %G").stdout)
@@ -114,7 +116,9 @@ def main():
                 save_attempts(run_dir, attempts)
                 print(f"{count} GPUs: submission failed: {submit.stdout}", flush=True)
                 break
-            attempt.update(job_id=submit.stdout.strip().split(";")[0], state="SUBMITTED")
+            job_line = next(line for line in reversed(submit.stdout.splitlines())
+                            if re.fullmatch(r"\d+(;\S+)?", line.strip()))
+            attempt.update(job_id=job_line.strip().split(";")[0], state="SUBMITTED")
             save_attempts(run_dir, attempts)
             print(f"{count} GPUs: job {attempt['job_id']}, partition {partition}", flush=True)
 
