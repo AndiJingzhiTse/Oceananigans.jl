@@ -2,6 +2,7 @@
 """Plot completed Nibi measurements; requires matplotlib (scipy-stack module)."""
 import argparse
 import csv
+import math
 from pathlib import Path
 
 import matplotlib
@@ -33,17 +34,24 @@ def main():
     counts = [r[0] for r in rows]
     efficiency = [100 * baseline / (r[0] * r[3]) for r in rows]
     median_efficiency = [100 * baseline_median / (r[0] * r[4]) for r in rows]
+    plot_counts = [2 ** i for i in range(int(math.log2(max(counts))) + 1)]
+    measured = dict(zip(counts, efficiency))
+    measured_median = dict(zip(counts, median_efficiency))
+    missing = [n for n in plot_counts if n not in measured]
     fig, ax = plt.subplots(figsize=(8, 4.8))
-    ax.plot(counts, efficiency, "o-", label="Measured: fastest window, slowest rank")
-    ax.plot(counts, median_efficiency, "s--", label="Median windows, slowest rank", alpha=0.75)
+    ax.plot(plot_counts, [measured.get(n, math.nan) for n in plot_counts], "o-", label="Measured: fastest window, slowest rank")
+    ax.plot(plot_counts, [measured_median.get(n, math.nan) for n in plot_counts], "s--", label="Median windows, slowest rank", alpha=0.75)
     ax.axhline(100, linestyle=":", color="gray", label="Ideal")
     ax.set_xscale("log", base=2)
-    ax.set_xticks(counts, [str(n) for n in counts])
+    ax.set_xticks(plot_counts, [str(n) for n in plot_counts])
     ax.set(xlabel="GPUs / MPI ranks (one rank per H100)", ylabel="MPI strong-scaling efficiency (%)",
            title="Nibi — 1440 × 720 × 200, Float64", ylim=(0, max(110, max(efficiency) * 1.1)))
     ax.grid(alpha=0.25)
     ax.legend(loc="best", fontsize=9)
-    fig.tight_layout()
+    if missing:
+        fig.text(0.5, 0.015, "Unmeasured counts: " + ", ".join(map(str, missing)) + " (see attempt status)",
+                 ha="center", fontsize=9)
+    fig.tight_layout(rect=(0, 0.04 if missing else 0, 1, 1))
     fig.savefig(folder / "mpi_efficiency.svg", metadata={"Date": None})
     plt.close(fig)
     md = ["# Nibi GPU strong scaling", "",
@@ -62,6 +70,7 @@ def main():
            "Spread = (maximum rank/window time ÷ fastest-window slowest-rank time − 1) × 100%. "
            "The suite does not retain individual windows, so these aggregates are not a synchronized per-window maximum.", "",
            f"Highest successful count: **{max(counts)} GPUs**.", "",
+           "Unmeasured intermediate counts: " + (", ".join(map(str, missing)) if missing else "none") + ". No interpolation is drawn across gaps.", "",
            "## Attempt status", "", "| GPUs | Job | State | Exit code | Reason |", "|---:|---|---|---|---|"]
     for attempt in attempts:
         reason = attempt["reason"].replace("|", "/").replace("\n", " ")
