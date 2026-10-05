@@ -1,4 +1,9 @@
-# Nibi strong-scaling run — October 5, 2026
+# Initial Nibi strong-scaling run — October 5, 2026
+
+New 8-, 16-, 64-, and 128-GPU attempts were submitted later on October 5.
+See [current follow-up status](retry_status.md) for their job IDs and outcomes.
+The initial run is documented below; its cancelled-attempt evidence is
+preserved under `previous_attempts/<job_id>/` in each retried count.
 
 **Highest successful count: 32 H100 GPUs on four nodes.** The fixed global
 grid was 1440 × 720 × 200 (207,360,000 cells). The slowest rank's fastest
@@ -15,10 +20,10 @@ See the [efficiency plot and complete timing table](plot.md),
 | 1 | Completed; all rank results verified | [Results](1_gpus/results.json), [job log](1_gpus/job.out) |
 | 2 | Completed; all rank results verified | [Results](2_gpus/results.json), [job log](2_gpus/job.out) |
 | 4 | Completed; all rank results verified | [Results](4_gpus/results.json), [job log](4_gpus/job.out) |
-| 8 | Submitted, stayed pending with `Priority`; cancelled under the user's instruction to finish with the largest completed count | [Queue snapshot](8_gpus/queue_before_cancel.txt), [accounting](8_gpus/accounting.txt) |
-| 16 | Submitted, stayed pending with `Priority`; cancelled under the same instruction | [Queue snapshot](16_gpus/queue_before_cancel.txt), [accounting](16_gpus/accounting.txt) |
+| 8 | Submitted, stayed pending with `Priority`; cancelled under the user's instruction to finish with the largest completed count | [Queue snapshot](8_gpus/previous_attempts/23239392/queue_before_cancel.txt), [accounting](8_gpus/previous_attempts/23239392/accounting.txt) |
+| 16 | Submitted, stayed pending with `Priority`; cancelled under the same instruction | [Queue snapshot](16_gpus/previous_attempts/23239393/queue_before_cancel.txt), [accounting](16_gpus/previous_attempts/23239393/accounting.txt) |
 | 32 | Completed; all 32 rank results verified | [Results](32_gpus/results.json), [job log](32_gpus/job.out) |
-| 64 | Submitted, stayed pending with `Priority`; estimated start 03:10 on October 5; cancelled under the user's instruction | [Queue snapshot](64_gpus/queue_before_cancel.txt), [accounting](64_gpus/accounting.txt) |
+| 64 | Submitted, stayed pending with `Priority`; estimated start 03:10 on October 5; cancelled under the user's instruction | [Queue snapshot](64_gpus/previous_attempts/23239396/queue_before_cancel.txt), [accounting](64_gpus/previous_attempts/23239396/accounting.txt) |
 | 128 | Feasibility check accepted; estimated start 21:24 on October 6; not submitted because of the long wait | [Slurm feasibility output](run_metadata/feasibility_128.txt) |
 | 256 | Actual submission rejected: `Requested node configuration is not available` | [Submission output](256_gpus/submission.txt), [exit code](256_gpus/submission_exit_code.txt) |
 
@@ -87,7 +92,6 @@ rejected the initial jobs. Their logs are preserved in
 `initial_transport_only/` under each count. They are excluded from the plot.
 Initial and final launch-script snapshots are distinguished in `run_metadata/`.
 
-All benchmark jobs have finished or been cancelled; none remain queued.
-Use the [parent instructions](../README.md) to rerun the sweep. To fill
-the gaps later, rerun `scaling.py` with `--counts=8,16`; it preserves the
-completed measurements and retries the cancelled counts.
+All initial benchmark jobs finished or were cancelled. New attempts are
+tracked in [retry_status.md](retry_status.md) and [attempts.csv](attempts.csv).
+Use the [parent instructions](../README.md) to monitor or rerun the sweep.

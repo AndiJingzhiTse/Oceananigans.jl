@@ -1,0 +1,4 @@
+Live monitor: refresh_scaling.py 2026-10-05_gpu_scaling --watch --commit
+Monitor log: /scratch/anditse/nibi_retry_watch.log
+Slurm fallback finalizer: job 23258059, afterany dependency on 23257894:23257896:23257897:23257899.
+Both validate results, regenerate plot/status, and commit artifacts locally only on the expected branch with a clear git index.

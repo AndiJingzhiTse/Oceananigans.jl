@@ -1,0 +1,3 @@
+Command: sbatch --parsable --account=def-fpoulin_cpu --dependency=afterany:23257894:23257896:23257897:23257899 --output=/home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-05_gpu_scaling/run_metadata/retry_finalize.out /home/anditse/Oceananigans.jl/benchmarking/results/nibi/finalize.sbatch /home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-05_gpu_scaling /home/anditse/Oceananigans.jl/benchmarking/results/nibi
+sbatch: NOTE: Your memory request of 2048.0M was likely submitted as 2.0G. Please note that Slurm interprets memory requests denominated in G as multiples of 1024M, not 1000M.
+23258059
