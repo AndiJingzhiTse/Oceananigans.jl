@@ -53,6 +53,8 @@ def main():
                  ha="center", fontsize=9)
     fig.tight_layout(rect=(0, 0.04 if missing else 0, 1, 1))
     fig.savefig(folder / "mpi_efficiency.svg", metadata={"Date": None})
+    svg = folder / "mpi_efficiency.svg"
+    svg.write_text("\n".join(line.rstrip() for line in svg.read_text().splitlines()) + "\n")
     plt.close(fig)
     md = ["# Nibi GPU strong scaling", "",
           "Global grid: 1440 × 720 × 200 (207,360,000 cells), latitude–longitude without bathymetry.",

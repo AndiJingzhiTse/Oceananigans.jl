@@ -50,7 +50,7 @@ def command(*args):
 def save_attempts(run_dir, attempts):
     temporary = run_dir / "attempts.csv.tmp"
     with temporary.open("w", newline="") as stream:
-        writer = csv.DictWriter(stream, FIELDS)
+        writer = csv.DictWriter(stream, FIELDS, lineterminator="\n")
         writer.writeheader()
         writer.writerows(attempts)
     temporary.replace(run_dir / "attempts.csv")
