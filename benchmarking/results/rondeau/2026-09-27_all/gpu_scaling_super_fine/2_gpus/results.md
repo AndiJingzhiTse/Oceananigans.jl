@@ -21,5 +21,5 @@
 
 | Benchmark | Distributed | Float | Grid | Time/unit (ms) | Spread | Units/s | Points/s | Size | Chunks | Timestamp |
 |-----------|-------------|-------|------|----------------|--------|---------|----------|------|--------|-----------|
-| `EarthOcean_lat_lon_1440x720x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr` | rank 0 | Float64 | 1440×360×50 | 257.51 | +21.1% | 3.88 | 1.01e+08 | — | — | 2026-09-30T02:45:34.402 |
-| `EarthOcean_lat_lon_1440x720x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr` | rank 1 | Float64 | 1440×360×50 | 257.49 | +21.1% | 3.88 | 1.01e+08 | — | — | 2026-09-30T02:45:34.395 |
+| `EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr` | rank 0 | Float64 | 1440×360×200 | 991.01 | +0.3% | 1.01 | 1.05e+08 | — | — | 2026-10-05T17:31:40.033 |
+| `EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr` | rank 1 | Float64 | 1440×360×200 | 991.02 | +0.3% | 1.01 | 1.05e+08 | — | — | 2026-10-05T17:31:40.022 |

@@ -19,7 +19,7 @@ Hardware and Julia version snapshots are stored beside this file.
 | CPU MPI scaling default | 1, 2, 4, 8, 16, 32, 64, 128 ranks on 360 × 180 × 50 | Complete after targeted runs |
 | CPU MPI scaling fine | 1, 2, 4, 8, 16, 32, 64, 128 ranks on 720 × 360 × 50 | Complete |
 | GPU MPI scaling fine | 1, 2, 4 GPUs on 720 × 360 × 50 | Complete |
-| GPU MPI scaling super fine | 1, 2, 4 GPUs on 1440 × 720 × 50 | Complete after targeted run |
+| GPU MPI scaling super fine | 2, 4 GPUs on 1440 × 720 × 200 | Replaced by targeted rerun; one GPU exceeded memory |
 | GPU profiling | 360 × 180 × 50, 720 × 360 × 50 | Complete |
 | CPU profiling | 720 × 360 × 50 | Complete after targeted rerun |
 
@@ -62,11 +62,13 @@ one-rank MPI case (99.773 seconds per step).
 
 ## GPU super fine scaling extension
 
-The 1440 × 720 × 50 latitude longitude run was added on 2026-09-30.
-[Run provenance](run_metadata/2026-09-30T023910Z_gpu_scaling_super_fine/README.md)
-records the MPI/GPU checks, CPU binding, environment, and individual results.
-The one-GPU time of 0.503440 seconds per step agrees with the saved GPU
-resolution result at the same grid (0.503266 seconds per step).
+The series was replaced in place on 2026-10-05 with a 1440 × 720 × 200
+latitude longitude grid. [Rerun provenance](gpu_scaling_super_fine/rerun.md)
+records the settings, MPI/GPU checks, CPU binding and results. One GPU
+exceeded memory before warmup; the plot uses the two-GPU timing as its
+baseline. The previous 50-level timings are available in Git history.
+The [original run provenance](run_metadata/2026-09-30T023910Z_gpu_scaling_super_fine/README.md)
+describes the superseded 2026-09-30 measurements.
 
 ## CPU default scaling extension
 

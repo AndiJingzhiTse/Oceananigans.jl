@@ -44,6 +44,11 @@ compared directly.
 | Nsight GPU | 360 × 180 × 50, 720 × 360 × 50 | Tripolar |
 | Nsight CPU | 720 × 360 × 50 | Tripolar |
 
+The saved `2026-09-27_all/gpu_scaling_super_fine/` results were replaced
+in place on 2026-10-05 with a 1440 × 720 × 200 grid. See the
+[rerun provenance](2026-09-27_all/gpu_scaling_super_fine/rerun.md).
+The suite script still uses 50 vertical levels for its configured runs.
+
 Timing runs use Float64, WENOVectorInvariantDefault, WENO7, CATKE, SplitRungeKutta3, tracers T and S, a 60 second simulation time step, 2 warmup steps, and 5 samples of 10 steps. Nsight runs use 2 warmup steps and 1 sample of 2 steps. CPU profiling uses a sampling period of 1,000,000 CPU cycles with DWARF backtraces. The captured timeline includes startup, compilation, model construction, warmup, and measurement; it is not restricted to the timed window.
 
 The CPU resolution series reproduces the original change in geometry at 720. It therefore does not measure pure resolution scaling. The GPU super fine series uses a plain latitude longitude grid because the benchmark bathymetry dataset has no 1440 × 720 tripolar file. Compare MPI efficiency within each GPU series; the fine and super fine step times change both resolution and grid type. CPU runs use one Julia thread, including each MPI rank. The saved CPU Nsight result also reports one thread; set `PROFILE_CPU_THREADS=16` if you want an additional comparison with 16 threads.

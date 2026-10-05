@@ -1,5 +1,10 @@
 # GPU scaling super fine extension
 
+These 50-level measurements were superseded by the
+[200-level rerun](../../gpu_scaling_super_fine/rerun.md) on 2026-10-05.
+The current results folders contain that replacement; the timings below
+describe the original run and are preserved as historical provenance.
+
 Started at 2026-09-30 02:39:10 UTC on Rondeau. Results were added to
 `../../gpu_scaling_super_fine/` after the original 2026-09-27 suite.
 This extension uses a 1440 × 720 × 50 plain latitude longitude grid without

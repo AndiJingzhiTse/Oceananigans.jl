@@ -59,25 +59,36 @@ def performance(root, series, distributed=False):
     elif series == "gpu_scaling_fine":
         notes += " Global grid: 720 × 360 × 50, tripolar with partial-cell bathymetry."
     elif series == "gpu_scaling_super_fine":
-        notes += " Global grid: 1440 × 720 × 50, plain latitude longitude without bathymetry."
+        levels = json.loads((configs[0] / "results.json").read_text())[0]["grid_size"][2]
+        notes += f" Global grid: 1440 × 720 × {levels}, plain latitude longitude without bathymetry."
     md = [f"# Rondeau {title}", "", notes,
           "These timing runs use Float64, 60 simulated seconds per step, 2 warmup steps, and 5 samples of 10 steps.", ""]
     if distributed:
         speeds = [times[0] / t for t in times]
-        efficiencies = [s / n * 100 for s, n in zip(speeds, counts)]
+        baseline_count = counts[0]
+        efficiencies = [s * baseline_count / n * 100 for s, n in zip(speeds, counts)]
         fig, ax = plt.subplots(figsize=(7, 4))
         x = range(len(counts))
         ax.plot(x, efficiencies, "o-", label="Measured MPI efficiency")
         ax.plot(x, [100] * len(counts), "x--", color="gray", label="Ideal (100%)")
         ax.set(xticks=list(x), xticklabels=labels, xlabel="CPU ranks" if series.startswith("cpu_scaling") else "GPUs",
                ylabel="MPI efficiency (%)", title=f"Rondeau — {title} MPI efficiency", ylim=(0, 110))
+        if baseline_count > 1:
+            ax.set_title(f"Rondeau — {title} MPI efficiency\n{baseline_count}-GPU baseline")
         ax.legend(); ax.grid(axis="y", alpha=.25)
         save(fig, folder / "mpi_efficiency.svg")
         md += ["![Measured and ideal MPI efficiency](mpi_efficiency.svg)", "",
-               "| " + ("CPU ranks" if series.startswith("cpu_scaling") else "GPUs") + " | Seconds per step | Steps per second | Speedup | MPI efficiency | Ideal efficiency |",
+               "| " + ("CPU ranks" if series.startswith("cpu_scaling") else "GPUs") + " | Seconds per step | Steps per second | " + ("Speedup" if baseline_count == 1 else f"Speedup vs {baseline_count} GPUs") + " | MPI efficiency | Ideal efficiency |",
                "|---:|---:|---:|---:|---:|---:|"]
         md += [f"| {n} | {t:.6f} | {1/t:.6f} | {s:.3f}× | {e:.1f}% | 100.0% |" for n,t,s,e in zip(counts,times,speeds,efficiencies)]
-        md += ["", "MPI efficiency = (one-rank step time ÷ current step time) ÷ rank count × 100%. The one-rank measurement is the baseline. The table uses the slowest MPI rank at each count."]
+        if baseline_count == 1:
+            md += ["", "MPI efficiency = (one-rank step time ÷ current step time) ÷ rank count × 100%. The one-rank measurement is the baseline. The table uses the slowest MPI rank at each count."]
+        else:
+            md += ["", f"MPI efficiency is relative to the {baseline_count}-GPU baseline: (baseline step time ÷ current step time) × {baseline_count} ÷ GPU count × 100%. The baseline is normalized to 100%; this does not measure efficiency relative to one GPU. Timings use the slowest rank."]
+        if series == "gpu_scaling_super_fine":
+            if (folder / "1_gpus/attempt.md").exists():
+                md += ["", "The [one-GPU case](1_gpus/attempt.md) ran out of memory before warmup; no one-GPU timing is available."]
+            md += ["", "[Rerun provenance](rerun.md) records the replacement measurements and any failed configurations."]
     else:
         factors = [b/a for a,b in zip(times, times[1:])]
         transitions = [f"{a} → {b}" for a,b in zip(counts, counts[1:])]
@@ -202,6 +213,9 @@ def main():
     for series in available_series:
         performance(root, series, "scaling" in series)
     profiles(root)
+    super_fine_configs = sorted((root / "gpu_scaling_super_fine").glob("*_gpus"), key=lambda p: int(p.name.split("_")[0]))
+    super_fine_results = [p for p in super_fine_configs if (p / "results.json").exists()]
+    super_fine_levels = json.loads((super_fine_results[0] / "results.json").read_text())[0]["grid_size"][2] if super_fine_results else 200
     sections = ["# Rondeau benchmark plots", "",
                 "## Benchmark configuration", "",
                 "All timing cases call `earth_ocean` through `benchmarking/run_benchmarks.jl`."
@@ -214,7 +228,7 @@ def main():
                 "| CPU scaling default | 360 × 180 × 50 | `tripolar` | `TripolarGrid` with immersed partial-cell bathymetry | 1, 2, 4, 8, 16, 32, 64, 128 |",
                 "| CPU scaling fine | 720 × 360 × 50 | `tripolar` | `TripolarGrid` with immersed partial-cell bathymetry | 1, 2, 4, 8, 16, 32, 64, 128 |",
                 "| GPU scaling fine | 720 × 360 × 50 | `tripolar` | `TripolarGrid` with immersed partial-cell bathymetry | 1, 2, 4 |",
-                "| GPU scaling super fine | 1440 × 720 × 50 | `lat_lon` | Plain `LatitudeLongitudeGrid`, no bathymetry | 1, 2, 4 |", "",
+                f"| GPU scaling super fine | 1440 × 720 × {super_fine_levels} | `lat_lon` | Plain `LatitudeLongitudeGrid`, no bathymetry | " + ", ".join(p.name.split("_")[0] for p in super_fine_results) + " |", "",
                 "All timing runs pass `float_type=Float64`, `zstar_coordinate=false`,"
                 " `momentum_advection=WENOVectorInvariantDefault`, `tracer_advection=WENO7`,"
                 " `closure=CATKE`, `timestepper=SplitRungeKutta3`, and `tracers=T,S` to the runner."
@@ -244,6 +258,8 @@ def main():
             sections += ["At 64 and 128 CPU ranks the 360 × 180 horizontal grid does not divide evenly;"
                          " the last partitions receive the leftover cells, and the chart uses the slowest rank."
                          " The 128-rank partition is 8 × 16 × 1 to keep x evenly divided across the tripolar fold.", ""]
+        elif series == "gpu_scaling_super_fine" and (root / series / "1_gpus/attempt.md").exists():
+            sections += ["The one-GPU case exceeded available GPU memory before warmup. MPI efficiency is normalized to the two-GPU baseline: (two-GPU step time ÷ current step time) × 2 ÷ GPU count × 100%. See [rerun provenance](gpu_scaling_super_fine/rerun.md).", ""]
         sections += [f"[Method and source data]({series}/plot.md)", ""]
     sections += ["## Nsight profiles", "",
                  "These profiling cases use `tripolar` grids with immersed partial-cell bathymetry"

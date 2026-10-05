@@ -21,7 +21,7 @@
 
 | Benchmark | Distributed | Float | Grid | Time/unit (ms) | Spread | Units/s | Points/s | Size | Chunks | Timestamp |
 |-----------|-------------|-------|------|----------------|--------|---------|----------|------|--------|-----------|
-| `EarthOcean_lat_lon_1440x720x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr` | rank 0 | Float64 | 720×360×50 | 140.91 | +4.4% | 7.10 | 9.20e+07 | — | — | 2026-09-30T02:49:40.527 |
-| `EarthOcean_lat_lon_1440x720x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr` | rank 1 | Float64 | 720×360×50 | 140.90 | +3.7% | 7.10 | 9.20e+07 | — | — | 2026-09-30T02:49:40.529 |
-| `EarthOcean_lat_lon_1440x720x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr` | rank 2 | Float64 | 720×360×50 | 140.91 | +4.2% | 7.10 | 9.20e+07 | — | — | 2026-09-30T02:49:40.511 |
-| `EarthOcean_lat_lon_1440x720x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr` | rank 3 | Float64 | 720×360×50 | 140.91 | +4.2% | 7.10 | 9.20e+07 | — | — | 2026-09-30T02:49:40.511 |
+| `EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr` | rank 0 | Float64 | 720×360×200 | 517.12 | +1.9% | 1.93 | 1.00e+08 | — | — | 2026-10-05T17:36:09.552 |
+| `EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr` | rank 1 | Float64 | 720×360×200 | 517.11 | +1.9% | 1.93 | 1.00e+08 | — | — | 2026-10-05T17:36:09.535 |
+| `EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr` | rank 2 | Float64 | 720×360×200 | 517.10 | +1.9% | 1.93 | 1.00e+08 | — | — | 2026-10-05T17:36:09.534 |
+| `EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr` | rank 3 | Float64 | 720×360×200 | 517.11 | +1.9% | 1.93 | 1.00e+08 | — | — | 2026-10-05T17:36:09.535 |

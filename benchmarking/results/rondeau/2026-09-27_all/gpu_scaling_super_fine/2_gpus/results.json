@@ -1,22 +1,22 @@
 [
   {
-    "name": "EarthOcean_lat_lon_1440x720x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr",
+    "name": "EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr",
     "group": "",
     "float_type": "Float64",
     "grid_size": [
       1440,
       360,
-      50
+      200
     ],
     "time_steps": 10,
     "samples": 5,
     "Δt": 60.0,
-    "total_time_seconds": 13.476500157999999,
-    "time_per_step_seconds": 0.2575141164,
-    "time_per_step_median_seconds": 0.2577913518,
-    "time_per_step_max_seconds": 0.31192313120000004,
-    "steps_per_second": 3.88328226032738,
-    "grid_points_per_second": 1.0065467618768568e8,
+    "total_time_seconds": 49.62394186,
+    "time_per_step_seconds": 0.9910146655000001,
+    "time_per_step_median_seconds": 0.9929804413,
+    "time_per_step_max_seconds": 0.9941841561,
+    "steps_per_second": 1.0090668027556047,
+    "grid_points_per_second": 1.0462004610970108e8,
     "gpu_memory_used": 0,
     "metadata": {
       "julia_version": "1.12.7",
@@ -35,28 +35,28 @@
         "KernelAbstractions": "0.9.42",
         "LLVM": "9.13.2"
       },
-      "timestamp": "2026-09-30T02:45:34.402"
+      "timestamp": "2026-10-05T17:31:40.033"
     },
     "rank": 0
   },
   {
-    "name": "EarthOcean_lat_lon_1440x720x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr",
+    "name": "EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr",
     "group": "",
     "float_type": "Float64",
     "grid_size": [
       1440,
       360,
-      50
+      200
     ],
     "time_steps": 10,
     "samples": 5,
     "Δt": 60.0,
-    "total_time_seconds": 13.476715153,
-    "time_per_step_seconds": 0.2574943774,
-    "time_per_step_median_seconds": 0.2578080231,
-    "time_per_step_max_seconds": 0.31194193459999997,
-    "steps_per_second": 3.8835799449188286,
-    "grid_points_per_second": 1.0066239217229605e8,
+    "total_time_seconds": 49.624064312,
+    "time_per_step_seconds": 0.9910229782,
+    "time_per_step_median_seconds": 0.9929881539000001,
+    "time_per_step_max_seconds": 0.9941928584999999,
+    "steps_per_second": 1.0090583387040177,
+    "grid_points_per_second": 1.0461916855683257e8,
     "gpu_memory_used": 0,
     "metadata": {
       "julia_version": "1.12.7",
@@ -75,7 +75,7 @@
         "KernelAbstractions": "0.9.42",
         "LLVM": "9.13.2"
       },
-      "timestamp": "2026-09-30T02:45:34.395"
+      "timestamp": "2026-10-05T17:31:40.022"
     },
     "rank": 1
   }

@@ -12,7 +12,7 @@ All timing cases call `earth_ocean` through `benchmarking/run_benchmarks.jl`. Gr
 | CPU scaling default | 360 × 180 × 50 | `tripolar` | `TripolarGrid` with immersed partial-cell bathymetry | 1, 2, 4, 8, 16, 32, 64, 128 |
 | CPU scaling fine | 720 × 360 × 50 | `tripolar` | `TripolarGrid` with immersed partial-cell bathymetry | 1, 2, 4, 8, 16, 32, 64, 128 |
 | GPU scaling fine | 720 × 360 × 50 | `tripolar` | `TripolarGrid` with immersed partial-cell bathymetry | 1, 2, 4 |
-| GPU scaling super fine | 1440 × 720 × 50 | `lat_lon` | Plain `LatitudeLongitudeGrid`, no bathymetry | 1, 2, 4 |
+| GPU scaling super fine | 1440 × 720 × 200 | `lat_lon` | Plain `LatitudeLongitudeGrid`, no bathymetry | 2, 4 |
 
 All timing runs pass `float_type=Float64`, `zstar_coordinate=false`, `momentum_advection=WENOVectorInvariantDefault`, `tracer_advection=WENO7`, `closure=CATKE`, `timestepper=SplitRungeKutta3`, and `tracers=T,S` to the runner. The runner passes the corresponding objects and the listed dimensions and grid type to `earth_ocean`. Timing uses `dt=60` simulated seconds, 2 warmup steps, and 5 samples of 10 steps; each CPU rank has one Julia thread. `earth_ocean` uses a 7-cell halo, exponentially spaced vertical levels over 5000 m, a split explicit free surface with 30 substeps, TEOS-10 seawater buoyancy, and spherical Coriolis. The latitude longitude domain spans 0–360° longitude and −80–85° latitude. These are model settings, not extra command-line arguments.
 
@@ -97,11 +97,12 @@ At 64 and 128 CPU ranks the 360 × 180 horizontal grid does not divide evenly; t
 
 ![GPU scaling super fine chart](gpu_scaling_super_fine/mpi_efficiency.svg)
 
-| GPUs | Seconds per step | Steps per second | Speedup | MPI efficiency | Ideal efficiency |
+| GPUs | Seconds per step | Steps per second | Speedup vs 2 GPUs | MPI efficiency | Ideal efficiency |
 |---:|---:|---:|---:|---:|---:|
-| 1 | 0.503440 | 1.986335 | 1.000× | 100.0% | 100.0% |
-| 2 | 0.257514 | 3.883282 | 1.955× | 97.7% | 100.0% |
-| 4 | 0.140908 | 7.096807 | 3.573× | 89.3% | 100.0% |
+| 2 | 0.991023 | 1.009058 | 1.000× | 100.0% | 100.0% |
+| 4 | 0.517122 | 1.933778 | 1.916× | 95.8% | 100.0% |
+
+The one-GPU case exceeded available GPU memory before warmup. MPI efficiency is normalized to the two-GPU baseline: (two-GPU step time ÷ current step time) × 2 ÷ GPU count × 100%. See [rerun provenance](gpu_scaling_super_fine/rerun.md).
 
 [Method and source data](gpu_scaling_super_fine/plot.md)
 
