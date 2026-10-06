@@ -122,6 +122,14 @@ changes, do not create an empty commit.
 
 ## Benchmark Records
 
+Use these canonical global resolutions for named benchmark grids:
+
+| Grid name | Global resolution (`Nx × Ny × Nz`) |
+|---|---|
+| `super_fine` | `1440 × 720 × 200` |
+| `fine` | `720 × 360 × 100` |
+| `default` | `360 × 180 × 50` |
+
 For every benchmark run, record the **partition**, **resolution**, and
 **grid type** actually used in the saved run metadata and the results report.
 State the MPI partition explicitly as `Px × Py × Pz` (use `1 × 1 × 1` for
