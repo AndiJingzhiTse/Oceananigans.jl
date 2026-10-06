@@ -23,7 +23,7 @@ Accepted or pending requests do not count as completed runs. Failed and timed-ou
 | 192 | 1 | 192 | 1 | 16x12x1 | 1440x720x200 | LatitudeLongitudeGrid | 23320814 | COMPLETED | 5.264863 | 5.322806 | — | All ranks, unique pinned cores, configuration and timings verified |
 | 384 | 2 | 384 | 1 | 24x16x1 | 1440x720x200 | LatitudeLongitudeGrid | 23320819 | COMPLETED | 2.900148 | 2.908177 | — | All ranks, unique pinned cores, configuration and timings verified |
 | 768 | 4 | 768 | 1 | 32x24x1 | 1440x720x200 | LatitudeLongitudeGrid | 23320824 | COMPLETED | 1.671754 | 1.775883 | — | All ranks, unique pinned cores, configuration and timings verified |
-| 1536 | 8 | 1536 | 1 | 32x48x1 | 1440x720x200 | LatitudeLongitudeGrid | 23320828 | RUNNING | — | — | — | Slurm RUNNING, exit 0:0; None |
+| 1536 | 8 | 1536 | 1 | 32x48x1 | 1440x720x200 | LatitudeLongitudeGrid | 23320828 | COMPLETED | 1.259538 | 1.279207 | — | All ranks, unique pinned cores, configuration and timings verified |
 | 3072 | 16 | 3072 | 1 | 64x48x1 | 1440x720x200 | LatitudeLongitudeGrid | 23320830 | COMPLETED | 0.944577 | 0.972165 | — | All ranks, unique pinned cores, configuration and timings verified |
 | 6144 | 32 | 6144 | 1 | 96x64x1 | 1440x720x200 | LatitudeLongitudeGrid | 23320832 | PENDING | — | — | — | (Priority); estimated start 2026-10-06T23:37:55 America/Toronto |
 | 12288 | 64 | 12288 | 1 | 128x96x1 | 1440x720x200 | LatitudeLongitudeGrid | 23320834 | PENDING | — | — | — | (Priority); estimated start 2026-10-06T23:38:10 America/Toronto |
