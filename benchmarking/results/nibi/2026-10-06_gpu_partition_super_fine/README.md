@@ -33,3 +33,8 @@ status and submission records live here; environment snapshots are in
 `run_metadata/`.
 
 Run and monitor using the [parent instructions](../README.md).
+
+Submitted as GPU job **23304598**. CPU job **23304609** runs after the
+allocation finishes to validate results, generate the comparison plot,
+and commit the collected records. See the [comparison report](plot.md)
+for the latest recorded status and measurements.
