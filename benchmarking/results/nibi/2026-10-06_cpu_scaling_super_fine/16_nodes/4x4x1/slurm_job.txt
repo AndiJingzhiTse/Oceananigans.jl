@@ -1,0 +1,29 @@
+JobId=23304758 JobName=nibi_cpu_scaling_16
+   UserId=anditse(3165591) GroupId=anditse(3165591) MCS_label=N/A
+   Priority=1686587 Nice=0 Account=def-fpoulin_cpu QOS=normal
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:00:10 TimeLimit=01:00:00 TimeMin=N/A
+   SubmitTime=2026-10-06T03:12:57 EligibleTime=2026-10-06T03:12:57
+   AccrueTime=2026-10-06T03:12:57
+   StartTime=2026-10-06T04:17:59 EndTime=2026-10-06T05:17:59 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-06T04:17:59 Scheduler=Backfill
+   Partition=cpubase_bynode_b1 AllocNode:Sid=l4:2301131
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=c[67,71,80,123,126,341-345,376-377,379-381,388]
+   BatchHost=c67
+   NumNodes=16 NumCPUs=3072 NumTasks=16 CPUs/Task=192 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=3072,mem=12256000M,node=16,billing=3072000
+   AllocTRES=cpu=3072,mem=12256000M,node=16,billing=3072000
+   Socks/Node=* NtasksPerN:B:S:C=1:0:*:* CoreSpec=*
+   MinCPUsNode=192 MinMemoryNode=0 MinTmpDiskNode=0
+   Features=[sapphire|granite|mi300a|cascade] DelayBoot=00:00:00
+   OverSubscribe=NO Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)
+   Command=/home/anditse/Oceananigans.jl/benchmarking/results/nibi/cpu_series.sbatch
+   SubmitLine=sbatch --parsable --account=def-fpoulin_cpu --partition=cpubase_bynode_b1 --job-name=nibi_cpu_scaling_16 --nodes=16 --ntasks=16 --time=01:00:00 --output=/home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_scaling_super_fine/16_nodes/job.out /home/anditse/Oceananigans.jl/benchmarking/results/nibi/cpu_series.sbatch /home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_scaling_super_fine/16_nodes /home/anditse/Oceananigans.jl/benchmarking/results/nibi 4x4x1
+   WorkDir=/home/anditse/Oceananigans.jl
+   StdErr=
+   StdIn=/dev/null
+   StdOut=/home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_scaling_super_fine/16_nodes/job.out
+   TresPerTask=cpu=192
+
