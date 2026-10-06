@@ -1,0 +1,112 @@
+[
+  {
+    "nodes": 1,
+    "cores": 192,
+    "partitions": [
+      "1x1x1"
+    ],
+    "folder": "1_nodes",
+    "job_id": "23304754",
+    "state": "PENDING"
+  },
+  {
+    "nodes": 2,
+    "cores": 384,
+    "partitions": [
+      "1x2x1"
+    ],
+    "folder": "2_nodes",
+    "job_id": "23304755",
+    "state": "RUNNING"
+  },
+  {
+    "nodes": 4,
+    "cores": 768,
+    "partitions": [
+      "2x2x1"
+    ],
+    "folder": "4_nodes",
+    "job_id": "23304756",
+    "state": "PENDING"
+  },
+  {
+    "nodes": 8,
+    "cores": 1536,
+    "partitions": [
+      "4x2x1"
+    ],
+    "folder": "8_nodes",
+    "job_id": "23304757",
+    "state": "RUNNING"
+  },
+  {
+    "nodes": 16,
+    "cores": 3072,
+    "partitions": [
+      "4x4x1"
+    ],
+    "folder": "16_nodes",
+    "job_id": "23304758",
+    "state": "PENDING"
+  },
+  {
+    "nodes": 32,
+    "cores": 6144,
+    "partitions": [
+      "8x4x1"
+    ],
+    "folder": "32_nodes",
+    "job_id": "23304759",
+    "state": "PENDING"
+  },
+  {
+    "nodes": 64,
+    "cores": 12288,
+    "partitions": [
+      "8x8x1"
+    ],
+    "folder": "64_nodes",
+    "job_id": "23304760",
+    "state": "PENDING"
+  },
+  {
+    "nodes": 128,
+    "cores": 24576,
+    "partitions": [
+      "16x8x1"
+    ],
+    "folder": "128_nodes",
+    "job_id": "23304761",
+    "state": "PENDING"
+  },
+  {
+    "nodes": 256,
+    "cores": 49152,
+    "partitions": [
+      "16x16x1"
+    ],
+    "folder": "256_nodes",
+    "job_id": "23304762",
+    "state": "PENDING"
+  },
+  {
+    "nodes": 512,
+    "cores": 98304,
+    "partitions": [
+      "32x16x1"
+    ],
+    "folder": "512_nodes",
+    "job_id": "23304763",
+    "state": "PENDING"
+  },
+  {
+    "nodes": 675,
+    "cores": 129600,
+    "partitions": [
+      "45x15x1"
+    ],
+    "folder": "675_nodes",
+    "job_id": "23304805",
+    "state": "PENDING"
+  }
+]

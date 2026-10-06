@@ -1,0 +1,4 @@
+Test-only Slurm request: 1024 nodes, 196608 cores, one rank/node, 192 cores/rank, mem=0, time=01:00:00.
+Return code: 1
+allocation failure: More processors requested than permitted
+Also: 1024 horizontal ranks cannot evenly divide 1440x720 (maximum power of two is 512).

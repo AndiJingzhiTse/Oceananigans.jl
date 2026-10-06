@@ -1,0 +1,4 @@
+675-node extension: largest exact horizontal decomposition within 699 configured CPU nodes.
+Source revision: 3deac1f1dffd5be91287b016eb630f9a79715a49
+Command: sbatch --parsable --account=def-fpoulin_cpu --partition=cpubase_bynode_b1 --job-name=nibi_cpu_scaling_675 --nodes=675 --ntasks=675 --time=01:00:00 --output=/home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_scaling_super_fine/675_nodes/job.out /home/anditse/Oceananigans.jl/benchmarking/results/nibi/cpu_series.sbatch /home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_scaling_super_fine/675_nodes /home/anditse/Oceananigans.jl/benchmarking/results/nibi 45x15x1
+23304805
