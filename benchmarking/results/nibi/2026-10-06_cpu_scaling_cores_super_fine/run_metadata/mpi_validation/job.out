@@ -1,0 +1,31 @@
+The following modules were not unloaded:
+  (Use "module --force purge" to unload all):
+
+  1) CCconfig        6)  ucx/1.14.1         11) flexiblas/3.3.1
+  2) gentoo/2023     7)  libfabric/1.18.0   12) imkl/2023.2.0
+  3) gcccore/.12.3   8)  pmix/4.2.4         13) StdEnv/2023
+  4) gcc/12.3        9)  ucc/1.2.0
+  5) hwloc/2.9.1     10) openmpi/4.1.5
+Oceananigans-DRAC environment (Nibi): repo=/home/anditse/Oceananigans-DRAC, depot=/scratch/anditse/julia_depot
+rank 1 on c648.nibi.sharcnet: 1 pinned threads; allocated CPUs 42
+rank 0 on c648.nibi.sharcnet: 1 pinned threads; allocated CPUs 41
+rank 2 on c648.nibi.sharcnet: 1 pinned threads; allocated CPUs 43
+PASS: CPU MPI ring and explicitly pinned Julia threads
+CONFIGURATION: {"cores":3,"nodes":1,"ranks":3,"ranks_per_node":3,"threads_per_rank":1,"layout":"mpi","partition":[3,1,1],"global_resolution":[72,36,8],"grid_type":"LatitudeLongitudeGrid","x_sizes":[24,24,24],"y_sizes":[36],"float_type":"Float64","samples":2,"time_steps":1,"warmup_steps":1,"dt":1,"free_surface_substeps":30,"extend_free_surface_halos":false,"momentum_advection":"WENOVectorInvariantDefault","tracer_advection":"WENO7","closure":"CATKE","tracers":["T","S"],"timestepper":"SplitRungeKutta3"}
+[ Info: Benchmark: EarthOcean_lat_lon_72x36x8_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr
+┌ Info:   Architecture: Distributed{CPU} on 3×1×1 across 3 = 3×1×1 ranks:
+│ ├── local_rank: 0 of 0-2
+│ ├── local_index: [1, 1, 1]
+└ └── connectivity: east=1 west=2
+[ Info:   Float type: Float64
+[ Info:   Grid size: 24 × 36 × 8 (6912 points)
+[ Info:   Time step: 1 s
+[ Info:   Warmup steps: 1
+[ Info:   Benchmark steps: 1 × 2 windows
+[ Info:   Running warmup...
+[ Info:   Running benchmark...
+[ Info:   Results:
+[ Info:     Total time: 0.073 s
+[ Info:     Time per step: 0.035971 s (min of 2 windows; median 0.036350 s, max 0.036729 s)
+[ Info:     Grid points/s: 1.92e+05
+Completed benchmark; all 3 rank results saved to /home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_scaling_cores_super_fine/run_metadata/mpi_validation/results.json

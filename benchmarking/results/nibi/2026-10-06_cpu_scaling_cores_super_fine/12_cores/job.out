@@ -21,3 +21,15 @@ rank 4 on c495.nibi.sharcnet: 1 pinned threads; allocated CPUs 20
 rank 8 on c495.nibi.sharcnet: 1 pinned threads; allocated CPUs 24
 PASS: CPU MPI ring and explicitly pinned Julia threads
 CONFIGURATION: {"cores":12,"nodes":1,"ranks":12,"ranks_per_node":12,"threads_per_rank":1,"layout":"mpi","partition":[4,3,1],"global_resolution":[1440,720,200],"grid_type":"LatitudeLongitudeGrid","x_sizes":[360,360,360,360],"y_sizes":[240,240,240],"float_type":"Float64","samples":5,"time_steps":10,"warmup_steps":2,"dt":60,"free_surface_substeps":30,"extend_free_surface_halos":false,"momentum_advection":"WENOVectorInvariantDefault","tracer_advection":"WENO7","closure":"CATKE","tracers":["T","S"],"timestepper":"SplitRungeKutta3"}
+[ Info: Benchmark: EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr
+┌ Info:   Architecture: Distributed{CPU} on 4×3×1 across 12 = 4×3×1 ranks:
+│ ├── local_rank: 0 of 0-11
+│ ├── local_index: [1, 1, 1]
+└ └── connectivity: east=3 west=9 north=1 south=2 southwest=11 southeast=5 northwest=10 northeast=4
+[ Info:   Float type: Float64
+[ Info:   Grid size: 360 × 240 × 200 (17280000 points)
+[ Info:   Time step: 60 s
+[ Info:   Warmup steps: 2
+[ Info:   Benchmark steps: 10 × 5 windows
+[ Info:   Running warmup...
+[ Info:   Running benchmark...
