@@ -215,13 +215,22 @@ def refresh(folder):
     records, queued = {}, {}
     if ids:
         accounting = run('sacct', '-X', '-n', '-P', '-j', ','.join(ids), '--format=JobIDRaw,State%40,ExitCode,Reason%200')
-        queue = run('squeue', '--start', '-h', '-j', ','.join(ids), '-o', '%i|%T|%R|%S')
-        if accounting.returncode or queue.returncode:
-            raise RuntimeError(accounting.stdout + queue.stdout)
+        if accounting.returncode:
+            raise RuntimeError(accounting.stdout)
         (folder / 'accounting.txt').write_text(accounting.stdout)
-        (folder / 'queue.txt').write_text(queue.stdout)
         records = {r[0]: r for line in accounting.stdout.splitlines() if len(r := line.split('|')) >= 4}
-        queued = {r[0]: r for line in queue.stdout.splitlines() if len(r := line.split('|')) >= 4}
+        # Completed jobs disappear from squeue; retain them through sacct and
+        # query the live queue only for allocations that are still active.
+        active_ids = [j['job_id'] for j in jobs if j['job_id'] and
+                      (records[j['job_id']][1].split()[0].rstrip('+') if j['job_id'] in records else j['state']) not in TERMINAL_STATES]
+        queue_output = ''
+        if active_ids:
+            queue = run('squeue', '--start', '-h', '-j', ','.join(active_ids), '-o', '%i|%T|%R|%S')
+            if queue.returncode:
+                raise RuntimeError(queue.stdout)
+            queue_output = queue.stdout
+        (folder / 'queue.txt').write_text(queue_output)
+        queued = {r[0]: r for line in queue_output.splitlines() if len(r := line.split('|')) >= 4}
     rows = []
     for job in jobs:
         case = folder / f"{job['cores']}_cores"

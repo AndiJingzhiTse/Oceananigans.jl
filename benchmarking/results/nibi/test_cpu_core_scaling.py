@@ -2,7 +2,9 @@
 import json
 from pathlib import Path
 import tempfile
+from types import SimpleNamespace
 import unittest
+from unittest.mock import patch
 
 import cpu_core_scaling as scaling
 
@@ -28,6 +30,23 @@ def fixture(case, config):
 
 
 class CPUCoreScalingTests(unittest.TestCase):
+    def test_completed_jobs_do_not_require_live_queue_records(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            folder = Path(tmp)
+            case = folder / '3_cores'
+            case.mkdir()
+            config = scaling.configuration(3)
+            (case / 'configuration.json').write_text(json.dumps(config))
+            (case / 'exit_code.txt').write_text('0\n')
+            fixture(case, config)
+            scaling.save_jobs(folder, [dict(cores=3, nodes=1, job_id='123', state='RUNNING', details='')])
+            # Only sacct is available: Slurm has already purged the live job.
+            with patch.object(scaling, 'run', return_value=SimpleNamespace(returncode=0, stdout='123|COMPLETED|0:0|None|\n')) as call:
+                done, rows = scaling.refresh(folder)
+                self.assertEqual(call.call_count, 1)
+            self.assertTrue(done)
+            self.assertEqual(rows[0]['state'], 'COMPLETED')
+
     def test_doubling_core_counts_and_balanced_geometry(self):
         for count in (3, 6, 12, 24, 48, 96, 192, 384, 768, 1536, 3072, 6144, 12288):
             config = scaling.configuration(count)
