@@ -113,6 +113,13 @@ src/
 Follow [ColPrac](https://github.com/SciML/ColPrac). Feature branches, descriptive commits,
 update tests and docs with code changes, check CI before merging.
 
+Make a descriptive git commit for every finished task that changes repository
+files, including code, documentation, instructions, and benchmark results.
+Complete the relevant checks before committing, stage only files belonging
+to that task, and leave unrelated user changes untouched. Report the commit
+hash when the task is finished. For read-only tasks with no repository
+changes, do not create an empty commit.
+
 ## Benchmark Records
 
 For every benchmark run, record the **partition**, **resolution**, and
