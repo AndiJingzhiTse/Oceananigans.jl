@@ -1,6 +1,8 @@
 environment/
 __pycache__/
 .controller.lock
+.partition.lock
+!**/partition_comparison.svg
 !**/*.txt
 !**/Manifest.toml
 !**/LocalPreferences.toml

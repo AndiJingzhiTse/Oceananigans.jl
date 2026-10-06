@@ -81,3 +81,32 @@ The benchmark suite retains window aggregates rather than individual windows.
 The run report records the highest measured GPU count and the observed reason
 the next count could not complete. Resource feasibility, queue state, and
 application errors are reported separately.
+
+## Four-GPU partition comparison
+
+The [super-fine partition series](2026-10-06_gpu_partition_super_fine/README.md)
+compares `4x1x1`, `2x2x1`, and `1x4x1` at fixed **1440×720×200** resolution.
+All three run sequentially on the same four H100 GPUs on one node, using
+fresh Julia/MPI processes and the same model and timing settings as above.
+The whole allocation requests 32 CPUs, 64 GiB host RAM, and 30 minutes.
+
+```bash
+python3 benchmarking/results/nibi/partition_series.py \
+    benchmarking/results/nibi/2026-10-06_gpu_partition_super_fine --submit
+module load python/3.11 scipy-stack/2025a
+python3 benchmarking/results/nibi/partition_series.py \
+    benchmarking/results/nibi/2026-10-06_gpu_partition_super_fine --watch --commit
+```
+
+Each partition retains separate raw results and logs. The report compares
+fastest and median times and speedup relative to the fresh `2x2x1` case.
+`finalize_partitions.sbatch` can regenerate the report and commit validated
+results with an `afterany` dependency on the allocation. A failed case is
+recorded and the series proceeds to the remaining cases when possible.
+
+Validate the reporting code with:
+
+```bash
+module load python/3.11 scipy-stack/2025a
+python3 -m unittest discover -s benchmarking/results/nibi -p test_partition_series.py
+```

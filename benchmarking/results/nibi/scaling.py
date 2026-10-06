@@ -27,13 +27,19 @@ def partition_for(count):
     return min(options, key=lambda p: abs(math.log((1440 / p[0]) / (720 / p[1]))))
 
 
-def read_results(folder, count):
+def read_results(folder, count, partition=None):
     entries = json.loads((folder / "results.json").read_text())
     if len(entries) != count or {e["rank"] for e in entries} != set(range(count)):
         raise ValueError("Missing or duplicate MPI ranks")
-    rx, ry = partition_for(count)
+    partition = (*partition_for(count), 1) if partition is None else partition
+    global_size = (1440, 720, 200)
+    if (len(partition) != 3 or any(p <= 0 for p in partition)
+            or math.prod(partition) != count
+            or any(n % p for n, p in zip(global_size, partition))):
+        raise ValueError("Partition does not divide the global grid across the MPI ranks")
+    local_size = [n // p for n, p in zip(global_size, partition)]
     for entry in entries:
-        if entry["grid_size"] != [1440 // rx, 720 // ry, 200]:
+        if entry["grid_size"] != local_size:
             raise ValueError("Unexpected local grid size")
         if (entry["float_type"] != "Float64" or entry["samples"] != 5
                 or entry["time_steps"] != 10 or entry["Δt"] != 60):

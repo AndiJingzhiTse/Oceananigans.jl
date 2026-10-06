@@ -19,7 +19,7 @@ git rev-parse HEAD > "$RUN_DIR/revision.txt"
 module -t list > "$RUN_DIR/modules.txt" 2>&1
 scontrol show job "$SLURM_JOB_ID" > "$RUN_DIR/slurm_job.txt"
 srun --ntasks="$SLURM_JOB_NUM_NODES" --ntasks-per-node=1 bash -c 'hostname; nvidia-smi --query-gpu=name,uuid,driver_version,memory.total --format=csv; nvidia-smi topo -m' > "$RUN_DIR/gpu_info.txt"
-srun --cpu-bind=none julia --project="$SCRIPT_DIR/environment" "$SCRIPT_DIR/run_benchmark.jl" \
+srun --kill-on-bad-exit=1 --cpu-bind=none julia --project="$SCRIPT_DIR/environment" "$SCRIPT_DIR/run_benchmark.jl" \
     --mode=benchmark --case=earth_ocean --device=GPU --distributed \
     --partition="$PARTITION" --size=1440x720x200 --grid_type=lat_lon \
     --float_type=Float64 --momentum_advection=WENOVectorInvariantDefault \

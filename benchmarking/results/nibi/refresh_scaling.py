@@ -84,7 +84,7 @@ def refresh(folder, counts):
     return all(a["state"] in TERMINAL for a in selected)
 
 
-def commit_results(folder, branch):
+def commit_results(folder, branch, message="Record completed Nibi 8, 16, 64, and 128 GPU benchmark attempts"):
     repository = Path(__file__).resolve().parents[3]
     current = run("git", "-C", str(repository), "branch", "--show-current")
     if current.returncode or current.stdout.strip() != branch:
@@ -99,7 +99,7 @@ def commit_results(folder, branch):
         return
     committed = run("git", "-C", str(repository), "-c", "user.name=Andi Tse", "-c",
                     "user.email=103150017+AndiJingzhiTse@users.noreply.github.com", "commit", "--quiet",
-                    "-m", "Record completed Nibi 8, 16, 64, and 128 GPU benchmark attempts")
+                    "-m", message)
     if committed.returncode:
         raise RuntimeError(committed.stdout)
     print("Committed verified results and terminal job states locally.", flush=True)
