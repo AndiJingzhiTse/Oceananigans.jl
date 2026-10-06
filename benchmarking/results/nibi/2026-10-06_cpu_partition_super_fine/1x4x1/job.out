@@ -7,3 +7,71 @@ The following modules were not unloaded:
   4) gcc/12.3        9)  ucc/1.2.0
   5) hwloc/2.9.1     10) openmpi/4.1.5
 Oceananigans-DRAC environment (Nibi): repo=/home/anditse/Oceananigans-DRAC, depot=/scratch/anditse/julia_depot
+[ Info: Oceananigans will use 192 threads
+[ Info: Oceananigans will use 192 threads
+[ Info: Oceananigans will use 192 threads
+[ Info: Oceananigans will use 192 threads
+rank 1 on c301.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 3 on c462.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 2 on c457.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 0 on c272.nibi.sharcnet: 192 threads; CPU affinity 0-191
+PASS: 4 distinct CPU nodes and CPU MPI ring
+[ Info: Distributed run: 4 ranks (x=1, y=4, z=1)
+===============================================================================================
+Oceananigans Benchmark Suite
+===============================================================================================
+Date: 2026-10-06T09:46:57.588
+Mode: benchmark
+Case: earth_ocean
+Grid types: SubString{String}["lat_lon"]
+Architecture: Distributed{CPU} on 1×4×1 across 4 = 1×4×1 ranks:
+├── local_rank: 0 of 0-3
+├── local_index: [1, 1, 1]
+└── connectivity: north=1 south=3
+Distributed: true
+Partition: (1, 4, 1) (4 ranks)
+Sizes: [(1440, 720, 200)]
+Float types: DataType[Float64]
+Momentum advection: SubString{String}["WENOVectorInvariantDefault"]
+Tracer advection: SubString{String}["WENO7"]
+Closures: SubString{String}["CATKE"]
+Coriolis: spherical
+Buoyancy: seawater
+Tracers: (:T, :S)
+Timestepper: SplitRungeKutta3
+Time steps: 10 × 5 windows (warmup: 2)
+Δt: 60.0 s
+===============================================================================================
+
+
+----------------------------------------------------------------------
+Running: EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr
+----------------------------------------------------------------------
+[ Info: Benchmark: EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr
+┌ Info:   Architecture: Distributed{CPU} on 1×4×1 across 4 = 1×4×1 ranks:
+│ ├── local_rank: 0 of 0-3
+│ ├── local_index: [1, 1, 1]
+└ └── connectivity: north=1 south=3
+[ Info:   Float type: Float64
+[ Info:   Grid size: 1440 × 180 × 200 (51840000 points)
+[ Info:   Time step: 60.0 s
+[ Info:   Warmup steps: 2
+[ Info:   Benchmark steps: 10 × 5 windows
+[ Info:   Running warmup...
+[ Info:   Running benchmark...
+[ Info:   Results:
+[ Info:     Total time: 2595.045 s
+[ Info:     Time per step: 50.495462 s (min of 5 windows; median 52.108303 s, max 52.893416 s)
+[ Info:     Grid points/s: 1.03e+06
+
+=======================================================================================================================================
+BENCHMARK SUMMARY
+=======================================================================================================================================
+
+Benchmark                                                  Float         Grid Time/unit (ms)    Units/s        Points/s       Size           Chunks
+---------------------------------------------------------------------------------------------------------------------------------------
+EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr  Float64 1440×180×200     50495.4617       0.02        1.03e+06          —                —
+=======================================================================================================================================
+Results saved to: /home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_partition_super_fine/1x4x1/results.json
+Markdown report saved to: /home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_partition_super_fine/1x4x1/results.md
+Benchmarks completed at 2026-10-06T10:37:42.117Z

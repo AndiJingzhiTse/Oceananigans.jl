@@ -12,7 +12,7 @@ The three layouts run sequentially on the same four allocated nodes (768 cores),
 |---:|---:|---|---|---|---:|---:|---|---|
 | 4 | 768 | 4x1x1 | 23304752 | COMPLETED | 51.668704 | 52.765599 | 1.073× / 1.072× | All ranks, threads, CPU affinity, and timings verified |
 | 4 | 768 | 2x2x1 | 23304752 | COMPLETED | 55.448350 | 56.550017 | 1.000× / 1.000× | All ranks, threads, CPU affinity, and timings verified |
-| 4 | 768 | 1x4x1 | 23304752 | RUNNING | — | — | — | None |
+| 4 | 768 | 1x4x1 | 23304752 | COMPLETED | 50.645297 | 52.108303 | 1.095× / 1.085× | All ranks, threads, CPU affinity, and timings verified |
 
 A window is ten consecutive steps; elapsed time is divided by ten. Fastest and median window times are calculated per rank, then the maximum over ranks is reported.
 Scaling efficiency = one-node time ÷ (measured time × node count). Missing or failed runs are excluded; efficiency requires a validated one-node baseline.
