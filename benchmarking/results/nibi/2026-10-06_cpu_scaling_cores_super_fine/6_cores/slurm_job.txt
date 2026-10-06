@@ -1,0 +1,29 @@
+JobId=23320794 JobName=nibi_cpu_cores_6
+   UserId=anditse(3165591) GroupId=anditse(3165591) MCS_label=N/A
+   Priority=1300813 Nice=0 Account=def-fpoulin_cpu QOS=normal
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:00:14 TimeLimit=12:00:00 TimeMin=N/A
+   SubmitTime=2026-10-06T13:06:40 EligibleTime=2026-10-06T13:06:40
+   AccrueTime=2026-10-06T13:06:40
+   StartTime=2026-10-06T13:16:18 EndTime=2026-10-07T01:16:18 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-06T13:16:18 Scheduler=Backfill
+   Partition=cpubase_bycore_b2 AllocNode:Sid=l4:1054827
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=c488
+   BatchHost=c488
+   NumNodes=1 NumCPUs=6 NumTasks=6 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=6,mem=88G,node=1,billing=22000
+   AllocTRES=cpu=6,mem=88G,node=1,billing=22000
+   Socks/Node=* NtasksPerN:B:S:C=6:0:*:* CoreSpec=*
+   MinCPUsNode=6 MinMemoryNode=88G MinTmpDiskNode=0
+   Features=granite DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)
+   Command=/home/anditse/Oceananigans.jl/benchmarking/results/nibi/cpu_core_benchmark.sbatch
+   SubmitLine=sbatch --parsable --account=def-fpoulin_cpu --constraint=granite --job-name=nibi_cpu_cores_6 --nodes=1 --ntasks=6 --ntasks-per-node=6 --cpus-per-task=1 --time=12:00:00 --output=/home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_scaling_cores_super_fine/6_cores/job.out --mem=88G /home/anditse/Oceananigans.jl/benchmarking/results/nibi/cpu_core_benchmark.sbatch /home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_scaling_cores_super_fine/6_cores 3x2x1 /home/anditse/Oceananigans.jl/benchmarking/results/nibi
+   WorkDir=/home/anditse/Oceananigans.jl
+   StdErr=
+   StdIn=/dev/null
+   StdOut=/home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_scaling_cores_super_fine/6_cores/job.out
+   TresPerTask=cpu=1
+

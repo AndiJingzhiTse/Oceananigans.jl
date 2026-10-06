@@ -1,0 +1,7 @@
+Command: sbatch --parsable --account=def-fpoulin_cpu --partition=cpubase_bycore_b3 --constraint=granite --job-name=nibi_cpu_cores_3 --nodes=1 --ntasks=3 --ntasks-per-node=3 --cpus-per-task=1 --time=1-00:00:00 --output=/home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_scaling_cores_super_fine/3_cores/job.out --mem=76G /home/anditse/Oceananigans.jl/benchmarking/results/nibi/cpu_core_benchmark.sbatch /home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_scaling_cores_super_fine/3_cores 3x1x1 /home/anditse/Oceananigans.jl/benchmarking/results/nibi
+sbatch: error: [00;31m----------------------------------------
+sbatch: error: The specified partition does not exist, or the submitted job cannot fit in it...
+sbatch: error: Please specify a different partition, or simply submit the job without the --partition option,
+sbatch: error: the scheduler will redirect it to the most suitable partition automatically
+sbatch: error: ----------------------------------------[00m
+sbatch: error: Batch job submission failed: Unspecified error

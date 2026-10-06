@@ -1,0 +1,9 @@
+[
+  {
+    "cores": 3,
+    "nodes": 1,
+    "job_id": "",
+    "state": "SUBMISSION_FAILED",
+    "details": "sbatch: error: \u001b[00;31m----------------------------------------\nsbatch: error: The specified partition does not exist, or the submitted job cannot fit in it...\nsbatch: error: Please specify a different partition, or simply submit the job without the --partition option,\nsbatch: error: the scheduler will redirect it to the most suitable partition automatically\nsbatch: error: ----------------------------------------\u001b[00m\nsbatch: error: Batch job submission failed: Unspecified error"
+  }
+]

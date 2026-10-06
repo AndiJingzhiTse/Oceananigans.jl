@@ -1,0 +1,42 @@
+{
+  "cores": 3,
+  "nodes": 1,
+  "ranks": 3,
+  "ranks_per_node": 3,
+  "threads_per_rank": 1,
+  "layout": "mpi",
+  "partition": [
+    3,
+    1,
+    1
+  ],
+  "global_resolution": [
+    72,
+    36,
+    8
+  ],
+  "grid_type": "LatitudeLongitudeGrid",
+  "x_sizes": [
+    24,
+    24,
+    24
+  ],
+  "y_sizes": [
+    36
+  ],
+  "float_type": "Float64",
+  "samples": 2,
+  "time_steps": 1,
+  "warmup_steps": 1,
+  "dt": 1,
+  "free_surface_substeps": 30,
+  "extend_free_surface_halos": false,
+  "momentum_advection": "WENOVectorInvariantDefault",
+  "tracer_advection": "WENO7",
+  "closure": "CATKE",
+  "tracers": [
+    "T",
+    "S"
+  ],
+  "timestepper": "SplitRungeKutta3"
+}

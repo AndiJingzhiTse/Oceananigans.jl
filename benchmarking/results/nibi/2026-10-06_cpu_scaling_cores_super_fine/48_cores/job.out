@@ -1,0 +1,58 @@
+The following modules were not unloaded:
+  (Use "module --force purge" to unload all):
+
+  1) CCconfig        6)  ucx/1.14.1         11) flexiblas/3.3.1
+  2) gentoo/2023     7)  libfabric/1.18.0   12) imkl/2023.2.0
+  3) gcccore/.12.3   8)  pmix/4.2.4         13) StdEnv/2023
+  4) gcc/12.3        9)  ucc/1.2.0
+  5) hwloc/2.9.1     10) openmpi/4.1.5
+Oceananigans-DRAC environment (Nibi): repo=/home/anditse/Oceananigans-DRAC, depot=/scratch/anditse/julia_depot
+rank 15 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 63
+rank 46 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 120
+rank 47 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 121
+rank 24 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 72
+rank 0 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 16
+rank 32 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 80
+rank 33 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 81
+rank 36 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 84
+rank 37 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 85
+rank 40 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 88
+rank 1 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 17
+rank 41 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 89
+rank 18 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 66
+rank 19 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 67
+rank 20 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 68
+rank 28 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 76
+rank 38 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 86
+rank 16 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 64
+rank 27 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 75
+rank 22 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 70
+rank 23 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 71
+rank 17 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 65
+rank 26 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 74
+rank 42 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 92
+rank 43 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 93
+rank 39 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 87
+rank 35 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 83
+rank 25 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 73
+rank 45 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 95
+rank 21 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 69
+rank 31 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 79
+rank 30 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 78
+rank 34 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 82
+rank 9 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 25
+rank 44 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 94
+rank 6 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 22
+rank 10 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 26
+rank 13 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 30
+rank 14 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 31
+rank 12 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 29
+rank 7 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 23
+rank 4 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 20
+rank 8 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 24
+rank 5 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 21
+rank 2 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 18
+rank 3 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 19
+rank 11 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 27
+rank 29 on c203.nibi.sharcnet: 1 pinned threads; allocated CPUs 77
+PASS: CPU MPI ring and explicitly pinned Julia threads

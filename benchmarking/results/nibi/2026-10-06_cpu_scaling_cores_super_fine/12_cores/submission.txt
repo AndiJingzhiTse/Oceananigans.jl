@@ -1,0 +1,2 @@
+Command: sbatch --parsable --account=def-fpoulin_cpu --constraint=granite --job-name=nibi_cpu_cores_12 --nodes=1 --ntasks=12 --ntasks-per-node=12 --cpus-per-task=1 --time=06:00:00 --output=/home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_scaling_cores_super_fine/12_cores/job.out --mem=112G /home/anditse/Oceananigans.jl/benchmarking/results/nibi/cpu_core_benchmark.sbatch /home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_scaling_cores_super_fine/12_cores 4x3x1 /home/anditse/Oceananigans.jl/benchmarking/results/nibi
+23320798

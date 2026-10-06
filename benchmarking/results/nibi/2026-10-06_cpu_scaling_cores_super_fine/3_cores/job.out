@@ -1,0 +1,14 @@
+The following modules were not unloaded:
+  (Use "module --force purge" to unload all):
+
+  1) CCconfig        6)  ucx/1.14.1         11) flexiblas/3.3.1
+  2) gentoo/2023     7)  libfabric/1.18.0   12) imkl/2023.2.0
+  3) gcccore/.12.3   8)  pmix/4.2.4         13) StdEnv/2023
+  4) gcc/12.3        9)  ucc/1.2.0
+  5) hwloc/2.9.1     10) openmpi/4.1.5
+Oceananigans-DRAC environment (Nibi): repo=/home/anditse/Oceananigans-DRAC, depot=/scratch/anditse/julia_depot
+rank 1 on m8.nibi.sharcnet: 1 pinned threads; allocated CPUs 166
+rank 0 on m8.nibi.sharcnet: 1 pinned threads; allocated CPUs 165
+rank 2 on m8.nibi.sharcnet: 1 pinned threads; allocated CPUs 167
+PASS: CPU MPI ring and explicitly pinned Julia threads
+CONFIGURATION: {"cores":3,"nodes":1,"ranks":3,"ranks_per_node":3,"threads_per_rank":1,"layout":"mpi","partition":[3,1,1],"global_resolution":[1440,720,200],"grid_type":"LatitudeLongitudeGrid","x_sizes":[480,480,480],"y_sizes":[720],"float_type":"Float64","samples":5,"time_steps":10,"warmup_steps":2,"dt":60,"free_surface_substeps":30,"extend_free_surface_halos":false,"momentum_advection":"WENOVectorInvariantDefault","tracer_advection":"WENO7","closure":"CATKE","tracers":["T","S"],"timestepper":"SplitRungeKutta3"}

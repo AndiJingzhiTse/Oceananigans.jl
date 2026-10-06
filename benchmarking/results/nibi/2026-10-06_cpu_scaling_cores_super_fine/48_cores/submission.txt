@@ -1,0 +1,3 @@
+Command: sbatch --parsable --account=def-fpoulin_cpu --constraint=granite --job-name=nibi_cpu_cores_48 --nodes=1 --ntasks=48 --ntasks-per-node=48 --cpus-per-task=1 --time=03:00:00 --output=/home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_scaling_cores_super_fine/48_cores/job.out --mem=256G /home/anditse/Oceananigans.jl/benchmarking/results/nibi/cpu_core_benchmark.sbatch /home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_scaling_cores_super_fine/48_cores 8x6x1 /home/anditse/Oceananigans.jl/benchmarking/results/nibi
+sbatch: NOTE: Your memory request of 262144.0M was likely submitted as 256.0G. Please note that Slurm interprets memory requests denominated in G as multiples of 1024M, not 1000M.
+23320805
