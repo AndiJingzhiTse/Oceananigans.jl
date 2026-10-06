@@ -30,6 +30,24 @@ def fixture(case, config):
 
 
 class CPUCoreScalingTests(unittest.TestCase):
+    def test_verified_local_completion_survives_accounting_outage(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            folder = Path(tmp)
+            case = folder / '3_cores'
+            case.mkdir()
+            config = scaling.configuration(3)
+            (case / 'configuration.json').write_text(json.dumps(config))
+            (case / 'exit_code.txt').write_text('0\n')
+            (case / 'finished.txt').write_text('2026-10-06T17:00:00Z\n')
+            fixture(case, config)
+            scaling.save_jobs(folder, [dict(cores=3, nodes=1, job_id='123', state='RUNNING', details='')])
+            with patch.object(scaling, 'run', return_value=SimpleNamespace(returncode=1, stdout='Connection refused\n')) as call:
+                done, rows = scaling.refresh(folder)
+                self.assertEqual(call.call_count, 1)
+            self.assertTrue(done)
+            self.assertEqual(rows[0]['state'], 'COMPLETED')
+            self.assertEqual(rows[0]['fastest'], 1.0)
+
     def test_completed_jobs_do_not_require_live_queue_records(self):
         with tempfile.TemporaryDirectory() as tmp:
             folder = Path(tmp)
