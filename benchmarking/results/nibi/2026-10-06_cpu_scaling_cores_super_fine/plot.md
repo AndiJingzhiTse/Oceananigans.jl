@@ -7,7 +7,7 @@ Float64, WENOVectorInvariantDefault, WENO7, CATKE, T/S, SplitRungeKutta3, Δt=60
 Two warmup steps, five windows of ten steps. Free-surface substeps=30 requested; extend_halos=false for every count.
 Balanced Sizes partitions distribute remainder cells evenly and preserve the entire global grid.
 
-Highest completed, verified count: **768 cores**.
+Highest completed, verified count: **3072 cores**.
 Accepted or pending requests do not count as completed runs. Failed and timed-out runs are excluded from timing plots.
 
 ![CPU timing and MPI efficiency](cpu_core_scaling.svg)
@@ -23,10 +23,10 @@ Accepted or pending requests do not count as completed runs. Failed and timed-ou
 | 192 | 1 | 192 | 1 | 16x12x1 | 1440x720x200 | LatitudeLongitudeGrid | 23320814 | COMPLETED | 5.264863 | 5.322806 | — | All ranks, unique pinned cores, configuration and timings verified |
 | 384 | 2 | 384 | 1 | 24x16x1 | 1440x720x200 | LatitudeLongitudeGrid | 23320819 | COMPLETED | 2.900148 | 2.908177 | — | All ranks, unique pinned cores, configuration and timings verified |
 | 768 | 4 | 768 | 1 | 32x24x1 | 1440x720x200 | LatitudeLongitudeGrid | 23320824 | COMPLETED | 1.671754 | 1.775883 | — | All ranks, unique pinned cores, configuration and timings verified |
-| 1536 | 8 | 1536 | 1 | 32x48x1 | 1440x720x200 | LatitudeLongitudeGrid | 23320828 | PENDING | — | — | — | (Priority); estimated start 2026-10-06T20:06:32 America/Toronto |
-| 3072 | 16 | 3072 | 1 | 64x48x1 | 1440x720x200 | LatitudeLongitudeGrid | 23320830 | RUNNING | — | — | — | Slurm RUNNING, exit 0:0; None |
-| 6144 | 32 | 6144 | 1 | 96x64x1 | 1440x720x200 | LatitudeLongitudeGrid | 23320832 | PENDING | — | — | — | (Priority); estimated start 2026-10-06T18:21:21 America/Toronto |
-| 12288 | 64 | 12288 | 1 | 128x96x1 | 1440x720x200 | LatitudeLongitudeGrid | 23320834 | PENDING | — | — | — | (Nodes required for job are DOWN, DRAINED or reserved for jobs in higher priority partitions); estimated start 2026-10-06T23:38:10 America/Toronto |
+| 1536 | 8 | 1536 | 1 | 32x48x1 | 1440x720x200 | LatitudeLongitudeGrid | 23320828 | PENDING | — | — | — | (Priority); estimated start 2026-10-06T17:23:51 America/Toronto |
+| 3072 | 16 | 3072 | 1 | 64x48x1 | 1440x720x200 | LatitudeLongitudeGrid | 23320830 | COMPLETED | 0.944577 | 0.972165 | — | All ranks, unique pinned cores, configuration and timings verified |
+| 6144 | 32 | 6144 | 1 | 96x64x1 | 1440x720x200 | LatitudeLongitudeGrid | 23320832 | PENDING | — | — | — | (Priority); estimated start 2026-10-06T20:31:42 America/Toronto |
+| 12288 | 64 | 12288 | 1 | 128x96x1 | 1440x720x200 | LatitudeLongitudeGrid | 23320834 | PENDING | — | — | — | (Nodes required for job are DOWN, DRAINED or reserved for jobs in higher priority partitions); estimated start 2026-10-07T00:13:05 America/Toronto |
 | 24576 | 128 |  |  | Unavailable | 1440x720x200 | LatitudeLongitudeGrid |  | GEOMETRY_LIMIT | — | — | — | 24576 MPI ranks have no horizontal partition with at least seven cells per local dimension |
 
 A window is ten consecutive steps. Rank minimum/median window elapsed times are divided by ten; the maximum across ranks is reported.
