@@ -155,3 +155,18 @@ python3 benchmarking/results/nibi/cpu_core_scaling.py benchmarking/results/nibi/
 The earlier whole-node, 192-thread-per-rank CPU scaling series is historical;
 its unfinished jobs were cancelled when the replacement was requested.
 The CPU partition comparison and GPU jobs are separate studies.
+
+## Nsight Systems GPU profiles
+
+[Separate super-fine Nsight series](2026-10-06_gpu_nsight_super_fine/README.md):
+1 GPU (1×1×1), 2 GPUs (2×1×1, 1×2×1), and 4 GPUs
+(4×1×1, 2×2×1, 1×4×1). Each rank captures CUDA, NVTX and MPI
+during five ten-step windows after two untimed steps. Raw traces remain in
+scratch; timing results, trace manifests, text summaries and plots are committed.
+
+```bash
+python3 benchmarking/results/nibi/nsight_series.py benchmarking/results/nibi/2026-10-06_gpu_nsight_super_fine --submit
+module load python/3.11 scipy-stack/2025a
+python3 benchmarking/results/nibi/nsight_series.py benchmarking/results/nibi/2026-10-06_gpu_nsight_super_fine --watch --commit
+python3 -m unittest discover -s benchmarking/results/nibi -p test_nsight_series.py
+```
