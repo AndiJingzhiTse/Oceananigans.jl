@@ -213,15 +213,24 @@ def refresh(folder):
     jobs = json.loads((folder / 'jobs.json').read_text())
     ids = [j['job_id'] for j in jobs if j['job_id']]
     records, queued = {}, {}
+    accounting_unavailable = False
+    local_outcomes = {}
+    for job in jobs:
+        case = folder / f"{job['cores']}_cores"
+        if (case / 'finished.txt').exists() and (case / 'exit_code.txt').exists():
+            local_outcomes[job['job_id']] = 'COMPLETED' if (case / 'exit_code.txt').read_text().strip() == '0' else 'FAILED'
     if ids:
         accounting = run('sacct', '-X', '-n', '-P', '-j', ','.join(ids), '--format=JobIDRaw,State%40,ExitCode,Reason%200')
         if accounting.returncode:
-            raise RuntimeError(accounting.stdout)
-        (folder / 'accounting.txt').write_text(accounting.stdout)
-        records = {r[0]: r for line in accounting.stdout.splitlines() if len(r := line.split('|')) >= 4}
+            accounting_unavailable = True
+            (folder / 'accounting_error.txt').write_text(accounting.stdout)
+            print('Slurm accounting unavailable; using live queue and finished batch markers.', flush=True)
+        else:
+            (folder / 'accounting.txt').write_text(accounting.stdout)
+            records = {r[0]: r for line in accounting.stdout.splitlines() if len(r := line.split('|')) >= 4}
         # Completed jobs disappear from squeue; retain them through sacct and
         # query the live queue only for allocations that are still active.
-        active_ids = [j['job_id'] for j in jobs if j['job_id'] and
+        active_ids = [j['job_id'] for j in jobs if j['job_id'] and j['job_id'] not in local_outcomes and
                       (records[j['job_id']][1].split()[0].rstrip('+') if j['job_id'] in records else j['state']) not in TERMINAL_STATES]
         queue_output = ''
         if active_ids:
@@ -240,8 +249,13 @@ def refresh(folder):
         if record:
             job['state'] = record[1].split()[0].rstrip('+')
             job['details'] = f'Slurm {job["state"]}, exit {record[2]}; {record[3]}'
+        elif accounting_unavailable and job['job_id'] in local_outcomes:
+            job['state'] = local_outcomes[job['job_id']]
+            job['details'] = 'Finished batch exit marker; Slurm accounting temporarily unavailable'
         q = queued.get(job['job_id'])
         if q:
+            if accounting_unavailable:
+                job['state'] = q[1]
             job['details'] = f'{q[2]}; estimated start {q[3]} America/Toronto'
         status, details = job['state'], job['details']
         fastest = median = None

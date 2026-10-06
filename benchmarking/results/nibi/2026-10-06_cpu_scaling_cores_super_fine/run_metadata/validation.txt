@@ -1,4 +1,4 @@
-PASS: five controller tests covering doubling, balanced geometry, physical core isolation, local/global shape checks, and three-core efficiency arithmetic.
+PASS: six controller tests covering doubling, balanced geometry, physical core isolation, local/global shape checks, and three-core efficiency arithmetic.
 PASS: Python compilation, shell syntax and Julia source parsing.
 PASS: numerical serial model check on Slurm job 23320556 (exit 0:0).
 PASS: actual 3-, 48- and 96-core jobs passed the CPU MPI ring and explicitly pinned thread checks.
@@ -6,3 +6,5 @@ Additional small-grid three-rank wrapper validation: job 23321111; its results a
 Production timings and final finite-state validation are recorded only as each full-grid job completes.
 PASS: end-to-end three-rank MPI wrapper validation produced verified finite-state results and reports (job 23321111).
 PASS: terminal-job reporting no longer depends on completed jobs remaining in squeue.
+PASS: validated local completion continues to produce plots during a Slurm accounting database outage.
+PASS: 96-core production benchmark validated: fastest 10.0546972138 s/step; median 10.153558699 s/step; all 96 rank states finite and cores uniquely pinned.
