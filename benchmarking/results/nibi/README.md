@@ -110,3 +110,27 @@ Validate the reporting code with:
 module load python/3.11 scipy-stack/2025a
 python3 -m unittest discover -s benchmarking/results/nibi -p test_partition_series.py
 ```
+
+## CPU super-fine scaling and partitions
+
+A CPU means a full Nibi compute node: 192 physical cores, one MPI rank,
+and 192 Julia threads. The grid is fixed at 1440×720×200. CPU settings
+match the GPU model, warmup, and five ten-step timing windows.
+
+```bash
+python3 benchmarking/results/nibi/cpu_series.py benchmarking/results/nibi/2026-10-06_cpu_scaling_super_fine --submit scaling
+python3 benchmarking/results/nibi/cpu_series.py benchmarking/results/nibi/2026-10-06_cpu_partition_super_fine --submit partition
+module load python/3.11 scipy-stack/2025a
+python3 benchmarking/results/nibi/cpu_series.py benchmarking/results/nibi/2026-10-06_cpu_scaling_super_fine --watch --commit
+python3 benchmarking/results/nibi/cpu_series.py benchmarking/results/nibi/2026-10-06_cpu_partition_super_fine --watch --commit
+python3 -m unittest discover -s benchmarking/results/nibi -p 'test_cpu_series.py'
+```
+
+Submission creates dependent finalizer jobs automatically. A scaling run
+requests 1, 2, 4, …, 512 nodes, stopping at a submission failure. A test-only
+1024-node request records the next Slurm limit; it does not create a job.
+The partition comparison requests four nodes and runs 4×1×1, 2×2×1, and
+1×4×1 sequentially on them. Both controllers validate MPI rank completeness,
+192 threads/cores per rank, distinct nodes, grid shapes and timing statistics.
+See [CPU scaling](2026-10-06_cpu_scaling_super_fine/README.md) and
+[CPU partitions](2026-10-06_cpu_partition_super_fine/README.md).
