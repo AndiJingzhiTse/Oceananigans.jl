@@ -7,3 +7,28 @@ The following modules were not unloaded:
   4) gcc/12.3        9)  ucc/1.2.0
   5) hwloc/2.9.1     10) openmpi/4.1.5
 Oceananigans-DRAC environment (Nibi): repo=/home/anditse/Oceananigans-DRAC, depot=/scratch/anditse/julia_depot
+rank 1 on c492.nibi.sharcnet: 1 pinned threads; allocated CPUs 13
+rank 0 on c492.nibi.sharcnet: 1 pinned threads; allocated CPUs 12
+rank 10 on c492.nibi.sharcnet: 1 pinned threads; allocated CPUs 22
+rank 4 on c492.nibi.sharcnet: 1 pinned threads; allocated CPUs 16
+rank 18 on c492.nibi.sharcnet: 1 pinned threads; allocated CPUs 30
+rank 8 on c492.nibi.sharcnet: 1 pinned threads; allocated CPUs 20
+rank 16 on c492.nibi.sharcnet: 1 pinned threads; allocated CPUs 28
+rank 7 on c492.nibi.sharcnet: 1 pinned threads; allocated CPUs 19
+rank 19 on c492.nibi.sharcnet: 1 pinned threads; allocated CPUs 31
+rank 11 on c492.nibi.sharcnet: 1 pinned threads; allocated CPUs 23
+rank 13 on c492.nibi.sharcnet: 1 pinned threads; allocated CPUs 25
+rank 12 on c492.nibi.sharcnet: 1 pinned threads; allocated CPUs 24
+rank 15 on c492.nibi.sharcnet: 1 pinned threads; allocated CPUs 27
+rank 17 on c492.nibi.sharcnet: 1 pinned threads; allocated CPUs 29
+rank 3 on c492.nibi.sharcnet: 1 pinned threads; allocated CPUs 15
+rank 14 on c492.nibi.sharcnet: 1 pinned threads; allocated CPUs 26
+rank 6 on c492.nibi.sharcnet: 1 pinned threads; allocated CPUs 18
+rank 9 on c492.nibi.sharcnet: 1 pinned threads; allocated CPUs 21
+rank 5 on c492.nibi.sharcnet: 1 pinned threads; allocated CPUs 17
+rank 2 on c492.nibi.sharcnet: 1 pinned threads; allocated CPUs 14
+rank 22 on c492.nibi.sharcnet: 1 pinned threads; allocated CPUs 34
+rank 21 on c492.nibi.sharcnet: 1 pinned threads; allocated CPUs 33
+rank 20 on c492.nibi.sharcnet: 1 pinned threads; allocated CPUs 32
+rank 23 on c492.nibi.sharcnet: 1 pinned threads; allocated CPUs 35
+PASS: CPU MPI ring and explicitly pinned Julia threads

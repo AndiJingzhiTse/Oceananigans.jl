@@ -1,5 +1,7 @@
 # CPU scaling — super-fine grid
 
+**Superseded:** the active [replacement CPU core scaling series](../2026-10-06_cpu_scaling_cores_super_fine/plot.md) starts at three cores. Unfinished jobs from this historical series were cancelled.
+
 Fixed grid **1440 × 720 × 200**; one MPI rank per CPU node, 192 Julia threads and 192 physical cores per rank.
 Float64, earth_ocean, latitude–longitude without bathymetry, WENOVectorInvariantDefault, WENO7, CATKE, T/S, SplitRungeKutta3.
 Δt = 60 s; two warmup steps, then five windows of ten steps. CPU cores are bound with Slurm `--cpu-bind=cores`.

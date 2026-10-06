@@ -1,0 +1,6 @@
+PASS: four controller tests covering doubling, balanced geometry, physical core isolation, local/global shape checks, and three-core efficiency arithmetic.
+PASS: Python compilation, shell syntax and Julia source parsing.
+PASS: numerical serial model check on Slurm job 23320556 (exit 0:0).
+PASS: actual 3-, 48- and 96-core jobs passed the CPU MPI ring and explicitly pinned thread checks.
+Additional small-grid three-rank wrapper validation: job 23321111; its results are separate from production benchmarks.
+Production timings and final finite-state validation are recorded only as each full-grid job completes.

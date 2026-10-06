@@ -104,3 +104,15 @@ rank 86 on c334.nibi.sharcnet: 1 pinned threads; allocated CPUs 88
 rank 11 on c334.nibi.sharcnet: 1 pinned threads; allocated CPUs 11
 rank 30 on c334.nibi.sharcnet: 1 pinned threads; allocated CPUs 31
 PASS: CPU MPI ring and explicitly pinned Julia threads
+CONFIGURATION: {"cores":96,"nodes":1,"ranks":96,"ranks_per_node":96,"threads_per_rank":1,"layout":"mpi","partition":[12,8,1],"global_resolution":[1440,720,200],"grid_type":"LatitudeLongitudeGrid","x_sizes":[120,120,120,120,120,120,120,120,120,120,120,120],"y_sizes":[90,90,90,90,90,90,90,90],"float_type":"Float64","samples":5,"time_steps":10,"warmup_steps":2,"dt":60,"free_surface_substeps":30,"extend_free_surface_halos":false,"momentum_advection":"WENOVectorInvariantDefault","tracer_advection":"WENO7","closure":"CATKE","tracers":["T","S"],"timestepper":"SplitRungeKutta3"}
+[ Info: Benchmark: EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr
+┌ Info:   Architecture: Distributed{CPU} on 12×8×1 across 96 = 12×8×1 ranks:
+│ ├── local_rank: 0 of 0-95
+│ ├── local_index: [1, 1, 1]
+└ └── connectivity: east=8 west=88 north=1 south=7 southwest=95 southeast=15 northwest=89 northeast=9
+[ Info:   Float type: Float64
+[ Info:   Grid size: 120 × 90 × 200 (2160000 points)
+[ Info:   Time step: 60 s
+[ Info:   Warmup steps: 2
+[ Info:   Benchmark steps: 10 × 5 windows
+[ Info:   Running warmup...

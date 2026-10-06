@@ -7,3 +7,17 @@ The following modules were not unloaded:
   4) gcc/12.3        9)  ucc/1.2.0
   5) hwloc/2.9.1     10) openmpi/4.1.5
 Oceananigans-DRAC environment (Nibi): repo=/home/anditse/Oceananigans-DRAC, depot=/scratch/anditse/julia_depot
+rank 0 on c495.nibi.sharcnet: 1 pinned threads; allocated CPUs 16
+rank 1 on c495.nibi.sharcnet: 1 pinned threads; allocated CPUs 17
+rank 10 on c495.nibi.sharcnet: 1 pinned threads; allocated CPUs 26
+rank 7 on c495.nibi.sharcnet: 1 pinned threads; allocated CPUs 23
+rank 6 on c495.nibi.sharcnet: 1 pinned threads; allocated CPUs 22
+rank 9 on c495.nibi.sharcnet: 1 pinned threads; allocated CPUs 25
+rank 2 on c495.nibi.sharcnet: 1 pinned threads; allocated CPUs 18
+rank 11 on c495.nibi.sharcnet: 1 pinned threads; allocated CPUs 27
+rank 3 on c495.nibi.sharcnet: 1 pinned threads; allocated CPUs 19
+rank 5 on c495.nibi.sharcnet: 1 pinned threads; allocated CPUs 21
+rank 4 on c495.nibi.sharcnet: 1 pinned threads; allocated CPUs 20
+rank 8 on c495.nibi.sharcnet: 1 pinned threads; allocated CPUs 24
+PASS: CPU MPI ring and explicitly pinned Julia threads
+CONFIGURATION: {"cores":12,"nodes":1,"ranks":12,"ranks_per_node":12,"threads_per_rank":1,"layout":"mpi","partition":[4,3,1],"global_resolution":[1440,720,200],"grid_type":"LatitudeLongitudeGrid","x_sizes":[360,360,360,360],"y_sizes":[240,240,240],"float_type":"Float64","samples":5,"time_steps":10,"warmup_steps":2,"dt":60,"free_surface_substeps":30,"extend_free_surface_halos":false,"momentum_advection":"WENOVectorInvariantDefault","tracer_advection":"WENO7","closure":"CATKE","tracers":["T","S"],"timestepper":"SplitRungeKutta3"}

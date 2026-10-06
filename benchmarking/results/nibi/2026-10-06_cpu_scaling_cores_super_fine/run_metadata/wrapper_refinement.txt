@@ -1,0 +1,3 @@
+The wrapper was refined after submission to read resolution and timing parameters from configuration.json, enabling a separate 72x36x8 MPI validation. Production configurations remain 1440x720x200, two warmup steps and five ten-step windows at dt=60.
+The initial wrapper snapshot is retained as run_cpu_core_benchmark.jl. The configurable version is recorded separately.
+Configurable wrapper source revision: 02b216567418ea562ee4c335245bec0dfd0cdc58
