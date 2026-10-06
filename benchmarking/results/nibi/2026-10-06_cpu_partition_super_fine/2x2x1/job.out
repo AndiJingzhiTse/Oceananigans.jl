@@ -12,3 +12,67 @@ srun: Step created for StepId=23304752.3
 [ Info: Oceananigans will use 192 threads
 [ Info: Oceananigans will use 192 threads
 [ Info: Oceananigans will use 192 threads
+rank 1 on c301.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 3 on c462.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 0 on c272.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 2 on c457.nibi.sharcnet: 192 threads; CPU affinity 0-191
+PASS: 4 distinct CPU nodes and CPU MPI ring
+[ Info: Distributed run: 4 ranks (x=2, y=2, z=1)
+===============================================================================================
+Oceananigans Benchmark Suite
+===============================================================================================
+Date: 2026-10-06T08:49:55.438
+Mode: benchmark
+Case: earth_ocean
+Grid types: SubString{String}["lat_lon"]
+Architecture: Distributed{CPU} on 2×2×1 across 4 = 2×2×1 ranks:
+├── local_rank: 0 of 0-3
+├── local_index: [1, 1, 1]
+└── connectivity: east=2 west=2 north=1 south=1 southwest=3 southeast=3 northwest=3 northeast=3
+Distributed: true
+Partition: (2, 2, 1) (4 ranks)
+Sizes: [(1440, 720, 200)]
+Float types: DataType[Float64]
+Momentum advection: SubString{String}["WENOVectorInvariantDefault"]
+Tracer advection: SubString{String}["WENO7"]
+Closures: SubString{String}["CATKE"]
+Coriolis: spherical
+Buoyancy: seawater
+Tracers: (:T, :S)
+Timestepper: SplitRungeKutta3
+Time steps: 10 × 5 windows (warmup: 2)
+Δt: 60.0 s
+===============================================================================================
+
+
+----------------------------------------------------------------------
+Running: EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr
+----------------------------------------------------------------------
+[ Info: Benchmark: EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr
+┌ Info:   Architecture: Distributed{CPU} on 2×2×1 across 4 = 2×2×1 ranks:
+│ ├── local_rank: 0 of 0-3
+│ ├── local_index: [1, 1, 1]
+└ └── connectivity: east=2 west=2 north=1 south=1 southwest=3 southeast=3 northwest=3 northeast=3
+[ Info:   Float type: Float64
+[ Info:   Grid size: 720 × 360 × 200 (51840000 points)
+[ Info:   Time step: 60.0 s
+[ Info:   Warmup steps: 2
+[ Info:   Benchmark steps: 10 × 5 windows
+[ Info:   Running warmup...
+[ Info:   Running benchmark...
+[ Info:   Results:
+[ Info:     Total time: 2818.650 s
+[ Info:     Time per step: 55.448350 s (min of 5 windows; median 56.514866 s, max 57.414508 s)
+[ Info:     Grid points/s: 9.35e+05
+
+=======================================================================================================================================
+BENCHMARK SUMMARY
+=======================================================================================================================================
+
+Benchmark                                                  Float         Grid Time/unit (ms)    Units/s        Points/s       Size           Chunks
+---------------------------------------------------------------------------------------------------------------------------------------
+EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr  Float64  720×360×200     55448.3501       0.02        9.35e+05          —                —
+=======================================================================================================================================
+Results saved to: /home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_partition_super_fine/2x2x1/results.json
+Markdown report saved to: /home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_partition_super_fine/2x2x1/results.md
+Benchmarks completed at 2026-10-06T09:46:20.634Z
