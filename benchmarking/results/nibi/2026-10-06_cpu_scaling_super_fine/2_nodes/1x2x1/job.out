@@ -43,3 +43,31 @@ Time steps: 10 × 5 windows (warmup: 2)
 ----------------------------------------------------------------------
 Running: EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr
 ----------------------------------------------------------------------
+[ Info: Benchmark: EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr
+┌ Info:   Architecture: Distributed{CPU} on 1×2×1 across 2 = 1×2×1 ranks:
+│ ├── local_rank: 0 of 0-1
+│ ├── local_index: [1, 1, 1]
+└ └── connectivity: north=1 south=1
+[ Info:   Float type: Float64
+[ Info:   Grid size: 1440 × 360 × 200 (103680000 points)
+[ Info:   Time step: 60.0 s
+[ Info:   Warmup steps: 2
+[ Info:   Benchmark steps: 10 × 5 windows
+[ Info:   Running warmup...
+[ Info:   Running benchmark...
+[ Info:   Results:
+[ Info:     Total time: 2192.517 s
+[ Info:     Time per step: 39.997439 s (min of 5 windows; median 44.307615 s, max 46.136717 s)
+[ Info:     Grid points/s: 2.59e+06
+
+=======================================================================================================================================
+BENCHMARK SUMMARY
+=======================================================================================================================================
+
+Benchmark                                                  Float         Grid Time/unit (ms)    Units/s        Points/s       Size           Chunks
+---------------------------------------------------------------------------------------------------------------------------------------
+EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr  Float64 1440×360×200     39997.4390       0.03        2.59e+06          —                —
+=======================================================================================================================================
+Results saved to: /home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_scaling_super_fine/2_nodes/1x2x1/results.json
+Markdown report saved to: /home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_scaling_super_fine/2_nodes/1x2x1/results.md
+Benchmarks completed at 2026-10-06T07:58:48.271Z
