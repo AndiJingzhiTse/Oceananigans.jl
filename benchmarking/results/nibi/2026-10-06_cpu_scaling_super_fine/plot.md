@@ -19,12 +19,12 @@ See [Slurm limit probe](run_metadata/1024_nodes_probe.txt) and [partition snapsh
 | 4 | 768 | 2x2x1 | 23304756 | COMPLETED | 57.774982 | 58.626502 | 18.3% / 18.2% | All ranks, threads, CPU affinity, and timings verified |
 | 8 | 1536 | 4x2x1 | 23304757 | INTERRUPTED | — | — | — | None |
 | 16 | 3072 | 4x4x1 | 23304758 | INTERRUPTED | — | — | — | None |
-| 32 | 6144 | 8x4x1 | 23304759 | PENDING | — | — | — | (Priority); estimated start 2026-10-06T10:25:11 America/Toronto |
-| 64 | 12288 | 8x8x1 | 23304760 | PENDING | — | — | — | (Priority); estimated start 2026-10-06T14:08:17 America/Toronto |
-| 128 | 24576 | 16x8x1 | 23304761 | PENDING | — | — | — | (Priority); estimated start 2026-10-06T22:08:22 America/Toronto |
-| 256 | 49152 | 16x16x1 | 23304762 | PENDING | — | — | — | (Priority); estimated start 2026-10-07T15:06:09 America/Toronto |
-| 512 | 98304 | 32x16x1 | 23304763 | PENDING | — | — | — | (Priority); estimated start 2026-10-13T05:56:59 America/Toronto |
-| 675 | 129600 | 45x15x1 | 23304805 | PENDING | — | — | — | (Nodes required for job are DOWN, DRAINED or reserved for jobs in higher priority partitions); estimated start 2026-10-13T05:56:59 America/Toronto |
+| 32 | 6144 | 8x4x1 | 23304759 | INTERRUPTED | — | — | — | None |
+| 64 | 12288 | 8x8x1 | 23304760 | PENDING | — | — | — | (Priority); estimated start 2026-10-06T10:45:02 America/Toronto |
+| 128 | 24576 | 16x8x1 | 23304761 | PENDING | — | — | — | (Priority); estimated start 2026-10-06T23:38:22 America/Toronto |
+| 256 | 49152 | 16x16x1 | 23304762 | PENDING | — | — | — | (Priority); estimated start 2026-10-07T03:57:24 America/Toronto |
+| 512 | 98304 | 32x16x1 | 23304763 | PENDING | — | — | — | (Priority); estimated start 2026-10-12T19:46:22 America/Toronto |
+| 675 | 129600 | 45x15x1 | 23304805 | PENDING | — | — | — | (Priority); estimated start 2026-10-13T08:02:25 America/Toronto |
 
 A window is ten consecutive steps; elapsed time is divided by ten. Fastest and median window times are calculated per rank, then the maximum over ranks is reported.
 Scaling efficiency = one-node time ÷ (measured time × node count). Missing or failed runs are excluded; efficiency requires a validated one-node baseline.

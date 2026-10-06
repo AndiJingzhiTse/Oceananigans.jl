@@ -1,0 +1,119 @@
+The following modules were not unloaded:
+  (Use "module --force purge" to unload all):
+
+  1) CCconfig        6)  ucx/1.14.1         11) flexiblas/3.3.1
+  2) gentoo/2023     7)  libfabric/1.18.0   12) imkl/2023.2.0
+  3) gcccore/.12.3   8)  pmix/4.2.4         13) StdEnv/2023
+  4) gcc/12.3        9)  ucc/1.2.0
+  5) hwloc/2.9.1     10) openmpi/4.1.5
+Oceananigans-DRAC environment (Nibi): repo=/home/anditse/Oceananigans-DRAC, depot=/scratch/anditse/julia_depot
+[ Info: Oceananigans will use 192 threads
+[ Info: Oceananigans will use 192 threads
+[ Info: Oceananigans will use 192 threads
+[ Info: Oceananigans will use 192 threads
+[ Info: Oceananigans will use 192 threads
+[ Info: Oceananigans will use 192 threads
+[ Info: Oceananigans will use 192 threads
+[ Info: Oceananigans will use 192 threads
+[ Info: Oceananigans will use 192 threads
+[ Info: Oceananigans will use 192 threads
+[ Info: Oceananigans will use 192 threads
+[ Info: Oceananigans will use 192 threads
+[ Info: Oceananigans will use 192 threads
+[ Info: Oceananigans will use 192 threads
+[ Info: Oceananigans will use 192 threads
+[ Info: Oceananigans will use 192 threads
+[ Info: Oceananigans will use 192 threads
+[ Info: Oceananigans will use 192 threads
+[ Info: Oceananigans will use 192 threads
+[ Info: Oceananigans will use 192 threads
+[ Info: Oceananigans will use 192 threads
+[ Info: Oceananigans will use 192 threads
+[ Info: Oceananigans will use 192 threads
+[ Info: Oceananigans will use 192 threads
+[ Info: Oceananigans will use 192 threads
+[ Info: Oceananigans will use 192 threads
+[ Info: Oceananigans will use 192 threads
+[ Info: Oceananigans will use 192 threads
+[ Info: Oceananigans will use 192 threads
+[ Info: Oceananigans will use 192 threads
+[ Info: Oceananigans will use 192 threads
+[ Info: Oceananigans will use 192 threads
+rank 27 on c354.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 10 on c189.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 20 on c272.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 5 on c77.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 26 on c305.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 1 on c67.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 31 on c364.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 17 on c219.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 9 on c123.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 11 on c190.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 6 on c78.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 18 on c220.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 25 on c304.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 8 on c112.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 16 on c218.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 12 on c197.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 28 on c355.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 2 on c71.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 7 on c79.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 29 on c362.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 22 on c296.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 30 on c363.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 21 on c295.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 14 on c199.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 15 on c214.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 0 on c15.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 19 on c224.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 13 on c198.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 4 on c73.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 3 on c72.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 24 on c301.nibi.sharcnet: 192 threads; CPU affinity 0-191
+rank 23 on c297.nibi.sharcnet: 192 threads; CPU affinity 0-191
+PASS: 32 distinct CPU nodes and CPU MPI ring
+[ Info: Distributed run: 32 ranks (x=8, y=4, z=1)
+===============================================================================================
+Oceananigans Benchmark Suite
+===============================================================================================
+Date: 2026-10-06T11:13:39.129
+Mode: benchmark
+Case: earth_ocean
+Grid types: SubString{String}["lat_lon"]
+Architecture: Distributed{CPU} on 8×4×1 across 32 = 8×4×1 ranks:
+├── local_rank: 0 of 0-31
+├── local_index: [1, 1, 1]
+└── connectivity: east=4 west=28 north=1 south=3 southwest=31 southeast=7 northwest=29 northeast=5
+Distributed: true
+Partition: (8, 4, 1) (32 ranks)
+Sizes: [(1440, 720, 200)]
+Float types: DataType[Float64]
+Momentum advection: SubString{String}["WENOVectorInvariantDefault"]
+Tracer advection: SubString{String}["WENO7"]
+Closures: SubString{String}["CATKE"]
+Coriolis: spherical
+Buoyancy: seawater
+Tracers: (:T, :S)
+Timestepper: SplitRungeKutta3
+Time steps: 10 × 5 windows (warmup: 2)
+Δt: 60.0 s
+===============================================================================================
+
+
+----------------------------------------------------------------------
+Running: EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr
+----------------------------------------------------------------------
+[ Info: Benchmark: EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr
+┌ Info:   Architecture: Distributed{CPU} on 8×4×1 across 32 = 8×4×1 ranks:
+│ ├── local_rank: 0 of 0-31
+│ ├── local_index: [1, 1, 1]
+└ └── connectivity: east=4 west=28 north=1 south=3 southwest=31 southeast=7 northwest=29 northeast=5
+[ Info:   Float type: Float64
+[ Info:   Grid size: 180 × 180 × 200 (6480000 points)
+[ Info:   Time step: 60.0 s
+[ Info:   Warmup steps: 2
+[ Info:   Benchmark steps: 10 × 5 windows
+[ Info:   Running warmup...
+[ Info:   Running benchmark...
+srun: Job step aborted: Waiting up to 62 seconds for job step to finish.
+[2026-10-06T08:12:35.340] error: *** STEP 23304759.1 ON c15 CANCELLED AT 2026-10-06T08:12:35 DUE TO TIME LIMIT ***
