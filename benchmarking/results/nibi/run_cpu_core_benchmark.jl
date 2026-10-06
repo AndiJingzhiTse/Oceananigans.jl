@@ -50,17 +50,20 @@ configuration = JSON.parse(read(joinpath(ENV["CPU_CASE_DIR"], "configuration.jso
 ranks == configuration["ranks"] || error("Unexpected MPI rank count")
 partition = Partition(Sizes(configuration["x_sizes"]...), Sizes(configuration["y_sizes"]...), 1)
 arch = Distributed(CPU(); partition)
-model = earth_ocean(arch; Nx=1440, Ny=720, Nz=200, grid_type="lat_lon", float_type=Float64,
+Nx, Ny, Nz = Int.(configuration["global_resolution"])
+configuration["grid_type"] == "LatitudeLongitudeGrid" || error("Expected LatitudeLongitudeGrid")
+model = earth_ocean(arch; Nx, Ny, Nz, grid_type="lat_lon", float_type=Float64,
                     momentum_advection=make_momentum_advection("WENOVectorInvariantDefault", Float64),
                     tracer_advection=make_tracer_advection("WENO7", Float64), closure=make_closure("CATKE", Float64),
                     timestepper=:SplitRungeKutta3, tracers=(:T, :S), extend_free_surface_halos=false)
 local_index = arch.local_index
-expected_size = (configuration["x_sizes"][local_index[1]], configuration["y_sizes"][local_index[2]], 200)
+expected_size = (configuration["x_sizes"][local_index[1]], configuration["y_sizes"][local_index[2]], Nz)
 size(model.grid) == expected_size || error("Unexpected rank-local model grid")
 MPI.Barrier(comm)
 rank == 0 && println("CONFIGURATION: ", JSON.json(configuration))
-result = benchmark_time_stepping(model; Δt=60, warmup_steps=2, time_steps=10, samples=5,
-                                 name="EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr",
+result = benchmark_time_stepping(model; Δt=configuration["dt"], warmup_steps=configuration["warmup_steps"],
+                                 time_steps=configuration["time_steps"], samples=configuration["samples"],
+                                 name="EarthOcean_lat_lon_$(Nx)x$(Ny)x$(Nz)_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr",
                                  verbose=rank == 0)
 finite_state = all(all(isfinite, interior(tracer)) for tracer in values(model.tracers)) &&
                all(isfinite, interior(model.free_surface.displacement))
