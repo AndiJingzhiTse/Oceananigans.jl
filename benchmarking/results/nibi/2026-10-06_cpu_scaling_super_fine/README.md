@@ -39,3 +39,6 @@ snapshots are in `run_metadata/`.
 A dependent CPU finalizer and login monitor update the plot and commit
 completed measurements and terminal job outcomes. Queue estimates can
 change; no queued count is promised to start by its estimate.
+
+See the [analysis of the initial slowdown](analysis.md) for verified timing
+comparisons, CPU utilization, timeout evidence and proposed diagnostics.
