@@ -33,3 +33,8 @@ CONFIGURATION: {"cores":12,"nodes":1,"ranks":12,"ranks_per_node":12,"threads_per
 [ Info:   Benchmark steps: 10 × 5 windows
 [ Info:   Running warmup...
 [ Info:   Running benchmark...
+[ Info:   Results:
+[ Info:     Total time: 4186.219 s
+[ Info:     Time per step: 82.774057 s (min of 5 windows; median 83.581460 s, max 84.730625 s)
+[ Info:     Grid points/s: 2.09e+05
+Completed benchmark; all 12 rank results saved to /home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_scaling_cores_super_fine/12_cores/results.json

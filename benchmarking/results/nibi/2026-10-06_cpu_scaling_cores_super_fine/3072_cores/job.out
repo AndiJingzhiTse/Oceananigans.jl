@@ -3081,3 +3081,14 @@ rank 766 on c105.nibi.sharcnet: 1 pinned threads; allocated CPUs 190
 rank 767 on c105.nibi.sharcnet: 1 pinned threads; allocated CPUs 191
 PASS: CPU MPI ring and explicitly pinned Julia threads
 CONFIGURATION: {"cores":3072,"nodes":16,"ranks":3072,"ranks_per_node":192,"threads_per_rank":1,"layout":"mpi","partition":[64,48,1],"global_resolution":[1440,720,200],"grid_type":"LatitudeLongitudeGrid","x_sizes":[23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,23,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22,22],"y_sizes":[15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15],"float_type":"Float64","samples":5,"time_steps":10,"warmup_steps":2,"dt":60,"free_surface_substeps":30,"extend_free_surface_halos":false,"momentum_advection":"WENOVectorInvariantDefault","tracer_advection":"WENO7","closure":"CATKE","tracers":["T","S"],"timestepper":"SplitRungeKutta3"}
+[ Info: Benchmark: EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr
+┌ Info:   Architecture: Distributed{CPU} on 64×48×1 across 3072 = 64×48×1 ranks:
+│ ├── local_rank: 0 of 0-3071
+│ ├── local_index: [1, 1, 1]
+└ └── connectivity: east=48 west=3024 north=1 south=47 southwest=3071 southeast=95 northwest=3025 northeast=49
+[ Info:   Float type: Float64
+[ Info:   Grid size: 23 × 15 × 200 (69000 points)
+[ Info:   Time step: 60 s
+[ Info:   Warmup steps: 2
+[ Info:   Benchmark steps: 10 × 5 windows
+[ Info:   Running warmup...
