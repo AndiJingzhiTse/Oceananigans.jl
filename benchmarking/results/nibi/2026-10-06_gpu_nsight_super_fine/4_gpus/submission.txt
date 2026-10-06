@@ -1,0 +1,3 @@
+Command: sbatch --parsable --account=def-fpoulin_gpu --job-name=nibi_nsys_4 --ntasks=4 --ntasks-per-node=4 --time=01:00:00 --output=/home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_gpu_nsight_super_fine/4_gpus/job.out /home/anditse/Oceananigans.jl/benchmarking/results/nibi/nsight_series.sbatch /home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_gpu_nsight_super_fine/4_gpus /scratch/anditse/nsight_traces/2026-10-06_gpu_nsight_super_fine/4_gpus /home/anditse/Oceananigans.jl/benchmarking/results/nibi 4x1x1 2x2x1 1x4x1
+sbatch: NOTE: Your memory request of 131072.0M was likely submitted as 128.0G. Please note that Slurm interprets memory requests denominated in G as multiples of 1024M, not 1000M.
+23324759

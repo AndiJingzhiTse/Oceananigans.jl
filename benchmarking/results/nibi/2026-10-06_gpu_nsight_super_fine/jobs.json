@@ -1,0 +1,32 @@
+[
+  {
+    "gpus": 1,
+    "partitions": [
+      "1x1x1"
+    ],
+    "job_id": "23324756",
+    "state": "PENDING",
+    "details": "(Priority); estimated start N/A America/Toronto"
+  },
+  {
+    "gpus": 2,
+    "partitions": [
+      "2x1x1",
+      "1x2x1"
+    ],
+    "job_id": "23324758",
+    "state": "PENDING",
+    "details": "(Priority); estimated start N/A America/Toronto"
+  },
+  {
+    "gpus": 4,
+    "partitions": [
+      "4x1x1",
+      "2x2x1",
+      "1x4x1"
+    ],
+    "job_id": "23324759",
+    "state": "PENDING",
+    "details": "(Priority); estimated start N/A America/Toronto"
+  }
+]
