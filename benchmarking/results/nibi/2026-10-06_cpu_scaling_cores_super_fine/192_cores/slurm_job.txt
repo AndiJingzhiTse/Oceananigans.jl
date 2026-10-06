@@ -1,0 +1,29 @@
+JobId=23320814 JobName=nibi_cpu_cores_192
+   UserId=anditse(3165591) GroupId=anditse(3165591) MCS_label=N/A
+   Priority=1305311 Nice=0 Account=def-fpoulin_cpu QOS=normal
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:00:09 TimeLimit=03:00:00 TimeMin=N/A
+   SubmitTime=2026-10-06T13:08:05 EligibleTime=2026-10-06T13:08:05
+   AccrueTime=2026-10-06T13:08:05
+   StartTime=2026-10-06T13:52:42 EndTime=2026-10-06T16:52:42 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-06T13:52:42 Scheduler=Backfill
+   Partition=cpubase_bynode_b1 AllocNode:Sid=l4:1054827
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=c80
+   BatchHost=c80
+   NumNodes=1 NumCPUs=192 NumTasks=192 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=192,mem=766000M,node=1,billing=192000
+   AllocTRES=cpu=192,mem=766000M,node=1,billing=192000
+   Socks/Node=* NtasksPerN:B:S:C=192:0:*:* CoreSpec=*
+   MinCPUsNode=192 MinMemoryNode=0 MinTmpDiskNode=0
+   Features=granite DelayBoot=00:00:00
+   OverSubscribe=NO Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)
+   Command=/home/anditse/Oceananigans.jl/benchmarking/results/nibi/cpu_core_benchmark.sbatch
+   SubmitLine=sbatch --parsable --account=def-fpoulin_cpu --constraint=granite --job-name=nibi_cpu_cores_192 --nodes=1 --ntasks=192 --ntasks-per-node=192 --cpus-per-task=1 --time=03:00:00 --output=/home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_scaling_cores_super_fine/192_cores/job.out --exclusive --mem=0 /home/anditse/Oceananigans.jl/benchmarking/results/nibi/cpu_core_benchmark.sbatch /home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_scaling_cores_super_fine/192_cores 16x12x1 /home/anditse/Oceananigans.jl/benchmarking/results/nibi
+   WorkDir=/home/anditse/Oceananigans.jl
+   StdErr=
+   StdIn=/dev/null
+   StdOut=/home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_scaling_cores_super_fine/192_cores/job.out
+   TresPerTask=cpu=1
+

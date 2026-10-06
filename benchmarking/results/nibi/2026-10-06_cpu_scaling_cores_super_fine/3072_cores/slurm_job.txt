@@ -1,0 +1,29 @@
+JobId=23320830 JobName=nibi_cpu_cores_3072
+   UserId=anditse(3165591) GroupId=anditse(3165591) MCS_label=N/A
+   Priority=1296606 Nice=0 Account=def-fpoulin_cpu QOS=normal
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:00:10 TimeLimit=03:00:00 TimeMin=N/A
+   SubmitTime=2026-10-06T13:08:24 EligibleTime=2026-10-06T13:08:24
+   AccrueTime=2026-10-06T13:08:24
+   StartTime=2026-10-06T14:09:50 EndTime=2026-10-06T17:09:50 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-06T14:09:50 Scheduler=Backfill
+   Partition=cpubase_bynode_b1 AllocNode:Sid=l4:1054827
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=c[93-95,105-106,147,152,258,272,288-289,311-315]
+   BatchHost=c93
+   NumNodes=16 NumCPUs=3072 NumTasks=3072 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=3072,mem=12256000M,node=16,billing=3072000
+   AllocTRES=cpu=3072,mem=12256000M,node=16,billing=3072000
+   Socks/Node=* NtasksPerN:B:S:C=192:0:*:* CoreSpec=*
+   MinCPUsNode=192 MinMemoryNode=0 MinTmpDiskNode=0
+   Features=granite DelayBoot=00:00:00
+   OverSubscribe=NO Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)
+   Command=/home/anditse/Oceananigans.jl/benchmarking/results/nibi/cpu_core_benchmark.sbatch
+   SubmitLine=sbatch --parsable --account=def-fpoulin_cpu --constraint=granite --job-name=nibi_cpu_cores_3072 --nodes=16 --ntasks=3072 --ntasks-per-node=192 --cpus-per-task=1 --time=03:00:00 --output=/home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_scaling_cores_super_fine/3072_cores/job.out --exclusive --mem=0 /home/anditse/Oceananigans.jl/benchmarking/results/nibi/cpu_core_benchmark.sbatch /home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_scaling_cores_super_fine/3072_cores 64x48x1 /home/anditse/Oceananigans.jl/benchmarking/results/nibi
+   WorkDir=/home/anditse/Oceananigans.jl
+   StdErr=
+   StdIn=/dev/null
+   StdOut=/home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_scaling_cores_super_fine/3072_cores/job.out
+   TresPerTask=cpu=1
+

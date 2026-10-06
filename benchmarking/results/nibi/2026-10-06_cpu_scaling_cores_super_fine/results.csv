@@ -5,11 +5,11 @@ cores,nodes,ranks,threads_per_rank,partition,resolution,grid_type,job_id,state,f
 24,1,24,1,6x4x1,1440x720x200,LatitudeLongitudeGrid,23320800,RUNNING,,,"Slurm RUNNING, exit 0:0; None"
 48,1,48,1,8x6x1,1440x720x200,LatitudeLongitudeGrid,23320805,COMPLETED,19.7429740333,19.874877570000002,"All ranks, unique pinned cores, configuration and timings verified"
 96,1,96,1,12x8x1,1440x720x200,LatitudeLongitudeGrid,23320810,COMPLETED,10.0546972138,10.153558699,"All ranks, unique pinned cores, configuration and timings verified"
-192,1,192,1,16x12x1,1440x720x200,LatitudeLongitudeGrid,23320814,PENDING,,,(Priority); estimated start 2026-10-06T14:37:52 America/Toronto
-384,2,384,1,24x16x1,1440x720x200,LatitudeLongitudeGrid,23320819,PENDING,,,(Priority); estimated start 2026-10-06T17:10:00 America/Toronto
-768,4,768,1,32x24x1,1440x720x200,LatitudeLongitudeGrid,23320824,PENDING,,,(Priority); estimated start 2026-10-06T14:08:17 America/Toronto
-1536,8,1536,1,32x48x1,1440x720x200,LatitudeLongitudeGrid,23320828,PENDING,,,(Priority); estimated start 2026-10-06T14:08:17 America/Toronto
-3072,16,3072,1,64x48x1,1440x720x200,LatitudeLongitudeGrid,23320830,PENDING,,,(Priority); estimated start 2026-10-06T17:52:31 America/Toronto
-6144,32,6144,1,96x64x1,1440x720x200,LatitudeLongitudeGrid,23320832,PENDING,,,(Priority); estimated start 2026-10-06T22:47:05 America/Toronto
-12288,64,12288,1,128x96x1,1440x720x200,LatitudeLongitudeGrid,23320834,PENDING,,,(Priority); estimated start 2026-10-06T23:38:10 America/Toronto
+192,1,192,1,16x12x1,1440x720x200,LatitudeLongitudeGrid,23320814,COMPLETED,5.264862846,5.3228062812,"All ranks, unique pinned cores, configuration and timings verified"
+384,2,384,1,24x16x1,1440x720x200,LatitudeLongitudeGrid,23320819,PENDING,,,(Priority); estimated start 2026-10-06T21:30:00 America/Toronto
+768,4,768,1,32x24x1,1440x720x200,LatitudeLongitudeGrid,23320824,PENDING,,,(Priority); estimated start 2026-10-06T14:50:47 America/Toronto
+1536,8,1536,1,32x48x1,1440x720x200,LatitudeLongitudeGrid,23320828,PENDING,,,(Priority); estimated start 2026-10-06T20:31:42 America/Toronto
+3072,16,3072,1,64x48x1,1440x720x200,LatitudeLongitudeGrid,23320830,RUNNING,,,"Slurm RUNNING, exit 0:0; None"
+6144,32,6144,1,96x64x1,1440x720x200,LatitudeLongitudeGrid,23320832,PENDING,,,(Priority); estimated start 2026-10-06T18:21:21 America/Toronto
+12288,64,12288,1,128x96x1,1440x720x200,LatitudeLongitudeGrid,23320834,PENDING,,,"(Nodes required for job are DOWN, DRAINED or reserved for jobs in higher priority partitions); estimated start 2026-10-06T23:38:10 America/Toronto"
 24576,128,,,Unavailable,1440x720x200,LatitudeLongitudeGrid,,GEOMETRY_LIMIT,,,24576 MPI ranks have no horizontal partition with at least seven cells per local dimension
