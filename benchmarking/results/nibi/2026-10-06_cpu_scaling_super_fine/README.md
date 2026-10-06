@@ -1,5 +1,7 @@
 # CPU strong scaling on the super-fine grid
 
+**Superseded:** use the [replacement core scaling series](../2026-10-06_cpu_scaling_cores_super_fine/README.md). Completed results are retained; unfinished jobs were cancelled.
+
 Fixed global grid **1440 × 720 × 200**, starting at one full 192-core
 Nibi CPU node, then 2, 4, 8, 16, 32, 64, 128, 256, and 512 nodes
 (192 through 98,304 cores), followed by **675 nodes (129,600 cores)**,

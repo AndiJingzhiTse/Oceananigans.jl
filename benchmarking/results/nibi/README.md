@@ -111,7 +111,7 @@ module load python/3.11 scipy-stack/2025a
 python3 -m unittest discover -s benchmarking/results/nibi -p test_partition_series.py
 ```
 
-## CPU super-fine scaling and partitions
+## Historical CPU super-fine scaling and partition comparison
 
 A CPU means a full Nibi compute node: 192 physical cores, one MPI rank,
 and 192 Julia threads. The grid is fixed at 1440×720×200. CPU settings
@@ -135,3 +135,23 @@ The partition comparison requests four nodes and runs 4×1×1, 2×2×1, and
 192 threads/cores per rank, distinct nodes, grid shapes and timing statistics.
 See [CPU scaling](2026-10-06_cpu_scaling_super_fine/README.md) and
 [CPU partitions](2026-10-06_cpu_partition_super_fine/README.md).
+
+## Active replacement: CPU scaling from three cores
+
+Use [the replacement CPU core series](2026-10-06_cpu_scaling_cores_super_fine/README.md)
+for new CPU scaling comparisons. It runs 3, 6, 12, 24, 48, 96, 192 cores,
+then 2, 4, 8, 16, 32 and 64 full 192-core nodes, with one single-threaded
+MPI rank per core and explicit pinning. Every run records MPI partition,
+global/local resolution and grid type. Balanced partitions preserve the
+1440×720×200 LatitudeLongitudeGrid even when dimensions divide unevenly.
+The next doubling is blocked by the seven-cell local halo requirement.
+
+```bash
+python3 benchmarking/results/nibi/cpu_core_scaling.py benchmarking/results/nibi/2026-10-06_cpu_scaling_cores_super_fine --submit
+module load python/3.11 scipy-stack/2025a
+python3 benchmarking/results/nibi/cpu_core_scaling.py benchmarking/results/nibi/2026-10-06_cpu_scaling_cores_super_fine --watch --commit
+```
+
+The earlier whole-node, 192-thread-per-rank CPU scaling series is historical;
+its unfinished jobs were cancelled when the replacement was requested.
+The CPU partition comparison and GPU jobs are separate studies.

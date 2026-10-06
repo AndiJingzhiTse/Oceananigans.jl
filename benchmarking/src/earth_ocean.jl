@@ -39,6 +39,8 @@ with realistic Earth bathymetry.
 - `closure`: Turbulence closure (default: `CATKEVerticalDiffusivity()`)
 - `timestepper`: Time stepping scheme (default: `:SplitRungeKutta3`)
 - `tracers`: Tuple of tracer names (default: `(:T, :S)`)
+- `extend_free_surface_halos`: Extend free-surface halos for substepping (default: `true`).
+  Set to `false` to communicate at each substep when rank-local domains are small.
 """
 function earth_ocean(arch = CPU();
                      float_type = Float32,
@@ -51,7 +53,8 @@ function earth_ocean(arch = CPU();
                      buoyancy = SeawaterBuoyancy(equation_of_state=TEOS10EquationOfState()),
                      closure = CATKEVerticalDiffusivity(),
                      timestepper = :SplitRungeKutta3,
-                     tracers = (:T, :S))
+                     tracers = (:T, :S),
+                     extend_free_surface_halos = true)
 
     grid_type in ("tripolar", "lat_lon", "immersed_lat_lon") ||
         error("Unknown grid_type: $grid_type. Use \"tripolar\", \"lat_lon\", or \"immersed_lat_lon\".")
@@ -93,7 +96,7 @@ function earth_ocean(arch = CPU();
         )
     end
 
-    free_surface = SplitExplicitFreeSurface(; substeps=30)
+    free_surface = SplitExplicitFreeSurface(; substeps=30, extend_halos=extend_free_surface_halos)
 
     model = HydrostaticFreeSurfaceModel(grid;
         momentum_advection,
