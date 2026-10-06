@@ -1,0 +1,29 @@
+JobId=23320824 JobName=nibi_cpu_cores_768
+   UserId=anditse(3165591) GroupId=anditse(3165591) MCS_label=N/A
+   Priority=1296091 Nice=0 Account=def-fpoulin_cpu QOS=normal
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:00:09 TimeLimit=03:00:00 TimeMin=N/A
+   SubmitTime=2026-10-06T13:08:21 EligibleTime=2026-10-06T13:08:21
+   AccrueTime=2026-10-06T13:08:21
+   StartTime=2026-10-06T14:13:10 EndTime=2026-10-06T17:13:10 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-06T14:13:10 Scheduler=Backfill
+   Partition=cpubase_bynode_b1 AllocNode:Sid=l4:1054827
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=c[80,344,395-396]
+   BatchHost=c80
+   NumNodes=4 NumCPUs=768 NumTasks=768 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=768,mem=3064000M,node=4,billing=768000
+   AllocTRES=cpu=768,mem=3064000M,node=4,billing=768000
+   Socks/Node=* NtasksPerN:B:S:C=192:0:*:* CoreSpec=*
+   MinCPUsNode=192 MinMemoryNode=0 MinTmpDiskNode=0
+   Features=granite DelayBoot=00:00:00
+   OverSubscribe=NO Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)
+   Command=/home/anditse/Oceananigans.jl/benchmarking/results/nibi/cpu_core_benchmark.sbatch
+   SubmitLine=sbatch --parsable --account=def-fpoulin_cpu --constraint=granite --job-name=nibi_cpu_cores_768 --nodes=4 --ntasks=768 --ntasks-per-node=192 --cpus-per-task=1 --time=03:00:00 --output=/home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_scaling_cores_super_fine/768_cores/job.out --exclusive --mem=0 /home/anditse/Oceananigans.jl/benchmarking/results/nibi/cpu_core_benchmark.sbatch /home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_scaling_cores_super_fine/768_cores 32x24x1 /home/anditse/Oceananigans.jl/benchmarking/results/nibi
+   WorkDir=/home/anditse/Oceananigans.jl
+   StdErr=
+   StdIn=/dev/null
+   StdOut=/home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_scaling_cores_super_fine/768_cores/job.out
+   TresPerTask=cpu=1
+
