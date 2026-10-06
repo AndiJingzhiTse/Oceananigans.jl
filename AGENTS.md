@@ -113,6 +113,17 @@ src/
 Follow [ColPrac](https://github.com/SciML/ColPrac). Feature branches, descriptive commits,
 update tests and docs with code changes, check CI before merging.
 
+## Benchmark Records
+
+For every benchmark run, record the **partition**, **resolution**, and
+**grid type** actually used in the saved run metadata and the results report.
+State the MPI partition explicitly as `Px × Py × Pz` (use `1 × 1 × 1` for
+a single-rank run), the global resolution as `Nx × Ny × Nz`, and the grid
+type (for example, `LatitudeLongitudeGrid` or `RectilinearGrid`). For
+distributed runs, also record the local resolution per rank. In benchmark
+series, associate these settings with each individual run so that its
+configuration remains clear when results are compared or plotted.
+
 ## Design Principles
 
 - **Dispatch over conditionals**: use Julia's type system and multiple dispatch instead of
