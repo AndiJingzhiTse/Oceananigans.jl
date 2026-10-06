@@ -19,6 +19,11 @@ BRANCH = "codex/nibi-gpu-strong-scaling"
 PARTITIONS = ("4x1x1", "2x2x1", "1x4x1")
 
 
+def maximum_horizontal_nodes(limit):
+    return max(rx * ry for rx in range(1, 1441) if 1440 % rx == 0
+               for ry in range(1, 721) if 720 % ry == 0 and rx * ry <= limit)
+
+
 def run(*args):
     return subprocess.run(args, text=True, stdout=subprocess.PIPE,
                           stderr=subprocess.STDOUT, timeout=60)
@@ -46,7 +51,10 @@ def submit(folder, mode):
                  "finalize_cpu.sbatch", "scaling.py", "refresh_scaling.py"):
         shutil.copy2(SCRIPT_DIR / name, metadata / name)
     (metadata / "revision.txt").write_text(run("git", "-C", str(SCRIPT_DIR), "rev-parse", "HEAD").stdout)
-    (metadata / "partitions.txt").write_text(run("scontrol", "show", "partition", "cpubase_bynode_b1").stdout)
+    partition_snapshot = run("scontrol", "show", "partition", "cpubase_bynode_b1")
+    if partition_snapshot.returncode:
+        raise RuntimeError(partition_snapshot.stdout)
+    (metadata / "partitions.txt").write_text(partition_snapshot.stdout)
     jobs = []
     if mode == "scaling":
         # Probe the next power of two without submitting an impossible allocation.
@@ -57,7 +65,12 @@ def submit(folder, mode):
             "Test-only Slurm request: 1024 nodes, 196608 cores, one rank/node, 192 cores/rank, mem=0, time=01:00:00.\n"
             f"Return code: {probe.returncode}\n{probe.stdout}"
             "Also: 1024 horizontal ranks cannot evenly divide 1440x720 (maximum power of two is 512).\n")
-        cases = [(n, ["x".join(map(str, (*partition_for(n), 1)))]) for n in (1, 2, 4, 8, 16, 32, 64, 128, 256, 512)]
+        node_limit = int(re.search(r"TotalNodes=(\d+)", partition_snapshot.stdout).group(1))
+        maximum = maximum_horizontal_nodes(node_limit)
+        counts = [n for n in (1, 2, 4, 8, 16, 32, 64, 128, 256, 512) if n <= maximum]
+        if maximum not in counts:
+            counts.append(maximum)
+        cases = [(n, ["x".join(map(str, (*partition_for(n), 1)))]) for n in counts]
     else:
         cases = [(4, list(PARTITIONS))]
     (folder / "mode.txt").write_text(mode + "\n")
@@ -192,6 +205,7 @@ def report(folder, mode, rows):
         highest = max((r["nodes"] for r in measured), default=0)
         lines += [f"Highest verified run: **{highest} CPU nodes ({192 * highest} cores)**." if highest else "No CPU benchmark has completed and passed validation yet.",
                   "Only completed, validated runs count as reached; pending requests are retained.",
+                  "Beyond the doubling series, 675 nodes (45×15×1) is the largest exact horizontal decomposition within the 699-node partition; 676–699 nodes have no exact horizontal decomposition.",
                   "The next power of two, 1024 nodes, exceeds this CPU partition's 699 configured nodes and cannot evenly divide the horizontal grid.",
                   "See [Slurm limit probe](run_metadata/1024_nodes_probe.txt) and [partition snapshot](run_metadata/partitions.txt).", ""]
     else:

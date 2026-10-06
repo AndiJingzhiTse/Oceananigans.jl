@@ -2,7 +2,9 @@
 
 Fixed global grid **1440 × 720 × 200**, starting at one full 192-core
 Nibi CPU node, then 2, 4, 8, 16, 32, 64, 128, 256, and 512 nodes
-(192 through 98,304 cores). Each node runs one MPI rank with 192 Julia
+(192 through 98,304 cores), followed by **675 nodes (129,600 cores)**,
+the largest exact horizontal decomposition within the 699-node partition.
+Each node runs one MPI rank with 192 Julia
 threads bound to its physical cores; OpenBLAS uses one thread.
 
 The horizontal grid partition is chosen to divide both dimensions exactly
@@ -14,7 +16,9 @@ Slurm uses `def-fpoulin_cpu`, `cpubase_bynode_b1`, whole nodes and all node
 memory, and one hour per scaling run. A test-only 1024-node request records
 the next resource limit without allocating resources. The partition has
 699 configured nodes; 1024 horizontal ranks also cannot evenly divide
-1440×720. Actual submission failures stop further requests and are preserved.
+1440×720. The final 675-node case uses 45×15×1; counts from 676 to 699
+cannot divide the horizontal grid exactly. Actual submission failures stop
+further requests and are preserved.
 
 Benchmark settings match the Nibi GPU series: Float64, earth_ocean,
 latitude–longitude without bathymetry, WENOVectorInvariantDefault, WENO7,

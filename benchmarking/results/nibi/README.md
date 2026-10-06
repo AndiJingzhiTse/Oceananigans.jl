@@ -127,7 +127,8 @@ python3 -m unittest discover -s benchmarking/results/nibi -p 'test_cpu_series.py
 ```
 
 Submission creates dependent finalizer jobs automatically. A scaling run
-requests 1, 2, 4, …, 512 nodes, stopping at a submission failure. A test-only
+requests 1, 2, 4, …, 512 nodes, then the largest exact horizontal decomposition
+within the CPU partition (currently 675 nodes), stopping at a submission failure. A test-only
 1024-node request records the next Slurm limit; it does not create a job.
 The partition comparison requests four nodes and runs 4×1×1, 2×2×1, and
 1×4×1 sequentially on them. Both controllers validate MPI rank completeness,

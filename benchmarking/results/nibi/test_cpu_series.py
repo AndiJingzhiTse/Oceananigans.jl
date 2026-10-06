@@ -71,6 +71,8 @@ class CPUSeriesTests(unittest.TestCase):
             self.assertIn("83.3% / 84.6%", (folder / "plot.md").read_text())
 
     def test_horizontal_grid_limit_and_disjoint_affinity_ranges(self):
+        self.assertEqual(cpu_series.maximum_horizontal_nodes(699), 675)
+        self.assertEqual(partition_for(675), (45, 15))
         self.assertEqual(partition_for(512), (32, 16))
         with self.assertRaises(ValueError):
             partition_for(1024)
