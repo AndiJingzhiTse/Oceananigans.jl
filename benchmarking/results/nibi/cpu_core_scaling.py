@@ -125,9 +125,9 @@ def submit(folder, layout):
         # Small core counts on a 207M-cell grid need long timed windows.
         hours = max(3, math.ceil(72 / cores))
         time_limit = '1-00:00:00' if hours == 24 else f'{hours:02}:00:00'
-        bucket = 'b3' if hours > 12 else ('b2' if hours > 3 else 'b1')
-        partition_name = f"cpubase_{'bycore' if cores < 192 else 'bynode'}_{bucket}"
-        cmd = ['sbatch', '--parsable', '--account=def-fpoulin_cpu', f'--partition={partition_name}',
+        # Nibi selects the partition from time, memory/core and whole-node use.
+        # A small-core run needs more memory/core than the base bycore class.
+        cmd = ['sbatch', '--parsable', '--account=def-fpoulin_cpu',
                '--constraint=granite', f'--job-name=nibi_cpu_cores_{cores}', f"--nodes={config['nodes']}",
                f"--ntasks={config['ranks']}", f"--ntasks-per-node={config['ranks_per_node']}",
                f"--cpus-per-task={config['threads_per_rank']}", f'--time={time_limit}',

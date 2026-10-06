@@ -54,6 +54,8 @@ cores, so other jobs may share the node. Full-node runs use exclusive
 192-core nodes and all node memory. OpenBLAS and Julia GC each use one
 thread per process; Julia's computation thread is pinned to its assigned
 core. Distinct core affinities are verified across ranks on each node.
+Nibi selects the Slurm partition automatically from the request's wall time,
+memory per core and whole-node use; small-core runs need a high-memory class.
 
 Wall-time limits are 24 hours for 3 cores, 12 hours for 6, 6 hours for 12,
 and 3 hours for subsequent counts. Small-core full-grid runs take longer;
