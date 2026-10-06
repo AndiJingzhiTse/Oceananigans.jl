@@ -17,7 +17,7 @@ Accepted or pending requests do not count as completed runs. Failed and timed-ou
 | 3 | 1 | 3 | 1 | 3x1x1 | 1440x720x200 | LatitudeLongitudeGrid | 23320790 | RUNNING | — | — | — | Slurm RUNNING, exit 0:0; None |
 | 6 | 1 | 6 | 1 | 3x2x1 | 1440x720x200 | LatitudeLongitudeGrid | 23320794 | RUNNING | — | — | — | Slurm RUNNING, exit 0:0; None |
 | 12 | 1 | 12 | 1 | 4x3x1 | 1440x720x200 | LatitudeLongitudeGrid | 23320798 | RUNNING | — | — | — | Slurm RUNNING, exit 0:0; None |
-| 24 | 1 | 24 | 1 | 6x4x1 | 1440x720x200 | LatitudeLongitudeGrid | 23320800 | RUNNING | — | — | — | Slurm RUNNING, exit 0:0; None |
+| 24 | 1 | 24 | 1 | 6x4x1 | 1440x720x200 | LatitudeLongitudeGrid | 23320800 | COMPLETED | 45.492943 | 46.395053 | — | All ranks, unique pinned cores, configuration and timings verified |
 | 48 | 1 | 48 | 1 | 8x6x1 | 1440x720x200 | LatitudeLongitudeGrid | 23320805 | COMPLETED | 19.742974 | 19.874878 | — | All ranks, unique pinned cores, configuration and timings verified |
 | 96 | 1 | 96 | 1 | 12x8x1 | 1440x720x200 | LatitudeLongitudeGrid | 23320810 | COMPLETED | 10.054697 | 10.153559 | — | All ranks, unique pinned cores, configuration and timings verified |
 | 192 | 1 | 192 | 1 | 16x12x1 | 1440x720x200 | LatitudeLongitudeGrid | 23320814 | COMPLETED | 5.264863 | 5.322806 | — | All ranks, unique pinned cores, configuration and timings verified |
