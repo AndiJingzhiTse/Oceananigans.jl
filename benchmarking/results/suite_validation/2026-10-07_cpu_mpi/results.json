@@ -1,0 +1,164 @@
+[
+  {
+    "configuration": {
+      "series": "cpu_mpi_scaling_super_fine",
+      "device": "CPU",
+      "ranks": 2,
+      "threads_per_rank": 1,
+      "grid_name": "smoke_validation",
+      "global_resolution": [
+        72,
+        36,
+        8
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "partition": [
+        2,
+        1,
+        1
+      ],
+      "x_sizes": [
+        36,
+        36
+      ],
+      "y_sizes": [
+        36
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENOVectorInvariantDefault",
+      "tracer_advection": "WENO7",
+      "closure": "CATKE",
+      "tracers": [
+        "T",
+        "S"
+      ],
+      "timestepper": "SplitRungeKutta3",
+      "dt": 60,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": false,
+      "warmup_steps": 2,
+      "samples": 5,
+      "time_steps": 10,
+      "profile": false
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "grid_size": [
+      36,
+      36,
+      8
+    ],
+    "metadata": {
+      "julia_version": "1.10.10",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{CPU, false, Partition{Sizes{Tuple{Int64, Int64}}, Sizes{Int64}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "Intel(R) Xeon(R) 6972P (icelake-client)",
+      "num_threads": 1,
+      "hostname": "c247.nibi.sharcnet",
+      "package_versions": {
+        "Adapt": "4.7.1",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.15",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-07T05:33:00.295"
+    },
+    "rank": 0,
+    "retained_free_surface_substeps": 21,
+    "time_per_step_max_seconds": 0.06380665869999999,
+    "time_per_step_median_seconds": 0.0572483578,
+    "time_per_step_seconds": 0.0560371178,
+    "window_seconds": [
+      0.638066587,
+      0.585472218,
+      0.572483578,
+      0.570194618,
+      0.560371178
+    ]
+  },
+  {
+    "configuration": {
+      "series": "cpu_mpi_scaling_super_fine",
+      "device": "CPU",
+      "ranks": 2,
+      "threads_per_rank": 1,
+      "grid_name": "smoke_validation",
+      "global_resolution": [
+        72,
+        36,
+        8
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "partition": [
+        2,
+        1,
+        1
+      ],
+      "x_sizes": [
+        36,
+        36
+      ],
+      "y_sizes": [
+        36
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENOVectorInvariantDefault",
+      "tracer_advection": "WENO7",
+      "closure": "CATKE",
+      "tracers": [
+        "T",
+        "S"
+      ],
+      "timestepper": "SplitRungeKutta3",
+      "dt": 60,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": false,
+      "warmup_steps": 2,
+      "samples": 5,
+      "time_steps": 10,
+      "profile": false
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "grid_size": [
+      36,
+      36,
+      8
+    ],
+    "metadata": {
+      "julia_version": "1.10.10",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{CPU, false, Partition{Sizes{Tuple{Int64, Int64}}, Sizes{Int64}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "Intel(R) Xeon(R) 6972P (icelake-client)",
+      "num_threads": 1,
+      "hostname": "c247.nibi.sharcnet",
+      "package_versions": {
+        "Adapt": "4.7.1",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.15",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-07T05:33:00.295"
+    },
+    "rank": 1,
+    "retained_free_surface_substeps": 21,
+    "time_per_step_max_seconds": 0.0638069997,
+    "time_per_step_median_seconds": 0.05724827019999999,
+    "time_per_step_seconds": 0.0560372048,
+    "window_seconds": [
+      0.638069997,
+      0.585471089,
+      0.572482702,
+      0.570195203,
+      0.560372048
+    ]
+  }
+]

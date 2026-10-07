@@ -144,6 +144,13 @@ changes, do not create an empty commit.
 
 ## Benchmark Records
 
+For new standard benchmark series, use `benchmarking/benchmark_suite.py`
+with a server configuration under `benchmarking/configs/`. Shared planning,
+execution and reporting live in `benchmarking/suite/`. The older entry points
+under `benchmarking/results/nibi/` and `benchmarking/results/rondeau/` are
+historical compatibility launchers; preserve them while queued jobs depend
+on their paths. See `benchmarking/README.md` for the full seven-series table.
+
 Use these canonical global resolutions for named benchmark grids:
 
 | Grid name | Global resolution (`Nx × Ny × Nz`) |

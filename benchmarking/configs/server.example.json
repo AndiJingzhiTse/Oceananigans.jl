@@ -1,0 +1,13 @@
+{
+  "backend": "local",
+  "max_cpu_cores": 192,
+  "max_gpus": 8,
+  "cpu_cores_per_node": 192,
+  "gpus_per_node": 8,
+  "project": "benchmarking",
+  "mpi": ["mpiexec"],
+  "exclusive_cpu": true,
+  "environment_script": "",
+  "mpi_init": "",
+  "trace_root": "/scratch/benchmark_traces"
+}

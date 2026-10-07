@@ -1,0 +1,41 @@
+{
+  "series": "cpu_mpi_scaling_super_fine",
+  "device": "CPU",
+  "ranks": 2,
+  "threads_per_rank": 1,
+  "grid_name": "smoke_validation",
+  "global_resolution": [
+    72,
+    36,
+    8
+  ],
+  "grid_type": "LatitudeLongitudeGrid",
+  "partition": [
+    2,
+    1,
+    1
+  ],
+  "x_sizes": [
+    36,
+    36
+  ],
+  "y_sizes": [
+    36
+  ],
+  "float_type": "Float64",
+  "momentum_advection": "WENOVectorInvariantDefault",
+  "tracer_advection": "WENO7",
+  "closure": "CATKE",
+  "tracers": [
+    "T",
+    "S"
+  ],
+  "timestepper": "SplitRungeKutta3",
+  "dt": 60,
+  "free_surface_substeps": 30,
+  "extend_free_surface_halos": false,
+  "warmup_steps": 2,
+  "samples": 5,
+  "time_steps": 10,
+  "profile": false
+}

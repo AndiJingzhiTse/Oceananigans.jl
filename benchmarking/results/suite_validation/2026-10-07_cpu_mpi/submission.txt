@@ -1,0 +1,2 @@
+sbatch --parsable --job-name=bench_cpu_mpi_scaling_super_fine --nodes=1 --ntasks=2 --ntasks-per-node=2 --cpus-per-task=1 --output=/scratch/anditse/benchmark_suite_smoke_2026-10-07/cpu_mpi_scaling_super_fine/smoke_validation/allocation.out --account=def-fpoulin --time=00:20:00 --hint=nomultithread --constraint=granite --mem=6G /scratch/anditse/benchmark_suite_smoke_2026-10-07/cpu_mpi_scaling_super_fine/smoke_validation/allocation.sh
+23372331
