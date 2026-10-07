@@ -29,8 +29,8 @@ Highest completed count: **3072 ranks**.
 | 768_ranks | 768 | 32x24x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 1.940831 | 2.146462 | — | Rank results, finite fields and resource placement verified |
 | 1536_ranks | 1536 | 32x48x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 1.389463 | 1.621086 | — | Rank results, finite fields and resource placement verified |
 | 3072_ranks | 3072 | 64x48x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 1.015510 | 1.330853 | — | Rank results, finite fields and resource placement verified |
-| 6144_ranks | 6144 | 96x64x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-07T13:01:37 (scheduler timezone) |
-| 12288_ranks | 12288 | 128x96x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-07T16:28:13 (scheduler timezone) |
+| 6144_ranks | 6144 | 96x64x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-07T13:23:22 (scheduler timezone) |
+| 12288_ranks | 12288 | 128x96x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-07T16:41:43 (scheduler timezone) |
 | 24576_ranks | 24576 |  | 1440x720x200 | LatitudeLongitudeGrid | GEOMETRY_LIMIT | — | — | — | 24576 ranks have no horizontal partition with at least 7 local cells per direction |
 
 [12_ranks configuration](cpu_mpi_scaling_super_fine/12_ranks/configuration.md): local resolution **360–360 × 240–240 × 200**, retained free-surface substeps [21].
@@ -59,10 +59,12 @@ Highest completed count: **1 ranks**.
 | Case | Ranks | Partition | Global resolution | Grid type | State | Fastest s/step | Median s/step | Efficiency fastest / median | Details |
 |---|---:|---|---|---|---|---:|---:|---|---|
 | default | 1 | 1x1x1 | 360x180x50 | LatitudeLongitudeGrid | COMPLETED | 9.133294 | 9.150603 | — | Rank results, finite fields and resource placement verified |
-| fine | 1 | 1x1x1 | 720x360x100 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
+| fine | 1 | 1x1x1 | 720x360x100 | LatitudeLongitudeGrid | COMPLETED | 71.099241 | 71.252001 | — | Rank results, finite fields and resource placement verified |
 | super_fine | 1 | 1x1x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
 
 [default configuration](cpu_resolution/default/configuration.md): local resolution **360–360 × 180–180 × 50**, retained free-surface substeps [21].
+
+[fine configuration](cpu_resolution/fine/configuration.md): local resolution **720–720 × 360–360 × 100**, retained free-surface substeps [21].
 ## cpu_partition_cores_super_fine
 
 Highest completed count: **192 ranks**.
