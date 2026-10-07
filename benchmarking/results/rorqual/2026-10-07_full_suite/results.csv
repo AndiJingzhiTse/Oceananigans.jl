@@ -55,7 +55,7 @@ gpu_nsight_scaling_super_fine,128_ranks,128,16x8x1,1440x720x200,LatitudeLongitud
 gpu_nsight_scaling_super_fine,256_ranks,256,16x16x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632358,,,,,(PartitionNodeLimit); estimated start N/A (scheduler timezone)
 gpu_nsight_scaling_super_fine,512_ranks,512,32x16x1,1440x720x200,LatitudeLongitudeGrid,RESOURCE_LIMIT,,,,,,Requires 512; configured capacity is 264
 gpu_partition_super_fine,2x1x1,2,2x1x1,1440x720x200,LatitudeLongitudeGrid,COMPLETED,22632359,0.49306254540000005,0.4946946519,,,"Rank results, finite fields and resource placement verified"
-gpu_partition_super_fine,1x2x1,2,1x2x1,1440x720x200,LatitudeLongitudeGrid,RUNNING,22632359,,,,,Exit 0:0; ReqNodeNotAvail
+gpu_partition_super_fine,1x2x1,2,1x2x1,1440x720x200,LatitudeLongitudeGrid,COMPLETED,22632359,0.5250356541000001,0.5261388755999999,,,"Rank results, finite fields and resource placement verified"
 gpu_partition_super_fine,4x1x1,4,4x1x1,1440x720x200,LatitudeLongitudeGrid,COMPLETED,22632360,0.24651756539999997,0.2534683572,,,"Rank results, finite fields and resource placement verified"
 gpu_partition_super_fine,2x2x1,4,2x2x1,1440x720x200,LatitudeLongitudeGrid,COMPLETED,22632360,0.2544953146,0.2554229623,,,"Rank results, finite fields and resource placement verified"
 gpu_partition_super_fine,1x4x1,4,1x4x1,1440x720x200,LatitudeLongitudeGrid,COMPLETED,22632360,0.2614490688,0.2655860262,,,"Rank results, finite fields and resource placement verified"

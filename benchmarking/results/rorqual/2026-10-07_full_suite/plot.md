@@ -138,12 +138,14 @@ Highest completed count: **4 ranks**.
 | Case | Ranks | Partition | Global resolution | Grid type | State | Fastest s/step | Median s/step | Efficiency fastest / median | Details |
 |---|---:|---|---|---|---|---:|---:|---|---|
 | 2x1x1 | 2 | 2x1x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.493063 | 0.494695 | — | Rank results, finite fields and resource placement verified |
-| 1x2x1 | 2 | 1x2x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; ReqNodeNotAvail |
+| 1x2x1 | 2 | 1x2x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.525036 | 0.526139 | — | Rank results, finite fields and resource placement verified |
 | 4x1x1 | 4 | 4x1x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.246518 | 0.253468 | — | Rank results, finite fields and resource placement verified |
 | 2x2x1 | 4 | 2x2x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.254495 | 0.255423 | — | Rank results, finite fields and resource placement verified |
 | 1x4x1 | 4 | 1x4x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.261449 | 0.265586 | — | Rank results, finite fields and resource placement verified |
 
 [2x1x1 configuration](gpu_partition_super_fine/2x1x1/configuration.md): local resolution **720–720 × 720–720 × 200**, retained free-surface substeps [21].
+
+[1x2x1 configuration](gpu_partition_super_fine/1x2x1/configuration.md): local resolution **1440–1440 × 360–360 × 200**, retained free-surface substeps [21].
 
 [4x1x1 configuration](gpu_partition_super_fine/4x1x1/configuration.md): local resolution **360–360 × 720–720 × 200**, retained free-surface substeps [21].
 

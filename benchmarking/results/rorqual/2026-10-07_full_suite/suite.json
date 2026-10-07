@@ -4898,8 +4898,8 @@
         2,
         1
       ],
-      "state": "RUNNING",
-      "details": "Exit 0:0; ReqNodeNotAvail",
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
       "job_id": "22632359",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -4941,6 +4941,14 @@
         "samples": 5,
         "time_steps": 10,
         "profile": false
+      },
+      "measurement": {
+        "fastest": 0.5250356541000001,
+        "median": 0.5261388755999999,
+        "maximum": 0.5667533833,
+        "retained_substeps": [
+          21
+        ]
       }
     },
     {
