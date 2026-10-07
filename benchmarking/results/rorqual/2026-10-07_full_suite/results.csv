@@ -22,7 +22,7 @@ gpu_scaling_super_fine,16_ranks,16,4x4x1,1440x720x200,LatitudeLongitudeGrid,COMP
 gpu_scaling_super_fine,32_ranks,32,8x4x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632339,,,,,(Priority); estimated start 2026-10-07T06:21:05 (scheduler timezone)
 gpu_scaling_super_fine,64_ranks,64,8x8x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632340,,,,,(Priority); estimated start 2026-10-07T07:22:38 (scheduler timezone)
 gpu_scaling_super_fine,128_ranks,128,16x8x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632341,,,,,"(Nodes required for job are DOWN, DRAINED or reserved for jobs in higher priority partitions); estimated start 2026-10-07T21:15:04 (scheduler timezone)"
-gpu_scaling_super_fine,256_ranks,256,16x16x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632342,,,,,(PartitionNodeLimit); estimated start 2026-10-10T10:21:58 (scheduler timezone)
+gpu_scaling_super_fine,256_ranks,256,16x16x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632342,,,,,(Resources); estimated start 2026-10-10T10:21:58 (scheduler timezone)
 gpu_scaling_super_fine,512_ranks,512,32x16x1,1440x720x200,LatitudeLongitudeGrid,RESOURCE_LIMIT,,,,,,Requires 512; configured capacity is 264
 cpu_resolution,default,1,1x1x1,360x180x50,LatitudeLongitudeGrid,FAILED,22632343,,,,,Exit 9:0; None
 cpu_resolution,fine,1,1x1x1,720x360x100,LatitudeLongitudeGrid,FAILED,22632344,,,,,Exit 9:0; None
@@ -58,4 +58,4 @@ gpu_partition_super_fine,2x1x1,2,2x1x1,1440x720x200,LatitudeLongitudeGrid,PENDIN
 gpu_partition_super_fine,1x2x1,2,1x2x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632359,,,,,"(ReqNodeNotAvail, UnavailableNodes:rg[12602,12903,13403]); estimated start 2026-10-07T03:52:18 (scheduler timezone)"
 gpu_partition_super_fine,4x1x1,4,4x1x1,1440x720x200,LatitudeLongitudeGrid,COMPLETED,22632360,0.24651756539999997,0.2534683572,,,"Rank results, finite fields and resource placement verified"
 gpu_partition_super_fine,2x2x1,4,2x2x1,1440x720x200,LatitudeLongitudeGrid,COMPLETED,22632360,0.2544953146,0.2554229623,,,"Rank results, finite fields and resource placement verified"
-gpu_partition_super_fine,1x4x1,4,1x4x1,1440x720x200,LatitudeLongitudeGrid,RUNNING,22632360,,,,,Exit 0:0; None
+gpu_partition_super_fine,1x4x1,4,1x4x1,1440x720x200,LatitudeLongitudeGrid,COMPLETED,22632360,0.2614490688,0.2655860262,,,"Rank results, finite fields and resource placement verified"

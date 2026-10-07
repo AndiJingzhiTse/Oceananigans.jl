@@ -828,3 +828,25 @@ gpu_partition_super_fine/1x4x1: PENDING [1, 4, 1]
  create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/4_ranks/results.json
  create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_scaling_super_fine/2_ranks/layout.json
 
+[codex/benchmarking 1ac8377d0] Record validated benchmark suite results and job outcomes
+ 29 files changed, 1110 insertions(+), 410 deletions(-)
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/2_ranks/allocation.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/2_ranks/compute_hardware.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/2_ranks/job.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/2_ranks/julia_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/2_ranks/modules.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/2_ranks/nsight_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/2_ranks/rank_0/profile.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/2_ranks/rank_1/profile.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/2_ranks/slurm_job.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/2_ranks/started.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_partition_super_fine/1x4x1/job.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_partition_super_fine/1x4x1/layout.json
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_partition_super_fine/1x4x1/started.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_partition_super_fine/2x2x1/exit_code.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_partition_super_fine/2x2x1/finished.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_partition_super_fine/2x2x1/results.json
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_scaling_super_fine/2_ranks/exit_code.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_scaling_super_fine/2_ranks/finished.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_scaling_super_fine/2_ranks/results.json
+

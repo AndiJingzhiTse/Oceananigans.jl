@@ -2076,7 +2076,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(PartitionNodeLimit); estimated start 2026-10-10T10:21:58 (scheduler timezone)",
+      "details": "(Resources); estimated start 2026-10-10T10:21:58 (scheduler timezone)",
       "job_id": "22632342",
       "configuration": {
         "series": "gpu_scaling_super_fine",
@@ -5052,8 +5052,8 @@
         4,
         1
       ],
-      "state": "RUNNING",
-      "details": "Exit 0:0; None",
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
       "job_id": "22632360",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -5097,6 +5097,14 @@
         "samples": 5,
         "time_steps": 10,
         "profile": false
+      },
+      "measurement": {
+        "fastest": 0.2614490688,
+        "median": 0.2655860262,
+        "maximum": 0.3026112476,
+        "retained_substeps": [
+          21
+        ]
       }
     }
   ],
