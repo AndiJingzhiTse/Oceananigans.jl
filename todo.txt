@@ -1,6 +1,5 @@
-default grid on cpu scaling
-1440 on gpu scaling
-rectangular grid on very fine
-earth_ocean closure = none
-momentum free_surface, timestepper
-tracer, closure, tracer advection
+different partitions of gpu through mpi
+cpu scaling, super_fine
+
+nsight on multi gpu mpi partitions, 2x1x1 -> 2x2x1, 4x1x1, 1x4x1
+oceananigans sample benchmark on cpu
