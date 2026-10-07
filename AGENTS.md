@@ -210,6 +210,16 @@ one-GPU baseline: `efficiency = baseline_time * baseline_rank_count /
 (measured_time * measured_rank_count)`. If that baseline fails, explicitly
 identify any alternative measured baseline; do not invent missing timings.
 
+Always draw the expected ratio or ideal efficiency on benchmark ratio and
+efficiency plots, and draw ideal inverse-rank timing on strong-scaling plots
+when a measured baseline exists. Label each reference and state the ratio's
+numerator, denominator, and any normalization. Ideal MPI efficiency is 100%;
+doubling ranks at fixed resolution gives next-count/previous-count time = 1/2.
+For resolution studies, account for all grid dimensions: doubling Nx, Ny, and
+Nz gives previous-grid/next-grid time = 1/8 under linear cell-count scaling.
+If presenting its cube root as a linear-resolution time ratio, the expected
+ratio is 1/2; explicitly label the cube-root transformation.
+
 Only completed, validated measurements enter performance plots. Record
 the highest completed count and the observed reason further scaling could
 not complete. Distinguish scheduler queue/wait limits, submission/resource

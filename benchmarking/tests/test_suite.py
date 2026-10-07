@@ -148,6 +148,19 @@ class SuiteTests(unittest.TestCase):
             self.assertEqual(result.returncode,0,result.stderr)
             self.assertTrue((folder/'plot.md').exists())
 
+    def test_cpu_hardware_capture_does_not_query_unassigned_gpus(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            folder = Path(tmp)
+            server = runner.load_server()
+            server.update(backend='slurm')
+            cases = plan.build_plan(self.server(), ('cpu_partition_cores_super_fine',))
+            group = next(iter(plan.allocation_groups(cases).values()))
+            for case in group:
+                (folder/case['id']).mkdir(parents=True)
+            script = runner.group_script(folder, server, group)
+            subprocess.run(['bash', '-n', str(script)], check=True)
+            self.assertNotIn('nvidia-smi', script.read_text())
+
     def test_plots_timing_efficiency_and_profile_kernel_shares(self):
         with tempfile.TemporaryDirectory() as tmp:
             cases = plan.build_plan(self.server(gpu=1), ('gpu_nsight_scaling_super_fine',))
@@ -156,6 +169,29 @@ class SuiteTests(unittest.TestCase):
             self.assertTrue((Path(tmp)/'gpu_nsight_scaling_super_fine.svg').exists())
             self.assertTrue((Path(tmp)/'gpu_nsight_scaling_super_fine_kernels.svg').exists())
             self.assertIn('10.00%',(Path(tmp)/'plot.md').read_text())
+            svg = (Path(tmp)/'gpu_nsight_scaling_super_fine.svg').read_text()
+            self.assertIn('Ideal: 100%', svg)
+            self.assertIn('Ideal: one-rank fastest / ranks', svg)
+
+    def test_resolution_ratio_accounts_for_volume_and_missing_grids(self):
+        import matplotlib.pyplot as plt
+        with tempfile.TemporaryDirectory() as tmp:
+            rows = [dict(case=name, state='COMPLETED', fastest=t, median=2*t)
+                    for name, t in (('default', 1), ('fine', 8), ('super_fine', 64))]
+            with patch.object(plt, 'close'):
+                report.plot_series(Path(tmp), 'gpu_resolution', rows)
+                fig = plt.gcf()
+            ax = fig.axes[0]
+            self.assertEqual(list(ax.lines[0].get_ydata()), [0.5, 0.5])
+            self.assertEqual(list(ax.lines[1].get_ydata()), [0.5, 0.5])
+            self.assertIn('Cube root', ax.get_ylabel())
+            self.assertEqual(list(ax.lines[2].get_ydata()), [0.5, 0.5])
+            plt.close(fig)
+            with patch.object(plt, 'close'):
+                report.plot_series(Path(tmp), 'gpu_resolution', [rows[0], rows[2]])
+                fig = plt.gcf()
+            self.assertEqual(len(fig.axes[0].lines[0].get_ydata()), 0)
+            plt.close(fig)
 
     def test_local_startup_failure_is_terminal(self):
         with tempfile.TemporaryDirectory() as tmp:

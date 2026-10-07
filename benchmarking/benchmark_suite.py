@@ -170,8 +170,11 @@ def group_script(folder, server, cases):
     if server['backend'] == 'slurm':
         per_node = server['gpus_per_node' if first['configuration']['device'] == 'GPU' else 'cpu_cores_per_node']
         nodes = math.ceil(first['ranks'] / per_node)
+        hardware = 'hostname; lscpu'
+        if first['configuration']['device'] == 'GPU':
+            hardware += '; nvidia-smi --query-gpu=name,uuid,driver_version,memory.total --format=csv; nvidia-smi topo -m'
         info = ['srun', '--ntasks=' + str(nodes), '--ntasks-per-node=1', '--cpus-per-task=1',
-                'bash', '-c', 'hostname; lscpu; if command -v nvidia-smi >/dev/null; then nvidia-smi --query-gpu=name,uuid,driver_version,memory.total --format=csv; nvidia-smi topo -m; fi']
+                'bash', '-c', hardware]
         lines.append(shlex.join(info) + ' > ' + shlex.quote(str(destination.parent / 'compute_hardware.txt')))
         lines.append('scontrol show job "$SLURM_JOB_ID" > ' + shlex.quote(str(destination.parent / 'slurm_job.txt')))
     for case in cases:

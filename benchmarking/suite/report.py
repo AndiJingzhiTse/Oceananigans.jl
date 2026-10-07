@@ -121,6 +121,8 @@ def write_report(folder, cases, plotting=True):
              'One MPI rank per CPU core or GPU, one Julia computation thread per rank. CPU extended halos=false; GPU=true.',
              'Window boundaries synchronize MPI ranks and GPUs. Fastest/median statistics use the maximum across ranks.',
              'Efficiency uses the measured one-rank baseline for each scaling series. Missing baselines have no efficiency estimate.',
+             'Dashed reference lines show ideal inverse-rank timing and 100% MPI efficiency.',
+             'Resolution plots show the cube root of previous-grid / next-grid time; doubling each grid dimension ideally gives 1/2 (raw time ratio 1/8).',
              'Profiled timings are separate; Nsight captures CUDA/NVTX/MPI after warmup. Kernel shares sum durations across ranks, not elapsed wall time.', '']
     for series in dict.fromkeys(c['series'] for c in cases):
         series_rows = [r for r in rows if r['series'] == series]
@@ -161,20 +163,38 @@ def plot_series(folder, series, rows):
     plt.rcParams.update({'svg.hashsalt': 'benchmark-suite', 'svg.fonttype': 'none'})
     rows = [r for r in rows if r['state'] == 'COMPLETED']
     scaling = 'scaling' in series
+    resolution = series.endswith('resolution')
     fig, axes = plt.subplots(1, 2 if scaling else 1, figsize=(11 if scaling else 8, 4.5), squeeze=False)
     ax = axes[0, 0]
     x = [r['ranks'] for r in rows] if scaling else list(range(len(rows)))
-    ax.plot(x, [r['fastest'] for r in rows], 'o-', label='Fastest')
-    ax.plot(x, [r['median'] for r in rows], 's--', label='Median')
-    ax.set(ylabel='Seconds per step', title=series)
+    if resolution:
+        # Compare only adjacent planned grids; a failed intermediate grid must
+        # not turn a fourfold refinement into a purported twofold refinement.
+        all_rows = {r['case']: r for r in rows}
+        pairs = [(all_rows[a], all_rows[b]) for a, b in
+                 (('default', 'fine'), ('fine', 'super_fine'))
+                 if a in all_rows and b in all_rows]
+        x = list(range(len(pairs)))
+        for statistic, marker, label in (('fastest', 'o-', 'Fastest'), ('median', 's--', 'Median')):
+            ax.plot(x, [(a[statistic] / b[statistic]) ** (1/3) for a, b in pairs], marker, label=label)
+        ax.axhline(0.5, color='black', linestyle=':', label='Expected: 1/2')
+        ax.set_xticks(x, [f"{a['case']} / {b['case']}" for a, b in pairs], rotation=20, ha='right')
+    else:
+        ax.plot(x, [r['fastest'] for r in rows], 'o-', label='Fastest')
+        ax.plot(x, [r['median'] for r in rows], 's--', label='Median')
+    ax.set(ylabel='Cube root of previous-grid / next-grid time' if resolution else 'Seconds per step', title=series)
     if scaling:
         ax.set(xlabel='MPI ranks', xscale='log', yscale='log')
+        baseline = next((r for r in rows if r['ranks'] == 1), None)
+        if baseline:
+            ax.plot(x, [baseline['fastest'] / n for n in x], ':', color='black', label='Ideal: one-rank fastest / ranks')
         eff = [r for r in rows if r['efficiency_fastest'] is not None]
         axes[0, 1].plot([r['ranks'] for r in eff], [100*r['efficiency_fastest'] for r in eff], 'o-', label='Fastest')
         axes[0, 1].plot([r['ranks'] for r in eff], [100*r['efficiency_median'] for r in eff], 's--', label='Median')
         axes[0, 1].set(xlabel='MPI ranks', ylabel='Efficiency (%)', xscale='log')
+        axes[0, 1].axhline(100, color='black', linestyle=':', label='Ideal: 100%')
         axes[0, 1].legend()
-    else:
+    elif not resolution:
         ax.set_xticks(x, [r['case'] for r in rows], rotation=30, ha='right')
     ax.legend()
     fig.tight_layout()
