@@ -182,10 +182,10 @@ class SuiteTests(unittest.TestCase):
                 report.plot_series(Path(tmp), 'gpu_resolution', rows)
                 fig = plt.gcf()
             ax = fig.axes[0]
-            self.assertEqual(list(ax.lines[0].get_ydata()), [0.5, 0.5])
-            self.assertEqual(list(ax.lines[1].get_ydata()), [0.5, 0.5])
-            self.assertIn('Cube root', ax.get_ylabel())
-            self.assertEqual(list(ax.lines[2].get_ydata()), [0.5, 0.5])
+            self.assertEqual(list(ax.lines[0].get_ydata()), [1/8, 1/8])
+            self.assertEqual(list(ax.lines[1].get_ydata()), [1/8, 1/8])
+            self.assertEqual('Previous-grid / next-grid time', ax.get_ylabel())
+            self.assertEqual(list(ax.lines[2].get_ydata()), [1/8, 1/8])
             plt.close(fig)
             with patch.object(plt, 'close'):
                 report.plot_series(Path(tmp), 'gpu_resolution', [rows[0], rows[2]])

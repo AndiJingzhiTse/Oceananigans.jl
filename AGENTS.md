@@ -217,8 +217,7 @@ numerator, denominator, and any normalization. Ideal MPI efficiency is 100%;
 doubling ranks at fixed resolution gives next-count/previous-count time = 1/2.
 For resolution studies, account for all grid dimensions: doubling Nx, Ny, and
 Nz gives previous-grid/next-grid time = 1/8 under linear cell-count scaling.
-If presenting its cube root as a linear-resolution time ratio, the expected
-ratio is 1/2; explicitly label the cube-root transformation.
+Plot this raw time ratio with an expected 1/8 reference; do not apply a cube root.
 
 Only completed, validated measurements enter performance plots. Record
 the highest completed count and the observed reason further scaling could
