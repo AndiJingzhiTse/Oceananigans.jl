@@ -160,13 +160,15 @@ with a server configuration under `benchmarking/configs/`. Shared planning,
 execution and reporting live in `benchmarking/suite/`. The older entry points
 under `benchmarking/results/nibi/` and `benchmarking/results/rondeau/` are
 historical compatibility launchers; preserve them while queued jobs depend
-on their paths. See `benchmarking/README.md` for the full seven-series table.
+on their paths. See `benchmarking/README.md` for the full series table.
 
 Use these canonical global resolutions for named benchmark grids:
 
 | Grid name | Global resolution (`Nx × Ny × Nz`) |
 |---|---|
 | `super_fine` | `1440 × 720 × 200` |
+| `super_super_fine` | `2880 × 1440 × 200` |
+| `super_super_super_fine` | `5760 × 2880 × 200` |
 | `fine` | `720 × 360 × 100` |
 | `default` | `360 × 180 × 50` |
 
@@ -219,6 +221,18 @@ doubling ranks at fixed resolution gives next-count/previous-count time = 1/2.
 For resolution studies, account for all grid dimensions: doubling Nx, Ny, and
 Nz gives previous-grid/next-grid time = 1/8 under linear cell-count scaling.
 Plot this raw time ratio with an expected 1/8 reference; do not apply a cube root.
+
+For GPU weak scaling starting at `super_fine`, hold 207,360,000 interior cells
+per GPU fixed: use 1, 4, 16, 64, … GPUs, double both horizontal dimensions at
+each step, and retain 200 vertical levels. Weak efficiency is baseline step
+time / measured step time, with ideal efficiency 100% and constant ideal step
+time. Larger horizontal grids use Δt = 60 × 1440 / Nx seconds. Strong scaling
+on `super_super_fine` and `super_super_super_fine` starts at memory-feasible
+4- and 16-GPU baselines respectively; record those measured baselines explicitly.
+Include a DRAC-style GPU comparison table with resolution, ranks, actual nodes,
+partition, Δt, median seconds per step, efficiency, throughput, measured device
+memory per GPU and outcome. Never substitute reference-cluster timings for
+local measurements or invent unavailable memory statistics.
 
 Only completed, validated measurements enter performance plots. Record
 the highest completed count and the observed reason further scaling could

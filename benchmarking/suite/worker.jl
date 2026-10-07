@@ -119,10 +119,17 @@ finite_state = all(all(isfinite, interior(t)) for t in values(model.tracers)) &&
                all(isfinite, interior(model.free_surface.displacement))
 MPI.Allreduce(finite_state ? 1 : 0, MPI.MIN, comm) == 1 || error("Nonfinite model fields")
 metadata = JSON.parse(JSON.json(OceananigansBenchmarks.BenchmarkMetadata(arch)))
+metadata["mpi_library_version"] = MPI.Get_library_version()
+gpu_memory = is_gpu ? CUDA.CUDACore.MemoryInfo() : nothing
+if is_gpu
+    metadata["gpu_name"] = CUDA.name(CUDA.device())
+    metadata["cuda_version"] = string(CUDA.runtime_version())
+end
 steps = config["time_steps"]
 entry = Dict("rank" => rank, "grid_size" => collect(size(model.grid)), "float_type" => "Float64",
              "configuration" => config, "metadata" => metadata, "finite_state" => finite_state,
              "retained_free_surface_substeps" => retained_substeps,
+             "gpu_memory_used_bytes" => is_gpu ? gpu_memory.total_bytes - gpu_memory.free_bytes : nothing,
              "window_seconds" => windows, "time_per_step_seconds" => minimum(windows) / steps,
              "time_per_step_median_seconds" => median(windows) / steps,
              "time_per_step_max_seconds" => maximum(windows) / steps)

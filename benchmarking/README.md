@@ -1,6 +1,6 @@
 # Full benchmark suite
 
-Use **`benchmark_suite.py`** for new server studies. It runs the seven series
+Use **`benchmark_suite.py`** for new server studies. It runs the ten series
 below through one planner, one Julia worker and one report generator. Python
 3.11+, Julia with the benchmark project installed, Open MPI, and matplotlib
 (for plots) are required. NVIDIA GPUs, CUDA-aware MPI and Nsight Systems are
@@ -15,7 +15,10 @@ submit through Slurm rather than running computation on a login node.
 | `gpu_resolution` | 360×180×50 → 720×360×100 → 1440×720×200 | One GPU, one rank/thread |
 | `cpu_partition_cores_super_fine` | 1440×720×200 | Exactly 192 cores/ranks; all 14 horizontal factor pairs, 192×1×1 → 96×2×1 → 64×3×1 → … → 1×192×1 |
 | `gpu_nsight_scaling_super_fine` | 1440×720×200 | Nsight on 1, 2, 4, 8, … GPUs, with separate traces per rank |
-| `gpu_partition_super_fine` | 1440×720×200 | Two GPUs: 2×1×1, 1×2×1; four GPUs: 4×1×1, 2×2×1, 1×4×1 |
+| `gpu_partition_super_fine` | 1440×720×200 | All horizontal factor pairs for 2, 4, 8 and 16 GPUs, ordered from n×1×1 to 1×n×1 |
+| `gpu_scaling_super_super_fine` | 2880×1440×200 | 4, 8, 16, … GPUs; measured 4-GPU efficiency baseline; Δt=30 s |
+| `gpu_scaling_super_super_super_fine` | 5760×2880×200 | 16, 32, 64, … GPUs; measured 16-GPU efficiency baseline; Δt=15 s |
+| `gpu_weak_scaling_super_fine` | 1440√n × 720√n × 200 | 1, 4, 16, … GPUs; fixed 207,360,000 cells/GPU; Δt=60/√n s |
 
 Scaling counts continue to the configured server capacity or the first geometry
 limit. The next doubling is recorded as a resource/geometry boundary. A
@@ -25,7 +28,9 @@ A failed one-GPU allocation does not prevent trying larger GPU counts.
 
 All cases use LatitudeLongitudeGrid without bathymetry, Float64,
 WENOVectorInvariantDefault, WENO7, CATKE, T/S, SplitRungeKutta3, Δt=60 s and
-30 requested free-surface substeps. CPU cases use `extend_halos=false`; GPU
+30 requested free-surface substeps. The larger horizontal grids reduce Δt as
+shown above; the original three-grid resolution studies retain Δt=60 s and
+their original grid list. CPU cases use `extend_halos=false`; GPU
 cases use `extend_halos=true`. Every rank has one Julia computation thread.
 There are two untimed steps (one warmup and one helper preflight step), then
 five ten-step timing windows. Windows synchronize ranks and GPUs at both
@@ -72,6 +77,19 @@ Open MPI's `--map-by core --bind-to core` flags; Slurm uses `srun`, requests
 physical cores without SMT, and verifies actual physical-core/GPU placement.
 Linux CPU affinity/topology interfaces are required by the CPU worker.
 
+GPU allocations occupying every GPU on each node request `--mem=0`, following
+Oceananigans-DRAC/docs/drac.md. Smaller allocations use the configured GPU memory.
+`reference_suites` can list existing suite directories; their saved outcomes feed
+the DRAC-style strong/weak comparison tables without resubmitting their jobs.
+Each larger-grid strong study uses its planned 4- or 16-GPU measured baseline;
+if that baseline fails, efficiency stays unavailable. Weak efficiency divides
+baseline time by measured time, without dividing by the GPU count. Plots include
+ideal timing and 100% efficiency references. Tables report median timings,
+global throughput and measured maximum device-used GiB per GPU after timing,
+including context/buffers (not peak memory); old records without this measurement
+show a blank entry. Timing still uses five ten-step windows, compared with the
+reference document's five 100-step windows.
+
 ## Run the full table
 
 First generate a plan without launching computation:
@@ -105,7 +123,7 @@ python3 benchmarking/benchmark_suite.py --config benchmarking/configs/server.exa
 Without a profile, local planning detects available CPU affinity and NVIDIA
 GPU count. With no mode flag, it executes using the profile's backend. Set
 capacities to resources assigned to you. `--series` selects a comma-separated
-subset of the seven names. `--resume` executes only `PLANNED` cases and never
+subset of the ten names. `--resume` executes only `PLANNED` cases and never
 resubmits pending/running/completed jobs. Use a fresh directory for failed-case
 retries. Each CPU partition sweep and each GPU-count partition comparison runs
 sequentially in one allocation, with fresh Julia/MPI processes per case.
@@ -161,7 +179,7 @@ not push. Benchmark suite source changes and records are committed separately.
 `run_benchmarks.jl` remains the general timing/simulation/I/O command;
 `generate_bathymetry.jl` and the model implementation under `src/` remain shared
 utilities. Component ablation and historical Rondeau profiling retain their
-compatibility launchers; they are not additional series in this seven-series table.
+compatibility launchers; they are not additional series in this ten-series table.
 
 Older independent controllers live under `legacy/`. Thin wrappers at their
 original `results/nibi/` and `results/rondeau/` paths preserve existing queued

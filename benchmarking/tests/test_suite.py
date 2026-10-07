@@ -68,8 +68,77 @@ class SuiteTests(unittest.TestCase):
         groups = plan.allocation_groups(cases)
         self.assertEqual(len(groups['gpu_partition_super_fine/2_ranks']),2)
         self.assertEqual(len(groups['gpu_partition_super_fine/4_ranks']),3)
+        self.assertEqual([c['partition'] for c in groups['gpu_partition_super_fine/8_ranks']],
+                         [[8,1,1],[4,2,1],[2,4,1],[1,8,1]])
+        self.assertEqual([c['partition'] for c in groups['gpu_partition_super_fine/16_ranks']],
+                         [[16,1,1],[8,2,1],[4,4,1],[2,8,1],[1,16,1]])
         profiles = [c['ranks'] for c in cases if c['series'].startswith('gpu_nsight') and c['state']=='PLANNED']
         self.assertEqual(profiles, [1,2,4,8,16,32])
+
+    def test_larger_grids_start_at_memory_feasible_baselines(self):
+        for series, first, grid, dt in (
+            ('gpu_scaling_super_super_fine', 4, [2880,1440,200], 30),
+            ('gpu_scaling_super_super_super_fine', 16, [5760,2880,200], 15)):
+            cases = plan.build_plan(self.server(gpu=256), (series,))
+            self.assertEqual(cases[0]['ranks'], first)
+            self.assertEqual(cases[0]['configuration']['baseline_ranks'], first)
+            self.assertTrue(all(c['configuration']['global_resolution'] == grid for c in cases))
+            self.assertTrue(all(c['configuration']['dt'] == dt for c in cases))
+            self.assertEqual(cases[-1]['ranks'], 512)
+            self.assertEqual(cases[-1]['state'], 'RESOURCE_LIMIT')
+
+    def test_weak_scaling_keeps_local_work_fixed(self):
+        cases = plan.build_plan(self.server(gpu=64), ('gpu_weak_scaling_super_fine',))
+        self.assertEqual([c['ranks'] for c in cases], [1,4,16,64,256])
+        for case in cases:
+            cfg = case['configuration']
+            nx, ny, nz = cfg['global_resolution']
+            self.assertEqual(nx * ny * nz // case['ranks'], 207360000)
+            self.assertEqual(nz, 200)
+            self.assertEqual(set(cfg['x_sizes']), {1440})
+            self.assertEqual(set(cfg['y_sizes']), {720})
+            self.assertEqual(cfg['dt'], 60 * 1440 / nx)
+            self.assertEqual(cfg['scaling_type'], 'weak')
+        self.assertEqual(cases[-1]['state'], 'RESOURCE_LIMIT')
+
+    def test_weak_and_larger_grid_efficiencies_and_tables(self):
+        import csv
+        with tempfile.TemporaryDirectory() as tmp:
+            cases = plan.build_plan(self.server(gpu=16),
+                                    ('gpu_weak_scaling_super_fine', 'gpu_scaling_super_super_fine'))
+            for case in cases:
+                if case['state'] == 'PLANNED':
+                    time = 2 if case['series'].startswith('gpu_weak') else 8 / case['ranks']
+                    case.update(state='COMPLETED', measurement=dict(fastest=time, median=time,
+                                retained_substeps=[21], nodes=max(1, case['ranks']//4),
+                                gpu_memory_used_bytes=48 * 2**30))
+            report.write_report(Path(tmp), cases, plotting=False)
+            with (Path(tmp)/'results.csv').open() as stream:
+                rows = list(csv.DictReader(stream))
+            for row in rows:
+                if row['state'] == 'COMPLETED':
+                    self.assertEqual(float(row['efficiency_median']), 1)
+            content = (Path(tmp)/'plot.md').read_text()
+            self.assertIn('48.00', content)
+            self.assertIn('207,360,000', content)
+            self.assertIn('4 GPUs', content)
+            self.assertIn('Throughput (cells/s)', content)
+
+    def test_gpu_device_memory_is_validated_across_ranks(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            folder = Path(tmp)
+            cfg = plan.configuration('gpu_scaling_super_fine', 2)
+            entries = fixture(folder, cfg)
+            for entry in entries:
+                entry['gpu_memory_used_bytes'] = (entry['rank'] + 1) * 2**30
+            (folder/'results.json').write_text(json.dumps(entries))
+            result = report.validate(folder, cfg)
+            self.assertEqual(result['gpu_memory_used_bytes'], 2 * 2**30)
+            self.assertEqual(result['nodes'], 1)
+            entries[1].pop('gpu_memory_used_bytes')
+            (folder/'results.json').write_text(json.dumps(entries))
+            with self.assertRaises(ValueError):
+                report.validate(folder, cfg)
 
     def test_uneven_local_grids_use_correct_rank_order(self):
         with tempfile.TemporaryDirectory() as tmp:

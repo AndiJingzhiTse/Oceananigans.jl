@@ -13,6 +13,7 @@
   "exclusive_cpu": true,
   "gpu_memory": "256G",
   "trace_root": "/scratch/anditse/benchmark_traces",
+  "reference_suites": ["$HOME/Oceananigans.jl/benchmarking/results/rorqual/2026-10-07_full_suite"],
   "report_modules": ["python/3.11", "scipy-stack/2025a"],
   "cpu_sbatch_extra": ["--export=ALL,JULIA_DEPOT_PATH=/scratch/anditse/julia_depot:"],
   "gpu_sbatch_extra": ["--export=ALL,JULIA_DEPOT_PATH=/scratch/anditse/julia_depot:"]

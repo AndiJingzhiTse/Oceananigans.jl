@@ -1,10 +1,15 @@
-"""Server-independent definitions for the seven standard benchmark series."""
+"""Server-independent definitions for the standard benchmark series."""
 import math
 
-GRIDS = {'default': [360, 180, 50], 'fine': [720, 360, 100], 'super_fine': [1440, 720, 200]}
+GRIDS = {'default': [360, 180, 50], 'fine': [720, 360, 100], 'super_fine': [1440, 720, 200],
+         'super_super_fine': [2880, 1440, 200], 'super_super_super_fine': [5760, 2880, 200]}
+RESOLUTION_GRIDS = ('default', 'fine', 'super_fine')
+GPU_BASELINES = {'gpu_scaling_super_super_fine': 4, 'gpu_scaling_super_super_super_fine': 16}
 SERIES = ('cpu_mpi_scaling_super_fine', 'gpu_scaling_super_fine', 'cpu_resolution',
           'gpu_resolution', 'cpu_partition_cores_super_fine',
-          'gpu_nsight_scaling_super_fine', 'gpu_partition_super_fine')
+          'gpu_nsight_scaling_super_fine', 'gpu_partition_super_fine',
+          'gpu_scaling_super_super_fine', 'gpu_scaling_super_super_super_fine',
+          'gpu_weak_scaling_super_fine')
 
 
 def doubling(maximum, cpu=False):
@@ -38,8 +43,8 @@ def partition_for(ranks, grid, extended=False):
     return [x, y, 1]
 
 
-def configuration(series, ranks, grid_name='super_fine', partition=None):
-    grid = GRIDS[grid_name]
+def configuration(series, ranks, grid_name='super_fine', partition=None, global_resolution=None):
+    grid = global_resolution if global_resolution is not None else GRIDS[grid_name]
     gpu = series.startswith('gpu_')
     partition = partition or partition_for(ranks, grid, extended=gpu)
     if len(partition) != 3 or math.prod(partition) != ranks or partition[2] != 1 or min(partition) < 1:
@@ -53,9 +58,12 @@ def configuration(series, ranks, grid_name='super_fine', partition=None):
                 grid_type='LatitudeLongitudeGrid', partition=partition, x_sizes=xs, y_sizes=ys,
                 float_type='Float64', momentum_advection='WENOVectorInvariantDefault',
                 tracer_advection='WENO7', closure='CATKE', tracers=['T', 'S'],
-                timestepper='SplitRungeKutta3', dt=60, free_surface_substeps=30,
+                timestepper='SplitRungeKutta3', dt=60 * min(1, 1440 / grid[0]), free_surface_substeps=30,
                 extend_free_surface_halos=gpu, warmup_steps=2, samples=5, time_steps=10,
-                profile=series == 'gpu_nsight_scaling_super_fine')
+                profile=series == 'gpu_nsight_scaling_super_fine',
+                scaling_type='weak' if series == 'gpu_weak_scaling_super_fine' else
+                             'strong' if 'scaling' in series else 'comparison',
+                baseline_ranks=GPU_BASELINES.get(series, 1))
 
 
 def build_plan(server, selected=SERIES):
@@ -64,27 +72,36 @@ def build_plan(server, selected=SERIES):
         gpu = series.startswith('gpu_')
         maximum = server['max_gpus' if gpu else 'max_cpu_cores']
         if series.endswith('resolution'):
-            specs = [(1, name, None) for name in GRIDS]
+            specs = [(1, name, None) for name in RESOLUTION_GRIDS]
         elif series == 'cpu_partition_cores_super_fine':
             specs = [(192, 'super_fine', [x, 192 // x, 1])
                      for x in range(192, 0, -1) if 192 % x == 0]
         elif series == 'gpu_partition_super_fine':
-            specs = [(n, 'super_fine', p) for n, partitions in
-                     ((2, ([2, 1, 1], [1, 2, 1])), (4, ([4, 1, 1], [2, 2, 1], [1, 4, 1])))
-                     for p in partitions]
+            specs = [(n, 'super_fine', [x, n // x, 1]) for n in (2, 4, 8, 16)
+                     for x in range(n, 0, -1) if n % x == 0]
+        elif series == 'gpu_weak_scaling_super_fine':
+            counts = doubling(maximum)[::2]
+            counts.append(counts[-1] * 4 if counts else 1)
+            specs = [(n, 'super_fine' if n == 1 else f'weak_{n}_ranks',
+                      [math.isqrt(n), math.isqrt(n), 1]) for n in counts]
         else:
-            specs = [(n, 'super_fine', None) for n in doubling(maximum, cpu=not gpu)]
+            grid_name = series.removeprefix('gpu_scaling_') if series in GPU_BASELINES else 'super_fine'
+            baseline = GPU_BASELINES.get(series, 1)
+            specs = [(n, grid_name, None) for n in doubling(maximum, cpu=not gpu) if n >= baseline]
             # Include the next doubling as an explicit resource boundary.
             last = specs[-1][0] if specs else 0
-            next_count = 3 if not gpu and last == 1 else max(1, last * 2)
-            specs.append((next_count, 'super_fine', None))
+            next_count = 3 if not gpu and last == 1 else max(baseline, last * 2)
+            specs.append((next_count, grid_name, None))
         for ranks, grid_name, partition in specs:
-            label = ('x'.join(map(str, partition)) if partition else
+            label = (f'{ranks}_ranks' if series == 'gpu_weak_scaling_super_fine' else
+                     'x'.join(map(str, partition)) if partition else
                      grid_name if series.endswith('resolution') else f'{ranks}_ranks')
             case = dict(id=f'{series}/{label}', series=series, ranks=ranks,
                         grid_name=grid_name, partition=partition, state='PLANNED', details='', job_id='')
             try:
-                case['configuration'] = configuration(series, ranks, grid_name, partition)
+                weak_grid = ([1440 * math.isqrt(ranks), 720 * math.isqrt(ranks), 200]
+                             if series == 'gpu_weak_scaling_super_fine' else None)
+                case['configuration'] = configuration(series, ranks, grid_name, partition, weak_grid)
                 case['partition'] = case['configuration']['partition']
                 if ranks > maximum:
                     case.update(state='RESOURCE_LIMIT', details=f'Requires {ranks}; configured capacity is {maximum}')
