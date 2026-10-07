@@ -689,3 +689,31 @@ gpu_partition_super_fine/1x4x1: PENDING [1, 4, 1]
  create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/8_ranks/raw_traces.csv
  create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_scaling_super_fine/4_ranks/layout.json
 
+[codex/benchmarking d0daed985] Record validated benchmark suite results and job outcomes
+ 33 files changed, 1062 insertions(+), 157 deletions(-)
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/4_ranks/allocation.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/4_ranks/compute_hardware.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/4_ranks/job.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/4_ranks/julia_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/4_ranks/layout.json
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/4_ranks/modules.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/4_ranks/nsight_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/4_ranks/rank_0/profile.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/4_ranks/rank_1/profile.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/4_ranks/rank_2/profile.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/4_ranks/rank_3/profile.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/4_ranks/slurm_job.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/4_ranks/started.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_partition_super_fine/4x1x1/allocation.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_partition_super_fine/4x1x1/compute_hardware.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_partition_super_fine/4x1x1/job.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_partition_super_fine/4x1x1/julia_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_partition_super_fine/4x1x1/layout.json
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_partition_super_fine/4x1x1/modules.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_partition_super_fine/4x1x1/nsight_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_partition_super_fine/4x1x1/slurm_job.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_partition_super_fine/4x1x1/started.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_scaling_super_fine/4_ranks/exit_code.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_scaling_super_fine/4_ranks/finished.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_scaling_super_fine/4_ranks/results.json
+

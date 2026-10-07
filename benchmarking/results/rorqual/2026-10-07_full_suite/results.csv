@@ -11,8 +11,8 @@ cpu_mpi_scaling_super_fine,384_ranks,384,24x16x1,1440x720x200,LatitudeLongitudeG
 cpu_mpi_scaling_super_fine,768_ranks,768,32x24x1,1440x720x200,LatitudeLongitudeGrid,FAILED,22632329,,,,,Exit 9:0; None
 cpu_mpi_scaling_super_fine,1536_ranks,1536,32x48x1,1440x720x200,LatitudeLongitudeGrid,FAILED,22632330,,,,,Exit 9:0; None
 cpu_mpi_scaling_super_fine,3072_ranks,3072,64x48x1,1440x720x200,LatitudeLongitudeGrid,FAILED,22632331,,,,,Exit 9:0; None
-cpu_mpi_scaling_super_fine,6144_ranks,6144,96x64x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632332,,,,,(Priority); estimated start 2026-10-07T04:57:56 (scheduler timezone)
-cpu_mpi_scaling_super_fine,12288_ranks,12288,128x96x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632333,,,,,"(Nodes required for job are DOWN, DRAINED or reserved for jobs in higher priority partitions); estimated start 2026-10-07T04:50:32 (scheduler timezone)"
+cpu_mpi_scaling_super_fine,6144_ranks,6144,96x64x1,1440x720x200,LatitudeLongitudeGrid,FAILED,22632332,,,,,Exit 9:0; None
+cpu_mpi_scaling_super_fine,12288_ranks,12288,128x96x1,1440x720x200,LatitudeLongitudeGrid,FAILED,22632333,,,,,Exit 9:0; None
 cpu_mpi_scaling_super_fine,24576_ranks,24576,,1440x720x200,LatitudeLongitudeGrid,GEOMETRY_LIMIT,,,,,,24576 ranks have no horizontal partition with at least 7 local cells per direction
 gpu_scaling_super_fine,1_ranks,1,1x1x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632334,,,,,"(ReqNodeNotAvail, UnavailableNodes:rg[12602,12903,13403]); estimated start N/A (scheduler timezone)"
 gpu_scaling_super_fine,2_ranks,2,2x1x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632335,,,,,"(ReqNodeNotAvail, UnavailableNodes:rg[12602,12903,13403]); estimated start N/A (scheduler timezone)"
