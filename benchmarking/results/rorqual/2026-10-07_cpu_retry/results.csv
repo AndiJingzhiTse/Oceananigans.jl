@@ -5,14 +5,14 @@ cpu_mpi_scaling_super_fine,6_ranks,6,3x2x1,1440x720x200,LatitudeLongitudeGrid,RU
 cpu_mpi_scaling_super_fine,12_ranks,12,4x3x1,1440x720x200,LatitudeLongitudeGrid,RUNNING,22653820,,,,,Exit 0:0; None
 cpu_mpi_scaling_super_fine,24_ranks,24,6x4x1,1440x720x200,LatitudeLongitudeGrid,RUNNING,22653821,,,,,Exit 0:0; None
 cpu_mpi_scaling_super_fine,48_ranks,48,8x6x1,1440x720x200,LatitudeLongitudeGrid,RUNNING,22653822,,,,,Exit 0:0; None
-cpu_mpi_scaling_super_fine,96_ranks,96,12x8x1,1440x720x200,LatitudeLongitudeGrid,RUNNING,22653823,,,,,Exit 0:0; None
+cpu_mpi_scaling_super_fine,96_ranks,96,12x8x1,1440x720x200,LatitudeLongitudeGrid,COMPLETED,22653823,8.6115785656,8.640375911300001,,,"Rank results, finite fields and resource placement verified"
 cpu_mpi_scaling_super_fine,192_ranks,192,16x12x1,1440x720x200,LatitudeLongitudeGrid,COMPLETED,22653824,4.6840696387000005,4.7467609478,,,"Rank results, finite fields and resource placement verified"
 cpu_mpi_scaling_super_fine,384_ranks,384,24x16x1,1440x720x200,LatitudeLongitudeGrid,COMPLETED,22653825,2.9291665669,3.06783154,,,"Rank results, finite fields and resource placement verified"
 cpu_mpi_scaling_super_fine,768_ranks,768,32x24x1,1440x720x200,LatitudeLongitudeGrid,COMPLETED,22653826,1.9408310928999999,2.1464622387,,,"Rank results, finite fields and resource placement verified"
 cpu_mpi_scaling_super_fine,1536_ranks,1536,32x48x1,1440x720x200,LatitudeLongitudeGrid,COMPLETED,22653827,1.3894634243000001,1.6210855861,,,"Rank results, finite fields and resource placement verified"
 cpu_mpi_scaling_super_fine,3072_ranks,3072,64x48x1,1440x720x200,LatitudeLongitudeGrid,COMPLETED,22653828,1.0155096083,1.3308529390000001,,,"Rank results, finite fields and resource placement verified"
-cpu_mpi_scaling_super_fine,6144_ranks,6144,96x64x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22653829,,,,,(Priority); estimated start 2026-10-07T17:38:44 (scheduler timezone)
-cpu_mpi_scaling_super_fine,12288_ranks,12288,128x96x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22653830,,,,,"(Nodes required for job are DOWN, DRAINED or reserved for jobs in higher priority partitions); estimated start 2026-10-07T15:26:04 (scheduler timezone)"
+cpu_mpi_scaling_super_fine,6144_ranks,6144,96x64x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22653829,,,,,(Priority); estimated start 2026-10-07T17:58:27 (scheduler timezone)
+cpu_mpi_scaling_super_fine,12288_ranks,12288,128x96x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22653830,,,,,"(Nodes required for job are DOWN, DRAINED or reserved for jobs in higher priority partitions); estimated start 2026-10-07T15:47:03 (scheduler timezone)"
 cpu_mpi_scaling_super_fine,24576_ranks,24576,,1440x720x200,LatitudeLongitudeGrid,GEOMETRY_LIMIT,,,,,,24576 ranks have no horizontal partition with at least 7 local cells per direction
 cpu_resolution,default,1,1x1x1,360x180x50,LatitudeLongitudeGrid,RUNNING,22653831,,,,,Exit 0:0; None
 cpu_resolution,fine,1,1x1x1,720x360x100,LatitudeLongitudeGrid,RUNNING,22653832,,,,,Exit 0:0; None
