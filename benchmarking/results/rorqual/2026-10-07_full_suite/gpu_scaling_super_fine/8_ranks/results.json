@@ -1,0 +1,674 @@
+[
+  {
+    "configuration": {
+      "series": "gpu_scaling_super_fine",
+      "device": "GPU",
+      "ranks": 8,
+      "threads_per_rank": 1,
+      "grid_name": "super_fine",
+      "global_resolution": [
+        1440,
+        720,
+        200
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "partition": [
+        4,
+        2,
+        1
+      ],
+      "x_sizes": [
+        360,
+        360,
+        360,
+        360
+      ],
+      "y_sizes": [
+        360,
+        360
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENOVectorInvariantDefault",
+      "tracer_advection": "WENO7",
+      "closure": "CATKE",
+      "tracers": [
+        "T",
+        "S"
+      ],
+      "timestepper": "SplitRungeKutta3",
+      "dt": 60,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": true,
+      "warmup_steps": 2,
+      "samples": 5,
+      "time_steps": 10,
+      "profile": false
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "grid_size": [
+      360,
+      360,
+      200
+    ],
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Sizes{NTuple{4, Int64}}, Sizes{Tuple{Int64, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "Intel(R) Xeon(R) Gold 6448Y (sapphirerapids)",
+      "num_threads": 1,
+      "hostname": "rg32103",
+      "package_versions": {
+        "Adapt": "4.7.2",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-07T07:09:31.666"
+    },
+    "rank": 0,
+    "retained_free_surface_substeps": 21,
+    "time_per_step_max_seconds": 0.1713847498,
+    "time_per_step_median_seconds": 0.15082857389999998,
+    "time_per_step_seconds": 0.14642580430000002,
+    "window_seconds": [
+      1.713847498,
+      1.514287758,
+      1.47911536,
+      1.508285739,
+      1.464258043
+    ]
+  },
+  {
+    "configuration": {
+      "series": "gpu_scaling_super_fine",
+      "device": "GPU",
+      "ranks": 8,
+      "threads_per_rank": 1,
+      "grid_name": "super_fine",
+      "global_resolution": [
+        1440,
+        720,
+        200
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "partition": [
+        4,
+        2,
+        1
+      ],
+      "x_sizes": [
+        360,
+        360,
+        360,
+        360
+      ],
+      "y_sizes": [
+        360,
+        360
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENOVectorInvariantDefault",
+      "tracer_advection": "WENO7",
+      "closure": "CATKE",
+      "tracers": [
+        "T",
+        "S"
+      ],
+      "timestepper": "SplitRungeKutta3",
+      "dt": 60,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": true,
+      "warmup_steps": 2,
+      "samples": 5,
+      "time_steps": 10,
+      "profile": false
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "grid_size": [
+      360,
+      360,
+      200
+    ],
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Sizes{NTuple{4, Int64}}, Sizes{Tuple{Int64, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "Intel(R) Xeon(R) Gold 6448Y (sapphirerapids)",
+      "num_threads": 1,
+      "hostname": "rg32103",
+      "package_versions": {
+        "Adapt": "4.7.2",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-07T07:09:31.666"
+    },
+    "rank": 1,
+    "retained_free_surface_substeps": 21,
+    "time_per_step_max_seconds": 0.1713849173,
+    "time_per_step_median_seconds": 0.1508286434,
+    "time_per_step_seconds": 0.14642592459999998,
+    "window_seconds": [
+      1.713849173,
+      1.514289999,
+      1.479116865,
+      1.508286434,
+      1.464259246
+    ]
+  },
+  {
+    "configuration": {
+      "series": "gpu_scaling_super_fine",
+      "device": "GPU",
+      "ranks": 8,
+      "threads_per_rank": 1,
+      "grid_name": "super_fine",
+      "global_resolution": [
+        1440,
+        720,
+        200
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "partition": [
+        4,
+        2,
+        1
+      ],
+      "x_sizes": [
+        360,
+        360,
+        360,
+        360
+      ],
+      "y_sizes": [
+        360,
+        360
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENOVectorInvariantDefault",
+      "tracer_advection": "WENO7",
+      "closure": "CATKE",
+      "tracers": [
+        "T",
+        "S"
+      ],
+      "timestepper": "SplitRungeKutta3",
+      "dt": 60,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": true,
+      "warmup_steps": 2,
+      "samples": 5,
+      "time_steps": 10,
+      "profile": false
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "grid_size": [
+      360,
+      360,
+      200
+    ],
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Sizes{NTuple{4, Int64}}, Sizes{Tuple{Int64, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "Intel(R) Xeon(R) Gold 6448Y (sapphirerapids)",
+      "num_threads": 1,
+      "hostname": "rg32103",
+      "package_versions": {
+        "Adapt": "4.7.2",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-07T07:09:31.666"
+    },
+    "rank": 2,
+    "retained_free_surface_substeps": 21,
+    "time_per_step_max_seconds": 0.17138490550000002,
+    "time_per_step_median_seconds": 0.1508286351,
+    "time_per_step_seconds": 0.1464258539,
+    "window_seconds": [
+      1.713849055,
+      1.514287336,
+      1.479116056,
+      1.508286351,
+      1.464258539
+    ]
+  },
+  {
+    "configuration": {
+      "series": "gpu_scaling_super_fine",
+      "device": "GPU",
+      "ranks": 8,
+      "threads_per_rank": 1,
+      "grid_name": "super_fine",
+      "global_resolution": [
+        1440,
+        720,
+        200
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "partition": [
+        4,
+        2,
+        1
+      ],
+      "x_sizes": [
+        360,
+        360,
+        360,
+        360
+      ],
+      "y_sizes": [
+        360,
+        360
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENOVectorInvariantDefault",
+      "tracer_advection": "WENO7",
+      "closure": "CATKE",
+      "tracers": [
+        "T",
+        "S"
+      ],
+      "timestepper": "SplitRungeKutta3",
+      "dt": 60,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": true,
+      "warmup_steps": 2,
+      "samples": 5,
+      "time_steps": 10,
+      "profile": false
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "grid_size": [
+      360,
+      360,
+      200
+    ],
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Sizes{NTuple{4, Int64}}, Sizes{Tuple{Int64, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "Intel(R) Xeon(R) Gold 6448Y (sapphirerapids)",
+      "num_threads": 1,
+      "hostname": "rg32103",
+      "package_versions": {
+        "Adapt": "4.7.2",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-07T07:09:31.666"
+    },
+    "rank": 3,
+    "retained_free_surface_substeps": 21,
+    "time_per_step_max_seconds": 0.1713850252,
+    "time_per_step_median_seconds": 0.1508287163,
+    "time_per_step_seconds": 0.14642589960000002,
+    "window_seconds": [
+      1.713850252,
+      1.514289712,
+      1.479116776,
+      1.508287163,
+      1.464258996
+    ]
+  },
+  {
+    "configuration": {
+      "series": "gpu_scaling_super_fine",
+      "device": "GPU",
+      "ranks": 8,
+      "threads_per_rank": 1,
+      "grid_name": "super_fine",
+      "global_resolution": [
+        1440,
+        720,
+        200
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "partition": [
+        4,
+        2,
+        1
+      ],
+      "x_sizes": [
+        360,
+        360,
+        360,
+        360
+      ],
+      "y_sizes": [
+        360,
+        360
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENOVectorInvariantDefault",
+      "tracer_advection": "WENO7",
+      "closure": "CATKE",
+      "tracers": [
+        "T",
+        "S"
+      ],
+      "timestepper": "SplitRungeKutta3",
+      "dt": 60,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": true,
+      "warmup_steps": 2,
+      "samples": 5,
+      "time_steps": 10,
+      "profile": false
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "grid_size": [
+      360,
+      360,
+      200
+    ],
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Sizes{NTuple{4, Int64}}, Sizes{Tuple{Int64, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "Intel(R) Xeon(R) Gold 6448Y (sapphirerapids)",
+      "num_threads": 1,
+      "hostname": "rg32201",
+      "package_versions": {
+        "Adapt": "4.7.2",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-07T07:09:31.665"
+    },
+    "rank": 4,
+    "retained_free_surface_substeps": 21,
+    "time_per_step_max_seconds": 0.1713847663,
+    "time_per_step_median_seconds": 0.1508289644,
+    "time_per_step_seconds": 0.14642619610000002,
+    "window_seconds": [
+      1.713847663,
+      1.514292181,
+      1.479119019,
+      1.508289644,
+      1.464261961
+    ]
+  },
+  {
+    "configuration": {
+      "series": "gpu_scaling_super_fine",
+      "device": "GPU",
+      "ranks": 8,
+      "threads_per_rank": 1,
+      "grid_name": "super_fine",
+      "global_resolution": [
+        1440,
+        720,
+        200
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "partition": [
+        4,
+        2,
+        1
+      ],
+      "x_sizes": [
+        360,
+        360,
+        360,
+        360
+      ],
+      "y_sizes": [
+        360,
+        360
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENOVectorInvariantDefault",
+      "tracer_advection": "WENO7",
+      "closure": "CATKE",
+      "tracers": [
+        "T",
+        "S"
+      ],
+      "timestepper": "SplitRungeKutta3",
+      "dt": 60,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": true,
+      "warmup_steps": 2,
+      "samples": 5,
+      "time_steps": 10,
+      "profile": false
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "grid_size": [
+      360,
+      360,
+      200
+    ],
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Sizes{NTuple{4, Int64}}, Sizes{Tuple{Int64, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "Intel(R) Xeon(R) Gold 6448Y (sapphirerapids)",
+      "num_threads": 1,
+      "hostname": "rg32201",
+      "package_versions": {
+        "Adapt": "4.7.2",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-07T07:09:31.666"
+    },
+    "rank": 5,
+    "retained_free_surface_substeps": 21,
+    "time_per_step_max_seconds": 0.1713850042,
+    "time_per_step_median_seconds": 0.15082902520000002,
+    "time_per_step_seconds": 0.1464263618,
+    "window_seconds": [
+      1.713850042,
+      1.514293659,
+      1.479120004,
+      1.508290252,
+      1.464263618
+    ]
+  },
+  {
+    "configuration": {
+      "series": "gpu_scaling_super_fine",
+      "device": "GPU",
+      "ranks": 8,
+      "threads_per_rank": 1,
+      "grid_name": "super_fine",
+      "global_resolution": [
+        1440,
+        720,
+        200
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "partition": [
+        4,
+        2,
+        1
+      ],
+      "x_sizes": [
+        360,
+        360,
+        360,
+        360
+      ],
+      "y_sizes": [
+        360,
+        360
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENOVectorInvariantDefault",
+      "tracer_advection": "WENO7",
+      "closure": "CATKE",
+      "tracers": [
+        "T",
+        "S"
+      ],
+      "timestepper": "SplitRungeKutta3",
+      "dt": 60,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": true,
+      "warmup_steps": 2,
+      "samples": 5,
+      "time_steps": 10,
+      "profile": false
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "grid_size": [
+      360,
+      360,
+      200
+    ],
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Sizes{NTuple{4, Int64}}, Sizes{Tuple{Int64, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "Intel(R) Xeon(R) Gold 6448Y (sapphirerapids)",
+      "num_threads": 1,
+      "hostname": "rg32201",
+      "package_versions": {
+        "Adapt": "4.7.2",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-07T07:09:31.665"
+    },
+    "rank": 6,
+    "retained_free_surface_substeps": 21,
+    "time_per_step_max_seconds": 0.17138492219999998,
+    "time_per_step_median_seconds": 0.1508290658,
+    "time_per_step_seconds": 0.1464262773,
+    "window_seconds": [
+      1.713849222,
+      1.514291853,
+      1.479120478,
+      1.508290658,
+      1.464262773
+    ]
+  },
+  {
+    "configuration": {
+      "series": "gpu_scaling_super_fine",
+      "device": "GPU",
+      "ranks": 8,
+      "threads_per_rank": 1,
+      "grid_name": "super_fine",
+      "global_resolution": [
+        1440,
+        720,
+        200
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "partition": [
+        4,
+        2,
+        1
+      ],
+      "x_sizes": [
+        360,
+        360,
+        360,
+        360
+      ],
+      "y_sizes": [
+        360,
+        360
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENOVectorInvariantDefault",
+      "tracer_advection": "WENO7",
+      "closure": "CATKE",
+      "tracers": [
+        "T",
+        "S"
+      ],
+      "timestepper": "SplitRungeKutta3",
+      "dt": 60,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": true,
+      "warmup_steps": 2,
+      "samples": 5,
+      "time_steps": 10,
+      "profile": false
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "grid_size": [
+      360,
+      360,
+      200
+    ],
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Sizes{NTuple{4, Int64}}, Sizes{Tuple{Int64, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "Intel(R) Xeon(R) Gold 6448Y (sapphirerapids)",
+      "num_threads": 1,
+      "hostname": "rg32201",
+      "package_versions": {
+        "Adapt": "4.7.2",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-07T07:09:31.665"
+    },
+    "rank": 7,
+    "retained_free_surface_substeps": 21,
+    "time_per_step_max_seconds": 0.1713850626,
+    "time_per_step_median_seconds": 0.1508291424,
+    "time_per_step_seconds": 0.14642637409999998,
+    "window_seconds": [
+      1.713850626,
+      1.514294191,
+      1.479120139,
+      1.508291424,
+      1.464263741
+    ]
+  }
+]
