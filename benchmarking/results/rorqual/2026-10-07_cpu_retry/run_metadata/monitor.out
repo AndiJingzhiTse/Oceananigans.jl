@@ -240,3 +240,12 @@ cpu_partition_cores_super_fine/1x192x1: GEOMETRY_LIMIT [1, 192, 1]
  create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_resolution/super_fine/slurm_job.txt
  create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_resolution/super_fine/started.txt
 
+[codex/benchmarking 7e8fb7371] Record validated benchmark suite results and job outcomes
+ 16 files changed, 45451 insertions(+), 6 deletions(-)
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/384_ranks/exit_code.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/384_ranks/finished.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/384_ranks/results.json
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_resolution/default/layout.json
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_resolution/fine/layout.json
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_resolution/super_fine/layout.json
+
