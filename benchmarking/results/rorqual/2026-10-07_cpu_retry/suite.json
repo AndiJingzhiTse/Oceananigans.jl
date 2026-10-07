@@ -219,8 +219,8 @@
         3,
         1
       ],
-      "state": "RUNNING",
-      "details": "Exit 0:0; None",
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
       "job_id": "22653820",
       "configuration": {
         "series": "cpu_mpi_scaling_super_fine",
@@ -266,6 +266,14 @@
         "samples": 5,
         "time_steps": 10,
         "profile": false
+      },
+      "measurement": {
+        "fastest": 53.4755714173,
+        "median": 53.536203526899996,
+        "maximum": 53.7014549377,
+        "retained_substeps": [
+          21
+        ]
       }
     },
     {
@@ -1119,7 +1127,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(Priority); estimated start 2026-10-07T17:22:26 (scheduler timezone)",
+      "details": "(Priority); estimated start 2026-10-07T13:01:37 (scheduler timezone)",
       "job_id": "22653829",
       "configuration": {
         "series": "cpu_mpi_scaling_super_fine",
@@ -1331,7 +1339,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(Priority); estimated start 2026-10-07T16:07:36 (scheduler timezone)",
+      "details": "(Priority); estimated start 2026-10-07T16:21:31 (scheduler timezone)",
       "job_id": "22653830",
       "configuration": {
         "series": "cpu_mpi_scaling_super_fine",
