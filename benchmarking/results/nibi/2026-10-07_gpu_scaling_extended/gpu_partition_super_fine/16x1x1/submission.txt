@@ -1,0 +1,2 @@
+sbatch --parsable --job-name=bench_gpu_partition_super_fine --nodes=2 --ntasks=16 --ntasks-per-node=8 --cpus-per-task=8 --output=/home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-07_gpu_scaling_extended/gpu_partition_super_fine/16x1x1/allocation.out --account=def-fpoulin --time=03:00:00 --gpus-per-task=h100:1 --mem=0 /home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-07_gpu_scaling_extended/gpu_partition_super_fine/16x1x1/allocation.sh
+23439407
