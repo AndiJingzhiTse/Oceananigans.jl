@@ -1134,8 +1134,8 @@
         64,
         1
       ],
-      "state": "PENDING",
-      "details": "(Nodes required for job are DOWN, DRAINED or reserved for jobs in higher priority partitions); estimated start 2026-10-08T12:29:19 (scheduler timezone)",
+      "state": "RUNNING",
+      "details": "Exit 0:0; None",
       "job_id": "22653829",
       "configuration": {
         "series": "cpu_mpi_scaling_super_fine",
@@ -1346,8 +1346,8 @@
         96,
         1
       ],
-      "state": "RUNNING",
-      "details": "Exit 0:0; None",
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
       "job_id": "22653830",
       "configuration": {
         "series": "cpu_mpi_scaling_super_fine",
@@ -1610,6 +1610,14 @@
         "samples": 5,
         "time_steps": 10,
         "profile": false
+      },
+      "measurement": {
+        "fastest": 3.5922874882999998,
+        "median": 4.829213093,
+        "maximum": 5.2253559621,
+        "retained_substeps": [
+          21
+        ]
       }
     },
     {
