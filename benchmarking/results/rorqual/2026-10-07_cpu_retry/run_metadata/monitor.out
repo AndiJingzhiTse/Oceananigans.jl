@@ -170,3 +170,73 @@ cpu_partition_cores_super_fine/1x192x1: GEOMETRY_LIMIT [1, 192, 1]
  create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/48_ranks/layout.json
  create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/48_ranks/started.txt
 
+[codex/benchmarking 5e3488712] Record validated benchmark suite results and job outcomes
+ 75 files changed, 116905 insertions(+), 52 deletions(-)
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/12_ranks/allocation.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/12_ranks/compute_hardware.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/12_ranks/job.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/12_ranks/julia_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/12_ranks/layout.json
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/12_ranks/modules.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/12_ranks/nsight_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/12_ranks/slurm_job.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/12_ranks/started.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/1_ranks/allocation.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/1_ranks/compute_hardware.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/1_ranks/job.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/1_ranks/julia_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/1_ranks/layout.json
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/1_ranks/modules.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/1_ranks/nsight_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/1_ranks/slurm_job.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/1_ranks/started.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/384_ranks/layout.json
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/3_ranks/allocation.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/3_ranks/compute_hardware.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/3_ranks/job.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/3_ranks/julia_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/3_ranks/layout.json
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/3_ranks/modules.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/3_ranks/nsight_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/3_ranks/slurm_job.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/3_ranks/started.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/6_ranks/allocation.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/6_ranks/compute_hardware.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/6_ranks/job.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/6_ranks/julia_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/6_ranks/layout.json
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/6_ranks/modules.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/6_ranks/nsight_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/6_ranks/slurm_job.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/6_ranks/started.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/768_ranks/exit_code.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/768_ranks/finished.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/768_ranks/layout.json
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/768_ranks/results.json
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/96_ranks/layout.json
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_partition_cores_super_fine/64x3x1/layout.json
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_resolution/default/allocation.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_resolution/default/compute_hardware.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_resolution/default/job.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_resolution/default/julia_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_resolution/default/modules.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_resolution/default/nsight_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_resolution/default/slurm_job.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_resolution/default/started.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_resolution/fine/allocation.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_resolution/fine/compute_hardware.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_resolution/fine/job.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_resolution/fine/julia_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_resolution/fine/modules.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_resolution/fine/nsight_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_resolution/fine/slurm_job.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_resolution/fine/started.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_resolution/super_fine/allocation.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_resolution/super_fine/compute_hardware.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_resolution/super_fine/job.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_resolution/super_fine/julia_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_resolution/super_fine/modules.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_resolution/super_fine/nsight_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_resolution/super_fine/slurm_job.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_resolution/super_fine/started.txt
+

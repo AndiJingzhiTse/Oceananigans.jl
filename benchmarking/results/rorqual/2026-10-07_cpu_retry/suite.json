@@ -566,8 +566,8 @@
         16,
         1
       ],
-      "state": "RUNNING",
-      "details": "Exit 0:0; None",
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
       "job_id": "22653825",
       "configuration": {
         "series": "cpu_mpi_scaling_super_fine",
@@ -646,6 +646,14 @@
         "samples": 5,
         "time_steps": 10,
         "profile": false
+      },
+      "measurement": {
+        "fastest": 2.9291665669,
+        "median": 3.06783154,
+        "maximum": 5.1599094755,
+        "retained_substeps": [
+          21
+        ]
       }
     },
     {
