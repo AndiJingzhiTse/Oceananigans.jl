@@ -1,0 +1,3 @@
+sbatch --parsable --job-name=bench_cpu_resolution --nodes=1 --ntasks=1 --ntasks-per-node=1 --cpus-per-task=1 --output=/home/anditse/Oceananigans.jl/benchmarking/results/fir/2026-10-07_full_suite/cpu_resolution/super_fine/allocation.out --account=def-fpoulin_cpu --time=24:00:00 --hint=nomultithread --exclusive --mem=0 /home/anditse/Oceananigans.jl/benchmarking/results/fir/2026-10-07_full_suite/cpu_resolution/super_fine/allocation.sh
+sbatch: Please note that you have specified the --exclusive flag but have not asked for all of the cores available on a node.
+63409698
