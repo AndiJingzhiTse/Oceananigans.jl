@@ -6152,3 +6152,21 @@ rank 5038 on c614.nibi.sharcnet: 1 pinned threads; allocated CPUs 46
 rank 5009 on c614.nibi.sharcnet: 1 pinned threads; allocated CPUs 17
 rank 4995 on c614.nibi.sharcnet: 1 pinned threads; allocated CPUs 3
 PASS: CPU MPI ring and explicitly pinned Julia threads
+CONFIGURATION: {"cores":6144,"nodes":32,"ranks":6144,"ranks_per_node":192,"threads_per_rank":1,"layout":"mpi","partition":[96,64,1],"global_resolution":[1440,720,200],"grid_type":"LatitudeLongitudeGrid","x_sizes":[15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15],"y_sizes":[12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,12,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11,11],"float_type":"Float64","samples":5,"time_steps":10,"warmup_steps":2,"dt":60,"free_surface_substeps":30,"extend_free_surface_halos":false,"momentum_advection":"WENOVectorInvariantDefault","tracer_advection":"WENO7","closure":"CATKE","tracers":["T","S"],"timestepper":"SplitRungeKutta3"}
+[ Info: Benchmark: EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr
+┌ Info:   Architecture: Distributed{CPU} on 96×64×1 across 6144 = 96×64×1 ranks:
+│ ├── local_rank: 0 of 0-6143
+│ ├── local_index: [1, 1, 1]
+└ └── connectivity: east=64 west=6080 north=1 south=63 southwest=6143 southeast=127 northwest=6081 northeast=65
+[ Info:   Float type: Float64
+[ Info:   Grid size: 15 × 12 × 200 (36000 points)
+[ Info:   Time step: 60 s
+[ Info:   Warmup steps: 2
+[ Info:   Benchmark steps: 10 × 5 windows
+[ Info:   Running warmup...
+[ Info:   Running benchmark...
+[ Info:   Results:
+[ Info:     Total time: 52.423 s
+[ Info:     Time per step: 0.718151 s (min of 5 windows; median 0.928292 s, max 1.575374 s)
+[ Info:     Grid points/s: 5.01e+04
+Completed benchmark; all 6144 rank results saved to /home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_scaling_cores_super_fine/6144_cores/results.json
