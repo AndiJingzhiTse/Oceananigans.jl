@@ -1,0 +1,162 @@
+[
+  {
+    "name": "EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr",
+    "group": "",
+    "float_type": "Float64",
+    "grid_size": [
+      360,
+      720,
+      200
+    ],
+    "time_steps": 10,
+    "samples": 5,
+    "Δt": 60.0,
+    "total_time_seconds": 13.200274615000001,
+    "time_per_step_seconds": 0.2612422285,
+    "time_per_step_median_seconds": 0.2624923063,
+    "time_per_step_max_seconds": 0.2691086267,
+    "steps_per_second": 3.8278650650846058,
+    "grid_points_per_second": 1.9843652497398597e8,
+    "gpu_memory_used": 0,
+    "metadata": {
+      "julia_version": "1.10.10",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Int64, Int64, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "INTEL(R) XEON(R) PLATINUM 8570 (icelake-client)",
+      "num_threads": 1,
+      "hostname": "g13.nibi.sharcnet",
+      "package_versions": {
+        "Adapt": "4.7.1",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.15",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-07T16:19:39.117"
+    },
+    "rank": 0
+  },
+  {
+    "name": "EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr",
+    "group": "",
+    "float_type": "Float64",
+    "grid_size": [
+      360,
+      720,
+      200
+    ],
+    "time_steps": 10,
+    "samples": 5,
+    "Δt": 60.0,
+    "total_time_seconds": 13.200358274000001,
+    "time_per_step_seconds": 0.2612432973,
+    "time_per_step_median_seconds": 0.2625064773,
+    "time_per_step_max_seconds": 0.269102728,
+    "steps_per_second": 3.8278494045022144,
+    "grid_points_per_second": 1.984357131293948e8,
+    "gpu_memory_used": 0,
+    "metadata": {
+      "julia_version": "1.10.10",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Int64, Int64, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "INTEL(R) XEON(R) PLATINUM 8570 (icelake-client)",
+      "num_threads": 1,
+      "hostname": "g13.nibi.sharcnet",
+      "package_versions": {
+        "Adapt": "4.7.1",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.15",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-07T16:19:39.117"
+    },
+    "rank": 1
+  },
+  {
+    "name": "EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr",
+    "group": "",
+    "float_type": "Float64",
+    "grid_size": [
+      360,
+      720,
+      200
+    ],
+    "time_steps": 10,
+    "samples": 5,
+    "Δt": 60.0,
+    "total_time_seconds": 13.200480458,
+    "time_per_step_seconds": 0.26124609520000003,
+    "time_per_step_median_seconds": 0.2625216152,
+    "time_per_step_max_seconds": 0.2691000785,
+    "steps_per_second": 3.827808408904402,
+    "grid_points_per_second": 1.9843358791760418e8,
+    "gpu_memory_used": 0,
+    "metadata": {
+      "julia_version": "1.10.10",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Int64, Int64, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "INTEL(R) XEON(R) PLATINUM 8570 (icelake-client)",
+      "num_threads": 1,
+      "hostname": "g13.nibi.sharcnet",
+      "package_versions": {
+        "Adapt": "4.7.1",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.15",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-07T16:19:39.117"
+    },
+    "rank": 2
+  },
+  {
+    "name": "EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr",
+    "group": "",
+    "float_type": "Float64",
+    "grid_size": [
+      360,
+      720,
+      200
+    ],
+    "time_steps": 10,
+    "samples": 5,
+    "Δt": 60.0,
+    "total_time_seconds": 13.200548952,
+    "time_per_step_seconds": 0.2612549555,
+    "time_per_step_median_seconds": 0.2624928828,
+    "time_per_step_max_seconds": 0.2691348477,
+    "steps_per_second": 3.8276785911530777,
+    "grid_points_per_second": 1.9842685816537556e8,
+    "gpu_memory_used": 0,
+    "metadata": {
+      "julia_version": "1.10.10",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Int64, Int64, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "INTEL(R) XEON(R) PLATINUM 8570 (icelake-client)",
+      "num_threads": 1,
+      "hostname": "g13.nibi.sharcnet",
+      "package_versions": {
+        "Adapt": "4.7.1",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.15",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-07T16:19:39.117"
+    },
+    "rank": 3
+  }
+]
