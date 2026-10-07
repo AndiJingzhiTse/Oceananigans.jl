@@ -161,6 +161,48 @@ distributed runs, also record the local resolution per rank. In benchmark
 series, associate these settings with each individual run so that its
 configuration remains clear when results are compared or plotted.
 
+### Common Benchmark Settings and Records
+
+Unless the user specifies a different configuration, use `earth_ocean` on a
+`LatitudeLongitudeGrid` without bathymetry, Float64,
+`WENOVectorInvariantDefault` momentum advection, WENO7 tracer advection,
+CATKE, T/S tracers, `SplitRungeKutta3`, Δt = 60 simulated seconds, and
+30 requested free-surface substeps. Run two untimed warmup steps followed
+by five timing windows of ten steps each. Record the actual retained
+free-surface substeps and `extend_halos` setting; the CPU MPI scaling
+configuration uses `extend_halos=false`, while the GPU configuration uses
+`extend_halos=true`. Keep model and grid settings consistent within a
+comparison, and record any intentional exceptions.
+
+Record MPI ranks, Julia threads per rank, physical cores, nodes, actual
+CPU/GPU affinity, hardware, Julia/package/MPI/CUDA/profiler versions as
+applicable, source revision, environment snapshot, submission command,
+requested resources and execution outcome alongside the required grid and
+partition metadata. Validate complete rank results, resource placement,
+finite model fields, and MPI communication before accepting measurements.
+For GPU MPI runs, verify distinct GPUs and CUDA-aware MPI communication.
+
+### Benchmark Reporting and Completion
+
+Report fastest and median seconds per step: divide each rank's minimum
+and median window durations by the number of steps per window, then use
+the maximum across ranks for each reported statistic. Plot timing and MPI
+efficiency for strong-scaling studies, and timing comparisons for resolution
+and partition studies. Normalize efficiency to the measured one-core or
+one-GPU baseline: `efficiency = baseline_time * baseline_rank_count /
+(measured_time * measured_rank_count)`. If that baseline fails, explicitly
+identify any alternative measured baseline; do not invent missing timings.
+
+Only completed, validated measurements enter performance plots. Record
+the highest completed count and the observed reason further scaling could
+not complete. Distinguish scheduler queue/wait limits, submission/resource
+limits, geometry limits, timeouts and application or memory failures. Keep
+profiling measurements separate from unprofiled timings; record capture
+scope and preserve trace locations, checksums and profile summaries.
+Preserve raw results and failure evidence, use fresh dated directories for
+new series, and commit each finished task and its benchmark records under
+the Git Workflow rules above.
+
 ## Design Principles
 
 - **Dispatch over conditionals**: use Julia's type system and multiple dispatch instead of
