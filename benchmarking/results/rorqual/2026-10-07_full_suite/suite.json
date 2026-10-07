@@ -2553,8 +2553,8 @@
         1,
         1
       ],
-      "state": "RUNNING",
-      "details": "Exit 0:0; ReqNodeNotAvail",
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
       "job_id": "22632348",
       "configuration": {
         "series": "gpu_resolution",
@@ -2595,6 +2595,14 @@
         "samples": 5,
         "time_steps": 10,
         "profile": false
+      },
+      "measurement": {
+        "fastest": 0.9668335425000001,
+        "median": 0.9671925480000001,
+        "maximum": 0.9690668614,
+        "retained_substeps": [
+          21
+        ]
       }
     },
     {
