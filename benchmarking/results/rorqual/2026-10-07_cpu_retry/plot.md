@@ -18,7 +18,7 @@ Highest completed count: **12288 ranks**.
 | Case | Ranks | Partition | Global resolution | Grid type | State | Fastest s/step | Median s/step | Efficiency fastest / median | Details |
 |---|---:|---|---|---|---|---:|---:|---|---|
 | 1_ranks | 1 | 1x1x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
-| 3_ranks | 3 | 3x1x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
+| 3_ranks | 3 | 3x1x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 196.382277 | 196.766246 | — | Rank results, finite fields and resource placement verified |
 | 6_ranks | 6 | 3x2x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 103.102502 | 103.291139 | — | Rank results, finite fields and resource placement verified |
 | 12_ranks | 12 | 4x3x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 53.475571 | 53.536204 | — | Rank results, finite fields and resource placement verified |
 | 24_ranks | 24 | 6x4x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 30.866122 | 33.370943 | — | Rank results, finite fields and resource placement verified |
@@ -32,6 +32,8 @@ Highest completed count: **12288 ranks**.
 | 6144_ranks | 6144 | 96x64x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 3.458143 | 3.973169 | — | Rank results, finite fields and resource placement verified |
 | 12288_ranks | 12288 | 128x96x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 3.592287 | 4.829213 | — | Rank results, finite fields and resource placement verified |
 | 24576_ranks | 24576 |  | 1440x720x200 | LatitudeLongitudeGrid | GEOMETRY_LIMIT | — | — | — | 24576 ranks have no horizontal partition with at least 7 local cells per direction |
+
+[3_ranks configuration](cpu_mpi_scaling_super_fine/3_ranks/configuration.md): local resolution **480–480 × 720–720 × 200**, retained free-surface substeps [21].
 
 [6_ranks configuration](cpu_mpi_scaling_super_fine/6_ranks/configuration.md): local resolution **480–480 × 360–360 × 200**, retained free-surface substeps [21].
 
