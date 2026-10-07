@@ -1,4 +1,40 @@
-# Nibi GPU strong scaling
+# Nibi benchmarks
+
+## Series index
+
+All series below use the **super_fine 1440 × 720 × 200 LatitudeLongitudeGrid**.
+Per-case metadata records MPI partitions and local resolutions.
+
+| Series | Purpose | Report |
+|---|---|---|
+| [GPU scaling](2026-10-05_gpu_scaling/README.md) | H100 strong scaling and follow-up GPU counts | [Results](2026-10-05_gpu_scaling/plot.md) |
+| [GPU partitions](2026-10-06_gpu_partition_super_fine/README.md) | Three horizontal layouts on four GPUs | [Results](2026-10-06_gpu_partition_super_fine/plot.md) |
+| [CPU core scaling](2026-10-06_cpu_scaling_cores_super_fine/README.md) | Replacement scaling, starting at three single-threaded MPI ranks | [Results](2026-10-06_cpu_scaling_cores_super_fine/plot.md) |
+| [CPU partitions](2026-10-06_cpu_partition_super_fine/README.md) | Three layouts on four 192-core nodes | [Results](2026-10-06_cpu_partition_super_fine/plot.md) |
+| [GPU Nsight](2026-10-06_gpu_nsight_super_fine/README.md) | Six profiled layouts on 1, 2 and 4 GPUs | [Results](2026-10-06_gpu_nsight_super_fine/plot.md) |
+| [Historical CPU scaling](2026-10-06_cpu_scaling_super_fine/README.md) | Superseded 192-thread-per-rank experiment | [Analysis](2026-10-06_cpu_scaling_super_fine/analysis.md) |
+
+Scripts stay at this directory's top level so queued jobs and saved commands
+continue to resolve their paths. Dated directories contain configurations,
+results, reports and source/environment snapshots under `run_metadata/`.
+The ignored `environment/` directory is the installed Julia environment.
+
+### Saved files
+
+- `configuration.json` / `configuration.md`: requested model, grid and MPI layout.
+- `results.json` / `results.md`: measured per-rank timings and runtime metadata.
+- `jobs.json`, `attempts.csv`, `queue.txt`, `accounting.txt`: scheduler records refreshed by monitors.
+- `submission.txt`, `slurm_job.txt`, `job_id.txt`: submission command and allocation details.
+- `cpu_layout.json` / `gpu_layout.json`: actual rank placement.
+- `job.out`, `exit_code.txt`, `started.txt`, `finished.txt`: execution evidence.
+- `run_metadata/`: reproducibility snapshots and validation records.
+- Nsight `raw_traces.csv`: scratch trace locations, sizes and checksums; rank CSVs contain profile summaries.
+
+Retain measured data and failure evidence. Scratch holds large profiler traces
+and archived transient logs. Do not remove active controller lock files: removing
+them can allow two monitors to operate on the same series.
+
+## GPU strong scaling
 
 This sweep runs the global **1440 × 720 × 200** earth-ocean model on
 1, 2, 4, 8, 16, 32, … NVIDIA H100 GPUs, with one MPI rank per GPU.
