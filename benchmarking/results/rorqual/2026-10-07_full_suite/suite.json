@@ -1661,8 +1661,8 @@
         2,
         1
       ],
-      "state": "RUNNING",
-      "details": "Exit 0:0; None",
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
       "job_id": "22632336",
       "configuration": {
         "series": "gpu_scaling_super_fine",
@@ -1705,6 +1705,14 @@
         "samples": 5,
         "time_steps": 10,
         "profile": false
+      },
+      "measurement": {
+        "fastest": 0.25345050589999996,
+        "median": 0.2552552106,
+        "maximum": 0.2654067891,
+        "retained_substeps": [
+          21
+        ]
       }
     },
     {
@@ -1852,7 +1860,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(Priority); estimated start 2026-10-07T09:10:00 (scheduler timezone)",
+      "details": "(Priority); estimated start 2026-10-07T09:30:00 (scheduler timezone)",
       "job_id": "22632339",
       "configuration": {
         "series": "gpu_scaling_super_fine",
@@ -1916,7 +1924,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(Priority); estimated start 2026-10-07T07:29:31 (scheduler timezone)",
+      "details": "(Priority); estimated start 2026-10-07T07:47:48 (scheduler timezone)",
       "job_id": "22632340",
       "configuration": {
         "series": "gpu_scaling_super_fine",
@@ -1984,7 +1992,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(Nodes required for job are DOWN, DRAINED or reserved for jobs in higher priority partitions); estimated start 2026-10-07T20:12:06 (scheduler timezone)",
+      "details": "(Nodes required for job are DOWN, DRAINED or reserved for jobs in higher priority partitions); estimated start 2026-10-07T21:15:04 (scheduler timezone)",
       "job_id": "22632341",
       "configuration": {
         "series": "gpu_scaling_super_fine",
@@ -4189,8 +4197,8 @@
         2,
         1
       ],
-      "state": "PENDING",
-      "details": "(Priority); estimated start 2026-10-07T03:32:15 (scheduler timezone)",
+      "state": "RUNNING",
+      "details": "Exit 0:0; None",
       "job_id": "22632352",
       "configuration": {
         "series": "gpu_nsight_scaling_super_fine",
@@ -4392,7 +4400,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(Priority); estimated start 2026-10-07T09:10:00 (scheduler timezone)",
+      "details": "(Priority); estimated start 2026-10-07T09:30:00 (scheduler timezone)",
       "job_id": "22632355",
       "configuration": {
         "series": "gpu_nsight_scaling_super_fine",
@@ -4456,7 +4464,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(Priority); estimated start 2026-10-07T08:20:00 (scheduler timezone)",
+      "details": "(Priority); estimated start 2026-10-07T08:40:00 (scheduler timezone)",
       "job_id": "22632356",
       "configuration": {
         "series": "gpu_nsight_scaling_super_fine",
@@ -4524,7 +4532,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(Priority); estimated start 2026-10-07T21:00:00 (scheduler timezone)",
+      "details": "(Priority); estimated start 2026-10-07T20:12:06 (scheduler timezone)",
       "job_id": "22632357",
       "configuration": {
         "series": "gpu_nsight_scaling_super_fine",
@@ -4893,8 +4901,8 @@
         1,
         1
       ],
-      "state": "PENDING",
-      "details": "(Priority); estimated start N/A (scheduler timezone)",
+      "state": "RUNNING",
+      "details": "Exit 0:0; None",
       "job_id": "22632360",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -4950,8 +4958,8 @@
         2,
         1
       ],
-      "state": "PENDING",
-      "details": "(Priority); estimated start N/A (scheduler timezone)",
+      "state": "RUNNING",
+      "details": "Exit 0:0; None",
       "job_id": "22632360",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -5006,8 +5014,8 @@
         4,
         1
       ],
-      "state": "PENDING",
-      "details": "(Priority); estimated start N/A (scheduler timezone)",
+      "state": "RUNNING",
+      "details": "Exit 0:0; None",
       "job_id": "22632360",
       "configuration": {
         "series": "gpu_partition_super_fine",
