@@ -1,0 +1,152 @@
+[
+  {
+    "name": "EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr",
+    "group": "",
+    "float_type": "Float64",
+    "grid_size": [
+      720,
+      720,
+      200
+    ],
+    "time_steps": 10,
+    "samples": 5,
+    "Δt": 60.0,
+    "total_time_seconds": 26.844340536999997,
+    "time_per_step_seconds": 0.534726418,
+    "time_per_step_median_seconds": 0.5357519462,
+    "time_per_step_max_seconds": 0.5399226677,
+    "steps_per_second": 1.870115195991682,
+    "grid_points_per_second": 1.9389354352041757e8,
+    "gpu_memory_used": 0,
+    "metadata": {
+      "julia_version": "1.10.10",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Int64, Int64, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "INTEL(R) XEON(R) PLATINUM 8570 (icelake-client)",
+      "num_threads": 1,
+      "hostname": "g21.nibi.sharcnet",
+      "package_versions": {
+        "Adapt": "4.7.1",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.15",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-07T13:03:44.726"
+    },
+    "rank": 0,
+    "configuration": {
+      "gpus": 2,
+      "partition": [
+        2,
+        1,
+        1
+      ],
+      "grid_name": "super_fine",
+      "global_resolution": [
+        1440,
+        720,
+        200
+      ],
+      "local_resolution": [
+        720,
+        720,
+        200
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "float_type": "Float64",
+      "dt": 60,
+      "warmup_steps": 2,
+      "time_steps": 10,
+      "samples": 5,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": true,
+      "traces": [
+        "cuda",
+        "nvtx",
+        "mpi"
+      ],
+      "capture_range": "cudaProfilerApi",
+      "capture_scope": "timing windows after two untimed steps"
+    },
+    "finite_state": true
+  },
+  {
+    "name": "EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr",
+    "group": "",
+    "float_type": "Float64",
+    "grid_size": [
+      720,
+      720,
+      200
+    ],
+    "time_steps": 10,
+    "samples": 5,
+    "Δt": 60.0,
+    "total_time_seconds": 26.86769091,
+    "time_per_step_seconds": 0.5347558646,
+    "time_per_step_median_seconds": 0.53578577,
+    "time_per_step_max_seconds": 0.5413208907,
+    "steps_per_second": 1.870012217160077,
+    "grid_points_per_second": 1.938828666751568e8,
+    "gpu_memory_used": 0,
+    "metadata": {
+      "julia_version": "1.10.10",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Int64, Int64, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "INTEL(R) XEON(R) PLATINUM 8570 (icelake-client)",
+      "num_threads": 1,
+      "hostname": "g21.nibi.sharcnet",
+      "package_versions": {
+        "Adapt": "4.7.1",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.15",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-07T13:03:44.725"
+    },
+    "rank": 1,
+    "configuration": {
+      "gpus": 2,
+      "partition": [
+        2,
+        1,
+        1
+      ],
+      "grid_name": "super_fine",
+      "global_resolution": [
+        1440,
+        720,
+        200
+      ],
+      "local_resolution": [
+        720,
+        720,
+        200
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "float_type": "Float64",
+      "dt": 60,
+      "warmup_steps": 2,
+      "time_steps": 10,
+      "samples": 5,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": true,
+      "traces": [
+        "cuda",
+        "nvtx",
+        "mpi"
+      ],
+      "capture_range": "cudaProfilerApi",
+      "capture_scope": "timing windows after two untimed steps"
+    },
+    "finite_state": true
+  }
+]
