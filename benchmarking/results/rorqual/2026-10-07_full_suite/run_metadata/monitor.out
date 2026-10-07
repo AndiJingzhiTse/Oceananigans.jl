@@ -59,3 +59,8 @@ gpu_partition_super_fine/1x2x1: PENDING [1, 2, 1]
 gpu_partition_super_fine/4x1x1: PENDING [4, 1, 1]
 gpu_partition_super_fine/2x2x1: PENDING [2, 2, 1]
 gpu_partition_super_fine/1x4x1: PENDING [1, 4, 1]
+[codex/benchmarking 4bfc27011] Record validated benchmark suite results and job outcomes
+ 6 files changed, 183 insertions(+), 121 deletions(-)
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/run_metadata/monitor.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/run_metadata/monitor_pid.txt
+
