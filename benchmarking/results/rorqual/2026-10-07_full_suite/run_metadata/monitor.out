@@ -717,3 +717,16 @@ gpu_partition_super_fine/1x4x1: PENDING [1, 4, 1]
  create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_scaling_super_fine/4_ranks/finished.txt
  create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_scaling_super_fine/4_ranks/results.json
 
+[codex/benchmarking 24731a196] Record validated benchmark suite results and job outcomes
+ 16 files changed, 5182 insertions(+), 13 deletions(-)
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/12288_ranks/allocation.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/12288_ranks/compute_hardware.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/12288_ranks/julia_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/12288_ranks/modules.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/12288_ranks/nsight_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/6144_ranks/allocation.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/6144_ranks/compute_hardware.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/6144_ranks/julia_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/6144_ranks/modules.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/6144_ranks/nsight_version.txt
+
