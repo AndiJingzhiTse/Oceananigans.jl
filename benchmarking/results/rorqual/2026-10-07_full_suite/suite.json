@@ -4197,8 +4197,8 @@
         2,
         1
       ],
-      "state": "RUNNING",
-      "details": "Exit 0:0; None",
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
       "job_id": "22632352",
       "configuration": {
         "series": "gpu_nsight_scaling_super_fine",
@@ -4241,6 +4241,20 @@
         "samples": 5,
         "time_steps": 10,
         "profile": true
+      },
+      "measurement": {
+        "fastest": 0.29464754860000003,
+        "median": 0.29567485439999996,
+        "maximum": 0.30159603970000004,
+        "retained_substeps": [
+          21
+        ],
+        "kernel_nanoseconds": {
+          "Gc": 11657445321,
+          "Gu": 9569128027,
+          "Gv": 4566530017,
+          "Others": 25029737325
+        }
       }
     },
     {
