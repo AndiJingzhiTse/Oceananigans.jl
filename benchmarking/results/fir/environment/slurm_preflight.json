@@ -1,0 +1,132 @@
+[
+  {
+    "group": "cpu_mpi_scaling_super_fine/1_ranks",
+    "command": [
+      "sbatch",
+      "--test-only",
+      "--parsable",
+      "--job-name=bench_cpu_mpi_scaling_super_fine",
+      "--nodes=1",
+      "--ntasks=1",
+      "--ntasks-per-node=1",
+      "--cpus-per-task=1",
+      "--output=/home/anditse/Oceananigans.jl/benchmarking/suite/allocation.out",
+      "--account=def-fpoulin_cpu",
+      "--time=24:00:00",
+      "--hint=nomultithread",
+      "--exclusive",
+      "--mem=0",
+      "/home/anditse/Oceananigans.jl/benchmarking/suite/rank.sh"
+    ],
+    "exit_code": 0,
+    "output": "sbatch: Please note that you have specified the --exclusive flag but have not asked for all of the cores available on a node.\nsbatch: Job 63409363 to start at 2026-10-06T22:54:34 a using 192 processors on nodes fc20320 in partition cpubase_bynode_b3\n"
+  },
+  {
+    "group": "cpu_mpi_scaling_super_fine/12_ranks",
+    "command": [
+      "sbatch",
+      "--test-only",
+      "--parsable",
+      "--job-name=bench_cpu_mpi_scaling_super_fine",
+      "--nodes=1",
+      "--ntasks=12",
+      "--ntasks-per-node=12",
+      "--cpus-per-task=1",
+      "--output=/home/anditse/Oceananigans.jl/benchmarking/suite/allocation.out",
+      "--account=def-fpoulin_cpu",
+      "--time=06:00:00",
+      "--hint=nomultithread",
+      "--exclusive",
+      "--mem=0",
+      "/home/anditse/Oceananigans.jl/benchmarking/suite/rank.sh"
+    ],
+    "exit_code": 0,
+    "output": "sbatch: Please note that you have specified the --exclusive flag but have not asked for all of the cores available on a node.\nsbatch: Job 63409366 to start at 2026-10-06T22:54:34 a using 192 processors on nodes fc20509 in partition cpubase_bynode_b2\n"
+  },
+  {
+    "group": "cpu_mpi_scaling_super_fine/12288_ranks",
+    "command": [
+      "sbatch",
+      "--test-only",
+      "--parsable",
+      "--job-name=bench_cpu_mpi_scaling_super_fine",
+      "--nodes=64",
+      "--ntasks=12288",
+      "--ntasks-per-node=192",
+      "--cpus-per-task=1",
+      "--output=/home/anditse/Oceananigans.jl/benchmarking/suite/allocation.out",
+      "--account=def-fpoulin_cpu",
+      "--time=03:00:00",
+      "--hint=nomultithread",
+      "--exclusive",
+      "--mem=0",
+      "/home/anditse/Oceananigans.jl/benchmarking/suite/rank.sh"
+    ],
+    "exit_code": 0,
+    "output": "sbatch: Job 63409367 to start at 2026-10-07T03:05:12 a using 12288 processors on nodes fc[20135-20136,20139,20264,20305,20307,20320,20336,20349,20354,20367,20416,20437-20439,20441-20442,20444-20446,20448,20450,20454,20456-20460,20462-20472,20501-20502,20504,20508-20510,20512-20513,20516,20518,20523-20524,20532-20537,20540-20544,20549,20551] in partition cpubase_bynode_b1\n"
+  },
+  {
+    "group": "gpu_scaling_super_fine/1_ranks",
+    "command": [
+      "sbatch",
+      "--test-only",
+      "--parsable",
+      "--job-name=bench_gpu_scaling_super_fine",
+      "--nodes=1",
+      "--ntasks=1",
+      "--ntasks-per-node=1",
+      "--cpus-per-task=8",
+      "--output=/home/anditse/Oceananigans.jl/benchmarking/suite/allocation.out",
+      "--account=def-fpoulin_gpu",
+      "--time=00:45:00",
+      "--gpus-per-task=h100:1",
+      "--mem=128G",
+      "/home/anditse/Oceananigans.jl/benchmarking/suite/rank.sh"
+    ],
+    "exit_code": 0,
+    "output": "sbatch: NOTE: Your memory request of 131072.0M was likely submitted as 128.0G. Please note that Slurm interprets memory requests denominated in G as multiples of 1024M, not 1000M.\nsbatch: Job 63409368 to start at 2026-10-06T23:25:27 a using 8 processors on nodes fc10605 in partition gpubase_bygpu_b1\n"
+  },
+  {
+    "group": "gpu_scaling_super_fine/256_ranks",
+    "command": [
+      "sbatch",
+      "--test-only",
+      "--parsable",
+      "--job-name=bench_gpu_scaling_super_fine",
+      "--nodes=64",
+      "--ntasks=256",
+      "--ntasks-per-node=4",
+      "--cpus-per-task=8",
+      "--output=/home/anditse/Oceananigans.jl/benchmarking/suite/allocation.out",
+      "--account=def-fpoulin_gpu",
+      "--time=00:45:00",
+      "--gpus-per-task=h100:1",
+      "--mem=128G",
+      "/home/anditse/Oceananigans.jl/benchmarking/suite/rank.sh"
+    ],
+    "exit_code": 0,
+    "output": "sbatch: NOTE: Your memory request of 131072.0M was likely submitted as 128.0G. Please note that Slurm interprets memory requests denominated in G as multiples of 1024M, not 1000M.\nsbatch: Job 63409373 to start at 2026-10-07T22:34:36 a using 2048 processors on nodes fc[10102-10118,10120,10201-10204,10206-10217,10219-10220,10401-10402,10409-10415,10417,10420,10501-10510,10513-10517,10519-10520] in partition gpubase_bynode_b1\n"
+  },
+  {
+    "group": "cpu_partition_cores_super_fine/192_ranks",
+    "command": [
+      "sbatch",
+      "--test-only",
+      "--parsable",
+      "--job-name=bench_cpu_partition_cores_super_fine",
+      "--nodes=1",
+      "--ntasks=192",
+      "--ntasks-per-node=192",
+      "--cpus-per-task=1",
+      "--output=/home/anditse/Oceananigans.jl/benchmarking/suite/allocation.out",
+      "--account=def-fpoulin_cpu",
+      "--time=03:00:00",
+      "--hint=nomultithread",
+      "--exclusive",
+      "--mem=0",
+      "/home/anditse/Oceananigans.jl/benchmarking/suite/rank.sh"
+    ],
+    "exit_code": 0,
+    "output": "sbatch: Job 63409374 to start at 2026-10-06T22:54:35 a using 192 processors on nodes fc20509 in partition cpubase_bynode_b1\n"
+  }
+]

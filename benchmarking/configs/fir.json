@@ -1,0 +1,17 @@
+{
+  "backend": "slurm",
+  "max_cpu_cores": 165120,
+  "max_gpus": 400,
+  "cpu_cores_per_node": 192,
+  "gpus_per_node": 4,
+  "project": "$HOME/Oceananigans.jl/benchmarking/results/fir/environment",
+  "julia": "/cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/julia",
+  "environment_script": "$HOME/Oceananigans.jl/benchmarking/results/fir/environment/modules.sh",
+  "mpi_init": "$HOME/Oceananigans.jl/benchmarking/results/nibi/2026-10-05_gpu_scaling/run_metadata/drac_mpi.jl",
+  "cpu_account": "def-fpoulin_cpu",
+  "gpu_account": "def-fpoulin_gpu",
+  "gpu_type": "h100",
+  "exclusive_cpu": true,
+  "trace_root": "/scratch/$USER/benchmark_traces",
+  "report_modules": ["python/3.11", "scipy-stack/2025a"]
+}
