@@ -54,7 +54,8 @@ def summarize(folder):
     records = [line.split("|") for line in accounting.stdout.splitlines()]
     record = next((r for r in records if r[0] == job), None)
     state = record[1].split()[0].rstrip("+") if record else "SUBMITTED"
-    queue = run("squeue", "--start", "-h", "-j", job, "-o", "%i|%T|%R|%S")
+    # Completed job IDs disappear from squeue; sacct already supplied their state.
+    queue = run("true") if state in TERMINAL else run("squeue", "--start", "-h", "-j", job, "-o", "%i|%T|%R|%S")
     if queue.returncode:
         raise RuntimeError(queue.stdout)
     (folder / "queue.txt").write_text(queue.stdout)
