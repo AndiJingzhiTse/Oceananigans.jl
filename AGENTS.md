@@ -13,6 +13,28 @@ on RectilinearGrid, LatitudeLongitudeGrid, CubedSphereGrid, and ImmersedBoundary
 - **Key packages**: KernelAbstractions.jl, CUDA.jl, Enzyme.jl, Reactant.jl
 - **Style**: ExplicitImports.jl for source code; `using Oceananigans` for examples/tests
 
+## Nibi Server
+
+- Andi Tse's Nibi login username is `anditse`.
+- Use `def-fpoulin` as the Slurm allocation account (`--account=def-fpoulin`).
+  The login username `anditse` is not a Slurm allocation account.
+- Submit compute work through Slurm. Check GPUs inside an allocation with
+  `srun nvidia-smi -L`; the login node does not expose compute GPUs.
+- GPU visibility inside a job may be limited to the assigned resources, so do not
+  use it to infer the physical GPU count of the entire node or cluster.
+- This interactive request successfully allocated one full H100 on Nibi:
+
+  ```bash
+  salloc --account=def-fpoulin \
+         --nodes=1 --ntasks=1 --cpus-per-task=1 \
+         --gres=gpu:h100:1 --mem=4G --time=00:10:00
+  srun nvidia-smi -L
+  ```
+
+- Run `exit` when finished to release the interactive allocation.
+- GPU availability changes over time. Query Slurm rather than treating a saved
+  node listing as current availability.
+
 ## Critical Rules
 
 ### Kernel Functions (GPU compatibility)
