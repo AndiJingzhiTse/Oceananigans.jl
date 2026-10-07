@@ -122,7 +122,7 @@ def write_report(folder, cases, plotting=True):
              'Window boundaries synchronize MPI ranks and GPUs. Fastest/median statistics use the maximum across ranks.',
              'Efficiency uses the measured one-rank baseline for each scaling series. Missing baselines have no efficiency estimate.',
              'Dashed reference lines show ideal inverse-rank timing and 100% MPI efficiency.',
-             'Resolution plots show the cube root of previous-grid / next-grid time; doubling each grid dimension ideally gives 1/2 (raw time ratio 1/8).',
+             'Resolution plots show previous-grid / next-grid time; doubling each grid dimension ideally gives 1/8.',
              'Profiled timings are separate; Nsight captures CUDA/NVTX/MPI after warmup. Kernel shares sum durations across ranks, not elapsed wall time.', '']
     for series in dict.fromkeys(c['series'] for c in cases):
         series_rows = [r for r in rows if r['series'] == series]
@@ -176,13 +176,13 @@ def plot_series(folder, series, rows):
                  if a in all_rows and b in all_rows]
         x = list(range(len(pairs)))
         for statistic, marker, label in (('fastest', 'o-', 'Fastest'), ('median', 's--', 'Median')):
-            ax.plot(x, [(a[statistic] / b[statistic]) ** (1/3) for a, b in pairs], marker, label=label)
-        ax.axhline(0.5, color='black', linestyle=':', label='Expected: 1/2')
+            ax.plot(x, [a[statistic] / b[statistic] for a, b in pairs], marker, label=label)
+        ax.axhline(1/8, color='black', linestyle=':', label='Expected: 1/8')
         ax.set_xticks(x, [f"{a['case']} / {b['case']}" for a, b in pairs], rotation=20, ha='right')
     else:
         ax.plot(x, [r['fastest'] for r in rows], 'o-', label='Fastest')
         ax.plot(x, [r['median'] for r in rows], 's--', label='Median')
-    ax.set(ylabel='Cube root of previous-grid / next-grid time' if resolution else 'Seconds per step', title=series)
+    ax.set(ylabel='Previous-grid / next-grid time' if resolution else 'Seconds per step', title=series)
     if scaling:
         ax.set(xlabel='MPI ranks', xscale='log', yscale='log')
         baseline = next((r for r in rows if r['ranks'] == 1), None)

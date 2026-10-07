@@ -6,7 +6,7 @@ One MPI rank per CPU core or GPU, one Julia computation thread per rank. CPU ext
 Window boundaries synchronize MPI ranks and GPUs. Fastest/median statistics use the maximum across ranks.
 Efficiency uses the measured one-rank baseline for each scaling series. Missing baselines have no efficiency estimate.
 Dashed reference lines show ideal inverse-rank timing and 100% MPI efficiency.
-Resolution plots show the cube root of previous-grid / next-grid time; doubling each grid dimension ideally gives 1/2 (raw time ratio 1/8).
+Resolution plots show previous-grid / next-grid time; doubling each grid dimension ideally gives 1/8.
 Profiled timings are separate; Nsight captures CUDA/NVTX/MPI after warmup. Kernel shares sum durations across ranks, not elapsed wall time.
 
 ## cpu_mpi_scaling_super_fine
