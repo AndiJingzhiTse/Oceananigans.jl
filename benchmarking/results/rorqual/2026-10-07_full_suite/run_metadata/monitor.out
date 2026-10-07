@@ -142,3 +142,61 @@ gpu_partition_super_fine/1x4x1: PENDING [1, 4, 1]
  create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_scaling_super_fine/16_ranks/finished.txt
  create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_scaling_super_fine/16_ranks/results.json
 
+[codex/benchmarking 879ec2e25] Record validated benchmark suite results and job outcomes
+ 61 files changed, 1027 insertions(+), 71 deletions(-)
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/12_ranks/allocation.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/12_ranks/compute_hardware.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/12_ranks/julia_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/12_ranks/modules.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/12_ranks/nsight_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/1_ranks/allocation.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/1_ranks/compute_hardware.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/1_ranks/julia_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/1_ranks/modules.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/1_ranks/nsight_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/3_ranks/allocation.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/3_ranks/compute_hardware.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/3_ranks/julia_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/3_ranks/modules.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/3_ranks/nsight_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_resolution/default/allocation.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_resolution/default/compute_hardware.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_resolution/default/julia_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_resolution/default/modules.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_resolution/default/nsight_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_resolution/fine/allocation.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_resolution/fine/compute_hardware.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_resolution/fine/julia_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_resolution/fine/modules.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_resolution/fine/nsight_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_resolution/super_fine/allocation.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_resolution/super_fine/compute_hardware.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_resolution/super_fine/julia_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_resolution/super_fine/modules.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_resolution/super_fine/nsight_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/16_ranks/allocation.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/16_ranks/compute_hardware.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/16_ranks/job.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/16_ranks/julia_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/16_ranks/layout.json
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/16_ranks/modules.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/16_ranks/nsight_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/16_ranks/rank_0/profile.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/16_ranks/rank_1/profile.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/16_ranks/rank_10/profile.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/16_ranks/rank_11/profile.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/16_ranks/rank_12/profile.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/16_ranks/rank_13/profile.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/16_ranks/rank_14/profile.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/16_ranks/rank_15/profile.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/16_ranks/rank_2/profile.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/16_ranks/rank_3/profile.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/16_ranks/rank_4/profile.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/16_ranks/rank_5/profile.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/16_ranks/rank_6/profile.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/16_ranks/rank_7/profile.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/16_ranks/rank_8/profile.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/16_ranks/rank_9/profile.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/16_ranks/slurm_job.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/16_ranks/started.txt
+

@@ -1055,7 +1055,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(Priority); estimated start 2026-10-07T04:50:32 (scheduler timezone)",
+      "details": "(Priority); estimated start 2026-10-07T04:57:56 (scheduler timezone)",
       "job_id": "22632332",
       "configuration": {
         "series": "cpu_mpi_scaling_super_fine",
@@ -1844,7 +1844,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(Priority); estimated start 2026-10-07T07:00:36 (scheduler timezone)",
+      "details": "(Priority); estimated start 2026-10-07T06:27:57 (scheduler timezone)",
       "job_id": "22632339",
       "configuration": {
         "series": "gpu_scaling_super_fine",
@@ -1908,7 +1908,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(Priority); estimated start 2026-10-07T08:23:32 (scheduler timezone)",
+      "details": "(Priority); estimated start 2026-10-07T07:47:48 (scheduler timezone)",
       "job_id": "22632340",
       "configuration": {
         "series": "gpu_scaling_super_fine",
@@ -2052,7 +2052,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(Resources); estimated start 2026-10-10T10:21:58 (scheduler timezone)",
+      "details": "(Nodes required for job are DOWN, DRAINED or reserved for jobs in higher priority partitions); estimated start N/A (scheduler timezone)",
       "job_id": "22632342",
       "configuration": {
         "series": "gpu_scaling_super_fine",
@@ -4238,7 +4238,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(Priority); estimated start N/A (scheduler timezone)",
+      "details": "(Priority); estimated start 2026-10-07T03:42:56 (scheduler timezone)",
       "job_id": "22632353",
       "configuration": {
         "series": "gpu_nsight_scaling_super_fine",
@@ -4295,8 +4295,8 @@
         4,
         1
       ],
-      "state": "RUNNING",
-      "details": "Exit 0:0; None",
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
       "job_id": "22632354",
       "configuration": {
         "series": "gpu_nsight_scaling_super_fine",
@@ -4343,6 +4343,20 @@
         "samples": 5,
         "time_steps": 10,
         "profile": true
+      },
+      "measurement": {
+        "fastest": 0.1068674338,
+        "median": 0.1171248966,
+        "maximum": 0.19732914880000002,
+        "retained_substeps": [
+          21
+        ],
+        "kernel_nanoseconds": {
+          "Gc": 10670944088,
+          "Gu": 8411861687,
+          "Gv": 4442292921,
+          "Others": 30408521764
+        }
       }
     },
     {
@@ -4356,7 +4370,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(Priority); estimated start 2026-10-07T10:00:00 (scheduler timezone)",
+      "details": "(Priority); estimated start 2026-10-07T09:30:00 (scheduler timezone)",
       "job_id": "22632355",
       "configuration": {
         "series": "gpu_nsight_scaling_super_fine",
@@ -4420,7 +4434,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(Priority); estimated start 2026-10-07T09:10:00 (scheduler timezone)",
+      "details": "(Priority); estimated start 2026-10-07T08:40:00 (scheduler timezone)",
       "job_id": "22632356",
       "configuration": {
         "series": "gpu_nsight_scaling_super_fine",
@@ -4564,7 +4578,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(PartitionNodeLimit); estimated start 2026-10-10T10:21:58 (scheduler timezone)",
+      "details": "(PartitionNodeLimit); estimated start N/A (scheduler timezone)",
       "job_id": "22632358",
       "configuration": {
         "series": "gpu_nsight_scaling_super_fine",
