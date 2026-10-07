@@ -16,7 +16,7 @@ cpu_mpi_scaling_super_fine,12288_ranks,12288,128x96x1,1440x720x200,LatitudeLongi
 cpu_mpi_scaling_super_fine,24576_ranks,24576,,1440x720x200,LatitudeLongitudeGrid,GEOMETRY_LIMIT,,,,,,24576 ranks have no horizontal partition with at least 7 local cells per direction
 gpu_scaling_super_fine,1_ranks,1,1x1x1,1440x720x200,LatitudeLongitudeGrid,COMPLETED,63409687,0.9649177094000001,0.9654202739000001,1.0,1.0,"Rank results, finite fields and resource placement verified"
 gpu_scaling_super_fine,2_ranks,2,2x1x1,1440x720x200,LatitudeLongitudeGrid,COMPLETED,63409688,0.49524513600000003,0.4967323863,0.9741819144287366,0.9717710184865392,"Rank results, finite fields and resource placement verified"
-gpu_scaling_super_fine,4_ranks,4,2x2x1,1440x720x200,LatitudeLongitudeGrid,PENDING,63409689,,,,,(Priority); estimated start N/A (scheduler timezone)
+gpu_scaling_super_fine,4_ranks,4,2x2x1,1440x720x200,LatitudeLongitudeGrid,COMPLETED,63409689,0.2542975782,0.2549610799,0.9486107931404596,0.946634947458112,"Rank results, finite fields and resource placement verified"
 gpu_scaling_super_fine,8_ranks,8,4x2x1,1440x720x200,LatitudeLongitudeGrid,PENDING,63409690,,,,,(Priority); estimated start N/A (scheduler timezone)
 gpu_scaling_super_fine,16_ranks,16,4x4x1,1440x720x200,LatitudeLongitudeGrid,PENDING,63409691,,,,,(Priority); estimated start N/A (scheduler timezone)
 gpu_scaling_super_fine,32_ranks,32,8x4x1,1440x720x200,LatitudeLongitudeGrid,PENDING,63409692,,,,,(Priority); estimated start N/A (scheduler timezone)

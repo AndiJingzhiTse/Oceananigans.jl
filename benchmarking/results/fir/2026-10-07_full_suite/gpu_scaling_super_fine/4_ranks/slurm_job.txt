@@ -1,0 +1,30 @@
+JobId=63409689 JobName=bench_gpu_scaling_super_fine
+   UserId=anditse(3165591) GroupId=anditse(3165591) MCS_label=N/A
+   Priority=640946 Nice=0 Account=def-fpoulin_gpu QOS=normal
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:00:41 TimeLimit=00:45:00 TimeMin=N/A
+   SubmitTime=2026-10-06T22:57:57 EligibleTime=2026-10-06T22:57:57
+   AccrueTime=2026-10-06T22:57:57
+   StartTime=2026-10-07T07:14:10 EndTime=2026-10-07T07:59:10 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-07T07:14:10 Scheduler=Backfill
+   Partition=gpubase_bynode_b1 AllocNode:Sid=login1:2413663
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=fc10502
+   BatchHost=fc10502
+   NumNodes=1 NumCPUs=32 NumTasks=4 CPUs/Task=8 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=32,mem=128G,node=1,billing=48800,gres/gpu=4,gres/gpu:h100=4
+   AllocTRES=cpu=32,mem=128G,node=1,billing=48800,gres/gpu=4,gres/gpu:h100=4
+   Socks/Node=* NtasksPerN:B:S:C=4:0:*:* CoreSpec=*
+   MinCPUsNode=32 MinMemoryNode=128G MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=NO Exclusive=NO Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)
+   Command=/home/anditse/Oceananigans.jl/benchmarking/results/fir/2026-10-07_full_suite/gpu_scaling_super_fine/4_ranks/allocation.sh
+   SubmitLine=sbatch --parsable --job-name=bench_gpu_scaling_super_fine --nodes=1 --ntasks=4 --ntasks-per-node=4 --cpus-per-task=8 --output=/home/anditse/Oceananigans.jl/benchmarking/results/fir/2026-10-07_full_suite/gpu_scaling_super_fine/4_ranks/allocation.out --account=def-fpoulin_gpu --time=00:45:00 --gpus-per-task=h100:1 --mem=128G /home/anditse/Oceananigans.jl/benchmarking/results/fir/2026-10-07_full_suite/gpu_scaling_super_fine/4_ranks/allocation.sh
+   WorkDir=/home/anditse/Oceananigans.jl
+   StdErr=
+   StdIn=/dev/null
+   StdOut=/home/anditse/Oceananigans.jl/benchmarking/results/fir/2026-10-07_full_suite/gpu_scaling_super_fine/4_ranks/allocation.out
+   TresBind=gres/gpu:per_task:1
+   TresPerTask=cpu=8,gres/gpu:h100:1
+

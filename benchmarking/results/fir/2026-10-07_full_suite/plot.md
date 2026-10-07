@@ -30,7 +30,7 @@ Highest completed count: **0 ranks**.
 | 24576_ranks | 24576 |  | 1440x720x200 | LatitudeLongitudeGrid | GEOMETRY_LIMIT | — | — | — | 24576 ranks have no horizontal partition with at least 7 local cells per direction |
 ## gpu_scaling_super_fine
 
-Highest completed count: **2 ranks**.
+Highest completed count: **4 ranks**.
 
 ![gpu_scaling_super_fine](gpu_scaling_super_fine.svg)
 
@@ -38,7 +38,7 @@ Highest completed count: **2 ranks**.
 |---|---:|---|---|---|---|---:|---:|---|---|
 | 1_ranks | 1 | 1x1x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.964918 | 0.965420 | 100.0% / 100.0% | Rank results, finite fields and resource placement verified |
 | 2_ranks | 2 | 2x1x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.495245 | 0.496732 | 97.4% / 97.2% | Rank results, finite fields and resource placement verified |
-| 4_ranks | 4 | 2x2x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start N/A (scheduler timezone) |
+| 4_ranks | 4 | 2x2x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.254298 | 0.254961 | 94.9% / 94.7% | Rank results, finite fields and resource placement verified |
 | 8_ranks | 8 | 4x2x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start N/A (scheduler timezone) |
 | 16_ranks | 16 | 4x4x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start N/A (scheduler timezone) |
 | 32_ranks | 32 | 8x4x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start N/A (scheduler timezone) |
@@ -50,6 +50,8 @@ Highest completed count: **2 ranks**.
 [1_ranks configuration](gpu_scaling_super_fine/1_ranks/configuration.md): local resolution **1440–1440 × 720–720 × 200**, retained free-surface substeps [21].
 
 [2_ranks configuration](gpu_scaling_super_fine/2_ranks/configuration.md): local resolution **720–720 × 720–720 × 200**, retained free-surface substeps [21].
+
+[4_ranks configuration](gpu_scaling_super_fine/4_ranks/configuration.md): local resolution **720–720 × 360–360 × 200**, retained free-surface substeps [21].
 ## cpu_resolution
 
 Highest completed count: **0 ranks**.

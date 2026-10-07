@@ -1673,8 +1673,8 @@
         2,
         1
       ],
-      "state": "PENDING",
-      "details": "(Priority); estimated start N/A (scheduler timezone)",
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
       "job_id": "63409689",
       "configuration": {
         "series": "gpu_scaling_super_fine",
@@ -1717,6 +1717,14 @@
         "samples": 5,
         "time_steps": 10,
         "profile": false
+      },
+      "measurement": {
+        "fastest": 0.2542975782,
+        "median": 0.2549610799,
+        "maximum": 0.2654258606,
+        "retained_substeps": [
+          21
+        ]
       }
     },
     {
