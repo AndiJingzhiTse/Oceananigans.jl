@@ -1339,7 +1339,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(Priority); estimated start 2026-10-07T16:21:31 (scheduler timezone)",
+      "details": "(Priority); estimated start 2026-10-07T16:28:13 (scheduler timezone)",
       "job_id": "22653830",
       "configuration": {
         "series": "cpu_mpi_scaling_super_fine",
@@ -2634,8 +2634,8 @@
         12,
         1
       ],
-      "state": "RUNNING",
-      "details": "Exit 0:0; None",
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
       "job_id": "22653834",
       "configuration": {
         "series": "cpu_partition_cores_super_fine",
@@ -2702,6 +2702,14 @@
         "samples": 5,
         "time_steps": 10,
         "profile": false
+      },
+      "measurement": {
+        "fastest": 4.668087287400001,
+        "median": 4.7104301603000005,
+        "maximum": 6.138858427600001,
+        "retained_substeps": [
+          21
+        ]
       }
     },
     {
