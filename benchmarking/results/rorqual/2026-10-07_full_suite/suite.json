@@ -2429,8 +2429,8 @@
         1,
         1
       ],
-      "state": "RUNNING",
-      "details": "Exit 0:0; ReqNodeNotAvail",
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
       "job_id": "22632346",
       "configuration": {
         "series": "gpu_resolution",
@@ -2471,6 +2471,14 @@
         "samples": 5,
         "time_steps": 10,
         "profile": false
+      },
+      "measurement": {
+        "fastest": 0.017257194400000002,
+        "median": 0.0172610067,
+        "maximum": 0.0172977303,
+        "retained_substeps": [
+          21
+        ]
       }
     },
     {
@@ -2483,8 +2491,8 @@
         1,
         1
       ],
-      "state": "RUNNING",
-      "details": "Exit 0:0; ReqNodeNotAvail",
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
       "job_id": "22632347",
       "configuration": {
         "series": "gpu_resolution",
@@ -2525,6 +2533,14 @@
         "samples": 5,
         "time_steps": 10,
         "profile": false
+      },
+      "measurement": {
+        "fastest": 0.11926001989999999,
+        "median": 0.11932407249999999,
+        "maximum": 0.1195958319,
+        "retained_substeps": [
+          21
+        ]
       }
     },
     {

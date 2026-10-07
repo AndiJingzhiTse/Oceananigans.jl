@@ -67,13 +67,19 @@ Highest completed count: **0 ranks**.
 | super_fine | 1 | 1x1x1 | 1440x720x200 | LatitudeLongitudeGrid | FAILED | — | — | — | Exit 9:0; None |
 ## gpu_resolution
 
-Highest completed count: **0 ranks**.
+Highest completed count: **1 ranks**.
+
+![gpu_resolution](gpu_resolution.svg)
 
 | Case | Ranks | Partition | Global resolution | Grid type | State | Fastest s/step | Median s/step | Efficiency fastest / median | Details |
 |---|---:|---|---|---|---|---:|---:|---|---|
-| default | 1 | 1x1x1 | 360x180x50 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; ReqNodeNotAvail |
-| fine | 1 | 1x1x1 | 720x360x100 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; ReqNodeNotAvail |
+| default | 1 | 1x1x1 | 360x180x50 | LatitudeLongitudeGrid | COMPLETED | 0.017257 | 0.017261 | — | Rank results, finite fields and resource placement verified |
+| fine | 1 | 1x1x1 | 720x360x100 | LatitudeLongitudeGrid | COMPLETED | 0.119260 | 0.119324 | — | Rank results, finite fields and resource placement verified |
 | super_fine | 1 | 1x1x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (ReqNodeNotAvail, UnavailableNodes:rg[12602,12903,13403]); estimated start N/A (scheduler timezone) |
+
+[default configuration](gpu_resolution/default/configuration.md): local resolution **360–360 × 180–180 × 50**, retained free-surface substeps [21].
+
+[fine configuration](gpu_resolution/fine/configuration.md): local resolution **720–720 × 360–360 × 100**, retained free-surface substeps [21].
 ## cpu_partition_cores_super_fine
 
 Highest completed count: **0 ranks**.
