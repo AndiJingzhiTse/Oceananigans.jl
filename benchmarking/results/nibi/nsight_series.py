@@ -15,7 +15,7 @@ from refresh_scaling import TERMINAL, commit_results
 from scaling import read_results
 
 SCRIPT_DIR = Path(__file__).resolve().parent
-BRANCH = 'codex/nibi-benchmarking'
+BRANCH = 'codex/benchmarking'
 CASES = {1: ('1x1x1',), 2: ('2x1x1', '1x2x1'), 4: ('4x1x1', '2x2x1', '1x4x1')}
 CATEGORIES = ('Gc', 'Gu', 'Gv', 'Others')
 

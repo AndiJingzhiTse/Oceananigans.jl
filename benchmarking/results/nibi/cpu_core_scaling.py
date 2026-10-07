@@ -14,7 +14,7 @@ import time
 from refresh_scaling import TERMINAL, commit_results
 
 SCRIPT_DIR = Path(__file__).resolve().parent
-BRANCH = 'codex/nibi-benchmarking'
+BRANCH = 'codex/benchmarking'
 GRID = (1440, 720, 200)
 TERMINAL_STATES = TERMINAL | {'GEOMETRY_LIMIT'}
 

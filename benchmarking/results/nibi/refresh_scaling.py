@@ -112,7 +112,7 @@ def main():
     parser.add_argument("--watch", action="store_true")
     parser.add_argument("--poll-seconds", type=int, default=60)
     parser.add_argument("--commit", action="store_true", help="Commit run artifacts locally when all selected jobs terminate")
-    parser.add_argument("--branch", default="codex/nibi-benchmarking")
+    parser.add_argument("--branch", default="codex/benchmarking")
     args = parser.parse_args()
     folder = args.run_dir.resolve()
     counts = [int(n) for n in args.counts.split(",")]

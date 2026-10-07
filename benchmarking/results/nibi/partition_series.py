@@ -176,7 +176,7 @@ def main():
                 done = False
             else:
                 if done and args.commit:
-                    commit_results(folder, "codex/nibi-benchmarking",
+                    commit_results(folder, "codex/benchmarking",
                                    "Record Nibi four-GPU super-fine partition comparison results")
         if done or not args.watch:
             break

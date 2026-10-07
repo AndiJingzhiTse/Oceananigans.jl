@@ -15,7 +15,7 @@ from scaling import partition_for, read_results
 from refresh_scaling import TERMINAL, commit_results
 
 SCRIPT_DIR = Path(__file__).resolve().parent
-BRANCH = "codex/nibi-benchmarking"
+BRANCH = "codex/benchmarking"
 PARTITIONS = ("4x1x1", "2x2x1", "1x4x1")
 
 
