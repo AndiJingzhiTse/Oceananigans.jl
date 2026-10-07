@@ -1,5 +1,8 @@
 # Nibi benchmarks
 
+New benchmark studies use the [unified suite](../../README.md). The scripts
+here are compatibility entry points for historical runs and existing jobs.
+
 ## Series index
 
 All series below use the **super_fine 1440 × 720 × 200 LatitudeLongitudeGrid**.

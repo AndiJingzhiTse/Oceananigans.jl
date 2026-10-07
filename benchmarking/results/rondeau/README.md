@@ -1,5 +1,8 @@
 # Rondeau benchmarks
 
+New benchmark studies use the [unified suite](../../README.md). The scripts
+here are compatibility entry points for historical runs and existing jobs.
+
 [Setup and suite commands](rondeau.md) describe the configuration and environment.
 
 | Run | Status | Results |
