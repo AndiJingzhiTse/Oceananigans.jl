@@ -48,8 +48,8 @@
         1,
         1
       ],
-      "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "state": "FAILED",
+      "details": "Exit 9:0; None",
       "job_id": "63409673",
       "configuration": {
         "series": "cpu_mpi_scaling_super_fine",
@@ -102,8 +102,8 @@
         1,
         1
       ],
-      "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "state": "FAILED",
+      "details": "Exit 9:0; None",
       "job_id": "63409674",
       "configuration": {
         "series": "cpu_mpi_scaling_super_fine",
@@ -158,8 +158,8 @@
         2,
         1
       ],
-      "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "state": "FAILED",
+      "details": "Exit 9:0; None",
       "job_id": "63409675",
       "configuration": {
         "series": "cpu_mpi_scaling_super_fine",
@@ -215,8 +215,8 @@
         3,
         1
       ],
-      "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "state": "FAILED",
+      "details": "Exit 9:0; None",
       "job_id": "63409676",
       "configuration": {
         "series": "cpu_mpi_scaling_super_fine",
@@ -274,8 +274,8 @@
         4,
         1
       ],
-      "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "state": "FAILED",
+      "details": "Exit 9:0; None",
       "job_id": "63409677",
       "configuration": {
         "series": "cpu_mpi_scaling_super_fine",
@@ -336,8 +336,8 @@
         6,
         1
       ],
-      "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "state": "FAILED",
+      "details": "Exit 9:0; None",
       "job_id": "63409678",
       "configuration": {
         "series": "cpu_mpi_scaling_super_fine",
@@ -402,8 +402,8 @@
         8,
         1
       ],
-      "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "state": "FAILED",
+      "details": "Exit 9:0; None",
       "job_id": "63409679",
       "configuration": {
         "series": "cpu_mpi_scaling_super_fine",
@@ -474,8 +474,8 @@
         12,
         1
       ],
-      "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "state": "FAILED",
+      "details": "Exit 9:0; None",
       "job_id": "63409680",
       "configuration": {
         "series": "cpu_mpi_scaling_super_fine",
@@ -554,8 +554,8 @@
         16,
         1
       ],
-      "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "state": "FAILED",
+      "details": "Exit 9:0; None",
       "job_id": "63409681",
       "configuration": {
         "series": "cpu_mpi_scaling_super_fine",
@@ -646,8 +646,8 @@
         24,
         1
       ],
-      "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "state": "FAILED",
+      "details": "Exit 9:0; None",
       "job_id": "63409682",
       "configuration": {
         "series": "cpu_mpi_scaling_super_fine",
@@ -754,8 +754,8 @@
         48,
         1
       ],
-      "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "state": "FAILED",
+      "details": "Exit 143:0; None",
       "job_id": "63409683",
       "configuration": {
         "series": "cpu_mpi_scaling_super_fine",
@@ -886,8 +886,8 @@
         48,
         1
       ],
-      "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "state": "FAILED",
+      "details": "Exit 9:0; None",
       "job_id": "63409684",
       "configuration": {
         "series": "cpu_mpi_scaling_super_fine",
@@ -1050,8 +1050,8 @@
         64,
         1
       ],
-      "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "state": "FAILED",
+      "details": "Exit 9:0; None",
       "job_id": "63409685",
       "configuration": {
         "series": "cpu_mpi_scaling_super_fine",
@@ -1262,8 +1262,8 @@
         96,
         1
       ],
-      "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "state": "CANCELLED",
+      "details": "Exit 0:54; None",
       "job_id": "63409686",
       "configuration": {
         "series": "cpu_mpi_scaling_super_fine",
@@ -1548,8 +1548,8 @@
         1,
         1
       ],
-      "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
       "job_id": "63409687",
       "configuration": {
         "series": "gpu_scaling_super_fine",
@@ -1590,6 +1590,14 @@
         "samples": 5,
         "time_steps": 10,
         "profile": false
+      },
+      "measurement": {
+        "fastest": 0.9649177094000001,
+        "median": 0.9654202739000001,
+        "maximum": 0.9670826883,
+        "retained_substeps": [
+          21
+        ]
       }
     },
     {
@@ -1602,8 +1610,8 @@
         1,
         1
       ],
-      "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
       "job_id": "63409688",
       "configuration": {
         "series": "gpu_scaling_super_fine",
@@ -1645,6 +1653,14 @@
         "samples": 5,
         "time_steps": 10,
         "profile": false
+      },
+      "measurement": {
+        "fastest": 0.49524513600000003,
+        "median": 0.4967323863,
+        "maximum": 0.5006167059,
+        "retained_substeps": [
+          21
+        ]
       }
     },
     {
@@ -1658,7 +1674,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "details": "(Priority); estimated start N/A (scheduler timezone)",
       "job_id": "63409689",
       "configuration": {
         "series": "gpu_scaling_super_fine",
@@ -1714,7 +1730,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "details": "(Priority); estimated start N/A (scheduler timezone)",
       "job_id": "63409690",
       "configuration": {
         "series": "gpu_scaling_super_fine",
@@ -1772,7 +1788,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "details": "(Priority); estimated start N/A (scheduler timezone)",
       "job_id": "63409691",
       "configuration": {
         "series": "gpu_scaling_super_fine",
@@ -1832,7 +1848,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "details": "(Priority); estimated start N/A (scheduler timezone)",
       "job_id": "63409692",
       "configuration": {
         "series": "gpu_scaling_super_fine",
@@ -1896,7 +1912,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "details": "(Priority); estimated start N/A (scheduler timezone)",
       "job_id": "63409693",
       "configuration": {
         "series": "gpu_scaling_super_fine",
@@ -1964,7 +1980,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "details": "(Priority); estimated start N/A (scheduler timezone)",
       "job_id": "63409694",
       "configuration": {
         "series": "gpu_scaling_super_fine",
@@ -2040,7 +2056,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "details": "(Priority); estimated start N/A (scheduler timezone)",
       "job_id": "63409695",
       "configuration": {
         "series": "gpu_scaling_super_fine",
@@ -2223,8 +2239,8 @@
         1,
         1
       ],
-      "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "state": "FAILED",
+      "details": "Exit 9:0; None",
       "job_id": "63409696",
       "configuration": {
         "series": "cpu_resolution",
@@ -2277,8 +2293,8 @@
         1,
         1
       ],
-      "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "state": "FAILED",
+      "details": "Exit 9:0; None",
       "job_id": "63409697",
       "configuration": {
         "series": "cpu_resolution",
@@ -2331,8 +2347,8 @@
         1,
         1
       ],
-      "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "state": "FAILED",
+      "details": "Exit 9:0; None",
       "job_id": "63409698",
       "configuration": {
         "series": "cpu_resolution",
@@ -2386,7 +2402,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "details": "(Priority); estimated start N/A (scheduler timezone)",
       "job_id": "63409699",
       "configuration": {
         "series": "gpu_resolution",
@@ -2440,7 +2456,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "details": "(Priority); estimated start N/A (scheduler timezone)",
       "job_id": "63409700",
       "configuration": {
         "series": "gpu_resolution",
@@ -2494,7 +2510,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "details": "(Priority); estimated start N/A (scheduler timezone)",
       "job_id": "63409701",
       "configuration": {
         "series": "gpu_resolution",
@@ -2547,8 +2563,8 @@
         1,
         1
       ],
-      "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "state": "FAILED",
+      "details": "Exit 9:0; None",
       "job_id": "63409702",
       "configuration": {
         "series": "cpu_partition_cores_super_fine",
@@ -2792,8 +2808,8 @@
         2,
         1
       ],
-      "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "state": "FAILED",
+      "details": "Exit 9:0; None",
       "job_id": "63409702",
       "configuration": {
         "series": "cpu_partition_cores_super_fine",
@@ -2942,8 +2958,8 @@
         3,
         1
       ],
-      "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "state": "FAILED",
+      "details": "Exit 9:0; None",
       "job_id": "63409702",
       "configuration": {
         "series": "cpu_partition_cores_super_fine",
@@ -3061,8 +3077,8 @@
         4,
         1
       ],
-      "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "state": "FAILED",
+      "details": "Exit 9:0; None",
       "job_id": "63409702",
       "configuration": {
         "series": "cpu_partition_cores_super_fine",
@@ -3165,8 +3181,8 @@
         6,
         1
       ],
-      "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "state": "FAILED",
+      "details": "Exit 9:0; None",
       "job_id": "63409702",
       "configuration": {
         "series": "cpu_partition_cores_super_fine",
@@ -3255,8 +3271,8 @@
         8,
         1
       ],
-      "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "state": "FAILED",
+      "details": "Exit 9:0; None",
       "job_id": "63409702",
       "configuration": {
         "series": "cpu_partition_cores_super_fine",
@@ -3339,8 +3355,8 @@
         12,
         1
       ],
-      "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "state": "FAILED",
+      "details": "Exit 9:0; None",
       "job_id": "63409702",
       "configuration": {
         "series": "cpu_partition_cores_super_fine",
@@ -3419,8 +3435,8 @@
         16,
         1
       ],
-      "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "state": "FAILED",
+      "details": "Exit 9:0; None",
       "job_id": "63409702",
       "configuration": {
         "series": "cpu_partition_cores_super_fine",
@@ -3499,8 +3515,8 @@
         24,
         1
       ],
-      "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "state": "FAILED",
+      "details": "Exit 9:0; None",
       "job_id": "63409702",
       "configuration": {
         "series": "cpu_partition_cores_super_fine",
@@ -3583,8 +3599,8 @@
         32,
         1
       ],
-      "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "state": "FAILED",
+      "details": "Exit 9:0; None",
       "job_id": "63409702",
       "configuration": {
         "series": "cpu_partition_cores_super_fine",
@@ -3673,8 +3689,8 @@
         48,
         1
       ],
-      "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "state": "FAILED",
+      "details": "Exit 9:0; None",
       "job_id": "63409702",
       "configuration": {
         "series": "cpu_partition_cores_super_fine",
@@ -3777,8 +3793,8 @@
         64,
         1
       ],
-      "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "state": "FAILED",
+      "details": "Exit 9:0; None",
       "job_id": "63409702",
       "configuration": {
         "series": "cpu_partition_cores_super_fine",
@@ -3896,8 +3912,8 @@
         96,
         1
       ],
-      "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "state": "FAILED",
+      "details": "Exit 9:0; None",
       "job_id": "63409702",
       "configuration": {
         "series": "cpu_partition_cores_super_fine",
@@ -4061,7 +4077,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "details": "(Priority); estimated start N/A (scheduler timezone)",
       "job_id": "63409703",
       "configuration": {
         "series": "gpu_nsight_scaling_super_fine",
@@ -4115,7 +4131,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "details": "(Priority); estimated start N/A (scheduler timezone)",
       "job_id": "63409704",
       "configuration": {
         "series": "gpu_nsight_scaling_super_fine",
@@ -4170,7 +4186,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "details": "(Priority); estimated start N/A (scheduler timezone)",
       "job_id": "63409705",
       "configuration": {
         "series": "gpu_nsight_scaling_super_fine",
@@ -4226,7 +4242,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "details": "(Priority); estimated start N/A (scheduler timezone)",
       "job_id": "63409706",
       "configuration": {
         "series": "gpu_nsight_scaling_super_fine",
@@ -4284,7 +4300,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "details": "(Priority); estimated start N/A (scheduler timezone)",
       "job_id": "63409707",
       "configuration": {
         "series": "gpu_nsight_scaling_super_fine",
@@ -4344,7 +4360,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "details": "(Priority); estimated start N/A (scheduler timezone)",
       "job_id": "63409708",
       "configuration": {
         "series": "gpu_nsight_scaling_super_fine",
@@ -4408,7 +4424,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "details": "(Priority); estimated start N/A (scheduler timezone)",
       "job_id": "63409709",
       "configuration": {
         "series": "gpu_nsight_scaling_super_fine",
@@ -4476,7 +4492,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "details": "(Priority); estimated start N/A (scheduler timezone)",
       "job_id": "63409710",
       "configuration": {
         "series": "gpu_nsight_scaling_super_fine",
@@ -4552,7 +4568,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "details": "(Priority); estimated start N/A (scheduler timezone)",
       "job_id": "63409711",
       "configuration": {
         "series": "gpu_nsight_scaling_super_fine",
@@ -4736,7 +4752,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "details": "(Priority); estimated start N/A (scheduler timezone)",
       "job_id": "63409712",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -4791,7 +4807,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "details": "(Priority); estimated start N/A (scheduler timezone)",
       "job_id": "63409712",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -4846,7 +4862,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "details": "(Priority); estimated start N/A (scheduler timezone)",
       "job_id": "63409713",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -4903,7 +4919,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "details": "(Priority); estimated start N/A (scheduler timezone)",
       "job_id": "63409713",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -4959,7 +4975,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
+      "details": "(Priority); estimated start N/A (scheduler timezone)",
       "job_id": "63409713",
       "configuration": {
         "series": "gpu_partition_super_fine",
