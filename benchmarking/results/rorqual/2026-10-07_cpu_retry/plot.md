@@ -29,7 +29,7 @@ Highest completed count: **12288 ranks**.
 | 768_ranks | 768 | 32x24x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 1.940831 | 2.146462 | — | Rank results, finite fields and resource placement verified |
 | 1536_ranks | 1536 | 32x48x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 1.389463 | 1.621086 | — | Rank results, finite fields and resource placement verified |
 | 3072_ranks | 3072 | 64x48x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 1.015510 | 1.330853 | — | Rank results, finite fields and resource placement verified |
-| 6144_ranks | 6144 | 96x64x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
+| 6144_ranks | 6144 | 96x64x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 3.458143 | 3.973169 | — | Rank results, finite fields and resource placement verified |
 | 12288_ranks | 12288 | 128x96x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 3.592287 | 4.829213 | — | Rank results, finite fields and resource placement verified |
 | 24576_ranks | 24576 |  | 1440x720x200 | LatitudeLongitudeGrid | GEOMETRY_LIMIT | — | — | — | 24576 ranks have no horizontal partition with at least 7 local cells per direction |
 
@@ -52,6 +52,8 @@ Highest completed count: **12288 ranks**.
 [1536_ranks configuration](cpu_mpi_scaling_super_fine/1536_ranks/configuration.md): local resolution **45–45 × 15–15 × 200**, retained free-surface substeps [21].
 
 [3072_ranks configuration](cpu_mpi_scaling_super_fine/3072_ranks/configuration.md): local resolution **22–23 × 15–15 × 200**, retained free-surface substeps [21].
+
+[6144_ranks configuration](cpu_mpi_scaling_super_fine/6144_ranks/configuration.md): local resolution **15–15 × 11–12 × 200**, retained free-surface substeps [21].
 
 [12288_ranks configuration](cpu_mpi_scaling_super_fine/12288_ranks/configuration.md): local resolution **11–12 × 7–8 × 200**, retained free-surface substeps [21].
 ## cpu_resolution
