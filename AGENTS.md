@@ -142,6 +142,16 @@ to that task, and leave unrelated user changes untouched. Report the commit
 hash when the task is finished. For read-only tasks with no repository
 changes, do not create an empty commit.
 
+After finishing a task, commit its changes and verify `git status --short`
+is empty: there should be no uncommitted tracked changes or untracked files.
+Include outstanding benchmark records in descriptive commits after checking
+their contents; distinguish in-progress logs from completed measurements.
+Do not discard or silently commit unrelated user edits to achieve a clean
+tree. If such edits or files still being written by active jobs prevent a
+clean tree, preserve them and explicitly report the remaining paths and why
+they could not be cleared. Recheck the working tree immediately before the
+final response.
+
 ## Benchmark Records
 
 For new standard benchmark series, use `benchmarking/benchmark_suite.py`
