@@ -99,7 +99,7 @@ Highest completed count: **16 ranks**.
 | 1_ranks | 1 | 1x1x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (ReqNodeNotAvail, UnavailableNodes:rg[12602,12903,13403]); estimated start N/A (scheduler timezone) |
 | 2_ranks | 2 | 2x1x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (ReqNodeNotAvail, UnavailableNodes:rg[12602,12903,13403]); estimated start N/A (scheduler timezone) |
 | 4_ranks | 4 | 2x2x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-07T03:32:15 (scheduler timezone) |
-| 8_ranks | 8 | 4x2x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
+| 8_ranks | 8 | 4x2x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.155678 | 0.157967 | — | Rank results, finite fields and resource placement verified |
 | 16_ranks | 16 | 4x4x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.106867 | 0.117125 | — | Rank results, finite fields and resource placement verified |
 | 32_ranks | 32 | 8x4x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-07T09:10:00 (scheduler timezone) |
 | 64_ranks | 64 | 8x8x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-07T08:20:00 (scheduler timezone) |
@@ -111,7 +111,10 @@ Highest completed count: **16 ranks**.
 
 | Profile | Gc | Gu | Gv | Others |
 |---|---:|---:|---:|---:|
+| 8_ranks | 21.64% | 16.80% | 8.64% | 52.93% |
 | 16_ranks | 19.79% | 15.60% | 8.24% | 56.38% |
+
+[8_ranks configuration](gpu_nsight_scaling_super_fine/8_ranks/configuration.md): local resolution **360–360 × 360–360 × 200**, retained free-surface substeps [21].
 
 [16_ranks configuration](gpu_nsight_scaling_super_fine/16_ranks/configuration.md): local resolution **360–360 × 180–180 × 200**, retained free-surface substeps [21].
 ## gpu_partition_super_fine
