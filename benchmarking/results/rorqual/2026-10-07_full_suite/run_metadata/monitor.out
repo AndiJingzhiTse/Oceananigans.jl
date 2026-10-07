@@ -64,3 +64,11 @@ gpu_partition_super_fine/1x4x1: PENDING [1, 4, 1]
  create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/run_metadata/monitor.out
  create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/run_metadata/monitor_pid.txt
 
+[codex/benchmarking bba71b617] Record validated benchmark suite results and job outcomes
+ 10 files changed, 158 insertions(+), 78 deletions(-)
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/192_ranks/allocation.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/192_ranks/compute_hardware.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/192_ranks/julia_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/192_ranks/modules.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/192_ranks/nsight_version.txt
+
