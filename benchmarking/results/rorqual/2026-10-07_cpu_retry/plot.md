@@ -17,21 +17,23 @@ Highest completed count: **12288 ranks**.
 
 | Case | Ranks | Partition | Global resolution | Grid type | State | Fastest s/step | Median s/step | Efficiency fastest / median | Details |
 |---|---:|---|---|---|---|---:|---:|---|---|
-| 1_ranks | 1 | 1x1x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
-| 3_ranks | 3 | 3x1x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 196.382277 | 196.766246 | — | Rank results, finite fields and resource placement verified |
-| 6_ranks | 6 | 3x2x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 103.102502 | 103.291139 | — | Rank results, finite fields and resource placement verified |
-| 12_ranks | 12 | 4x3x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 53.475571 | 53.536204 | — | Rank results, finite fields and resource placement verified |
-| 24_ranks | 24 | 6x4x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 30.866122 | 33.370943 | — | Rank results, finite fields and resource placement verified |
-| 48_ranks | 48 | 8x6x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 14.954807 | 15.022399 | — | Rank results, finite fields and resource placement verified |
-| 96_ranks | 96 | 12x8x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 8.611579 | 8.640376 | — | Rank results, finite fields and resource placement verified |
-| 192_ranks | 192 | 16x12x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 4.684070 | 4.746761 | — | Rank results, finite fields and resource placement verified |
-| 384_ranks | 384 | 24x16x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 2.929167 | 3.067832 | — | Rank results, finite fields and resource placement verified |
-| 768_ranks | 768 | 32x24x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 1.940831 | 2.146462 | — | Rank results, finite fields and resource placement verified |
-| 1536_ranks | 1536 | 32x48x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 1.389463 | 1.621086 | — | Rank results, finite fields and resource placement verified |
-| 3072_ranks | 3072 | 64x48x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 1.015510 | 1.330853 | — | Rank results, finite fields and resource placement verified |
-| 6144_ranks | 6144 | 96x64x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 3.458143 | 3.973169 | — | Rank results, finite fields and resource placement verified |
-| 12288_ranks | 12288 | 128x96x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 3.592287 | 4.829213 | — | Rank results, finite fields and resource placement verified |
+| 1_ranks | 1 | 1x1x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 570.778232 | 571.854116 | 100.0% / 100.0% | Rank results, finite fields and resource placement verified |
+| 3_ranks | 3 | 3x1x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 196.382277 | 196.766246 | 96.9% / 96.9% | Rank results, finite fields and resource placement verified |
+| 6_ranks | 6 | 3x2x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 103.102502 | 103.291139 | 92.3% / 92.3% | Rank results, finite fields and resource placement verified |
+| 12_ranks | 12 | 4x3x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 53.475571 | 53.536204 | 88.9% / 89.0% | Rank results, finite fields and resource placement verified |
+| 24_ranks | 24 | 6x4x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 30.866122 | 33.370943 | 77.1% / 71.4% | Rank results, finite fields and resource placement verified |
+| 48_ranks | 48 | 8x6x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 14.954807 | 15.022399 | 79.5% / 79.3% | Rank results, finite fields and resource placement verified |
+| 96_ranks | 96 | 12x8x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 8.611579 | 8.640376 | 69.0% / 68.9% | Rank results, finite fields and resource placement verified |
+| 192_ranks | 192 | 16x12x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 4.684070 | 4.746761 | 63.5% / 62.7% | Rank results, finite fields and resource placement verified |
+| 384_ranks | 384 | 24x16x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 2.929167 | 3.067832 | 50.7% / 48.5% | Rank results, finite fields and resource placement verified |
+| 768_ranks | 768 | 32x24x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 1.940831 | 2.146462 | 38.3% / 34.7% | Rank results, finite fields and resource placement verified |
+| 1536_ranks | 1536 | 32x48x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 1.389463 | 1.621086 | 26.7% / 23.0% | Rank results, finite fields and resource placement verified |
+| 3072_ranks | 3072 | 64x48x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 1.015510 | 1.330853 | 18.3% / 14.0% | Rank results, finite fields and resource placement verified |
+| 6144_ranks | 6144 | 96x64x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 3.458143 | 3.973169 | 2.7% / 2.3% | Rank results, finite fields and resource placement verified |
+| 12288_ranks | 12288 | 128x96x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 3.592287 | 4.829213 | 1.3% / 1.0% | Rank results, finite fields and resource placement verified |
 | 24576_ranks | 24576 |  | 1440x720x200 | LatitudeLongitudeGrid | GEOMETRY_LIMIT | — | — | — | 24576 ranks have no horizontal partition with at least 7 local cells per direction |
+
+[1_ranks configuration](cpu_mpi_scaling_super_fine/1_ranks/configuration.md): local resolution **1440–1440 × 720–720 × 200**, retained free-surface substeps [21].
 
 [3_ranks configuration](cpu_mpi_scaling_super_fine/3_ranks/configuration.md): local resolution **480–480 × 720–720 × 200**, retained free-surface substeps [21].
 
