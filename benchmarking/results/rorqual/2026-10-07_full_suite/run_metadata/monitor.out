@@ -72,3 +72,19 @@ gpu_partition_super_fine/1x4x1: PENDING [1, 4, 1]
  create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/192_ranks/modules.txt
  create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/192_ranks/nsight_version.txt
 
+[codex/benchmarking f23846a89] Record validated benchmark suite results and job outcomes
+ 19 files changed, 2697 insertions(+), 152 deletions(-)
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/3072_ranks/allocation.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/3072_ranks/compute_hardware.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/3072_ranks/julia_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/3072_ranks/modules.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/3072_ranks/nsight_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_scaling_super_fine/16_ranks/allocation.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_scaling_super_fine/16_ranks/compute_hardware.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_scaling_super_fine/16_ranks/job.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_scaling_super_fine/16_ranks/julia_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_scaling_super_fine/16_ranks/modules.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_scaling_super_fine/16_ranks/nsight_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_scaling_super_fine/16_ranks/slurm_job.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_scaling_super_fine/16_ranks/started.txt
+
