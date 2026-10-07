@@ -1,0 +1,30 @@
+JobId=22632355 JobName=bench_gpu_nsight_scaling_super_fine
+   UserId=anditse(3165591) GroupId=anditse(3165591) MCS_label=N/A
+   Priority=2678544 Nice=0 Account=def-fpoulin_gpu QOS=normal
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:00:05 TimeLimit=00:45:00 TimeMin=N/A
+   SubmitTime=2026-10-07T02:03:20 EligibleTime=2026-10-07T02:03:20
+   AccrueTime=2026-10-07T02:03:20
+   StartTime=2026-10-07T06:00:27 EndTime=2026-10-07T06:45:27 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-07T06:00:27 Scheduler=Backfill
+   Partition=gpubase_bynode_b1 AllocNode:Sid=rorqual1:1270567
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=rg[21701,32101-32103,32201,32203,32301-32302]
+   BatchHost=rg21701
+   NumNodes=8 NumCPUs=256 NumTasks=32 CPUs/Task=8 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=256,mem=2T,node=8,billing=390400,gres/gpu=32,gres/gpu:h100=32
+   AllocTRES=cpu=256,mem=2T,node=8,billing=390400,gres/gpu=32,gres/gpu:h100=32
+   Socks/Node=* NtasksPerN:B:S:C=4:0:*:* CoreSpec=*
+   MinCPUsNode=32 MinMemoryNode=256G MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)
+   Command=/home/anditse/Oceananigans.jl/benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/32_ranks/allocation.sh
+   SubmitLine=sbatch --parsable --job-name=bench_gpu_nsight_scaling_super_fine --nodes=8 --ntasks=32 --ntasks-per-node=4 --cpus-per-task=8 --output=/home/anditse/Oceananigans.jl/benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/32_ranks/allocation.out --account=def-fpoulin_gpu --time=00:45:00 --gpus-per-task=h100:1 --mem=256G --export=ALL,JULIA_DEPOT_PATH=/scratch/anditse/julia_depot: /home/anditse/Oceananigans.jl/benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/32_ranks/allocation.sh
+   WorkDir=/home/anditse/Oceananigans.jl
+   StdErr=
+   StdIn=/dev/null
+   StdOut=/home/anditse/Oceananigans.jl/benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/32_ranks/allocation.out
+   TresBind=gres/gpu:per_task:1
+   TresPerTask=cpu=8,gres/gpu:h100:1
+

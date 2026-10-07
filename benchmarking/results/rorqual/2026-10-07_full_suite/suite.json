@@ -1948,7 +1948,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(Priority); estimated start 2026-10-07T07:47:48 (scheduler timezone)",
+      "details": "(Priority); estimated start 2026-10-07T08:28:03 (scheduler timezone)",
       "job_id": "22632340",
       "configuration": {
         "series": "gpu_scaling_super_fine",
@@ -4489,8 +4489,8 @@
         4,
         1
       ],
-      "state": "PENDING",
-      "details": "(Priority); estimated start 2026-10-07T06:38:33 (scheduler timezone)",
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
       "job_id": "22632355",
       "configuration": {
         "series": "gpu_nsight_scaling_super_fine",
@@ -4541,6 +4541,20 @@
         "samples": 5,
         "time_steps": 10,
         "profile": true
+      },
+      "measurement": {
+        "fastest": 0.0908226698,
+        "median": 0.1164667913,
+        "maximum": 0.3114581678,
+        "retained_substeps": [
+          21
+        ],
+        "kernel_nanoseconds": {
+          "Gc": 11826376587,
+          "Gu": 9164643778,
+          "Gv": 5102527611,
+          "Others": 41968060286
+        }
       }
     },
     {
@@ -4554,7 +4568,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(Priority); estimated start 2026-10-07T08:40:00 (scheduler timezone)",
+      "details": "(Priority); estimated start 2026-10-07T09:20:00 (scheduler timezone)",
       "job_id": "22632356",
       "configuration": {
         "series": "gpu_nsight_scaling_super_fine",

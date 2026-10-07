@@ -20,7 +20,7 @@ gpu_scaling_super_fine,4_ranks,4,2x2x1,1440x720x200,LatitudeLongitudeGrid,COMPLE
 gpu_scaling_super_fine,8_ranks,8,4x2x1,1440x720x200,LatitudeLongitudeGrid,COMPLETED,22632337,0.14642637409999998,0.1508291424,0.823790613227375,0.7999292731508629,"Rank results, finite fields and resource placement verified"
 gpu_scaling_super_fine,16_ranks,16,4x4x1,1440x720x200,LatitudeLongitudeGrid,COMPLETED,22632338,0.0987553307,0.1071243508,0.6107248674956844,0.5631429518544163,"Rank results, finite fields and resource placement verified"
 gpu_scaling_super_fine,32_ranks,32,8x4x1,1440x720x200,LatitudeLongitudeGrid,COMPLETED,22632339,0.0800873946,0.1308310668,0.37654075624186933,0.23055045181745779,"Rank results, finite fields and resource placement verified"
-gpu_scaling_super_fine,64_ranks,64,8x8x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632340,,,,,(Priority); estimated start 2026-10-07T07:47:48 (scheduler timezone)
+gpu_scaling_super_fine,64_ranks,64,8x8x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632340,,,,,(Priority); estimated start 2026-10-07T08:28:03 (scheduler timezone)
 gpu_scaling_super_fine,128_ranks,128,16x8x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632341,,,,,"(Nodes required for job are DOWN, DRAINED or reserved for jobs in higher priority partitions); estimated start 2026-10-07T14:33:58 (scheduler timezone)"
 gpu_scaling_super_fine,256_ranks,256,16x16x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632342,,,,,(Resources); estimated start 2026-10-10T10:21:58 (scheduler timezone)
 gpu_scaling_super_fine,512_ranks,512,32x16x1,1440x720x200,LatitudeLongitudeGrid,RESOURCE_LIMIT,,,,,,Requires 512; configured capacity is 264
@@ -49,8 +49,8 @@ gpu_nsight_scaling_super_fine,2_ranks,2,2x1x1,1440x720x200,LatitudeLongitudeGrid
 gpu_nsight_scaling_super_fine,4_ranks,4,2x2x1,1440x720x200,LatitudeLongitudeGrid,COMPLETED,22632352,0.29464754860000003,0.29567485439999996,0.8255788026433966,0.8229768512739649,"Rank results, finite fields and resource placement verified"
 gpu_nsight_scaling_super_fine,8_ranks,8,4x2x1,1440x720x200,LatitudeLongitudeGrid,COMPLETED,22632353,0.15567829,0.1579667733,0.781273902658489,0.7702048842033289,"Rank results, finite fields and resource placement verified"
 gpu_nsight_scaling_super_fine,16_ranks,16,4x4x1,1440x720x200,LatitudeLongitudeGrid,COMPLETED,22632354,0.1068674338,0.1171248966,0.5690572930530124,0.5193890618875475,"Rank results, finite fields and resource placement verified"
-gpu_nsight_scaling_super_fine,32_ranks,32,8x4x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632355,,,,,(Priority); estimated start 2026-10-07T06:38:33 (scheduler timezone)
-gpu_nsight_scaling_super_fine,64_ranks,64,8x8x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632356,,,,,(Priority); estimated start 2026-10-07T08:40:00 (scheduler timezone)
+gpu_nsight_scaling_super_fine,32_ranks,32,8x4x1,1440x720x200,LatitudeLongitudeGrid,COMPLETED,22632355,0.0908226698,0.1164667913,0.33479357481820027,0.261161956510216,"Rank results, finite fields and resource placement verified"
+gpu_nsight_scaling_super_fine,64_ranks,64,8x8x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632356,,,,,(Priority); estimated start 2026-10-07T09:20:00 (scheduler timezone)
 gpu_nsight_scaling_super_fine,128_ranks,128,16x8x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632357,,,,,(Priority); estimated start 2026-10-07T15:20:00 (scheduler timezone)
 gpu_nsight_scaling_super_fine,256_ranks,256,16x16x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632358,,,,,(PartitionNodeLimit); estimated start 2026-10-10T10:21:58 (scheduler timezone)
 gpu_nsight_scaling_super_fine,512_ranks,512,32x16x1,1440x720x200,LatitudeLongitudeGrid,RESOURCE_LIMIT,,,,,,Requires 512; configured capacity is 264
