@@ -142,8 +142,9 @@ to that task, and leave unrelated user changes untouched. Report the commit
 hash when the task is finished. For read-only tasks with no repository
 changes, do not create an empty commit.
 
-After finishing a task, commit its changes and verify `git status --short`
-is empty: there should be no uncommitted tracked changes or untracked files.
+After finishing every task, leave the working tree clean. Commit the task's
+changes and verify `git status --short` is empty: there should be no
+uncommitted tracked changes or untracked files.
 Include outstanding benchmark records in descriptive commits after checking
 their contents; distinguish in-progress logs from completed measurements.
 Do not discard or silently commit unrelated user edits to achieve a clean
