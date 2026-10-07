@@ -850,3 +850,10 @@ gpu_partition_super_fine/1x4x1: PENDING [1, 4, 1]
  create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_scaling_super_fine/2_ranks/finished.txt
  create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_scaling_super_fine/2_ranks/results.json
 
+[codex/benchmarking 4025d36ac] Record validated benchmark suite results and job outcomes
+ 12 files changed, 521 insertions(+), 79 deletions(-)
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_nsight_scaling_super_fine/2_ranks/layout.json
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_partition_super_fine/1x4x1/exit_code.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_partition_super_fine/1x4x1/finished.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_full_suite/gpu_partition_super_fine/1x4x1/results.json
+
