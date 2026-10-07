@@ -294,3 +294,10 @@ cpu_partition_cores_super_fine/1x192x1: GEOMETRY_LIMIT [1, 192, 1]
  create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_partition_cores_super_fine/32x6x1/layout.json
  create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_partition_cores_super_fine/32x6x1/results.json
 
+[codex/benchmarking 2f906d959] Record validated benchmark suite results and job outcomes
+ 12 files changed, 4019 insertions(+), 121 deletions(-)
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/24_ranks/exit_code.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/24_ranks/finished.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/24_ranks/results.json
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_partition_cores_super_fine/24x8x1/layout.json
+
