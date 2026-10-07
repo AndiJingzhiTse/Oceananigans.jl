@@ -1,0 +1,29 @@
+JobId=22653828 JobName=bench_cpu_mpi_scaling_super_fine
+   UserId=anditse(3165591) GroupId=anditse(3165591) MCS_label=N/A
+   Priority=2921004 Nice=0 Account=def-fpoulin_cpu QOS=normal
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:00:05 TimeLimit=03:00:00 TimeMin=N/A
+   SubmitTime=2026-10-07T10:27:03 EligibleTime=2026-10-07T10:27:03
+   AccrueTime=2026-10-07T10:27:03
+   StartTime=2026-10-07T11:01:26 EndTime=2026-10-07T14:01:26 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-07T11:01:26 Scheduler=Backfill
+   Partition=cpubase_bynode_b1 AllocNode:Sid=rorqual1:3642757
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=rc[12508,12520,13203-13204,13206-13210,13215,13226,13228,13310,13314,13321,13328]
+   BatchHost=rc12508
+   NumNodes=16 NumCPUs=3072 NumTasks=3072 CPUs/Task=1 ReqB:S:C:T=0:0:*:1
+   ReqTRES=cpu=3072,mem=12000G,node=16,billing=3072000
+   AllocTRES=cpu=3072,mem=12000G,node=16,billing=3072000
+   Socks/Node=* NtasksPerN:B:S:C=192:0:*:* CoreSpec=*
+   MinCPUsNode=192 MinMemoryNode=0 MinTmpDiskNode=0
+   Features=[genoa|sapphirerapids] DelayBoot=00:00:00
+   OverSubscribe=NO Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)
+   Command=/home/anditse/Oceananigans.jl/benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/3072_ranks/allocation.sh
+   SubmitLine=sbatch --parsable --job-name=bench_cpu_mpi_scaling_super_fine --nodes=16 --ntasks=3072 --ntasks-per-node=192 --cpus-per-task=1 --output=/home/anditse/Oceananigans.jl/benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/3072_ranks/allocation.out --account=def-fpoulin_cpu --time=03:00:00 --hint=nomultithread --exclusive --mem=0 --export=ALL,JULIA_DEPOT_PATH=/scratch/anditse/julia_depot: /home/anditse/Oceananigans.jl/benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/3072_ranks/allocation.sh
+   WorkDir=/home/anditse/Oceananigans.jl
+   StdErr=
+   StdIn=/dev/null
+   StdOut=/home/anditse/Oceananigans.jl/benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_mpi_scaling_super_fine/3072_ranks/allocation.out
+   TresPerTask=cpu=1
+

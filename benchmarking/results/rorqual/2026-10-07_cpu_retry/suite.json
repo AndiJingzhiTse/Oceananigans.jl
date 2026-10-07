@@ -53,7 +53,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(Priority); estimated start N/A (scheduler timezone)",
+      "details": "(Priority); estimated start 2026-10-07T14:01:26 (scheduler timezone)",
       "job_id": "22653817",
       "configuration": {
         "series": "cpu_mpi_scaling_super_fine",
@@ -163,7 +163,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(Priority); estimated start N/A (scheduler timezone)",
+      "details": "(Priority); estimated start 2026-10-07T14:01:26 (scheduler timezone)",
       "job_id": "22653819",
       "configuration": {
         "series": "cpu_mpi_scaling_super_fine",
@@ -220,7 +220,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(Priority); estimated start 2026-10-07T17:20:00 (scheduler timezone)",
+      "details": "(Priority); estimated start 2026-10-07T14:14:07 (scheduler timezone)",
       "job_id": "22653820",
       "configuration": {
         "series": "cpu_mpi_scaling_super_fine",
@@ -279,7 +279,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(Priority); estimated start 2026-10-07T17:18:57 (scheduler timezone)",
+      "details": "(Priority); estimated start 2026-10-07T14:01:26 (scheduler timezone)",
       "job_id": "22653821",
       "configuration": {
         "series": "cpu_mpi_scaling_super_fine",
@@ -341,7 +341,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(Priority); estimated start 2026-10-07T17:18:31 (scheduler timezone)",
+      "details": "(Priority); estimated start 2026-10-07T13:16:09 (scheduler timezone)",
       "job_id": "22653822",
       "configuration": {
         "series": "cpu_mpi_scaling_super_fine",
@@ -407,7 +407,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(Priority); estimated start 2026-10-07T12:35:22 (scheduler timezone)",
+      "details": "(Priority); estimated start 2026-10-07T14:01:26 (scheduler timezone)",
       "job_id": "22653823",
       "configuration": {
         "series": "cpu_mpi_scaling_super_fine",
@@ -567,7 +567,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(Priority); estimated start 2026-10-07T17:18:31 (scheduler timezone)",
+      "details": "(Priority); estimated start 2026-10-07T14:01:26 (scheduler timezone)",
       "job_id": "22653825",
       "configuration": {
         "series": "cpu_mpi_scaling_super_fine",
@@ -659,7 +659,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(Priority); estimated start 2026-10-07T13:52:50 (scheduler timezone)",
+      "details": "(Priority); estimated start 2026-10-07T12:36:44 (scheduler timezone)",
       "job_id": "22653826",
       "configuration": {
         "series": "cpu_mpi_scaling_super_fine",
@@ -766,8 +766,8 @@
         48,
         1
       ],
-      "state": "PENDING",
-      "details": "(Priority); estimated start 2026-10-07T17:08:31 (scheduler timezone)",
+      "state": "RUNNING",
+      "details": "Exit 0:0; None",
       "job_id": "22653827",
       "configuration": {
         "series": "cpu_mpi_scaling_super_fine",
@@ -898,8 +898,8 @@
         48,
         1
       ],
-      "state": "PENDING",
-      "details": "(Priority); estimated start 2026-10-07T17:20:00 (scheduler timezone)",
+      "state": "RUNNING",
+      "details": "Exit 0:0; None",
       "job_id": "22653828",
       "configuration": {
         "series": "cpu_mpi_scaling_super_fine",
@@ -1063,7 +1063,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(Priority); estimated start 2026-10-07T16:59:43 (scheduler timezone)",
+      "details": "(Priority); estimated start 2026-10-07T17:18:57 (scheduler timezone)",
       "job_id": "22653829",
       "configuration": {
         "series": "cpu_mpi_scaling_super_fine",
@@ -1975,8 +1975,8 @@
         2,
         1
       ],
-      "state": "RUNNING",
-      "details": "Exit 0:0; None",
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
       "job_id": "22653834",
       "configuration": {
         "series": "cpu_partition_cores_super_fine",
@@ -2113,6 +2113,14 @@
         "samples": 5,
         "time_steps": 10,
         "profile": false
+      },
+      "measurement": {
+        "fastest": 6.6866527414000005,
+        "median": 7.216247073,
+        "maximum": 25.1564328165,
+        "retained_substeps": [
+          21
+        ]
       }
     },
     {
