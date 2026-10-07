@@ -3,7 +3,8 @@
 set -e
 SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 DRAC_ROOT=${DRAC_ROOT:-$HOME/Oceananigans-DRAC}
-source "$DRAC_ROOT/env/nibi.sh"
+export JULIA_DEPOT_PATH="${JULIA_DEPOT_PATH:-/scratch/$USER/julia_depot}"
+source "$DRAC_ROOT/env/drac.sh"
 set -eo pipefail
 export JULIA_NUM_PRECOMPILE_TASKS=${JULIA_NUM_PRECOMPILE_TASKS:-4}
 export JULIA_PKG_PRECOMPILE_AUTO=0

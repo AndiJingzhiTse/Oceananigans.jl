@@ -3,7 +3,8 @@ set -e
 RUN_DIR=$1
 PARTITION=$2
 SCRIPT_DIR=$3
-source "${DRAC_ROOT:-$HOME/Oceananigans-DRAC}/env/nibi.sh"
+export JULIA_DEPOT_PATH="${JULIA_DEPOT_PATH:-/scratch/$USER/julia_depot}"
+source "${DRAC_ROOT:-$HOME/Oceananigans-DRAC}/env/drac.sh"
 set -eo pipefail
 export JULIA_NUM_THREADS=192
 export OPENBLAS_NUM_THREADS=1

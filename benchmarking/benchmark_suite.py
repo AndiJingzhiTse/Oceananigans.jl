@@ -61,7 +61,7 @@ def load_server(path=None):
                   cpu_sbatch_extra=[], gpu_sbatch_extra=[],
                   trace_root=str(Path(os.environ.get('SCRATCH', str(ROOT / 'results'))) / 'benchmark_traces'),
                   case_timeout_seconds=86400, matplotlib=True, python='python3', report_modules=[],
-                  reference_suites=[])
+                  reference_suites=[], environment={}, gpu_scaling_partition='balanced')
     unknown = set(user) - set(server)
     if unknown:
         raise ValueError('Unknown server settings: ' + ', '.join(sorted(unknown)))
@@ -75,6 +75,10 @@ def load_server(path=None):
     for key in ('mpi', 'cpu_sbatch_extra', 'gpu_sbatch_extra', 'report_modules', 'reference_suites'):
         if not isinstance(server[key], list) or any(not isinstance(a, str) for a in server[key]):
             raise ValueError(f'{key} must be an array of command arguments')
+    if server['gpu_scaling_partition'] not in ('balanced', 'x'):
+        raise ValueError('gpu_scaling_partition must be balanced or x')
+    if not isinstance(server['environment'], dict) or any(not isinstance(k, str) or not isinstance(v, str) for k, v in server['environment'].items()):
+        raise ValueError('environment must map variable names to string values')
     for key in ('project', 'trace_root', 'environment_script', 'mpi_init'):
         if server[key]:
             server[key] = str(Path(os.path.expandvars(server[key])).expanduser().resolve())
@@ -152,6 +156,10 @@ def launch_command(server, config, case_dir, metadata, trace_root):
 
 def environment_lines(server):
     lines = ['set -eo pipefail']
+    for key, value in server['environment'].items():
+        if not re.fullmatch(r'[A-Za-z_][A-Za-z0-9_]*', key) or key in {'HOME', 'CODEX_HOME'}:
+            raise ValueError('Invalid environment variable name: ' + key)
+        lines.append('export ' + key + '=' + shlex.quote(os.path.expandvars(os.path.expanduser(value))))
     if server['environment_script']:
         lines.append('source ' + shlex.quote(server['environment_script']))
     lines += ['export JULIA_NUM_THREADS=1 JULIA_NUM_GC_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1',

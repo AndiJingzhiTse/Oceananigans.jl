@@ -6,7 +6,8 @@
 set -e
 SCRIPT_DIR=$3  # Slurm runs a spool copy, so BASH_SOURCE is not the source path.
 DRAC_ROOT=${DRAC_ROOT:-$HOME/Oceananigans-DRAC}
-source "$DRAC_ROOT/env/nibi.sh"
+export JULIA_DEPOT_PATH="${JULIA_DEPOT_PATH:-/scratch/$USER/julia_depot}"
+source "$DRAC_ROOT/env/drac.sh"
 set -eo pipefail
 export JULIA_NUM_THREADS=1
 export OPENBLAS_NUM_THREADS=1

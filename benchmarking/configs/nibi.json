@@ -5,7 +5,7 @@
   "cpu_cores_per_node": 192,
   "gpus_per_node": 8,
   "project": "$HOME/Oceananigans.jl/benchmarking/results/nibi/environment",
-  "environment_script": "$HOME/Oceananigans-DRAC/env/nibi.sh",
+  "environment_script": "$HOME/Oceananigans-DRAC/env/drac.sh",
   "mpi_init": "$HOME/Oceananigans-DRAC/src/drac_mpi.jl",
   "cpu_account": "def-fpoulin",
   "gpu_account": "def-fpoulin",
@@ -13,5 +13,12 @@
   "gpu_type": "h100",
   "exclusive_cpu": true,
   "trace_root": "/scratch/$USER/benchmark_traces",
-  "report_modules": ["python/3.11", "scipy-stack/2025a"]
+  "report_modules": [
+    "python/3.11",
+    "scipy-stack/2025a"
+  ],
+  "environment": {
+    "JULIA_DEPOT_PATH": "/scratch/$USER/julia_depot"
+  },
+  "gpu_scaling_partition": "x"
 }

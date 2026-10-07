@@ -7,7 +7,8 @@ PARTITION=$2
 SCRIPT_DIR=$3
 mkdir -p "$RUN_DIR"
 date -u +%FT%TZ > "$RUN_DIR/started.txt"
-source "${DRAC_ROOT:-$HOME/Oceananigans-DRAC}/env/nibi.sh"
+export JULIA_DEPOT_PATH="${JULIA_DEPOT_PATH:-/scratch/$USER/julia_depot}"
+source "${DRAC_ROOT:-$HOME/Oceananigans-DRAC}/env/drac.sh"
 set -eo pipefail
 export JULIA_NUM_THREADS="$SLURM_CPUS_PER_TASK"
 export JULIA_NUM_GC_THREADS=1

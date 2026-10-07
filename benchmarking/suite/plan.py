@@ -101,6 +101,8 @@ def build_plan(server, selected=SERIES):
             try:
                 weak_grid = ([1440 * math.isqrt(ranks), 720 * math.isqrt(ranks), 200]
                              if series == 'gpu_weak_scaling_super_fine' else None)
+                if series.startswith('gpu_scaling_') and server.get('gpu_scaling_partition') == 'x':
+                    partition = [ranks, 1, 1]
                 case['configuration'] = configuration(series, ranks, grid_name, partition, weak_grid)
                 case['partition'] = case['configuration']['partition']
                 if ranks > maximum:

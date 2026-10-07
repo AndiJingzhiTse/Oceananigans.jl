@@ -54,6 +54,7 @@ def validate(case_dir, config):
         if any(not isinstance(m, int) or m <= 0 for m in memory):
             raise ValueError('Incomplete or invalid GPU device memory measurements')
         result['gpu_memory_used_bytes'] = max(memory)
+        result['gpu_memory_max_gib'] = max(memory) / 2**30
     if config['profile']:
         totals = dict.fromkeys(CATEGORIES, 0)
         traces = []
