@@ -1,0 +1,66 @@
+mpiexec -n 2 --map-by core --bind-to core --report-bindings julia --threads=1 --project=benchmarking benchmarking/run_benchmarks.jl --float_type=Float64 --momentum_advection=WENOVectorInvariantDefault --tracer_advection=WENO7 --closure=CATKE --timestepper=SplitRungeKutta3 --tracers=T\,S --dt=60 --warmup_steps=2 --time_steps=10 --samples=5 --device=GPU --size=720x360x50 --grid_type=tripolar --distributed --partition=1x2x1 --output=/u/ajtse/Oceananigans.jl/benchmarking/results/rondeau/2026-09-27T025835Z_all_3680654/gpu_scaling/2_gpus/results.json 
+[rondeau:3801639] MCW rank 0 bound to socket 0[core 0[hwt 0-1]]: [BB/../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..][../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../.]
+[rondeau:3801639] MCW rank 1 bound to socket 0[core 1[hwt 0-1]]: [../BB/../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..][../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../.]
+[ Info: MPI has not been initialized, so we are calling MPI.Init().
+[ Info: MPI has not been initialized, so we are calling MPI.Init().
+[ Info: Distributed run: 2 ranks (x=1, y=2, z=1)
+===============================================================================================
+Oceananigans Benchmark Suite
+===============================================================================================
+Date: 2026-09-27T09:27:45.687
+Mode: benchmark
+Case: earth_ocean
+Grid types: SubString{String}["tripolar"]
+Architecture: Distributed{CUDAGPU} on 1×2×1 across 2 = 1×2×1 ranks:
+├── local_rank: 0 of 0-1
+├── local_index: [1, 1, 1]
+└── connectivity: north=1 south=1
+Distributed: true
+Partition: (1, 2, 1) (2 ranks)
+Sizes: [(720, 360, 50)]
+Float types: DataType[Float64]
+Momentum advection: SubString{String}["WENOVectorInvariantDefault"]
+Tracer advection: SubString{String}["WENO7"]
+Closures: SubString{String}["CATKE"]
+Tracers: (:T, :S)
+Timestepper: SplitRungeKutta3
+Time steps: 10 × 5 windows (warmup: 2)
+Δt: 60.0 s
+===============================================================================================
+
+
+----------------------------------------------------------------------
+Running: EarthOcean_tripolar_720x360x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr
+----------------------------------------------------------------------
+┌ Warning: Resizing the bottom height to match the grid's halos
+└ @ Oceananigans.DistributedComputations ~/Oceananigans.jl/src/DistributedComputations/distributed_immersed_boundaries.jl:117
+┌ Warning: Resizing the bottom height to match the grid's halos
+└ @ Oceananigans.DistributedComputations ~/Oceananigans.jl/src/DistributedComputations/distributed_immersed_boundaries.jl:117
+[ Info: Benchmark: EarthOcean_tripolar_720x360x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr
+┌ Info:   Architecture: Distributed{CUDAGPU} on 1×2×1 across 2 = 1×2×1 ranks:
+│ ├── local_rank: 0 of 0-1
+│ ├── local_index: [1, 1, 1]
+└ └── connectivity: north=1 south=1
+[ Info:   Float type: Float64
+[ Info:   Grid size: 720 × 180 × 50 (6480000 points)
+[ Info:   Time step: 60.0 s
+[ Info:   Warmup steps: 2
+[ Info:   Benchmark steps: 10 × 5 windows
+[ Info:   Running warmup...
+[ Info:   Running benchmark...
+[ Info:   Results:
+[ Info:     Total time: 4.825 s
+[ Info:     Time per step: 0.083338 s (min of 5 windows; median 0.084888 s, max 0.134894 s)
+[ Info:     Grid points/s: 7.78e+07
+
+=======================================================================================================================================
+BENCHMARK SUMMARY
+=======================================================================================================================================
+
+Benchmark                                                  Float         Grid Time/unit (ms)    Units/s        Points/s       Size           Chunks
+---------------------------------------------------------------------------------------------------------------------------------------
+EarthOcean_tripolar_720x360x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr  Float64   720×180×50        83.3378      12.00        7.78e+07          —                —
+=======================================================================================================================================
+Results saved to: /u/ajtse/Oceananigans.jl/benchmarking/results/rondeau/2026-09-27T025835Z_all_3680654/gpu_scaling/2_gpus/results.json
+Markdown report saved to: /u/ajtse/Oceananigans.jl/benchmarking/results/rondeau/2026-09-27T025835Z_all_3680654/gpu_scaling/2_gpus/results.md
+Benchmarks completed at 2026-09-27T09:34:08.057Z

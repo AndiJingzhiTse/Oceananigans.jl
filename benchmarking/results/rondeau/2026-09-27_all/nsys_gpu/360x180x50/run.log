@@ -1,0 +1,65 @@
+nsys profile --trace=cuda\,nvtx --sample=none --cpuctxsw=none --output=/u/ajtse/Oceananigans.jl/benchmarking/results/rondeau/2026-09-27T025835Z_all_3680654/nsys_gpu/360x180x50/profile julia --threads=1 --project=benchmarking benchmarking/run_benchmarks.jl --float_type=Float64 --momentum_advection=WENOVectorInvariantDefault --tracer_advection=WENO7 --closure=CATKE --timestepper=SplitRungeKutta3 --tracers=T\,S --dt=60 --warmup_steps=2 --time_steps=2 --samples=1 --device=GPU --size=360x180x50 --grid_type=tripolar --output=/u/ajtse/Oceananigans.jl/benchmarking/results/rondeau/2026-09-27T025835Z_all_3680654/nsys_gpu/360x180x50/results.json 
+┌ Warning: CUDA runtime library `libcupti.so.12.6` was loaded from a system path, `/opt/uw/nsight/2024.5.1/target-linux-x64/libcupti.so.12.6`.
+│ This may cause errors.
+│ 
+│ If you're running under a profiler, this situation is expected. Otherwise,
+│ ensure that your library path environment variable (e.g., `PATH` on Windows
+│ or `LD_LIBRARY_PATH` on Linux) does not include CUDA library paths.
+│ 
+│ In any other case, please file an issue.
+└ @ CUDACore ~/.julia/packages/CUDACore/sIGRL/src/initialization.jl:223
+===============================================================================================
+Oceananigans Benchmark Suite
+===============================================================================================
+Date: 2026-09-27T09:45:26.323
+Mode: benchmark
+Case: earth_ocean
+Grid types: SubString{String}["tripolar"]
+Architecture: GPU{CUDABackend}(CUDABackend(false, true))
+Distributed: false
+Sizes: [(360, 180, 50)]
+Float types: DataType[Float64]
+Momentum advection: SubString{String}["WENOVectorInvariantDefault"]
+Tracer advection: SubString{String}["WENO7"]
+Closures: SubString{String}["CATKE"]
+Tracers: (:T, :S)
+Timestepper: SplitRungeKutta3
+Time steps: 2 × 1 windows (warmup: 2)
+Δt: 60.0 s
+===============================================================================================
+
+
+----------------------------------------------------------------------
+Running: EarthOcean_tripolar_360x180x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr
+----------------------------------------------------------------------
+[ Info: Benchmark: EarthOcean_tripolar_360x180x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr
+[ Info:   Architecture: GPU{CUDABackend}(CUDABackend(false, true))
+[ Info:   Float type: Float64
+[ Info:   Grid size: 360 × 180 × 50 (3240000 points)
+[ Info:   Time step: 60.0 s
+[ Info:   Warmup steps: 2
+[ Info:   Benchmark steps: 2 × 1 windows
+[ Info:   Running warmup...
+[ Info:   Running benchmark...
+[ Info:   Results:
+[ Info:     Total time: 0.078 s
+[ Info:     Time per step: 0.039191 s (min of 1 windows; median 0.039191 s, max 0.039191 s)
+[ Info:     Grid points/s: 8.27e+07
+[ Info:     GPU memory usage: 992.884 MiB
+
+=======================================================================================================================================
+BENCHMARK SUMMARY
+=======================================================================================================================================
+
+Benchmark                                                  Float         Grid Time/unit (ms)    Units/s        Points/s       Size           Chunks
+---------------------------------------------------------------------------------------------------------------------------------------
+EarthOcean_tripolar_360x180x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr  Float64   360×180×50        39.1911      25.52        8.27e+07          —                —
+=======================================================================================================================================
+Results saved to: /u/ajtse/Oceananigans.jl/benchmarking/results/rondeau/2026-09-27T025835Z_all_3680654/nsys_gpu/360x180x50/results.json
+Markdown report saved to: /u/ajtse/Oceananigans.jl/benchmarking/results/rondeau/2026-09-27T025835Z_all_3680654/nsys_gpu/360x180x50/results.md
+Benchmarks completed at 2026-09-27T09:49:19.694Z
+Collecting data...
+Generating '/tmp/nsys-report-6d97.qdstrm'
+[1/1] [0%                          ] profile.nsys-rep[1/1] [0%                          ] profile.nsys-rep[1/1] [6%                          ] profile.nsys-rep[1/1] [9%                          ] profile.nsys-rep[1/1] [10%                         ] profile.nsys-rep[1/1] [11%                         ] profile.nsys-rep[1/1] [12%                         ] profile.nsys-rep[1/1] [13%                         ] profile.nsys-rep[1/1] [14%                         ] profile.nsys-rep[1/1] [=15%                        ] profile.nsys-rep[1/1] [=16%                        ] profile.nsys-rep[1/1] [=17%                        ] profile.nsys-rep[1/1] [==18%                       ] profile.nsys-rep[1/1] [==19%                       ] profile.nsys-rep[1/1] [==20%                       ] profile.nsys-rep[1/1] [==21%                       ] profile.nsys-rep[1/1] [===22%                      ] profile.nsys-rep[1/1] [===23%                      ] profile.nsys-rep[1/1] [===24%                      ] profile.nsys-rep[1/1] [====25%                     ] profile.nsys-rep[1/1] [====26%                     ] profile.nsys-rep[1/1] [====27%                     ] profile.nsys-rep[1/1] [====28%                     ] profile.nsys-rep[1/1] [=====29%                    ] profile.nsys-rep[1/1] [========41%                 ] profile.nsys-rep[1/1] [===========53%              ] profile.nsys-rep[1/1] [===============66%          ] profile.nsys-rep[1/1] [===================79%      ] profile.nsys-rep[1/1] [======================91%   ] profile.nsys-rep[1/1] [========================98% ] profile.nsys-rep[1/1] [========================100%] profile.nsys-rep[1/1] [========================100%] profile.nsys-rep
+Generated:
+    /u/ajtse/Oceananigans.jl/benchmarking/results/rondeau/2026-09-27T025835Z_all_3680654/nsys_gpu/360x180x50/profile.nsys-rep

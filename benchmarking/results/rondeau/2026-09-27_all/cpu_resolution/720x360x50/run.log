@@ -1,0 +1,50 @@
+julia --threads=1 --project=benchmarking benchmarking/run_benchmarks.jl --float_type=Float64 --momentum_advection=WENOVectorInvariantDefault --tracer_advection=WENO7 --closure=CATKE --timestepper=SplitRungeKutta3 --tracers=T\,S --dt=60 --warmup_steps=2 --time_steps=10 --samples=5 --device=CPU --size=720x360x50 --grid_type=tripolar --output=/u/ajtse/Oceananigans.jl/benchmarking/results/rondeau/2026-09-27T025835Z_all_3680654/cpu_resolution/720x360x50/results.json 
+===============================================================================================
+Oceananigans Benchmark Suite
+===============================================================================================
+Date: 2026-09-27T03:18:05.281
+Mode: benchmark
+Case: earth_ocean
+Grid types: SubString{String}["tripolar"]
+Architecture: CPU()
+Distributed: false
+Sizes: [(720, 360, 50)]
+Float types: DataType[Float64]
+Momentum advection: SubString{String}["WENOVectorInvariantDefault"]
+Tracer advection: SubString{String}["WENO7"]
+Closures: SubString{String}["CATKE"]
+Tracers: (:T, :S)
+Timestepper: SplitRungeKutta3
+Time steps: 10 × 5 windows (warmup: 2)
+Δt: 60.0 s
+===============================================================================================
+
+
+----------------------------------------------------------------------
+Running: EarthOcean_tripolar_720x360x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr
+----------------------------------------------------------------------
+[ Info: Benchmark: EarthOcean_tripolar_720x360x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr
+[ Info:   Architecture: CPU()
+[ Info:   Float type: Float64
+[ Info:   Grid size: 720 × 360 × 50 (12960000 points)
+[ Info:   Time step: 60.0 s
+[ Info:   Warmup steps: 2
+[ Info:   Benchmark steps: 10 × 5 windows
+[ Info:   Running warmup...
+[ Info:   Running benchmark...
+[ Info:   Results:
+[ Info:     Total time: 4833.949 s
+[ Info:     Time per step: 96.617069 s (min of 5 windows; median 96.688752 s, max 96.742521 s)
+[ Info:     Grid points/s: 1.34e+05
+
+=======================================================================================================================================
+BENCHMARK SUMMARY
+=======================================================================================================================================
+
+Benchmark                                                  Float         Grid Time/unit (ms)    Units/s        Points/s       Size           Chunks
+---------------------------------------------------------------------------------------------------------------------------------------
+EarthOcean_tripolar_720x360x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr  Float64   720×360×50     96617.0692       0.01        1.34e+05          —                —
+=======================================================================================================================================
+Results saved to: /u/ajtse/Oceananigans.jl/benchmarking/results/rondeau/2026-09-27T025835Z_all_3680654/cpu_resolution/720x360x50/results.json
+Markdown report saved to: /u/ajtse/Oceananigans.jl/benchmarking/results/rondeau/2026-09-27T025835Z_all_3680654/cpu_resolution/720x360x50/results.md
+Benchmarks completed at 2026-09-27T04:48:07.463Z

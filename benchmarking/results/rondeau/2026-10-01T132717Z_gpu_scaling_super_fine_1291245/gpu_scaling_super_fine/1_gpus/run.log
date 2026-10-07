@@ -1,0 +1,66 @@
+mpiexec -n 1 --map-by core --bind-to core --report-bindings julia --threads=1 --project=benchmarking benchmarking/run_benchmarks.jl --float_type=Float64 --momentum_advection=WENOVectorInvariantDefault --tracer_advection=WENO7 --closure=CATKE --timestepper=SplitRungeKutta3 --tracers=T\,S --dt=60 --warmup_steps=2 --time_steps=10 --samples=5 --device=GPU --size=1440x720x50 --grid_type=lat_lon --distributed --partition=1x1x1 --output=/u/ajtse/Oceananigans.jl/benchmarking/results/rondeau/2026-10-01T132717Z_gpu_scaling_super_fine_1291245/gpu_scaling_super_fine/1_gpus/results.json 
+[rondeau:1291362] MCW rank 0 bound to socket 0[core 0[hwt 0-1]]: [BB/../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..][../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../.]
+[ Info: MPI has not been initialized, so we are calling MPI.Init().
+┌ Warning: We are building a Distributed architecture on a single MPI rank. 
+│ This can occur when MPI is incorrectly configured. 
+│ See https://juliaparallel.org/MPI.jl/stable/configuration/ for more details.
+└ @ Oceananigans.DistributedComputations ~/Oceananigans.jl/src/DistributedComputations/distributed_architectures.jl:275
+[ Info: Distributed run: 1 ranks (x=1, y=1, z=1)
+===============================================================================================
+Oceananigans Benchmark Suite
+===============================================================================================
+Date: 2026-10-01T13:28:15.117
+Mode: benchmark
+Case: earth_ocean
+Grid types: SubString{String}["lat_lon"]
+Architecture: Distributed{CUDAGPU} on 1×1×1 across 1 rank:
+├── local_rank: 0 of 0-0
+├── local_index: [1, 1, 1]
+└── connectivity:
+Distributed: true
+Partition: (1, 1, 1) (1 ranks)
+Sizes: [(1440, 720, 50)]
+Float types: DataType[Float64]
+Momentum advection: SubString{String}["WENOVectorInvariantDefault"]
+Tracer advection: SubString{String}["WENO7"]
+Closures: SubString{String}["CATKE"]
+Coriolis: spherical
+Buoyancy: seawater
+Tracers: (:T, :S)
+Timestepper: SplitRungeKutta3
+Time steps: 10 × 5 windows (warmup: 2)
+Δt: 60.0 s
+===============================================================================================
+
+
+----------------------------------------------------------------------
+Running: EarthOcean_lat_lon_1440x720x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr
+----------------------------------------------------------------------
+[ Info: Benchmark: EarthOcean_lat_lon_1440x720x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr
+┌ Info:   Architecture: Distributed{CUDAGPU} on 1×1×1 across 1 rank:
+│ ├── local_rank: 0 of 0-0
+│ ├── local_index: [1, 1, 1]
+└ └── connectivity:
+[ Info:   Float type: Float64
+[ Info:   Grid size: 1440 × 720 × 50 (51840000 points)
+[ Info:   Time step: 60.0 s
+[ Info:   Warmup steps: 2
+[ Info:   Benchmark steps: 10 × 5 windows
+[ Info:   Running warmup...
+[ Info:   Running benchmark...
+[ Info:   Results:
+[ Info:     Total time: 25.266 s
+[ Info:     Time per step: 0.503411 s (min of 5 windows; median 0.503555 s, max 0.512114 s)
+[ Info:     Grid points/s: 1.03e+08
+
+=======================================================================================================================================
+BENCHMARK SUMMARY
+=======================================================================================================================================
+
+Benchmark                                                  Float         Grid Time/unit (ms)    Units/s        Points/s       Size           Chunks
+---------------------------------------------------------------------------------------------------------------------------------------
+EarthOcean_lat_lon_1440x720x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr  Float64  1440×720×50       503.4109       1.99        1.03e+08          —                —
+=======================================================================================================================================
+Results saved to: /u/ajtse/Oceananigans.jl/benchmarking/results/rondeau/2026-10-01T132717Z_gpu_scaling_super_fine_1291245/gpu_scaling_super_fine/1_gpus/results.json
+Markdown report saved to: /u/ajtse/Oceananigans.jl/benchmarking/results/rondeau/2026-10-01T132717Z_gpu_scaling_super_fine_1291245/gpu_scaling_super_fine/1_gpus/results.md
+Benchmarks completed at 2026-10-01T13:30:30.457Z

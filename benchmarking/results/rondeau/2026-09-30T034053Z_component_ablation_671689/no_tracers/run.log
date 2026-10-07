@@ -1,0 +1,52 @@
+===============================================================================================
+Oceananigans Benchmark Suite
+===============================================================================================
+Date: 2026-09-30T04:09:36.140
+Mode: benchmark
+Case: earth_ocean
+Grid types: SubString{String}["tripolar"]
+Architecture: GPU{CUDABackend}(CUDABackend(false, true))
+Distributed: false
+Sizes: [(360, 180, 50)]
+Float types: DataType[Float32]
+Momentum advection: SubString{String}["WENOVectorInvariantDefault"]
+Tracer advection: SubString{String}["WENO7"]
+Closures: SubString{String}["CATKE"]
+Coriolis: spherical
+Buoyancy: nothing
+Tracers: ()
+Timestepper: SplitRungeKutta3
+Time steps: 10 × 5 windows (warmup: 2)
+Δt: 60.0 s
+===============================================================================================
+
+
+----------------------------------------------------------------------
+Running: EarthOcean_tripolar_360x180x50_F32_WENOVectorInvariantDefault_WENO7_CATKE_0tr
+----------------------------------------------------------------------
+[ Info: Benchmark: EarthOcean_tripolar_360x180x50_F32_WENOVectorInvariantDefault_WENO7_CATKE_0tr
+[ Info:   Architecture: GPU{CUDABackend}(CUDABackend(false, true))
+[ Info:   Float type: Float32
+[ Info:   Grid size: 360 × 180 × 50 (3240000 points)
+[ Info:   Time step: 60.0 s
+[ Info:   Warmup steps: 2
+[ Info:   Benchmark steps: 10 × 5 windows
+[ Info:   Running warmup...
+[ Info:   Running benchmark...
+[ Info:   Results:
+[ Info:     Total time: 0.918 s
+[ Info:     Time per step: 0.016565 s (min of 5 windows; median 0.016587 s, max 0.024407 s)
+[ Info:     Grid points/s: 1.96e+08
+[ Info:     GPU memory usage: 395.243 MiB
+
+=======================================================================================================================================
+BENCHMARK SUMMARY
+=======================================================================================================================================
+
+Benchmark                                                  Float         Grid Time/unit (ms)    Units/s        Points/s       Size           Chunks
+---------------------------------------------------------------------------------------------------------------------------------------
+EarthOcean_tripolar_360x180x50_F32_WENOVectorInvariantDefault_WENO7_CATKE_0tr  Float32   360×180×50        16.5654      60.37        1.96e+08          —                —
+=======================================================================================================================================
+Results saved to: /u/ajtse/Oceananigans.jl/benchmarking/results/rondeau/2026-09-30T034053Z_component_ablation_671689/no_tracers/results.json
+Markdown report saved to: /u/ajtse/Oceananigans.jl/benchmarking/results/rondeau/2026-09-30T034053Z_component_ablation_671689/no_tracers/results.md
+Benchmarks completed at 2026-09-30T04:12:28.499Z

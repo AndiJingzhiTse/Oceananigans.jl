@@ -1,0 +1,63 @@
+[rondeau:2827161] MCW rank 0 bound to socket 0[core 48[hwt 0-1]]: [../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../BB/../../../../../../../../../../../../../../..][../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../.]
+[rondeau:2827161] MCW rank 1 bound to socket 0[core 16[hwt 0-1]]: [../../../../../../../../../../../../../../../../BB/../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..][../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../.]
+[ Info: MPI has not been initialized, so we are calling MPI.Init().
+[ Info: MPI has not been initialized, so we are calling MPI.Init().
+[ Info: Distributed run: 2 ranks (x=1, y=2, z=1)
+===============================================================================================
+Oceananigans Benchmark Suite
+===============================================================================================
+Date: 2026-10-05T17:28:45.653
+Mode: benchmark
+Case: earth_ocean
+Grid types: SubString{String}["lat_lon"]
+Architecture: Distributed{CUDAGPU} on 1×2×1 across 2 = 1×2×1 ranks:
+├── local_rank: 0 of 0-1
+├── local_index: [1, 1, 1]
+└── connectivity: north=1 south=1
+Distributed: true
+Partition: (1, 2, 1) (2 ranks)
+Sizes: [(1440, 720, 200)]
+Float types: DataType[Float64]
+Momentum advection: SubString{String}["WENOVectorInvariantDefault"]
+Tracer advection: SubString{String}["WENO7"]
+Closures: SubString{String}["CATKE"]
+Coriolis: spherical
+Buoyancy: seawater
+Tracers: (:T, :S)
+Timestepper: SplitRungeKutta3
+Time steps: 10 × 5 windows (warmup: 2)
+Δt: 60.0 s
+===============================================================================================
+
+
+----------------------------------------------------------------------
+Running: EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr
+----------------------------------------------------------------------
+[ Info: Benchmark: EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr
+┌ Info:   Architecture: Distributed{CUDAGPU} on 1×2×1 across 2 = 1×2×1 ranks:
+│ ├── local_rank: 0 of 0-1
+│ ├── local_index: [1, 1, 1]
+└ └── connectivity: north=1 south=1
+[ Info:   Float type: Float64
+[ Info:   Grid size: 1440 × 360 × 200 (103680000 points)
+[ Info:   Time step: 60.0 s
+[ Info:   Warmup steps: 2
+[ Info:   Benchmark steps: 10 × 5 windows
+[ Info:   Running warmup...
+[ Info:   Running benchmark...
+[ Info:   Results:
+[ Info:     Total time: 49.624 s
+[ Info:     Time per step: 0.991015 s (min of 5 windows; median 0.992980 s, max 0.994184 s)
+[ Info:     Grid points/s: 1.05e+08
+
+=======================================================================================================================================
+BENCHMARK SUMMARY
+=======================================================================================================================================
+
+Benchmark                                                  Float         Grid Time/unit (ms)    Units/s        Points/s       Size           Chunks
+---------------------------------------------------------------------------------------------------------------------------------------
+EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr  Float64 1440×360×200       991.0147       1.01        1.05e+08          —                —
+=======================================================================================================================================
+Results saved to: benchmarking/results/rondeau/2026-09-27_all/gpu_scaling_super_fine/2_gpus/results.json
+Markdown report saved to: benchmarking/results/rondeau/2026-09-27_all/gpu_scaling_super_fine/2_gpus/results.md
+Benchmarks completed at 2026-10-05T17:31:50.704Z

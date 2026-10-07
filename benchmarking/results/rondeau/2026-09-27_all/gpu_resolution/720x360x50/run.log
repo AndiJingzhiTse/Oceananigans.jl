@@ -1,0 +1,51 @@
+julia --threads=1 --project=benchmarking benchmarking/run_benchmarks.jl --float_type=Float64 --momentum_advection=WENOVectorInvariantDefault --tracer_advection=WENO7 --closure=CATKE --timestepper=SplitRungeKutta3 --tracers=T\,S --dt=60 --warmup_steps=2 --time_steps=10 --samples=5 --device=GPU --size=720x360x50 --grid_type=lat_lon --output=/u/ajtse/Oceananigans.jl/benchmarking/results/rondeau/2026-09-27T025835Z_all_3680654/gpu_resolution/720x360x50/results.json 
+===============================================================================================
+Oceananigans Benchmark Suite
+===============================================================================================
+Date: 2026-09-27T04:53:49.366
+Mode: benchmark
+Case: earth_ocean
+Grid types: SubString{String}["lat_lon"]
+Architecture: GPU{CUDABackend}(CUDABackend(false, true))
+Distributed: false
+Sizes: [(720, 360, 50)]
+Float types: DataType[Float64]
+Momentum advection: SubString{String}["WENOVectorInvariantDefault"]
+Tracer advection: SubString{String}["WENO7"]
+Closures: SubString{String}["CATKE"]
+Tracers: (:T, :S)
+Timestepper: SplitRungeKutta3
+Time steps: 10 × 5 windows (warmup: 2)
+Δt: 60.0 s
+===============================================================================================
+
+
+----------------------------------------------------------------------
+Running: EarthOcean_lat_lon_720x360x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr
+----------------------------------------------------------------------
+[ Info: Benchmark: EarthOcean_lat_lon_720x360x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr
+[ Info:   Architecture: GPU{CUDABackend}(CUDABackend(false, true))
+[ Info:   Float type: Float64
+[ Info:   Grid size: 720 × 360 × 50 (12960000 points)
+[ Info:   Time step: 60.0 s
+[ Info:   Warmup steps: 2
+[ Info:   Benchmark steps: 10 × 5 windows
+[ Info:   Running warmup...
+[ Info:   Running benchmark...
+[ Info:   Results:
+[ Info:     Total time: 6.294 s
+[ Info:     Time per step: 0.125816 s (min of 5 windows; median 0.125869 s, max 0.126033 s)
+[ Info:     Grid points/s: 1.03e+08
+[ Info:     GPU memory usage: 3.541 GiB
+
+=======================================================================================================================================
+BENCHMARK SUMMARY
+=======================================================================================================================================
+
+Benchmark                                                  Float         Grid Time/unit (ms)    Units/s        Points/s       Size           Chunks
+---------------------------------------------------------------------------------------------------------------------------------------
+EarthOcean_lat_lon_720x360x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr  Float64   720×360×50       125.8155       7.95        1.03e+08          —                —
+=======================================================================================================================================
+Results saved to: /u/ajtse/Oceananigans.jl/benchmarking/results/rondeau/2026-09-27T025835Z_all_3680654/gpu_resolution/720x360x50/results.json
+Markdown report saved to: /u/ajtse/Oceananigans.jl/benchmarking/results/rondeau/2026-09-27T025835Z_all_3680654/gpu_resolution/720x360x50/results.md
+Benchmarks completed at 2026-09-27T04:55:34.490Z

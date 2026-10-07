@@ -1,0 +1,5 @@
+nsys profile --trace=nvtx --sample=process-tree --cpuctxsw=process-tree --sampling-frequency=1000 --backtrace=auto --resolve-symbols=true --output=/u/ajtse/Oceananigans.jl/benchmarking/results/rondeau/2026-09-27T025835Z_all_3680654/nsys_cpu/720x360x50/profile julia --threads=1 --project=benchmarking benchmarking/run_benchmarks.jl --float_type=Float64 --momentum_advection=WENOVectorInvariantDefault --tracer_advection=WENO7 --closure=CATKE --timestepper=SplitRungeKutta3 --tracers=T\,S --dt=60 --warmup_steps=2 --time_steps=2 --samples=1 --device=CPU --size=720x360x50 --grid_type=tripolar --output=/u/ajtse/Oceananigans.jl/benchmarking/results/rondeau/2026-09-27T025835Z_all_3680654/nsys_cpu/720x360x50/results.json 
+unrecognised option '--sampling-frequency=1000'
+
+usage: nsys profile [<args>] [application] [<application args>]
+Try 'nsys profile --help' for more information.

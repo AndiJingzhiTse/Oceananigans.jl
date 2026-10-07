@@ -1,0 +1,55 @@
+nsys profile --trace=nvtx --sample=process-tree --cpuctxsw=process-tree --sampling-period=1000000 --backtrace=dwarf --resolve-symbols=true --output=/local_scratch/ajtse/rondeau-plot-profiles/2026-09-27T215707Z_nsys_cpu_3988542/nsys_cpu/720x360x50/profile julia --threads=1 --project=benchmarking benchmarking/run_benchmarks.jl --float_type=Float64 --momentum_advection=WENOVectorInvariantDefault --tracer_advection=WENO7 --closure=CATKE --timestepper=SplitRungeKutta3 --tracers=T\,S --dt=60 --warmup_steps=2 --time_steps=2 --samples=1 --device=CPU --size=720x360x50 --grid_type=tripolar --output=/local_scratch/ajtse/rondeau-plot-profiles/2026-09-27T215707Z_nsys_cpu_3988542/nsys_cpu/720x360x50/results.json 
+===============================================================================================
+Oceananigans Benchmark Suite
+===============================================================================================
+Date: 2026-09-27T21:58:00.572
+Mode: benchmark
+Case: earth_ocean
+Grid types: SubString{String}["tripolar"]
+Architecture: CPU()
+Distributed: false
+Sizes: [(720, 360, 50)]
+Float types: DataType[Float64]
+Momentum advection: SubString{String}["WENOVectorInvariantDefault"]
+Tracer advection: SubString{String}["WENO7"]
+Closures: SubString{String}["CATKE"]
+Tracers: (:T, :S)
+Timestepper: SplitRungeKutta3
+Time steps: 2 × 1 windows (warmup: 2)
+Δt: 60.0 s
+===============================================================================================
+
+
+----------------------------------------------------------------------
+Running: EarthOcean_tripolar_720x360x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr
+----------------------------------------------------------------------
+[ Info: Benchmark: EarthOcean_tripolar_720x360x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr
+[ Info:   Architecture: CPU()
+[ Info:   Float type: Float64
+[ Info:   Grid size: 720 × 360 × 50 (12960000 points)
+[ Info:   Time step: 60.0 s
+[ Info:   Warmup steps: 2
+[ Info:   Benchmark steps: 2 × 1 windows
+[ Info:   Running warmup...
+[ Info:   Running benchmark...
+[ Info:   Results:
+[ Info:     Total time: 200.943 s
+[ Info:     Time per step: 100.471697 s (min of 1 windows; median 100.471697 s, max 100.471697 s)
+[ Info:     Grid points/s: 1.29e+05
+
+=======================================================================================================================================
+BENCHMARK SUMMARY
+=======================================================================================================================================
+
+Benchmark                                                  Float         Grid Time/unit (ms)    Units/s        Points/s       Size           Chunks
+---------------------------------------------------------------------------------------------------------------------------------------
+EarthOcean_tripolar_720x360x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr  Float64   720×360×50    100471.6966       0.01        1.29e+05          —                —
+=======================================================================================================================================
+Results saved to: /local_scratch/ajtse/rondeau-plot-profiles/2026-09-27T215707Z_nsys_cpu_3988542/nsys_cpu/720x360x50/results.json
+Markdown report saved to: /local_scratch/ajtse/rondeau-plot-profiles/2026-09-27T215707Z_nsys_cpu_3988542/nsys_cpu/720x360x50/results.md
+Benchmarks completed at 2026-09-27T22:11:14.014Z
+Collecting data...
+Generating '/tmp/nsys-report-4635.qdstrm'
+[1/1] [0%                          ] profile.nsys-rep[1/1] [0%                          ] profile.nsys-rep[1/1] [7%                          ] profile.nsys-rep[1/1] [6%                          ] profile.nsys-rep[1/1] [7%                          ] profile.nsys-rep[1/1] [6%                          ] profile.nsys-rep[1/1] [7%                          ] profile.nsys-rep[1/1] [6%                          ] profile.nsys-rep[1/1] [7%                          ] profile.nsys-rep[1/1] [6%                          ] profile.nsys-rep[1/1] [7%                          ] profile.nsys-rep[1/1] [6%                          ] profile.nsys-rep[1/1] [7%                          ] profile.nsys-rep[1/1] [6%                          ] profile.nsys-rep[1/1] [7%                          ] profile.nsys-rep[1/1] [6%                          ] profile.nsys-rep[1/1] [7%                          ] profile.nsys-rep[1/1] [8%                          ] profile.nsys-rep[1/1] [7%                          ] profile.nsys-rep[1/1] [8%                          ] profile.nsys-rep[1/1] [7%                          ] profile.nsys-rep[1/1] [6%                          ] profile.nsys-rep[1/1] [7%                          ] profile.nsys-rep[1/1] [6%                          ] profile.nsys-rep[1/1] [7%                          ] profile.nsys-rep[1/1] [6%                          ] profile.nsys-rep[1/1] [7%                          ] profile.nsys-rep[1/1] [8%                          ] profile.nsys-rep[1/1] [9%                          ] profile.nsys-rep[1/1] [10%                         ] profile.nsys-rep[1/1] [11%                         ] profile.nsys-rep[1/1] [12%                         ] profile.nsys-rep[1/1] [13%                         ] profile.nsys-rep[1/1] [14%                         ] profile.nsys-rep[1/1] [=16%                        ] profile.nsys-rep[1/1] [=17%                        ] profile.nsys-rep[1/1] [==18%                       ] profile.nsys-rep[1/1] [==19%                       ] profile.nsys-rep[1/1] [==20%                       ] profile.nsys-rep[1/1] [==21%                       ] profile.nsys-rep[1/1] [===22%                      ] profile.nsys-rep[1/1] [===23%                      ] profile.nsys-rep[1/1] [===24%                      ] profile.nsys-rep[1/1] [====25%                     ] profile.nsys-rep[1/1] [====26%                     ] profile.nsys-rep[1/1] [====27%                     ] profile.nsys-rep[1/1] [=====29%                    ] profile.nsys-rep[1/1] [=====30%                    ] profile.nsys-rep[1/1] [=====31%                    ] profile.nsys-rep[1/1] [======33%                   ] profile.nsys-rep[1/1] [======35%                   ] profile.nsys-rep[1/1] [=======37%                  ] profile.nsys-rep[1/1] [=======38%                  ] profile.nsys-rep[1/1] [========40%                 ] profile.nsys-rep[1/1] [========42%                 ] profile.nsys-rep[1/1] [=========43%                ] profile.nsys-rep[1/1] [=========45%                ] profile.nsys-rep[1/1] [==========47%               ] profile.nsys-rep[1/1] [==========49%               ] profile.nsys-rep[1/1] [===========50%              ] profile.nsys-rep[1/1] [===========52%              ] profile.nsys-rep[1/1] [===========53%              ] profile.nsys-rep[1/1] [============54%             ] profile.nsys-rep[1/1] [============55%             ] profile.nsys-rep[1/1] [============56%             ] profile.nsys-rep[1/1] [============57%             ] profile.nsys-rep[1/1] [=============58%            ] profile.nsys-rep[1/1] [=============59%            ] profile.nsys-rep[1/1] [=============60%            ] profile.nsys-rep[1/1] [==============61%           ] profile.nsys-rep[1/1] [==============62%           ] profile.nsys-rep[1/1] [==============63%           ] profile.nsys-rep[1/1] [==============64%           ] profile.nsys-rep[1/1] [===============65%          ] profile.nsys-rep[1/1] [===============66%          ] profile.nsys-rep[1/1] [===============67%          ] profile.nsys-rep[1/1] [================68%         ] profile.nsys-rep[1/1] [================69%         ] profile.nsys-rep[1/1] [================70%         ] profile.nsys-rep[1/1] [================71%         ] profile.nsys-rep[1/1] [=================72%        ] profile.nsys-rep[1/1] [=================73%        ] profile.nsys-rep[1/1] [=================74%        ] profile.nsys-rep[1/1] [==================75%       ] profile.nsys-rep[1/1] [==================76%       ] profile.nsys-rep[1/1] [==================77%       ] profile.nsys-rep[1/1] [==================78%       ] profile.nsys-rep[1/1] [===================79%      ] profile.nsys-rep[1/1] [===================80%      ] profile.nsys-rep[1/1] [===================81%      ] profile.nsys-rep[1/1] [===================82%      ] profile.nsys-rep[1/1] [====================83%     ] profile.nsys-rep[1/1] [====================84%     ] profile.nsys-rep[1/1] [====================85%     ] profile.nsys-rep[1/1] [=====================86%    ] profile.nsys-rep[1/1] [=====================87%    ] profile.nsys-rep[1/1] [=====================88%    ] profile.nsys-rep[1/1] [=====================89%    ] profile.nsys-rep[1/1] [======================90%   ] profile.nsys-rep[1/1] [======================91%   ] profile.nsys-rep[1/1] [======================92%   ] profile.nsys-rep[1/1] [=======================93%  ] profile.nsys-rep[1/1] [=======================94%  ] profile.nsys-rep[1/1] [=======================95%  ] profile.nsys-rep[1/1] [=======================96%  ] profile.nsys-rep[1/1] [========================97% ] profile.nsys-rep[1/1] [========================98% ] profile.nsys-rep[1/1] [========================99% ] profile.nsys-rep[1/1] [========================100%] profile.nsys-rep[1/1] [========================100%] profile.nsys-rep[1/1] [========================100%] profile.nsys-rep
+Generated:
+    /local_scratch/ajtse/rondeau-plot-profiles/2026-09-27T215707Z_nsys_cpu_3988542/nsys_cpu/720x360x50/profile.nsys-rep
