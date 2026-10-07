@@ -8,12 +8,12 @@ Profiled timings include instrumentation overhead and are separate from the exis
 
 | GPUs | Partition | Resolution | Grid type | Job | State | Profiled fastest s/step | Median s/step | Details |
 |---:|---|---|---|---|---|---:|---:|---|
-| 1 | 1x1x1 | 1440x720x200 | LatitudeLongitudeGrid | 23324756 | PENDING | — | — | (Priority); estimated start N/A America/Toronto |
-| 2 | 2x1x1 | 1440x720x200 | LatitudeLongitudeGrid | 23324758 | PENDING | — | — | (Priority); estimated start N/A America/Toronto |
-| 2 | 1x2x1 | 1440x720x200 | LatitudeLongitudeGrid | 23324758 | PENDING | — | — | (Priority); estimated start N/A America/Toronto |
-| 4 | 4x1x1 | 1440x720x200 | LatitudeLongitudeGrid | 23324759 | PENDING | — | — | (Priority); estimated start N/A America/Toronto |
-| 4 | 2x2x1 | 1440x720x200 | LatitudeLongitudeGrid | 23324759 | PENDING | — | — | (Priority); estimated start N/A America/Toronto |
-| 4 | 1x4x1 | 1440x720x200 | LatitudeLongitudeGrid | 23324759 | PENDING | — | — | (Priority); estimated start N/A America/Toronto |
+| 1 | 1x1x1 | 1440x720x200 | LatitudeLongitudeGrid | 23324756 | PENDING | — | — | (Priority); estimated start 2026-10-08T13:00:47 America/Toronto |
+| 2 | 2x1x1 | 1440x720x200 | LatitudeLongitudeGrid | 23324758 | PENDING | — | — | (Priority); estimated start 2026-10-08T13:00:47 America/Toronto |
+| 2 | 1x2x1 | 1440x720x200 | LatitudeLongitudeGrid | 23324758 | PENDING | — | — | (Priority); estimated start 2026-10-08T13:00:47 America/Toronto |
+| 4 | 4x1x1 | 1440x720x200 | LatitudeLongitudeGrid | 23324759 | PENDING | — | — | (Priority); estimated start 2026-10-08T13:00:47 America/Toronto |
+| 4 | 2x2x1 | 1440x720x200 | LatitudeLongitudeGrid | 23324759 | PENDING | — | — | (Priority); estimated start 2026-10-08T13:00:47 America/Toronto |
+| 4 | 1x4x1 | 1440x720x200 | LatitudeLongitudeGrid | 23324759 | PENDING | — | — | (Priority); estimated start 2026-10-08T13:00:47 America/Toronto |
 
 Kernel categories follow the existing Rondeau Nsight grouping: hydrostatic Gc (tracers), Gu, Gv, and all other kernels.
 Fractions use summed GPU kernel duration across ranks, not elapsed wall time. Concurrent activities may overlap; MPI CPU durations cannot be added to GPU durations to form a wall-time percentage.

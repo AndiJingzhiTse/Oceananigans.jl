@@ -9,8 +9,8 @@ Highest verified count so far: **32 GPUs**.
 
 | GPUs | Slurm job | State | Exit code | Details |
 |---:|---|---|---|---|
-| 8 | 23257894 | PENDING | 0:0 | (Priority); estimated start N/A America/Toronto |
-| 16 | 23257896 | PENDING | 0:0 | (Priority); estimated start N/A America/Toronto |
+| 8 | 23257894 | PENDING | 0:0 | (Priority); estimated start 2026-10-07T02:40:00 America/Toronto |
+| 16 | 23257896 | PENDING | 0:0 | (Priority); estimated start 2026-10-08T13:00:47 America/Toronto |
 | 64 | 23257897 | PENDING | 0:0 | (Priority); estimated start N/A America/Toronto |
 | 128 | 23257899 | PENDING | 0:0 | (Priority); estimated start N/A America/Toronto |
 

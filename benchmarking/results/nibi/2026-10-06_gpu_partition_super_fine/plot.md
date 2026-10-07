@@ -7,7 +7,7 @@ Float64, latitude–longitude without bathymetry, WENOVectorInvariantDefault, WE
 
 Slurm job **23304598**: **PENDING**. Whole-series wall-time limit: 30 minutes.
 
-Queue snapshot (America/Toronto): `23304598|PENDING|(Priority)|N/A`.
+Queue snapshot (America/Toronto): `23304598|PENDING|(Priority)|2026-10-07T07:20:00`.
 
 | Partition | Local grid per rank | State | Fastest s/step | Median s/step | Speedup vs 2×2×1 | Spread |
 |---|---|---|---:|---:|---:|---:|

@@ -25,8 +25,8 @@ Accepted or pending requests do not count as completed runs. Failed and timed-ou
 | 768 | 4 | 768 | 1 | 32x24x1 | 1440x720x200 | LatitudeLongitudeGrid | 23320824 | COMPLETED | 1.671754 | 1.775883 | 64.1% / 61.3% | All ranks, unique pinned cores, configuration and timings verified |
 | 1536 | 8 | 1536 | 1 | 32x48x1 | 1440x720x200 | LatitudeLongitudeGrid | 23320828 | COMPLETED | 1.259538 | 1.279207 | 42.5% / 42.5% | All ranks, unique pinned cores, configuration and timings verified |
 | 3072 | 16 | 3072 | 1 | 64x48x1 | 1440x720x200 | LatitudeLongitudeGrid | 23320830 | COMPLETED | 0.944577 | 0.972165 | 28.4% / 28.0% | All ranks, unique pinned cores, configuration and timings verified |
-| 6144 | 32 | 6144 | 1 | 96x64x1 | 1440x720x200 | LatitudeLongitudeGrid | 23320832 | PENDING | — | — | — | (Priority); estimated start 2026-10-06T23:38:10 America/Toronto |
-| 12288 | 64 | 12288 | 1 | 128x96x1 | 1440x720x200 | LatitudeLongitudeGrid | 23320834 | PENDING | — | — | — | (Priority); estimated start 2026-10-07T00:47:09 America/Toronto |
+| 6144 | 32 | 6144 | 1 | 96x64x1 | 1440x720x200 | LatitudeLongitudeGrid | 23320832 | PENDING | — | — | — | (Priority); estimated start 2026-10-06T23:58:12 America/Toronto |
+| 12288 | 64 | 12288 | 1 | 128x96x1 | 1440x720x200 | LatitudeLongitudeGrid | 23320834 | PENDING | — | — | — | (Priority); estimated start 2026-10-07T03:10:00 America/Toronto |
 | 24576 | 128 |  |  | Unavailable | 1440x720x200 | LatitudeLongitudeGrid |  | GEOMETRY_LIMIT | — | — | — | 24576 MPI ranks have no horizontal partition with at least seven cells per local dimension |
 
 A window is ten consecutive steps. Rank minimum/median window elapsed times are divided by ten; the maximum across ranks is reported.

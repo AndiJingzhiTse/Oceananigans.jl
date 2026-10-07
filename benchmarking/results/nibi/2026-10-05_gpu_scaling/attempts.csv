@@ -11,7 +11,7 @@ gpus,nodes,partition,job_id,state,exit_code,reason
 4,1,2x2x1,23239534,COMPLETED,0:0,None
 128,16,16x8x1,,FEASIBILITY_ONLY,0,Slurm test accepted; estimated start 2026-10-06T21:24:21 America/Toronto. Not submitted because user requested no long queue wait.
 256,32,16x16x1,,SUBMISSION_FAILED,1,sbatch: error: Batch job submission failed: Requested node configuration is not available
-8,1,4x2x1,23257894,PENDING,0:0,(Priority); estimated start N/A America/Toronto
-16,2,4x4x1,23257896,PENDING,0:0,(Priority); estimated start N/A America/Toronto
+8,1,4x2x1,23257894,PENDING,0:0,(Priority); estimated start 2026-10-07T02:40:00 America/Toronto
+16,2,4x4x1,23257896,PENDING,0:0,(Priority); estimated start 2026-10-08T13:00:47 America/Toronto
 64,8,8x8x1,23257897,PENDING,0:0,(Priority); estimated start N/A America/Toronto
 128,16,16x8x1,23257899,PENDING,0:0,(Priority); estimated start N/A America/Toronto

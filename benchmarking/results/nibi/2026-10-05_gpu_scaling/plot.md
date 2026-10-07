@@ -35,7 +35,7 @@ Unmeasured intermediate counts: 8, 16. No interpolation is drawn across gaps.
 | 4 | 23239534 | COMPLETED | 0:0 | None |
 | 128 |  | FEASIBILITY_ONLY | 0 | Slurm test accepted; estimated start 2026-10-06T21:24:21 America/Toronto. Not submitted because user requested no long queue wait. |
 | 256 |  | SUBMISSION_FAILED | 1 | sbatch: error: Batch job submission failed: Requested node configuration is not available |
-| 8 | 23257894 | PENDING | 0:0 | (Priority); estimated start N/A America/Toronto |
-| 16 | 23257896 | PENDING | 0:0 | (Priority); estimated start N/A America/Toronto |
+| 8 | 23257894 | PENDING | 0:0 | (Priority); estimated start 2026-10-07T02:40:00 America/Toronto |
+| 16 | 23257896 | PENDING | 0:0 | (Priority); estimated start 2026-10-08T13:00:47 America/Toronto |
 | 64 | 23257897 | PENDING | 0:0 | (Priority); estimated start N/A America/Toronto |
 | 128 | 23257899 | PENDING | 0:0 | (Priority); estimated start N/A America/Toronto |

@@ -10,6 +10,6 @@ cores,nodes,ranks,threads_per_rank,partition,resolution,grid_type,job_id,state,f
 768,4,768,1,32x24x1,1440x720x200,LatitudeLongitudeGrid,23320824,COMPLETED,1.671753663,1.7758828675,"All ranks, unique pinned cores, configuration and timings verified"
 1536,8,1536,1,32x48x1,1440x720x200,LatitudeLongitudeGrid,23320828,COMPLETED,1.2595375689000001,1.2792070974,"All ranks, unique pinned cores, configuration and timings verified"
 3072,16,3072,1,64x48x1,1440x720x200,LatitudeLongitudeGrid,23320830,COMPLETED,0.9445774303000001,0.972165464,"All ranks, unique pinned cores, configuration and timings verified"
-6144,32,6144,1,96x64x1,1440x720x200,LatitudeLongitudeGrid,23320832,PENDING,,,(Priority); estimated start 2026-10-06T23:38:10 America/Toronto
-12288,64,12288,1,128x96x1,1440x720x200,LatitudeLongitudeGrid,23320834,PENDING,,,(Priority); estimated start 2026-10-07T00:47:09 America/Toronto
+6144,32,6144,1,96x64x1,1440x720x200,LatitudeLongitudeGrid,23320832,PENDING,,,(Priority); estimated start 2026-10-06T23:58:12 America/Toronto
+12288,64,12288,1,128x96x1,1440x720x200,LatitudeLongitudeGrid,23320834,PENDING,,,(Priority); estimated start 2026-10-07T03:10:00 America/Toronto
 24576,128,,,Unavailable,1440x720x200,LatitudeLongitudeGrid,,GEOMETRY_LIMIT,,,24576 MPI ranks have no horizontal partition with at least seven cells per local dimension
