@@ -70,7 +70,7 @@ Highest completed count: **192 ranks**.
 | 192x1x1 | 192 | 192x1x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 9.971960 | 10.203584 | — | Rank results, finite fields and resource placement verified |
 | 96x2x1 | 192 | 96x2x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 6.686653 | 7.216247 | — | Rank results, finite fields and resource placement verified |
 | 64x3x1 | 192 | 64x3x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 6.277318 | 6.426454 | — | Rank results, finite fields and resource placement verified |
-| 48x4x1 | 192 | 48x4x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
+| 48x4x1 | 192 | 48x4x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 5.778717 | 5.900243 | — | Rank results, finite fields and resource placement verified |
 | 32x6x1 | 192 | 32x6x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
 | 24x8x1 | 192 | 24x8x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
 | 16x12x1 | 192 | 16x12x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
@@ -87,3 +87,5 @@ Highest completed count: **192 ranks**.
 [96x2x1 configuration](cpu_partition_cores_super_fine/96x2x1/configuration.md): local resolution **15–15 × 360–360 × 200**, retained free-surface substeps [21].
 
 [64x3x1 configuration](cpu_partition_cores_super_fine/64x3x1/configuration.md): local resolution **22–23 × 240–240 × 200**, retained free-surface substeps [21].
+
+[48x4x1 configuration](cpu_partition_cores_super_fine/48x4x1/configuration.md): local resolution **30–30 × 180–180 × 200**, retained free-surface substeps [21].
