@@ -1788,8 +1788,8 @@
         1,
         1
       ],
-      "state": "RUNNING",
-      "details": "Exit 0:0; None",
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
       "job_id": "22653833",
       "configuration": {
         "series": "cpu_resolution",
@@ -1830,6 +1830,14 @@
         "samples": 5,
         "time_steps": 10,
         "profile": false
+      },
+      "measurement": {
+        "fastest": 574.4666320063,
+        "median": 575.5340540735,
+        "maximum": 577.4690059857,
+        "retained_substeps": [
+          21
+        ]
       }
     },
     {

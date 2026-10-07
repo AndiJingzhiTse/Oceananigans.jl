@@ -70,11 +70,13 @@ Highest completed count: **1 ranks**.
 |---|---:|---|---|---|---|---:|---:|---|---|
 | default | 1 | 1x1x1 | 360x180x50 | LatitudeLongitudeGrid | COMPLETED | 9.133294 | 9.150603 | — | Rank results, finite fields and resource placement verified |
 | fine | 1 | 1x1x1 | 720x360x100 | LatitudeLongitudeGrid | COMPLETED | 71.099241 | 71.252001 | — | Rank results, finite fields and resource placement verified |
-| super_fine | 1 | 1x1x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
+| super_fine | 1 | 1x1x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 574.466632 | 575.534054 | — | Rank results, finite fields and resource placement verified |
 
 [default configuration](cpu_resolution/default/configuration.md): local resolution **360–360 × 180–180 × 50**, retained free-surface substeps [21].
 
 [fine configuration](cpu_resolution/fine/configuration.md): local resolution **720–720 × 360–360 × 100**, retained free-surface substeps [21].
+
+[super_fine configuration](cpu_resolution/super_fine/configuration.md): local resolution **1440–1440 × 720–720 × 200**, retained free-surface substeps [21].
 ## cpu_partition_cores_super_fine
 
 Highest completed count: **192 ranks**.
