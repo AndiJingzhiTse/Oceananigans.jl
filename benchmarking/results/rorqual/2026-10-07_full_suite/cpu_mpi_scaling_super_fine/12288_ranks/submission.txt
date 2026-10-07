@@ -1,0 +1,2 @@
+sbatch --parsable --job-name=bench_cpu_mpi_scaling_super_fine --nodes=64 --ntasks=12288 --ntasks-per-node=192 --cpus-per-task=1 --output=/home/anditse/Oceananigans.jl/benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/12288_ranks/allocation.out --account=def-fpoulin_cpu --time=03:00:00 --hint=nomultithread --exclusive --mem=0 --export=ALL,JULIA_DEPOT_PATH=/scratch/anditse/julia_depot: /home/anditse/Oceananigans.jl/benchmarking/results/rorqual/2026-10-07_full_suite/cpu_mpi_scaling_super_fine/12288_ranks/allocation.sh
+22632333
