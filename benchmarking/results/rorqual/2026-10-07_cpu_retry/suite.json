@@ -3263,8 +3263,8 @@
         96,
         1
       ],
-      "state": "RUNNING",
-      "details": "Exit 0:0; None",
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
       "job_id": "22653834",
       "configuration": {
         "series": "cpu_partition_cores_super_fine",
@@ -3401,6 +3401,14 @@
         "samples": 5,
         "time_steps": 10,
         "profile": false
+      },
+      "measurement": {
+        "fastest": 6.6722756708,
+        "median": 6.6794134246,
+        "maximum": 7.4219912201,
+        "retained_substeps": [
+          21
+        ]
       }
     },
     {

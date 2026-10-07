@@ -89,7 +89,7 @@ Highest completed count: **192 ranks**.
 | 6x32x1 | 192 | 6x32x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 4.765949 | 4.794643 | — | Rank results, finite fields and resource placement verified |
 | 4x48x1 | 192 | 4x48x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 5.055624 | 5.140717 | — | Rank results, finite fields and resource placement verified |
 | 3x64x1 | 192 | 3x64x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 5.415662 | 5.537940 | — | Rank results, finite fields and resource placement verified |
-| 2x96x1 | 192 | 2x96x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
+| 2x96x1 | 192 | 2x96x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 6.672276 | 6.679413 | — | Rank results, finite fields and resource placement verified |
 | 1x192x1 | 192 | 1x192x1 | 1440x720x200 | LatitudeLongitudeGrid | GEOMETRY_LIMIT | — | — | — | Partition [1, 192, 1] has fewer than 7 local cells per horizontal direction |
 
 [192x1x1 configuration](cpu_partition_cores_super_fine/192x1x1/configuration.md): local resolution **7–8 × 720–720 × 200**, retained free-surface substeps [21].
@@ -115,3 +115,5 @@ Highest completed count: **192 ranks**.
 [4x48x1 configuration](cpu_partition_cores_super_fine/4x48x1/configuration.md): local resolution **360–360 × 15–15 × 200**, retained free-surface substeps [21].
 
 [3x64x1 configuration](cpu_partition_cores_super_fine/3x64x1/configuration.md): local resolution **480–480 × 11–12 × 200**, retained free-surface substeps [21].
+
+[2x96x1 configuration](cpu_partition_cores_super_fine/2x96x1/configuration.md): local resolution **720–720 × 7–8 × 200**, retained free-surface substeps [21].
