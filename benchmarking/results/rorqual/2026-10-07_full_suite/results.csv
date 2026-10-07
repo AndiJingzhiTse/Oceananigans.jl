@@ -1,8 +1,8 @@
 series,case,ranks,partition,resolution,grid_type,state,job_id,fastest,median,efficiency_fastest,efficiency_median,details
-cpu_mpi_scaling_super_fine,1_ranks,1,1x1x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632312,,,,,(Priority); estimated start N/A (scheduler timezone)
-cpu_mpi_scaling_super_fine,3_ranks,3,3x1x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632314,,,,,(Priority); estimated start N/A (scheduler timezone)
+cpu_mpi_scaling_super_fine,1_ranks,1,1x1x1,1440x720x200,LatitudeLongitudeGrid,FAILED,22632312,,,,,Exit 9:0; None
+cpu_mpi_scaling_super_fine,3_ranks,3,3x1x1,1440x720x200,LatitudeLongitudeGrid,FAILED,22632314,,,,,Exit 9:0; None
 cpu_mpi_scaling_super_fine,6_ranks,6,3x2x1,1440x720x200,LatitudeLongitudeGrid,FAILED,22632316,,,,,Exit 9:0; None
-cpu_mpi_scaling_super_fine,12_ranks,12,4x3x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632318,,,,,(Priority); estimated start N/A (scheduler timezone)
+cpu_mpi_scaling_super_fine,12_ranks,12,4x3x1,1440x720x200,LatitudeLongitudeGrid,FAILED,22632318,,,,,Exit 9:0; None
 cpu_mpi_scaling_super_fine,24_ranks,24,6x4x1,1440x720x200,LatitudeLongitudeGrid,FAILED,22632320,,,,,Exit 9:0; None
 cpu_mpi_scaling_super_fine,48_ranks,48,8x6x1,1440x720x200,LatitudeLongitudeGrid,FAILED,22632322,,,,,Exit 9:0; None
 cpu_mpi_scaling_super_fine,96_ranks,96,12x8x1,1440x720x200,LatitudeLongitudeGrid,FAILED,22632324,,,,,Exit 9:0; None
@@ -17,16 +17,16 @@ cpu_mpi_scaling_super_fine,24576_ranks,24576,,1440x720x200,LatitudeLongitudeGrid
 gpu_scaling_super_fine,1_ranks,1,1x1x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632334,,,,,"(ReqNodeNotAvail, UnavailableNodes:rg[12602,12903,13403]); estimated start N/A (scheduler timezone)"
 gpu_scaling_super_fine,2_ranks,2,2x1x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632335,,,,,"(ReqNodeNotAvail, UnavailableNodes:rg[12602,12903,13403]); estimated start N/A (scheduler timezone)"
 gpu_scaling_super_fine,4_ranks,4,2x2x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632336,,,,,(Priority); estimated start N/A (scheduler timezone)
-gpu_scaling_super_fine,8_ranks,8,4x2x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632337,,,,,(Priority); estimated start 2026-10-07T04:30:00 (scheduler timezone)
+gpu_scaling_super_fine,8_ranks,8,4x2x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632337,,,,,(Priority); estimated start 2026-10-07T03:42:56 (scheduler timezone)
 gpu_scaling_super_fine,16_ranks,16,4x4x1,1440x720x200,LatitudeLongitudeGrid,COMPLETED,22632338,0.0987553307,0.1071243508,,,"Rank results, finite fields and resource placement verified"
-gpu_scaling_super_fine,32_ranks,32,8x4x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632339,,,,,(Priority); estimated start 2026-10-07T06:14:11 (scheduler timezone)
+gpu_scaling_super_fine,32_ranks,32,8x4x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632339,,,,,(Priority); estimated start 2026-10-07T07:00:36 (scheduler timezone)
 gpu_scaling_super_fine,64_ranks,64,8x8x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632340,,,,,(Priority); estimated start 2026-10-07T08:23:32 (scheduler timezone)
-gpu_scaling_super_fine,128_ranks,128,16x8x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632341,,,,,"(Nodes required for job are DOWN, DRAINED or reserved for jobs in higher priority partitions); estimated start 2026-10-07T21:15:04 (scheduler timezone)"
-gpu_scaling_super_fine,256_ranks,256,16x16x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632342,,,,,(Resources); estimated start N/A (scheduler timezone)
+gpu_scaling_super_fine,128_ranks,128,16x8x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632341,,,,,"(Nodes required for job are DOWN, DRAINED or reserved for jobs in higher priority partitions); estimated start 2026-10-08T01:02:59 (scheduler timezone)"
+gpu_scaling_super_fine,256_ranks,256,16x16x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632342,,,,,(Resources); estimated start 2026-10-10T10:21:58 (scheduler timezone)
 gpu_scaling_super_fine,512_ranks,512,32x16x1,1440x720x200,LatitudeLongitudeGrid,RESOURCE_LIMIT,,,,,,Requires 512; configured capacity is 264
-cpu_resolution,default,1,1x1x1,360x180x50,LatitudeLongitudeGrid,PENDING,22632343,,,,,(Priority); estimated start N/A (scheduler timezone)
-cpu_resolution,fine,1,1x1x1,720x360x100,LatitudeLongitudeGrid,PENDING,22632344,,,,,(Priority); estimated start N/A (scheduler timezone)
-cpu_resolution,super_fine,1,1x1x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632345,,,,,(Priority); estimated start N/A (scheduler timezone)
+cpu_resolution,default,1,1x1x1,360x180x50,LatitudeLongitudeGrid,FAILED,22632343,,,,,Exit 9:0; None
+cpu_resolution,fine,1,1x1x1,720x360x100,LatitudeLongitudeGrid,FAILED,22632344,,,,,Exit 9:0; None
+cpu_resolution,super_fine,1,1x1x1,1440x720x200,LatitudeLongitudeGrid,FAILED,22632345,,,,,Exit 9:0; None
 gpu_resolution,default,1,1x1x1,360x180x50,LatitudeLongitudeGrid,PENDING,22632346,,,,,"(ReqNodeNotAvail, UnavailableNodes:rg[12602,12903,13403]); estimated start N/A (scheduler timezone)"
 gpu_resolution,fine,1,1x1x1,720x360x100,LatitudeLongitudeGrid,PENDING,22632347,,,,,"(ReqNodeNotAvail, UnavailableNodes:rg[12602,12903,13403]); estimated start N/A (scheduler timezone)"
 gpu_resolution,super_fine,1,1x1x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632348,,,,,"(ReqNodeNotAvail, UnavailableNodes:rg[12602,12903,13403]); estimated start N/A (scheduler timezone)"
@@ -48,11 +48,11 @@ gpu_nsight_scaling_super_fine,1_ranks,1,1x1x1,1440x720x200,LatitudeLongitudeGrid
 gpu_nsight_scaling_super_fine,2_ranks,2,2x1x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632351,,,,,"(ReqNodeNotAvail, UnavailableNodes:rg[12602,12903,13403]); estimated start N/A (scheduler timezone)"
 gpu_nsight_scaling_super_fine,4_ranks,4,2x2x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632352,,,,,(Priority); estimated start N/A (scheduler timezone)
 gpu_nsight_scaling_super_fine,8_ranks,8,4x2x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632353,,,,,(Priority); estimated start N/A (scheduler timezone)
-gpu_nsight_scaling_super_fine,16_ranks,16,4x4x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632354,,,,,(Priority); estimated start 2026-10-07T03:35:31 (scheduler timezone)
-gpu_nsight_scaling_super_fine,32_ranks,32,8x4x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632355,,,,,(Priority); estimated start 2026-10-07T07:00:00 (scheduler timezone)
+gpu_nsight_scaling_super_fine,16_ranks,16,4x4x1,1440x720x200,LatitudeLongitudeGrid,RUNNING,22632354,,,,,Exit 0:0; None
+gpu_nsight_scaling_super_fine,32_ranks,32,8x4x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632355,,,,,(Priority); estimated start 2026-10-07T10:00:00 (scheduler timezone)
 gpu_nsight_scaling_super_fine,64_ranks,64,8x8x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632356,,,,,(Priority); estimated start 2026-10-07T09:10:00 (scheduler timezone)
-gpu_nsight_scaling_super_fine,128_ranks,128,16x8x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632357,,,,,(Priority); estimated start 2026-10-07T22:10:00 (scheduler timezone)
-gpu_nsight_scaling_super_fine,256_ranks,256,16x16x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632358,,,,,(PartitionNodeLimit); estimated start N/A (scheduler timezone)
+gpu_nsight_scaling_super_fine,128_ranks,128,16x8x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632357,,,,,(Priority); estimated start 2026-10-08T01:50:00 (scheduler timezone)
+gpu_nsight_scaling_super_fine,256_ranks,256,16x16x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632358,,,,,(PartitionNodeLimit); estimated start 2026-10-10T10:21:58 (scheduler timezone)
 gpu_nsight_scaling_super_fine,512_ranks,512,32x16x1,1440x720x200,LatitudeLongitudeGrid,RESOURCE_LIMIT,,,,,,Requires 512; configured capacity is 264
 gpu_partition_super_fine,2x1x1,2,2x1x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632359,,,,,"(ReqNodeNotAvail, UnavailableNodes:rg[12602,12903,13403]); estimated start N/A (scheduler timezone)"
 gpu_partition_super_fine,1x2x1,2,1x2x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22632359,,,,,"(ReqNodeNotAvail, UnavailableNodes:rg[12602,12903,13403]); estimated start N/A (scheduler timezone)"
