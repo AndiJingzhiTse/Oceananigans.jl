@@ -1,0 +1,3 @@
+sbatch --parsable --nodes=1 --ntasks=1 --cpus-per-task=1 --mem=4G --time=00:30:00 --job-name=benchmark_finalize --dependency=afterany:22690704:22690705:22690706:22690707:22690708:22690709:22690710:22690711:22690712:22690713:22690714:22690715:22690716:22690717:22690718:22690719:22690720:22690721:22690722:22690723:22690724 --output=/home/anditse/Oceananigans.jl/benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/run_metadata/finalize.out --account=def-fpoulin_cpu /home/anditse/Oceananigans.jl/benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/run_metadata/finalize.sh
+sbatch: NOTE: Your memory request of 4096.0M was likely submitted as 4.0G. Please note that Slurm interprets memory requests denominated in G as multiples of 1024M, not 1000M.
+22690725
