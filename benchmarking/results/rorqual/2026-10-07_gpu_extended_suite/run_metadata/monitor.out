@@ -195,3 +195,27 @@ gpu_weak_scaling_super_fine/1024_ranks: RESOURCE_LIMIT [32, 32, 1]
  create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_scaling_super_super_super_fine/16_ranks/slurm_job.txt
  create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_scaling_super_super_super_fine/16_ranks/started.txt
 
+[codex/benchmarking 2e5cdbd0b] Record validated benchmark suite results and job outcomes
+ 28 files changed, 2467 insertions(+), 315 deletions(-)
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_partition_super_fine/8x1x1/allocation.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_partition_super_fine/8x1x1/compute_hardware.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_partition_super_fine/8x1x1/job.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_partition_super_fine/8x1x1/julia_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_partition_super_fine/8x1x1/layout.json
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_partition_super_fine/8x1x1/modules.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_partition_super_fine/8x1x1/nsight_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_partition_super_fine/8x1x1/slurm_job.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_partition_super_fine/8x1x1/started.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_weak_scaling_super_fine/16_ranks/allocation.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_weak_scaling_super_fine/16_ranks/compute_hardware.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_weak_scaling_super_fine/16_ranks/exit_code.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_weak_scaling_super_fine/16_ranks/finished.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_weak_scaling_super_fine/16_ranks/job.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_weak_scaling_super_fine/16_ranks/julia_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_weak_scaling_super_fine/16_ranks/layout.json
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_weak_scaling_super_fine/16_ranks/modules.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_weak_scaling_super_fine/16_ranks/nsight_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_weak_scaling_super_fine/16_ranks/results.json
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_weak_scaling_super_fine/16_ranks/slurm_job.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_weak_scaling_super_fine/16_ranks/started.txt
+
