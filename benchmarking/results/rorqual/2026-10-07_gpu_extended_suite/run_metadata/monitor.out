@@ -180,3 +180,18 @@ gpu_weak_scaling_super_fine/1024_ranks: RESOURCE_LIMIT [32, 32, 1]
  create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_partition_super_fine/1x16x1/finished.txt
  create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_partition_super_fine/1x16x1/results.json
 
+[codex/benchmarking d3c980f5e] Record validated benchmark suite results and job outcomes
+ 19 files changed, 2264 insertions(+), 236 deletions(-)
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_scaling_super_super_super_fine/16_ranks/allocation.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_scaling_super_super_super_fine/16_ranks/compute_hardware.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_scaling_super_super_super_fine/16_ranks/exit_code.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_scaling_super_super_super_fine/16_ranks/finished.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_scaling_super_super_super_fine/16_ranks/job.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_scaling_super_super_super_fine/16_ranks/julia_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_scaling_super_super_super_fine/16_ranks/layout.json
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_scaling_super_super_super_fine/16_ranks/modules.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_scaling_super_super_super_fine/16_ranks/nsight_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_scaling_super_super_super_fine/16_ranks/results.json
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_scaling_super_super_super_fine/16_ranks/slurm_job.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_scaling_super_super_super_fine/16_ranks/started.txt
+
