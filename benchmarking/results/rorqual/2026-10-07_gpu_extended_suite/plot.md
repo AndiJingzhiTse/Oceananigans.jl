@@ -27,7 +27,7 @@ Highest completed count: **16 ranks**.
 | 8x1x1 | 8 | 8x1x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.142374 | 0.147195 | — | Rank results, finite fields and resource placement verified |
 | 4x2x1 | 8 | 4x2x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.147079 | 0.150229 | — | Rank results, finite fields and resource placement verified |
 | 2x4x1 | 8 | 2x4x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.150725 | 0.159511 | — | Rank results, finite fields and resource placement verified |
-| 1x8x1 | 8 | 1x8x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
+| 1x8x1 | 8 | 1x8x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.141200 | 0.141413 | — | Rank results, finite fields and resource placement verified |
 | 16x1x1 | 16 | 16x1x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.089033 | 0.097464 | — | Rank results, finite fields and resource placement verified |
 | 8x2x1 | 16 | 8x2x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.096162 | 0.097788 | — | Rank results, finite fields and resource placement verified |
 | 4x4x1 | 16 | 4x4x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.099257 | 0.103579 | — | Rank results, finite fields and resource placement verified |
@@ -43,6 +43,8 @@ Highest completed count: **16 ranks**.
 [4x2x1 configuration](gpu_partition_super_fine/4x2x1/configuration.md): local resolution **360–360 × 360–360 × 200**, retained free-surface substeps [21].
 
 [2x4x1 configuration](gpu_partition_super_fine/2x4x1/configuration.md): local resolution **720–720 × 180–180 × 200**, retained free-surface substeps [21].
+
+[1x8x1 configuration](gpu_partition_super_fine/1x8x1/configuration.md): local resolution **1440–1440 × 90–90 × 200**, retained free-surface substeps [21].
 
 [16x1x1 configuration](gpu_partition_super_fine/16x1x1/configuration.md): local resolution **90–90 × 720–720 × 200**, retained free-surface substeps [21].
 
