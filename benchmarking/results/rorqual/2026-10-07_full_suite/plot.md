@@ -45,7 +45,7 @@ Highest completed count: **64 ranks**.
 | 16_ranks | 16 | 4x4x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.098755 | 0.107124 | 61.1% / 56.3% | Rank results, finite fields and resource placement verified |
 | 32_ranks | 32 | 8x4x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.080087 | 0.130831 | 37.7% / 23.1% | Rank results, finite fields and resource placement verified |
 | 64_ranks | 64 | 8x8x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.074548 | 0.088781 | 20.2% / 17.0% | Rank results, finite fields and resource placement verified |
-| 128_ranks | 128 | 16x8x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-08T17:10:00 (scheduler timezone) |
+| 128_ranks | 128 | 16x8x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-08T16:20:00 (scheduler timezone) |
 | 256_ranks | 256 | 16x16x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (PartitionNodeLimit); estimated start 2026-10-12T08:08:58 (scheduler timezone) |
 | 512_ranks | 512 | 32x16x1 | 1440x720x200 | LatitudeLongitudeGrid | RESOURCE_LIMIT | — | — | — | Requires 512; configured capacity is 264 |
 
@@ -110,7 +110,7 @@ Highest completed count: **0 ranks**.
 | 1x192x1 | 192 | 1x192x1 | 1440x720x200 | LatitudeLongitudeGrid | GEOMETRY_LIMIT | — | — | — | Partition [1, 192, 1] has fewer than 7 local cells per horizontal direction |
 ## gpu_nsight_scaling_super_fine
 
-Highest completed count: **32 ranks**.
+Highest completed count: **64 ranks**.
 
 ![gpu_nsight_scaling_super_fine](gpu_nsight_scaling_super_fine.svg)
 
@@ -122,8 +122,8 @@ Highest completed count: **32 ranks**.
 | 8_ranks | 8 | 4x2x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.155678 | 0.157967 | 78.1% / 77.0% | Rank results, finite fields and resource placement verified |
 | 16_ranks | 16 | 4x4x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.106867 | 0.117125 | 56.9% / 51.9% | Rank results, finite fields and resource placement verified |
 | 32_ranks | 32 | 8x4x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.090823 | 0.116467 | 33.5% / 26.1% | Rank results, finite fields and resource placement verified |
-| 64_ranks | 64 | 8x8x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-08T08:21:21 (scheduler timezone) |
-| 128_ranks | 128 | 16x8x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-08T18:00:00 (scheduler timezone) |
+| 64_ranks | 64 | 8x8x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.084528 | 0.150939 | 18.0% / 10.1% | Rank results, finite fields and resource placement verified |
+| 128_ranks | 128 | 16x8x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-08T17:10:00 (scheduler timezone) |
 | 256_ranks | 256 | 16x16x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (PartitionNodeLimit); estimated start 2026-10-12T08:08:58 (scheduler timezone) |
 | 512_ranks | 512 | 32x16x1 | 1440x720x200 | LatitudeLongitudeGrid | RESOURCE_LIMIT | — | — | — | Requires 512; configured capacity is 264 |
 
@@ -137,6 +137,7 @@ Highest completed count: **32 ranks**.
 | 8_ranks | 21.64% | 16.80% | 8.64% | 52.93% |
 | 16_ranks | 19.79% | 15.60% | 8.24% | 56.38% |
 | 32_ranks | 17.38% | 13.47% | 7.50% | 61.66% |
+| 64_ranks | 13.76% | 10.81% | 6.02% | 69.41% |
 
 [1_ranks configuration](gpu_nsight_scaling_super_fine/1_ranks/configuration.md): local resolution **1440–1440 × 720–720 × 200**, retained free-surface substeps [21].
 
@@ -149,6 +150,8 @@ Highest completed count: **32 ranks**.
 [16_ranks configuration](gpu_nsight_scaling_super_fine/16_ranks/configuration.md): local resolution **360–360 × 180–180 × 200**, retained free-surface substeps [21].
 
 [32_ranks configuration](gpu_nsight_scaling_super_fine/32_ranks/configuration.md): local resolution **180–180 × 180–180 × 200**, retained free-surface substeps [21].
+
+[64_ranks configuration](gpu_nsight_scaling_super_fine/64_ranks/configuration.md): local resolution **180–180 × 90–90 × 200**, retained free-surface substeps [21].
 ## gpu_partition_super_fine
 
 Highest completed count: **4 ranks**.
