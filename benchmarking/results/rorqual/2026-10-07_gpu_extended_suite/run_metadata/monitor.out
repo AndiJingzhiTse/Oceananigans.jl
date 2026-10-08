@@ -125,3 +125,20 @@ gpu_weak_scaling_super_fine/1024_ranks: RESOURCE_LIMIT [32, 32, 1]
  create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_scaling_super_super_super_fine/32_ranks/finished.txt
  create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_scaling_super_super_super_fine/32_ranks/results.json
 
+[codex/benchmarking 6c24ec6ec] Record validated benchmark suite results and job outcomes
+ 21 files changed, 2167 insertions(+), 13 deletions(-)
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_partition_super_fine.svg
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_partition_super_fine/16x1x1/exit_code.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_partition_super_fine/16x1x1/finished.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_partition_super_fine/16x1x1/results.json
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_partition_super_fine/8x2x1/job.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_partition_super_fine/8x2x1/started.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_scaling_super_super_fine/16_ranks/allocation.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_scaling_super_super_fine/16_ranks/compute_hardware.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_scaling_super_super_fine/16_ranks/job.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_scaling_super_super_fine/16_ranks/julia_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_scaling_super_super_fine/16_ranks/modules.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_scaling_super_super_fine/16_ranks/nsight_version.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_scaling_super_super_fine/16_ranks/slurm_job.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_scaling_super_super_fine/16_ranks/started.txt
+
