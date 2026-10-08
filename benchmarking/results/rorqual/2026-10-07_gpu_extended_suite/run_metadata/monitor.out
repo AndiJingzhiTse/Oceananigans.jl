@@ -174,3 +174,9 @@ gpu_weak_scaling_super_fine/1024_ranks: RESOURCE_LIMIT [32, 32, 1]
  create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_partition_super_fine/2x8x1/layout.json
  create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_partition_super_fine/2x8x1/results.json
 
+[codex/benchmarking 0bb71b38b] Record validated benchmark suite results and job outcomes
+ 11 files changed, 1714 insertions(+), 129 deletions(-)
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_partition_super_fine/1x16x1/exit_code.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_partition_super_fine/1x16x1/finished.txt
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_partition_super_fine/1x16x1/results.json
+
