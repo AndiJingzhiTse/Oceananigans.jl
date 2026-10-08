@@ -77,7 +77,7 @@ Efficiency baseline: **4 measured ranks**.
 | 32_ranks | 32 | 8x4x1 | 2880x1440x200 | LatitudeLongitudeGrid | COMPLETED | 0.161687 | 0.170486 | 76.5% / 73.0% | Rank results, finite fields and resource placement verified |
 | 64_ranks | 64 | 8x8x1 | 2880x1440x200 | LatitudeLongitudeGrid | COMPLETED | 0.109598 | 0.111415 | 56.4% / 55.8% | Rank results, finite fields and resource placement verified |
 | 128_ranks | 128 | 16x8x1 | 2880x1440x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Nodes required for job are DOWN, DRAINED or reserved for jobs in higher priority partitions); estimated start 2026-10-08T15:31:57 (scheduler timezone) |
-| 256_ranks | 256 | 16x16x1 | 2880x1440x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Nodes required for job are DOWN, DRAINED or reserved for jobs in higher priority partitions); estimated start 2026-10-15T09:40:10 (scheduler timezone) |
+| 256_ranks | 256 | 16x16x1 | 2880x1440x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Nodes required for job are DOWN, DRAINED or reserved for jobs in higher priority partitions); estimated start N/A (scheduler timezone) |
 | 512_ranks | 512 | 32x16x1 | 2880x1440x200 | LatitudeLongitudeGrid | RESOURCE_LIMIT | — | — | — | Requires 512; configured capacity is 264 |
 
 [4_ranks configuration](gpu_scaling_super_super_fine/4_ranks/configuration.md): local resolution **1440–1440 × 720–720 × 200**, retained free-surface substeps [21].
@@ -103,7 +103,7 @@ Efficiency baseline: **16 measured ranks**.
 | 32_ranks | 32 | 8x4x1 | 5760x2880x200 | LatitudeLongitudeGrid | COMPLETED | 0.586813 | 0.604331 | 98.8% / 105.2% | Rank results, finite fields and resource placement verified |
 | 64_ranks | 64 | 8x8x1 | 5760x2880x200 | LatitudeLongitudeGrid | COMPLETED | 0.296665 | 0.346800 | 97.7% / 91.7% | Rank results, finite fields and resource placement verified |
 | 128_ranks | 128 | 16x8x1 | 5760x2880x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-08T16:20:00 (scheduler timezone) |
-| 256_ranks | 256 | 16x16x1 | 5760x2880x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (PartitionNodeLimit); estimated start 2026-10-15T09:40:10 (scheduler timezone) |
+| 256_ranks | 256 | 16x16x1 | 5760x2880x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (PartitionNodeLimit); estimated start N/A (scheduler timezone) |
 | 512_ranks | 512 | 32x16x1 | 5760x2880x200 | LatitudeLongitudeGrid | RESOURCE_LIMIT | — | — | — | Requires 512; configured capacity is 264 |
 
 [16_ranks configuration](gpu_scaling_super_super_super_fine/16_ranks/configuration.md): local resolution **1440–1440 × 720–720 × 200**, retained free-surface substeps [21].
@@ -125,7 +125,7 @@ Efficiency baseline: **1 measured ranks**.
 | 4_ranks | 4 | 2x2x1 | 2880x1440x200 | LatitudeLongitudeGrid | COMPLETED | 0.989689 | 1.020760 | 97.5% / 94.6% | Rank results, finite fields and resource placement verified |
 | 16_ranks | 16 | 4x4x1 | 5760x2880x200 | LatitudeLongitudeGrid | COMPLETED | 1.110443 | 1.261272 | 86.9% / 76.6% | Rank results, finite fields and resource placement verified |
 | 64_ranks | 64 | 8x8x1 | 11520x5760x200 | LatitudeLongitudeGrid | COMPLETED | 1.176431 | 1.277216 | 82.1% / 75.6% | Rank results, finite fields and resource placement verified |
-| 256_ranks | 256 | 16x16x1 | 23040x11520x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (PartitionNodeLimit); estimated start 2026-10-15T09:40:10 (scheduler timezone) |
+| 256_ranks | 256 | 16x16x1 | 23040x11520x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (PartitionNodeLimit); estimated start N/A (scheduler timezone) |
 | 1024_ranks | 1024 | 32x32x1 | 46080x23040x200 | LatitudeLongitudeGrid | RESOURCE_LIMIT | — | — | — | Requires 1024; configured capacity is 264 |
 
 [1_ranks configuration](gpu_weak_scaling_super_fine/1_ranks/configuration.md): local resolution **1440–1440 × 720–720 × 200**, retained free-surface substeps [21].

@@ -50,7 +50,7 @@ Efficiency baseline: **1 measured ranks**.
 | 32_ranks | 32 | 8x4x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.080087 | 0.130831 | 37.7% / 23.1% | Rank results, finite fields and resource placement verified |
 | 64_ranks | 64 | 8x8x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.074548 | 0.088781 | 20.2% / 17.0% | Rank results, finite fields and resource placement verified |
 | 128_ranks | 128 | 16x8x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-08T17:10:00 (scheduler timezone) |
-| 256_ranks | 256 | 16x16x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (PartitionNodeLimit); estimated start 2026-10-15T09:40:10 (scheduler timezone) |
+| 256_ranks | 256 | 16x16x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (PartitionNodeLimit); estimated start N/A (scheduler timezone) |
 | 512_ranks | 512 | 32x16x1 | 1440x720x200 | LatitudeLongitudeGrid | RESOURCE_LIMIT | — | — | — | Requires 512; configured capacity is 264 |
 
 [1_ranks configuration](gpu_scaling_super_fine/1_ranks/configuration.md): local resolution **1440–1440 × 720–720 × 200**, retained free-surface substeps [21].
@@ -130,7 +130,7 @@ Efficiency baseline: **1 measured ranks**.
 | 32_ranks | 32 | 8x4x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.090823 | 0.116467 | 33.5% / 26.1% | Rank results, finite fields and resource placement verified |
 | 64_ranks | 64 | 8x8x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.084528 | 0.150939 | 18.0% / 10.1% | Rank results, finite fields and resource placement verified |
 | 128_ranks | 128 | 16x8x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-08T18:00:00 (scheduler timezone) |
-| 256_ranks | 256 | 16x16x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (PartitionNodeLimit); estimated start 2026-10-15T09:40:10 (scheduler timezone) |
+| 256_ranks | 256 | 16x16x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (PartitionNodeLimit); estimated start N/A (scheduler timezone) |
 | 512_ranks | 512 | 32x16x1 | 1440x720x200 | LatitudeLongitudeGrid | RESOURCE_LIMIT | — | — | — | Requires 512; configured capacity is 264 |
 
 ![Kernel duration shares](gpu_nsight_scaling_super_fine_kernels.svg)
