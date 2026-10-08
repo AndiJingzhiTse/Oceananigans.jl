@@ -1947,8 +1947,8 @@
         8,
         1
       ],
-      "state": "PENDING",
-      "details": "(Priority); estimated start N/A (scheduler timezone)",
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
       "job_id": "22632340",
       "configuration": {
         "series": "gpu_scaling_super_fine",
@@ -2003,6 +2003,14 @@
         "samples": 5,
         "time_steps": 10,
         "profile": false
+      },
+      "measurement": {
+        "fastest": 0.0745475814,
+        "median": 0.0887810193,
+        "maximum": 0.5249622063,
+        "retained_substeps": [
+          21
+        ]
       }
     },
     {
@@ -2016,7 +2024,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(Priority); estimated start 2026-10-08T11:50:00 (scheduler timezone)",
+      "details": "(Priority); estimated start 2026-10-08T17:10:00 (scheduler timezone)",
       "job_id": "22632341",
       "configuration": {
         "series": "gpu_scaling_super_fine",
@@ -2092,7 +2100,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(PartitionNodeLimit); estimated start N/A (scheduler timezone)",
+      "details": "(PartitionNodeLimit); estimated start 2026-10-12T08:08:58 (scheduler timezone)",
       "job_id": "22632342",
       "configuration": {
         "series": "gpu_scaling_super_fine",
@@ -4568,7 +4576,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(Priority); estimated start N/A (scheduler timezone)",
+      "details": "(Priority); estimated start 2026-10-08T08:21:21 (scheduler timezone)",
       "job_id": "22632356",
       "configuration": {
         "series": "gpu_nsight_scaling_super_fine",
@@ -4636,7 +4644,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(Priority); estimated start 2026-10-08T12:40:00 (scheduler timezone)",
+      "details": "(Priority); estimated start 2026-10-08T18:00:00 (scheduler timezone)",
       "job_id": "22632357",
       "configuration": {
         "series": "gpu_nsight_scaling_super_fine",
@@ -4712,7 +4720,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(PartitionNodeLimit); estimated start N/A (scheduler timezone)",
+      "details": "(PartitionNodeLimit); estimated start 2026-10-12T08:08:58 (scheduler timezone)",
       "job_id": "22632358",
       "configuration": {
         "series": "gpu_nsight_scaling_super_fine",
