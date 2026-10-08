@@ -33,3 +33,8 @@ gpu_weak_scaling_super_fine/16_ranks: PENDING [4, 4, 1]
 gpu_weak_scaling_super_fine/64_ranks: PENDING [8, 8, 1]
 gpu_weak_scaling_super_fine/256_ranks: PENDING [16, 16, 1]
 gpu_weak_scaling_super_fine/1024_ranks: RESOURCE_LIMIT [32, 32, 1]
+[codex/benchmarking 3c25b7bc6] Record validated benchmark suite results and job outcomes
+ 6 files changed, 155 insertions(+), 119 deletions(-)
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/run_metadata/monitor.out
+ create mode 100644 benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/run_metadata/monitor_pid.txt
+
