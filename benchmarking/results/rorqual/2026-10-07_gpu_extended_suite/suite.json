@@ -818,8 +818,8 @@
         8,
         1
       ],
-      "state": "RUNNING",
-      "details": "Exit 0:0; None",
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
       "job_id": "22690707",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -870,6 +870,16 @@
         "profile": false,
         "scaling_type": "comparison",
         "baseline_ranks": 1
+      },
+      "measurement": {
+        "fastest": 0.1016433854,
+        "median": 0.1052659011,
+        "maximum": 0.1416983344,
+        "retained_substeps": [
+          21
+        ],
+        "nodes": 4,
+        "gpu_memory_used_bytes": 5475729408
       }
     },
     {
