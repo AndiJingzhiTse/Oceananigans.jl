@@ -55,8 +55,8 @@
         1,
         1
       ],
-      "state": "PENDING",
-      "details": "(ReqNodeNotAvail, UnavailableNodes:rg[12602,12903,13403]); estimated start N/A (scheduler timezone)",
+      "state": "RUNNING",
+      "details": "Exit 0:0; ReqNodeNotAvail",
       "job_id": "22690704",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -112,8 +112,8 @@
         2,
         1
       ],
-      "state": "PENDING",
-      "details": "(ReqNodeNotAvail, UnavailableNodes:rg[12602,12903,13403]); estimated start N/A (scheduler timezone)",
+      "state": "RUNNING",
+      "details": "Exit 0:0; ReqNodeNotAvail",
       "job_id": "22690704",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -2225,8 +2225,8 @@
         2,
         1
       ],
-      "state": "RUNNING",
-      "details": "Exit 0:0; None",
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
       "job_id": "22690721",
       "configuration": {
         "series": "gpu_weak_scaling_super_fine",
@@ -2271,6 +2271,16 @@
         "profile": false,
         "scaling_type": "weak",
         "baseline_ranks": 1
+      },
+      "measurement": {
+        "fastest": 0.9896887432,
+        "median": 1.0207598519999999,
+        "maximum": 1.0270411807,
+        "retained_substeps": [
+          21
+        ],
+        "nodes": 1,
+        "gpu_memory_used_bytes": 52131069952
       }
     },
     {
