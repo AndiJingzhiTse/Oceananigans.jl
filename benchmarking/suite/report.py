@@ -318,6 +318,10 @@ def plot_series(folder, series, rows):
         axes[0, 1].plot([r['ranks'] for r in eff], [100*r['efficiency_fastest'] for r in eff], 'o-', label='Fastest')
         axes[0, 1].plot([r['ranks'] for r in eff], [100*r['efficiency_median'] for r in eff], 's--', label='Median')
         axes[0, 1].set(xlabel='MPI ranks', ylabel='Efficiency (%)', xscale='log')
+        if weak:
+            for axis in (ax, axes[0, 1]):
+                axis.set_xticks(x)
+                axis.xaxis.set_major_formatter(StrMethodFormatter('{x:g}'))
         axes[0, 1].axhline(100, color='black', linestyle=':', label='Ideal: 100%')
         axes[0, 1].legend()
     elif not resolution:
