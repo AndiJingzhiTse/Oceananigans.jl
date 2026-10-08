@@ -247,7 +247,7 @@ def plot_scaling_efficiency(folder, cases):
     from matplotlib.ticker import StrMethodFormatter
     plt.rcParams.update({'svg.hashsalt': 'benchmark-suite', 'svg.fonttype': 'none'})
     fig, axes = plt.subplots(1, 2, figsize=(12, 4.5))
-    for series, points in groups.items():
+    for series, points in sorted(groups.items(), key=lambda item: baselines[item[0]]['ranks']):
         weak = series == 'gpu_weak_scaling_super_fine'
         points.sort()
         ax = axes[1 if weak else 0]

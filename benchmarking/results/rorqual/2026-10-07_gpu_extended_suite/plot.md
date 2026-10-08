@@ -76,7 +76,7 @@ Efficiency baseline: **4 measured ranks**.
 | 16_ranks | 16 | 4x4x1 | 2880x1440x200 | LatitudeLongitudeGrid | COMPLETED | 0.269842 | 0.271461 | 91.6% / 91.7% | Rank results, finite fields and resource placement verified |
 | 32_ranks | 32 | 8x4x1 | 2880x1440x200 | LatitudeLongitudeGrid | COMPLETED | 0.161687 | 0.170486 | 76.5% / 73.0% | Rank results, finite fields and resource placement verified |
 | 64_ranks | 64 | 8x8x1 | 2880x1440x200 | LatitudeLongitudeGrid | COMPLETED | 0.109598 | 0.111415 | 56.4% / 55.8% | Rank results, finite fields and resource placement verified |
-| 128_ranks | 128 | 16x8x1 | 2880x1440x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Nodes required for job are DOWN, DRAINED or reserved for jobs in higher priority partitions); estimated start 2026-10-08T15:31:57 (scheduler timezone) |
+| 128_ranks | 128 | 16x8x1 | 2880x1440x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Nodes required for job are DOWN, DRAINED or reserved for jobs in higher priority partitions); estimated start 2026-10-08T16:04:49 (scheduler timezone) |
 | 256_ranks | 256 | 16x16x1 | 2880x1440x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Nodes required for job are DOWN, DRAINED or reserved for jobs in higher priority partitions); estimated start N/A (scheduler timezone) |
 | 512_ranks | 512 | 32x16x1 | 2880x1440x200 | LatitudeLongitudeGrid | RESOURCE_LIMIT | — | — | — | Requires 512; configured capacity is 264 |
 
@@ -102,7 +102,7 @@ Efficiency baseline: **16 measured ranks**.
 | 16_ranks | 16 | 4x4x1 | 5760x2880x200 | LatitudeLongitudeGrid | COMPLETED | 1.159040 | 1.271404 | 100.0% / 100.0% | Rank results, finite fields and resource placement verified |
 | 32_ranks | 32 | 8x4x1 | 5760x2880x200 | LatitudeLongitudeGrid | COMPLETED | 0.586813 | 0.604331 | 98.8% / 105.2% | Rank results, finite fields and resource placement verified |
 | 64_ranks | 64 | 8x8x1 | 5760x2880x200 | LatitudeLongitudeGrid | COMPLETED | 0.296665 | 0.346800 | 97.7% / 91.7% | Rank results, finite fields and resource placement verified |
-| 128_ranks | 128 | 16x8x1 | 5760x2880x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-08T16:20:00 (scheduler timezone) |
+| 128_ranks | 128 | 16x8x1 | 5760x2880x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-08T16:50:00 (scheduler timezone) |
 | 256_ranks | 256 | 16x16x1 | 5760x2880x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (PartitionNodeLimit); estimated start N/A (scheduler timezone) |
 | 512_ranks | 512 | 32x16x1 | 5760x2880x200 | LatitudeLongitudeGrid | RESOURCE_LIMIT | — | — | — | Requires 512; configured capacity is 264 |
 
