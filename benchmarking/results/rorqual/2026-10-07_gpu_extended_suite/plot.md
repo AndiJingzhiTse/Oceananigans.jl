@@ -67,16 +67,20 @@ Highest completed count: **64 ranks**.
 [64_ranks configuration](gpu_scaling_super_super_super_fine/64_ranks/configuration.md): local resolution **720–720 × 360–360 × 200**, retained free-surface substeps [21].
 ## gpu_weak_scaling_super_fine
 
-Highest completed count: **0 ranks**.
+Highest completed count: **64 ranks**.
+
+![gpu_weak_scaling_super_fine](gpu_weak_scaling_super_fine.svg)
 
 | Case | Ranks | Partition | Global resolution | Grid type | State | Fastest s/step | Median s/step | Efficiency fastest / median | Details |
 |---|---:|---|---|---|---|---:|---:|---|---|
 | 1_ranks | 1 | 1x1x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (ReqNodeNotAvail, UnavailableNodes:rg[12602,12903,13403]); estimated start N/A (scheduler timezone) |
 | 4_ranks | 4 | 2x2x1 | 2880x1440x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start N/A (scheduler timezone) |
 | 16_ranks | 16 | 4x4x1 | 5760x2880x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start N/A (scheduler timezone) |
-| 64_ranks | 64 | 8x8x1 | 11520x5760x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-08T06:18:41 (scheduler timezone) |
+| 64_ranks | 64 | 8x8x1 | 11520x5760x200 | LatitudeLongitudeGrid | COMPLETED | 1.176431 | 1.277216 | — | Rank results, finite fields and resource placement verified |
 | 256_ranks | 256 | 16x16x1 | 23040x11520x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (PartitionNodeLimit); estimated start 2026-10-12T17:58:52 (scheduler timezone) |
 | 1024_ranks | 1024 | 32x32x1 | 46080x23040x200 | LatitudeLongitudeGrid | RESOURCE_LIMIT | — | — | — | Requires 1024; configured capacity is 264 |
+
+[64_ranks configuration](gpu_weak_scaling_super_fine/64_ranks/configuration.md): local resolution **1440–1440 × 720–720 × 200**, retained free-surface substeps [21].
 
 ## GPU scaling comparison (DRAC table format)
 
@@ -123,6 +127,6 @@ Weak efficiency = one-GPU baseline time / measured time; ideal = 100%. Interior 
 | super_fine | 1440 × 720 × 200 (207,360,000) | 1 | — | 1 × 1 × 1 | 60 | — | — | — | — | PENDING |
 | weak_4_ranks | 2880 × 1440 × 200 (829,440,000) | 4 | — | 2 × 2 × 1 | 30 | — | — | — | — | PENDING |
 | weak_16_ranks | 5760 × 2880 × 200 (3,317,760,000) | 16 | — | 4 × 4 × 1 | 15 | — | — | — | — | PENDING |
-| weak_64_ranks | 11520 × 5760 × 200 (13,271,040,000) | 64 | — | 8 × 8 × 1 | 7.5 | — | — | — | — | PENDING |
+| weak_64_ranks | 11520 × 5760 × 200 (13,271,040,000) | 64 | 16 | 8 × 8 × 1 | 7.5 | 1.277216 | — | 1.039e+10 | 49.47 | COMPLETED |
 | weak_256_ranks | 23040 × 11520 × 200 (53,084,160,000) | 256 | — | 16 × 16 × 1 | 3.75 | — | — | — | — | PENDING |
 

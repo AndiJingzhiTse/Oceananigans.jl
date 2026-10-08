@@ -30,6 +30,6 @@ gpu_scaling_super_super_super_fine,512_ranks,512,32x16x1,5760x2880x200,LatitudeL
 gpu_weak_scaling_super_fine,1_ranks,1,1x1x1,1440x720x200,LatitudeLongitudeGrid,PENDING,22690720,,,,,"(ReqNodeNotAvail, UnavailableNodes:rg[12602,12903,13403]); estimated start N/A (scheduler timezone)"
 gpu_weak_scaling_super_fine,4_ranks,4,2x2x1,2880x1440x200,LatitudeLongitudeGrid,PENDING,22690721,,,,,(Priority); estimated start N/A (scheduler timezone)
 gpu_weak_scaling_super_fine,16_ranks,16,4x4x1,5760x2880x200,LatitudeLongitudeGrid,PENDING,22690722,,,,,(Priority); estimated start N/A (scheduler timezone)
-gpu_weak_scaling_super_fine,64_ranks,64,8x8x1,11520x5760x200,LatitudeLongitudeGrid,PENDING,22690723,,,,,(Priority); estimated start 2026-10-08T06:18:41 (scheduler timezone)
+gpu_weak_scaling_super_fine,64_ranks,64,8x8x1,11520x5760x200,LatitudeLongitudeGrid,COMPLETED,22690723,1.1764314559,1.2772159276,,,"Rank results, finite fields and resource placement verified"
 gpu_weak_scaling_super_fine,256_ranks,256,16x16x1,23040x11520x200,LatitudeLongitudeGrid,PENDING,22690724,,,,,(PartitionNodeLimit); estimated start 2026-10-12T17:58:52 (scheduler timezone)
 gpu_weak_scaling_super_fine,1024_ranks,1024,32x32x1,46080x23040x200,LatitudeLongitudeGrid,RESOURCE_LIMIT,,,,,,Requires 1024; configured capacity is 264

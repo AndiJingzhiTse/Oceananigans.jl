@@ -2165,8 +2165,8 @@
         8,
         1
       ],
-      "state": "PENDING",
-      "details": "(Priority); estimated start 2026-10-08T06:18:41 (scheduler timezone)",
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
       "job_id": "22690723",
       "configuration": {
         "series": "gpu_weak_scaling_super_fine",
@@ -2223,6 +2223,16 @@
         "profile": false,
         "scaling_type": "weak",
         "baseline_ranks": 1
+      },
+      "measurement": {
+        "fastest": 1.1764314559,
+        "median": 1.2772159276,
+        "maximum": 1.7141498588000001,
+        "retained_substeps": [
+          21
+        ],
+        "nodes": 16,
+        "gpu_memory_used_bytes": 53118828544
       }
     },
     {
