@@ -1,0 +1,350 @@
+[
+  {
+    "configuration": {
+      "series": "gpu_partition_super_fine",
+      "device": "GPU",
+      "ranks": 4,
+      "threads_per_rank": 1,
+      "grid_name": "super_fine",
+      "global_resolution": [
+        1440,
+        720,
+        200
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "partition": [
+        1,
+        4,
+        1
+      ],
+      "x_sizes": [
+        1440
+      ],
+      "y_sizes": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENOVectorInvariantDefault",
+      "tracer_advection": "WENO7",
+      "closure": "CATKE",
+      "tracers": [
+        "T",
+        "S"
+      ],
+      "timestepper": "SplitRungeKutta3",
+      "dt": 60,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": true,
+      "warmup_steps": 2,
+      "samples": 5,
+      "time_steps": 10,
+      "profile": false,
+      "scaling_type": "comparison",
+      "baseline_ranks": 1
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "gpu_memory_used_bytes": 14694809600,
+    "grid_size": [
+      1440,
+      180,
+      200
+    ],
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Sizes{Int64}, Sizes{NTuple{4, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Nothing, Nothing, Int64, Int64, Nothing, Nothing, Nothing, Nothing}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": "NVIDIA H100 80GB HBM3",
+      "cuda_version": "13.2.0",
+      "cpu_model": "Intel(R) Xeon(R) Gold 6448Y (sapphirerapids)",
+      "num_threads": 1,
+      "hostname": "rg32003",
+      "package_versions": {
+        "Adapt": "4.7.2",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-08T13:51:10.442",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023\u0000"
+    },
+    "rank": 0,
+    "retained_free_surface_substeps": 21,
+    "time_per_step_max_seconds": 0.3044845243,
+    "time_per_step_median_seconds": 0.26335128669999996,
+    "time_per_step_seconds": 0.2620287511,
+    "window_seconds": [
+      2.722127593,
+      3.044845243,
+      2.633512867,
+      2.623553514,
+      2.620287511
+    ]
+  },
+  {
+    "configuration": {
+      "series": "gpu_partition_super_fine",
+      "device": "GPU",
+      "ranks": 4,
+      "threads_per_rank": 1,
+      "grid_name": "super_fine",
+      "global_resolution": [
+        1440,
+        720,
+        200
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "partition": [
+        1,
+        4,
+        1
+      ],
+      "x_sizes": [
+        1440
+      ],
+      "y_sizes": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENOVectorInvariantDefault",
+      "tracer_advection": "WENO7",
+      "closure": "CATKE",
+      "tracers": [
+        "T",
+        "S"
+      ],
+      "timestepper": "SplitRungeKutta3",
+      "dt": 60,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": true,
+      "warmup_steps": 2,
+      "samples": 5,
+      "time_steps": 10,
+      "profile": false,
+      "scaling_type": "comparison",
+      "baseline_ranks": 1
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "gpu_memory_used_bytes": 15686762496,
+    "grid_size": [
+      1440,
+      180,
+      200
+    ],
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Sizes{Int64}, Sizes{NTuple{4, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Nothing, Nothing, Int64, Int64, Nothing, Nothing, Nothing, Nothing}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": "NVIDIA H100 80GB HBM3",
+      "cuda_version": "13.2.0",
+      "cpu_model": "Intel(R) Xeon(R) Gold 6448Y (sapphirerapids)",
+      "num_threads": 1,
+      "hostname": "rg32003",
+      "package_versions": {
+        "Adapt": "4.7.2",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-08T13:51:10.442",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023\u0000"
+    },
+    "rank": 1,
+    "retained_free_surface_substeps": 21,
+    "time_per_step_max_seconds": 0.3044844452,
+    "time_per_step_median_seconds": 0.2633512247,
+    "time_per_step_seconds": 0.2620285495,
+    "window_seconds": [
+      2.722119378,
+      3.044844452,
+      2.633512247,
+      2.623551489,
+      2.620285495
+    ]
+  },
+  {
+    "configuration": {
+      "series": "gpu_partition_super_fine",
+      "device": "GPU",
+      "ranks": 4,
+      "threads_per_rank": 1,
+      "grid_name": "super_fine",
+      "global_resolution": [
+        1440,
+        720,
+        200
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "partition": [
+        1,
+        4,
+        1
+      ],
+      "x_sizes": [
+        1440
+      ],
+      "y_sizes": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENOVectorInvariantDefault",
+      "tracer_advection": "WENO7",
+      "closure": "CATKE",
+      "tracers": [
+        "T",
+        "S"
+      ],
+      "timestepper": "SplitRungeKutta3",
+      "dt": 60,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": true,
+      "warmup_steps": 2,
+      "samples": 5,
+      "time_steps": 10,
+      "profile": false,
+      "scaling_type": "comparison",
+      "baseline_ranks": 1
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "gpu_memory_used_bytes": 15686762496,
+    "grid_size": [
+      1440,
+      180,
+      200
+    ],
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Sizes{Int64}, Sizes{NTuple{4, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Nothing, Nothing, Int64, Int64, Nothing, Nothing, Nothing, Nothing}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": "NVIDIA H100 80GB HBM3",
+      "cuda_version": "13.2.0",
+      "cpu_model": "Intel(R) Xeon(R) Gold 6448Y (sapphirerapids)",
+      "num_threads": 1,
+      "hostname": "rg32003",
+      "package_versions": {
+        "Adapt": "4.7.2",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-08T13:51:10.443",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023\u0000"
+    },
+    "rank": 2,
+    "retained_free_surface_substeps": 21,
+    "time_per_step_max_seconds": 0.3044844926,
+    "time_per_step_median_seconds": 0.2633514055,
+    "time_per_step_seconds": 0.26202858349999997,
+    "window_seconds": [
+      2.722120913,
+      3.044844926,
+      2.633514055,
+      2.623552424,
+      2.620285835
+    ]
+  },
+  {
+    "configuration": {
+      "series": "gpu_partition_super_fine",
+      "device": "GPU",
+      "ranks": 4,
+      "threads_per_rank": 1,
+      "grid_name": "super_fine",
+      "global_resolution": [
+        1440,
+        720,
+        200
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "partition": [
+        1,
+        4,
+        1
+      ],
+      "x_sizes": [
+        1440
+      ],
+      "y_sizes": [
+        180,
+        180,
+        180,
+        180
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENOVectorInvariantDefault",
+      "tracer_advection": "WENO7",
+      "closure": "CATKE",
+      "tracers": [
+        "T",
+        "S"
+      ],
+      "timestepper": "SplitRungeKutta3",
+      "dt": 60,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": true,
+      "warmup_steps": 2,
+      "samples": 5,
+      "time_steps": 10,
+      "profile": false,
+      "scaling_type": "comparison",
+      "baseline_ranks": 1
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "gpu_memory_used_bytes": 14705295360,
+    "grid_size": [
+      1440,
+      180,
+      200
+    ],
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Sizes{Int64}, Sizes{NTuple{4, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Nothing, Nothing, Int64, Int64, Nothing, Nothing, Nothing, Nothing}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": "NVIDIA H100 80GB HBM3",
+      "cuda_version": "13.2.0",
+      "cpu_model": "Intel(R) Xeon(R) Gold 6448Y (sapphirerapids)",
+      "num_threads": 1,
+      "hostname": "rg32003",
+      "package_versions": {
+        "Adapt": "4.7.2",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-08T13:51:10.442",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023\u0000"
+    },
+    "rank": 3,
+    "retained_free_surface_substeps": 21,
+    "time_per_step_max_seconds": 0.3044845319,
+    "time_per_step_median_seconds": 0.26335131180000004,
+    "time_per_step_seconds": 0.2620287579,
+    "window_seconds": [
+      2.722127776,
+      3.044845319,
+      2.633513118,
+      2.623553675,
+      2.620287579
+    ]
+  }
+]

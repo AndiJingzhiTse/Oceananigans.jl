@@ -23,7 +23,7 @@ Highest completed count: **16 ranks**.
 | 1x2x1 | 2 | 1x2x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (ReqNodeNotAvail, UnavailableNodes:rg[12602,12903,13403]); estimated start N/A (scheduler timezone) |
 | 4x1x1 | 4 | 4x1x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.247071 | 0.249360 | — | Rank results, finite fields and resource placement verified |
 | 2x2x1 | 4 | 2x2x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.252772 | 0.255086 | — | Rank results, finite fields and resource placement verified |
-| 1x4x1 | 4 | 1x4x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
+| 1x4x1 | 4 | 1x4x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.262029 | 0.263351 | — | Rank results, finite fields and resource placement verified |
 | 8x1x1 | 8 | 8x1x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.142374 | 0.147195 | — | Rank results, finite fields and resource placement verified |
 | 4x2x1 | 8 | 4x2x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.147079 | 0.150229 | — | Rank results, finite fields and resource placement verified |
 | 2x4x1 | 8 | 2x4x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.150725 | 0.159511 | — | Rank results, finite fields and resource placement verified |
@@ -37,6 +37,8 @@ Highest completed count: **16 ranks**.
 [4x1x1 configuration](gpu_partition_super_fine/4x1x1/configuration.md): local resolution **360–360 × 720–720 × 200**, retained free-surface substeps [21].
 
 [2x2x1 configuration](gpu_partition_super_fine/2x2x1/configuration.md): local resolution **720–720 × 360–360 × 200**, retained free-surface substeps [21].
+
+[1x4x1 configuration](gpu_partition_super_fine/1x4x1/configuration.md): local resolution **1440–1440 × 180–180 × 200**, retained free-surface substeps [21].
 
 [8x1x1 configuration](gpu_partition_super_fine/8x1x1/configuration.md): local resolution **180–180 × 720–720 × 200**, retained free-surface substeps [21].
 
@@ -70,7 +72,7 @@ Efficiency baseline: **4 measured ranks**.
 | 16_ranks | 16 | 4x4x1 | 2880x1440x200 | LatitudeLongitudeGrid | COMPLETED | 0.269842 | 0.271461 | 91.6% / 91.7% | Rank results, finite fields and resource placement verified |
 | 32_ranks | 32 | 8x4x1 | 2880x1440x200 | LatitudeLongitudeGrid | COMPLETED | 0.161687 | 0.170486 | 76.5% / 73.0% | Rank results, finite fields and resource placement verified |
 | 64_ranks | 64 | 8x8x1 | 2880x1440x200 | LatitudeLongitudeGrid | COMPLETED | 0.109598 | 0.111415 | 56.4% / 55.8% | Rank results, finite fields and resource placement verified |
-| 128_ranks | 128 | 16x8x1 | 2880x1440x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Nodes required for job are DOWN, DRAINED or reserved for jobs in higher priority partitions); estimated start 2026-10-08T14:35:10 (scheduler timezone) |
+| 128_ranks | 128 | 16x8x1 | 2880x1440x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-08T14:35:10 (scheduler timezone) |
 | 256_ranks | 256 | 16x16x1 | 2880x1440x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Nodes required for job are DOWN, DRAINED or reserved for jobs in higher priority partitions); estimated start N/A (scheduler timezone) |
 | 512_ranks | 512 | 32x16x1 | 2880x1440x200 | LatitudeLongitudeGrid | RESOURCE_LIMIT | — | — | — | Requires 512; configured capacity is 264 |
 

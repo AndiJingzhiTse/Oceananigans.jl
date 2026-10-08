@@ -306,8 +306,8 @@
         4,
         1
       ],
-      "state": "RUNNING",
-      "details": "Exit 0:0; None",
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
       "job_id": "22690705",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -353,6 +353,16 @@
         "profile": false,
         "scaling_type": "comparison",
         "baseline_ranks": 1
+      },
+      "measurement": {
+        "fastest": 0.2620287579,
+        "median": 0.2633514055,
+        "maximum": 0.3044845319,
+        "retained_substeps": [
+          21
+        ],
+        "nodes": 1,
+        "gpu_memory_used_bytes": 15686762496
       }
     },
     {
@@ -1400,7 +1410,7 @@
         1
       ],
       "state": "PENDING",
-      "details": "(Nodes required for job are DOWN, DRAINED or reserved for jobs in higher priority partitions); estimated start 2026-10-08T14:35:10 (scheduler timezone)",
+      "details": "(Priority); estimated start 2026-10-08T14:35:10 (scheduler timezone)",
       "job_id": "22690713",
       "configuration": {
         "series": "gpu_scaling_super_super_fine",
