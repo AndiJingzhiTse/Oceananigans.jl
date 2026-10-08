@@ -171,11 +171,11 @@ def write_report(folder, cases, plotting=True, reference_suites=()):
             cfg = case['configuration']
             local = f"{min(cfg['x_sizes'])}–{max(cfg['x_sizes'])} × {min(cfg['y_sizes'])}–{max(cfg['y_sizes'])} × {cfg['global_resolution'][2]}"
             lines += ['', f"[{case['id'].split('/')[-1]} configuration]({case['id']}/configuration.md): local resolution **{local}**, retained free-surface substeps {case['measurement']['retained_substeps']}."]
-    lines += scaling_tables(folder, cases, reference_suites)
+    lines += scaling_tables(folder, cases, reference_suites, plotting=plotting)
     (folder / 'plot.md').write_text('\n'.join(lines) + '\n')
 
 
-def scaling_tables(folder, cases, reference_suites):
+def scaling_tables(folder, cases, reference_suites, plotting=False):
     combined = [(c, folder) for c in cases]
     for path in reference_suites:
         root = Path(path)
@@ -191,6 +191,9 @@ def scaling_tables(folder, cases, reference_suites):
              'LatitudeLongitudeGrid; partitions are Px × Py × Pz. Nodes are measured from rank placement.',
              'Throughput = global interior cells / median step time. Memory is maximum device-used GiB across ranks after timing, including CUDA context and buffers; it is not peak memory.',
              'Missing memory measurements and unfinished timings are shown as —.', '']
+    if plotting and plot_scaling_efficiency(folder, [c for c, _ in combined]):
+        lines += ['Median efficiencies use each strong grid’s measured baseline and the weak study’s one-GPU baseline; the dotted reference is ideal 100% efficiency.', '',
+                  '![Strong and weak scaling efficiency](gpu_scaling_efficiency.svg)', '']
     for weak in (False, True):
         selected = [(c, root) for c, root in combined if 'configuration' in c
                     and c['state'] not in {'RESOURCE_LIMIT', 'GEOMETRY_LIMIT'}
@@ -226,10 +229,55 @@ def scaling_tables(folder, cases, reference_suites):
     return lines
 
 
+def plot_scaling_efficiency(folder, cases):
+    baselines = scaling_baselines(cases)
+    groups = {}
+    for case in cases:
+        if case['state'] != 'COMPLETED' or not (case['series'].startswith('gpu_scaling_')
+                                              or case['series'] == 'gpu_weak_scaling_super_fine'):
+            continue
+        _, efficiency = efficiencies(case, baselines.get(case['series']))
+        if efficiency is not None:
+            groups.setdefault(case['series'], []).append((case['ranks'], 100 * efficiency))
+    if 'gpu_weak_scaling_super_fine' not in groups:
+        return False
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    from matplotlib.ticker import StrMethodFormatter
+    plt.rcParams.update({'svg.hashsalt': 'benchmark-suite', 'svg.fonttype': 'none'})
+    fig, axes = plt.subplots(1, 2, figsize=(12, 4.5))
+    for series, points in groups.items():
+        weak = series == 'gpu_weak_scaling_super_fine'
+        points.sort()
+        ax = axes[1 if weak else 0]
+        baseline = baselines[series]
+        grid = ' × '.join(map(str, baseline['configuration']['global_resolution']))
+        label = '207,360,000 cells/GPU' if weak else f"{grid} ({baseline['ranks']}-GPU baseline)"
+        ax.plot([p[0] for p in points], [p[1] for p in points], 'o-', label=label)
+    for i, ax in enumerate(axes):
+        ax.axhline(100, color='black', linestyle=':', label='Ideal: 100%')
+        ax.set(xlabel='GPUs', ylabel='Median efficiency (%)',
+               title='Weak scaling' if i else 'Strong scaling', xscale='log')
+        ticks = sorted({x for line in ax.lines[:-1] for x in line.get_xdata()})
+        ax.set_xticks(ticks)
+        ax.xaxis.set_major_formatter(StrMethodFormatter('{x:g}'))
+        ax.set_ylim(0, max(110, ax.get_ylim()[1]))
+        ax.grid(alpha=0.2)
+        ax.legend(fontsize=8, loc='lower left')
+    fig.tight_layout()
+    path = folder / 'gpu_scaling_efficiency.svg'
+    fig.savefig(path, metadata={'Date': None})
+    path.write_text('\n'.join(line.rstrip() for line in path.read_text().splitlines()) + '\n')
+    plt.close(fig)
+    return True
+
+
 def plot_series(folder, series, rows):
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
+    from matplotlib.ticker import StrMethodFormatter
     plt.rcParams.update({'svg.hashsalt': 'benchmark-suite', 'svg.fonttype': 'none'})
     rows = [r for r in rows if r['state'] == 'COMPLETED']
     scaling = 'scaling' in series
@@ -256,6 +304,9 @@ def plot_series(folder, series, rows):
     ax.set(ylabel='Previous-grid / next-grid time' if resolution else 'Seconds per step', title=series)
     if scaling:
         ax.set(xlabel='MPI ranks', xscale='log', yscale='log')
+        if weak:
+            ax.set_yscale('linear')
+            ax.yaxis.set_major_formatter(StrMethodFormatter('{x:g}'))
         baseline = next((r for r in rows if r['efficiency_fastest'] is not None
                          and math.isclose(r['efficiency_fastest'], 1)), None)
         if baseline:
@@ -271,6 +322,8 @@ def plot_series(folder, series, rows):
         axes[0, 1].legend()
     elif not resolution:
         ax.set_xticks(x, [r['case'] for r in rows], rotation=30, ha='right')
+    if series == 'gpu_partition_super_fine':
+        ax.set_ylim(bottom=0)
     ax.legend()
     fig.tight_layout()
     path = folder / f'{series}.svg'
