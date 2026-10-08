@@ -140,6 +140,28 @@ class SuiteTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 report.validate(folder, cfg)
 
+    def test_combined_efficiency_plot_uses_distinct_scaling_definitions(self):
+        import matplotlib.pyplot as plt
+        cases = []
+        for series, grid, ranks, elapsed in (
+            ('gpu_scaling_super_super_fine', 'super_super_fine', 4, 2),
+            ('gpu_scaling_super_super_fine', 'super_super_fine', 8, 4),
+            ('gpu_weak_scaling_super_fine', 'super_fine', 1, 2),
+            ('gpu_weak_scaling_super_fine', 'super_super_fine', 4, 4)):
+            cases.append(dict(series=series, ranks=ranks, state='COMPLETED',
+                              configuration=plan.configuration(series, ranks, grid),
+                              measurement=dict(fastest=elapsed, median=elapsed)))
+        cases.append({**cases[1], 'state': 'FAILED'})
+        with tempfile.TemporaryDirectory() as tmp:
+            with patch.object(plt, 'close'):
+                self.assertTrue(report.plot_scaling_efficiency(Path(tmp), cases))
+                fig = plt.gcf()
+            self.assertEqual(list(fig.axes[0].lines[0].get_ydata()), [100, 25])
+            self.assertEqual(list(fig.axes[1].lines[0].get_ydata()), [100, 50])
+            for ax in fig.axes:
+                self.assertEqual(list(ax.lines[-1].get_ydata()), [100, 100])
+            plt.close(fig)
+
     def test_uneven_local_grids_use_correct_rank_order(self):
         with tempfile.TemporaryDirectory() as tmp:
             folder = Path(tmp)
