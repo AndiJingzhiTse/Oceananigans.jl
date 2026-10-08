@@ -32,7 +32,7 @@ Highest completed count: **16 ranks**.
 | 8x2x1 | 16 | 8x2x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.096162 | 0.097788 | — | Rank results, finite fields and resource placement verified |
 | 4x4x1 | 16 | 4x4x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.099257 | 0.103579 | — | Rank results, finite fields and resource placement verified |
 | 2x8x1 | 16 | 2x8x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.101643 | 0.105266 | — | Rank results, finite fields and resource placement verified |
-| 1x16x1 | 16 | 1x16x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
+| 1x16x1 | 16 | 1x16x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.111402 | 0.179838 | — | Rank results, finite fields and resource placement verified |
 
 [16x1x1 configuration](gpu_partition_super_fine/16x1x1/configuration.md): local resolution **90–90 × 720–720 × 200**, retained free-surface substeps [21].
 
@@ -41,6 +41,8 @@ Highest completed count: **16 ranks**.
 [4x4x1 configuration](gpu_partition_super_fine/4x4x1/configuration.md): local resolution **360–360 × 180–180 × 200**, retained free-surface substeps [21].
 
 [2x8x1 configuration](gpu_partition_super_fine/2x8x1/configuration.md): local resolution **720–720 × 90–90 × 200**, retained free-surface substeps [21].
+
+[1x16x1 configuration](gpu_partition_super_fine/1x16x1/configuration.md): local resolution **1440–1440 × 45–45 × 200**, retained free-surface substeps [21].
 ## gpu_scaling_super_super_fine
 
 Highest completed count: **64 ranks**.
@@ -71,7 +73,7 @@ Highest completed count: **64 ranks**.
 
 | Case | Ranks | Partition | Global resolution | Grid type | State | Fastest s/step | Median s/step | Efficiency fastest / median | Details |
 |---|---:|---|---|---|---|---:|---:|---|---|
-| 16_ranks | 16 | 4x4x1 | 5760x2880x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-08T10:05:27 (scheduler timezone) |
+| 16_ranks | 16 | 4x4x1 | 5760x2880x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-08T09:50:39 (scheduler timezone) |
 | 32_ranks | 32 | 8x4x1 | 5760x2880x200 | LatitudeLongitudeGrid | COMPLETED | 0.586813 | 0.604331 | — | Rank results, finite fields and resource placement verified |
 | 64_ranks | 64 | 8x8x1 | 5760x2880x200 | LatitudeLongitudeGrid | COMPLETED | 0.296665 | 0.346800 | — | Rank results, finite fields and resource placement verified |
 | 128_ranks | 128 | 16x8x1 | 5760x2880x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-08T15:30:00 (scheduler timezone) |
