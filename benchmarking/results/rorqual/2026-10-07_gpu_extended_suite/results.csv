@@ -13,11 +13,11 @@ gpu_partition_super_fine,8x2x1,16,8x2x1,1440x720x200,LatitudeLongitudeGrid,COMPL
 gpu_partition_super_fine,4x4x1,16,4x4x1,1440x720x200,LatitudeLongitudeGrid,COMPLETED,22690707,0.0992566601,0.10357884390000001,,,"Rank results, finite fields and resource placement verified"
 gpu_partition_super_fine,2x8x1,16,2x8x1,1440x720x200,LatitudeLongitudeGrid,COMPLETED,22690707,0.1016433854,0.1052659011,,,"Rank results, finite fields and resource placement verified"
 gpu_partition_super_fine,1x16x1,16,1x16x1,1440x720x200,LatitudeLongitudeGrid,COMPLETED,22690707,0.1114015764,0.17983834059999998,,,"Rank results, finite fields and resource placement verified"
-gpu_scaling_super_super_fine,4_ranks,4,2x2x1,2880x1440x200,LatitudeLongitudeGrid,RUNNING,22690708,,,,,Exit 0:0; None
-gpu_scaling_super_super_fine,8_ranks,8,4x2x1,2880x1440x200,LatitudeLongitudeGrid,COMPLETED,22690709,0.514315658,0.517392431,,,"Rank results, finite fields and resource placement verified"
-gpu_scaling_super_super_fine,16_ranks,16,4x4x1,2880x1440x200,LatitudeLongitudeGrid,COMPLETED,22690710,0.2698423494,0.27146129929999996,,,"Rank results, finite fields and resource placement verified"
-gpu_scaling_super_super_fine,32_ranks,32,8x4x1,2880x1440x200,LatitudeLongitudeGrid,COMPLETED,22690711,0.16168666869999998,0.1704863334,,,"Rank results, finite fields and resource placement verified"
-gpu_scaling_super_super_fine,64_ranks,64,8x8x1,2880x1440x200,LatitudeLongitudeGrid,COMPLETED,22690712,0.1095980859,0.1114154467,,,"Rank results, finite fields and resource placement verified"
+gpu_scaling_super_super_fine,4_ranks,4,2x2x1,2880x1440x200,LatitudeLongitudeGrid,COMPLETED,22690708,0.9890695636,0.9955635855,1.0,1.0,"Rank results, finite fields and resource placement verified"
+gpu_scaling_super_super_fine,8_ranks,8,4x2x1,2880x1440x200,LatitudeLongitudeGrid,COMPLETED,22690709,0.514315658,0.517392431,0.9615394244909417,0.962097168271099,"Rank results, finite fields and resource placement verified"
+gpu_scaling_super_super_fine,16_ranks,16,4x4x1,2880x1440x200,LatitudeLongitudeGrid,COMPLETED,22690710,0.2698423494,0.27146129929999996,0.9163401943757312,0.916855909173054,"Rank results, finite fields and resource placement verified"
+gpu_scaling_super_super_fine,32_ranks,32,8x4x1,2880x1440x200,LatitudeLongitudeGrid,COMPLETED,22690711,0.16168666869999998,0.1704863334,0.7646499024566767,0.729943835999584,"Rank results, finite fields and resource placement verified"
+gpu_scaling_super_super_fine,64_ranks,64,8x8x1,2880x1440x200,LatitudeLongitudeGrid,COMPLETED,22690712,0.1095980859,0.1114154467,0.5640321837500266,0.5584748429119748,"Rank results, finite fields and resource placement verified"
 gpu_scaling_super_super_fine,128_ranks,128,16x8x1,2880x1440x200,LatitudeLongitudeGrid,PENDING,22690713,,,,,"(Nodes required for job are DOWN, DRAINED or reserved for jobs in higher priority partitions); estimated start 2026-10-08T14:35:10 (scheduler timezone)"
 gpu_scaling_super_super_fine,256_ranks,256,16x16x1,2880x1440x200,LatitudeLongitudeGrid,PENDING,22690714,,,,,"(Nodes required for job are DOWN, DRAINED or reserved for jobs in higher priority partitions); estimated start N/A (scheduler timezone)"
 gpu_scaling_super_super_fine,512_ranks,512,32x16x1,2880x1440x200,LatitudeLongitudeGrid,RESOURCE_LIMIT,,,,,,Requires 512; configured capacity is 264
