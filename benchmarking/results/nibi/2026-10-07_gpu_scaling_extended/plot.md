@@ -29,7 +29,11 @@ Highest completed count: **0 ranks**.
 | 1x16x1 | 16 | 1x16x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | 60 / 10 | (Priority); estimated start N/A (scheduler timezone) |
 ## gpu_scaling_super_fine
 
-Highest completed count: **0 ranks**.
+Highest completed count: **32 ranks**.
+
+Efficiency baseline: **32 ranks** (gpu_scaling_super_fine/32_ranks).
+
+![gpu_scaling_super_fine](gpu_scaling_super_fine.svg)
 
 | Case | Ranks | Partition | Global resolution | Grid type | State | Fastest s/step | Median s/step | Efficiency fastest / median | Δt (s) / steps per window | Details |
 |---|---:|---|---|---|---|---:|---:|---|---|---|
@@ -38,11 +42,17 @@ Highest completed count: **0 ranks**.
 | 4_ranks | 4 | 4x1x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | 60 / 100 | (Priority); estimated start N/A (scheduler timezone) |
 | 8_ranks | 8 | 8x1x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | 60 / 100 | (Priority); estimated start N/A (scheduler timezone) |
 | 16_ranks | 16 | 16x1x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | 60 / 100 | (Priority); estimated start N/A (scheduler timezone) |
-| 32_ranks | 32 | 32x1x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | 60 / 100 | (Priority); estimated start N/A (scheduler timezone) |
+| 32_ranks | 32 | 32x1x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 0.065349 | 0.065708 | 100.0% / 100.0% | 60 / 100 | Rank results, finite fields and resource placement verified |
 | 64_ranks | 64 |  | 1440x720x200 | LatitudeLongitudeGrid | GEOMETRY_LIMIT | — | — | — | None / None | Partition [64, 1, 1] has fewer than 23 local cells per horizontal direction |
+
+[32_ranks configuration](gpu_scaling_super_fine/32_ranks/configuration.md): local resolution **45–45 × 720–720 × 200**, retained free-surface substeps [21].
 ## gpu_scaling_super_super_fine
 
-Highest completed count: **0 ranks**.
+Highest completed count: **32 ranks**.
+
+Efficiency baseline: **32 ranks** (gpu_scaling_super_super_fine/32_ranks).
+
+![gpu_scaling_super_super_fine](gpu_scaling_super_super_fine.svg)
 
 | Case | Ranks | Partition | Global resolution | Grid type | State | Fastest s/step | Median s/step | Efficiency fastest / median | Δt (s) / steps per window | Details |
 |---|---:|---|---|---|---|---:|---:|---|---|---|
@@ -51,9 +61,11 @@ Highest completed count: **0 ranks**.
 | 4_ranks | 4 | 4x1x1 | 2880x1440x200 | LatitudeLongitudeGrid | PENDING | — | — | — | 30.0 / 100 | (Priority); estimated start N/A (scheduler timezone) |
 | 8_ranks | 8 | 8x1x1 | 2880x1440x200 | LatitudeLongitudeGrid | PENDING | — | — | — | 30.0 / 100 | (Priority); estimated start N/A (scheduler timezone) |
 | 16_ranks | 16 | 16x1x1 | 2880x1440x200 | LatitudeLongitudeGrid | PENDING | — | — | — | 30.0 / 100 | (Priority); estimated start N/A (scheduler timezone) |
-| 32_ranks | 32 | 32x1x1 | 2880x1440x200 | LatitudeLongitudeGrid | PENDING | — | — | — | 30.0 / 100 | (Priority); estimated start N/A (scheduler timezone) |
-| 64_ranks | 64 | 64x1x1 | 2880x1440x200 | LatitudeLongitudeGrid | PENDING | — | — | — | 30.0 / 100 | (Priority); estimated start N/A (scheduler timezone) |
+| 32_ranks | 32 | 32x1x1 | 2880x1440x200 | LatitudeLongitudeGrid | COMPLETED | 0.160422 | 0.160913 | 100.0% / 100.0% | 30.0 / 100 | Rank results, finite fields and resource placement verified |
+| 64_ranks | 64 | 64x1x1 | 2880x1440x200 | LatitudeLongitudeGrid | PENDING | — | — | — | 30.0 / 100 | (Priority); estimated start 2026-10-14T17:00:14 (scheduler timezone) |
 | 128_ranks | 128 |  | 2880x1440x200 | LatitudeLongitudeGrid | GEOMETRY_LIMIT | — | — | — | None / None | Partition [128, 1, 1] has fewer than 23 local cells per horizontal direction |
+
+[32_ranks configuration](gpu_scaling_super_super_fine/32_ranks/configuration.md): local resolution **90–90 × 1440–1440 × 200**, retained free-surface substeps [21].
 ## gpu_scaling_super_super_super_fine
 
 Highest completed count: **0 ranks**.
@@ -65,9 +77,9 @@ Highest completed count: **0 ranks**.
 | 4_ranks | 4 | 4x1x1 | 5760x2880x200 | LatitudeLongitudeGrid | MEMORY_ESTIMATE_LIMIT | — | — | — | 15.0 / 100 | Not submitted: DRAC reference starts this grid at 16 H100 80 GiB GPUs; estimated device capacity insufficient below that count |
 | 8_ranks | 8 | 8x1x1 | 5760x2880x200 | LatitudeLongitudeGrid | MEMORY_ESTIMATE_LIMIT | — | — | — | 15.0 / 100 | Not submitted: DRAC reference starts this grid at 16 H100 80 GiB GPUs; estimated device capacity insufficient below that count |
 | 16_ranks | 16 | 16x1x1 | 5760x2880x200 | LatitudeLongitudeGrid | PENDING | — | — | — | 15.0 / 100 | (Priority); estimated start N/A (scheduler timezone) |
-| 32_ranks | 32 | 32x1x1 | 5760x2880x200 | LatitudeLongitudeGrid | PENDING | — | — | — | 15.0 / 100 | (Priority); estimated start N/A (scheduler timezone) |
-| 64_ranks | 64 | 64x1x1 | 5760x2880x200 | LatitudeLongitudeGrid | PENDING | — | — | — | 15.0 / 100 | (Priority); estimated start N/A (scheduler timezone) |
-| 128_ranks | 128 | 128x1x1 | 5760x2880x200 | LatitudeLongitudeGrid | PENDING | — | — | — | 15.0 / 100 | (Priority); estimated start N/A (scheduler timezone) |
+| 32_ranks | 32 | 32x1x1 | 5760x2880x200 | LatitudeLongitudeGrid | PENDING | — | — | — | 15.0 / 100 | (Priority); estimated start 2026-10-14T17:00:14 (scheduler timezone) |
+| 64_ranks | 64 | 64x1x1 | 5760x2880x200 | LatitudeLongitudeGrid | PENDING | — | — | — | 15.0 / 100 | (Priority); estimated start 2026-10-14T17:00:14 (scheduler timezone) |
+| 128_ranks | 128 | 128x1x1 | 5760x2880x200 | LatitudeLongitudeGrid | PENDING | — | — | — | 15.0 / 100 | (Priority); estimated start 2026-10-19T06:02:26 (scheduler timezone) |
 | 256_ranks | 256 |  | 5760x2880x200 | LatitudeLongitudeGrid | GEOMETRY_LIMIT | — | — | — | None / None | Partition [256, 1, 1] has fewer than 23 local cells per horizontal direction |
 ## gpu_weak_scaling_super_fine
 
@@ -80,7 +92,7 @@ Highest completed count: **0 ranks**.
 | 4_ranks | 4 | 2x2x1 | 2880x1440x200 | LatitudeLongitudeGrid | PENDING | — | — | — | 30.0 / 100 | (Priority); estimated start N/A (scheduler timezone) |
 | 8_ranks | 8 | 4x2x1 | 5760x1440x200 | LatitudeLongitudeGrid | PENDING | — | — | — | 15.0 / 100 | (Priority); estimated start N/A (scheduler timezone) |
 | 16_ranks | 16 | 4x4x1 | 5760x2880x200 | LatitudeLongitudeGrid | PENDING | — | — | — | 15.0 / 100 | (Priority); estimated start N/A (scheduler timezone) |
-| 32_ranks | 32 | 8x4x1 | 11520x2880x200 | LatitudeLongitudeGrid | PENDING | — | — | — | 7.5 / 100 | (Priority); estimated start N/A (scheduler timezone) |
-| 64_ranks | 64 | 8x8x1 | 11520x5760x200 | LatitudeLongitudeGrid | PENDING | — | — | — | 7.5 / 100 | (Priority); estimated start N/A (scheduler timezone) |
-| 128_ranks | 128 | 16x8x1 | 23040x5760x200 | LatitudeLongitudeGrid | PENDING | — | — | — | 3.75 / 100 | (Priority); estimated start N/A (scheduler timezone) |
+| 32_ranks | 32 | 8x4x1 | 11520x2880x200 | LatitudeLongitudeGrid | PENDING | — | — | — | 7.5 / 100 | (Priority); estimated start 2026-10-14T17:00:14 (scheduler timezone) |
+| 64_ranks | 64 | 8x8x1 | 11520x5760x200 | LatitudeLongitudeGrid | PENDING | — | — | — | 7.5 / 100 | (Priority); estimated start 2026-10-14T17:00:14 (scheduler timezone) |
+| 128_ranks | 128 | 16x8x1 | 23040x5760x200 | LatitudeLongitudeGrid | PENDING | — | — | — | 3.75 / 100 | (Priority); estimated start 2026-10-19T06:02:26 (scheduler timezone) |
 | 256_ranks | 256 | 16x16x1 | 23040x11520x200 | LatitudeLongitudeGrid | RESOURCE_LIMIT | — | — | — | 3.75 / 100 | Requires 256; configured capacity is 232 |

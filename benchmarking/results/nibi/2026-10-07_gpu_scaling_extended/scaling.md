@@ -14,14 +14,14 @@ Pending/failed rows retain their state and no invented measurements. [Reference 
 | 1440x720x200 | 4 | 1 | 4x1x1 | 60 | — | — | — | — | PENDING |
 | 1440x720x200 | 8 | 1 | 8x1x1 | 60 | — | — | — | — | PENDING |
 | 1440x720x200 | 16 | 2 | 16x1x1 | 60 | — | — | — | — | PENDING |
-| 1440x720x200 | 32 | 4 | 32x1x1 | 60 | — | — | — | — | PENDING |
+| 1440x720x200 | 32 | 4 | 32x1x1 | 60 | 0.065708 | 100.0% | 3.156e+09 | 3.49 | COMPLETED |
 | 1440x720x200 | 64 | None |  | None | — | — | — | — | GEOMETRY_LIMIT |
 | 2880x1440x200 | 1 | 1 | 1x1x1 | 30.0 | — | — | — | — | MEMORY_ESTIMATE_LIMIT |
 | 2880x1440x200 | 2 | 1 | 2x1x1 | 30.0 | — | — | — | — | MEMORY_ESTIMATE_LIMIT |
 | 2880x1440x200 | 4 | 1 | 4x1x1 | 30.0 | — | — | — | — | PENDING |
 | 2880x1440x200 | 8 | 1 | 8x1x1 | 30.0 | — | — | — | — | PENDING |
 | 2880x1440x200 | 16 | 2 | 16x1x1 | 30.0 | — | — | — | — | PENDING |
-| 2880x1440x200 | 32 | 4 | 32x1x1 | 30.0 | — | — | — | — | PENDING |
+| 2880x1440x200 | 32 | 4 | 32x1x1 | 30.0 | 0.160913 | 100.0% | 5.155e+09 | 8.95 | COMPLETED |
 | 2880x1440x200 | 64 | 8 | 64x1x1 | 30.0 | — | — | — | — | PENDING |
 | 2880x1440x200 | 128 | None |  | None | — | — | — | — | GEOMETRY_LIMIT |
 | 5760x2880x200 | 1 | 1 | 1x1x1 | 15.0 | — | — | — | — | MEMORY_ESTIMATE_LIMIT |
@@ -33,6 +33,10 @@ Pending/failed rows retain their state and no invented measurements. [Reference 
 | 5760x2880x200 | 64 | 8 | 64x1x1 | 15.0 | — | — | — | — | PENDING |
 | 5760x2880x200 | 128 | 16 | 128x1x1 | 15.0 | — | — | — | — | PENDING |
 | 5760x2880x200 | 256 | None |  | None | — | — | — | — | GEOMETRY_LIMIT |
+
+gpu_scaling_super_fine baseline: **32 GPUs**.
+
+gpu_scaling_super_super_fine baseline: **32 GPUs**.
 ## Weak scaling
 
 | Resolution (cells) | GPUs | Nodes | Partition | Δt (s) | Median s/step | Efficiency | Throughput (cells/s) | Memory/GPU (GiB) | State |
