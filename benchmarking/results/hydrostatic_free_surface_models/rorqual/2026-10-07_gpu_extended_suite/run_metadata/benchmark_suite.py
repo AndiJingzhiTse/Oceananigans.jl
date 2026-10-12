@@ -61,7 +61,7 @@ def load_server(path=None):
                   cpu_sbatch_extra=[], gpu_sbatch_extra=[],
                   trace_root=str(Path(os.environ.get('SCRATCH', str(ROOT / 'results'))) / 'benchmark_traces'),
                   case_timeout_seconds=86400, matplotlib=True, python='python3', report_modules=[],
-                  reference_suites=[])
+                  reference_suites=[], replacement_suites=[])
     unknown = set(user) - set(server)
     if unknown:
         raise ValueError('Unknown server settings: ' + ', '.join(sorted(unknown)))
@@ -72,7 +72,7 @@ def load_server(path=None):
         raise ValueError('CPU capacity and per-node resource counts must be positive integers')
     if not isinstance(server['max_gpus'], int) or server['max_gpus'] < 0:
         raise ValueError('max_gpus must be a nonnegative integer')
-    for key in ('mpi', 'cpu_sbatch_extra', 'gpu_sbatch_extra', 'report_modules', 'reference_suites'):
+    for key in ('mpi', 'cpu_sbatch_extra', 'gpu_sbatch_extra', 'report_modules', 'reference_suites', 'replacement_suites'):
         if not isinstance(server[key], list) or any(not isinstance(a, str) for a in server[key]):
             raise ValueError(f'{key} must be an array of command arguments')
     for key in ('project', 'trace_root', 'environment_script', 'mpi_init'):
@@ -80,6 +80,8 @@ def load_server(path=None):
             server[key] = str(Path(os.path.expandvars(server[key])).expanduser().resolve())
     server['reference_suites'] = [str(Path(os.path.expandvars(p)).expanduser().resolve())
                                 for p in server['reference_suites']]
+    server['replacement_suites'] = [str(Path(os.path.expandvars(p)).expanduser().resolve())
+                                  for p in server['replacement_suites']]
     return server
 
 
@@ -135,7 +137,8 @@ def prepare(folder, server, selected):
     snapshot(folder, server)
     data = dict(server=server, cases=cases, submitted_at=None)
     atomic_json(folder / 'suite.json', data)
-    write_report(folder, cases, plotting=False, reference_suites=server.get('reference_suites', []))
+    write_report(folder, cases, plotting=False, reference_suites=server.get('reference_suites', []),
+                 replacement_suites=server.get('replacement_suites', []))
     return data
 
 
@@ -348,7 +351,8 @@ def refresh(folder, data, query_slurm=True):
             case.update(state='RUNNING', details='Started; waiting for completion marker')
     atomic_json(folder / 'suite.json', data)
     write_report(folder, cases, plotting=data['server']['matplotlib'],
-                 reference_suites=data['server'].get('reference_suites', []))
+                 reference_suites=data['server'].get('reference_suites', []),
+                 replacement_suites=data['server'].get('replacement_suites', []))
     return all(c['state'] in TERMINAL for c in cases)
 
 

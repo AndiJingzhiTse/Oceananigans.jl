@@ -3,6 +3,7 @@ import csv
 import hashlib
 import json
 import math
+import os
 from pathlib import Path
 import statistics
 
@@ -98,7 +99,7 @@ def validate(case_dir, config):
 
 def scaling_baselines(cases):
     return {c['series']: c for c in cases if c['state'] == 'COMPLETED'
-            and 'measurement' in c and 'scaling' in c['series']
+            and 'measurement' in c and ('scaling' in c['series'] or c['series'] == 'gpu_partition_super_fine')
             and c['ranks'] == c['configuration'].get('baseline_ranks', 1)}
 
 
@@ -110,7 +111,29 @@ def efficiencies(case, baseline):
                  for s in ('fastest', 'median'))
 
 
-def write_report(folder, cases, plotting=True, reference_suites=()):
+def report_cases(folder, cases, reference_suites=(), replacement_suites=()):
+    roots = [(cases, Path(folder))]
+    for path in reference_suites:
+        root = Path(path)
+        roots.append((json.loads((root / 'suite.json').read_text())['cases'], root))
+    for path in reversed(replacement_suites):
+        root = Path(path)
+        roots.insert(0, (json.loads((root / 'suite.json').read_text())['cases'], root))
+    selected = []
+    seen = set()
+    for source, root in roots:
+        for series in dict.fromkeys(c['series'] for c in source):
+            if series not in seen:
+                selected.extend((c, root) for c in source if c['series'] == series)
+                seen.add(series)
+    return selected
+
+
+def write_report(folder, cases, plotting=True, reference_suites=(), replacement_suites=()):
+    combined = report_cases(folder, cases, reference_suites, replacement_suites)
+    case_roots = {c['id']: root for c, root in combined}
+    display_series = {c['series'] for c in cases}
+    cases = [c for c, _ in combined if c['series'] in display_series]
     successful = [c for c in cases if c['state'] == 'COMPLETED' and 'measurement' in c]
     baselines = scaling_baselines(cases)
     rows = []
@@ -140,14 +163,20 @@ def write_report(folder, cases, plotting=True, reference_suites=()):
              'Reference lines show ideal inverse-rank strong timing, constant weak timing, and 100% efficiency.',
              'Resolution plots show previous-grid / next-grid time; doubling each grid dimension ideally gives 1/8.',
              'Profiled timings are separate; Nsight captures CUDA/NVTX/MPI after warmup. Kernel shares sum durations across ranks, not elapsed wall time.', '']
+    for source in replacement_suites:
+        relative = Path(os.path.relpath(Path(source) / 'plot.md', folder)).as_posix()
+        lines += [f"Selected rerun: [{Path(source).name}]({relative}). Replaced series use that run's measurements and baseline; earlier raw records remain in their original directories.", '']
     for series in dict.fromkeys(c['series'] for c in cases):
         series_rows = [r for r in rows if r['series'] == series]
         completed = [r for r in series_rows if r['state'] == 'COMPLETED']
         lines += [f'## {series}', '', f"Highest completed count: **{max((r['ranks'] for r in completed), default=0)} ranks**.", '']
         if series in baselines:
             lines += [f"Efficiency baseline: **{baselines[series]['ranks']} measured ranks**.", '']
-        if plotting and completed:
-            plot_series(folder, series, series_rows)
+        if series == 'gpu_partition_super_fine' and series not in baselines:
+            lines += ['MPI efficiency awaits the measured 1 × 1 × 1 baseline.', '']
+        if plotting and (completed or series == 'gpu_partition_super_fine'):
+            plotted_rows = [] if series == 'gpu_partition_super_fine' and series not in baselines else series_rows
+            plot_series(folder, series, plotted_rows)
             lines += [f'![{series}]({series}.svg)', '']
         lines += ['| Case | Ranks | Partition | Global resolution | Grid type | State | Fastest s/step | Median s/step | Efficiency fastest / median | Details |',
                   '|---|---:|---|---|---|---|---:|---:|---|---|']
@@ -170,17 +199,15 @@ def write_report(folder, cases, plotting=True, reference_suites=()):
         for case in (c for c in successful if c['series'] == series):
             cfg = case['configuration']
             local = f"{min(cfg['x_sizes'])}–{max(cfg['x_sizes'])} × {min(cfg['y_sizes'])}–{max(cfg['y_sizes'])} × {cfg['global_resolution'][2]}"
-            lines += ['', f"[{case['id'].split('/')[-1]} configuration]({case['id']}/configuration.md): local resolution **{local}**, retained free-surface substeps {case['measurement']['retained_substeps']}."]
-    lines += scaling_tables(folder, cases, reference_suites, plotting=plotting)
+            configuration_path = Path(os.path.relpath(case_roots[case['id']] / case['id'] / 'configuration.md', folder)).as_posix()
+            lines += ['', f"[{case['id'].split('/')[-1]} configuration]({configuration_path}): local resolution **{local}**, retained free-surface substeps {case['measurement']['retained_substeps']}."]
+    lines += scaling_tables(folder, cases, reference_suites, plotting=plotting,
+                            combined=combined)
     (folder / 'plot.md').write_text('\n'.join(lines) + '\n')
 
 
-def scaling_tables(folder, cases, reference_suites, plotting=False):
-    combined = [(c, folder) for c in cases]
-    for path in reference_suites:
-        root = Path(path)
-        reference = json.loads((root / 'suite.json').read_text())
-        combined += [(c, root) for c in reference['cases']]
+def scaling_tables(folder, cases, reference_suites, plotting=False, combined=None):
+    combined = combined if combined is not None else report_cases(folder, cases, reference_suites)
     if not any(c['series'].startswith('gpu_scaling_') or c['series'] == 'gpu_weak_scaling_super_fine'
                for c, _ in combined):
         return []
@@ -283,6 +310,7 @@ def plot_series(folder, series, rows):
     scaling = 'scaling' in series
     weak = series == 'gpu_weak_scaling_super_fine'
     resolution = series.endswith('resolution')
+    partition_efficiency = series == 'gpu_partition_super_fine'
     fig, axes = plt.subplots(1, 2 if scaling else 1, figsize=(11 if scaling else 8, 4.5), squeeze=False)
     ax = axes[0, 0]
     x = [r['ranks'] for r in rows] if scaling else list(range(len(rows)))
@@ -298,10 +326,18 @@ def plot_series(folder, series, rows):
             ax.plot(x, [a[statistic] / b[statistic] for a, b in pairs], marker, label=label)
         ax.axhline(1/8, color='black', linestyle=':', label='Expected: 1/8')
         ax.set_xticks(x, [f"{a['case']} / {b['case']}" for a, b in pairs], rotation=20, ha='right')
+    elif partition_efficiency:
+        ax.plot(x, [100*r['efficiency_fastest'] for r in rows], 'o-', label='Fastest')
+        ax.plot(x, [100*r['efficiency_median'] for r in rows], 's--', label='Median')
+        ax.axhline(100, color='black', linestyle=':', label='Ideal: 100%')
+        if not rows:
+            ax.text(0.5, 0.5, 'Awaiting measured 1 × 1 × 1 baseline',
+                    transform=ax.transAxes, ha='center')
     else:
         ax.plot(x, [r['fastest'] for r in rows], 'o-', label='Fastest')
         ax.plot(x, [r['median'] for r in rows], 's--', label='Median')
-    ax.set(ylabel='Previous-grid / next-grid time' if resolution else 'Seconds per step', title=series)
+    ax.set(ylabel='MPI efficiency (%) vs 1 × 1 × 1' if partition_efficiency else
+                  'Previous-grid / next-grid time' if resolution else 'Seconds per step', title=series)
     if scaling:
         ax.set(xlabel='MPI ranks', xscale='log', yscale='log')
         if weak:

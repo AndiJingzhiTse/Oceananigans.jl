@@ -41,7 +41,10 @@
       "scipy-stack/2025a"
     ],
     "reference_suites": [
-      "/home/anditse/Oceananigans.jl/benchmarking/results/rorqual/2026-10-07_full_suite"
+      "/home/anditse/Oceananigans.jl/benchmarking/results/hydrostatic_free_surface_models/rorqual/2026-10-07_full_suite"
+    ],
+    "replacement_suites": [
+      "/home/anditse/Oceananigans.jl/benchmarking/results/hydrostatic_free_surface_models/rorqual/2026-10-12_gpu_partition_and_largest_grid_rerun"
     ]
   },
   "cases": [
@@ -1923,8 +1926,8 @@
         8,
         1
       ],
-      "state": "PENDING",
-      "details": "(Priority); estimated start 2026-10-13T13:20:00 (scheduler timezone)",
+      "state": "CANCELLED",
+      "details": "Exit 0:0; None",
       "job_id": "22690718",
       "configuration": {
         "series": "gpu_scaling_super_super_super_fine",
@@ -2001,8 +2004,8 @@
         16,
         1
       ],
-      "state": "PENDING",
-      "details": "(PartitionNodeLimit); estimated start N/A (scheduler timezone)",
+      "state": "CANCELLED",
+      "details": "Exit 0:0; None",
       "job_id": "22690719",
       "configuration": {
         "series": "gpu_scaling_super_super_super_fine",
