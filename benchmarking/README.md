@@ -15,7 +15,7 @@ submit through Slurm rather than running computation on a login node.
 | `gpu_resolution` | 360×180×50 → 720×360×100 → 1440×720×200 | One GPU, one rank/thread |
 | `cpu_partition_cores_super_fine` | 1440×720×200 | Exactly 192 cores/ranks; all 14 horizontal factor pairs, 192×1×1 → 96×2×1 → 64×3×1 → … → 1×192×1 |
 | `gpu_nsight_scaling_super_fine` | 1440×720×200 | Nsight on 1, 2, 4, 8, … GPUs, with separate traces per rank |
-| `gpu_partition_super_fine` | 1440×720×200 | All horizontal factor pairs for 2, 4, 8 and 16 GPUs, ordered from n×1×1 to 1×n×1 |
+| `gpu_partition_super_fine` | 1440×720×200 | 1×1×1 baseline and all horizontal factor pairs for 2, 4, 8, 16, 32 and 64 GPUs; MPI efficiency normalized to the measured 1×1×1 case |
 | `gpu_scaling_super_super_fine` | 2880×1440×200 | 4, 8, 16, … GPUs; measured 4-GPU efficiency baseline; Δt=30 s |
 | `gpu_scaling_super_super_super_fine` | 5760×2880×200 | 16, 32, 64, … GPUs; measured 16-GPU efficiency baseline; Δt=15 s |
 | `gpu_weak_scaling_super_fine` | 1440√n × 720√n × 200 | 1, 4, 16, … GPUs; fixed 207,360,000 cells/GPU; Δt=60/√n s |
@@ -81,6 +81,14 @@ GPU allocations occupying every GPU on each node request `--mem=0`, following
 Oceananigans-DRAC/docs/drac.md. Smaller allocations use the configured GPU memory.
 `reference_suites` can list existing suite directories; their saved outcomes feed
 the DRAC-style strong/weak comparison tables without resubmitting their jobs.
+Current-series results take precedence over references, including while a new
+baseline is pending: old and new runs are never mixed to compute a rerun's
+efficiency. `replacement_suites` can point a report at a fresh rerun directory;
+replaced series are displayed from that directory while historical raw records
+and job outcomes stay in the original suite.
+GPU partition plots use fastest/median MPI efficiencies relative to the measured
+1×1×1 baseline, with a zero y-axis origin and a 100% ideal reference. Extreme
+32-/64-GPU partitions below 23 local horizontal cells are geometry limits.
 Each larger-grid strong study uses its planned 4- or 16-GPU measured baseline;
 if that baseline fails, efficiency stays unavailable. Weak efficiency divides
 baseline time by measured time, without dividing by the GPU count. Plots include

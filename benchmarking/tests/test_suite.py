@@ -87,6 +87,53 @@ class SuiteTests(unittest.TestCase):
             self.assertEqual(cases[-1]['ranks'], 512)
             self.assertEqual(cases[-1]['state'], 'RESOURCE_LIMIT')
 
+    def test_partition_baseline_and_larger_geometry_limits(self):
+        cases = plan.build_plan(self.server(gpu=64), ('gpu_partition_super_fine',))
+        self.assertEqual(cases[0]['partition'], [1,1,1])
+        self.assertEqual(cases[0]['state'], 'PLANNED')
+        valid32 = [c['partition'] for c in cases if c['ranks']==32 and c['state']=='PLANNED']
+        valid64 = [c['partition'] for c in cases if c['ranks']==64 and c['state']=='PLANNED']
+        self.assertEqual(valid32, [[32,1,1],[16,2,1],[8,4,1],[4,8,1],[2,16,1]])
+        self.assertEqual(valid64, [[32,2,1],[16,4,1],[8,8,1],[4,16,1]])
+        self.assertEqual(sum(c['state']=='GEOMETRY_LIMIT' for c in cases), 4)
+
+    def test_partition_efficiency_uses_measured_single_gpu(self):
+        import matplotlib.pyplot as plt
+        cases = plan.build_plan(self.server(gpu=2), ('gpu_partition_super_fine',))
+        for c in cases:
+            if c['state']=='PLANNED':
+                c.update(state='COMPLETED', measurement=dict(fastest=1,median=2,retained_substeps=[21]))
+        baseline = report.scaling_baselines(cases)['gpu_partition_super_fine']
+        self.assertEqual(report.efficiencies(cases[1], baseline), (0.5,0.5))
+        rows = [dict(case=c['id'].split('/')[-1],ranks=c['ranks'],state=c['state'],
+                     efficiency_fastest=report.efficiencies(c,baseline)[0],
+                     efficiency_median=report.efficiencies(c,baseline)[1])
+                for c in cases if c['state']=='COMPLETED']
+        with tempfile.TemporaryDirectory() as tmp:
+            with patch.object(plt,'close'):
+                report.plot_series(Path(tmp),'gpu_partition_super_fine',rows)
+                fig = plt.gcf()
+            self.assertEqual(list(fig.axes[0].lines[0].get_ydata()), [100,50,50])
+            self.assertEqual(fig.axes[0].get_ylim()[0],0)
+            self.assertIn('MPI efficiency',fig.axes[0].get_ylabel())
+            plt.close(fig)
+
+    def test_rerun_replaces_whole_series_without_old_baseline(self):
+        series = 'gpu_scaling_super_super_super_fine'
+        new = plan.build_plan(self.server(gpu=32),(series,))
+        old = plan.build_plan(self.server(gpu=32),(series,))
+        old[0].update(state='COMPLETED',measurement=dict(fastest=2,median=2))
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);reference=root/'old';reference.mkdir()
+            (reference/'suite.json').write_text(json.dumps(dict(cases=old)))
+            selected=report.report_cases(root,new,[reference])
+            self.assertEqual([c for c,_ in selected],new)
+            self.assertNotIn(series,report.scaling_baselines([c for c,_ in selected]))
+            replacement=root/'new';replacement.mkdir()
+            (replacement/'suite.json').write_text(json.dumps(dict(cases=new)))
+            selected=report.report_cases(root,old,replacement_suites=[replacement])
+            self.assertEqual([c for c,_ in selected],new)
+
     def test_weak_scaling_keeps_local_work_fixed(self):
         cases = plan.build_plan(self.server(gpu=64), ('gpu_weak_scaling_super_fine',))
         self.assertEqual([c['ranks'] for c in cases], [1,4,16,64,256])
@@ -327,7 +374,8 @@ class SuiteTests(unittest.TestCase):
 
     def test_resume_does_not_resubmit_pending_jobs(self):
         cases=plan.build_plan(self.server(),('gpu_partition_super_fine',))
-        cases[0]['state']='PENDING';cases[1]['state']='RUNNING'
+        two_gpu_cases=[c for c in cases if c['ranks']==2]
+        two_gpu_cases[0]['state']='PENDING';two_gpu_cases[1]['state']='RUNNING'
         groups=plan.allocation_groups(cases)
         self.assertNotIn('gpu_partition_super_fine/2_ranks',groups)
 

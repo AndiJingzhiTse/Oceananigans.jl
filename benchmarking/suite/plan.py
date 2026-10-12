@@ -77,7 +77,7 @@ def build_plan(server, selected=SERIES):
             specs = [(192, 'super_fine', [x, 192 // x, 1])
                      for x in range(192, 0, -1) if 192 % x == 0]
         elif series == 'gpu_partition_super_fine':
-            specs = [(n, 'super_fine', [x, n // x, 1]) for n in (2, 4, 8, 16)
+            specs = [(n, 'super_fine', [x, n // x, 1]) for n in (1, 2, 4, 8, 16, 32, 64)
                      for x in range(n, 0, -1) if n % x == 0]
         elif series == 'gpu_weak_scaling_super_fine':
             counts = doubling(maximum)[::2]
