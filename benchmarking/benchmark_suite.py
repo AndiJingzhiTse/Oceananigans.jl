@@ -418,6 +418,15 @@ def commit_artifacts(folder):
     if repository.returncode:
         raise RuntimeError('--commit requires an output directory inside a Git repository')
     repo = Path(repository.stdout.strip())
+    common = command(['git', '-C', repo, 'rev-parse', '--git-common-dir'])
+    git_dir = (repo / common.stdout.strip()).resolve()
+    with (git_dir / 'benchmark_artifacts.lock').open('a') as lock:
+        # Several suites can finish at once; serialize their index mutations.
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        return commit_artifacts_locked(folder, repo)
+
+
+def commit_artifacts_locked(folder, repo):
     if command(['git', '-C', repo, 'diff', '--cached', '--quiet']).returncode:
         raise RuntimeError('Index contains unrelated changes; refusing automatic commit')
     staged = command(['git', '-C', repo, 'add', '--', str(folder.relative_to(repo))])

@@ -8,6 +8,7 @@ import sys
 import tempfile
 import unittest
 from unittest.mock import patch, MagicMock
+from concurrent.futures import ThreadPoolExecutor
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import benchmark_suite as runner
@@ -153,6 +154,25 @@ class SuiteTests(unittest.TestCase):
             explicit = runner.load_server(path, 'NonhydrostaticModel')
             self.assertEqual(explicit['cpu_time'], '02:00:00')
             self.assertEqual(explicit['pressure_preconditioner'], 'DiagonallyDominantPreconditioner')
+
+    def test_concurrent_suite_commits_do_not_race_on_the_index(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            repo = Path(tmp)
+            subprocess.run(['git', 'init', '-q', str(repo)], check=True)
+            for key, value in [('user.name', 'Benchmark test'), ('user.email', 'benchmark@example.invalid')]:
+                subprocess.run(['git', '-C', str(repo), 'config', key, value], check=True)
+            folders = [repo/'first', repo/'second']
+            for folder in folders:
+                folder.mkdir()
+                (folder/'suite.json').write_text(json.dumps(dict(server={})))
+            with ThreadPoolExecutor(max_workers=2) as pool:
+                futures = [pool.submit(runner.commit_artifacts, folder) for folder in folders]
+                for future in futures:
+                    future.result()
+            status = subprocess.check_output(['git', '-C', str(repo), 'status', '--short'], text=True)
+            self.assertEqual(status, '')
+            count = subprocess.check_output(['git', '-C', str(repo), 'rev-list', '--count', 'HEAD'], text=True)
+            self.assertEqual(count.strip(), '2')
 
     def test_partition_cases_can_have_independent_allocations(self):
         cases = plan.build_plan(self.server(), ('cpu_partition_cores_super_fine',))
