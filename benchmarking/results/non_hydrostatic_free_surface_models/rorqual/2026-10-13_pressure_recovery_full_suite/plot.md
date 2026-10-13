@@ -14,7 +14,9 @@ Profiled timings are separate; Nsight captures CUDA/NVTX/MPI after warmup. Kerne
 
 ## cpu_mpi_scaling_super_fine
 
-Highest completed count: **0 ranks**.
+Highest completed count: **1536 ranks**.
+
+![cpu_mpi_scaling_super_fine](cpu_mpi_scaling_super_fine.svg)
 
 | Case | Ranks | Partition | Global resolution | Grid type | State | Fastest s/step | Median s/step | Efficiency fastest / median | Details |
 |---|---:|---|---|---|---|---:|---:|---|---|
@@ -25,14 +27,16 @@ Highest completed count: **0 ranks**.
 | 24_ranks | 24 | 6x4x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start N/A (scheduler timezone) |
 | 48_ranks | 48 | 8x6x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start N/A (scheduler timezone) |
 | 96_ranks | 96 | 12x8x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start N/A (scheduler timezone) |
-| 192_ranks | 192 | 16x12x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T11:37:03 (scheduler timezone) |
-| 384_ranks | 384 | 24x16x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T16:10:20 (scheduler timezone) |
-| 768_ranks | 768 | 32x24x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T16:28:01 (scheduler timezone) |
-| 1536_ranks | 1536 | 32x48x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T11:47:01 (scheduler timezone) |
-| 3072_ranks | 3072 | 64x48x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T17:23:44 (scheduler timezone) |
-| 6144_ranks | 6144 | 96x64x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T15:13:36 (scheduler timezone) |
-| 12288_ranks | 12288 | 128x96x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T19:53:23 (scheduler timezone) |
+| 192_ranks | 192 | 16x12x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
+| 384_ranks | 384 | 24x16x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
+| 768_ranks | 768 | 32x24x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T17:23:44 (scheduler timezone) |
+| 1536_ranks | 1536 | 32x48x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 14.147107 | 14.490786 | — | Rank results, finite fields and resource placement verified |
+| 3072_ranks | 3072 | 64x48x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T20:09:21 (scheduler timezone) |
+| 6144_ranks | 6144 | 96x64x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T16:21:26 (scheduler timezone) |
+| 12288_ranks | 12288 | 128x96x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T20:09:21 (scheduler timezone) |
 | 24576_ranks | 24576 |  | 1440x720x200 | LatitudeLongitudeGrid | GEOMETRY_LIMIT | — | — | — | 24576 ranks have no horizontal partition with at least 7 local cells per direction |
+
+[1536_ranks configuration](cpu_mpi_scaling_super_fine/1536_ranks/configuration.md): local resolution **45–45 × 15–15 × 200**, rigid lid; free-surface substeps not applicable.
 ## gpu_scaling_super_fine
 
 Highest completed count: **0 ranks**.
@@ -73,12 +77,12 @@ Highest completed count: **0 ranks**.
 
 | Case | Ranks | Partition | Global resolution | Grid type | State | Fastest s/step | Median s/step | Efficiency fastest / median | Details |
 |---|---:|---|---|---|---|---:|---:|---|---|
-| 192x1x1 | 192 | 192x1x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T16:34:48 (scheduler timezone) |
-| 96x2x1 | 192 | 96x2x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T16:34:48 (scheduler timezone) |
-| 64x3x1 | 192 | 64x3x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T19:09:52 (scheduler timezone) |
-| 48x4x1 | 192 | 48x4x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start N/A (scheduler timezone) |
-| 32x6x1 | 192 | 32x6x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start N/A (scheduler timezone) |
-| 24x8x1 | 192 | 24x8x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start N/A (scheduler timezone) |
+| 192x1x1 | 192 | 192x1x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T13:07:32 (scheduler timezone) |
+| 96x2x1 | 192 | 96x2x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T17:45:21 (scheduler timezone) |
+| 64x3x1 | 192 | 64x3x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T16:55:15 (scheduler timezone) |
+| 48x4x1 | 192 | 48x4x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T17:23:44 (scheduler timezone) |
+| 32x6x1 | 192 | 32x6x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T17:32:06 (scheduler timezone) |
+| 24x8x1 | 192 | 24x8x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T17:25:33 (scheduler timezone) |
 | 16x12x1 | 192 | 16x12x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start N/A (scheduler timezone) |
 | 12x16x1 | 192 | 12x16x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start N/A (scheduler timezone) |
 | 8x24x1 | 192 | 8x24x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start N/A (scheduler timezone) |
@@ -193,10 +197,10 @@ Validation pilots are separate from production comparisons. Each new accepted re
 | cpu_mpi_scaling_super_fine/24_ranks | LocalFFTPreconditioner | — | — | — | — | PENDING |
 | cpu_mpi_scaling_super_fine/48_ranks | LocalFFTPreconditioner | — | — | — | — | PENDING |
 | cpu_mpi_scaling_super_fine/96_ranks | LocalFFTPreconditioner | — | — | — | — | PENDING |
-| cpu_mpi_scaling_super_fine/192_ranks | LocalFFTPreconditioner | — | — | — | — | PENDING |
-| cpu_mpi_scaling_super_fine/384_ranks | LocalFFTPreconditioner | — | — | — | — | PENDING |
+| cpu_mpi_scaling_super_fine/192_ranks | LocalFFTPreconditioner | — | — | — | — | RUNNING |
+| cpu_mpi_scaling_super_fine/384_ranks | LocalFFTPreconditioner | — | — | — | — | RUNNING |
 | cpu_mpi_scaling_super_fine/768_ranks | LocalFFTPreconditioner | — | — | — | — | PENDING |
-| cpu_mpi_scaling_super_fine/1536_ranks | LocalFFTPreconditioner | — | — | — | — | PENDING |
+| cpu_mpi_scaling_super_fine/1536_ranks | LocalFFTPreconditioner | 157 | 459 | 1.397e-08 / 1.490e-08 | 1.405e-08 | COMPLETED |
 | cpu_mpi_scaling_super_fine/3072_ranks | LocalFFTPreconditioner | — | — | — | — | PENDING |
 | cpu_mpi_scaling_super_fine/6144_ranks | LocalFFTPreconditioner | — | — | — | — | PENDING |
 | cpu_mpi_scaling_super_fine/12288_ranks | LocalFFTPreconditioner | — | — | — | — | PENDING |
