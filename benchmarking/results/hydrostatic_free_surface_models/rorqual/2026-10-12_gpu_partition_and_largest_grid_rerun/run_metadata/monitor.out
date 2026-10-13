@@ -33,3 +33,8 @@ gpu_scaling_super_super_super_fine/64_ranks: PENDING [8, 8, 1]
 gpu_scaling_super_super_super_fine/128_ranks: PENDING [16, 8, 1]
 gpu_scaling_super_super_super_fine/256_ranks: PENDING [16, 16, 1]
 gpu_scaling_super_super_super_fine/512_ranks: RESOURCE_LIMIT [32, 16, 1]
+[codex/benchmarking ca67cba52] Record validated benchmark suite results and job outcomes
+ 6 files changed, 65 insertions(+), 31 deletions(-)
+ create mode 100644 benchmarking/results/hydrostatic_free_surface_models/rorqual/2026-10-12_gpu_partition_and_largest_grid_rerun/run_metadata/monitor.out
+ create mode 100644 benchmarking/results/hydrostatic_free_surface_models/rorqual/2026-10-12_gpu_partition_and_largest_grid_rerun/run_metadata/monitor_pid.txt
+
