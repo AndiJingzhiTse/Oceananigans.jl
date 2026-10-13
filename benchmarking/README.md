@@ -193,9 +193,8 @@ the worker records individual windows and actual retained free-surface substeps.
 
 The suite defaults to `HydrostaticFreeSurfaceModel`. Use `--model NonhydrostaticModel`
 to repeat all ten series with the standard **rigid-lid** nonhydrostatic model.
-Its results live under `results/non_hydrostatic_free_surface_models/<server>/`;
-the directory name is an organizational label and does not imply an evolving
-free surface. The controller keeps the same grid sizes, resource sequences,
+Its results live under `results/non_hydrostatic_models/<server>/`.
+The controller keeps the same grid sizes, resource sequences,
 partitions, Float64 precision, T/S, TEOS10 buoyancy, traditional spherical
 Coriolis, Δt, and five ten-step timing windows.
 
@@ -277,7 +276,7 @@ measurements.
 ```bash
 python3 benchmarking/benchmark_suite.py --config benchmarking/configs/rorqual.json \
   --model NonhydrostaticModel \
-  --output benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite \
+  --output benchmarking/results/non_hydrostatic_models/rorqual/2026-10-13_full_suite \
   --compare-with benchmarking/results/hydrostatic_free_surface_models/rorqual/2026-10-12_gpu_partition_and_largest_grid_rerun \
   --compare-with benchmarking/results/hydrostatic_free_surface_models/rorqual/2026-10-07_cpu_retry \
   --compare-with benchmarking/results/hydrostatic_free_surface_models/rorqual/2026-10-07_gpu_extended_suite \

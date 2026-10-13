@@ -1,7 +1,8 @@
 # Benchmark results
 
 Hydrostatic free-surface model results live under
-`hydrostatic_free_surface_models/`, grouped by server where applicable.
+`hydrostatic_free_surface_models/`; nonhydrostatic model results live under
+`non_hydrostatic_models/`. Results are grouped by server where applicable.
 Each benchmark run has its own folder. A run folder may contain:
 
 - `results.json`: machine readable benchmark output

@@ -6,7 +6,7 @@ GRIDS = {'default': [360, 180, 50], 'fine': [720, 360, 100], 'super_fine': [1440
 RESOLUTION_GRIDS = ('default', 'fine', 'super_fine')
 GPU_BASELINES = {'gpu_scaling_super_super_fine': 4, 'gpu_scaling_super_super_super_fine': 16}
 MODEL_FOLDERS = {'HydrostaticFreeSurfaceModel': 'hydrostatic_free_surface_models',
-                 'NonhydrostaticModel': 'non_hydrostatic_free_surface_models'}
+                 'NonhydrostaticModel': 'non_hydrostatic_models'}
 SERIES = ('cpu_mpi_scaling_super_fine', 'gpu_scaling_super_fine', 'cpu_resolution',
           'gpu_resolution', 'cpu_partition_cores_super_fine',
           'gpu_nsight_scaling_super_fine', 'gpu_partition_super_fine',
