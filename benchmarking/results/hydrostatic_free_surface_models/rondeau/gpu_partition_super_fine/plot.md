@@ -10,6 +10,7 @@ Latest accepted measurement for each case. Configuration links record the actual
 | [1x2x1](1x2x1/configuration.md) | 2 | 0.991286 | 0.992599 | Current suite checks |
 | [4x1x1](4x1x1/configuration.md) | 4 | 0.487795 | 0.534275 | Current suite checks |
 | [2x2x1](2x2x1/configuration.md) | 4 | 0.521430 | 0.580483 | Current suite checks |
+| [1x4x1](1x4x1/configuration.md) | 4 | 0.933036 | 0.943002 | Current suite checks |
 
 <!-- current-rerun -->
 ## Current rerun
@@ -27,6 +28,7 @@ Highest completed case: **4x1x1**.
 | 1x2x1 | 1440 × 720 × 200 | 1 × 2 × 1 | COMPLETED | Rank results, finite fields and resource placement verified |
 | 4x1x1 | 1440 × 720 × 200 | 4 × 1 × 1 | COMPLETED | Rank results, finite fields and resource placement verified |
 | 2x2x1 | 1440 × 720 × 200 | 2 × 2 × 1 | COMPLETED | Rank results, finite fields and resource placement verified |
+| 1x4x1 | 1440 × 720 × 200 | 1 × 4 × 1 | COMPLETED | Rank results, finite fields and resource placement verified |
 | 8x1x1 | 1440 × 720 × 200 | 8 × 1 × 1 | RESOURCE_LIMIT | Requires 8; configured capacity is 4 |
 | 4x2x1 | 1440 × 720 × 200 | 4 × 2 × 1 | RESOURCE_LIMIT | Requires 8; configured capacity is 4 |
 | 2x4x1 | 1440 × 720 × 200 | 2 × 4 × 1 | RESOURCE_LIMIT | Requires 8; configured capacity is 4 |
