@@ -1,0 +1,724 @@
+{
+  "server": {
+    "backend": "local",
+    "matplotlib": true,
+    "model_type": "NonhydrostaticModel",
+    "machine": "rorqual"
+  },
+  "cases": [
+    {
+      "id": "16_ranks_ColumnwiseTridiagonalPreconditioner_72x36x200_1x1",
+      "series": "cpu_pressure_validation",
+      "ranks": 16,
+      "grid_name": "smoke",
+      "partition": [
+        4,
+        4,
+        1
+      ],
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
+      "job_id": "23108352",
+      "configuration": {
+        "series": "cpu_mpi_scaling_super_fine",
+        "model_type": "NonhydrostaticModel",
+        "device": "CPU",
+        "ranks": 16,
+        "threads_per_rank": 1,
+        "grid_name": "super_fine",
+        "global_resolution": [
+          72,
+          36,
+          200
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "partition": [
+          4,
+          4,
+          1
+        ],
+        "x_sizes": [
+          18,
+          18,
+          18,
+          18
+        ],
+        "y_sizes": [
+          9,
+          9,
+          9,
+          9
+        ],
+        "float_type": "Float64",
+        "momentum_advection": "WENO7",
+        "tracer_advection": "WENO7",
+        "closure": "ScalarDiffusivity",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "viscosity": 0.001,
+        "diffusivity": 1e-05,
+        "coriolis": "HydrostaticSphericalCoriolis",
+        "buoyancy": "SeawaterBuoyancy(TEOS10)",
+        "timestepper": "RungeKutta3",
+        "free_surface": "RigidLid",
+        "pressure_solver": "ConjugateGradientPoissonSolver",
+        "pressure_preconditioner": "ColumnwiseTridiagonalPreconditioner",
+        "pressure_max_iterations": 5000,
+        "pressure_reltol": 1.4901161193847656e-08,
+        "pressure_abstol": 1.4901161193847656e-08,
+        "pressure_diagnostics": true,
+        "initial_condition_seed": 1234,
+        "dt": 60,
+        "free_surface_substeps": null,
+        "extend_free_surface_halos": false,
+        "warmup_steps": 2,
+        "samples": 1,
+        "time_steps": 1,
+        "profile": false,
+        "scaling_type": "strong",
+        "baseline_ranks": 1
+      },
+      "measurement": {
+        "fastest": 0.754873912,
+        "median": 0.754873912,
+        "maximum": 0.754873912,
+        "retained_substeps": [],
+        "nodes": 1
+      },
+      "validation": "Current suite: rank completeness, finite fields, placement and timings checked",
+      "provenance": {
+        "original_run": "non_hydrostatic_models/rorqual/2026-10-13_pressure_solver_pilots",
+        "measured_at": "2026-10-13T13:15:34.937",
+        "original_case": "non_hydrostatic_models/rorqual/2026-10-13_pressure_solver_pilots/cpu_mpi_scaling_super_fine/smoke_16_columnwise",
+        "results_sha256": "387a22b25969ee456fa24eb642fc5e0f5a6d87ac4772478bff284ba924fcae17"
+      }
+    },
+    {
+      "id": "16_ranks_LocalFFTPreconditioner_72x36x200_1x1",
+      "series": "cpu_pressure_validation",
+      "ranks": 16,
+      "grid_name": "smoke",
+      "partition": [
+        4,
+        4,
+        1
+      ],
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
+      "job_id": "23113183",
+      "configuration": {
+        "series": "cpu_mpi_scaling_super_fine",
+        "model_type": "NonhydrostaticModel",
+        "device": "CPU",
+        "ranks": 16,
+        "threads_per_rank": 1,
+        "grid_name": "super_fine",
+        "global_resolution": [
+          72,
+          36,
+          200
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "partition": [
+          4,
+          4,
+          1
+        ],
+        "x_sizes": [
+          18,
+          18,
+          18,
+          18
+        ],
+        "y_sizes": [
+          9,
+          9,
+          9,
+          9
+        ],
+        "float_type": "Float64",
+        "momentum_advection": "WENO7",
+        "tracer_advection": "WENO7",
+        "closure": "ScalarDiffusivity",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "viscosity": 0.001,
+        "diffusivity": 1e-05,
+        "coriolis": "HydrostaticSphericalCoriolis",
+        "buoyancy": "SeawaterBuoyancy(TEOS10)",
+        "timestepper": "RungeKutta3",
+        "free_surface": "RigidLid",
+        "pressure_solver": "ConjugateGradientPoissonSolver",
+        "pressure_preconditioner": "LocalFFTPreconditioner",
+        "pressure_max_iterations": 5000,
+        "pressure_reltol": 1.4901161193847656e-08,
+        "pressure_abstol": 1.4901161193847656e-08,
+        "pressure_diagnostics": true,
+        "pressure_preserve_residual": false,
+        "initial_condition_seed": 1234,
+        "dt": 60,
+        "free_surface_substeps": null,
+        "extend_free_surface_halos": false,
+        "warmup_steps": 2,
+        "samples": 1,
+        "time_steps": 1,
+        "profile": false,
+        "scaling_type": "strong",
+        "baseline_ranks": 1,
+        "pressure_check_true_residual": true,
+        "pressure_preconditioner_check": true
+      },
+      "measurement": {
+        "fastest": 0.250728184,
+        "median": 0.250728184,
+        "maximum": 0.250728184,
+        "retained_substeps": [],
+        "nodes": 1
+      },
+      "validation": "Current suite: rank completeness, finite fields, placement and timings checked",
+      "provenance": {
+        "original_run": "non_hydrostatic_models/rorqual/2026-10-13_pressure_solver_validation",
+        "measured_at": "2026-10-13T14:00:38.113",
+        "original_case": "non_hydrostatic_models/rorqual/2026-10-13_pressure_solver_validation/cpu_mpi_scaling_super_fine/smoke_16_local_fft",
+        "results_sha256": "e9283b44ab0fe54edc8ea5ce2f0572c06006d6129539ba89d682e75ed6f2fb94"
+      }
+    },
+    {
+      "id": "16_ranks_VerticalLinePreconditioner_72x36x200_1x1",
+      "series": "cpu_pressure_validation",
+      "ranks": 16,
+      "grid_name": "smoke",
+      "partition": [
+        4,
+        4,
+        1
+      ],
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
+      "job_id": "23109669",
+      "configuration": {
+        "series": "cpu_mpi_scaling_super_fine",
+        "model_type": "NonhydrostaticModel",
+        "device": "CPU",
+        "ranks": 16,
+        "threads_per_rank": 1,
+        "grid_name": "super_fine",
+        "global_resolution": [
+          72,
+          36,
+          200
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "partition": [
+          4,
+          4,
+          1
+        ],
+        "x_sizes": [
+          18,
+          18,
+          18,
+          18
+        ],
+        "y_sizes": [
+          9,
+          9,
+          9,
+          9
+        ],
+        "float_type": "Float64",
+        "momentum_advection": "WENO7",
+        "tracer_advection": "WENO7",
+        "closure": "ScalarDiffusivity",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "viscosity": 0.001,
+        "diffusivity": 1e-05,
+        "coriolis": "HydrostaticSphericalCoriolis",
+        "buoyancy": "SeawaterBuoyancy(TEOS10)",
+        "timestepper": "RungeKutta3",
+        "free_surface": "RigidLid",
+        "pressure_solver": "ConjugateGradientPoissonSolver",
+        "pressure_preconditioner": "VerticalLinePreconditioner",
+        "pressure_max_iterations": 5000,
+        "pressure_reltol": 1.4901161193847656e-08,
+        "pressure_abstol": 1.4901161193847656e-08,
+        "pressure_diagnostics": true,
+        "initial_condition_seed": 1234,
+        "dt": 60,
+        "free_surface_substeps": null,
+        "extend_free_surface_halos": false,
+        "warmup_steps": 2,
+        "samples": 1,
+        "time_steps": 1,
+        "profile": false,
+        "scaling_type": "strong",
+        "baseline_ranks": 1
+      },
+      "measurement": {
+        "fastest": 1.749641952,
+        "median": 1.749641952,
+        "maximum": 1.749641952,
+        "retained_substeps": [],
+        "nodes": 1
+      },
+      "validation": "Current suite: rank completeness, finite fields, placement and timings checked",
+      "provenance": {
+        "original_run": "non_hydrostatic_models/rorqual/2026-10-13_vertical_line_validation",
+        "measured_at": "2026-10-13T13:26:14.773",
+        "original_case": "non_hydrostatic_models/rorqual/2026-10-13_vertical_line_validation/cpu_mpi_scaling_super_fine/smoke_16_vertical_line",
+        "results_sha256": "e7de2a54a45cd2a40b3604fde54b2c68f7fa2e235f5b7a7ba6602ae114bbc794"
+      }
+    },
+    {
+      "id": "16_ranks_model_72x36x200_2x2",
+      "series": "cpu_pressure_validation",
+      "ranks": 16,
+      "grid_name": "validation",
+      "partition": [
+        4,
+        4,
+        1
+      ],
+      "configuration": {
+        "series": "cpu_mpi_scaling_super_fine",
+        "model_type": "NonhydrostaticModel",
+        "device": "CPU",
+        "ranks": 16,
+        "threads_per_rank": 1,
+        "grid_name": "validation",
+        "global_resolution": [
+          72,
+          36,
+          200
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "partition": [
+          4,
+          4,
+          1
+        ],
+        "x_sizes": [
+          18,
+          18,
+          18,
+          18
+        ],
+        "y_sizes": [
+          9,
+          9,
+          9,
+          9
+        ],
+        "float_type": "Float64",
+        "momentum_advection": "WENO7",
+        "tracer_advection": "WENO7",
+        "closure": "ScalarDiffusivity",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "viscosity": 0.001,
+        "diffusivity": 1e-05,
+        "coriolis": "HydrostaticSphericalCoriolis",
+        "buoyancy": "SeawaterBuoyancy(TEOS10)",
+        "timestepper": "RungeKutta3",
+        "free_surface": "RigidLid",
+        "pressure_solver": "ConjugateGradientPoissonSolver",
+        "pressure_max_iterations": 518400,
+        "dt": 60,
+        "free_surface_substeps": null,
+        "extend_free_surface_halos": false,
+        "warmup_steps": 2,
+        "samples": 2,
+        "time_steps": 2,
+        "profile": false,
+        "scaling_type": "strong",
+        "baseline_ranks": 1
+      },
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
+      "job_id": "23088622",
+      "measurement": {
+        "fastest": 3.3540354005,
+        "median": 4.578106481,
+        "maximum": 5.8021781015,
+        "retained_substeps": [],
+        "nodes": 1
+      },
+      "validation": "Current suite: rank completeness, finite fields, placement and timings checked",
+      "provenance": {
+        "original_run": "non_hydrostatic_models/rorqual/2026-10-13_cpu_gpu_validation",
+        "measured_at": "2026-10-13T04:56:42.096",
+        "original_case": "non_hydrostatic_models/rorqual/2026-10-13_cpu_gpu_validation/cpu_mpi_scaling_super_fine/16_ranks",
+        "results_sha256": "5622d715bba70f3a78861b35f0a60957754895233cb7ab794bc1f6fcedc27d6f"
+      }
+    },
+    {
+      "id": "16_ranks_model_72x36x200_5x10",
+      "series": "cpu_pressure_validation",
+      "ranks": 16,
+      "grid_name": "smoke_200_levels",
+      "partition": [
+        4,
+        4,
+        1
+      ],
+      "configuration": {
+        "series": "cpu_mpi_scaling_super_fine",
+        "model_type": "NonhydrostaticModel",
+        "device": "CPU",
+        "ranks": 16,
+        "threads_per_rank": 1,
+        "grid_name": "smoke_200_levels",
+        "global_resolution": [
+          72,
+          36,
+          200
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "partition": [
+          4,
+          4,
+          1
+        ],
+        "x_sizes": [
+          18,
+          18,
+          18,
+          18
+        ],
+        "y_sizes": [
+          9,
+          9,
+          9,
+          9
+        ],
+        "float_type": "Float64",
+        "momentum_advection": "WENO7",
+        "tracer_advection": "WENO7",
+        "closure": "ScalarDiffusivity",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "viscosity": 0.001,
+        "diffusivity": 1e-05,
+        "coriolis": "HydrostaticSphericalCoriolis",
+        "buoyancy": "SeawaterBuoyancy(TEOS10)",
+        "timestepper": "RungeKutta3",
+        "free_surface": "RigidLid",
+        "pressure_solver": "ConjugateGradientPoissonSolver",
+        "dt": 60,
+        "free_surface_substeps": null,
+        "extend_free_surface_halos": false,
+        "warmup_steps": 2,
+        "samples": 5,
+        "time_steps": 10,
+        "profile": false,
+        "scaling_type": "strong",
+        "baseline_ranks": 1
+      },
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
+      "job_id": "23088086",
+      "measurement": {
+        "fastest": 7.633758759,
+        "median": 10.7549577637,
+        "maximum": 17.3310932604,
+        "retained_substeps": [],
+        "nodes": 1
+      },
+      "validation": "Current suite: rank completeness, finite fields, placement and timings checked",
+      "provenance": {
+        "original_run": "non_hydrostatic_models/rorqual/2026-10-13_smoke_validation",
+        "measured_at": "2026-10-13T04:49:23.218",
+        "original_case": "non_hydrostatic_models/rorqual/2026-10-13_smoke_validation/cpu_mpi_scaling_super_fine/16_ranks_200_levels",
+        "results_sha256": "dfe0204373219da2c94a068708c2e526bbe16369be87b789f15fc4ff9a40e3a0"
+      }
+    },
+    {
+      "id": "192_ranks_LocalFFTPreconditioner_1440x720x200_1x1",
+      "series": "cpu_pressure_validation",
+      "ranks": 192,
+      "grid_name": "super_fine",
+      "partition": [
+        16,
+        12,
+        1
+      ],
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
+      "job_id": "23117412",
+      "configuration": {
+        "series": "cpu_mpi_scaling_super_fine",
+        "model_type": "NonhydrostaticModel",
+        "device": "CPU",
+        "ranks": 192,
+        "threads_per_rank": 1,
+        "grid_name": "super_fine",
+        "global_resolution": [
+          1440,
+          720,
+          200
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "partition": [
+          16,
+          12,
+          1
+        ],
+        "x_sizes": [
+          90,
+          90,
+          90,
+          90,
+          90,
+          90,
+          90,
+          90,
+          90,
+          90,
+          90,
+          90,
+          90,
+          90,
+          90,
+          90
+        ],
+        "y_sizes": [
+          60,
+          60,
+          60,
+          60,
+          60,
+          60,
+          60,
+          60,
+          60,
+          60,
+          60,
+          60
+        ],
+        "float_type": "Float64",
+        "momentum_advection": "WENO7",
+        "tracer_advection": "WENO7",
+        "closure": "ScalarDiffusivity",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "viscosity": 0.001,
+        "diffusivity": 1e-05,
+        "coriolis": "HydrostaticSphericalCoriolis",
+        "buoyancy": "SeawaterBuoyancy(TEOS10)",
+        "timestepper": "RungeKutta3",
+        "free_surface": "RigidLid",
+        "pressure_solver": "ConjugateGradientPoissonSolver",
+        "pressure_preconditioner": "LocalFFTPreconditioner",
+        "pressure_max_iterations": 5000,
+        "pressure_reltol": 1.4901161193847656e-08,
+        "pressure_abstol": 1.4901161193847656e-08,
+        "pressure_diagnostics": true,
+        "pressure_preserve_residual": false,
+        "pressure_check_true_residual": true,
+        "pressure_preconditioner_check": true,
+        "initial_condition_seed": 1234,
+        "dt": 60,
+        "free_surface_substeps": null,
+        "extend_free_surface_halos": false,
+        "warmup_steps": 2,
+        "samples": 1,
+        "time_steps": 1,
+        "profile": false,
+        "scaling_type": "strong",
+        "baseline_ranks": 1
+      },
+      "measurement": {
+        "fastest": 121.662907565,
+        "median": 121.662907565,
+        "maximum": 121.662907565,
+        "retained_substeps": [],
+        "nodes": 1
+      },
+      "validation": "Current suite: rank completeness, finite fields, placement and timings checked",
+      "provenance": {
+        "original_run": "non_hydrostatic_models/rorqual/2026-10-13_refined_pressure_validation",
+        "measured_at": "2026-10-13T14:57:26.723",
+        "original_case": "non_hydrostatic_models/rorqual/2026-10-13_refined_pressure_validation/cpu_mpi_scaling_super_fine/balanced_192",
+        "results_sha256": "3a4efcd518d9ff159c06aa1a725ad7ce1bc1a5d38f3ef45575f1daa9baccabed"
+      }
+    },
+    {
+      "id": "1_ranks_LocalFFTPreconditioner_72x36x200_1x1",
+      "series": "cpu_pressure_validation",
+      "ranks": 1,
+      "grid_name": "smoke",
+      "partition": [
+        1,
+        1,
+        1
+      ],
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
+      "job_id": "23113184",
+      "configuration": {
+        "series": "cpu_mpi_scaling_super_fine",
+        "model_type": "NonhydrostaticModel",
+        "device": "CPU",
+        "ranks": 1,
+        "threads_per_rank": 1,
+        "grid_name": "super_fine",
+        "global_resolution": [
+          72,
+          36,
+          200
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "partition": [
+          1,
+          1,
+          1
+        ],
+        "x_sizes": [
+          72
+        ],
+        "y_sizes": [
+          36
+        ],
+        "float_type": "Float64",
+        "momentum_advection": "WENO7",
+        "tracer_advection": "WENO7",
+        "closure": "ScalarDiffusivity",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "viscosity": 0.001,
+        "diffusivity": 1e-05,
+        "coriolis": "HydrostaticSphericalCoriolis",
+        "buoyancy": "SeawaterBuoyancy(TEOS10)",
+        "timestepper": "RungeKutta3",
+        "free_surface": "RigidLid",
+        "pressure_solver": "ConjugateGradientPoissonSolver",
+        "pressure_preconditioner": "LocalFFTPreconditioner",
+        "pressure_max_iterations": 5000,
+        "pressure_reltol": 1.4901161193847656e-08,
+        "pressure_abstol": 1.4901161193847656e-08,
+        "pressure_diagnostics": true,
+        "pressure_preserve_residual": false,
+        "pressure_check_true_residual": true,
+        "initial_condition_seed": 1234,
+        "dt": 60,
+        "free_surface_substeps": null,
+        "extend_free_surface_halos": false,
+        "warmup_steps": 2,
+        "samples": 1,
+        "time_steps": 1,
+        "profile": false,
+        "scaling_type": "strong",
+        "baseline_ranks": 1,
+        "pressure_preconditioner_check": true
+      },
+      "measurement": {
+        "fastest": 1.500629774,
+        "median": 1.500629774,
+        "maximum": 1.500629774,
+        "retained_substeps": [],
+        "nodes": 1
+      },
+      "validation": "Current suite: rank completeness, finite fields, placement and timings checked",
+      "provenance": {
+        "original_run": "non_hydrostatic_models/rorqual/2026-10-13_pressure_solver_validation",
+        "measured_at": "2026-10-13T14:03:57.027",
+        "original_case": "non_hydrostatic_models/rorqual/2026-10-13_pressure_solver_validation/cpu_mpi_scaling_super_fine/smoke_1_local_fft",
+        "results_sha256": "9dd097cf02de2bf4714ce2816f6706dc73eddd72aeab9bcda52603d412ec31ff"
+      }
+    },
+    {
+      "id": "2_ranks_model_72x36x8_5x10",
+      "series": "cpu_pressure_validation",
+      "ranks": 2,
+      "grid_name": "smoke",
+      "partition": [
+        2,
+        1,
+        1
+      ],
+      "configuration": {
+        "series": "cpu_mpi_scaling_super_fine",
+        "model_type": "NonhydrostaticModel",
+        "device": "CPU",
+        "ranks": 2,
+        "threads_per_rank": 1,
+        "grid_name": "smoke",
+        "global_resolution": [
+          72,
+          36,
+          8
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "partition": [
+          2,
+          1,
+          1
+        ],
+        "x_sizes": [
+          36,
+          36
+        ],
+        "y_sizes": [
+          36
+        ],
+        "float_type": "Float64",
+        "momentum_advection": "WENO7",
+        "tracer_advection": "WENO7",
+        "closure": "ScalarDiffusivity",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "viscosity": 0.001,
+        "diffusivity": 1e-05,
+        "coriolis": "HydrostaticSphericalCoriolis",
+        "buoyancy": "SeawaterBuoyancy(TEOS10)",
+        "timestepper": "RungeKutta3",
+        "free_surface": "RigidLid",
+        "pressure_solver": "ConjugateGradientPoissonSolver",
+        "dt": 60,
+        "free_surface_substeps": null,
+        "extend_free_surface_halos": false,
+        "warmup_steps": 2,
+        "samples": 5,
+        "time_steps": 10,
+        "profile": false,
+        "scaling_type": "strong",
+        "baseline_ranks": 1
+      },
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
+      "job_id": "23087631",
+      "measurement": {
+        "fastest": 0.042401402,
+        "median": 0.0923809165,
+        "maximum": 0.28376694420000004,
+        "retained_substeps": [],
+        "nodes": 1
+      },
+      "validation": "Current suite: rank completeness, finite fields, placement and timings checked",
+      "provenance": {
+        "original_run": "non_hydrostatic_models/rorqual/2026-10-13_smoke_validation",
+        "measured_at": "2026-10-13T04:32:09.956",
+        "original_case": "non_hydrostatic_models/rorqual/2026-10-13_smoke_validation/cpu_mpi_scaling_super_fine/2_ranks",
+        "results_sha256": "7aa42cd8658dc615671c95460b24010cbb97f29cb89e536442207d0a6a05169d"
+      }
+    }
+  ],
+  "curated": true
+}

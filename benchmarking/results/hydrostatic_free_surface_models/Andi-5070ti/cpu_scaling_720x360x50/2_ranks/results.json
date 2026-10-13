@@ -1,0 +1,82 @@
+[
+  {
+    "name": "EarthOcean_tripolar_720x360x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr",
+    "group": "",
+    "float_type": "Float64",
+    "grid_size": [
+      720,
+      180,
+      50
+    ],
+    "time_steps": 10,
+    "samples": 5,
+    "\u0394t": 60.0,
+    "total_time_seconds": 2459.3757693000002,
+    "time_per_step_seconds": 46.14924346,
+    "time_per_step_median_seconds": 47.17858534,
+    "time_per_step_max_seconds": 56.37453696,
+    "steps_per_second": 0.021668827591220494,
+    "grid_points_per_second": 140414.0027911088,
+    "gpu_memory_used": 0,
+    "metadata": {
+      "julia_version": "1.12.7",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{CPU, false, Partition{Int64, Int64, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Nothing, Nothing, Int64, Int64, Nothing, Nothing, Nothing, Nothing}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "AMD Ryzen 9 9955HX 16-Core Processor            (znver5)",
+      "num_threads": 1,
+      "hostname": "Andi-5070ti",
+      "package_versions": {
+        "Adapt": "4.7.1",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.14",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.42",
+        "LLVM": "9.13.1"
+      },
+      "timestamp": "2026-09-18T21:47:02.281"
+    },
+    "rank": 0
+  },
+  {
+    "name": "EarthOcean_tripolar_720x360x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr",
+    "group": "",
+    "float_type": "Float64",
+    "grid_size": [
+      720,
+      180,
+      50
+    ],
+    "time_steps": 10,
+    "samples": 5,
+    "\u0394t": 60.0,
+    "total_time_seconds": 2459.3400933,
+    "time_per_step_seconds": 46.150349039999995,
+    "time_per_step_median_seconds": 47.17864804,
+    "time_per_step_max_seconds": 56.36955203,
+    "steps_per_second": 0.021668308491735736,
+    "grid_points_per_second": 140410.63902644755,
+    "gpu_memory_used": 0,
+    "metadata": {
+      "julia_version": "1.12.7",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{CPU, false, Partition{Int64, Int64, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Nothing, Nothing, Int64, Int64, Nothing, Nothing, Nothing, Nothing}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "AMD Ryzen 9 9955HX 16-Core Processor            (znver5)",
+      "num_threads": 1,
+      "hostname": "Andi-5070ti",
+      "package_versions": {
+        "Adapt": "4.7.1",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.14",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.42",
+        "LLVM": "9.13.1"
+      },
+      "timestamp": "2026-09-18T21:47:02.284"
+    },
+    "rank": 1
+  }
+]

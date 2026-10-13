@@ -1,0 +1,41 @@
+[
+  {
+    "name": "EarthOcean_lat_lon_360x180x50_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr",
+    "group": "",
+    "float_type": "Float64",
+    "grid_size": [
+      360,
+      180,
+      50
+    ],
+    "time_steps": 10,
+    "samples": 5,
+    "\u0394t": 60.0,
+    "total_time_seconds": 279.2838552,
+    "time_per_step_seconds": 5.56021335,
+    "time_per_step_median_seconds": 5.5781167400000005,
+    "time_per_step_max_seconds": 5.62821198,
+    "steps_per_second": 0.17984921387953576,
+    "grid_points_per_second": 582711.4529696959,
+    "gpu_memory_used": 0,
+    "metadata": {
+      "julia_version": "1.12.7",
+      "oceananigans_version": "0.113.0",
+      "architecture": "CPU",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "AMD Ryzen 9 9955HX 16-Core Processor            (znver5)",
+      "num_threads": 1,
+      "hostname": "Andi-5070ti",
+      "package_versions": {
+        "Adapt": "4.7.1",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.14",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.42",
+        "LLVM": "9.13.1"
+      },
+      "timestamp": "2026-09-17T14:34:10.352"
+    }
+  }
+]

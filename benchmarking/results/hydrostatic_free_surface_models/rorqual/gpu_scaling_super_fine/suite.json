@@ -1,0 +1,538 @@
+{
+  "server": {
+    "backend": "local",
+    "matplotlib": true,
+    "model_type": "HydrostaticFreeSurfaceModel",
+    "machine": "rorqual"
+  },
+  "cases": [
+    {
+      "id": "16_ranks",
+      "series": "gpu_scaling_super_fine",
+      "ranks": 16,
+      "grid_name": "super_fine",
+      "partition": [
+        4,
+        4,
+        1
+      ],
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
+      "job_id": "22632338",
+      "configuration": {
+        "series": "gpu_scaling_super_fine",
+        "device": "GPU",
+        "ranks": 16,
+        "threads_per_rank": 1,
+        "grid_name": "super_fine",
+        "global_resolution": [
+          1440,
+          720,
+          200
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "partition": [
+          4,
+          4,
+          1
+        ],
+        "x_sizes": [
+          360,
+          360,
+          360,
+          360
+        ],
+        "y_sizes": [
+          180,
+          180,
+          180,
+          180
+        ],
+        "float_type": "Float64",
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "timestepper": "SplitRungeKutta3",
+        "dt": 60,
+        "free_surface_substeps": 30,
+        "extend_free_surface_halos": true,
+        "warmup_steps": 2,
+        "samples": 5,
+        "time_steps": 10,
+        "profile": false
+      },
+      "measurement": {
+        "fastest": 0.0987553307,
+        "median": 0.1071243508,
+        "maximum": 0.18107777590000002,
+        "retained_substeps": [
+          21
+        ],
+        "nodes": 4
+      },
+      "validation": "Current suite: rank completeness, finite fields, placement and timings checked",
+      "provenance": {
+        "original_run": "hydrostatic_free_surface_models/rorqual/2026-10-07_full_suite",
+        "measured_at": "2026-10-07T06:57:02.074",
+        "original_case": "hydrostatic_free_surface_models/rorqual/2026-10-07_full_suite/gpu_scaling_super_fine/16_ranks",
+        "results_sha256": "5cacf5f8a1dd08a22b5166b7b27efbdcdbbd390968b2ea05b3502c00a91206ff"
+      }
+    },
+    {
+      "id": "1_ranks",
+      "series": "gpu_scaling_super_fine",
+      "ranks": 1,
+      "grid_name": "super_fine",
+      "partition": [
+        1,
+        1,
+        1
+      ],
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
+      "job_id": "22632334",
+      "configuration": {
+        "series": "gpu_scaling_super_fine",
+        "device": "GPU",
+        "ranks": 1,
+        "threads_per_rank": 1,
+        "grid_name": "super_fine",
+        "global_resolution": [
+          1440,
+          720,
+          200
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "partition": [
+          1,
+          1,
+          1
+        ],
+        "x_sizes": [
+          1440
+        ],
+        "y_sizes": [
+          720
+        ],
+        "float_type": "Float64",
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "timestepper": "SplitRungeKutta3",
+        "dt": 60,
+        "free_surface_substeps": 30,
+        "extend_free_surface_halos": true,
+        "warmup_steps": 2,
+        "samples": 5,
+        "time_steps": 10,
+        "profile": false
+      },
+      "measurement": {
+        "fastest": 0.9649973801,
+        "median": 0.9652211700000001,
+        "maximum": 0.9672027731,
+        "retained_substeps": [
+          21
+        ],
+        "nodes": 1
+      },
+      "validation": "Current suite: rank completeness, finite fields, placement and timings checked",
+      "provenance": {
+        "original_run": "hydrostatic_free_surface_models/rorqual/2026-10-07_full_suite",
+        "measured_at": "2026-10-07T07:45:18.330",
+        "original_case": "hydrostatic_free_surface_models/rorqual/2026-10-07_full_suite/gpu_scaling_super_fine/1_ranks",
+        "results_sha256": "e0e919a6d307eab304159b79ac470c61085319cd94dc5d3ca4a627e58e3ddf7d"
+      }
+    },
+    {
+      "id": "2_ranks",
+      "series": "gpu_scaling_super_fine",
+      "ranks": 2,
+      "grid_name": "super_fine",
+      "partition": [
+        2,
+        1,
+        1
+      ],
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
+      "job_id": "22632335",
+      "configuration": {
+        "series": "gpu_scaling_super_fine",
+        "device": "GPU",
+        "ranks": 2,
+        "threads_per_rank": 1,
+        "grid_name": "super_fine",
+        "global_resolution": [
+          1440,
+          720,
+          200
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "partition": [
+          2,
+          1,
+          1
+        ],
+        "x_sizes": [
+          720,
+          720
+        ],
+        "y_sizes": [
+          720
+        ],
+        "float_type": "Float64",
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "timestepper": "SplitRungeKutta3",
+        "dt": 60,
+        "free_surface_substeps": 30,
+        "extend_free_surface_halos": true,
+        "warmup_steps": 2,
+        "samples": 5,
+        "time_steps": 10,
+        "profile": false
+      },
+      "measurement": {
+        "fastest": 0.4939531509,
+        "median": 0.4989238816,
+        "maximum": 0.5404708862,
+        "retained_substeps": [
+          21
+        ],
+        "nodes": 1
+      },
+      "validation": "Current suite: rank completeness, finite fields, placement and timings checked",
+      "provenance": {
+        "original_run": "hydrostatic_free_surface_models/rorqual/2026-10-07_full_suite",
+        "measured_at": "2026-10-07T07:19:28.440",
+        "original_case": "hydrostatic_free_surface_models/rorqual/2026-10-07_full_suite/gpu_scaling_super_fine/2_ranks",
+        "results_sha256": "9e21587a8f603b10a3a53cbe51c6212fd4fa2504a1e5924b92e5e7da782d827d"
+      }
+    },
+    {
+      "id": "32_ranks",
+      "series": "gpu_scaling_super_fine",
+      "ranks": 32,
+      "grid_name": "super_fine",
+      "partition": [
+        8,
+        4,
+        1
+      ],
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
+      "job_id": "22632339",
+      "configuration": {
+        "series": "gpu_scaling_super_fine",
+        "device": "GPU",
+        "ranks": 32,
+        "threads_per_rank": 1,
+        "grid_name": "super_fine",
+        "global_resolution": [
+          1440,
+          720,
+          200
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "partition": [
+          8,
+          4,
+          1
+        ],
+        "x_sizes": [
+          180,
+          180,
+          180,
+          180,
+          180,
+          180,
+          180,
+          180
+        ],
+        "y_sizes": [
+          180,
+          180,
+          180,
+          180
+        ],
+        "float_type": "Float64",
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "timestepper": "SplitRungeKutta3",
+        "dt": 60,
+        "free_surface_substeps": 30,
+        "extend_free_surface_halos": true,
+        "warmup_steps": 2,
+        "samples": 5,
+        "time_steps": 10,
+        "profile": false
+      },
+      "measurement": {
+        "fastest": 0.0800873946,
+        "median": 0.1308310668,
+        "maximum": 0.3436659171,
+        "retained_substeps": [
+          21
+        ],
+        "nodes": 8
+      },
+      "validation": "Current suite: rank completeness, finite fields, placement and timings checked",
+      "provenance": {
+        "original_run": "hydrostatic_free_surface_models/rorqual/2026-10-07_full_suite",
+        "measured_at": "2026-10-07T09:58:18.363",
+        "original_case": "hydrostatic_free_surface_models/rorqual/2026-10-07_full_suite/gpu_scaling_super_fine/32_ranks",
+        "results_sha256": "64c436062a45b07d76b3e8afe7c73f2e8b591946ac049835171ebb4b3eeaa588"
+      }
+    },
+    {
+      "id": "4_ranks",
+      "series": "gpu_scaling_super_fine",
+      "ranks": 4,
+      "grid_name": "super_fine",
+      "partition": [
+        2,
+        2,
+        1
+      ],
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
+      "job_id": "22632336",
+      "configuration": {
+        "series": "gpu_scaling_super_fine",
+        "device": "GPU",
+        "ranks": 4,
+        "threads_per_rank": 1,
+        "grid_name": "super_fine",
+        "global_resolution": [
+          1440,
+          720,
+          200
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "partition": [
+          2,
+          2,
+          1
+        ],
+        "x_sizes": [
+          720,
+          720
+        ],
+        "y_sizes": [
+          360,
+          360
+        ],
+        "float_type": "Float64",
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "timestepper": "SplitRungeKutta3",
+        "dt": 60,
+        "free_surface_substeps": 30,
+        "extend_free_surface_halos": true,
+        "warmup_steps": 2,
+        "samples": 5,
+        "time_steps": 10,
+        "profile": false
+      },
+      "measurement": {
+        "fastest": 0.25345050589999996,
+        "median": 0.2552552106,
+        "maximum": 0.2654067891,
+        "retained_substeps": [
+          21
+        ],
+        "nodes": 1
+      },
+      "validation": "Current suite: rank completeness, finite fields, placement and timings checked",
+      "provenance": {
+        "original_run": "hydrostatic_free_surface_models/rorqual/2026-10-07_full_suite",
+        "measured_at": "2026-10-07T07:13:15.580",
+        "original_case": "hydrostatic_free_surface_models/rorqual/2026-10-07_full_suite/gpu_scaling_super_fine/4_ranks",
+        "results_sha256": "0d436170e7f5b6b1fa0c92cba05792e90a5c4c0e57626dcb8f7bf8c9bfa59220"
+      }
+    },
+    {
+      "id": "64_ranks",
+      "series": "gpu_scaling_super_fine",
+      "ranks": 64,
+      "grid_name": "super_fine",
+      "partition": [
+        8,
+        8,
+        1
+      ],
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
+      "job_id": "22632340",
+      "configuration": {
+        "series": "gpu_scaling_super_fine",
+        "device": "GPU",
+        "ranks": 64,
+        "threads_per_rank": 1,
+        "grid_name": "super_fine",
+        "global_resolution": [
+          1440,
+          720,
+          200
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "partition": [
+          8,
+          8,
+          1
+        ],
+        "x_sizes": [
+          180,
+          180,
+          180,
+          180,
+          180,
+          180,
+          180,
+          180
+        ],
+        "y_sizes": [
+          90,
+          90,
+          90,
+          90,
+          90,
+          90,
+          90,
+          90
+        ],
+        "float_type": "Float64",
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "timestepper": "SplitRungeKutta3",
+        "dt": 60,
+        "free_surface_substeps": 30,
+        "extend_free_surface_halos": true,
+        "warmup_steps": 2,
+        "samples": 5,
+        "time_steps": 10,
+        "profile": false
+      },
+      "measurement": {
+        "fastest": 0.0745475814,
+        "median": 0.0887810193,
+        "maximum": 0.5249622063,
+        "retained_substeps": [
+          21
+        ],
+        "nodes": 16
+      },
+      "validation": "Current suite: rank completeness, finite fields, placement and timings checked",
+      "provenance": {
+        "original_run": "hydrostatic_free_surface_models/rorqual/2026-10-07_full_suite",
+        "measured_at": "2026-10-08T11:41:56.940",
+        "original_case": "hydrostatic_free_surface_models/rorqual/2026-10-07_full_suite/gpu_scaling_super_fine/64_ranks",
+        "results_sha256": "79fcef4a102611d7be1b9623d7b9c0d3fb32fa713da513241a24883b0021aa42"
+      }
+    },
+    {
+      "id": "8_ranks",
+      "series": "gpu_scaling_super_fine",
+      "ranks": 8,
+      "grid_name": "super_fine",
+      "partition": [
+        4,
+        2,
+        1
+      ],
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
+      "job_id": "22632337",
+      "configuration": {
+        "series": "gpu_scaling_super_fine",
+        "device": "GPU",
+        "ranks": 8,
+        "threads_per_rank": 1,
+        "grid_name": "super_fine",
+        "global_resolution": [
+          1440,
+          720,
+          200
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "partition": [
+          4,
+          2,
+          1
+        ],
+        "x_sizes": [
+          360,
+          360,
+          360,
+          360
+        ],
+        "y_sizes": [
+          360,
+          360
+        ],
+        "float_type": "Float64",
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "timestepper": "SplitRungeKutta3",
+        "dt": 60,
+        "free_surface_substeps": 30,
+        "extend_free_surface_halos": true,
+        "warmup_steps": 2,
+        "samples": 5,
+        "time_steps": 10,
+        "profile": false
+      },
+      "measurement": {
+        "fastest": 0.14642637409999998,
+        "median": 0.1508291424,
+        "maximum": 0.1713850626,
+        "retained_substeps": [
+          21
+        ],
+        "nodes": 2
+      },
+      "validation": "Current suite: rank completeness, finite fields, placement and timings checked",
+      "provenance": {
+        "original_run": "hydrostatic_free_surface_models/rorqual/2026-10-07_full_suite",
+        "measured_at": "2026-10-07T07:09:31.666",
+        "original_case": "hydrostatic_free_surface_models/rorqual/2026-10-07_full_suite/gpu_scaling_super_fine/8_ranks",
+        "results_sha256": "99e7d0abf9a93725598a35f63abcd66d469ed16a13f9fbaccd1f7800f5d6810c"
+      }
+    }
+  ],
+  "curated": true
+}

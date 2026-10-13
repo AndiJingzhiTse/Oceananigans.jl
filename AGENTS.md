@@ -155,12 +155,20 @@ final response.
 
 ## Benchmark Records
 
-For new standard benchmark series, use `benchmarking/benchmark_suite.py`
-with a server configuration under `benchmarking/configs/`. Shared planning,
-execution and reporting live in `benchmarking/suite/`. The older entry points
-under `benchmarking/results/hydrostatic_free_surface_models/nibi/` and `benchmarking/results/hydrostatic_free_surface_models/rondeau/` are
-historical compatibility launchers; preserve them while queued jobs depend
-on their paths. See `benchmarking/README.md` for the full series table.
+For standard benchmark series, use `benchmarking/scripts/benchmark_suite.py`
+with a machine configuration under `benchmarking/scripts/configs/`. Shared planning,
+execution and reporting live in `benchmarking/src/suite/`; tests are in
+`benchmarking/test/`. One controller supports HydrostaticFreeSurfaceModel and
+NonhydrostaticModel. Legacy controllers and launchers have been removed.
+See `benchmarking/README.md` for the series table and setup instructions.
+
+Curated results use `benchmarking/results/<model_family>/<machine>/<series>/`,
+with a combined `plot.md` inside each machine folder. The two model families are
+`hydrostatic_free_surface_models` and `non_hydrostatic_models`; each contains
+Andi-5070ti, fir, nibi, rondeau and rorqual. Keep the latest accepted measurement
+for each configuration, including its original provenance and validation limits.
+Run repeat studies in a fresh scratch directory and use `--publish` to update
+curated results after validation. Failed reruns must not replace accepted results.
 
 Use these canonical global resolutions for named benchmark grids:
 
@@ -240,9 +248,10 @@ not complete. Distinguish scheduler queue/wait limits, submission/resource
 limits, geometry limits, timeouts and application or memory failures. Keep
 profiling measurements separate from unprofiled timings; record capture
 scope and preserve trace locations, checksums and profile summaries.
-Preserve raw results and failure evidence, use fresh dated directories for
-new series, and commit each finished task and its benchmark records under
-the Git Workflow rules above.
+Preserve raw results and failure evidence in the scratch study directory.
+Publish completed measurements into the curated results tree, keeping older
+accepted cases when a rerun fails. Commit each finished task and its benchmark
+records under the Git Workflow rules above.
 
 ## Design Principles
 

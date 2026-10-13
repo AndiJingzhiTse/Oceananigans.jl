@@ -1,0 +1,329 @@
+{
+  "server": {
+    "backend": "local",
+    "matplotlib": true,
+    "model_type": "HydrostaticFreeSurfaceModel",
+    "machine": "rorqual"
+  },
+  "cases": [
+    {
+      "id": "16_ranks",
+      "series": "gpu_weak_scaling_super_fine",
+      "ranks": 16,
+      "grid_name": "weak_16_ranks",
+      "partition": [
+        4,
+        4,
+        1
+      ],
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
+      "job_id": "22690722",
+      "configuration": {
+        "series": "gpu_weak_scaling_super_fine",
+        "device": "GPU",
+        "ranks": 16,
+        "threads_per_rank": 1,
+        "grid_name": "weak_16_ranks",
+        "global_resolution": [
+          5760,
+          2880,
+          200
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "partition": [
+          4,
+          4,
+          1
+        ],
+        "x_sizes": [
+          1440,
+          1440,
+          1440,
+          1440
+        ],
+        "y_sizes": [
+          720,
+          720,
+          720,
+          720
+        ],
+        "float_type": "Float64",
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "timestepper": "SplitRungeKutta3",
+        "dt": 15.0,
+        "free_surface_substeps": 30,
+        "extend_free_surface_halos": true,
+        "warmup_steps": 2,
+        "samples": 5,
+        "time_steps": 10,
+        "profile": false,
+        "scaling_type": "weak",
+        "baseline_ranks": 1
+      },
+      "measurement": {
+        "fastest": 1.1104429939,
+        "median": 1.2612721409,
+        "maximum": 1.479588693,
+        "retained_substeps": [
+          21
+        ],
+        "nodes": 4,
+        "gpu_memory_used_bytes": 53118828544,
+        "gpu_memory_max_gib": 49.47076416015625
+      },
+      "validation": "Current suite: rank completeness, finite fields, placement and timings checked",
+      "provenance": {
+        "original_run": "hydrostatic_free_surface_models/rorqual/2026-10-07_gpu_extended_suite",
+        "measured_at": "2026-10-08T13:36:01.951",
+        "original_case": "hydrostatic_free_surface_models/rorqual/2026-10-07_gpu_extended_suite/gpu_weak_scaling_super_fine/16_ranks",
+        "results_sha256": "c7797355061a7f41376819b248d147a9a4cfd943e59f329974515259be6d6dda"
+      }
+    },
+    {
+      "id": "1_ranks",
+      "series": "gpu_weak_scaling_super_fine",
+      "ranks": 1,
+      "grid_name": "super_fine",
+      "partition": [
+        1,
+        1,
+        1
+      ],
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
+      "job_id": "22690720",
+      "configuration": {
+        "series": "gpu_weak_scaling_super_fine",
+        "device": "GPU",
+        "ranks": 1,
+        "threads_per_rank": 1,
+        "grid_name": "super_fine",
+        "global_resolution": [
+          1440,
+          720,
+          200
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "partition": [
+          1,
+          1,
+          1
+        ],
+        "x_sizes": [
+          1440
+        ],
+        "y_sizes": [
+          720
+        ],
+        "float_type": "Float64",
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "timestepper": "SplitRungeKutta3",
+        "dt": 60,
+        "free_surface_substeps": 30,
+        "extend_free_surface_halos": true,
+        "warmup_steps": 2,
+        "samples": 5,
+        "time_steps": 10,
+        "profile": false,
+        "scaling_type": "weak",
+        "baseline_ranks": 1
+      },
+      "measurement": {
+        "fastest": 0.9652744231,
+        "median": 0.9656921504,
+        "maximum": 0.967548981,
+        "retained_substeps": [
+          21
+        ],
+        "nodes": 1,
+        "gpu_memory_used_bytes": 50033917952,
+        "gpu_memory_max_gib": 46.59771728515625
+      },
+      "validation": "Current suite: rank completeness, finite fields, placement and timings checked",
+      "provenance": {
+        "original_run": "hydrostatic_free_surface_models/rorqual/2026-10-07_gpu_extended_suite",
+        "measured_at": "2026-10-08T13:58:09.483",
+        "original_case": "hydrostatic_free_surface_models/rorqual/2026-10-07_gpu_extended_suite/gpu_weak_scaling_super_fine/1_ranks",
+        "results_sha256": "25eda330b0418b61e7475b50c9831c7d8541ae23a03333e04adaee1cf70a49a5"
+      }
+    },
+    {
+      "id": "4_ranks",
+      "series": "gpu_weak_scaling_super_fine",
+      "ranks": 4,
+      "grid_name": "weak_4_ranks",
+      "partition": [
+        2,
+        2,
+        1
+      ],
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
+      "job_id": "22690721",
+      "configuration": {
+        "series": "gpu_weak_scaling_super_fine",
+        "device": "GPU",
+        "ranks": 4,
+        "threads_per_rank": 1,
+        "grid_name": "weak_4_ranks",
+        "global_resolution": [
+          2880,
+          1440,
+          200
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "partition": [
+          2,
+          2,
+          1
+        ],
+        "x_sizes": [
+          1440,
+          1440
+        ],
+        "y_sizes": [
+          720,
+          720
+        ],
+        "float_type": "Float64",
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "timestepper": "SplitRungeKutta3",
+        "dt": 30.0,
+        "free_surface_substeps": 30,
+        "extend_free_surface_halos": true,
+        "warmup_steps": 2,
+        "samples": 5,
+        "time_steps": 10,
+        "profile": false,
+        "scaling_type": "weak",
+        "baseline_ranks": 1
+      },
+      "measurement": {
+        "fastest": 0.9896887432,
+        "median": 1.0207598519999999,
+        "maximum": 1.0270411807,
+        "retained_substeps": [
+          21
+        ],
+        "nodes": 1,
+        "gpu_memory_used_bytes": 52131069952,
+        "gpu_memory_max_gib": 48.55084228515625
+      },
+      "validation": "Current suite: rank completeness, finite fields, placement and timings checked",
+      "provenance": {
+        "original_run": "hydrostatic_free_surface_models/rorqual/2026-10-07_gpu_extended_suite",
+        "measured_at": "2026-10-08T13:52:47.573",
+        "original_case": "hydrostatic_free_surface_models/rorqual/2026-10-07_gpu_extended_suite/gpu_weak_scaling_super_fine/4_ranks",
+        "results_sha256": "fe412a1ad30a3c36b95ac1c173a95e1a27576dfdf9fe5021fb8c3a38d1012562"
+      }
+    },
+    {
+      "id": "64_ranks",
+      "series": "gpu_weak_scaling_super_fine",
+      "ranks": 64,
+      "grid_name": "weak_64_ranks",
+      "partition": [
+        8,
+        8,
+        1
+      ],
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
+      "job_id": "22690723",
+      "configuration": {
+        "series": "gpu_weak_scaling_super_fine",
+        "device": "GPU",
+        "ranks": 64,
+        "threads_per_rank": 1,
+        "grid_name": "weak_64_ranks",
+        "global_resolution": [
+          11520,
+          5760,
+          200
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "partition": [
+          8,
+          8,
+          1
+        ],
+        "x_sizes": [
+          1440,
+          1440,
+          1440,
+          1440,
+          1440,
+          1440,
+          1440,
+          1440
+        ],
+        "y_sizes": [
+          720,
+          720,
+          720,
+          720,
+          720,
+          720,
+          720,
+          720
+        ],
+        "float_type": "Float64",
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "timestepper": "SplitRungeKutta3",
+        "dt": 7.5,
+        "free_surface_substeps": 30,
+        "extend_free_surface_halos": true,
+        "warmup_steps": 2,
+        "samples": 5,
+        "time_steps": 10,
+        "profile": false,
+        "scaling_type": "weak",
+        "baseline_ranks": 1
+      },
+      "measurement": {
+        "fastest": 1.1764314559,
+        "median": 1.2772159276,
+        "maximum": 1.7141498588000001,
+        "retained_substeps": [
+          21
+        ],
+        "nodes": 16,
+        "gpu_memory_used_bytes": 53118828544,
+        "gpu_memory_max_gib": 49.47076416015625
+      },
+      "validation": "Current suite: rank completeness, finite fields, placement and timings checked",
+      "provenance": {
+        "original_run": "hydrostatic_free_surface_models/rorqual/2026-10-07_gpu_extended_suite",
+        "measured_at": "2026-10-08T09:47:12.173",
+        "original_case": "hydrostatic_free_surface_models/rorqual/2026-10-07_gpu_extended_suite/gpu_weak_scaling_super_fine/64_ranks",
+        "results_sha256": "6ca8f7cb929061f4f1d95062b9719814cb16e61fcb5061f363a005e24aa0ba4a"
+      }
+    }
+  ],
+  "curated": true
+}

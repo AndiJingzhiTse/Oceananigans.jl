@@ -1,28 +1,22 @@
-*.html
-*.bson
-*.txt
-*.json
-*.md
-!rondeau.md
-!Project.toml
-*.jld2
-Manifest.toml
-
-# Keep curated benchmark results under version control.
-!results/**/*.json
-!results/**/*.md
-
-# Machine-specific Julia preferences.
-LocalPreferences.toml
-
-# Unified suite documentation and example server profiles.
-!README.md
-!configs/*.json
+# Local Julia environments and generated data.
+/Manifest.toml
+/LocalPreferences.toml
+/data/
 __pycache__/
-results/**/.suite.lock
-!results/**/suite.json
-!results/**/configuration.json
-!results/**/layout.json
-!results/**/*.txt
+*.py[cod]
+*.jld2
+*.bson
+*.html
+
+# Root ignore rules exclude JSON and SVG; retain benchmark configuration/results.
+!scripts/configs/*.json
+!results/**/*.json
 !results/**/*.svg
-!legacy/README.md
+
+# Transient locks, partial writes, and raw process output.
+results/**/.suite.lock
+results/**/*.tmp
+results/**/.plot-*
+results/**/*.out
+
+# Nsight captures/databases are ignored by the repository-wide rules.

@@ -1,0 +1,28 @@
+{
+  "backend": "slurm",
+  "max_cpu_cores": 130176,
+  "max_gpus": 264,
+  "cpu_cores_per_node": 192,
+  "gpus_per_node": 4,
+  "project": "/scratch/$USER/oceananigans_benchmark_environments/rorqual",
+  "julia": "/cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/julia",
+  "mpi_init": "$HOME/Oceananigans.jl/benchmarking/scripts/env/drac_mpi.jl",
+  "cpu_account": "def-fpoulin_cpu",
+  "gpu_account": "def-fpoulin_gpu",
+  "gpu_type": "h100",
+  "exclusive_cpu": true,
+  "gpu_memory": "256G",
+  "trace_root": "/scratch/$USER/benchmark_traces",
+  "report_modules": [
+    "python/3.11",
+    "scipy-stack/2025a"
+  ],
+  "cpu_sbatch_extra": [
+    "--export=ALL,JULIA_DEPOT_PATH=/scratch/$USER/julia_depot:"
+  ],
+  "gpu_sbatch_extra": [
+    "--export=ALL,JULIA_DEPOT_PATH=/scratch/$USER/julia_depot:"
+  ],
+  "machine": "rorqual",
+  "environment_script": "$HOME/Oceananigans.jl/benchmarking/scripts/env/modules.sh"
+}

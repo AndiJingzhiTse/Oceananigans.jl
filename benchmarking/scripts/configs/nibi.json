@@ -1,0 +1,25 @@
+{
+  "backend": "slurm",
+  "max_cpu_cores": 134208,
+  "max_gpus": 232,
+  "cpu_cores_per_node": 192,
+  "gpus_per_node": 8,
+  "project": "/scratch/$USER/oceananigans_benchmark_environments/nibi",
+  "environment_script": "$HOME/Oceananigans.jl/benchmarking/scripts/env/modules.sh",
+  "mpi_init": "$HOME/Oceananigans.jl/benchmarking/scripts/env/drac_mpi.jl",
+  "cpu_account": "def-fpoulin",
+  "gpu_account": "def-fpoulin",
+  "cpu_constraint": "granite",
+  "gpu_type": "h100",
+  "exclusive_cpu": true,
+  "trace_root": "/scratch/$USER/benchmark_traces",
+  "report_modules": [
+    "python/3.11",
+    "scipy-stack/2025a"
+  ],
+  "environment": {
+    "JULIA_DEPOT_PATH": "/scratch/$USER/julia_depot"
+  },
+  "gpu_scaling_partition": "x",
+  "machine": "nibi"
+}

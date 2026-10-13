@@ -1,0 +1,215 @@
+{
+  "server": {
+    "backend": "local",
+    "matplotlib": true,
+    "model_type": "HydrostaticFreeSurfaceModel",
+    "machine": "rondeau"
+  },
+  "cases": [
+    {
+      "ranks": 1,
+      "partition": [
+        1,
+        1,
+        1
+      ],
+      "configuration": {
+        "model_type": "HydrostaticFreeSurfaceModel",
+        "device": "GPU",
+        "series": "gpu_scaling_720x360x50",
+        "global_resolution": [
+          720,
+          360,
+          50
+        ],
+        "grid_type": "TripolarGrid",
+        "float_type": "Float64",
+        "threads_per_rank": 1,
+        "samples": 5,
+        "time_steps": 10,
+        "dt": 60.0,
+        "warmup_steps": null,
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "tracer_count": 2,
+        "timestepper": "SplitRungeKutta3",
+        "profile": false,
+        "free_surface_substeps": null,
+        "extend_free_surface_halos": null,
+        "partition": [
+          1,
+          1,
+          1
+        ],
+        "ranks": 1,
+        "x_sizes": [
+          720
+        ],
+        "y_sizes": [
+          360
+        ]
+      },
+      "measurement": {
+        "fastest": 0.1336122602,
+        "median": 0.13366439619999998,
+        "maximum": 0.1512863786,
+        "retained_substeps": []
+      },
+      "validation": "Historical: complete ranks and timing aggregates checked; finite-state/placement checks unavailable",
+      "id": "1_ranks",
+      "series": "gpu_scaling_720x360x50",
+      "state": "COMPLETED",
+      "job_id": "",
+      "details": "",
+      "provenance": {
+        "original_run": "hydrostatic_free_surface_models/rondeau/2026-09-27_all",
+        "measured_at": "2026-09-27T09:26:39.631",
+        "original_case": "hydrostatic_free_surface_models/rondeau/2026-09-27_all/gpu_scaling_fine/1_gpus",
+        "results_sha256": "4cc9ed9a296df3159f5eb8f306a9e72e43bc8189df2b87d6f413653c3bcd749f"
+      }
+    },
+    {
+      "ranks": 2,
+      "partition": [
+        1,
+        2,
+        1
+      ],
+      "configuration": {
+        "model_type": "HydrostaticFreeSurfaceModel",
+        "device": "GPU",
+        "series": "gpu_scaling_720x360x50",
+        "global_resolution": [
+          720,
+          360,
+          50
+        ],
+        "grid_type": "TripolarGrid",
+        "float_type": "Float64",
+        "threads_per_rank": 1,
+        "samples": 5,
+        "time_steps": 10,
+        "dt": 60.0,
+        "warmup_steps": null,
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "tracer_count": 2,
+        "timestepper": "SplitRungeKutta3",
+        "profile": false,
+        "free_surface_substeps": null,
+        "extend_free_surface_halos": null,
+        "partition": [
+          1,
+          2,
+          1
+        ],
+        "ranks": 2,
+        "x_sizes": [
+          720
+        ],
+        "y_sizes": [
+          180,
+          180
+        ]
+      },
+      "measurement": {
+        "fastest": 0.0833378382,
+        "median": 0.0848875678,
+        "maximum": 0.1348935477,
+        "retained_substeps": []
+      },
+      "validation": "Historical: complete ranks and timing aggregates checked; finite-state/placement checks unavailable",
+      "id": "2_ranks",
+      "series": "gpu_scaling_720x360x50",
+      "state": "COMPLETED",
+      "job_id": "",
+      "details": "",
+      "provenance": {
+        "original_run": "hydrostatic_free_surface_models/rondeau/2026-09-27_all",
+        "measured_at": "2026-09-27T09:33:57.183",
+        "original_case": "hydrostatic_free_surface_models/rondeau/2026-09-27_all/gpu_scaling_fine/2_gpus",
+        "results_sha256": "dfdd2fd1633f3ca11a1e650e71be0c38788848fca41aa97e3813680d2d4d270a"
+      }
+    },
+    {
+      "ranks": 4,
+      "partition": [
+        2,
+        2,
+        1
+      ],
+      "configuration": {
+        "model_type": "HydrostaticFreeSurfaceModel",
+        "device": "GPU",
+        "series": "gpu_scaling_720x360x50",
+        "global_resolution": [
+          720,
+          360,
+          50
+        ],
+        "grid_type": "TripolarGrid",
+        "float_type": "Float64",
+        "threads_per_rank": 1,
+        "samples": 5,
+        "time_steps": 10,
+        "dt": 60.0,
+        "warmup_steps": null,
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "tracer_count": 2,
+        "timestepper": "SplitRungeKutta3",
+        "profile": false,
+        "free_surface_substeps": null,
+        "extend_free_surface_halos": null,
+        "partition": [
+          2,
+          2,
+          1
+        ],
+        "ranks": 4,
+        "x_sizes": [
+          360,
+          360
+        ],
+        "y_sizes": [
+          180,
+          180
+        ]
+      },
+      "measurement": {
+        "fastest": 0.0600015903,
+        "median": 0.0603392255,
+        "maximum": 0.0638047163,
+        "retained_substeps": []
+      },
+      "validation": "Historical: complete ranks and timing aggregates checked; finite-state/placement checks unavailable",
+      "id": "4_ranks",
+      "series": "gpu_scaling_720x360x50",
+      "state": "COMPLETED",
+      "job_id": "",
+      "details": "",
+      "provenance": {
+        "original_run": "hydrostatic_free_surface_models/rondeau/2026-09-27_all",
+        "measured_at": "2026-09-27T09:44:15.868",
+        "original_case": "hydrostatic_free_surface_models/rondeau/2026-09-27_all/gpu_scaling_fine/4_gpus",
+        "results_sha256": "9e9e73e45a4784fe147f2516cc6cf0145a8a315bf298ad75713109ed6004d12c"
+      }
+    }
+  ],
+  "curated": true
+}

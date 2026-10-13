@@ -1,0 +1,606 @@
+{
+  "server": {
+    "backend": "local",
+    "matplotlib": true,
+    "model_type": "HydrostaticFreeSurfaceModel",
+    "machine": "rondeau"
+  },
+  "cases": [
+    {
+      "ranks": 128,
+      "partition": [
+        8,
+        16,
+        1
+      ],
+      "configuration": {
+        "model_type": "HydrostaticFreeSurfaceModel",
+        "device": "CPU",
+        "series": "cpu_scaling_360x180x50",
+        "global_resolution": [
+          360,
+          180,
+          50
+        ],
+        "grid_type": "TripolarGrid",
+        "float_type": "Float64",
+        "threads_per_rank": 1,
+        "samples": 5,
+        "time_steps": 10,
+        "dt": 60.0,
+        "warmup_steps": null,
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "tracer_count": 2,
+        "timestepper": "SplitRungeKutta3",
+        "profile": false,
+        "free_surface_substeps": null,
+        "extend_free_surface_halos": null,
+        "x_sizes": [
+          45,
+          45,
+          45,
+          45,
+          45,
+          45,
+          45,
+          45
+        ],
+        "y_sizes": [
+          11,
+          11,
+          11,
+          11,
+          11,
+          11,
+          11,
+          11,
+          11,
+          11,
+          11,
+          11,
+          11,
+          11,
+          11,
+          15
+        ],
+        "partition": [
+          8,
+          16,
+          1
+        ],
+        "ranks": 128
+      },
+      "measurement": {
+        "fastest": 0.8225006213,
+        "median": 0.9056130925,
+        "maximum": 1.1005050286,
+        "retained_substeps": []
+      },
+      "validation": "Historical: complete ranks and timing aggregates checked; finite-state/placement checks unavailable",
+      "id": "128_ranks",
+      "series": "cpu_scaling_360x180x50",
+      "state": "COMPLETED",
+      "job_id": "",
+      "details": "",
+      "provenance": {
+        "original_run": "hydrostatic_free_surface_models/rondeau/2026-09-27_all",
+        "measured_at": "2026-09-30T04:46:21.739",
+        "original_case": "hydrostatic_free_surface_models/rondeau/2026-09-27_all/cpu_scaling_default/128_cores",
+        "results_sha256": "f09c1ff43c6c31d7cd84d34f32b8c49f5defd0b6425d3e7de4ad03afaa4110fa"
+      }
+    },
+    {
+      "ranks": 16,
+      "partition": [
+        4,
+        4,
+        1
+      ],
+      "configuration": {
+        "model_type": "HydrostaticFreeSurfaceModel",
+        "device": "CPU",
+        "series": "cpu_scaling_360x180x50",
+        "global_resolution": [
+          360,
+          180,
+          50
+        ],
+        "grid_type": "TripolarGrid",
+        "float_type": "Float64",
+        "threads_per_rank": 1,
+        "samples": 5,
+        "time_steps": 10,
+        "dt": 60.0,
+        "warmup_steps": null,
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "tracer_count": 2,
+        "timestepper": "SplitRungeKutta3",
+        "profile": false,
+        "free_surface_substeps": null,
+        "extend_free_surface_halos": null,
+        "partition": [
+          4,
+          4,
+          1
+        ],
+        "ranks": 16,
+        "x_sizes": [
+          90,
+          90,
+          90,
+          90
+        ],
+        "y_sizes": [
+          45,
+          45,
+          45,
+          45
+        ]
+      },
+      "measurement": {
+        "fastest": 2.9495762067,
+        "median": 3.0088927938000003,
+        "maximum": 3.0282940625999997,
+        "retained_substeps": []
+      },
+      "validation": "Historical: complete ranks and timing aggregates checked; finite-state/placement checks unavailable",
+      "id": "16_ranks",
+      "series": "cpu_scaling_360x180x50",
+      "state": "COMPLETED",
+      "job_id": "",
+      "details": "",
+      "provenance": {
+        "original_run": "hydrostatic_free_surface_models/rondeau/2026-09-27_all",
+        "measured_at": "2026-09-30T03:34:59.114",
+        "original_case": "hydrostatic_free_surface_models/rondeau/2026-09-27_all/cpu_scaling_default/16_cores",
+        "results_sha256": "d4269a0994079d07e963c8ab99f95c1cf9d17abfd538855e1b904ff1b5ee957f"
+      }
+    },
+    {
+      "ranks": 1,
+      "partition": [
+        1,
+        1,
+        1
+      ],
+      "configuration": {
+        "model_type": "HydrostaticFreeSurfaceModel",
+        "device": "CPU",
+        "series": "cpu_scaling_360x180x50",
+        "global_resolution": [
+          360,
+          180,
+          50
+        ],
+        "grid_type": "TripolarGrid",
+        "float_type": "Float64",
+        "threads_per_rank": 1,
+        "samples": 5,
+        "time_steps": 10,
+        "dt": 60.0,
+        "warmup_steps": null,
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "tracer_count": 2,
+        "timestepper": "SplitRungeKutta3",
+        "profile": false,
+        "free_surface_substeps": null,
+        "extend_free_surface_halos": null,
+        "partition": [
+          1,
+          1,
+          1
+        ],
+        "ranks": 1,
+        "x_sizes": [
+          360
+        ],
+        "y_sizes": [
+          180
+        ]
+      },
+      "measurement": {
+        "fastest": 25.226967977999998,
+        "median": 25.2392821712,
+        "maximum": 27.8882775711,
+        "retained_substeps": []
+      },
+      "validation": "Historical: complete ranks and timing aggregates checked; finite-state/placement checks unavailable",
+      "id": "1_ranks",
+      "series": "cpu_scaling_360x180x50",
+      "state": "COMPLETED",
+      "job_id": "",
+      "details": "",
+      "provenance": {
+        "original_run": "hydrostatic_free_surface_models/rondeau/2026-09-27_all",
+        "measured_at": "2026-09-30T02:11:51.232",
+        "original_case": "hydrostatic_free_surface_models/rondeau/2026-09-27_all/cpu_scaling_default/1_cores",
+        "results_sha256": "9dfb046bcfb38fe787688eadb54ca8bbd3bd3c177fc5e43d462f4230178fd68c"
+      }
+    },
+    {
+      "ranks": 2,
+      "partition": [
+        1,
+        2,
+        1
+      ],
+      "configuration": {
+        "model_type": "HydrostaticFreeSurfaceModel",
+        "device": "CPU",
+        "series": "cpu_scaling_360x180x50",
+        "global_resolution": [
+          360,
+          180,
+          50
+        ],
+        "grid_type": "TripolarGrid",
+        "float_type": "Float64",
+        "threads_per_rank": 1,
+        "samples": 5,
+        "time_steps": 10,
+        "dt": 60.0,
+        "warmup_steps": null,
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "tracer_count": 2,
+        "timestepper": "SplitRungeKutta3",
+        "profile": false,
+        "free_surface_substeps": null,
+        "extend_free_surface_halos": null,
+        "partition": [
+          1,
+          2,
+          1
+        ],
+        "ranks": 2,
+        "x_sizes": [
+          360
+        ],
+        "y_sizes": [
+          90,
+          90
+        ]
+      },
+      "measurement": {
+        "fastest": 15.9399429615,
+        "median": 15.9583894859,
+        "maximum": 15.9786857343,
+        "retained_substeps": []
+      },
+      "validation": "Historical: complete ranks and timing aggregates checked; finite-state/placement checks unavailable",
+      "id": "2_ranks",
+      "series": "cpu_scaling_360x180x50",
+      "state": "COMPLETED",
+      "job_id": "",
+      "details": "",
+      "provenance": {
+        "original_run": "hydrostatic_free_surface_models/rondeau/2026-09-27_all",
+        "measured_at": "2026-09-30T02:36:21.680",
+        "original_case": "hydrostatic_free_surface_models/rondeau/2026-09-27_all/cpu_scaling_default/2_cores",
+        "results_sha256": "0736940aa254dc7a87c97da96a5bfe5df8f3c2e1cf077b27eb7b1447f166f4c1"
+      }
+    },
+    {
+      "ranks": 32,
+      "partition": [
+        8,
+        4,
+        1
+      ],
+      "configuration": {
+        "model_type": "HydrostaticFreeSurfaceModel",
+        "device": "CPU",
+        "series": "cpu_scaling_360x180x50",
+        "global_resolution": [
+          360,
+          180,
+          50
+        ],
+        "grid_type": "TripolarGrid",
+        "float_type": "Float64",
+        "threads_per_rank": 1,
+        "samples": 5,
+        "time_steps": 10,
+        "dt": 60.0,
+        "warmup_steps": null,
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "tracer_count": 2,
+        "timestepper": "SplitRungeKutta3",
+        "profile": false,
+        "free_surface_substeps": null,
+        "extend_free_surface_halos": null,
+        "partition": [
+          8,
+          4,
+          1
+        ],
+        "ranks": 32,
+        "x_sizes": [
+          45,
+          45,
+          45,
+          45,
+          45,
+          45,
+          45,
+          45
+        ],
+        "y_sizes": [
+          45,
+          45,
+          45,
+          45
+        ]
+      },
+      "measurement": {
+        "fastest": 1.6352196288999998,
+        "median": 1.6676033573000002,
+        "maximum": 1.7401207939999999,
+        "retained_substeps": []
+      },
+      "validation": "Historical: complete ranks and timing aggregates checked; finite-state/placement checks unavailable",
+      "id": "32_ranks",
+      "series": "cpu_scaling_360x180x50",
+      "state": "COMPLETED",
+      "job_id": "",
+      "details": "",
+      "provenance": {
+        "original_run": "hydrostatic_free_surface_models/rondeau/2026-09-27_all",
+        "measured_at": "2026-09-30T03:53:23.434",
+        "original_case": "hydrostatic_free_surface_models/rondeau/2026-09-27_all/cpu_scaling_default/32_cores",
+        "results_sha256": "f0a77ed6d45912c33477da6b01f417ae78af4dbc3865a99f11ca680c8e0d1d14"
+      }
+    },
+    {
+      "ranks": 4,
+      "partition": [
+        2,
+        2,
+        1
+      ],
+      "configuration": {
+        "model_type": "HydrostaticFreeSurfaceModel",
+        "device": "CPU",
+        "series": "cpu_scaling_360x180x50",
+        "global_resolution": [
+          360,
+          180,
+          50
+        ],
+        "grid_type": "TripolarGrid",
+        "float_type": "Float64",
+        "threads_per_rank": 1,
+        "samples": 5,
+        "time_steps": 10,
+        "dt": 60.0,
+        "warmup_steps": null,
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "tracer_count": 2,
+        "timestepper": "SplitRungeKutta3",
+        "profile": false,
+        "free_surface_substeps": null,
+        "extend_free_surface_halos": null,
+        "partition": [
+          2,
+          2,
+          1
+        ],
+        "ranks": 4,
+        "x_sizes": [
+          180,
+          180
+        ],
+        "y_sizes": [
+          90,
+          90
+        ]
+      },
+      "measurement": {
+        "fastest": 8.648959661400001,
+        "median": 8.6595475781,
+        "maximum": 8.7570526624,
+        "retained_substeps": []
+      },
+      "validation": "Historical: complete ranks and timing aggregates checked; finite-state/placement checks unavailable",
+      "id": "4_ranks",
+      "series": "cpu_scaling_360x180x50",
+      "state": "COMPLETED",
+      "job_id": "",
+      "details": "",
+      "provenance": {
+        "original_run": "hydrostatic_free_surface_models/rondeau/2026-09-27_all",
+        "measured_at": "2026-09-30T02:56:59.711",
+        "original_case": "hydrostatic_free_surface_models/rondeau/2026-09-27_all/cpu_scaling_default/4_cores",
+        "results_sha256": "35acd040398e8b84144a38d0e42df6a0fbfbe3f1ff93c9a9bd604e57833cff37"
+      }
+    },
+    {
+      "ranks": 64,
+      "partition": [
+        8,
+        8,
+        1
+      ],
+      "configuration": {
+        "model_type": "HydrostaticFreeSurfaceModel",
+        "device": "CPU",
+        "series": "cpu_scaling_360x180x50",
+        "global_resolution": [
+          360,
+          180,
+          50
+        ],
+        "grid_type": "TripolarGrid",
+        "float_type": "Float64",
+        "threads_per_rank": 1,
+        "samples": 5,
+        "time_steps": 10,
+        "dt": 60.0,
+        "warmup_steps": null,
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "tracer_count": 2,
+        "timestepper": "SplitRungeKutta3",
+        "profile": false,
+        "free_surface_substeps": null,
+        "extend_free_surface_halos": null,
+        "x_sizes": [
+          45,
+          45,
+          45,
+          45,
+          45,
+          45,
+          45,
+          45
+        ],
+        "y_sizes": [
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          22,
+          26
+        ],
+        "partition": [
+          8,
+          8,
+          1
+        ],
+        "ranks": 64
+      },
+      "measurement": {
+        "fastest": 1.2227655618,
+        "median": 1.2576019972999999,
+        "maximum": 1.4075447133999999,
+        "retained_substeps": []
+      },
+      "validation": "Historical: complete ranks and timing aggregates checked; finite-state/placement checks unavailable",
+      "id": "64_ranks",
+      "series": "cpu_scaling_360x180x50",
+      "state": "COMPLETED",
+      "job_id": "",
+      "details": "",
+      "provenance": {
+        "original_run": "hydrostatic_free_surface_models/rondeau/2026-09-27_all",
+        "measured_at": "2026-09-30T04:15:03.958",
+        "original_case": "hydrostatic_free_surface_models/rondeau/2026-09-27_all/cpu_scaling_default/64_cores",
+        "results_sha256": "71659400cbe9bfe878f517415d60962eb279fcd007db24881887467398a1fc2c"
+      }
+    },
+    {
+      "ranks": 8,
+      "partition": [
+        2,
+        4,
+        1
+      ],
+      "configuration": {
+        "model_type": "HydrostaticFreeSurfaceModel",
+        "device": "CPU",
+        "series": "cpu_scaling_360x180x50",
+        "global_resolution": [
+          360,
+          180,
+          50
+        ],
+        "grid_type": "TripolarGrid",
+        "float_type": "Float64",
+        "threads_per_rank": 1,
+        "samples": 5,
+        "time_steps": 10,
+        "dt": 60.0,
+        "warmup_steps": null,
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "tracer_count": 2,
+        "timestepper": "SplitRungeKutta3",
+        "profile": false,
+        "free_surface_substeps": null,
+        "extend_free_surface_halos": null,
+        "partition": [
+          2,
+          4,
+          1
+        ],
+        "ranks": 8,
+        "x_sizes": [
+          180,
+          180
+        ],
+        "y_sizes": [
+          45,
+          45,
+          45,
+          45
+        ]
+      },
+      "measurement": {
+        "fastest": 4.9706631525,
+        "median": 4.9996324128,
+        "maximum": 5.02282691,
+        "retained_substeps": []
+      },
+      "validation": "Historical: complete ranks and timing aggregates checked; finite-state/placement checks unavailable",
+      "id": "8_ranks",
+      "series": "cpu_scaling_360x180x50",
+      "state": "COMPLETED",
+      "job_id": "",
+      "details": "",
+      "provenance": {
+        "original_run": "hydrostatic_free_surface_models/rondeau/2026-09-27_all",
+        "measured_at": "2026-09-30T03:16:15.260",
+        "original_case": "hydrostatic_free_surface_models/rondeau/2026-09-27_all/cpu_scaling_default/8_cores",
+        "results_sha256": "c739e77e9e404c06d2a80ef3d1dce97bb4dbbfa9a770bbe65c00b9da71741238"
+      }
+    }
+  ],
+  "curated": true
+}

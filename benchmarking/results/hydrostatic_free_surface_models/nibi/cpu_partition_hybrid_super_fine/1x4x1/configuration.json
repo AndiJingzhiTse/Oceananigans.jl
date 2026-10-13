@@ -1,0 +1,44 @@
+{
+  "model_type": "HydrostaticFreeSurfaceModel",
+  "device": "CPU",
+  "series": "cpu_partition_hybrid_super_fine",
+  "global_resolution": [
+    1440,
+    720,
+    200
+  ],
+  "grid_type": "LatitudeLongitudeGrid",
+  "float_type": "Float64",
+  "threads_per_rank": 192,
+  "samples": 5,
+  "time_steps": 10,
+  "dt": 60.0,
+  "warmup_steps": null,
+  "momentum_advection": "WENOVectorInvariantDefault",
+  "tracer_advection": "WENO7",
+  "closure": "CATKE",
+  "tracers": [
+    "T",
+    "S"
+  ],
+  "tracer_count": 2,
+  "timestepper": "SplitRungeKutta3",
+  "profile": false,
+  "free_surface_substeps": null,
+  "extend_free_surface_halos": null,
+  "partition": [
+    1,
+    4,
+    1
+  ],
+  "ranks": 4,
+  "x_sizes": [
+    1440
+  ],
+  "y_sizes": [
+    180,
+    180,
+    180,
+    180
+  ]
+}

@@ -1,0 +1,318 @@
+{
+  "server": {
+    "backend": "local",
+    "matplotlib": true,
+    "model_type": "HydrostaticFreeSurfaceModel",
+    "machine": "nibi"
+  },
+  "cases": [
+    {
+      "ranks": 1,
+      "partition": [
+        1,
+        1,
+        1
+      ],
+      "configuration": {
+        "model_type": "HydrostaticFreeSurfaceModel",
+        "device": "GPU",
+        "series": "gpu_scaling_super_fine",
+        "global_resolution": [
+          1440,
+          720,
+          200
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "float_type": "Float64",
+        "threads_per_rank": 1,
+        "samples": 5,
+        "time_steps": 10,
+        "dt": 60.0,
+        "warmup_steps": null,
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "tracer_count": 2,
+        "timestepper": "SplitRungeKutta3",
+        "profile": false,
+        "free_surface_substeps": null,
+        "extend_free_surface_halos": null,
+        "partition": [
+          1,
+          1,
+          1
+        ],
+        "ranks": 1,
+        "x_sizes": [
+          1440
+        ],
+        "y_sizes": [
+          720
+        ]
+      },
+      "measurement": {
+        "fastest": 1.0211345698,
+        "median": 1.0214611865,
+        "maximum": 1.0237091867,
+        "retained_substeps": []
+      },
+      "validation": "Historical: complete ranks and timing aggregates checked; finite-state/placement checks unavailable",
+      "id": "1_ranks",
+      "series": "gpu_scaling_super_fine",
+      "state": "COMPLETED",
+      "job_id": "",
+      "details": "",
+      "provenance": {
+        "original_run": "hydrostatic_free_surface_models/nibi/2026-10-05_gpu_scaling",
+        "measured_at": "2026-10-05T04:47:20.269",
+        "original_case": "hydrostatic_free_surface_models/nibi/2026-10-05_gpu_scaling/1_gpus",
+        "results_sha256": "8cb6602af342b2d1985155eca8b62300266bc85904faccb62d49325941dd447f"
+      }
+    },
+    {
+      "ranks": 2,
+      "partition": [
+        1,
+        2,
+        1
+      ],
+      "configuration": {
+        "model_type": "HydrostaticFreeSurfaceModel",
+        "device": "GPU",
+        "series": "gpu_scaling_super_fine",
+        "global_resolution": [
+          1440,
+          720,
+          200
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "float_type": "Float64",
+        "threads_per_rank": 1,
+        "samples": 5,
+        "time_steps": 10,
+        "dt": 60.0,
+        "warmup_steps": null,
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "tracer_count": 2,
+        "timestepper": "SplitRungeKutta3",
+        "profile": false,
+        "free_surface_substeps": null,
+        "extend_free_surface_halos": null,
+        "partition": [
+          1,
+          2,
+          1
+        ],
+        "ranks": 2,
+        "x_sizes": [
+          1440
+        ],
+        "y_sizes": [
+          360,
+          360
+        ]
+      },
+      "measurement": {
+        "fastest": 0.5273117499,
+        "median": 0.5286318073,
+        "maximum": 0.5580405458000001,
+        "retained_substeps": []
+      },
+      "validation": "Historical: complete ranks and timing aggregates checked; finite-state/placement checks unavailable",
+      "id": "2_ranks",
+      "series": "gpu_scaling_super_fine",
+      "state": "COMPLETED",
+      "job_id": "",
+      "details": "",
+      "provenance": {
+        "original_run": "hydrostatic_free_surface_models/nibi/2026-10-05_gpu_scaling",
+        "measured_at": "2026-10-05T04:47:21.478",
+        "original_case": "hydrostatic_free_surface_models/nibi/2026-10-05_gpu_scaling/2_gpus",
+        "results_sha256": "d92e3cfd3ac970a9a4d149efd04ec5788ab7613fc748bd8063f25ae7fea15c8c"
+      }
+    },
+    {
+      "id": "32_ranks",
+      "series": "gpu_scaling_super_fine",
+      "ranks": 32,
+      "grid_name": "super_fine",
+      "partition": [
+        32,
+        1,
+        1
+      ],
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
+      "job_id": "23439413",
+      "configuration": {
+        "series": "gpu_scaling_super_fine",
+        "device": "GPU",
+        "ranks": 32,
+        "threads_per_rank": 1,
+        "grid_name": "super_fine",
+        "global_resolution": [
+          1440,
+          720,
+          200
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "partition": [
+          32,
+          1,
+          1
+        ],
+        "x_sizes": [
+          45,
+          45,
+          45,
+          45,
+          45,
+          45,
+          45,
+          45,
+          45,
+          45,
+          45,
+          45,
+          45,
+          45,
+          45,
+          45,
+          45,
+          45,
+          45,
+          45,
+          45,
+          45,
+          45,
+          45,
+          45,
+          45,
+          45,
+          45,
+          45,
+          45,
+          45,
+          45
+        ],
+        "y_sizes": [
+          720
+        ],
+        "float_type": "Float64",
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "timestepper": "SplitRungeKutta3",
+        "dt": 60,
+        "free_surface_substeps": 30,
+        "extend_free_surface_halos": true,
+        "warmup_steps": 2,
+        "samples": 5,
+        "time_steps": 100,
+        "profile": false
+      },
+      "measurement": {
+        "fastest": 0.06534919773999999,
+        "median": 0.06570765065,
+        "maximum": 0.08772694473999999,
+        "retained_substeps": [
+          21
+        ],
+        "nodes": 4,
+        "gpu_memory_used_bytes": 3746365440,
+        "gpu_memory_max_gib": 3.48907470703125
+      },
+      "validation": "Current suite: rank completeness, finite fields, placement and timings checked",
+      "provenance": {
+        "original_run": "hydrostatic_free_surface_models/nibi/2026-10-07_gpu_scaling_extended",
+        "measured_at": "2026-10-12T13:29:38.182",
+        "original_case": "hydrostatic_free_surface_models/nibi/2026-10-07_gpu_scaling_extended/gpu_scaling_super_fine/32_ranks",
+        "results_sha256": "23541999b4e06bce128556a350da89c3c524980a05c495ee33afa04ff6270b1f"
+      }
+    },
+    {
+      "ranks": 4,
+      "partition": [
+        2,
+        2,
+        1
+      ],
+      "configuration": {
+        "model_type": "HydrostaticFreeSurfaceModel",
+        "device": "GPU",
+        "series": "gpu_scaling_super_fine",
+        "global_resolution": [
+          1440,
+          720,
+          200
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "float_type": "Float64",
+        "threads_per_rank": 1,
+        "samples": 5,
+        "time_steps": 10,
+        "dt": 60.0,
+        "warmup_steps": null,
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "tracer_count": 2,
+        "timestepper": "SplitRungeKutta3",
+        "profile": false,
+        "free_surface_substeps": null,
+        "extend_free_surface_halos": null,
+        "partition": [
+          2,
+          2,
+          1
+        ],
+        "ranks": 4,
+        "x_sizes": [
+          720,
+          720
+        ],
+        "y_sizes": [
+          360,
+          360
+        ]
+      },
+      "measurement": {
+        "fastest": 0.2664354179,
+        "median": 0.2677526847,
+        "maximum": 0.2790903478,
+        "retained_substeps": []
+      },
+      "validation": "Historical: complete ranks and timing aggregates checked; finite-state/placement checks unavailable",
+      "id": "4_ranks",
+      "series": "gpu_scaling_super_fine",
+      "state": "COMPLETED",
+      "job_id": "",
+      "details": "",
+      "provenance": {
+        "original_run": "hydrostatic_free_surface_models/nibi/2026-10-05_gpu_scaling",
+        "measured_at": "2026-10-05T04:48:23.432",
+        "original_case": "hydrostatic_free_surface_models/nibi/2026-10-05_gpu_scaling/4_gpus",
+        "results_sha256": "5bae6d7d0a05dea25e9c0460623720a50254db9ceac772af4dad6f7e64c7ae91"
+      }
+    }
+  ],
+  "curated": true
+}

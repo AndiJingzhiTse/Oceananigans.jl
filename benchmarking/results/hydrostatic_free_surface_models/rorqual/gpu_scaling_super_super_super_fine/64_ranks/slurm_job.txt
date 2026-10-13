@@ -1,0 +1,29 @@
+JobId=22690717 JobName=bench_gpu_scaling_super_super_super_
+   UserId=anditse(3165591) GroupId=anditse(3165591) MCS_label=N/A
+   Priority=2654174 Nice=0 Account=def-fpoulin_gpu QOS=normal
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:00:07 TimeLimit=00:45:00 TimeMin=N/A
+   SubmitTime=2026-10-07T20:01:08 EligibleTime=2026-10-07T20:01:08
+   AccrueTime=2026-10-07T20:01:08
+   StartTime=2026-10-08T05:33:41 EndTime=2026-10-08T06:18:41 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-08T05:33:41 Scheduler=Backfill
+   Partition=gpubase_bynode_b1 AllocNode:Sid=rorqual1:3564250
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=rg[21801,21805-21806,31502,31601,31603,31607,32001,32003,32101-32102,32202-32203,32301-32303]
+   BatchHost=rg21801
+   NumNodes=16 NumCPUs=512 NumTasks=64 CPUs/Task=8 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=512,mem=8000G,node=16,billing=780800,gres/gpu=64,gres/gpu:h100=64
+   AllocTRES=cpu=512,mem=8000G,node=16,billing=780800,gres/gpu=64,gres/gpu:h100=64
+   Socks/Node=* NtasksPerN:B:S:C=4:0:*:* CoreSpec=*
+   MinCPUsNode=32 MinMemoryNode=0 MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=OK Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)
+   Command=/home/anditse/Oceananigans.jl/benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_scaling_super_super_super_fine/64_ranks/allocation.sh
+   SubmitLine=sbatch --parsable --job-name=bench_gpu_scaling_super_super_super_ --nodes=16 --ntasks=64 --ntasks-per-node=4 --cpus-per-task=8 --output=/home/anditse/Oceananigans.jl/benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_scaling_super_super_super_fine/64_ranks/allocation.out --account=def-fpoulin_gpu --time=00:45:00 --gpus-per-task=h100:1 --mem=0 --export=ALL,JULIA_DEPOT_PATH=/scratch/anditse/julia_depot: /home/anditse/Oceananigans.jl/benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_scaling_super_super_super_fine/64_ranks/allocation.sh
+   WorkDir=/home/anditse/Oceananigans.jl
+   StdErr=
+   StdIn=/dev/null
+   StdOut=/home/anditse/Oceananigans.jl/benchmarking/results/rorqual/2026-10-07_gpu_extended_suite/gpu_scaling_super_super_super_fine/64_ranks/allocation.out
+   TresBind=gres/gpu:per_task:1
+   TresPerTask=cpu=8,gres/gpu:h100:1

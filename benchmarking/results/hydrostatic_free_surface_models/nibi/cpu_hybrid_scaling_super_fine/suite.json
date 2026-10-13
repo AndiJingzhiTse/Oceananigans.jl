@@ -1,0 +1,215 @@
+{
+  "server": {
+    "backend": "local",
+    "matplotlib": true,
+    "model_type": "HydrostaticFreeSurfaceModel",
+    "machine": "nibi"
+  },
+  "cases": [
+    {
+      "ranks": 1,
+      "partition": [
+        1,
+        1,
+        1
+      ],
+      "configuration": {
+        "model_type": "HydrostaticFreeSurfaceModel",
+        "device": "CPU",
+        "series": "cpu_hybrid_scaling_super_fine",
+        "global_resolution": [
+          1440,
+          720,
+          200
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "float_type": "Float64",
+        "threads_per_rank": 192,
+        "samples": 5,
+        "time_steps": 10,
+        "dt": 60.0,
+        "warmup_steps": null,
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "tracer_count": 2,
+        "timestepper": "SplitRungeKutta3",
+        "profile": false,
+        "free_surface_substeps": null,
+        "extend_free_surface_halos": null,
+        "partition": [
+          1,
+          1,
+          1
+        ],
+        "ranks": 1,
+        "x_sizes": [
+          1440
+        ],
+        "y_sizes": [
+          720
+        ]
+      },
+      "measurement": {
+        "fastest": 42.336904575199995,
+        "median": 42.7129670265,
+        "maximum": 43.3097801454,
+        "retained_substeps": []
+      },
+      "validation": "Historical: complete ranks and timing aggregates checked; finite-state/placement checks unavailable",
+      "id": "1x1x1",
+      "series": "cpu_hybrid_scaling_super_fine",
+      "state": "COMPLETED",
+      "job_id": "",
+      "details": "",
+      "provenance": {
+        "original_run": "hydrostatic_free_surface_models/nibi/2026-10-06_cpu_scaling_super_fine",
+        "measured_at": "2026-10-06T08:01:59.583",
+        "original_case": "hydrostatic_free_surface_models/nibi/2026-10-06_cpu_scaling_super_fine/1_nodes/1x1x1",
+        "results_sha256": "a0c4827a6a6cf077851889fd71bbc015a8dc31dc85b6a4db2ff649701314fe29"
+      }
+    },
+    {
+      "ranks": 2,
+      "partition": [
+        1,
+        2,
+        1
+      ],
+      "configuration": {
+        "model_type": "HydrostaticFreeSurfaceModel",
+        "device": "CPU",
+        "series": "cpu_hybrid_scaling_super_fine",
+        "global_resolution": [
+          1440,
+          720,
+          200
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "float_type": "Float64",
+        "threads_per_rank": 192,
+        "samples": 5,
+        "time_steps": 10,
+        "dt": 60.0,
+        "warmup_steps": null,
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "tracer_count": 2,
+        "timestepper": "SplitRungeKutta3",
+        "profile": false,
+        "free_surface_substeps": null,
+        "extend_free_surface_halos": null,
+        "partition": [
+          1,
+          2,
+          1
+        ],
+        "ranks": 2,
+        "x_sizes": [
+          1440
+        ],
+        "y_sizes": [
+          360,
+          360
+        ]
+      },
+      "measurement": {
+        "fastest": 39.997438962299995,
+        "median": 44.307615132500004,
+        "maximum": 46.2539387861,
+        "retained_substeps": []
+      },
+      "validation": "Historical: complete ranks and timing aggregates checked; finite-state/placement checks unavailable",
+      "id": "1x2x1",
+      "series": "cpu_hybrid_scaling_super_fine",
+      "state": "COMPLETED",
+      "job_id": "",
+      "details": "",
+      "provenance": {
+        "original_run": "hydrostatic_free_surface_models/nibi/2026-10-06_cpu_scaling_super_fine",
+        "measured_at": "2026-10-06T07:58:40.893",
+        "original_case": "hydrostatic_free_surface_models/nibi/2026-10-06_cpu_scaling_super_fine/2_nodes/1x2x1",
+        "results_sha256": "fd3d4c038b61c4bf4eee4faf53695036e5b6223fc8632535b18cd21cf7a09f3c"
+      }
+    },
+    {
+      "ranks": 4,
+      "partition": [
+        2,
+        2,
+        1
+      ],
+      "configuration": {
+        "model_type": "HydrostaticFreeSurfaceModel",
+        "device": "CPU",
+        "series": "cpu_hybrid_scaling_super_fine",
+        "global_resolution": [
+          1440,
+          720,
+          200
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "float_type": "Float64",
+        "threads_per_rank": 192,
+        "samples": 5,
+        "time_steps": 10,
+        "dt": 60.0,
+        "warmup_steps": null,
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "tracer_count": 2,
+        "timestepper": "SplitRungeKutta3",
+        "profile": false,
+        "free_surface_substeps": null,
+        "extend_free_surface_halos": null,
+        "partition": [
+          2,
+          2,
+          1
+        ],
+        "ranks": 4,
+        "x_sizes": [
+          720,
+          720
+        ],
+        "y_sizes": [
+          360,
+          360
+        ]
+      },
+      "measurement": {
+        "fastest": 57.774982165999994,
+        "median": 58.6265022711,
+        "maximum": 59.4199802375,
+        "retained_substeps": []
+      },
+      "validation": "Historical: complete ranks and timing aggregates checked; finite-state/placement checks unavailable",
+      "id": "2x2x1",
+      "series": "cpu_hybrid_scaling_super_fine",
+      "state": "COMPLETED",
+      "job_id": "",
+      "details": "",
+      "provenance": {
+        "original_run": "hydrostatic_free_surface_models/nibi/2026-10-06_cpu_scaling_super_fine",
+        "measured_at": "2026-10-06T10:17:31.956",
+        "original_case": "hydrostatic_free_surface_models/nibi/2026-10-06_cpu_scaling_super_fine/4_nodes/2x2x1",
+        "results_sha256": "3d42a17b4ecea8af497e4e3a454e0e4f37efcf91f9dbd975c78cfb31aab694d1"
+      }
+    }
+  ],
+  "curated": true
+}

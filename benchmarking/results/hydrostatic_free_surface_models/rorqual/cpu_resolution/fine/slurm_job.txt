@@ -1,0 +1,28 @@
+JobId=22653832 JobName=bench_cpu_resolution
+   UserId=anditse(3165591) GroupId=anditse(3165591) MCS_label=N/A
+   Priority=2783455 Nice=0 Account=def-fpoulin_cpu QOS=normal
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:00:04 TimeLimit=1-00:00:00 TimeMin=N/A
+   SubmitTime=2026-10-07T10:27:03 EligibleTime=2026-10-07T10:27:03
+   AccrueTime=2026-10-07T10:27:03
+   StartTime=2026-10-07T11:22:13 EndTime=2026-10-08T11:22:13 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-07T11:22:13 Scheduler=Backfill
+   Partition=cpubase_bynode_b3 AllocNode:Sid=rorqual1:3642757
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=rc13314
+   BatchHost=rc13314
+   NumNodes=1 NumCPUs=192 NumTasks=1 CPUs/Task=1 ReqB:S:C:T=0:0:*:1
+   ReqTRES=cpu=1,mem=750G,node=1,billing=187500
+   AllocTRES=cpu=192,mem=750G,node=1,billing=192000
+   Socks/Node=* NtasksPerN:B:S:C=1:0:*:* CoreSpec=*
+   MinCPUsNode=1 MinMemoryNode=0 MinTmpDiskNode=0
+   Features=[genoa|sapphirerapids] DelayBoot=00:00:00
+   OverSubscribe=NO Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)
+   Command=/home/anditse/Oceananigans.jl/benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_resolution/fine/allocation.sh
+   SubmitLine=sbatch --parsable --job-name=bench_cpu_resolution --nodes=1 --ntasks=1 --ntasks-per-node=1 --cpus-per-task=1 --output=/home/anditse/Oceananigans.jl/benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_resolution/fine/allocation.out --account=def-fpoulin_cpu --time=24:00:00 --hint=nomultithread --exclusive --mem=0 --export=ALL,JULIA_DEPOT_PATH=/scratch/anditse/julia_depot: /home/anditse/Oceananigans.jl/benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_resolution/fine/allocation.sh
+   WorkDir=/home/anditse/Oceananigans.jl
+   StdErr=
+   StdIn=/dev/null
+   StdOut=/home/anditse/Oceananigans.jl/benchmarking/results/rorqual/2026-10-07_cpu_retry/cpu_resolution/fine/allocation.out
+   TresPerTask=cpu=1

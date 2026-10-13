@@ -1,0 +1,41 @@
+{
+  "model_type": "HydrostaticFreeSurfaceModel",
+  "device": "GPU",
+  "series": "gpu_profiling",
+  "global_resolution": [
+    720,
+    360,
+    50
+  ],
+  "grid_type": "TripolarGrid",
+  "float_type": "Float64",
+  "threads_per_rank": 1,
+  "samples": 1,
+  "time_steps": 2,
+  "dt": 60.0,
+  "warmup_steps": null,
+  "momentum_advection": "WENOVectorInvariantDefault",
+  "tracer_advection": "WENO7",
+  "closure": "CATKE",
+  "tracers": [
+    "T",
+    "S"
+  ],
+  "tracer_count": 2,
+  "timestepper": "SplitRungeKutta3",
+  "profile": true,
+  "free_surface_substeps": null,
+  "extend_free_surface_halos": null,
+  "partition": [
+    1,
+    1,
+    1
+  ],
+  "ranks": 1,
+  "x_sizes": [
+    720
+  ],
+  "y_sizes": [
+    360
+  ]
+}

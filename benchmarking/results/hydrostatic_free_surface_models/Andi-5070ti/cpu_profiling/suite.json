@@ -1,0 +1,78 @@
+{
+  "server": {
+    "backend": "local",
+    "matplotlib": true,
+    "model_type": "HydrostaticFreeSurfaceModel",
+    "machine": "Andi-5070ti"
+  },
+  "cases": [
+    {
+      "ranks": 1,
+      "partition": [
+        1,
+        1,
+        1
+      ],
+      "configuration": {
+        "model_type": "HydrostaticFreeSurfaceModel",
+        "device": "CPU",
+        "series": "cpu_profiling",
+        "global_resolution": [
+          720,
+          360,
+          50
+        ],
+        "grid_type": "TripolarGrid",
+        "float_type": "Float64",
+        "threads_per_rank": 1,
+        "samples": 1,
+        "time_steps": 2,
+        "dt": 60.0,
+        "warmup_steps": null,
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "tracer_count": 2,
+        "timestepper": "SplitRungeKutta3",
+        "profile": true,
+        "free_surface_substeps": null,
+        "extend_free_surface_halos": null,
+        "partition": [
+          1,
+          1,
+          1
+        ],
+        "ranks": 1,
+        "x_sizes": [
+          720
+        ],
+        "y_sizes": [
+          360
+        ]
+      },
+      "measurement": {
+        "fastest": 47.64430635,
+        "median": 47.64430635,
+        "maximum": 47.64430635,
+        "retained_substeps": []
+      },
+      "validation": "Historical: complete ranks and timing aggregates checked; finite-state/placement checks unavailable",
+      "id": "720x360x50",
+      "series": "cpu_profiling",
+      "state": "COMPLETED",
+      "job_id": "",
+      "details": "",
+      "provenance": {
+        "original_run": "hydrostatic_free_surface_models/Andi-5070ti/2026-09-23_nsys_cpu_720x360x50",
+        "measured_at": "2026-09-23T23:41:33.275",
+        "original_case": "hydrostatic_free_surface_models/Andi-5070ti/2026-09-23_nsys_cpu_720x360x50",
+        "results_sha256": "e86ceff14a592791ad4ec6c5455c3a187ec83280fb4d29bfbd66214efca1b111"
+      }
+    }
+  ],
+  "curated": true
+}

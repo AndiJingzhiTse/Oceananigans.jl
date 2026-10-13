@@ -1,8 +1,0 @@
-series,case,ranks,partition,resolution,grid_type,state,job_id,fastest,median,efficiency_fastest,efficiency_median,details
-cpu_mpi_scaling_super_fine,smoke_16_local_fft,16,4x4x1,72x36x200,LatitudeLongitudeGrid,COMPLETED,23113183,0.250728184,0.250728184,0.37406788251216305,0.37406788251216305,"Rank results, finite fields and resource placement verified"
-cpu_mpi_scaling_super_fine,smoke_1_local_fft,1,1x1x1,72x36x200,LatitudeLongitudeGrid,COMPLETED,23113184,1.500629774,1.500629774,1.0,1.0,"Rank results, finite fields and resource placement verified"
-cpu_mpi_scaling_super_fine,super_fine_192_local_fft,192,16x12x1,1440x720x200,LatitudeLongitudeGrid,FAILED,23113185,,,,,Execution/export exit 143; see job.out and rank logs
-cpu_mpi_scaling_super_fine,super_fine_192_local_fft_retry,192,16x12x1,1440x720x200,LatitudeLongitudeGrid,COMPLETED,23113961,245.56212064,245.56212064,,,"Rank results, finite fields and resource placement verified"
-gpu_scaling_super_fine,smoke_2_local_fft,2,2x1x1,72x36x200,LatitudeLongitudeGrid,NOT_RUN,23113186,,,,,Case never started; allocation CANCELLED: Exit 0:0; Dependency
-gpu_scaling_super_fine,super_fine_4_local_fft,4,2x2x1,1440x720x200,LatitudeLongitudeGrid,NOT_RUN,23113187,,,,,Case never started; allocation CANCELLED: Exit 0:0; Dependency
-cpu_partition_cores_super_fine,super_fine_192x1x1_local_fft,192,192x1x1,1440x720x200,LatitudeLongitudeGrid,CANCELLED,23114967,,,,,Exit 0:0; None

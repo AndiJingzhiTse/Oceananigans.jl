@@ -1,0 +1,212 @@
+{
+  "server": {
+    "backend": "local",
+    "matplotlib": true,
+    "model_type": "HydrostaticFreeSurfaceModel",
+    "machine": "Andi-5070ti"
+  },
+  "cases": [
+    {
+      "ranks": 1,
+      "partition": [
+        1,
+        1,
+        1
+      ],
+      "configuration": {
+        "model_type": "HydrostaticFreeSurfaceModel",
+        "device": "CPU",
+        "series": "cpu_resolution",
+        "global_resolution": [
+          180,
+          90,
+          50
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "float_type": "Float64",
+        "threads_per_rank": 1,
+        "samples": 5,
+        "time_steps": 10,
+        "dt": 60.0,
+        "warmup_steps": null,
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "tracer_count": 2,
+        "timestepper": "SplitRungeKutta3",
+        "profile": false,
+        "free_surface_substeps": null,
+        "extend_free_surface_halos": null,
+        "partition": [
+          1,
+          1,
+          1
+        ],
+        "ranks": 1,
+        "x_sizes": [
+          180
+        ],
+        "y_sizes": [
+          90
+        ]
+      },
+      "measurement": {
+        "fastest": 1.3616515100000002,
+        "median": 1.3664818,
+        "maximum": 1.40400103,
+        "retained_substeps": []
+      },
+      "validation": "Historical: complete ranks and timing aggregates checked; finite-state/placement checks unavailable",
+      "id": "180x90x50",
+      "series": "cpu_resolution",
+      "state": "COMPLETED",
+      "job_id": "",
+      "details": "",
+      "provenance": {
+        "original_run": "hydrostatic_free_surface_models/Andi-5070ti/2026-09-17_cpu",
+        "measured_at": "2026-09-17T14:27:31.368",
+        "original_case": "hydrostatic_free_surface_models/Andi-5070ti/2026-09-17_cpu",
+        "results_sha256": "f5a81d34adc43840a48b1b1d21983ba12c6ac495095faa242549daa5557b6f00"
+      }
+    },
+    {
+      "ranks": 1,
+      "partition": [
+        1,
+        1,
+        1
+      ],
+      "configuration": {
+        "model_type": "HydrostaticFreeSurfaceModel",
+        "device": "CPU",
+        "series": "cpu_resolution",
+        "global_resolution": [
+          360,
+          180,
+          50
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "float_type": "Float64",
+        "threads_per_rank": 1,
+        "samples": 5,
+        "time_steps": 10,
+        "dt": 60.0,
+        "warmup_steps": null,
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "tracer_count": 2,
+        "timestepper": "SplitRungeKutta3",
+        "profile": false,
+        "free_surface_substeps": null,
+        "extend_free_surface_halos": null,
+        "partition": [
+          1,
+          1,
+          1
+        ],
+        "ranks": 1,
+        "x_sizes": [
+          360
+        ],
+        "y_sizes": [
+          180
+        ]
+      },
+      "measurement": {
+        "fastest": 5.56021335,
+        "median": 5.5781167400000005,
+        "maximum": 5.62821198,
+        "retained_substeps": []
+      },
+      "validation": "Historical: complete ranks and timing aggregates checked; finite-state/placement checks unavailable",
+      "id": "360x180x50",
+      "series": "cpu_resolution",
+      "state": "COMPLETED",
+      "job_id": "",
+      "details": "",
+      "provenance": {
+        "original_run": "hydrostatic_free_surface_models/Andi-5070ti/2026-09-17_cpu",
+        "measured_at": "2026-09-17T14:34:10.352",
+        "original_case": "hydrostatic_free_surface_models/Andi-5070ti/2026-09-17_cpu",
+        "results_sha256": "e9dd9e878863f0008bd32de7ded962813c802f55d40615b3b3a4b8ef5686bf58"
+      }
+    },
+    {
+      "ranks": 1,
+      "partition": [
+        1,
+        1,
+        1
+      ],
+      "configuration": {
+        "model_type": "HydrostaticFreeSurfaceModel",
+        "device": "CPU",
+        "series": "cpu_resolution",
+        "global_resolution": [
+          720,
+          360,
+          50
+        ],
+        "grid_type": "TripolarGrid",
+        "float_type": "Float64",
+        "threads_per_rank": 1,
+        "samples": 5,
+        "time_steps": 10,
+        "dt": 60.0,
+        "warmup_steps": null,
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "tracer_count": 2,
+        "timestepper": "SplitRungeKutta3",
+        "profile": false,
+        "free_surface_substeps": null,
+        "extend_free_surface_halos": null,
+        "partition": [
+          1,
+          1,
+          1
+        ],
+        "ranks": 1,
+        "x_sizes": [
+          720
+        ],
+        "y_sizes": [
+          360
+        ]
+      },
+      "measurement": {
+        "fastest": 46.2252384,
+        "median": 51.57788412,
+        "maximum": 52.69539941000001,
+        "retained_substeps": []
+      },
+      "validation": "Historical: complete ranks and timing aggregates checked; finite-state/placement checks unavailable",
+      "id": "720x360x50",
+      "series": "cpu_resolution",
+      "state": "COMPLETED",
+      "job_id": "",
+      "details": "",
+      "provenance": {
+        "original_run": "hydrostatic_free_surface_models/Andi-5070ti/2026-09-17_cpu",
+        "measured_at": "2026-09-17T19:10:31.259",
+        "original_case": "hydrostatic_free_surface_models/Andi-5070ti/2026-09-17_cpu",
+        "results_sha256": "1b9d03abb9254104e475b98696e3ab0df1199b7558cccedb740842c4815d6d23"
+      }
+    }
+  ],
+  "curated": true
+}
