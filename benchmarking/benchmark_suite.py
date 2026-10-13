@@ -63,6 +63,8 @@ def load_server(path=None):
                   case_timeout_seconds=86400, matplotlib=True, python='python3', report_modules=[],
                   reference_suites=[], replacement_suites=[], environment={}, gpu_scaling_partition='balanced',
                   model_type='HydrostaticFreeSurfaceModel', comparison_suites=[], comparison_report='')
+    server.update(pressure_preconditioner='DiagonallyDominantPreconditioner',
+                  pressure_max_iterations=5000, pressure_diagnostics=False, separate_partitions=False)
     unknown = set(user) - set(server)
     if unknown:
         raise ValueError('Unknown server settings: ' + ', '.join(sorted(unknown)))
@@ -80,6 +82,12 @@ def load_server(path=None):
         raise ValueError('gpu_scaling_partition must be balanced or x')
     if server['model_type'] not in MODEL_FOLDERS:
         raise ValueError('Unknown model_type')
+    if server['pressure_preconditioner'] not in ('DiagonallyDominantPreconditioner', 'ColumnwiseTridiagonalPreconditioner'):
+        raise ValueError('Unknown pressure_preconditioner')
+    if not isinstance(server['pressure_max_iterations'], int) or server['pressure_max_iterations'] < 1:
+        raise ValueError('pressure_max_iterations must be a positive integer')
+    if any(not isinstance(server[k], bool) for k in ('pressure_diagnostics', 'separate_partitions')):
+        raise ValueError('pressure_diagnostics and separate_partitions must be boolean')
     if not isinstance(server['environment'], dict) or any(not isinstance(k, str) or not isinstance(v, str) for k, v in server['environment'].items()):
         raise ValueError('environment must map variable names to string values')
     for key in ('project', 'trace_root', 'environment_script', 'mpi_init', 'comparison_report'):
@@ -128,6 +136,7 @@ def config_markdown(config):
             f"Local resolution: x {min(config['x_sizes'])}–{max(config['x_sizes'])}, y {min(config['y_sizes'])}–{max(config['y_sizes'])}, z {config['global_resolution'][2]}.\n"
             f"Float64; momentum {config['momentum_advection']}, tracers {config['tracer_advection']}, {config['closure']}, T/S, {config['timestepper']}.\n"
             f"Viscosity={config.get('viscosity')}; diffusivity={config.get('diffusivity')} m²/s; pressure solver={config.get('pressure_solver')}.\n"
+            f"Pressure preconditioner={config.get('pressure_preconditioner')}; iteration cap={config.get('pressure_max_iterations')}; relative/absolute tolerances={config.get('pressure_reltol')}/{config.get('pressure_abstol')}.\n"
             f"Δt={config['dt']} s; free-surface substeps={config['free_surface_substeps']} requested; extend_halos={config['extend_free_surface_halos']}.\n"
             f"Two untimed steps, {config['samples']} windows of {config['time_steps']} steps. Profile={config['profile']}.\n")
 
@@ -254,7 +263,7 @@ def sbatch_command(server, group, script):
 
 def execute(folder, data):
     server, cases = data['server'], data['cases']
-    for key, group in allocation_groups(cases).items():
+    for key, group in allocation_groups(cases, server.get('separate_partitions', False)).items():
         script = group_script(folder, server, group)
         if server['backend'] == 'slurm':
             args = sbatch_command(server, group, script)
@@ -363,7 +372,10 @@ def refresh(folder, data, query_slurm=True):
                     case.update(state='INVALID_RESULTS', details=str(error))
         elif case['job_id'] in records:
             state, detail = records[case['job_id']]
-            case.update(state='INTERRUPTED' if state == 'COMPLETED' else state, details=detail)
+            if state in TERMINAL and not (destination / 'started.txt').exists():
+                case.update(state='NOT_RUN', details=f'Case never started; allocation {state}: {detail}')
+            else:
+                case.update(state='INTERRUPTED' if state == 'COMPLETED' else state, details=detail)
         elif (destination / 'started.txt').exists() and case['state'] not in TERMINAL:
             case.update(state='RUNNING', details='Started; waiting for completion marker')
     atomic_json(folder / 'suite.json', data)

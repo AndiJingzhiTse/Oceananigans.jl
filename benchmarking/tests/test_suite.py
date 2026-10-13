@@ -28,6 +28,9 @@ def fixture(folder, config):
             entries[-1].update(model_type='NonhydrostaticModel', free_surface='RigidLid',
                                pressure_solver='ConjugateGradientPoissonSolver',
                                pressure_solver_converged=True, retained_free_surface_substeps=None)
+            entries[-1].update(pressure_preconditioner=config['pressure_preconditioner'],
+                pressure_solves=[dict(iterations=10, final_residual=1e-10, tolerance=1e-8, converged=True)
+                                for _ in range(3 * (config['warmup_steps'] + config['samples'] * config['time_steps']))])
         layout.append(dict(rank=rank, hostname='node', affinity=str(rank), threads=1,
                            physical_core=f'0:{rank}', gpu_uuid=f'GPU-{rank}' if config['device'] == 'GPU' else None))
     (folder / 'results.json').write_text(json.dumps(entries))
@@ -58,7 +61,7 @@ class SuiteTests(unittest.TestCase):
             self.assertEqual(cfg['momentum_advection'], 'WENO7')
             self.assertEqual(cfg['closure'], 'ScalarDiffusivity')
             self.assertIsNone(cfg['free_surface_substeps'])
-            self.assertEqual(cfg['pressure_max_iterations'], math.prod(cfg['global_resolution']))
+            self.assertEqual(cfg['pressure_max_iterations'], 5000)
 
     def test_nonhydrostatic_validation_requires_model_and_pressure_convergence(self):
         cfg = plan.configuration('cpu_mpi_scaling_super_fine', 2,
@@ -76,6 +79,38 @@ class SuiteTests(unittest.TestCase):
             (folder/'results.json').write_text(json.dumps(entries))
             with self.assertRaisesRegex(ValueError, 'Unexpected nonhydrostatic model'):
                 report.validate(folder,cfg)
+
+    def test_pressure_validation_checks_every_stage_and_residual(self):
+        cfg = plan.configuration('cpu_mpi_scaling_super_fine', 1, model_type='NonhydrostaticModel')
+        with tempfile.TemporaryDirectory() as tmp:
+            folder = Path(tmp) / 'case'
+            entries = fixture(folder, cfg)
+            entries[0]['pressure_solves'][0]['final_residual'] = 1
+            (folder/'results.json').write_text(json.dumps(entries))
+            with self.assertRaisesRegex(ValueError, 'Invalid pressure residual'):
+                report.validate(folder, cfg)
+            entries[0]['pressure_solves'].pop()
+            (folder/'results.json').write_text(json.dumps(entries))
+            with self.assertRaisesRegex(ValueError, 'Missing pressure stage checks'):
+                report.validate(folder, cfg)
+
+    def test_partition_cases_can_have_independent_allocations(self):
+        cases = plan.build_plan(self.server(), ('cpu_partition_cores_super_fine',))
+        self.assertEqual(len(plan.allocation_groups(cases)), 1)
+        self.assertEqual(len(plan.allocation_groups(cases, separate_partitions=True)), 13)
+
+    def test_unstarted_case_is_not_reported_as_an_application_timeout(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            folder = Path(tmp)
+            cfg = plan.configuration('cpu_mpi_scaling_super_fine', 1)
+            case = dict(id='case', series=cfg['series'], ranks=1, state='PENDING', job_id='42', configuration=cfg)
+            (folder/'case').mkdir()
+            data = dict(cases=[case], server=dict(backend='slurm', matplotlib=False))
+            accounting = subprocess.CompletedProcess([], 0, stdout='42|TIMEOUT|0:0|None|\n')
+            queue = subprocess.CompletedProcess([], 0, stdout='')
+            with patch.object(runner, 'command', side_effect=[accounting, queue]):
+                runner.refresh(folder, data)
+            self.assertEqual(case['state'], 'NOT_RUN')
 
     def test_model_comparison_requires_validated_matching_workloads_and_protocol(self):
         series = 'gpu_scaling_super_fine'

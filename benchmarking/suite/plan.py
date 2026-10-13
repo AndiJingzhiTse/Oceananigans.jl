@@ -69,7 +69,11 @@ def configuration(series, ranks, grid_name='super_fine', partition=None, global_
                 timestepper='SplitRungeKutta3' if hydrostatic else 'RungeKutta3',
                 free_surface='SplitExplicitFreeSurface' if hydrostatic else 'RigidLid',
                 pressure_solver=None if hydrostatic else 'ConjugateGradientPoissonSolver',
-                pressure_max_iterations=None if hydrostatic else math.prod(grid),
+                pressure_preconditioner=None if hydrostatic else 'DiagonallyDominantPreconditioner',
+                pressure_max_iterations=None if hydrostatic else 5000,
+                pressure_reltol=None if hydrostatic else math.sqrt(2.220446049250313e-16),
+                pressure_abstol=None if hydrostatic else math.sqrt(2.220446049250313e-16),
+                pressure_diagnostics=False, initial_condition_seed=None if hydrostatic else 1234,
                 dt=60 * min(1, 1440 / grid[0]), free_surface_substeps=30 if hydrostatic else None,
                 extend_free_surface_halos=gpu if hydrostatic else False,
                 warmup_steps=2, samples=5, time_steps=10,
@@ -118,6 +122,10 @@ def build_plan(server, selected=SERIES):
                     partition = [ranks, 1, 1]
                 case['configuration'] = configuration(series, ranks, grid_name, partition, weak_grid,
                                                       server.get('model_type', 'HydrostaticFreeSurfaceModel'))
+                if server.get('model_type') == 'NonhydrostaticModel':
+                    for key in ('pressure_preconditioner', 'pressure_max_iterations', 'pressure_diagnostics'):
+                        if key in server:
+                            case['configuration'][key] = server[key]
                 case['partition'] = case['configuration']['partition']
                 if ranks > maximum:
                     case.update(state='RESOURCE_LIMIT', details=f'Requires {ranks}; configured capacity is {maximum}')
@@ -129,12 +137,13 @@ def build_plan(server, selected=SERIES):
     return cases
 
 
-def allocation_groups(cases):
+def allocation_groups(cases, separate_partitions=False):
     """Keep partition comparisons on the same allocated resource set."""
     groups = {}
     for case in cases:
         if case['state'] != 'PLANNED':
             continue
-        key = f"{case['series']}/{case['ranks']}_ranks" if 'partition' in case['series'] else case['id']
+        key = (f"{case['series']}/{case['ranks']}_ranks"
+               if 'partition' in case['series'] and not separate_partitions else case['id'])
         groups.setdefault(key, []).append(case)
     return groups

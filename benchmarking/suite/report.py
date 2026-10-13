@@ -10,7 +10,7 @@ from .plan import GPU_BASELINES, SERIES
 
 TERMINAL = {'COMPLETED', 'FAILED', 'CANCELLED', 'TIMEOUT', 'OUT_OF_MEMORY', 'NODE_FAIL',
             'PREEMPTED', 'BOOT_FAIL', 'DEADLINE', 'REVOKED', 'INVALID_RESULTS',
-            'SUBMISSION_FAILED', 'RESOURCE_LIMIT', 'GEOMETRY_LIMIT', 'INTERRUPTED'}
+            'SUBMISSION_FAILED', 'RESOURCE_LIMIT', 'GEOMETRY_LIMIT', 'INTERRUPTED', 'NOT_RUN'}
 CATEGORIES = ('Gc', 'Gu', 'Gv', 'Others')
 
 
@@ -47,6 +47,17 @@ def validate(case_dir, config):
                                entry.get('pressure_solver') != config['pressure_solver'] or
                                entry.get('pressure_solver_converged') is not True):
             raise ValueError('Unexpected nonhydrostatic model or unconverged pressure solver')
+        if nonhydrostatic and config.get('pressure_preconditioner'):
+            solves = entry.get('pressure_solves', [])
+            expected_solves = 3 * (config['warmup_steps'] + config['samples'] * config['time_steps'])
+            if entry.get('pressure_preconditioner') != config['pressure_preconditioner'] or len(solves) != expected_solves:
+                raise ValueError('Missing pressure stage checks or unexpected preconditioner')
+            for solve in solves:
+                residual, tolerance = solve['final_residual'], solve['tolerance']
+                if (solve['converged'] is not True or not math.isfinite(residual) or
+                        not math.isfinite(tolerance) or tolerance < 0 or residual > tolerance or
+                        not 0 <= solve['iterations'] <= config['pressure_max_iterations']):
+                    raise ValueError('Invalid pressure residual or iteration count')
         if (entry['configuration'] != config or entry['grid_size'] != expected or
                 entry['float_type'] != 'Float64' or entry['finite_state'] is not True or
                 entry['metadata']['num_threads'] != 1 or not substeps_valid):
@@ -187,6 +198,7 @@ def write_model_comparison(path, folder, cases, comparison_suites):
              'Shared settings: latitude–longitude grid without bathymetry, Float64, T/S, TEOS10 buoyancy, traditional spherical Coriolis, global/local resolution and partition, one thread/rank, Δt, and timing windows.',
              'H uses WENOVectorInvariant momentum, WENO7 tracers, CATKE, SplitRungeKutta3 and a split-explicit free surface (30 requested substeps; extended halos on GPU).',
              'N uses WENO7 momentum/tracers, ScalarDiffusivity (ν=1e-3, κ=1e-5 m²/s), RungeKutta3, a rigid lid, and a three-dimensional ConjugateGradientPoissonSolver. Free-surface substeps are not applicable.',
+             'Pressure preconditioners, tolerances, iteration caps and initial-condition seeds are recorded in each configuration; solver pilots remain separate from production timings.',
              'The physics and numerical-method differences above are intentional. CATKE can also introduce a TKE tracer beyond T/S. Per-case links retain actual settings, placement, solver checks, and source/environment provenance.',
              'Each series comes entirely from its selected run; a pending rerun does not borrow an older baseline. Efficiencies use each model’s own measured baseline and are not cross-model timing ratios.', '',
              'Ideal strong/weak MPI efficiency is 100%. Source plots include expected ratios and ideal timing/efficiency references. Profiled timings are compared only with profiled timings.', '',

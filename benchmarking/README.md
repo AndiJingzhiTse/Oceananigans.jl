@@ -205,10 +205,28 @@ with ν=1e-3 and κ=1e-5 m²/s, `RungeKutta3`, and a three-dimensional
 split-explicit free surface are hydrostatic settings. Nonhydrostatic runs have
 no free-surface substeps or extended free-surface halos. The hydrostatic
 partition geometry bounds are retained to compare the same layouts. The
-worker validates finite velocities, tracers and pressure, and rejects a
-pressure solve that reaches its iteration limit at a timing-window boundary.
-The pressure iteration bound is the global interior cell count on every rank;
-using different local cell counts as bounds could desynchronize uneven MPI partitions.
+worker validates finite velocities, tracers and pressure, and checks the residual
+against the configured tolerance after every RK3 pressure solve, including warmup.
+The pressure iteration cap defaults to 5000 and must be identical on every rank;
+different local bounds could desynchronize uneven MPI partitions. Record the
+preconditioner, relative/absolute tolerances, iteration cap, and every solve's
+iterations, residual, tolerance and convergence outcome. Nonhydrostatic initial
+conditions use a recorded seed of 1234 plus MPI rank for reproducible solver pilots.
+
+Server specs can select `pressure_preconditioner` as
+`DiagonallyDominantPreconditioner` or `ColumnwiseTridiagonalPreconditioner`.
+Use `pressure_diagnostics: true` for pilots to log residual progress every 200
+iterations; these records reuse the solver's existing norm evaluations. Keep
+diagnostics disabled for production timings. The columnwise preconditioner
+targets thin, vertically stretched ocean grids; validate its CPU/GPU MPI behavior
+and convergence on a representative production grid before choosing it for a suite.
+Keep convergence tolerances unchanged when comparing preconditioners.
+
+Use `separate_partitions: true` when a slow layout could exhaust a shared
+allocation. Each layout then receives its own allocation and time limit;
+record placement because the layouts may run on different nodes. An allocation
+timeout does not mean every bundled case ran: cases without a start marker are
+reported as `NOT_RUN`, with the allocation outcome preserved.
 
 Use a small CPU/GPU MPI validation run before submitting a new model's full
 suite. Keep validation timings separate from production results. Package

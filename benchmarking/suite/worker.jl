@@ -4,9 +4,82 @@ using Oceananigans.DistributedComputations: Distributed, Partition, Sizes
 using Oceananigans.Fields: interior
 using Oceananigans.Architectures: architecture
 using Oceananigans.TurbulenceClosures: ThreeDimensionalFormulation
-using Oceananigans.Solvers: ConjugateGradientPoissonSolver
+using Oceananigans.Solvers: ConjugateGradientPoissonSolver, ConjugateGradientSolver,
+                            DiagonallyDominantPreconditioner, ColumnwiseTridiagonalPreconditioner
+import Oceananigans.Models.NonhydrostaticModels: solve_for_pressure!
+using Random: seed!
 using Statistics: median
 using Sockets: gethostname
+
+# Track norm evaluations already performed by CG, without extra MPI reductions.
+mutable struct BenchmarkResidualNorm{N}
+    native::N
+    calls::Int
+    initial::Float64
+    last::Float64
+    started::UInt64
+    diagnostics::Bool
+    rank::Int
+end
+
+function (metric::BenchmarkResidualNorm)(residual)
+    value = metric.native(residual)
+    metric.calls += 1
+    metric.calls == 1 && (metric.initial = value)
+    metric.last = value
+    iteration = max(0, metric.calls - 2)
+    if metric.diagnostics && metric.rank == 0 && (metric.calls == 1 || iteration > 0 && iteration % 200 == 0)
+        println("PRESSURE_PROGRESS iteration=$iteration residual=$value elapsed_seconds=$((time_ns() - metric.started) / 1e9)")
+        flush(stdout)
+    end
+    return value
+end
+
+mutable struct CheckedPressureSolver{S, N}
+    native::S
+    metric::N
+    records::Vector{Dict{String, Any}}
+end
+
+function checked_pressure_solver(native, config, rank)
+    cg = native.conjugate_gradient_solver
+    metric = BenchmarkResidualNorm(cg.residual_norm, 0, 0.0, 0.0, time_ns(),
+                                   get(config, "pressure_diagnostics", false), rank)
+    tracked = ConjugateGradientSolver(cg.architecture, cg.grid, cg.linear_operation!,
+        cg.reltol, cg.abstol, cg.maxiter, cg.iteration, cg.ρⁱ⁻¹,
+        cg.linear_operator_product, cg.search_direction, cg.residual, cg.preconditioner,
+        cg.preconditioner_product, cg.enforce_gauge_condition!, metric)
+    native = ConjugateGradientPoissonSolver(native.grid, native.right_hand_side, tracked)
+    return CheckedPressureSolver(native, metric, Dict{String, Any}[])
+end
+
+function solve_for_pressure!(pressure, solver::CheckedPressureSolver, free_surface, velocities, Δt)
+    metric = solver.metric
+    metric.calls = 0
+    metric.started = time_ns()
+    solve_for_pressure!(pressure, solver.native, free_surface, velocities, Δt)
+    cg = solver.native.conjugate_gradient_solver
+    # The iteration cap short-circuits CG's final norm evaluation.
+    residual = cg.iteration >= cg.maxiter ? metric.native(cg.residual) : metric.last
+    tolerance = max(cg.reltol * metric.initial, cg.abstol)
+    converged = isfinite(residual) && residual <= tolerance
+    record = Dict{String, Any}("solve" => length(solver.records) + 1, "iterations" => cg.iteration,
+        "initial_residual" => metric.initial, "final_residual" => residual,
+        "tolerance" => tolerance, "converged" => converged,
+        "seconds" => (time_ns() - metric.started) / 1e9)
+    push!(solver.records, record)
+    if metric.diagnostics && metric.rank == 0
+        println("PRESSURE_SOLVE ", JSON.json(record))
+        flush(stdout)
+    end
+    if !converged
+        open(joinpath(case_dir, "rank_$(metric.rank)", "pressure_failure.json"), "w") do io
+            JSON.json(io, record; pretty=true)
+        end
+        error("Pressure solve failed convergence after $(cg.iteration) iterations: residual=$residual, tolerance=$tolerance")
+    end
+    return pressure
+end
 
 # Load packages first, then repair OPAL_PREFIX if the server provides a hook.
 # Other MPI installations can leave BENCHMARK_MPI_INIT unset.
@@ -91,13 +164,26 @@ elseif model_type == "NonhydrostaticModel"
     closure = ScalarDiffusivity(ExplicitTimeDiscretization(), ThreeDimensionalFormulation(), Float64;
                                ν=config["viscosity"], κ=config["diffusivity"])
     # Every rank needs the same stopping bound, including uneven Sizes partitions.
-    pressure_solver = ConjugateGradientPoissonSolver(grid;
-        maxiter=get(config, "pressure_max_iterations", Nx * Ny * Nz))
+    preconditioner_name = get(config, "pressure_preconditioner", "DiagonallyDominantPreconditioner")
+    preconditioner = if preconditioner_name == "ColumnwiseTridiagonalPreconditioner"
+        ColumnwiseTridiagonalPreconditioner(grid)
+    elseif preconditioner_name == "DiagonallyDominantPreconditioner"
+        DiagonallyDominantPreconditioner()
+    else
+        error("Unknown pressure preconditioner: $preconditioner_name")
+    end
+    native_solver = ConjugateGradientPoissonSolver(grid; preconditioner,
+        maxiter=get(config, "pressure_max_iterations", 5000),
+        reltol=get(config, "pressure_reltol", sqrt(eps(Float64))),
+        abstol=get(config, "pressure_abstol", sqrt(eps(Float64))))
+    pressure_solver = checked_pressure_solver(native_solver, config, rank)
     nonhydrostatic = NonhydrostaticModel(grid;
         momentum_advection=WENO(Float64; order=7), tracer_advection=WENO(Float64; order=7),
         coriolis=HydrostaticSphericalCoriolis(Float64),
         buoyancy=SeawaterBuoyancy(equation_of_state=OceananigansBenchmarks.TEOS10EquationOfState()),
         closure, pressure_solver, tracers=(:T, :S), timestepper=:RungeKutta3)
+    initial_seed = get(config, "initial_condition_seed", nothing)
+    isnothing(initial_seed) || seed!(initial_seed + rank)
     Tᵢ(λ, φ, z) = 30 * (1 - tanh((abs(φ) - 45) / 8)) / 2 + rand()
     Sᵢ(λ, φ, z) = 28 - 5e-3 * z + rand()
     set!(nonhydrostatic; T=Tᵢ, S=Sᵢ)
@@ -124,10 +210,7 @@ function timing_windows!(model, config, comm, is_gpu)
         OceananigansBenchmarks.many_time_steps!(model, config["dt"], config["time_steps"])
         synchronize_model(architecture(model.grid), comm, is_gpu)
         push!(durations, (time_ns() - start) / 1e9)
-        if !is_hydrostatic
-            solver = model.pressure_solver.conjugate_gradient_solver
-            solver.iteration < solver.maxiter || error("Pressure solver reached its iteration limit")
-        end
+        rank == 0 && get(config, "pressure_diagnostics", false) && println("TIMING_WINDOW sample=$sample seconds=$(last(durations))")
     end
     return durations
 end
@@ -160,9 +243,11 @@ end
 steps = config["time_steps"]
 entry = Dict("rank" => rank, "grid_size" => collect(size(model.grid)), "float_type" => "Float64",
              "model_type" => model_type, "free_surface" => is_hydrostatic ? "SplitExplicitFreeSurface" : "RigidLid",
-             "pressure_solver" => is_hydrostatic ? nothing : string(nameof(typeof(model.pressure_solver))),
-             "pressure_solver_converged" => is_hydrostatic ? nothing : model.pressure_solver.conjugate_gradient_solver.iteration < model.pressure_solver.conjugate_gradient_solver.maxiter,
-             "pressure_solver_iterations" => is_hydrostatic ? nothing : model.pressure_solver.conjugate_gradient_solver.iteration,
+             "pressure_solver" => is_hydrostatic ? nothing : string(nameof(typeof(model.pressure_solver.native))),
+             "pressure_preconditioner" => is_hydrostatic ? nothing : string(nameof(typeof(model.pressure_solver.native.conjugate_gradient_solver.preconditioner))),
+             "pressure_solver_converged" => is_hydrostatic ? nothing : all(r["converged"] for r in model.pressure_solver.records),
+             "pressure_solver_iterations" => is_hydrostatic ? nothing : model.pressure_solver.native.conjugate_gradient_solver.iteration,
+             "pressure_solves" => is_hydrostatic ? nothing : model.pressure_solver.records,
              "configuration" => config, "metadata" => metadata, "finite_state" => finite_state,
              "retained_free_surface_substeps" => retained_substeps,
              "gpu_memory_used_bytes" => is_gpu ? gpu_memory.total_bytes - gpu_memory.free_bytes : nothing,
