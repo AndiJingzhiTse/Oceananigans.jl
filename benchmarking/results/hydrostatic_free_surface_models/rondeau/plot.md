@@ -129,7 +129,7 @@ Historical measurements retain their original validation labels until comparable
 | Standard series | Completed new cases | Pending cases | Report |
 |---|---:|---:|---|
 | gpu_resolution | 2 | 0 | [gpu_resolution](gpu_resolution/plot.md) |
-| gpu_scaling_super_fine | 0 | 3 | [gpu_scaling_super_fine](gpu_scaling_super_fine/plot.md) |
+| gpu_scaling_super_fine | 0 | 2 | [gpu_scaling_super_fine](gpu_scaling_super_fine/plot.md) |
 | gpu_partition_super_fine | 0 | 6 | Pending |
 | gpu_nsight_scaling_super_fine | 0 | 3 | Pending |
 | gpu_scaling_super_super_fine | 0 | 1 | Pending |
