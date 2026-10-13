@@ -4,6 +4,7 @@ using Oceananigans.DistributedComputations: Distributed, Partition, Sizes
 using Oceananigans.Fields: interior
 using Oceananigans.Architectures: architecture
 using Oceananigans.TurbulenceClosures: ThreeDimensionalFormulation
+using Oceananigans.Solvers: ConjugateGradientPoissonSolver
 using Statistics: median
 using Sockets: gethostname
 
@@ -89,11 +90,14 @@ elseif model_type == "NonhydrostaticModel"
                                  z=ExponentialDiscretization(Nz, -5000, 0; scale=1250))
     closure = ScalarDiffusivity(ExplicitTimeDiscretization(), ThreeDimensionalFormulation(), Float64;
                                ν=config["viscosity"], κ=config["diffusivity"])
+    # Every rank needs the same stopping bound, including uneven Sizes partitions.
+    pressure_solver = ConjugateGradientPoissonSolver(grid;
+        maxiter=get(config, "pressure_max_iterations", Nx * Ny * Nz))
     nonhydrostatic = NonhydrostaticModel(grid;
         momentum_advection=WENO(Float64; order=7), tracer_advection=WENO(Float64; order=7),
         coriolis=HydrostaticSphericalCoriolis(Float64),
         buoyancy=SeawaterBuoyancy(equation_of_state=OceananigansBenchmarks.TEOS10EquationOfState()),
-        closure, tracers=(:T, :S), timestepper=:RungeKutta3)
+        closure, pressure_solver, tracers=(:T, :S), timestepper=:RungeKutta3)
     Tᵢ(λ, φ, z) = 30 * (1 - tanh((abs(φ) - 45) / 8)) / 2 + rand()
     Sᵢ(λ, φ, z) = 28 - 5e-3 * z + rand()
     set!(nonhydrostatic; T=Tᵢ, S=Sᵢ)

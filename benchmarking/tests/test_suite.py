@@ -1,6 +1,7 @@
 """Test plans, launch commands, validation and restart behavior without production jobs."""
 import hashlib
 import json
+import math
 from pathlib import Path
 import subprocess
 import sys
@@ -57,6 +58,7 @@ class SuiteTests(unittest.TestCase):
             self.assertEqual(cfg['momentum_advection'], 'WENO7')
             self.assertEqual(cfg['closure'], 'ScalarDiffusivity')
             self.assertIsNone(cfg['free_surface_substeps'])
+            self.assertEqual(cfg['pressure_max_iterations'], math.prod(cfg['global_resolution']))
 
     def test_nonhydrostatic_validation_requires_model_and_pressure_convergence(self):
         cfg = plan.configuration('cpu_mpi_scaling_super_fine', 2,

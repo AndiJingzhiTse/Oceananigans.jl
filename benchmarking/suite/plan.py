@@ -69,6 +69,7 @@ def configuration(series, ranks, grid_name='super_fine', partition=None, global_
                 timestepper='SplitRungeKutta3' if hydrostatic else 'RungeKutta3',
                 free_surface='SplitExplicitFreeSurface' if hydrostatic else 'RigidLid',
                 pressure_solver=None if hydrostatic else 'ConjugateGradientPoissonSolver',
+                pressure_max_iterations=None if hydrostatic else math.prod(grid),
                 dt=60 * min(1, 1440 / grid[0]), free_surface_substeps=30 if hydrostatic else None,
                 extend_free_surface_halos=gpu if hydrostatic else False,
                 warmup_steps=2, samples=5, time_steps=10,
