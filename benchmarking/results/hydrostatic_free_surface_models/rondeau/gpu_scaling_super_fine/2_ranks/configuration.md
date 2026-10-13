@@ -1,11 +1,14 @@
 # Benchmark configuration
 
-Model: HydrostaticFreeSurfaceModel; device: GPU.
-Grid: 1440 × 720 × 200; LatitudeLongitudeGrid; Float64.
-MPI partition: 1 × 2 × 1; 2 ranks; 1 threads/rank.
-Local resolution per rank: x 1440–1440 × y 360–360 × z 200. Exact per-rank sizes are in results.json.
-Warmup steps were not recorded; timing: 5 windows of 10 steps; Δt=60.0 simulated seconds.
-Validation: Historical: complete ranks and timing aggregates checked; finite-state/placement checks unavailable.
-Original run: `hydrostatic_free_surface_models/rondeau/2026-09-27_all`; measured at 2026-10-05T17:31:40.033.
+Series: gpu_scaling_super_fine. Device: GPU; MPI ranks: 2; one thread/rank.
+Model: HydrostaticFreeSurfaceModel; surface: SplitExplicitFreeSurface.
+Grid: super_fine, 1440 × 720 × 200, LatitudeLongitudeGrid.
+Partition: 2 × 1 × 1.
+Local resolution: x 720–720, y 720–720, z 200.
+Float64; momentum WENOVectorInvariantDefault, tracers WENO7, CATKE, T/S, SplitRungeKutta3.
+Viscosity=None; diffusivity=None m²/s; pressure solver=None.
+Pressure preconditioner=None; iteration cap=None; relative/absolute tolerances=None/None.
+Δt=60 s; free-surface substeps=30 requested; extend_halos=True.
+Two untimed steps, 5 windows of 10 steps. Profile=False.
 
-All recorded model and numerical settings are in configuration.json. The original per-rank measurements are in results.json.
+Alternative measured efficiency baseline: 2 GPUs; smaller baseline exhausted VRAM.
