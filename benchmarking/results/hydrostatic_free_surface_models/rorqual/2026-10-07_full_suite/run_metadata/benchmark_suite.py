@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run all seven standard benchmark series locally or submit them to Slurm."""
+"""Run standard benchmark series locally or submit them to Slurm."""
 import argparse
 from datetime import datetime, timezone
 import fcntl
@@ -60,7 +60,8 @@ def load_server(path=None):
                   gpu_memory='128G', cpu_memory_base_gb=64, cpu_memory_per_rank_gb=4,
                   cpu_sbatch_extra=[], gpu_sbatch_extra=[],
                   trace_root=str(Path(os.environ.get('SCRATCH', str(ROOT / 'results'))) / 'benchmark_traces'),
-                  case_timeout_seconds=86400, matplotlib=True, python='python3', report_modules=[])
+                  case_timeout_seconds=86400, matplotlib=True, python='python3', report_modules=[],
+                  reference_suites=[], replacement_suites=[])
     unknown = set(user) - set(server)
     if unknown:
         raise ValueError('Unknown server settings: ' + ', '.join(sorted(unknown)))
@@ -71,12 +72,16 @@ def load_server(path=None):
         raise ValueError('CPU capacity and per-node resource counts must be positive integers')
     if not isinstance(server['max_gpus'], int) or server['max_gpus'] < 0:
         raise ValueError('max_gpus must be a nonnegative integer')
-    for key in ('mpi', 'cpu_sbatch_extra', 'gpu_sbatch_extra', 'report_modules'):
+    for key in ('mpi', 'cpu_sbatch_extra', 'gpu_sbatch_extra', 'report_modules', 'reference_suites', 'replacement_suites'):
         if not isinstance(server[key], list) or any(not isinstance(a, str) for a in server[key]):
             raise ValueError(f'{key} must be an array of command arguments')
     for key in ('project', 'trace_root', 'environment_script', 'mpi_init'):
         if server[key]:
             server[key] = str(Path(os.path.expandvars(server[key])).expanduser().resolve())
+    server['reference_suites'] = [str(Path(os.path.expandvars(p)).expanduser().resolve())
+                                for p in server['reference_suites']]
+    server['replacement_suites'] = [str(Path(os.path.expandvars(p)).expanduser().resolve())
+                                  for p in server['replacement_suites']]
     return server
 
 
@@ -132,7 +137,8 @@ def prepare(folder, server, selected):
     snapshot(folder, server)
     data = dict(server=server, cases=cases, submitted_at=None)
     atomic_json(folder / 'suite.json', data)
-    write_report(folder, cases, plotting=False)
+    write_report(folder, cases, plotting=False, reference_suites=server.get('reference_suites', []),
+                 replacement_suites=server.get('replacement_suites', []))
     return data
 
 
@@ -170,8 +176,11 @@ def group_script(folder, server, cases):
     if server['backend'] == 'slurm':
         per_node = server['gpus_per_node' if first['configuration']['device'] == 'GPU' else 'cpu_cores_per_node']
         nodes = math.ceil(first['ranks'] / per_node)
+        hardware = 'hostname; lscpu'
+        if first['configuration']['device'] == 'GPU':
+            hardware += '; nvidia-smi --query-gpu=name,uuid,driver_version,memory.total --format=csv; nvidia-smi topo -m'
         info = ['srun', '--ntasks=' + str(nodes), '--ntasks-per-node=1', '--cpus-per-task=1',
-                'bash', '-c', 'hostname; lscpu; if command -v nvidia-smi >/dev/null; then nvidia-smi --query-gpu=name,uuid,driver_version,memory.total --format=csv; nvidia-smi topo -m; fi']
+                'bash', '-c', hardware]
         lines.append(shlex.join(info) + ' > ' + shlex.quote(str(destination.parent / 'compute_hardware.txt')))
         lines.append('scontrol show job "$SLURM_JOB_ID" > ' + shlex.quote(str(destination.parent / 'slurm_job.txt')))
     for case in cases:
@@ -212,7 +221,8 @@ def sbatch_command(server, group, script):
     args.append('--time=' + limit)
     if gpu:
         kind = server['gpu_type'] + ':' if server['gpu_type'] else ''
-        args += [f'--gpus-per-task={kind}1', '--mem=' + server['gpu_memory']]
+        memory = '0' if tasks_per_node == per_node else server['gpu_memory']
+        args += [f'--gpus-per-task={kind}1', '--mem=' + memory]
     else:
         args.append('--hint=nomultithread')
         if server['cpu_constraint']:
@@ -340,7 +350,9 @@ def refresh(folder, data, query_slurm=True):
         elif (destination / 'started.txt').exists() and case['state'] not in TERMINAL:
             case.update(state='RUNNING', details='Started; waiting for completion marker')
     atomic_json(folder / 'suite.json', data)
-    write_report(folder, cases, plotting=data['server']['matplotlib'])
+    write_report(folder, cases, plotting=data['server']['matplotlib'],
+                 reference_suites=data['server'].get('reference_suites', []),
+                 replacement_suites=data['server'].get('replacement_suites', []))
     return all(c['state'] in TERMINAL for c in cases)
 
 
@@ -365,7 +377,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--config', type=Path, help='Server resource and environment JSON file')
     parser.add_argument('--output', type=Path, help='Fresh dated run directory, or existing directory to resume/refresh')
-    parser.add_argument('--series', default=','.join(SERIES), help='Comma-separated subset; default all seven')
+    parser.add_argument('--series', default=','.join(SERIES), help='Comma-separated subset; default all series')
     parser.add_argument('--max-cpu-cores', type=int)
     parser.add_argument('--max-gpus', type=int)
     mode = parser.add_mutually_exclusive_group()
