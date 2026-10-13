@@ -272,3 +272,23 @@ gpu_weak_scaling_super_fine/1024_ranks: RESOURCE_LIMIT [32, 32, 1]
 [codex/benchmarking d12f12665] Record validated benchmark suite results and job outcomes
  11 files changed, 651 insertions(+), 16 deletions(-)
 
+[codex/benchmarking 3c2f7436b] Record validated benchmark suite results and job outcomes
+ 26 files changed, 975 insertions(+), 26 deletions(-)
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_mpi_scaling_super_fine/3072_ranks/allocation.out
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_mpi_scaling_super_fine/3072_ranks/compute_hardware.txt
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_mpi_scaling_super_fine/3072_ranks/job.out
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_mpi_scaling_super_fine/3072_ranks/julia_version.txt
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_mpi_scaling_super_fine/3072_ranks/modules.txt
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_mpi_scaling_super_fine/3072_ranks/nsight_version.txt
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_mpi_scaling_super_fine/3072_ranks/slurm_job.txt
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_mpi_scaling_super_fine/3072_ranks/started.txt
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_resolution/super_fine/allocation.out
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_resolution/super_fine/compute_hardware.txt
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_resolution/super_fine/job.out
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_resolution/super_fine/julia_version.txt
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_resolution/super_fine/layout.json
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_resolution/super_fine/modules.txt
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_resolution/super_fine/nsight_version.txt
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_resolution/super_fine/slurm_job.txt
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_resolution/super_fine/started.txt
+

@@ -29,7 +29,7 @@ Highest completed count: **0 ranks**.
 | 768_ranks | 768 | 32x24x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
 | 1536_ranks | 1536 | 32x48x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
 | 3072_ranks | 3072 | 64x48x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
-| 6144_ranks | 6144 | 96x64x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
+| 6144_ranks | 6144 | 96x64x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
 | 12288_ranks | 12288 | 128x96x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
 | 24576_ranks | 24576 |  | 1440x720x200 | LatitudeLongitudeGrid | GEOMETRY_LIMIT | — | — | — | 24576 ranks have no horizontal partition with at least 7 local cells per direction |
 ## gpu_scaling_super_fine
