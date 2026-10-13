@@ -133,6 +133,25 @@ Use `--series` with a comma-separated subset; the default selects all ten series
 | `gpu_scaling_super_super_super_fine` | Strong scaling on the largest grid, starting at sixteen GPUs |
 | `gpu_weak_scaling_super_fine` | Weak scaling: 1, 4, 16, … GPUs; fixed interior cells per GPU |
 
+Each benchmark series must be performed to the maximum feasible scale for the
+available resources. This applies to both model types, CPU and GPU runs, and
+profiled series. For scaling studies, include the largest valid resource count
+in the series' progression that the available CPUs or GPUs support. For example,
+with 300 GPUs available, the final GPU scaling case should use 256 GPUs.
+
+For resolution series, keep increasing the grid resolution until the next larger
+grid cannot run because system memory or GPU VRAM is insufficient. Retain the
+largest completed, validated resolution. The built-in `default`, `fine`, and
+`super_fine` cases are starting points; extend the resolution plan when they still
+fit in memory. The current planner does not automatically search for the memory
+limit.
+
+Check the planned cases before submission and extend the series plan or update
+the machine resource limits as needed to reach these scales. Record the highest
+completed resource count or resolution and the observed reason further scaling
+could not complete. Preserve failed attempts and memory-limit evidence in the
+scratch study; only completed, validated measurements enter curated results.
+
 | Grid | Global resolution (Nx × Ny × Nz) | Δt (simulated seconds) |
 |---|---|---:|
 | `default` | 360 × 180 × 50 | 60 |
