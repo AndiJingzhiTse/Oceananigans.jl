@@ -68,7 +68,7 @@
         1,
         1
       ],
-      "state": "RUNNING",
+      "state": "CANCELLED",
       "details": "Exit 0:0; None",
       "job_id": "23088838",
       "configuration": {
@@ -132,7 +132,7 @@
         1,
         1
       ],
-      "state": "RUNNING",
+      "state": "CANCELLED",
       "details": "Exit 0:0; None",
       "job_id": "23088839",
       "configuration": {
@@ -198,7 +198,7 @@
         2,
         1
       ],
-      "state": "RUNNING",
+      "state": "CANCELLED",
       "details": "Exit 0:0; None",
       "job_id": "23088840",
       "configuration": {
@@ -265,7 +265,7 @@
         3,
         1
       ],
-      "state": "RUNNING",
+      "state": "CANCELLED",
       "details": "Exit 0:0; None",
       "job_id": "23088841",
       "configuration": {
@@ -1708,8 +1708,8 @@
         1,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088852",
       "configuration": {
         "series": "gpu_scaling_super_fine",
@@ -1772,8 +1772,8 @@
         1,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088853",
       "configuration": {
         "series": "gpu_scaling_super_fine",
@@ -1837,8 +1837,8 @@
         2,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088854",
       "configuration": {
         "series": "gpu_scaling_super_fine",
@@ -1903,8 +1903,8 @@
         2,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088855",
       "configuration": {
         "series": "gpu_scaling_super_fine",
@@ -1971,8 +1971,8 @@
         4,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088856",
       "configuration": {
         "series": "gpu_scaling_super_fine",
@@ -2041,8 +2041,8 @@
         4,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088857",
       "configuration": {
         "series": "gpu_scaling_super_fine",
@@ -2115,8 +2115,8 @@
         8,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088858",
       "configuration": {
         "series": "gpu_scaling_super_fine",
@@ -2193,8 +2193,8 @@
         8,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088859",
       "configuration": {
         "series": "gpu_scaling_super_fine",
@@ -2279,8 +2279,8 @@
         16,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088860",
       "configuration": {
         "series": "gpu_scaling_super_fine",
@@ -2554,7 +2554,7 @@
         1,
         1
       ],
-      "state": "RUNNING",
+      "state": "CANCELLED",
       "details": "Exit 0:0; None",
       "job_id": "23088862",
       "configuration": {
@@ -2618,7 +2618,7 @@
         1,
         1
       ],
-      "state": "RUNNING",
+      "state": "CANCELLED",
       "details": "Exit 0:0; None",
       "job_id": "23088863",
       "configuration": {
@@ -2682,8 +2682,8 @@
         1,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088864",
       "configuration": {
         "series": "gpu_resolution",
@@ -2746,8 +2746,8 @@
         1,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088865",
       "configuration": {
         "series": "gpu_resolution",
@@ -2810,8 +2810,8 @@
         1,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088866",
       "configuration": {
         "series": "gpu_resolution",
@@ -3129,8 +3129,8 @@
         2,
         1
       ],
-      "state": "TIMEOUT",
-      "details": "Exit 0:0; None",
+      "state": "NOT_RUN",
+      "details": "Case never started; shared allocation 23088867 timed out while executing an earlier layout",
       "job_id": "23088867",
       "configuration": {
         "series": "cpu_partition_cores_super_fine",
@@ -3289,8 +3289,8 @@
         3,
         1
       ],
-      "state": "TIMEOUT",
-      "details": "Exit 0:0; None",
+      "state": "NOT_RUN",
+      "details": "Case never started; shared allocation 23088867 timed out while executing an earlier layout",
       "job_id": "23088867",
       "configuration": {
         "series": "cpu_partition_cores_super_fine",
@@ -3418,8 +3418,8 @@
         4,
         1
       ],
-      "state": "TIMEOUT",
-      "details": "Exit 0:0; None",
+      "state": "NOT_RUN",
+      "details": "Case never started; shared allocation 23088867 timed out while executing an earlier layout",
       "job_id": "23088867",
       "configuration": {
         "series": "cpu_partition_cores_super_fine",
@@ -3532,8 +3532,8 @@
         6,
         1
       ],
-      "state": "TIMEOUT",
-      "details": "Exit 0:0; None",
+      "state": "NOT_RUN",
+      "details": "Case never started; shared allocation 23088867 timed out while executing an earlier layout",
       "job_id": "23088867",
       "configuration": {
         "series": "cpu_partition_cores_super_fine",
@@ -3632,8 +3632,8 @@
         8,
         1
       ],
-      "state": "TIMEOUT",
-      "details": "Exit 0:0; None",
+      "state": "NOT_RUN",
+      "details": "Case never started; shared allocation 23088867 timed out while executing an earlier layout",
       "job_id": "23088867",
       "configuration": {
         "series": "cpu_partition_cores_super_fine",
@@ -3726,8 +3726,8 @@
         12,
         1
       ],
-      "state": "TIMEOUT",
-      "details": "Exit 0:0; None",
+      "state": "NOT_RUN",
+      "details": "Case never started; shared allocation 23088867 timed out while executing an earlier layout",
       "job_id": "23088867",
       "configuration": {
         "series": "cpu_partition_cores_super_fine",
@@ -3816,8 +3816,8 @@
         16,
         1
       ],
-      "state": "TIMEOUT",
-      "details": "Exit 0:0; None",
+      "state": "NOT_RUN",
+      "details": "Case never started; shared allocation 23088867 timed out while executing an earlier layout",
       "job_id": "23088867",
       "configuration": {
         "series": "cpu_partition_cores_super_fine",
@@ -3906,8 +3906,8 @@
         24,
         1
       ],
-      "state": "TIMEOUT",
-      "details": "Exit 0:0; None",
+      "state": "NOT_RUN",
+      "details": "Case never started; shared allocation 23088867 timed out while executing an earlier layout",
       "job_id": "23088867",
       "configuration": {
         "series": "cpu_partition_cores_super_fine",
@@ -4000,8 +4000,8 @@
         32,
         1
       ],
-      "state": "TIMEOUT",
-      "details": "Exit 0:0; None",
+      "state": "NOT_RUN",
+      "details": "Case never started; shared allocation 23088867 timed out while executing an earlier layout",
       "job_id": "23088867",
       "configuration": {
         "series": "cpu_partition_cores_super_fine",
@@ -4100,8 +4100,8 @@
         48,
         1
       ],
-      "state": "TIMEOUT",
-      "details": "Exit 0:0; None",
+      "state": "NOT_RUN",
+      "details": "Case never started; shared allocation 23088867 timed out while executing an earlier layout",
       "job_id": "23088867",
       "configuration": {
         "series": "cpu_partition_cores_super_fine",
@@ -4214,8 +4214,8 @@
         64,
         1
       ],
-      "state": "TIMEOUT",
-      "details": "Exit 0:0; None",
+      "state": "NOT_RUN",
+      "details": "Case never started; shared allocation 23088867 timed out while executing an earlier layout",
       "job_id": "23088867",
       "configuration": {
         "series": "cpu_partition_cores_super_fine",
@@ -4343,8 +4343,8 @@
         96,
         1
       ],
-      "state": "TIMEOUT",
-      "details": "Exit 0:0; None",
+      "state": "NOT_RUN",
+      "details": "Case never started; shared allocation 23088867 timed out while executing an earlier layout",
       "job_id": "23088867",
       "configuration": {
         "series": "cpu_partition_cores_super_fine",
@@ -4517,8 +4517,8 @@
         1,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088868",
       "configuration": {
         "series": "gpu_nsight_scaling_super_fine",
@@ -4581,8 +4581,8 @@
         1,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088869",
       "configuration": {
         "series": "gpu_nsight_scaling_super_fine",
@@ -4646,8 +4646,8 @@
         2,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088870",
       "configuration": {
         "series": "gpu_nsight_scaling_super_fine",
@@ -4712,8 +4712,8 @@
         2,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088871",
       "configuration": {
         "series": "gpu_nsight_scaling_super_fine",
@@ -4780,8 +4780,8 @@
         4,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088872",
       "configuration": {
         "series": "gpu_nsight_scaling_super_fine",
@@ -4850,8 +4850,8 @@
         4,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088873",
       "configuration": {
         "series": "gpu_nsight_scaling_super_fine",
@@ -4924,8 +4924,8 @@
         8,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088874",
       "configuration": {
         "series": "gpu_nsight_scaling_super_fine",
@@ -5002,8 +5002,8 @@
         8,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088875",
       "configuration": {
         "series": "gpu_nsight_scaling_super_fine",
@@ -5088,8 +5088,8 @@
         16,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088876",
       "configuration": {
         "series": "gpu_nsight_scaling_super_fine",
@@ -5292,8 +5292,8 @@
         1,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088877",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -5356,8 +5356,8 @@
         1,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088878",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -5421,8 +5421,8 @@
         2,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088878",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -5486,8 +5486,8 @@
         1,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088879",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -5553,8 +5553,8 @@
         2,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088879",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -5619,8 +5619,8 @@
         4,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088879",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -5686,8 +5686,8 @@
         1,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088880",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -5757,8 +5757,8 @@
         2,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088880",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -5825,8 +5825,8 @@
         4,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088880",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -5893,8 +5893,8 @@
         8,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088880",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -5964,8 +5964,8 @@
         1,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088881",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -6043,8 +6043,8 @@
         2,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088881",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -6115,8 +6115,8 @@
         4,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088881",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -6185,8 +6185,8 @@
         8,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088881",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -6257,8 +6257,8 @@
         16,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088881",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -6336,8 +6336,8 @@
         1,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088882",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -6431,8 +6431,8 @@
         2,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088882",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -6511,8 +6511,8 @@
         4,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088882",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -6585,8 +6585,8 @@
         8,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088882",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -6659,8 +6659,8 @@
         16,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088882",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -6767,8 +6767,8 @@
         2,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088883",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -6863,8 +6863,8 @@
         4,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088883",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -6945,8 +6945,8 @@
         8,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088883",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -7023,8 +7023,8 @@
         16,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088883",
       "configuration": {
         "series": "gpu_partition_super_fine",
@@ -7133,8 +7133,8 @@
         2,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088884",
       "configuration": {
         "series": "gpu_scaling_super_super_fine",
@@ -7199,8 +7199,8 @@
         2,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088885",
       "configuration": {
         "series": "gpu_scaling_super_super_fine",
@@ -7267,8 +7267,8 @@
         4,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088886",
       "configuration": {
         "series": "gpu_scaling_super_super_fine",
@@ -7337,8 +7337,8 @@
         4,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088887",
       "configuration": {
         "series": "gpu_scaling_super_super_fine",
@@ -7411,8 +7411,8 @@
         8,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088888",
       "configuration": {
         "series": "gpu_scaling_super_super_fine",
@@ -7489,8 +7489,8 @@
         8,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088889",
       "configuration": {
         "series": "gpu_scaling_super_super_fine",
@@ -7575,8 +7575,8 @@
         16,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088890",
       "configuration": {
         "series": "gpu_scaling_super_super_fine",
@@ -7779,8 +7779,8 @@
         4,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088891",
       "configuration": {
         "series": "gpu_scaling_super_super_super_fine",
@@ -7849,8 +7849,8 @@
         4,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088892",
       "configuration": {
         "series": "gpu_scaling_super_super_super_fine",
@@ -7923,8 +7923,8 @@
         8,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088893",
       "configuration": {
         "series": "gpu_scaling_super_super_super_fine",
@@ -8001,8 +8001,8 @@
         8,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088894",
       "configuration": {
         "series": "gpu_scaling_super_super_super_fine",
@@ -8087,8 +8087,8 @@
         16,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088895",
       "configuration": {
         "series": "gpu_scaling_super_super_super_fine",
@@ -8291,8 +8291,8 @@
         1,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088896",
       "configuration": {
         "series": "gpu_weak_scaling_super_fine",
@@ -8355,8 +8355,8 @@
         2,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088897",
       "configuration": {
         "series": "gpu_weak_scaling_super_fine",
@@ -8421,8 +8421,8 @@
         4,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088898",
       "configuration": {
         "series": "gpu_weak_scaling_super_fine",
@@ -8491,8 +8491,8 @@
         8,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088899",
       "configuration": {
         "series": "gpu_weak_scaling_super_fine",
@@ -8569,8 +8569,8 @@
         16,
         1
       ],
-      "state": "PENDING",
-      "details": "(Dependency); estimated start N/A (scheduler timezone)",
+      "state": "NOT_RUN",
+      "details": "Case never started; allocation CANCELLED: Exit 0:0; Dependency",
       "job_id": "23088900",
       "configuration": {
         "series": "gpu_weak_scaling_super_fine",
@@ -8788,5 +8788,114 @@
     "suite": "../2026-10-13_cpu_gpu_validation",
     "description": "Full allocations wait for device-specific validated 200-level functional checks; production uses five ten-step windows."
   },
-  "finalizer_job_id": "23088901"
+  "finalizer_job_id": "23088901",
+  "diagnosis": {
+    "reason": "Production pressure solves exceeded three hours in first warmup; held remaining GPU allocations and stopped CPU production pending representative solver pilots.",
+    "held_job_ids": [
+      "23088852",
+      "23088853",
+      "23088854",
+      "23088855",
+      "23088856",
+      "23088857",
+      "23088858",
+      "23088859",
+      "23088860",
+      "23088864",
+      "23088865",
+      "23088866",
+      "23088868",
+      "23088869",
+      "23088870",
+      "23088871",
+      "23088872",
+      "23088873",
+      "23088874",
+      "23088875",
+      "23088876",
+      "23088877",
+      "23088878",
+      "23088879",
+      "23088880",
+      "23088881",
+      "23088882",
+      "23088883",
+      "23088884",
+      "23088885",
+      "23088886",
+      "23088887",
+      "23088888",
+      "23088889",
+      "23088890",
+      "23088891",
+      "23088892",
+      "23088893",
+      "23088894",
+      "23088895",
+      "23088896",
+      "23088897",
+      "23088898",
+      "23088899",
+      "23088900"
+    ],
+    "cancelled_running_job_ids": [
+      "23088841",
+      "23088840",
+      "23088838",
+      "23088839",
+      "23088862",
+      "23088863"
+    ],
+    "replacement_suite": "../2026-10-13_pressure_recovery_full_suite",
+    "cancelled_superseded_job_ids": [
+      "23088623",
+      "23088852",
+      "23088853",
+      "23088854",
+      "23088855",
+      "23088856",
+      "23088857",
+      "23088858",
+      "23088859",
+      "23088860",
+      "23088864",
+      "23088865",
+      "23088866",
+      "23088868",
+      "23088869",
+      "23088870",
+      "23088871",
+      "23088872",
+      "23088873",
+      "23088874",
+      "23088875",
+      "23088876",
+      "23088877",
+      "23088878",
+      "23088879",
+      "23088880",
+      "23088881",
+      "23088882",
+      "23088883",
+      "23088884",
+      "23088885",
+      "23088886",
+      "23088887",
+      "23088888",
+      "23088889",
+      "23088890",
+      "23088891",
+      "23088892",
+      "23088893",
+      "23088894",
+      "23088895",
+      "23088896",
+      "23088897",
+      "23088898",
+      "23088899",
+      "23088900",
+      "23088901"
+    ],
+    "solver": "LocalFFTPreconditioner; same pressure tolerances; independent partition allocations; full-node GPU reservations with one GPU used per rank"
+  }
 }

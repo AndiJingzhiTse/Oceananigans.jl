@@ -2,3 +2,39 @@
 │ This can occur when MPI is incorrectly configured. 
 │ See https://juliaparallel.org/MPI.jl/stable/configuration/ for more details.
 └ @ Oceananigans.DistributedComputations ~/Oceananigans.jl/src/DistributedComputations/distributed_architectures.jl:275
+srun: Job step aborted: Waiting up to 62 seconds for job step to finish.
+[2026-10-13T13:09:38.357] error: *** STEP 23088862.1 ON rc13429 CANCELLED AT 2026-10-13T13:09:38 DUE to SIGNAL Terminated ***
+
+[38896] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
++ at ./int.jl:87 [inlined]
+_sub2ind_recurse at ./abstractarray.jl:3081 [inlined]
+_sub2ind at ./abstractarray.jl:3065 [inlined]
+_sub2ind at ./abstractarray.jl:3049 [inlined]
+_to_linear_index at ./abstractarray.jl:1377 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity2 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x1484461b801a) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x1484461b62f7) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+iterate! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:214
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:193
+solve_for_pressure! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/solve_for_pressure.jl:160
+compute_pressure_correction! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/pressure_correction.jl:16
+pressure_correction_rk3_substep! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/nonhydrostatic_rk3_substep.jl:45
+rk3_substep! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/nonhydrostatic_rk3_substep.jl:11 [inlined]
+#time_step!#9 at /home/anditse/Oceananigans.jl/src/TimeSteppers/runge_kutta_3.jl:128
+time_step! at /home/anditse/Oceananigans.jl/src/TimeSteppers/runge_kutta_3.jl:103 [inlined]
+many_time_steps! at /home/anditse/Oceananigans.jl/benchmarking/src/timestepping.jl:13
+unknown function (ip: 0x1484461927d0) at (unknown file)

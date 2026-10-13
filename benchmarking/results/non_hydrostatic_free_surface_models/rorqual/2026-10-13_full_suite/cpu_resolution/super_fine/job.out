@@ -2,3 +2,23 @@
 │ This can occur when MPI is incorrectly configured. 
 │ See https://juliaparallel.org/MPI.jl/stable/configuration/ for more details.
 └ @ Oceananigans.DistributedComputations ~/Oceananigans.jl/src/DistributedComputations/distributed_architectures.jl:275
+srun: Job step aborted: Waiting up to 62 seconds for job step to finish.
+[2026-10-13T13:09:38.365] error: *** STEP 23088863.1 ON rc12813 CANCELLED AT 2026-10-13T13:09:38 DUE to SIGNAL Terminated ***
+
+[3046091] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+- at ./float.jl:496 [inlined]
+macro expansion at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:84 [inlined]
+macro expansion at /scratch/anditse/julia_depot/packages/KernelAbstractions/ZgFBq/src/macros.jl:316 [inlined]
+cpu_subtract_and_mask! at ./none:0
+__thread_run at /scratch/anditse/julia_depot/packages/KernelAbstractions/ZgFBq/src/cpu.jl:147
+__run at /scratch/anditse/julia_depot/packages/KernelAbstractions/ZgFBq/src/cpu.jl:112
+#_#20 at /scratch/anditse/julia_depot/packages/KernelAbstractions/ZgFBq/src/cpu.jl:46 [inlined]
+Kernel at /scratch/anditse/julia_depot/packages/KernelAbstractions/ZgFBq/src/cpu.jl:39 [inlined]
+#_launch!#19 at /home/anditse/Oceananigans.jl/src/Utils/kernel_launching.jl:375 [inlined]
+_launch! at /home/anditse/Oceananigans.jl/src/Utils/kernel_launching.jl:354 [inlined]
+#_launch!#22 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_kernel_launching.jl:5 [inlined]
+_launch! at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_kernel_launching.jl:3 [inlined]
+#launch!#15 at /home/anditse/Oceananigans.jl/src/Utils/kernel_launching.jl:341 [inlined]
+launch! at /home/anditse/Oceananigans.jl/src/Utils/kernel_launching.jl:341 [inlined]
+enforce_zero_mean_gauge! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:94

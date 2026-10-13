@@ -1,0 +1,29 @@
+PRESSURE_PROGRESS iteration=0 residual=0.0 elapsed_seconds=0.972475067
+PRESSURE_SOLVE {"converged":true,"final_residual":0.0,"initial_residual":0.0,"iterations":0,"projection_dt":1.0,"seconds":1.00927785,"solve":1,"tolerance":1.4901161193847656e-8}
+PRESSURE_PROGRESS iteration=0 residual=0.008389423979054976 elapsed_seconds=0.588502684
+PRESSURE_PROGRESS iteration=200 residual=0.016005300425677556 elapsed_seconds=95.432602052
+PRESSURE_PROGRESS iteration=400 residual=0.011044858240037208 elapsed_seconds=189.644825462
+PRESSURE_PROGRESS iteration=600 residual=0.007301807197435087 elapsed_seconds=292.186035275
+PRESSURE_PROGRESS iteration=800 residual=0.006409419983381032 elapsed_seconds=386.427464063
+PRESSURE_PROGRESS iteration=1000 residual=0.005656194759101319 elapsed_seconds=481.970874634
+PRESSURE_PROGRESS iteration=1200 residual=0.005005009325963055 elapsed_seconds=585.623495964
+PRESSURE_PROGRESS iteration=1400 residual=0.004442220692909601 elapsed_seconds=680.848275356
+PRESSURE_PROGRESS iteration=1600 residual=0.003755763749293303 elapsed_seconds=778.622222793
+PRESSURE_PROGRESS iteration=1800 residual=0.0030190951015634606 elapsed_seconds=885.984708726
+PRESSURE_PROGRESS iteration=2000 residual=0.002337477037651824 elapsed_seconds=985.180724012
+PRESSURE_PROGRESS iteration=2200 residual=0.0017522950442504304 elapsed_seconds=1084.862238546
+PRESSURE_PROGRESS iteration=2400 residual=0.0013866984962183934 elapsed_seconds=1189.296173425
+PRESSURE_PROGRESS iteration=2600 residual=0.0011808073428469076 elapsed_seconds=1285.124739056
+PRESSURE_PROGRESS iteration=2800 residual=0.0010390126583220234 elapsed_seconds=1380.622835859
+PRESSURE_PROGRESS iteration=3000 residual=0.00092813046311627 elapsed_seconds=1485.385313891
+srun: Job step aborted: Waiting up to 62 seconds for job step to finish.
+[2026-10-13T14:47:50.045] error: *** STEP 23114967.1 ON rc13225 CANCELLED AT 2026-10-13T14:47:50 DUE to SIGNAL Terminated ***
+
+[1363938] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_pressure_solver_validation/run_metadata/suite/worker.jl:327
+
+[1363939] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_pressure_solver_validation/run_metadata/suite/worker.jl:327
+
+[1363940] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_pressure_solver_validation/run_metadata/suite/worker.jl:327

@@ -1,0 +1,32 @@
+PRESSURE_PROGRESS iteration=0 residual=0.0 elapsed_seconds=1.191064962
+PRESSURE_SOLVE {"converged":true,"final_residual":0.0,"initial_residual":0.0,"iterations":0,"projection_dt":1.0,"seconds":1.211079416,"solve":1,"tolerance":1.4901161193847656e-8}
+PRESSURE_PROGRESS iteration=0 residual=0.008432983437549717 elapsed_seconds=0.486568803
+PRESSURE_PROGRESS iteration=200 residual=3.0623996536644364e-5 elapsed_seconds=52.621014565
+PRESSURE_PROGRESS iteration=400 residual=3.206549300997663e-7 elapsed_seconds=107.955464985
+PRESSURE_SOLVE {"converged":true,"final_residual":1.4615115296786184e-8,"initial_residual":0.008432983437549717,"iterations":510,"projection_dt":32.0,"seconds":149.442738013,"solve":2,"tolerance":1.4901161193847656e-8}
+PRESSURE_PROGRESS iteration=0 residual=2.8013126679927227e-6 elapsed_seconds=0.839668142
+PRESSURE_SOLVE {"converged":true,"final_residual":1.4028938987000251e-8,"initial_residual":2.8013126679927227e-6,"iterations":145,"projection_dt":8.000000000000002,"seconds":37.798410329,"solve":3,"tolerance":1.4901161193847656e-8}
+PRESSURE_PROGRESS iteration=0 residual=0.0001345810918891779 elapsed_seconds=0.559571649
+PRESSURE_PROGRESS iteration=200 residual=1.0601088266069615e-7 elapsed_seconds=59.211352607
+PRESSURE_SOLVE {"converged":true,"final_residual":1.4621266330352135e-8,"initial_residual":0.0001345810918891779,"iterations":259,"projection_dt":20.0,"seconds":74.285910222,"solve":4,"tolerance":1.4901161193847656e-8}
+PRESSURE_PROGRESS iteration=0 residual=4.304993274221334e-6 elapsed_seconds=0.158100137
+PRESSURE_SOLVE {"converged":true,"final_residual":1.4202764020074336e-8,"initial_residual":4.304993274221334e-6,"iterations":157,"projection_dt":32.0,"seconds":40.324700223,"solve":5,"tolerance":1.4901161193847656e-8}
+PRESSURE_PROGRESS iteration=0 residual=0.0001777649707753691 elapsed_seconds=0.170537635
+PRESSURE_PROGRESS iteration=200 residual=1.9629994526575324e-7 elapsed_seconds=51.78729574
+PRESSURE_SOLVE {"converged":true,"final_residual":1.4416032285393964e-8,"initial_residual":0.0001777649707753691,"iterations":283,"projection_dt":8.000000000000002,"seconds":73.68950701,"solve":6,"tolerance":1.4901161193847656e-8}
+PRESSURE_PROGRESS iteration=0 residual=9.291189065598881e-5 elapsed_seconds=0.068315507
+PRESSURE_PROGRESS iteration=200 residual=1.7148725804076911e-7 elapsed_seconds=52.363354539
+PRESSURE_SOLVE {"converged":true,"final_residual":1.4342612798815913e-8,"initial_residual":9.291189065598881e-5,"iterations":275,"projection_dt":20.0,"seconds":72.262745775,"solve":7,"tolerance":1.4901161193847656e-8}
+TIMING_WINDOW sample=1 seconds=189.231023111
+PRESSURE_PROGRESS iteration=0 residual=6.654191640603614e-5 elapsed_seconds=0.173736768
+PRESSURE_PROGRESS iteration=200 residual=1.021768703839497e-7 elapsed_seconds=60.018498435
+PRESSURE_SOLVE {"converged":true,"final_residual":1.4766482489823483e-8,"initial_residual":6.654191640603614e-5,"iterations":262,"projection_dt":32.0,"seconds":76.619234382,"solve":8,"tolerance":1.4901161193847656e-8}
+PRESSURE_PROGRESS iteration=0 residual=0.00034317016387129745 elapsed_seconds=0.547068311
+PRESSURE_PROGRESS iteration=200 residual=3.643148521765064e-7 elapsed_seconds=52.017638681
+PRESSURE_SOLVE {"converged":true,"final_residual":1.4807232001775104e-8,"initial_residual":0.00034317016387129745,"iterations":302,"projection_dt":8.000000000000002,"seconds":79.014615348,"solve":9,"tolerance":1.4901161193847656e-8}
+PRESSURE_PROGRESS iteration=0 residual=0.00031275191040417994 elapsed_seconds=0.072334865
+PRESSURE_PROGRESS iteration=200 residual=3.915048819926337e-7 elapsed_seconds=57.812797208
+PRESSURE_SOLVE {"converged":true,"final_residual":1.4666351836868856e-8,"initial_residual":0.00031275191040417994,"iterations":304,"projection_dt":20.0,"seconds":86.804287388,"solve":10,"tolerance":1.4901161193847656e-8}
+TIMING_WINDOW sample=1 seconds=245.56206043
+PRESSURE_TRUE_RESIDUAL value=1.4865439633975653e-8 tolerance=1.4901161193847656e-8
+PASS: MPI ring, distinct resources, finite fields and all 192 rank results

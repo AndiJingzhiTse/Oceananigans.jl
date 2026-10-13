@@ -1,8 +1,9 @@
-# Full benchmark suite
+# Benchmark suite
 
 NonhydrostaticModel; rigid lid; LatitudeLongitudeGrid without bathymetry; Float64, WENO7 momentum/tracers, ScalarDiffusivity (ν=1e-3, κ=1e-5 m²/s), T/S, RungeKutta3. Pressure: ConjugateGradientPoissonSolver; traditional spherical Coriolis and TEOS10 buoyancy.
 Δt=60 s on the standard grids; larger horizontal grids reduce Δt in proportion to grid spacing (see each configuration).
-No free-surface substeps or extended free-surface halos; two untimed steps and five ten-step windows.
+No free-surface substeps or extended free-surface halos.
+Actual timing protocols: 2 untimed steps, 2 windows of 2 steps.
 One MPI rank per CPU core or GPU, one Julia computation thread per rank. Hydrostatic geometry bounds are retained to match partitions between models.
 Window boundaries synchronize MPI ranks and GPUs. Fastest/median statistics use the maximum across ranks.
 Strong efficiency = baseline time × baseline ranks / (time × ranks); weak efficiency = baseline time / time.
@@ -28,12 +29,21 @@ Highest completed count: **0 ranks**.
 
 | Case | Ranks | Partition | Global resolution | Grid type | State | Fastest s/step | Median s/step | Efficiency fastest / median | Details |
 |---|---:|---|---|---|---|---:|---:|---|---|
-| 2_ranks | 2 | 2x1x1 | 72x36x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start N/A (scheduler timezone) |
+| 2_ranks | 2 | 2x1x1 | 72x36x200 | LatitudeLongitudeGrid | CANCELLED | — | — | — | Exit 0:0; None |
+
+## Pressure convergence checks
+
+Validation pilots are separate from production comparisons. Each new accepted result checks every pressure stage and the independently recomputed final residual.
+
+| Case | Preconditioner | Recorded solves | Maximum iterations | Last residual / tolerance | Recomputed final residual | Outcome |
+|---|---|---:|---:|---|---|---|
+| cpu_mpi_scaling_super_fine/16_ranks | historical default | — | — | — | — | COMPLETED |
+| gpu_scaling_super_fine/2_ranks | historical default | — | — | — | — | CANCELLED |
 
 ## GPU scaling comparison (DRAC table format)
 
 Reference: Oceananigans-DRAC/docs/drac.md, section 8. These are Rorqual measurements, not the reference’s Nibi timings.
-This suite uses five ten-step windows; the reference uses five 100-step windows. Tables use median seconds per step.
+Timing protocols are recorded per case; the reference uses five 100-step windows. Tables use median seconds per step.
 LatitudeLongitudeGrid; partitions are Px × Py × Pz. Nodes are measured from rank placement.
 Throughput = global interior cells / median step time. Memory is maximum device-used GiB across ranks after timing, including CUDA context and buffers; it is not peak memory.
 Missing memory measurements and unfinished timings are shown as —.
@@ -44,5 +54,5 @@ Strong efficiency = baseline time × baseline GPUs / (measured time × GPUs); id
 
 | Grid | Global resolution (cells) | GPUs | Nodes | Partition | Δt (s) | Median s/step | Efficiency | Throughput (cells/s) | Memory/GPU (GiB) | State |
 |---|---|---:|---:|---|---:|---:|---:|---:|---:|---|
-| validation | 72 × 36 × 200 (518,400) | 2 | — | 2 × 1 × 1 | 60 | — | — | — | — | PENDING |
+| validation | 72 × 36 × 200 (518,400) | 2 | — | 2 × 1 × 1 | 60 | — | — | — | — | CANCELLED |
 

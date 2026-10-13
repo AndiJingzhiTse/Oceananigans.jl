@@ -1,0 +1,3154 @@
+[
+  {
+    "configuration": {
+      "series": "cpu_mpi_scaling_super_fine",
+      "model_type": "NonhydrostaticModel",
+      "device": "CPU",
+      "ranks": 16,
+      "threads_per_rank": 1,
+      "grid_name": "super_fine",
+      "global_resolution": [
+        72,
+        36,
+        200
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "partition": [
+        4,
+        4,
+        1
+      ],
+      "x_sizes": [
+        18,
+        18,
+        18,
+        18
+      ],
+      "y_sizes": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENO7",
+      "tracer_advection": "WENO7",
+      "closure": "ScalarDiffusivity",
+      "tracers": [
+        "T",
+        "S"
+      ],
+      "viscosity": 0.001,
+      "diffusivity": 1.0e-5,
+      "coriolis": "HydrostaticSphericalCoriolis",
+      "buoyancy": "SeawaterBuoyancy(TEOS10)",
+      "timestepper": "RungeKutta3",
+      "free_surface": "RigidLid",
+      "pressure_solver": "ConjugateGradientPoissonSolver",
+      "pressure_preconditioner": "ColumnwiseTridiagonalPreconditioner",
+      "pressure_max_iterations": 5000,
+      "pressure_reltol": 1.4901161193847656e-8,
+      "pressure_abstol": 1.4901161193847656e-8,
+      "pressure_diagnostics": true,
+      "initial_condition_seed": 1234,
+      "dt": 60,
+      "free_surface_substeps": null,
+      "extend_free_surface_halos": false,
+      "warmup_steps": 2,
+      "samples": 1,
+      "time_steps": 1,
+      "profile": false,
+      "scaling_type": "strong",
+      "baseline_ranks": 1
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "free_surface": "RigidLid",
+    "gpu_memory_used_bytes": null,
+    "grid_size": [
+      18,
+      9,
+      200
+    ],
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{CPU, false, Partition{Sizes{NTuple{4, Int64}}, Sizes{NTuple{4, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "AMD EPYC 9654 96-Core Processor (znver4)",
+      "num_threads": 1,
+      "hostname": "rc13507",
+      "package_versions": {
+        "Adapt": "4.7.2",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-13T13:15:34.937",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023\u0000"
+    },
+    "model_type": "NonhydrostaticModel",
+    "pressure_preconditioner": "ColumnwiseTridiagonalPreconditioner",
+    "pressure_solver": "ConjugateGradientPoissonSolver",
+    "pressure_solver_converged": true,
+    "pressure_solver_iterations": 28,
+    "pressure_solves": [
+      {
+        "converged": true,
+        "final_residual": 0.0,
+        "initial_residual": 0.0,
+        "iterations": 0,
+        "seconds": 0.977309102,
+        "solve": 1,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.1914976910224328e-8,
+        "initial_residual": 1.1329671684374922e-6,
+        "iterations": 4606,
+        "seconds": 29.226127999,
+        "solve": 2,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4768261186537296e-8,
+        "initial_residual": 1.4768261186537296e-8,
+        "iterations": 0,
+        "seconds": 0.344091937,
+        "solve": 3,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.353944727159636e-8,
+        "initial_residual": 2.2051531398681544e-8,
+        "iterations": 48,
+        "seconds": 0.599964877,
+        "solve": 4,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4367509407922044e-8,
+        "initial_residual": 3.7576170812498137e-8,
+        "iterations": 46,
+        "seconds": 0.300876688,
+        "solve": 5,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 9.721590080239354e-9,
+        "initial_residual": 1.7378734340816737e-8,
+        "iterations": 46,
+        "seconds": 0.25588372,
+        "solve": 6,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4152444230288648e-8,
+        "initial_residual": 4.679535834740534e-8,
+        "iterations": 26,
+        "seconds": 0.491635327,
+        "solve": 7,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 9.919786823719672e-9,
+        "initial_residual": 4.037485885414237e-8,
+        "iterations": 64,
+        "seconds": 0.352017527,
+        "solve": 8,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.2990487333824086e-8,
+        "initial_residual": 1.2990487333824086e-8,
+        "iterations": 0,
+        "seconds": 0.003375465,
+        "solve": 9,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.137729790441983e-8,
+        "initial_residual": 2.2664465330177714e-8,
+        "iterations": 28,
+        "seconds": 0.187841039,
+        "solve": 10,
+        "tolerance": 1.4901161193847656e-8
+      }
+    ],
+    "rank": 0,
+    "retained_free_surface_substeps": null,
+    "time_per_step_max_seconds": 0.754866392,
+    "time_per_step_median_seconds": 0.754866392,
+    "time_per_step_seconds": 0.754866392,
+    "window_seconds": [
+      0.754866392
+    ]
+  },
+  {
+    "configuration": {
+      "series": "cpu_mpi_scaling_super_fine",
+      "model_type": "NonhydrostaticModel",
+      "device": "CPU",
+      "ranks": 16,
+      "threads_per_rank": 1,
+      "grid_name": "super_fine",
+      "global_resolution": [
+        72,
+        36,
+        200
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "partition": [
+        4,
+        4,
+        1
+      ],
+      "x_sizes": [
+        18,
+        18,
+        18,
+        18
+      ],
+      "y_sizes": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENO7",
+      "tracer_advection": "WENO7",
+      "closure": "ScalarDiffusivity",
+      "tracers": [
+        "T",
+        "S"
+      ],
+      "viscosity": 0.001,
+      "diffusivity": 1.0e-5,
+      "coriolis": "HydrostaticSphericalCoriolis",
+      "buoyancy": "SeawaterBuoyancy(TEOS10)",
+      "timestepper": "RungeKutta3",
+      "free_surface": "RigidLid",
+      "pressure_solver": "ConjugateGradientPoissonSolver",
+      "pressure_preconditioner": "ColumnwiseTridiagonalPreconditioner",
+      "pressure_max_iterations": 5000,
+      "pressure_reltol": 1.4901161193847656e-8,
+      "pressure_abstol": 1.4901161193847656e-8,
+      "pressure_diagnostics": true,
+      "initial_condition_seed": 1234,
+      "dt": 60,
+      "free_surface_substeps": null,
+      "extend_free_surface_halos": false,
+      "warmup_steps": 2,
+      "samples": 1,
+      "time_steps": 1,
+      "profile": false,
+      "scaling_type": "strong",
+      "baseline_ranks": 1
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "free_surface": "RigidLid",
+    "gpu_memory_used_bytes": null,
+    "grid_size": [
+      18,
+      9,
+      200
+    ],
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{CPU, false, Partition{Sizes{NTuple{4, Int64}}, Sizes{NTuple{4, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "AMD EPYC 9654 96-Core Processor (znver4)",
+      "num_threads": 1,
+      "hostname": "rc13507",
+      "package_versions": {
+        "Adapt": "4.7.2",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-13T13:15:34.937",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023\u0000"
+    },
+    "model_type": "NonhydrostaticModel",
+    "pressure_preconditioner": "ColumnwiseTridiagonalPreconditioner",
+    "pressure_solver": "ConjugateGradientPoissonSolver",
+    "pressure_solver_converged": true,
+    "pressure_solver_iterations": 28,
+    "pressure_solves": [
+      {
+        "converged": true,
+        "final_residual": 0.0,
+        "initial_residual": 0.0,
+        "iterations": 0,
+        "seconds": 0.977448713,
+        "solve": 1,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.1914976910224328e-8,
+        "initial_residual": 1.1329671684374922e-6,
+        "iterations": 4606,
+        "seconds": 29.226052568,
+        "solve": 2,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4768261186537296e-8,
+        "initial_residual": 1.4768261186537296e-8,
+        "iterations": 0,
+        "seconds": 0.344140327,
+        "solve": 3,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.353944727159636e-8,
+        "initial_residual": 2.2051531398681544e-8,
+        "iterations": 48,
+        "seconds": 0.599883056,
+        "solve": 4,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4367509407922044e-8,
+        "initial_residual": 3.7576170812498137e-8,
+        "iterations": 46,
+        "seconds": 0.300760287,
+        "solve": 5,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 9.721590080239354e-9,
+        "initial_residual": 1.7378734340816737e-8,
+        "iterations": 46,
+        "seconds": 0.255976511,
+        "solve": 6,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4152444230288648e-8,
+        "initial_residual": 4.679535834740534e-8,
+        "iterations": 26,
+        "seconds": 0.491696027,
+        "solve": 7,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 9.919786823719672e-9,
+        "initial_residual": 4.037485885414237e-8,
+        "iterations": 64,
+        "seconds": 0.351961496,
+        "solve": 8,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.2990487333824086e-8,
+        "initial_residual": 1.2990487333824086e-8,
+        "iterations": 0,
+        "seconds": 0.003445905,
+        "solve": 9,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.137729790441983e-8,
+        "initial_residual": 2.2664465330177714e-8,
+        "iterations": 28,
+        "seconds": 0.187785709,
+        "solve": 10,
+        "tolerance": 1.4901161193847656e-8
+      }
+    ],
+    "rank": 1,
+    "retained_free_surface_substeps": null,
+    "time_per_step_max_seconds": 0.754868912,
+    "time_per_step_median_seconds": 0.754868912,
+    "time_per_step_seconds": 0.754868912,
+    "window_seconds": [
+      0.754868912
+    ]
+  },
+  {
+    "configuration": {
+      "series": "cpu_mpi_scaling_super_fine",
+      "model_type": "NonhydrostaticModel",
+      "device": "CPU",
+      "ranks": 16,
+      "threads_per_rank": 1,
+      "grid_name": "super_fine",
+      "global_resolution": [
+        72,
+        36,
+        200
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "partition": [
+        4,
+        4,
+        1
+      ],
+      "x_sizes": [
+        18,
+        18,
+        18,
+        18
+      ],
+      "y_sizes": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENO7",
+      "tracer_advection": "WENO7",
+      "closure": "ScalarDiffusivity",
+      "tracers": [
+        "T",
+        "S"
+      ],
+      "viscosity": 0.001,
+      "diffusivity": 1.0e-5,
+      "coriolis": "HydrostaticSphericalCoriolis",
+      "buoyancy": "SeawaterBuoyancy(TEOS10)",
+      "timestepper": "RungeKutta3",
+      "free_surface": "RigidLid",
+      "pressure_solver": "ConjugateGradientPoissonSolver",
+      "pressure_preconditioner": "ColumnwiseTridiagonalPreconditioner",
+      "pressure_max_iterations": 5000,
+      "pressure_reltol": 1.4901161193847656e-8,
+      "pressure_abstol": 1.4901161193847656e-8,
+      "pressure_diagnostics": true,
+      "initial_condition_seed": 1234,
+      "dt": 60,
+      "free_surface_substeps": null,
+      "extend_free_surface_halos": false,
+      "warmup_steps": 2,
+      "samples": 1,
+      "time_steps": 1,
+      "profile": false,
+      "scaling_type": "strong",
+      "baseline_ranks": 1
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "free_surface": "RigidLid",
+    "gpu_memory_used_bytes": null,
+    "grid_size": [
+      18,
+      9,
+      200
+    ],
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{CPU, false, Partition{Sizes{NTuple{4, Int64}}, Sizes{NTuple{4, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "AMD EPYC 9654 96-Core Processor (znver4)",
+      "num_threads": 1,
+      "hostname": "rc13507",
+      "package_versions": {
+        "Adapt": "4.7.2",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-13T13:15:34.937",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023\u0000"
+    },
+    "model_type": "NonhydrostaticModel",
+    "pressure_preconditioner": "ColumnwiseTridiagonalPreconditioner",
+    "pressure_solver": "ConjugateGradientPoissonSolver",
+    "pressure_solver_converged": true,
+    "pressure_solver_iterations": 28,
+    "pressure_solves": [
+      {
+        "converged": true,
+        "final_residual": 0.0,
+        "initial_residual": 0.0,
+        "iterations": 0,
+        "seconds": 0.978762367,
+        "solve": 1,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.1914976910224328e-8,
+        "initial_residual": 1.1329671684374922e-6,
+        "iterations": 4606,
+        "seconds": 29.22624208,
+        "solve": 2,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4768261186537296e-8,
+        "initial_residual": 1.4768261186537296e-8,
+        "iterations": 0,
+        "seconds": 0.343775264,
+        "solve": 3,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.353944727159636e-8,
+        "initial_residual": 2.2051531398681544e-8,
+        "iterations": 48,
+        "seconds": 0.599698735,
+        "solve": 4,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4367509407922044e-8,
+        "initial_residual": 3.7576170812498137e-8,
+        "iterations": 46,
+        "seconds": 0.300691886,
+        "solve": 5,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 9.721590080239354e-9,
+        "initial_residual": 1.7378734340816737e-8,
+        "iterations": 46,
+        "seconds": 0.256407926,
+        "solve": 6,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4152444230288648e-8,
+        "initial_residual": 4.679535834740534e-8,
+        "iterations": 26,
+        "seconds": 0.491855999,
+        "solve": 7,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 9.919786823719672e-9,
+        "initial_residual": 4.037485885414237e-8,
+        "iterations": 64,
+        "seconds": 0.351951446,
+        "solve": 8,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.2990487333824086e-8,
+        "initial_residual": 1.2990487333824086e-8,
+        "iterations": 0,
+        "seconds": 0.003993651,
+        "solve": 9,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.137729790441983e-8,
+        "initial_residual": 2.2664465330177714e-8,
+        "iterations": 28,
+        "seconds": 0.187976431,
+        "solve": 10,
+        "tolerance": 1.4901161193847656e-8
+      }
+    ],
+    "rank": 2,
+    "retained_free_surface_substeps": null,
+    "time_per_step_max_seconds": 0.754866492,
+    "time_per_step_median_seconds": 0.754866492,
+    "time_per_step_seconds": 0.754866492,
+    "window_seconds": [
+      0.754866492
+    ]
+  },
+  {
+    "configuration": {
+      "series": "cpu_mpi_scaling_super_fine",
+      "model_type": "NonhydrostaticModel",
+      "device": "CPU",
+      "ranks": 16,
+      "threads_per_rank": 1,
+      "grid_name": "super_fine",
+      "global_resolution": [
+        72,
+        36,
+        200
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "partition": [
+        4,
+        4,
+        1
+      ],
+      "x_sizes": [
+        18,
+        18,
+        18,
+        18
+      ],
+      "y_sizes": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENO7",
+      "tracer_advection": "WENO7",
+      "closure": "ScalarDiffusivity",
+      "tracers": [
+        "T",
+        "S"
+      ],
+      "viscosity": 0.001,
+      "diffusivity": 1.0e-5,
+      "coriolis": "HydrostaticSphericalCoriolis",
+      "buoyancy": "SeawaterBuoyancy(TEOS10)",
+      "timestepper": "RungeKutta3",
+      "free_surface": "RigidLid",
+      "pressure_solver": "ConjugateGradientPoissonSolver",
+      "pressure_preconditioner": "ColumnwiseTridiagonalPreconditioner",
+      "pressure_max_iterations": 5000,
+      "pressure_reltol": 1.4901161193847656e-8,
+      "pressure_abstol": 1.4901161193847656e-8,
+      "pressure_diagnostics": true,
+      "initial_condition_seed": 1234,
+      "dt": 60,
+      "free_surface_substeps": null,
+      "extend_free_surface_halos": false,
+      "warmup_steps": 2,
+      "samples": 1,
+      "time_steps": 1,
+      "profile": false,
+      "scaling_type": "strong",
+      "baseline_ranks": 1
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "free_surface": "RigidLid",
+    "gpu_memory_used_bytes": null,
+    "grid_size": [
+      18,
+      9,
+      200
+    ],
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{CPU, false, Partition{Sizes{NTuple{4, Int64}}, Sizes{NTuple{4, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "AMD EPYC 9654 96-Core Processor (znver4)",
+      "num_threads": 1,
+      "hostname": "rc13507",
+      "package_versions": {
+        "Adapt": "4.7.2",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-13T13:15:34.937",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023\u0000"
+    },
+    "model_type": "NonhydrostaticModel",
+    "pressure_preconditioner": "ColumnwiseTridiagonalPreconditioner",
+    "pressure_solver": "ConjugateGradientPoissonSolver",
+    "pressure_solver_converged": true,
+    "pressure_solver_iterations": 28,
+    "pressure_solves": [
+      {
+        "converged": true,
+        "final_residual": 0.0,
+        "initial_residual": 0.0,
+        "iterations": 0,
+        "seconds": 1.054201944,
+        "solve": 1,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.1914976910224328e-8,
+        "initial_residual": 1.1329671684374922e-6,
+        "iterations": 4606,
+        "seconds": 29.22629885,
+        "solve": 2,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4768261186537296e-8,
+        "initial_residual": 1.4768261186537296e-8,
+        "iterations": 0,
+        "seconds": 0.344058947,
+        "solve": 3,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.353944727159636e-8,
+        "initial_residual": 2.2051531398681544e-8,
+        "iterations": 48,
+        "seconds": 0.599735365,
+        "solve": 4,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4367509407922044e-8,
+        "initial_residual": 3.7576170812498137e-8,
+        "iterations": 46,
+        "seconds": 0.30103358,
+        "solve": 5,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 9.721590080239354e-9,
+        "initial_residual": 1.7378734340816737e-8,
+        "iterations": 46,
+        "seconds": 0.256497237,
+        "solve": 6,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4152444230288648e-8,
+        "initial_residual": 4.679535834740534e-8,
+        "iterations": 26,
+        "seconds": 0.491870478,
+        "solve": 7,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 9.919786823719672e-9,
+        "initial_residual": 4.037485885414237e-8,
+        "iterations": 64,
+        "seconds": 0.351986047,
+        "solve": 8,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.2990487333824086e-8,
+        "initial_residual": 1.2990487333824086e-8,
+        "iterations": 0,
+        "seconds": 0.004049241,
+        "solve": 9,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.137729790441983e-8,
+        "initial_residual": 2.2664465330177714e-8,
+        "iterations": 28,
+        "seconds": 0.188062762,
+        "solve": 10,
+        "tolerance": 1.4901161193847656e-8
+      }
+    ],
+    "rank": 3,
+    "retained_free_surface_substeps": null,
+    "time_per_step_max_seconds": 0.754867992,
+    "time_per_step_median_seconds": 0.754867992,
+    "time_per_step_seconds": 0.754867992,
+    "window_seconds": [
+      0.754867992
+    ]
+  },
+  {
+    "configuration": {
+      "series": "cpu_mpi_scaling_super_fine",
+      "model_type": "NonhydrostaticModel",
+      "device": "CPU",
+      "ranks": 16,
+      "threads_per_rank": 1,
+      "grid_name": "super_fine",
+      "global_resolution": [
+        72,
+        36,
+        200
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "partition": [
+        4,
+        4,
+        1
+      ],
+      "x_sizes": [
+        18,
+        18,
+        18,
+        18
+      ],
+      "y_sizes": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENO7",
+      "tracer_advection": "WENO7",
+      "closure": "ScalarDiffusivity",
+      "tracers": [
+        "T",
+        "S"
+      ],
+      "viscosity": 0.001,
+      "diffusivity": 1.0e-5,
+      "coriolis": "HydrostaticSphericalCoriolis",
+      "buoyancy": "SeawaterBuoyancy(TEOS10)",
+      "timestepper": "RungeKutta3",
+      "free_surface": "RigidLid",
+      "pressure_solver": "ConjugateGradientPoissonSolver",
+      "pressure_preconditioner": "ColumnwiseTridiagonalPreconditioner",
+      "pressure_max_iterations": 5000,
+      "pressure_reltol": 1.4901161193847656e-8,
+      "pressure_abstol": 1.4901161193847656e-8,
+      "pressure_diagnostics": true,
+      "initial_condition_seed": 1234,
+      "dt": 60,
+      "free_surface_substeps": null,
+      "extend_free_surface_halos": false,
+      "warmup_steps": 2,
+      "samples": 1,
+      "time_steps": 1,
+      "profile": false,
+      "scaling_type": "strong",
+      "baseline_ranks": 1
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "free_surface": "RigidLid",
+    "gpu_memory_used_bytes": null,
+    "grid_size": [
+      18,
+      9,
+      200
+    ],
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{CPU, false, Partition{Sizes{NTuple{4, Int64}}, Sizes{NTuple{4, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "AMD EPYC 9654 96-Core Processor (znver4)",
+      "num_threads": 1,
+      "hostname": "rc13507",
+      "package_versions": {
+        "Adapt": "4.7.2",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-13T13:15:34.937",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023\u0000"
+    },
+    "model_type": "NonhydrostaticModel",
+    "pressure_preconditioner": "ColumnwiseTridiagonalPreconditioner",
+    "pressure_solver": "ConjugateGradientPoissonSolver",
+    "pressure_solver_converged": true,
+    "pressure_solver_iterations": 28,
+    "pressure_solves": [
+      {
+        "converged": true,
+        "final_residual": 0.0,
+        "initial_residual": 0.0,
+        "iterations": 0,
+        "seconds": 0.977974098,
+        "solve": 1,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.1914976910224328e-8,
+        "initial_residual": 1.1329671684374922e-6,
+        "iterations": 4606,
+        "seconds": 29.226159039,
+        "solve": 2,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4768261186537296e-8,
+        "initial_residual": 1.4768261186537296e-8,
+        "iterations": 0,
+        "seconds": 0.344189218,
+        "solve": 3,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.353944727159636e-8,
+        "initial_residual": 2.2051531398681544e-8,
+        "iterations": 48,
+        "seconds": 0.599951437,
+        "solve": 4,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4367509407922044e-8,
+        "initial_residual": 3.7576170812498137e-8,
+        "iterations": 46,
+        "seconds": 0.300834777,
+        "solve": 5,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 9.721590080239354e-9,
+        "initial_residual": 1.7378734340816737e-8,
+        "iterations": 46,
+        "seconds": 0.256020462,
+        "solve": 6,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4152444230288648e-8,
+        "initial_residual": 4.679535834740534e-8,
+        "iterations": 26,
+        "seconds": 0.491801958,
+        "solve": 7,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 9.919786823719672e-9,
+        "initial_residual": 4.037485885414237e-8,
+        "iterations": 64,
+        "seconds": 0.352004967,
+        "solve": 8,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.2990487333824086e-8,
+        "initial_residual": 1.2990487333824086e-8,
+        "iterations": 0,
+        "seconds": 0.003559596,
+        "solve": 9,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.137729790441983e-8,
+        "initial_residual": 2.2664465330177714e-8,
+        "iterations": 28,
+        "seconds": 0.187825879,
+        "solve": 10,
+        "tolerance": 1.4901161193847656e-8
+      }
+    ],
+    "rank": 4,
+    "retained_free_surface_substeps": null,
+    "time_per_step_max_seconds": 0.754866242,
+    "time_per_step_median_seconds": 0.754866242,
+    "time_per_step_seconds": 0.754866242,
+    "window_seconds": [
+      0.754866242
+    ]
+  },
+  {
+    "configuration": {
+      "series": "cpu_mpi_scaling_super_fine",
+      "model_type": "NonhydrostaticModel",
+      "device": "CPU",
+      "ranks": 16,
+      "threads_per_rank": 1,
+      "grid_name": "super_fine",
+      "global_resolution": [
+        72,
+        36,
+        200
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "partition": [
+        4,
+        4,
+        1
+      ],
+      "x_sizes": [
+        18,
+        18,
+        18,
+        18
+      ],
+      "y_sizes": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENO7",
+      "tracer_advection": "WENO7",
+      "closure": "ScalarDiffusivity",
+      "tracers": [
+        "T",
+        "S"
+      ],
+      "viscosity": 0.001,
+      "diffusivity": 1.0e-5,
+      "coriolis": "HydrostaticSphericalCoriolis",
+      "buoyancy": "SeawaterBuoyancy(TEOS10)",
+      "timestepper": "RungeKutta3",
+      "free_surface": "RigidLid",
+      "pressure_solver": "ConjugateGradientPoissonSolver",
+      "pressure_preconditioner": "ColumnwiseTridiagonalPreconditioner",
+      "pressure_max_iterations": 5000,
+      "pressure_reltol": 1.4901161193847656e-8,
+      "pressure_abstol": 1.4901161193847656e-8,
+      "pressure_diagnostics": true,
+      "initial_condition_seed": 1234,
+      "dt": 60,
+      "free_surface_substeps": null,
+      "extend_free_surface_halos": false,
+      "warmup_steps": 2,
+      "samples": 1,
+      "time_steps": 1,
+      "profile": false,
+      "scaling_type": "strong",
+      "baseline_ranks": 1
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "free_surface": "RigidLid",
+    "gpu_memory_used_bytes": null,
+    "grid_size": [
+      18,
+      9,
+      200
+    ],
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{CPU, false, Partition{Sizes{NTuple{4, Int64}}, Sizes{NTuple{4, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "AMD EPYC 9654 96-Core Processor (znver4)",
+      "num_threads": 1,
+      "hostname": "rc13507",
+      "package_versions": {
+        "Adapt": "4.7.2",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-13T13:15:34.937",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023\u0000"
+    },
+    "model_type": "NonhydrostaticModel",
+    "pressure_preconditioner": "ColumnwiseTridiagonalPreconditioner",
+    "pressure_solver": "ConjugateGradientPoissonSolver",
+    "pressure_solver_converged": true,
+    "pressure_solver_iterations": 28,
+    "pressure_solves": [
+      {
+        "converged": true,
+        "final_residual": 0.0,
+        "initial_residual": 0.0,
+        "iterations": 0,
+        "seconds": 0.977292512,
+        "solve": 1,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.1914976910224328e-8,
+        "initial_residual": 1.1329671684374922e-6,
+        "iterations": 4606,
+        "seconds": 29.226078748,
+        "solve": 2,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4768261186537296e-8,
+        "initial_residual": 1.4768261186537296e-8,
+        "iterations": 0,
+        "seconds": 0.343997866,
+        "solve": 3,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.353944727159636e-8,
+        "initial_residual": 2.2051531398681544e-8,
+        "iterations": 48,
+        "seconds": 0.599909947,
+        "solve": 4,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4367509407922044e-8,
+        "initial_residual": 3.7576170812498137e-8,
+        "iterations": 46,
+        "seconds": 0.300816427,
+        "solve": 5,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 9.721590080239354e-9,
+        "initial_residual": 1.7378734340816737e-8,
+        "iterations": 46,
+        "seconds": 0.25584335,
+        "solve": 6,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4152444230288648e-8,
+        "initial_residual": 4.679535834740534e-8,
+        "iterations": 26,
+        "seconds": 0.491582676,
+        "solve": 7,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 9.919786823719672e-9,
+        "initial_residual": 4.037485885414237e-8,
+        "iterations": 64,
+        "seconds": 0.351955306,
+        "solve": 8,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.2990487333824086e-8,
+        "initial_residual": 1.2990487333824086e-8,
+        "iterations": 0,
+        "seconds": 0.003310794,
+        "solve": 9,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.137729790441983e-8,
+        "initial_residual": 2.2664465330177714e-8,
+        "iterations": 28,
+        "seconds": 0.187779979,
+        "solve": 10,
+        "tolerance": 1.4901161193847656e-8
+      }
+    ],
+    "rank": 5,
+    "retained_free_surface_substeps": null,
+    "time_per_step_max_seconds": 0.754873912,
+    "time_per_step_median_seconds": 0.754873912,
+    "time_per_step_seconds": 0.754873912,
+    "window_seconds": [
+      0.754873912
+    ]
+  },
+  {
+    "configuration": {
+      "series": "cpu_mpi_scaling_super_fine",
+      "model_type": "NonhydrostaticModel",
+      "device": "CPU",
+      "ranks": 16,
+      "threads_per_rank": 1,
+      "grid_name": "super_fine",
+      "global_resolution": [
+        72,
+        36,
+        200
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "partition": [
+        4,
+        4,
+        1
+      ],
+      "x_sizes": [
+        18,
+        18,
+        18,
+        18
+      ],
+      "y_sizes": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENO7",
+      "tracer_advection": "WENO7",
+      "closure": "ScalarDiffusivity",
+      "tracers": [
+        "T",
+        "S"
+      ],
+      "viscosity": 0.001,
+      "diffusivity": 1.0e-5,
+      "coriolis": "HydrostaticSphericalCoriolis",
+      "buoyancy": "SeawaterBuoyancy(TEOS10)",
+      "timestepper": "RungeKutta3",
+      "free_surface": "RigidLid",
+      "pressure_solver": "ConjugateGradientPoissonSolver",
+      "pressure_preconditioner": "ColumnwiseTridiagonalPreconditioner",
+      "pressure_max_iterations": 5000,
+      "pressure_reltol": 1.4901161193847656e-8,
+      "pressure_abstol": 1.4901161193847656e-8,
+      "pressure_diagnostics": true,
+      "initial_condition_seed": 1234,
+      "dt": 60,
+      "free_surface_substeps": null,
+      "extend_free_surface_halos": false,
+      "warmup_steps": 2,
+      "samples": 1,
+      "time_steps": 1,
+      "profile": false,
+      "scaling_type": "strong",
+      "baseline_ranks": 1
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "free_surface": "RigidLid",
+    "gpu_memory_used_bytes": null,
+    "grid_size": [
+      18,
+      9,
+      200
+    ],
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{CPU, false, Partition{Sizes{NTuple{4, Int64}}, Sizes{NTuple{4, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "AMD EPYC 9654 96-Core Processor (znver4)",
+      "num_threads": 1,
+      "hostname": "rc13507",
+      "package_versions": {
+        "Adapt": "4.7.2",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-13T13:15:34.937",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023\u0000"
+    },
+    "model_type": "NonhydrostaticModel",
+    "pressure_preconditioner": "ColumnwiseTridiagonalPreconditioner",
+    "pressure_solver": "ConjugateGradientPoissonSolver",
+    "pressure_solver_converged": true,
+    "pressure_solver_iterations": 28,
+    "pressure_solves": [
+      {
+        "converged": true,
+        "final_residual": 0.0,
+        "initial_residual": 0.0,
+        "iterations": 0,
+        "seconds": 0.978781407,
+        "solve": 1,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.1914976910224328e-8,
+        "initial_residual": 1.1329671684374922e-6,
+        "iterations": 4606,
+        "seconds": 29.226165979,
+        "solve": 2,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4768261186537296e-8,
+        "initial_residual": 1.4768261186537296e-8,
+        "iterations": 0,
+        "seconds": 0.343739533,
+        "solve": 3,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.353944727159636e-8,
+        "initial_residual": 2.2051531398681544e-8,
+        "iterations": 48,
+        "seconds": 0.599683154,
+        "solve": 4,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4367509407922044e-8,
+        "initial_residual": 3.7576170812498137e-8,
+        "iterations": 46,
+        "seconds": 0.300547535,
+        "solve": 5,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 9.721590080239354e-9,
+        "initial_residual": 1.7378734340816737e-8,
+        "iterations": 46,
+        "seconds": 0.256407486,
+        "solve": 6,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4152444230288648e-8,
+        "initial_residual": 4.679535834740534e-8,
+        "iterations": 26,
+        "seconds": 0.491823019,
+        "solve": 7,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 9.919786823719672e-9,
+        "initial_residual": 4.037485885414237e-8,
+        "iterations": 64,
+        "seconds": 0.351933046,
+        "solve": 8,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.2990487333824086e-8,
+        "initial_residual": 1.2990487333824086e-8,
+        "iterations": 0,
+        "seconds": 0.003987851,
+        "solve": 9,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.137729790441983e-8,
+        "initial_residual": 2.2664465330177714e-8,
+        "iterations": 28,
+        "seconds": 0.187983931,
+        "solve": 10,
+        "tolerance": 1.4901161193847656e-8
+      }
+    ],
+    "rank": 6,
+    "retained_free_surface_substeps": null,
+    "time_per_step_max_seconds": 0.754866472,
+    "time_per_step_median_seconds": 0.754866472,
+    "time_per_step_seconds": 0.754866472,
+    "window_seconds": [
+      0.754866472
+    ]
+  },
+  {
+    "configuration": {
+      "series": "cpu_mpi_scaling_super_fine",
+      "model_type": "NonhydrostaticModel",
+      "device": "CPU",
+      "ranks": 16,
+      "threads_per_rank": 1,
+      "grid_name": "super_fine",
+      "global_resolution": [
+        72,
+        36,
+        200
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "partition": [
+        4,
+        4,
+        1
+      ],
+      "x_sizes": [
+        18,
+        18,
+        18,
+        18
+      ],
+      "y_sizes": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENO7",
+      "tracer_advection": "WENO7",
+      "closure": "ScalarDiffusivity",
+      "tracers": [
+        "T",
+        "S"
+      ],
+      "viscosity": 0.001,
+      "diffusivity": 1.0e-5,
+      "coriolis": "HydrostaticSphericalCoriolis",
+      "buoyancy": "SeawaterBuoyancy(TEOS10)",
+      "timestepper": "RungeKutta3",
+      "free_surface": "RigidLid",
+      "pressure_solver": "ConjugateGradientPoissonSolver",
+      "pressure_preconditioner": "ColumnwiseTridiagonalPreconditioner",
+      "pressure_max_iterations": 5000,
+      "pressure_reltol": 1.4901161193847656e-8,
+      "pressure_abstol": 1.4901161193847656e-8,
+      "pressure_diagnostics": true,
+      "initial_condition_seed": 1234,
+      "dt": 60,
+      "free_surface_substeps": null,
+      "extend_free_surface_halos": false,
+      "warmup_steps": 2,
+      "samples": 1,
+      "time_steps": 1,
+      "profile": false,
+      "scaling_type": "strong",
+      "baseline_ranks": 1
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "free_surface": "RigidLid",
+    "gpu_memory_used_bytes": null,
+    "grid_size": [
+      18,
+      9,
+      200
+    ],
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{CPU, false, Partition{Sizes{NTuple{4, Int64}}, Sizes{NTuple{4, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "AMD EPYC 9654 96-Core Processor (znver4)",
+      "num_threads": 1,
+      "hostname": "rc13507",
+      "package_versions": {
+        "Adapt": "4.7.2",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-13T13:15:34.937",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023\u0000"
+    },
+    "model_type": "NonhydrostaticModel",
+    "pressure_preconditioner": "ColumnwiseTridiagonalPreconditioner",
+    "pressure_solver": "ConjugateGradientPoissonSolver",
+    "pressure_solver_converged": true,
+    "pressure_solver_iterations": 28,
+    "pressure_solves": [
+      {
+        "converged": true,
+        "final_residual": 0.0,
+        "initial_residual": 0.0,
+        "iterations": 0,
+        "seconds": 1.054348506,
+        "solve": 1,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.1914976910224328e-8,
+        "initial_residual": 1.1329671684374922e-6,
+        "iterations": 4606,
+        "seconds": 29.226435892,
+        "solve": 2,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4768261186537296e-8,
+        "initial_residual": 1.4768261186537296e-8,
+        "iterations": 0,
+        "seconds": 0.343914255,
+        "solve": 3,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.353944727159636e-8,
+        "initial_residual": 2.2051531398681544e-8,
+        "iterations": 48,
+        "seconds": 0.599738415,
+        "solve": 4,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4367509407922044e-8,
+        "initial_residual": 3.7576170812498137e-8,
+        "iterations": 46,
+        "seconds": 0.300734186,
+        "solve": 5,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 9.721590080239354e-9,
+        "initial_residual": 1.7378734340816737e-8,
+        "iterations": 46,
+        "seconds": 0.256494907,
+        "solve": 6,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4152444230288648e-8,
+        "initial_residual": 4.679535834740534e-8,
+        "iterations": 26,
+        "seconds": 0.491895698,
+        "solve": 7,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 9.919786823719672e-9,
+        "initial_residual": 4.037485885414237e-8,
+        "iterations": 64,
+        "seconds": 0.351991867,
+        "solve": 8,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.2990487333824086e-8,
+        "initial_residual": 1.2990487333824086e-8,
+        "iterations": 0,
+        "seconds": 0.004054261,
+        "solve": 9,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.137729790441983e-8,
+        "initial_residual": 2.2664465330177714e-8,
+        "iterations": 28,
+        "seconds": 0.188061672,
+        "solve": 10,
+        "tolerance": 1.4901161193847656e-8
+      }
+    ],
+    "rank": 7,
+    "retained_free_surface_substeps": null,
+    "time_per_step_max_seconds": 0.754867442,
+    "time_per_step_median_seconds": 0.754867442,
+    "time_per_step_seconds": 0.754867442,
+    "window_seconds": [
+      0.754867442
+    ]
+  },
+  {
+    "configuration": {
+      "series": "cpu_mpi_scaling_super_fine",
+      "model_type": "NonhydrostaticModel",
+      "device": "CPU",
+      "ranks": 16,
+      "threads_per_rank": 1,
+      "grid_name": "super_fine",
+      "global_resolution": [
+        72,
+        36,
+        200
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "partition": [
+        4,
+        4,
+        1
+      ],
+      "x_sizes": [
+        18,
+        18,
+        18,
+        18
+      ],
+      "y_sizes": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENO7",
+      "tracer_advection": "WENO7",
+      "closure": "ScalarDiffusivity",
+      "tracers": [
+        "T",
+        "S"
+      ],
+      "viscosity": 0.001,
+      "diffusivity": 1.0e-5,
+      "coriolis": "HydrostaticSphericalCoriolis",
+      "buoyancy": "SeawaterBuoyancy(TEOS10)",
+      "timestepper": "RungeKutta3",
+      "free_surface": "RigidLid",
+      "pressure_solver": "ConjugateGradientPoissonSolver",
+      "pressure_preconditioner": "ColumnwiseTridiagonalPreconditioner",
+      "pressure_max_iterations": 5000,
+      "pressure_reltol": 1.4901161193847656e-8,
+      "pressure_abstol": 1.4901161193847656e-8,
+      "pressure_diagnostics": true,
+      "initial_condition_seed": 1234,
+      "dt": 60,
+      "free_surface_substeps": null,
+      "extend_free_surface_halos": false,
+      "warmup_steps": 2,
+      "samples": 1,
+      "time_steps": 1,
+      "profile": false,
+      "scaling_type": "strong",
+      "baseline_ranks": 1
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "free_surface": "RigidLid",
+    "gpu_memory_used_bytes": null,
+    "grid_size": [
+      18,
+      9,
+      200
+    ],
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{CPU, false, Partition{Sizes{NTuple{4, Int64}}, Sizes{NTuple{4, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "AMD EPYC 9654 96-Core Processor (znver4)",
+      "num_threads": 1,
+      "hostname": "rc13507",
+      "package_versions": {
+        "Adapt": "4.7.2",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-13T13:15:34.937",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023\u0000"
+    },
+    "model_type": "NonhydrostaticModel",
+    "pressure_preconditioner": "ColumnwiseTridiagonalPreconditioner",
+    "pressure_solver": "ConjugateGradientPoissonSolver",
+    "pressure_solver_converged": true,
+    "pressure_solver_iterations": 28,
+    "pressure_solves": [
+      {
+        "converged": true,
+        "final_residual": 0.0,
+        "initial_residual": 0.0,
+        "iterations": 0,
+        "seconds": 0.977480034,
+        "solve": 1,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.1914976910224328e-8,
+        "initial_residual": 1.1329671684374922e-6,
+        "iterations": 4606,
+        "seconds": 29.22624328,
+        "solve": 2,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4768261186537296e-8,
+        "initial_residual": 1.4768261186537296e-8,
+        "iterations": 0,
+        "seconds": 0.344075997,
+        "solve": 3,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.353944727159636e-8,
+        "initial_residual": 2.2051531398681544e-8,
+        "iterations": 48,
+        "seconds": 0.599953607,
+        "solve": 4,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4367509407922044e-8,
+        "initial_residual": 3.7576170812498137e-8,
+        "iterations": 46,
+        "seconds": 0.300876268,
+        "solve": 5,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 9.721590080239354e-9,
+        "initial_residual": 1.7378734340816737e-8,
+        "iterations": 46,
+        "seconds": 0.256365085,
+        "solve": 6,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4152444230288648e-8,
+        "initial_residual": 4.679535834740534e-8,
+        "iterations": 26,
+        "seconds": 0.49195397,
+        "solve": 7,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 9.919786823719672e-9,
+        "initial_residual": 4.037485885414237e-8,
+        "iterations": 64,
+        "seconds": 0.352044707,
+        "solve": 8,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.2990487333824086e-8,
+        "initial_residual": 1.2990487333824086e-8,
+        "iterations": 0,
+        "seconds": 0.003731758,
+        "solve": 9,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.137729790441983e-8,
+        "initial_residual": 2.2664465330177714e-8,
+        "iterations": 28,
+        "seconds": 0.187845939,
+        "solve": 10,
+        "tolerance": 1.4901161193847656e-8
+      }
+    ],
+    "rank": 8,
+    "retained_free_surface_substeps": null,
+    "time_per_step_max_seconds": 0.754867242,
+    "time_per_step_median_seconds": 0.754867242,
+    "time_per_step_seconds": 0.754867242,
+    "window_seconds": [
+      0.754867242
+    ]
+  },
+  {
+    "configuration": {
+      "series": "cpu_mpi_scaling_super_fine",
+      "model_type": "NonhydrostaticModel",
+      "device": "CPU",
+      "ranks": 16,
+      "threads_per_rank": 1,
+      "grid_name": "super_fine",
+      "global_resolution": [
+        72,
+        36,
+        200
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "partition": [
+        4,
+        4,
+        1
+      ],
+      "x_sizes": [
+        18,
+        18,
+        18,
+        18
+      ],
+      "y_sizes": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENO7",
+      "tracer_advection": "WENO7",
+      "closure": "ScalarDiffusivity",
+      "tracers": [
+        "T",
+        "S"
+      ],
+      "viscosity": 0.001,
+      "diffusivity": 1.0e-5,
+      "coriolis": "HydrostaticSphericalCoriolis",
+      "buoyancy": "SeawaterBuoyancy(TEOS10)",
+      "timestepper": "RungeKutta3",
+      "free_surface": "RigidLid",
+      "pressure_solver": "ConjugateGradientPoissonSolver",
+      "pressure_preconditioner": "ColumnwiseTridiagonalPreconditioner",
+      "pressure_max_iterations": 5000,
+      "pressure_reltol": 1.4901161193847656e-8,
+      "pressure_abstol": 1.4901161193847656e-8,
+      "pressure_diagnostics": true,
+      "initial_condition_seed": 1234,
+      "dt": 60,
+      "free_surface_substeps": null,
+      "extend_free_surface_halos": false,
+      "warmup_steps": 2,
+      "samples": 1,
+      "time_steps": 1,
+      "profile": false,
+      "scaling_type": "strong",
+      "baseline_ranks": 1
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "free_surface": "RigidLid",
+    "gpu_memory_used_bytes": null,
+    "grid_size": [
+      18,
+      9,
+      200
+    ],
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{CPU, false, Partition{Sizes{NTuple{4, Int64}}, Sizes{NTuple{4, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "AMD EPYC 9654 96-Core Processor (znver4)",
+      "num_threads": 1,
+      "hostname": "rc13507",
+      "package_versions": {
+        "Adapt": "4.7.2",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-13T13:15:34.937",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023\u0000"
+    },
+    "model_type": "NonhydrostaticModel",
+    "pressure_preconditioner": "ColumnwiseTridiagonalPreconditioner",
+    "pressure_solver": "ConjugateGradientPoissonSolver",
+    "pressure_solver_converged": true,
+    "pressure_solver_iterations": 28,
+    "pressure_solves": [
+      {
+        "converged": true,
+        "final_residual": 0.0,
+        "initial_residual": 0.0,
+        "iterations": 0,
+        "seconds": 0.977431053,
+        "solve": 1,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.1914976910224328e-8,
+        "initial_residual": 1.1329671684374922e-6,
+        "iterations": 4606,
+        "seconds": 29.226083188,
+        "solve": 2,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4768261186537296e-8,
+        "initial_residual": 1.4768261186537296e-8,
+        "iterations": 0,
+        "seconds": 0.344107017,
+        "solve": 3,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.353944727159636e-8,
+        "initial_residual": 2.2051531398681544e-8,
+        "iterations": 48,
+        "seconds": 0.599906767,
+        "solve": 4,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4367509407922044e-8,
+        "initial_residual": 3.7576170812498137e-8,
+        "iterations": 46,
+        "seconds": 0.300772787,
+        "solve": 5,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 9.721590080239354e-9,
+        "initial_residual": 1.7378734340816737e-8,
+        "iterations": 46,
+        "seconds": 0.255974711,
+        "solve": 6,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4152444230288648e-8,
+        "initial_residual": 4.679535834740534e-8,
+        "iterations": 26,
+        "seconds": 0.491710158,
+        "solve": 7,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 9.919786823719672e-9,
+        "initial_residual": 4.037485885414237e-8,
+        "iterations": 64,
+        "seconds": 0.351954926,
+        "solve": 8,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.2990487333824086e-8,
+        "initial_residual": 1.2990487333824086e-8,
+        "iterations": 0,
+        "seconds": 0.003459255,
+        "solve": 9,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.137729790441983e-8,
+        "initial_residual": 2.2664465330177714e-8,
+        "iterations": 28,
+        "seconds": 0.187767949,
+        "solve": 10,
+        "tolerance": 1.4901161193847656e-8
+      }
+    ],
+    "rank": 9,
+    "retained_free_surface_substeps": null,
+    "time_per_step_max_seconds": 0.754869132,
+    "time_per_step_median_seconds": 0.754869132,
+    "time_per_step_seconds": 0.754869132,
+    "window_seconds": [
+      0.754869132
+    ]
+  },
+  {
+    "configuration": {
+      "series": "cpu_mpi_scaling_super_fine",
+      "model_type": "NonhydrostaticModel",
+      "device": "CPU",
+      "ranks": 16,
+      "threads_per_rank": 1,
+      "grid_name": "super_fine",
+      "global_resolution": [
+        72,
+        36,
+        200
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "partition": [
+        4,
+        4,
+        1
+      ],
+      "x_sizes": [
+        18,
+        18,
+        18,
+        18
+      ],
+      "y_sizes": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENO7",
+      "tracer_advection": "WENO7",
+      "closure": "ScalarDiffusivity",
+      "tracers": [
+        "T",
+        "S"
+      ],
+      "viscosity": 0.001,
+      "diffusivity": 1.0e-5,
+      "coriolis": "HydrostaticSphericalCoriolis",
+      "buoyancy": "SeawaterBuoyancy(TEOS10)",
+      "timestepper": "RungeKutta3",
+      "free_surface": "RigidLid",
+      "pressure_solver": "ConjugateGradientPoissonSolver",
+      "pressure_preconditioner": "ColumnwiseTridiagonalPreconditioner",
+      "pressure_max_iterations": 5000,
+      "pressure_reltol": 1.4901161193847656e-8,
+      "pressure_abstol": 1.4901161193847656e-8,
+      "pressure_diagnostics": true,
+      "initial_condition_seed": 1234,
+      "dt": 60,
+      "free_surface_substeps": null,
+      "extend_free_surface_halos": false,
+      "warmup_steps": 2,
+      "samples": 1,
+      "time_steps": 1,
+      "profile": false,
+      "scaling_type": "strong",
+      "baseline_ranks": 1
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "free_surface": "RigidLid",
+    "gpu_memory_used_bytes": null,
+    "grid_size": [
+      18,
+      9,
+      200
+    ],
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{CPU, false, Partition{Sizes{NTuple{4, Int64}}, Sizes{NTuple{4, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "AMD EPYC 9654 96-Core Processor (znver4)",
+      "num_threads": 1,
+      "hostname": "rc13507",
+      "package_versions": {
+        "Adapt": "4.7.2",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-13T13:15:34.937",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023\u0000"
+    },
+    "model_type": "NonhydrostaticModel",
+    "pressure_preconditioner": "ColumnwiseTridiagonalPreconditioner",
+    "pressure_solver": "ConjugateGradientPoissonSolver",
+    "pressure_solver_converged": true,
+    "pressure_solver_iterations": 28,
+    "pressure_solves": [
+      {
+        "converged": true,
+        "final_residual": 0.0,
+        "initial_residual": 0.0,
+        "iterations": 0,
+        "seconds": 0.978774847,
+        "solve": 1,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.1914976910224328e-8,
+        "initial_residual": 1.1329671684374922e-6,
+        "iterations": 4606,
+        "seconds": 29.22625989,
+        "solve": 2,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4768261186537296e-8,
+        "initial_residual": 1.4768261186537296e-8,
+        "iterations": 0,
+        "seconds": 0.343785134,
+        "solve": 3,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.353944727159636e-8,
+        "initial_residual": 2.2051531398681544e-8,
+        "iterations": 48,
+        "seconds": 0.599694204,
+        "solve": 4,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4367509407922044e-8,
+        "initial_residual": 3.7576170812498137e-8,
+        "iterations": 46,
+        "seconds": 0.300680556,
+        "solve": 5,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 9.721590080239354e-9,
+        "initial_residual": 1.7378734340816737e-8,
+        "iterations": 46,
+        "seconds": 0.256417146,
+        "solve": 6,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4152444230288648e-8,
+        "initial_residual": 4.679535834740534e-8,
+        "iterations": 26,
+        "seconds": 0.491837559,
+        "solve": 7,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 9.919786823719672e-9,
+        "initial_residual": 4.037485885414237e-8,
+        "iterations": 64,
+        "seconds": 0.351935826,
+        "solve": 8,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.2990487333824086e-8,
+        "initial_residual": 1.2990487333824086e-8,
+        "iterations": 0,
+        "seconds": 0.003979441,
+        "solve": 9,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.137729790441983e-8,
+        "initial_residual": 2.2664465330177714e-8,
+        "iterations": 28,
+        "seconds": 0.187992431,
+        "solve": 10,
+        "tolerance": 1.4901161193847656e-8
+      }
+    ],
+    "rank": 10,
+    "retained_free_surface_substeps": null,
+    "time_per_step_max_seconds": 0.754866942,
+    "time_per_step_median_seconds": 0.754866942,
+    "time_per_step_seconds": 0.754866942,
+    "window_seconds": [
+      0.754866942
+    ]
+  },
+  {
+    "configuration": {
+      "series": "cpu_mpi_scaling_super_fine",
+      "model_type": "NonhydrostaticModel",
+      "device": "CPU",
+      "ranks": 16,
+      "threads_per_rank": 1,
+      "grid_name": "super_fine",
+      "global_resolution": [
+        72,
+        36,
+        200
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "partition": [
+        4,
+        4,
+        1
+      ],
+      "x_sizes": [
+        18,
+        18,
+        18,
+        18
+      ],
+      "y_sizes": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENO7",
+      "tracer_advection": "WENO7",
+      "closure": "ScalarDiffusivity",
+      "tracers": [
+        "T",
+        "S"
+      ],
+      "viscosity": 0.001,
+      "diffusivity": 1.0e-5,
+      "coriolis": "HydrostaticSphericalCoriolis",
+      "buoyancy": "SeawaterBuoyancy(TEOS10)",
+      "timestepper": "RungeKutta3",
+      "free_surface": "RigidLid",
+      "pressure_solver": "ConjugateGradientPoissonSolver",
+      "pressure_preconditioner": "ColumnwiseTridiagonalPreconditioner",
+      "pressure_max_iterations": 5000,
+      "pressure_reltol": 1.4901161193847656e-8,
+      "pressure_abstol": 1.4901161193847656e-8,
+      "pressure_diagnostics": true,
+      "initial_condition_seed": 1234,
+      "dt": 60,
+      "free_surface_substeps": null,
+      "extend_free_surface_halos": false,
+      "warmup_steps": 2,
+      "samples": 1,
+      "time_steps": 1,
+      "profile": false,
+      "scaling_type": "strong",
+      "baseline_ranks": 1
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "free_surface": "RigidLid",
+    "gpu_memory_used_bytes": null,
+    "grid_size": [
+      18,
+      9,
+      200
+    ],
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{CPU, false, Partition{Sizes{NTuple{4, Int64}}, Sizes{NTuple{4, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "AMD EPYC 9654 96-Core Processor (znver4)",
+      "num_threads": 1,
+      "hostname": "rc13507",
+      "package_versions": {
+        "Adapt": "4.7.2",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-13T13:15:34.937",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023\u0000"
+    },
+    "model_type": "NonhydrostaticModel",
+    "pressure_preconditioner": "ColumnwiseTridiagonalPreconditioner",
+    "pressure_solver": "ConjugateGradientPoissonSolver",
+    "pressure_solver_converged": true,
+    "pressure_solver_iterations": 28,
+    "pressure_solves": [
+      {
+        "converged": true,
+        "final_residual": 0.0,
+        "initial_residual": 0.0,
+        "iterations": 0,
+        "seconds": 1.05482122,
+        "solve": 1,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.1914976910224328e-8,
+        "initial_residual": 1.1329671684374922e-6,
+        "iterations": 4606,
+        "seconds": 29.226323301,
+        "solve": 2,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4768261186537296e-8,
+        "initial_residual": 1.4768261186537296e-8,
+        "iterations": 0,
+        "seconds": 0.343744703,
+        "solve": 3,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.353944727159636e-8,
+        "initial_residual": 2.2051531398681544e-8,
+        "iterations": 48,
+        "seconds": 0.599868536,
+        "solve": 4,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4367509407922044e-8,
+        "initial_residual": 3.7576170812498137e-8,
+        "iterations": 46,
+        "seconds": 0.300604275,
+        "solve": 5,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 9.721590080239354e-9,
+        "initial_residual": 1.7378734340816737e-8,
+        "iterations": 46,
+        "seconds": 0.256483417,
+        "solve": 6,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4152444230288648e-8,
+        "initial_residual": 4.679535834740534e-8,
+        "iterations": 26,
+        "seconds": 0.492239343,
+        "solve": 7,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 9.919786823719672e-9,
+        "initial_residual": 4.037485885414237e-8,
+        "iterations": 64,
+        "seconds": 0.352015207,
+        "solve": 8,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.2990487333824086e-8,
+        "initial_residual": 1.2990487333824086e-8,
+        "iterations": 0,
+        "seconds": 0.004086472,
+        "solve": 9,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.137729790441983e-8,
+        "initial_residual": 2.2664465330177714e-8,
+        "iterations": 28,
+        "seconds": 0.188016121,
+        "solve": 10,
+        "tolerance": 1.4901161193847656e-8
+      }
+    ],
+    "rank": 11,
+    "retained_free_surface_substeps": null,
+    "time_per_step_max_seconds": 0.754868612,
+    "time_per_step_median_seconds": 0.754868612,
+    "time_per_step_seconds": 0.754868612,
+    "window_seconds": [
+      0.754868612
+    ]
+  },
+  {
+    "configuration": {
+      "series": "cpu_mpi_scaling_super_fine",
+      "model_type": "NonhydrostaticModel",
+      "device": "CPU",
+      "ranks": 16,
+      "threads_per_rank": 1,
+      "grid_name": "super_fine",
+      "global_resolution": [
+        72,
+        36,
+        200
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "partition": [
+        4,
+        4,
+        1
+      ],
+      "x_sizes": [
+        18,
+        18,
+        18,
+        18
+      ],
+      "y_sizes": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENO7",
+      "tracer_advection": "WENO7",
+      "closure": "ScalarDiffusivity",
+      "tracers": [
+        "T",
+        "S"
+      ],
+      "viscosity": 0.001,
+      "diffusivity": 1.0e-5,
+      "coriolis": "HydrostaticSphericalCoriolis",
+      "buoyancy": "SeawaterBuoyancy(TEOS10)",
+      "timestepper": "RungeKutta3",
+      "free_surface": "RigidLid",
+      "pressure_solver": "ConjugateGradientPoissonSolver",
+      "pressure_preconditioner": "ColumnwiseTridiagonalPreconditioner",
+      "pressure_max_iterations": 5000,
+      "pressure_reltol": 1.4901161193847656e-8,
+      "pressure_abstol": 1.4901161193847656e-8,
+      "pressure_diagnostics": true,
+      "initial_condition_seed": 1234,
+      "dt": 60,
+      "free_surface_substeps": null,
+      "extend_free_surface_halos": false,
+      "warmup_steps": 2,
+      "samples": 1,
+      "time_steps": 1,
+      "profile": false,
+      "scaling_type": "strong",
+      "baseline_ranks": 1
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "free_surface": "RigidLid",
+    "gpu_memory_used_bytes": null,
+    "grid_size": [
+      18,
+      9,
+      200
+    ],
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{CPU, false, Partition{Sizes{NTuple{4, Int64}}, Sizes{NTuple{4, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "AMD EPYC 9654 96-Core Processor (znver4)",
+      "num_threads": 1,
+      "hostname": "rc13507",
+      "package_versions": {
+        "Adapt": "4.7.2",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-13T13:15:34.937",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023\u0000"
+    },
+    "model_type": "NonhydrostaticModel",
+    "pressure_preconditioner": "ColumnwiseTridiagonalPreconditioner",
+    "pressure_solver": "ConjugateGradientPoissonSolver",
+    "pressure_solver_converged": true,
+    "pressure_solver_iterations": 28,
+    "pressure_solves": [
+      {
+        "converged": true,
+        "final_residual": 0.0,
+        "initial_residual": 0.0,
+        "iterations": 0,
+        "seconds": 0.977476203,
+        "solve": 1,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.1914976910224328e-8,
+        "initial_residual": 1.1329671684374922e-6,
+        "iterations": 4606,
+        "seconds": 29.226124139,
+        "solve": 2,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4768261186537296e-8,
+        "initial_residual": 1.4768261186537296e-8,
+        "iterations": 0,
+        "seconds": 0.344171398,
+        "solve": 3,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.353944727159636e-8,
+        "initial_residual": 2.2051531398681544e-8,
+        "iterations": 48,
+        "seconds": 0.599938107,
+        "solve": 4,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4367509407922044e-8,
+        "initial_residual": 3.7576170812498137e-8,
+        "iterations": 46,
+        "seconds": 0.300830917,
+        "solve": 5,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 9.721590080239354e-9,
+        "initial_residual": 1.7378734340816737e-8,
+        "iterations": 46,
+        "seconds": 0.256057302,
+        "solve": 6,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4152444230288648e-8,
+        "initial_residual": 4.679535834740534e-8,
+        "iterations": 26,
+        "seconds": 0.491745248,
+        "solve": 7,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 9.919786823719672e-9,
+        "initial_residual": 4.037485885414237e-8,
+        "iterations": 64,
+        "seconds": 0.352120788,
+        "solve": 8,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.2990487333824086e-8,
+        "initial_residual": 1.2990487333824086e-8,
+        "iterations": 0,
+        "seconds": 0.003521186,
+        "solve": 9,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.137729790441983e-8,
+        "initial_residual": 2.2664465330177714e-8,
+        "iterations": 28,
+        "seconds": 0.187858649,
+        "solve": 10,
+        "tolerance": 1.4901161193847656e-8
+      }
+    ],
+    "rank": 12,
+    "retained_free_surface_substeps": null,
+    "time_per_step_max_seconds": 0.754866992,
+    "time_per_step_median_seconds": 0.754866992,
+    "time_per_step_seconds": 0.754866992,
+    "window_seconds": [
+      0.754866992
+    ]
+  },
+  {
+    "configuration": {
+      "series": "cpu_mpi_scaling_super_fine",
+      "model_type": "NonhydrostaticModel",
+      "device": "CPU",
+      "ranks": 16,
+      "threads_per_rank": 1,
+      "grid_name": "super_fine",
+      "global_resolution": [
+        72,
+        36,
+        200
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "partition": [
+        4,
+        4,
+        1
+      ],
+      "x_sizes": [
+        18,
+        18,
+        18,
+        18
+      ],
+      "y_sizes": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENO7",
+      "tracer_advection": "WENO7",
+      "closure": "ScalarDiffusivity",
+      "tracers": [
+        "T",
+        "S"
+      ],
+      "viscosity": 0.001,
+      "diffusivity": 1.0e-5,
+      "coriolis": "HydrostaticSphericalCoriolis",
+      "buoyancy": "SeawaterBuoyancy(TEOS10)",
+      "timestepper": "RungeKutta3",
+      "free_surface": "RigidLid",
+      "pressure_solver": "ConjugateGradientPoissonSolver",
+      "pressure_preconditioner": "ColumnwiseTridiagonalPreconditioner",
+      "pressure_max_iterations": 5000,
+      "pressure_reltol": 1.4901161193847656e-8,
+      "pressure_abstol": 1.4901161193847656e-8,
+      "pressure_diagnostics": true,
+      "initial_condition_seed": 1234,
+      "dt": 60,
+      "free_surface_substeps": null,
+      "extend_free_surface_halos": false,
+      "warmup_steps": 2,
+      "samples": 1,
+      "time_steps": 1,
+      "profile": false,
+      "scaling_type": "strong",
+      "baseline_ranks": 1
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "free_surface": "RigidLid",
+    "gpu_memory_used_bytes": null,
+    "grid_size": [
+      18,
+      9,
+      200
+    ],
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{CPU, false, Partition{Sizes{NTuple{4, Int64}}, Sizes{NTuple{4, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "AMD EPYC 9654 96-Core Processor (znver4)",
+      "num_threads": 1,
+      "hostname": "rc13507",
+      "package_versions": {
+        "Adapt": "4.7.2",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-13T13:15:34.937",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023\u0000"
+    },
+    "model_type": "NonhydrostaticModel",
+    "pressure_preconditioner": "ColumnwiseTridiagonalPreconditioner",
+    "pressure_solver": "ConjugateGradientPoissonSolver",
+    "pressure_solver_converged": true,
+    "pressure_solver_iterations": 28,
+    "pressure_solves": [
+      {
+        "converged": true,
+        "final_residual": 0.0,
+        "initial_residual": 0.0,
+        "iterations": 0,
+        "seconds": 0.977280672,
+        "solve": 1,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.1914976910224328e-8,
+        "initial_residual": 1.1329671684374922e-6,
+        "iterations": 4606,
+        "seconds": 29.226086308,
+        "solve": 2,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4768261186537296e-8,
+        "initial_residual": 1.4768261186537296e-8,
+        "iterations": 0,
+        "seconds": 0.344098687,
+        "solve": 3,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.353944727159636e-8,
+        "initial_residual": 2.2051531398681544e-8,
+        "iterations": 48,
+        "seconds": 0.599899857,
+        "solve": 4,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4367509407922044e-8,
+        "initial_residual": 3.7576170812498137e-8,
+        "iterations": 46,
+        "seconds": 0.300817467,
+        "solve": 5,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 9.721590080239354e-9,
+        "initial_residual": 1.7378734340816737e-8,
+        "iterations": 46,
+        "seconds": 0.25584605,
+        "solve": 6,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4152444230288648e-8,
+        "initial_residual": 4.679535834740534e-8,
+        "iterations": 26,
+        "seconds": 0.491605957,
+        "solve": 7,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 9.919786823719672e-9,
+        "initial_residual": 4.037485885414237e-8,
+        "iterations": 64,
+        "seconds": 0.351970847,
+        "solve": 8,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.2990487333824086e-8,
+        "initial_residual": 1.2990487333824086e-8,
+        "iterations": 0,
+        "seconds": 0.003336264,
+        "solve": 9,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.137729790441983e-8,
+        "initial_residual": 2.2664465330177714e-8,
+        "iterations": 28,
+        "seconds": 0.187783079,
+        "solve": 10,
+        "tolerance": 1.4901161193847656e-8
+      }
+    ],
+    "rank": 13,
+    "retained_free_surface_substeps": null,
+    "time_per_step_max_seconds": 0.754869192,
+    "time_per_step_median_seconds": 0.754869192,
+    "time_per_step_seconds": 0.754869192,
+    "window_seconds": [
+      0.754869192
+    ]
+  },
+  {
+    "configuration": {
+      "series": "cpu_mpi_scaling_super_fine",
+      "model_type": "NonhydrostaticModel",
+      "device": "CPU",
+      "ranks": 16,
+      "threads_per_rank": 1,
+      "grid_name": "super_fine",
+      "global_resolution": [
+        72,
+        36,
+        200
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "partition": [
+        4,
+        4,
+        1
+      ],
+      "x_sizes": [
+        18,
+        18,
+        18,
+        18
+      ],
+      "y_sizes": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENO7",
+      "tracer_advection": "WENO7",
+      "closure": "ScalarDiffusivity",
+      "tracers": [
+        "T",
+        "S"
+      ],
+      "viscosity": 0.001,
+      "diffusivity": 1.0e-5,
+      "coriolis": "HydrostaticSphericalCoriolis",
+      "buoyancy": "SeawaterBuoyancy(TEOS10)",
+      "timestepper": "RungeKutta3",
+      "free_surface": "RigidLid",
+      "pressure_solver": "ConjugateGradientPoissonSolver",
+      "pressure_preconditioner": "ColumnwiseTridiagonalPreconditioner",
+      "pressure_max_iterations": 5000,
+      "pressure_reltol": 1.4901161193847656e-8,
+      "pressure_abstol": 1.4901161193847656e-8,
+      "pressure_diagnostics": true,
+      "initial_condition_seed": 1234,
+      "dt": 60,
+      "free_surface_substeps": null,
+      "extend_free_surface_halos": false,
+      "warmup_steps": 2,
+      "samples": 1,
+      "time_steps": 1,
+      "profile": false,
+      "scaling_type": "strong",
+      "baseline_ranks": 1
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "free_surface": "RigidLid",
+    "gpu_memory_used_bytes": null,
+    "grid_size": [
+      18,
+      9,
+      200
+    ],
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{CPU, false, Partition{Sizes{NTuple{4, Int64}}, Sizes{NTuple{4, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "AMD EPYC 9654 96-Core Processor (znver4)",
+      "num_threads": 1,
+      "hostname": "rc13507",
+      "package_versions": {
+        "Adapt": "4.7.2",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-13T13:15:34.937",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023\u0000"
+    },
+    "model_type": "NonhydrostaticModel",
+    "pressure_preconditioner": "ColumnwiseTridiagonalPreconditioner",
+    "pressure_solver": "ConjugateGradientPoissonSolver",
+    "pressure_solver_converged": true,
+    "pressure_solver_iterations": 28,
+    "pressure_solves": [
+      {
+        "converged": true,
+        "final_residual": 0.0,
+        "initial_residual": 0.0,
+        "iterations": 0,
+        "seconds": 0.978751127,
+        "solve": 1,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.1914976910224328e-8,
+        "initial_residual": 1.1329671684374922e-6,
+        "iterations": 4606,
+        "seconds": 29.226177089,
+        "solve": 2,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4768261186537296e-8,
+        "initial_residual": 1.4768261186537296e-8,
+        "iterations": 0,
+        "seconds": 0.343706683,
+        "solve": 3,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.353944727159636e-8,
+        "initial_residual": 2.2051531398681544e-8,
+        "iterations": 48,
+        "seconds": 0.599688344,
+        "solve": 4,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4367509407922044e-8,
+        "initial_residual": 3.7576170812498137e-8,
+        "iterations": 46,
+        "seconds": 0.300531524,
+        "solve": 5,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 9.721590080239354e-9,
+        "initial_residual": 1.7378734340816737e-8,
+        "iterations": 46,
+        "seconds": 0.256428086,
+        "solve": 6,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4152444230288648e-8,
+        "initial_residual": 4.679535834740534e-8,
+        "iterations": 26,
+        "seconds": 0.491830849,
+        "solve": 7,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 9.919786823719672e-9,
+        "initial_residual": 4.037485885414237e-8,
+        "iterations": 64,
+        "seconds": 0.351937816,
+        "solve": 8,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.2990487333824086e-8,
+        "initial_residual": 1.2990487333824086e-8,
+        "iterations": 0,
+        "seconds": 0.003994151,
+        "solve": 9,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.137729790441983e-8,
+        "initial_residual": 2.2664465330177714e-8,
+        "iterations": 28,
+        "seconds": 0.187962081,
+        "solve": 10,
+        "tolerance": 1.4901161193847656e-8
+      }
+    ],
+    "rank": 14,
+    "retained_free_surface_substeps": null,
+    "time_per_step_max_seconds": 0.754867642,
+    "time_per_step_median_seconds": 0.754867642,
+    "time_per_step_seconds": 0.754867642,
+    "window_seconds": [
+      0.754867642
+    ]
+  },
+  {
+    "configuration": {
+      "series": "cpu_mpi_scaling_super_fine",
+      "model_type": "NonhydrostaticModel",
+      "device": "CPU",
+      "ranks": 16,
+      "threads_per_rank": 1,
+      "grid_name": "super_fine",
+      "global_resolution": [
+        72,
+        36,
+        200
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "partition": [
+        4,
+        4,
+        1
+      ],
+      "x_sizes": [
+        18,
+        18,
+        18,
+        18
+      ],
+      "y_sizes": [
+        9,
+        9,
+        9,
+        9
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENO7",
+      "tracer_advection": "WENO7",
+      "closure": "ScalarDiffusivity",
+      "tracers": [
+        "T",
+        "S"
+      ],
+      "viscosity": 0.001,
+      "diffusivity": 1.0e-5,
+      "coriolis": "HydrostaticSphericalCoriolis",
+      "buoyancy": "SeawaterBuoyancy(TEOS10)",
+      "timestepper": "RungeKutta3",
+      "free_surface": "RigidLid",
+      "pressure_solver": "ConjugateGradientPoissonSolver",
+      "pressure_preconditioner": "ColumnwiseTridiagonalPreconditioner",
+      "pressure_max_iterations": 5000,
+      "pressure_reltol": 1.4901161193847656e-8,
+      "pressure_abstol": 1.4901161193847656e-8,
+      "pressure_diagnostics": true,
+      "initial_condition_seed": 1234,
+      "dt": 60,
+      "free_surface_substeps": null,
+      "extend_free_surface_halos": false,
+      "warmup_steps": 2,
+      "samples": 1,
+      "time_steps": 1,
+      "profile": false,
+      "scaling_type": "strong",
+      "baseline_ranks": 1
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "free_surface": "RigidLid",
+    "gpu_memory_used_bytes": null,
+    "grid_size": [
+      18,
+      9,
+      200
+    ],
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{CPU, false, Partition{Sizes{NTuple{4, Int64}}, Sizes{NTuple{4, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": null,
+      "cuda_version": null,
+      "cpu_model": "AMD EPYC 9654 96-Core Processor (znver4)",
+      "num_threads": 1,
+      "hostname": "rc13507",
+      "package_versions": {
+        "Adapt": "4.7.2",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.43",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-10-13T13:15:34.937",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023\u0000"
+    },
+    "model_type": "NonhydrostaticModel",
+    "pressure_preconditioner": "ColumnwiseTridiagonalPreconditioner",
+    "pressure_solver": "ConjugateGradientPoissonSolver",
+    "pressure_solver_converged": true,
+    "pressure_solver_iterations": 28,
+    "pressure_solves": [
+      {
+        "converged": true,
+        "final_residual": 0.0,
+        "initial_residual": 0.0,
+        "iterations": 0,
+        "seconds": 1.054552288,
+        "solve": 1,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.1914976910224328e-8,
+        "initial_residual": 1.1329671684374922e-6,
+        "iterations": 4606,
+        "seconds": 29.22629571,
+        "solve": 2,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4768261186537296e-8,
+        "initial_residual": 1.4768261186537296e-8,
+        "iterations": 0,
+        "seconds": 0.343820674,
+        "solve": 3,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.353944727159636e-8,
+        "initial_residual": 2.2051531398681544e-8,
+        "iterations": 48,
+        "seconds": 0.599787975,
+        "solve": 4,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4367509407922044e-8,
+        "initial_residual": 3.7576170812498137e-8,
+        "iterations": 46,
+        "seconds": 0.300775057,
+        "solve": 5,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 9.721590080239354e-9,
+        "initial_residual": 1.7378734340816737e-8,
+        "iterations": 46,
+        "seconds": 0.256487177,
+        "solve": 6,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.4152444230288648e-8,
+        "initial_residual": 4.679535834740534e-8,
+        "iterations": 26,
+        "seconds": 0.4919415,
+        "solve": 7,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 9.919786823719672e-9,
+        "initial_residual": 4.037485885414237e-8,
+        "iterations": 64,
+        "seconds": 0.352036057,
+        "solve": 8,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.2990487333824086e-8,
+        "initial_residual": 1.2990487333824086e-8,
+        "iterations": 0,
+        "seconds": 0.004080852,
+        "solve": 9,
+        "tolerance": 1.4901161193847656e-8
+      },
+      {
+        "converged": true,
+        "final_residual": 1.137729790441983e-8,
+        "initial_residual": 2.2664465330177714e-8,
+        "iterations": 28,
+        "seconds": 0.188022161,
+        "solve": 10,
+        "tolerance": 1.4901161193847656e-8
+      }
+    ],
+    "rank": 15,
+    "retained_free_surface_substeps": null,
+    "time_per_step_max_seconds": 0.754868392,
+    "time_per_step_median_seconds": 0.754868392,
+    "time_per_step_seconds": 0.754868392,
+    "window_seconds": [
+      0.754868392
+    ]
+  }
+]

@@ -1,0 +1,5 @@
+series,case,ranks,partition,resolution,grid_type,state,job_id,fastest,median,efficiency_fastest,efficiency_median,details
+cpu_mpi_scaling_super_fine,smoke_16_vertical_line,16,4x4x1,72x36x200,LatitudeLongitudeGrid,COMPLETED,23109669,1.749641952,1.749641952,,,"Rank results, finite fields and resource placement verified"
+cpu_mpi_scaling_super_fine,super_fine_192_vertical_line,192,16x12x1,1440x720x200,LatitudeLongitudeGrid,FAILED,23109670,,,,,Execution/export exit 1; see job.out and rank logs
+gpu_scaling_super_fine,smoke_2_vertical_line,2,2x1x1,72x36x200,LatitudeLongitudeGrid,NOT_RUN,23109671,,,,,Case never started; allocation CANCELLED: Exit 0:0; None
+gpu_scaling_super_fine,super_fine_4_vertical_line,4,2x2x1,1440x720x200,LatitudeLongitudeGrid,NOT_RUN,23109672,,,,,Case never started; allocation CANCELLED: Exit 0:0; None

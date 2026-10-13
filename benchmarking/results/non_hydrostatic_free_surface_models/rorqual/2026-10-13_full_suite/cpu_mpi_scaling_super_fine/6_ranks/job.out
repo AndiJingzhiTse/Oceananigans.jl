@@ -1,0 +1,80 @@
+srun: Job step aborted: Waiting up to 62 seconds for job step to finish.
+[2026-10-13T13:09:38.334] error: *** STEP 23088840.1 ON rc13501 CANCELLED AT 2026-10-13T13:09:38 DUE to SIGNAL Terminated ***
+
+[2260005] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[2260006] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[2260007] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[2260008] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[2260009] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[2260010] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+_setindex! at ./array.jl:1003 [inlined]
+setindex! at ./array.jl:997 [inlined]
+setindex! at ./multidimensional.jl:745 [inlined]
+macro expansion at ./broadcast.jl:995 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+copyto! at ./broadcast.jl:994 [inlined]
+copyto! at ./broadcast.jl:947 [inlined]
+materialize! at ./broadcast.jl:905 [inlined]
+materialize! at ./broadcast.jl:902 [inlined]
+perform_iteration! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:254
+_setindex! at ./array.jl:1003 [inlined]
+setindex! at ./array.jl:997 [inlined]
+setindex! at ./multidimensional.jl:745 [inlined]
+macro expansion at ./broadcast.jl:995 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+copyto! at ./broadcast.jl:994 [inlined]
+copyto! at ./broadcast.jl:947 [inlined]
+materialize! at ./broadcast.jl:905 [inlined]
+materialize! at ./broadcast.jl:902 [inlined]
+perform_iteration! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:254
++ at ./float.jl:495 [inlined]
+_broadcast_getindex_evalf at ./broadcast.jl:699 [inlined]
+_broadcast_getindex at ./broadcast.jl:672 [inlined]
+_getindex at ./broadcast.jl:620 [inlined]
+getindex at ./broadcast.jl:616 [inlined]
+macro expansion at ./broadcast.jl:995 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+copyto! at ./broadcast.jl:994 [inlined]
+copyto! at ./broadcast.jl:947 [inlined]
+materialize! at ./broadcast.jl:905 [inlined]
+materialize! at ./broadcast.jl:902 [inlined]
+perform_iteration! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:254
+macro expansion at ./simdloop.jl:0 [inlined]
+copyto! at ./broadcast.jl:994 [inlined]
+copyto! at ./broadcast.jl:947 [inlined]
+materialize! at ./broadcast.jl:905 [inlined]
+materialize! at ./broadcast.jl:902 [inlined]
+perform_iteration! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:254
+_setindex! at ./array.jl:1003 [inlined]
+setindex! at ./array.jl:997 [inlined]
+setindex! at ./multidimensional.jl:745 [inlined]
+macro expansion at ./broadcast.jl:995 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+copyto! at ./broadcast.jl:994 [inlined]
+copyto! at ./broadcast.jl:947 [inlined]
+materialize! at ./broadcast.jl:905 [inlined]
+materialize! at ./broadcast.jl:902 [inlined]
+perform_iteration! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:254
++ at ./float.jl:495 [inlined]
+_broadcast_getindex_evalf at ./broadcast.jl:699 [inlined]
+_broadcast_getindex at ./broadcast.jl:672 [inlined]
+_getindex at ./broadcast.jl:620 [inlined]
+getindex at ./broadcast.jl:616 [inlined]
+macro expansion at ./broadcast.jl:995 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+copyto! at ./broadcast.jl:994 [inlined]
+copyto! at ./broadcast.jl:947 [inlined]
+materialize! at ./broadcast.jl:905 [inlined]
+materialize! at ./broadcast.jl:902 [inlined]
+perform_iteration! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:254

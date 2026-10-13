@@ -1,0 +1,5 @@
+series,case,ranks,partition,resolution,grid_type,state,job_id,fastest,median,efficiency_fastest,efficiency_median,details
+cpu_mpi_scaling_super_fine,smoke_16_diagonal,16,4x4x1,72x36x200,LatitudeLongitudeGrid,FAILED,23108351,,,,,Execution/export exit 1; see job.out and rank logs
+cpu_mpi_scaling_super_fine,smoke_16_columnwise,16,4x4x1,72x36x200,LatitudeLongitudeGrid,COMPLETED,23108352,0.754873912,0.754873912,,,"Rank results, finite fields and resource placement verified"
+cpu_mpi_scaling_super_fine,super_fine_192_diagonal,192,16x12x1,1440x720x200,LatitudeLongitudeGrid,FAILED,23108353,,,,,Execution/export exit 1; see job.out and rank logs
+cpu_mpi_scaling_super_fine,super_fine_192_columnwise,192,16x12x1,1440x720x200,LatitudeLongitudeGrid,FAILED,23108354,,,,,Execution/export exit 1; see job.out and rank logs

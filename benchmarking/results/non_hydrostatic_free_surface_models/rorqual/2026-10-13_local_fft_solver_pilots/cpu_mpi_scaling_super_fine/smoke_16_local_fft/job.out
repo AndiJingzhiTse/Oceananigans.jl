@@ -1,0 +1,723 @@
+ERROR: LoadError: MethodError: no method matching zero(::Type{Any})
+ERROR: LoadError: MethodError: no method matching zero(::Type{Any})
+ERROR: LoadError: MethodError: no method matching zero(::Type{Any})
+ERROR: LoadError: MethodError: no method matching zero(::Type{Any})
+This error has been manually thrown, explicitly, so the method may exist but be intentionally marked as unimplemented.
+
+Closest candidates are:
+  zero(::Type{Union{Missing, T}}) where T
+   @ Base missing.jl:105
+  zero(!Matched::Type{Union{}}, Any...)
+   @ Base number.jl:315
+  zero(!Matched::Type{LibGit2.GitHash})
+   @ LibGit2 /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/share/julia/stdlib/v1.12/LibGit2/src/oid.jl:221
+  ...
+
+Stacktrace:
+  [1] zero(::Type{Any})
+    @ Base ./missing.jl:106
+  [2] reduce_empty(::typeof(+), ::Type{Any})
+    @ Base ./reduce.jl:335
+  [3] reduce_empty(::typeof(Base.add_sum), ::Type{Any})
+    @ Base ./reduce.jl:342
+This error has been manually thrown, explicitly, so the method may exist but be intentionally marked as unimplemented.
+
+Closest candidates are:
+  zero(::Type{Union{Missing, T}}) where T
+   @ Base missing.jl:105
+  zero(!Matched::Type{Union{}}, Any...)
+   @ Base number.jl:315
+  zero(!Matched::Type{LibGit2.GitHash})
+   @ LibGit2 /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/share/julia/stdlib/v1.12/LibGit2/src/oid.jl:221
+  ...
+  [4] mapreduce_empty(::typeof(identity), op::Function, T::Type)
+    @ Base ./reduce.jl:361
+This error has been manually thrown, explicitly, so the method may exist but be intentionally marked as unimplemented.
+
+Closest candidates are:
+  zero(::Type{Union{Missing, T}}) where T
+   @ Base missing.jl:105
+  zero(!Matched::Type{Union{}}, Any...)
+   @ Base number.jl:315
+  zero(!Matched::Type{LibGit2.GitHash})
+   @ LibGit2 /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/share/julia/stdlib/v1.12/LibGit2/src/oid.jl:221
+  ...
+  [5] reduce_empty(op::Base.MappingRF{typeof(identity), typeof(Base.add_sum)}, ::Type{Any})
+    @ Base ./reduce.jl:350
+  [6] reduce_empty_iter
+    @ ./reduce.jl:373 [inlined]
+  [7] mapreduce_empty_iter(f::Function, op::Function, itr::Vector{Any}, ItrEltype::Base.HasEltype)
+    @ Base ./reduce.jl:369
+  [8] _mapreduce(f::typeof(identity), op::typeof(Base.add_sum), ::IndexLinear, A::Vector{Any})
+    @ Base ./reduce.jl:421
+  [9] _mapreduce_dim
+    @ ./reducedim.jl:334 [inlined]
+ [10] mapreduce
+    @ ./reducedim.jl:326 [inlined]
+ [11] _sum
+    @ ./reducedim.jl:984 [inlined]
+ [12] _sum
+    @ ./reducedim.jl:983 [inlined]
+ [13] sum(a::Vector{Any})
+    @ Base ./reducedim.jl:979
+
+Stacktrace:
+
+Stacktrace:
+  [1] zero(::Type{Any})
+    @ Base ./missing.jl:106
+  [2] reduce_empty(::typeof(+), ::Type{Any})
+    @ Base ./reduce.jl:335
+  [3] reduce_empty(::typeof(Base.add_sum), ::Type{Any})
+    @ Base ./reduce.jl:342
+  [4] mapreduce_empty(::typeof(identity), op::Function, T::Type)
+    @ Base ./reduce.jl:361
+  [1] zero(::Type{Any})
+    @ Base ./missing.jl:106
+  [2] reduce_empty(::typeof(+), ::Type{Any})
+    @ Base ./reduce.jl:335
+  [5] reduce_empty(op::Base.MappingRF{typeof(identity), typeof(Base.add_sum)}, ::Type{Any})
+    @ Base ./reduce.jl:350
+  [6] reduce_empty_iter
+    @ ./reduce.jl:373 [inlined]
+  [7] mapreduce_empty_iter(f::Function, op::Function, itr::Vector{Any}, ItrEltype::Base.HasEltype)
+    @ Base ./reduce.jl:369
+  [8] _mapreduce(f::typeof(identity), op::typeof(Base.add_sum), ::IndexLinear, A::Vector{Any})
+    @ Base ./reduce.jl:421
+  [9] _mapreduce_dim
+    @ ./reducedim.jl:334 [inlined]
+ [10] mapreduce
+    @ ./reducedim.jl:326 [inlined]
+ [11] _sum
+    @ ./reducedim.jl:984 [inlined]
+ [12] _sum
+    @ ./reducedim.jl:983 [inlined]
+ [13] sum(a::Vector{Any})
+    @ Base ./reducedim.jl:979
+  [3] reduce_empty(::typeof(Base.add_sum), ::Type{Any})
+    @ Base ./reduce.jl:342
+  [4] mapreduce_empty(::typeof(identity), op::Function, T::Type)
+    @ Base ./reduce.jl:361
+  [5] reduce_empty(op::Base.MappingRF{typeof(identity), typeof(Base.add_sum)}, ::Type{Any})
+    @ Base ./reduce.jl:350
+  [6] reduce_empty_iter
+    @ ./reduce.jl:373 [inlined]
+  [7] mapreduce_empty_iter(f::Function, op::Function, itr::Vector{Any}, ItrEltype::Base.HasEltype)
+    @ Base ./reduce.jl:369
+  [8] _mapreduce(f::typeof(identity), op::typeof(Base.add_sum), ::IndexLinear, A::Vector{Any})
+    @ Base ./reduce.jl:421
+  [9] _mapreduce_dim
+    @ ./reducedim.jl:334 [inlined]
+ [10] mapreduce
+    @ ./reducedim.jl:326 [inlined]
+ [11] _sum
+    @ ./reducedim.jl:984 [inlined]
+ [12] _sum
+    @ ./reducedim.jl:983 [inlined]
+ [13] sum(a::Vector{Any})
+    @ Base ./reducedim.jl:979
+This error has been manually thrown, explicitly, so the method may exist but be intentionally marked as unimplemented.
+
+Closest candidates are:
+  zero(::Type{Union{Missing, T}}) where T
+   @ Base missing.jl:105
+  zero(!Matched::Type{Union{}}, Any...)
+   @ Base number.jl:315
+  zero(!Matched::Type{LibGit2.GitHash})
+   @ LibGit2 /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/share/julia/stdlib/v1.12/LibGit2/src/oid.jl:221
+  ...
+
+Stacktrace:
+  [1] zero(::Type{Any})
+    @ Base ./missing.jl:106
+  [2] reduce_empty(::typeof(+), ::Type{Any})
+    @ Base ./reduce.jl:335
+  [3] reduce_empty(::typeof(Base.add_sum), ::Type{Any})
+    @ Base ./reduce.jl:342
+  [4] mapreduce_empty(::typeof(identity), op::Function, T::Type)
+    @ Base ./reduce.jl:361
+  [5] reduce_empty(op::Base.MappingRF{typeof(identity), typeof(Base.add_sum)}, ::Type{Any})
+    @ Base ./reduce.jl:350
+  [6] reduce_empty_iter
+    @ ./reduce.jl:373 [inlined]
+  [7] mapreduce_empty_iter(f::Function, op::Function, itr::Vector{Any}, ItrEltype::Base.HasEltype)
+    @ Base ./reduce.jl:369
+  [8] _mapreduce(f::typeof(identity), op::typeof(Base.add_sum), ::IndexLinear, A::Vector{Any})
+    @ Base ./reduce.jl:421
+  [9] _mapreduce_dim
+    @ ./reducedim.jl:334 [inlined]
+ [10] mapreduce
+    @ ./reducedim.jl:326 [inlined]
+ [11] _sum
+    @ ./reducedim.jl:984 [inlined]
+ [12] _sum
+    @ ./reducedim.jl:983 [inlined]
+ [13] sum(a::Vector{Any})
+    @ Base ./reducedim.jl:979
+ [14] LocalFFTPreconditioner(grid::LatitudeLongitudeGrid{Float64, FullyConnected, RightConnected, Bounded, Oceananigans.Grids.StaticVerticalDiscretization{OffsetArrays.OffsetVector{Float64, Vector{Float64}}, OffsetArrays.OffsetVector{Float64, Vector{Float64}}, OffsetArrays.OffsetVector{Float64, Vector{Float64}}, OffsetArrays.OffsetVector{Float64, Vector{Float64}}}, Float64, Float64, OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, Float64, Float64, OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, OffsetArrays.OffsetVector{Float64, Vector{Float64}}, OffsetArrays.OffsetVector{Float64, Vector{Float64}}, OffsetArrays.OffsetVector{Float64, Vector{Float64}}, OffsetArrays.OffsetVector{Float64, Vector{Float64}}, Float64, Float64, Distributed{CPU, false, Partition{Sizes{NTuple{4, Int64}}, Sizes{NTuple{4, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}, Int64, Oceananigans.Grids.GridSize{18, 9, 200, 7, 7, 7}}, config::JSON.Object{String, Any}, arch::Distributed{CPU, false, Partition{Sizes{NTuple{4, Int64}}, Sizes{NTuple{4, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing})
+    @ Main ~/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_local_fft_solver_pilots/run_metadata/suite/worker.jl:51
+ [15] top-level scope
+    @ ~/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_local_fft_solver_pilots/run_metadata/suite/worker.jl:243
+ [16] include(mod::Module, _path::String)
+    @ Base ./Base.jl:306
+ [17] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:317
+ [18] _start()
+    @ Base ./client.jl:550
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_local_fft_solver_pilots/run_metadata/suite/worker.jl:225
+ [14] LocalFFTPreconditioner(grid::LatitudeLongitudeGrid{Float64, FullyConnected, RightConnected, Bounded, Oceananigans.Grids.StaticVerticalDiscretization{OffsetArrays.OffsetVector{Float64, Vector{Float64}}, OffsetArrays.OffsetVector{Float64, Vector{Float64}}, OffsetArrays.OffsetVector{Float64, Vector{Float64}}, OffsetArrays.OffsetVector{Float64, Vector{Float64}}}, Float64, Float64, OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, Float64, Float64, OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, OffsetArrays.OffsetVector{Float64, Vector{Float64}}, OffsetArrays.OffsetVector{Float64, Vector{Float64}}, OffsetArrays.OffsetVector{Float64, Vector{Float64}}, OffsetArrays.OffsetVector{Float64, Vector{Float64}}, Float64, Float64, Distributed{CPU, false, Partition{Sizes{NTuple{4, Int64}}, Sizes{NTuple{4, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}, Int64, Oceananigans.Grids.GridSize{18, 9, 200, 7, 7, 7}}, config::JSON.Object{String, Any}, arch::Distributed{CPU, false, Partition{Sizes{NTuple{4, Int64}}, Sizes{NTuple{4, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing})
+    @ Main ~/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_local_fft_solver_pilots/run_metadata/suite/worker.jl:51
+ [15] top-level scope
+    @ ~/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_local_fft_solver_pilots/run_metadata/suite/worker.jl:243
+ [16] include(mod::Module, _path::String)
+    @ Base ./Base.jl:306
+ [17] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:317
+ [18] _start()
+    @ Base ./client.jl:550
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_local_fft_solver_pilots/run_metadata/suite/worker.jl:225
+ [14] LocalFFTPreconditioner(grid::LatitudeLongitudeGrid{Float64, FullyConnected, RightConnected, Bounded, Oceananigans.Grids.StaticVerticalDiscretization{OffsetArrays.OffsetVector{Float64, Vector{Float64}}, OffsetArrays.OffsetVector{Float64, Vector{Float64}}, OffsetArrays.OffsetVector{Float64, Vector{Float64}}, OffsetArrays.OffsetVector{Float64, Vector{Float64}}}, Float64, Float64, OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, Float64, Float64, OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, OffsetArrays.OffsetVector{Float64, Vector{Float64}}, OffsetArrays.OffsetVector{Float64, Vector{Float64}}, OffsetArrays.OffsetVector{Float64, Vector{Float64}}, OffsetArrays.OffsetVector{Float64, Vector{Float64}}, Float64, Float64, Distributed{CPU, false, Partition{Sizes{NTuple{4, Int64}}, Sizes{NTuple{4, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}, Int64, Oceananigans.Grids.GridSize{18, 9, 200, 7, 7, 7}}, config::JSON.Object{String, Any}, arch::Distributed{CPU, false, Partition{Sizes{NTuple{4, Int64}}, Sizes{NTuple{4, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing})
+    @ Main ~/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_local_fft_solver_pilots/run_metadata/suite/worker.jl:51
+ [15] top-level scope
+    @ ~/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_local_fft_solver_pilots/run_metadata/suite/worker.jl:243
+ [16] include(mod::Module, _path::String)
+    @ Base ./Base.jl:306
+ [17] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:317
+ [18] _start()
+    @ Base ./client.jl:550
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_local_fft_solver_pilots/run_metadata/suite/worker.jl:225
+ [14] LocalFFTPreconditioner(grid::LatitudeLongitudeGrid{Float64, FullyConnected, RightConnected, Bounded, Oceananigans.Grids.StaticVerticalDiscretization{OffsetArrays.OffsetVector{Float64, Vector{Float64}}, OffsetArrays.OffsetVector{Float64, Vector{Float64}}, OffsetArrays.OffsetVector{Float64, Vector{Float64}}, OffsetArrays.OffsetVector{Float64, Vector{Float64}}}, Float64, Float64, OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, Float64, Float64, OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, OffsetArrays.OffsetVector{Float64, Vector{Float64}}, OffsetArrays.OffsetVector{Float64, Vector{Float64}}, OffsetArrays.OffsetVector{Float64, Vector{Float64}}, OffsetArrays.OffsetVector{Float64, Vector{Float64}}, Float64, Float64, Distributed{CPU, false, Partition{Sizes{NTuple{4, Int64}}, Sizes{NTuple{4, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}, Int64, Oceananigans.Grids.GridSize{18, 9, 200, 7, 7, 7}}, config::JSON.Object{String, Any}, arch::Distributed{CPU, false, Partition{Sizes{NTuple{4, Int64}}, Sizes{NTuple{4, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing})
+    @ Main ~/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_local_fft_solver_pilots/run_metadata/suite/worker.jl:51
+ [15] top-level scope
+    @ ~/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_local_fft_solver_pilots/run_metadata/suite/worker.jl:243
+ [16] include(mod::Module, _path::String)
+    @ Base ./Base.jl:306
+ [17] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:317
+ [18] _start()
+    @ Base ./client.jl:550
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_local_fft_solver_pilots/run_metadata/suite/worker.jl:225
+srun: error: rc13215: tasks 0,4,8,12: Exited with exit code 1
+srun: Terminating StepId=23112404.1
+[2026-10-13T13:37:00.092] error: *** STEP 23112404.1 ON rc13215 CANCELLED AT 2026-10-13T13:37:00 DUE TO TASK FAILURE ***
+
+[2279307] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_local_fft_solver_pilots/run_metadata/suite/worker.jl:225
+
+[2279303] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_local_fft_solver_pilots/run_metadata/suite/worker.jl:225
+
+[2279295] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_local_fft_solver_pilots/run_metadata/suite/worker.jl:225
+
+[2279296] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_local_fft_solver_pilots/run_metadata/suite/worker.jl:225
+
+[2279297] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_local_fft_solver_pilots/run_metadata/suite/worker.jl:225
+
+[2279299] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_local_fft_solver_pilots/run_metadata/suite/worker.jl:225
+
+[2279300] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_local_fft_solver_pilots/run_metadata/suite/worker.jl:225
+
+[2279301] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_local_fft_solver_pilots/run_metadata/suite/worker.jl:225
+
+[2279304] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_local_fft_solver_pilots/run_metadata/suite/worker.jl:225
+
+[2279305] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_local_fft_solver_pilots/run_metadata/suite/worker.jl:225
+
+[2279309] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_local_fft_solver_pilots/run_metadata/suite/worker.jl:225
+
+[2279308] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_local_fft_solver_pilots/run_metadata/suite/worker.jl:225
+unknown function (ip: 0x147696c4a1f7) at /cvmfs/soft.computecanada.ca/gentoo/2023/x86-64-v3/usr/lib64/libc.so.6
+qsort_r at /cvmfs/soft.computecanada.ca/gentoo/2023/x86-64-v3/usr/lib64/libc.so.6 (unknown line)
+_ZN4llvm13SchedBoundary20getNextResourceCycleEPKNS_16MCSchedClassDescEjjj at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm19SmallPtrSetImplBase4GrowEj at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm15ScalarEvolutionD1Ev at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm12SelectionDAG7CombineENS_12CombineLevelEPNS_9AAResultsENS_15CodeGenOptLevelE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm7hashing6detail23hash_combine_range_implIKjEENSt9enable_ifIXsrNS1_16is_hashable_dataIT_EE5valueENS_9hash_codeEE4typeEPS6_SB_ at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm12LoopInfoBaseINS_10BasicBlockENS_4LoopEE7analyzeERKNS_17DominatorTreeBaseIS1_Lb0EEE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm14FoldingSetBase19FindNodeOrInsertPosERKNS_16FoldingSetNodeIDERPvRKNS0_14FoldingSetInfoE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm19SmallPtrSetImplBase14insert_imp_bigEPKv at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm13SchedBoundary13countResourceEPKNS_16MCSchedClassDescEjjjj at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm16SelectionDAGISel17CodeGenAndEmitDAGEv at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm19LoopInfoWrapperPass13runOnFunctionERNS_8FunctionE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm26ScalarEvolutionWrapperPass13releaseMemoryEv at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm15ScalarEvolution23findExistingSCEVInCacheENS_9SCEVTypesENS_8ArrayRefIPKNS_4SCEVEEE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm13SchedBoundary8bumpNodeEPNS_5SUnitE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm12LoopInfoBaseINS_10BasicBlockENS_4LoopEE7analyzeERKNS_17DominatorTreeBaseIS1_Lb0EEE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm16SelectionDAGISel20SelectAllBasicBlocksERKNS_8FunctionE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm13FPPassManager13runOnFunctionERNS_8FunctionE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm13PMDataManager8freePassEPNS_4PassENS_9StringRefENS_19PassDebuggingStringE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm16GenericScheduler9schedNodeEPNS_5SUnitEb at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm13FPPassManager11runOnModuleERNS_6ModuleE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm19LoopInfoWrapperPass13runOnFunctionERNS_8FunctionE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm13PMDataManager16removeDeadPassesEPNS_4PassENS_9StringRefENS_19PassDebuggingStringE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm6legacy15PassManagerImpl3runERNS_6ModuleE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm17ScheduleDAGMILive8scheduleEv at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm13FPPassManager13runOnFunctionERNS_8FunctionE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm13FPPassManager13runOnFunctionERNS_8FunctionE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm3orc14SimpleCompilerclERNS_6ModuleE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm13FPPassManager11runOnModuleERNS_6ModuleE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm13FPPassManager11runOnModuleERNS_6ModuleE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm6legacy15PassManagerImpl3runERNS_6ModuleE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm6legacy15PassManagerImpl3runERNS_6ModuleE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm3orc14SimpleCompilerclERNS_6ModuleE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm3orc14SimpleCompilerclERNS_6ModuleE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm15ScalarEvolution10getAddExprERNS_15SmallVectorImplIPKNS_4SCEVEEENS2_11NoWrapFlagsEj.part.0 at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZL11matchLSNodePKN4llvm12LSBaseSDNodeERKNS_12SelectionDAGE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN12_GLOBAL__N_111LSRInstance38FilterOutUndesirableDedicatedRegistersEv at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZNK4llvm17X86TargetLowering21isLegalAddressingModeERKNS_10DataLayoutERKNS_18TargetLoweringBase8AddrModeEPNS_4TypeEjPNS_11InstructionE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZL20isAMCompletelyFoldedRKN4llvm19TargetTransformInfoEllN12_GLOBAL__N_16LSRUse8KindTypeENS3_11MemAccessTyEPNS_11GlobalValueElbl.isra.0 at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN12_GLOBAL__N_120MachineSchedulerBase15scheduleRegionsERN4llvm17ScheduleDAGInstrsEb at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+unknown function (ip: (nil)) at (unknown file)
+unknown function (ip: (nil)) at (unknown file)
+Allocations: 51717458 (Pool: 51716943; Big: 515); GC: 21
+_ZN4llvm16SelectionDAGISel20runOnMachineFunctionERNS_15MachineFunctionE.part.0 at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+unknown function (ip: (nil)) at (unknown file)
+Allocations: 51125578 (Pool: 51125064; Big: 514); GC: 21
+_ZN12_GLOBAL__N_111LSRInstance13InsertFormulaERNS_6LSRUseEjRKNS_7FormulaE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZL25getRangeForAffineARHelperN4llvm5APIntERKNS_13ConstantRangeERKS0_b at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN12_GLOBAL__N_111LSRInstance31GenerateCrossUseConstantOffsetsEv at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN12_GLOBAL__N_116MachineScheduler20runOnMachineFunctionERN4llvm15MachineFunctionE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm15BaseIndexOffset15computeAliasingEPKNS_6SDNodeESt8optionalIlES3_S5_RKNS_12SelectionDAGERb at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN12_GLOBAL__N_115X86DAGToDAGISel20runOnMachineFunctionERN4llvm15MachineFunctionE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZL18ReduceLoopStrengthPN4llvm4LoopERNS_7IVUsersERNS_15ScalarEvolutionERNS_13DominatorTreeERNS_8LoopInfoERKNS_19TargetTransformInfoERNS_15AssumptionCacheERNS_17TargetLibraryInfoEPNS_9MemorySSAE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN12_GLOBAL__N_111LSRInstance31GenerateCrossUseConstantOffsetsEv at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm15ScalarEvolution19getRangeForAffineAREPKNS_4SCEVES3_RKNS_5APIntE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm19MachineFunctionPass13runOnFunctionERNS_8FunctionE.part.0 at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZNK12_GLOBAL__N_111DAGCombiner8mayAliasEPN4llvm6SDNodeES3_ at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm19MachineFunctionPass13runOnFunctionERNS_8FunctionE.part.0 at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZL18ReduceLoopStrengthPN4llvm4LoopERNS_7IVUsersERNS_15ScalarEvolutionERNS_13DominatorTreeERNS_8LoopInfoERKNS_19TargetTransformInfoERNS_15AssumptionCacheERNS_17TargetLibraryInfoEPNS_9MemorySSAE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN12_GLOBAL__N_118LoopStrengthReduce9runOnLoopEPN4llvm4LoopERNS1_13LPPassManagerE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZL18ReduceLoopStrengthPN4llvm4LoopERNS_7IVUsersERNS_15ScalarEvolutionERNS_13DominatorTreeERNS_8LoopInfoERKNS_19TargetTransformInfoERNS_15AssumptionCacheERNS_17TargetLibraryInfoEPNS_9MemorySSAE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm13FPPassManager13runOnFunctionERNS_8FunctionE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm15ScalarEvolution11getRangeRefEPKNS_4SCEVENS0_13RangeSignHintEj at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm13FPPassManager13runOnFunctionERNS_8FunctionE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN12_GLOBAL__N_111DAGCombiner16GatherAllAliasesEPN4llvm6SDNodeENS1_7SDValueERNS1_15SmallVectorImplIS4_EE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN12_GLOBAL__N_118LoopStrengthReduce9runOnLoopEPN4llvm4LoopERNS1_13LPPassManagerE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm13LPPassManager13runOnFunctionERNS_8FunctionE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm13FPPassManager11runOnModuleERNS_6ModuleE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm13FPPassManager11runOnModuleERNS_6ModuleE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN12_GLOBAL__N_118LoopStrengthReduce9runOnLoopEPN4llvm4LoopERNS1_13LPPassManagerE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZL21StrengthenNoWrapFlagsPN4llvm15ScalarEvolutionENS_9SCEVTypesENS_8ArrayRefIPKNS_4SCEVEEENS4_11NoWrapFlagsE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN12_GLOBAL__N_111DAGCombiner15FindBetterChainEPN4llvm6SDNodeENS1_7SDValueE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm13LPPassManager13runOnFunctionERNS_8FunctionE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm13FPPassManager13runOnFunctionERNS_8FunctionE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm6legacy15PassManagerImpl3runERNS_6ModuleE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm6legacy15PassManagerImpl3runERNS_6ModuleE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN12_GLOBAL__N_111DAGCombiner10visitSTOREEPN4llvm6SDNodeE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm13LPPassManager13runOnFunctionERNS_8FunctionE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm15ScalarEvolution10getAddExprERNS_15SmallVectorImplIPKNS_4SCEVEEENS2_11NoWrapFlagsEj.part.0 at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm13FPPassManager13runOnFunctionERNS_8FunctionE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm13FPPassManager11runOnModuleERNS_6ModuleE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm3orc14SimpleCompilerclERNS_6ModuleE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm3orc14SimpleCompilerclERNS_6ModuleE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN12_GLOBAL__N_111DAGCombiner7combineEPN4llvm6SDNodeE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm13FPPassManager13runOnFunctionERNS_8FunctionE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm13FPPassManager11runOnModuleERNS_6ModuleE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm6legacy15PassManagerImpl3runERNS_6ModuleE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN12_GLOBAL__N_111LSRInstance27GenerateConstantOffsetsImplERNS_6LSRUseEjRKNS_7FormulaERKN4llvm15SmallVectorImplIlEEmb at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm12SelectionDAG7CombineENS_12CombineLevelEPNS_9AAResultsENS_15CodeGenOptLevelE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm13FPPassManager11runOnModuleERNS_6ModuleE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm6legacy15PassManagerImpl3runERNS_6ModuleE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm3orc14SimpleCompilerclERNS_6ModuleE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN12_GLOBAL__N_111LSRInstance24GenerateAllReuseFormulaeEv at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm6legacy15PassManagerImpl3runERNS_6ModuleE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm16SelectionDAGISel17CodeGenAndEmitDAGEv at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm3orc14SimpleCompilerclERNS_6ModuleE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZL18ReduceLoopStrengthPN4llvm4LoopERNS_7IVUsersERNS_15ScalarEvolutionERNS_13DominatorTreeERNS_8LoopInfoERKNS_19TargetTransformInfoERNS_15AssumptionCacheERNS_17TargetLibraryInfoEPNS_9MemorySSAE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm3orc14SimpleCompilerclERNS_6ModuleE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm16SelectionDAGISel20SelectAllBasicBlocksERKNS_8FunctionE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN12_GLOBAL__N_118LoopStrengthReduce9runOnLoopEPN4llvm4LoopERNS1_13LPPassManagerE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm16SelectionDAGISel20runOnMachineFunctionERNS_15MachineFunctionE.part.0 at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm13LPPassManager13runOnFunctionERNS_8FunctionE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN12_GLOBAL__N_115X86DAGToDAGISel20runOnMachineFunctionERN4llvm15MachineFunctionE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm13FPPassManager13runOnFunctionERNS_8FunctionE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm19MachineFunctionPass13runOnFunctionERNS_8FunctionE.part.0 at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm13FPPassManager11runOnModuleERNS_6ModuleE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm13FPPassManager13runOnFunctionERNS_8FunctionE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm6legacy15PassManagerImpl3runERNS_6ModuleE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm13FPPassManager11runOnModuleERNS_6ModuleE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm3orc14SimpleCompilerclERNS_6ModuleE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm6legacy15PassManagerImpl3runERNS_6ModuleE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+_ZN4llvm3orc14SimpleCompilerclERNS_6ModuleE at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/../lib/julia/libLLVM.so.18.1jl (unknown line)
+operator() at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:1561
+operator() at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:1561
+addModule at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:2044
+operator() at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:1561
+addModule at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:2044
+addModule at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:2044
+jl_compile_codeinst_now at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:626
+jl_compile_codeinst_now at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:626
+operator() at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:1561
+jl_compile_codeinst_now at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:626
+addModule at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:2044
+jl_compile_codeinst_now at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:626
+jl_compile_codeinst_impl at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:824
+jl_compile_codeinst_impl at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:824
+jl_compile_codeinst_impl at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:824
+jl_compile_codeinst_impl at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:824
+operator() at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:1561
+addModule at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:2044
+operator() at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:1561
+jl_compile_codeinst_now at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:626
+jl_compile_codeinst_impl at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:824
+addModule at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:2044
+jl_compile_codeinst_now at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:626
+jl_compile_codeinst_impl at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:824
+operator() at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:1561
+operator() at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:1561
+operator() at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:1561
+addModule at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:2044
+addModule at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:2044
+jl_compile_codeinst_now at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:626
+operator() at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:1561
+addModule at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:2044
+jl_compile_codeinst_now at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:626
+jl_compile_codeinst_impl at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:824
+jl_compile_codeinst_impl at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:824
+jl_compile_codeinst_now at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:626
+jl_compile_codeinst_impl at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:824
+addModule at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:2044
+jl_compile_codeinst_now at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:626
+jl_compile_codeinst_impl at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jitlayers.cpp:824
+jl_compile_method_internal at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/gf.c:3528
+jl_compile_method_internal at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/gf.c:3528
+_jl_invoke at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/gf.c:4006 [inlined]
+ijl_apply_generic at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/gf.c:4214
+_jl_invoke at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/gf.c:4006 [inlined]
+ijl_apply_generic at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/gf.c:4214
+jl_compile_method_internal at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/gf.c:3528
+_jl_invoke at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/gf.c:4006 [inlined]
+ijl_apply_generic at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/gf.c:4214
+jl_compile_method_internal at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/gf.c:3528
+jl_compile_method_internal at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/gf.c:3528
+_jl_invoke at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/gf.c:4006 [inlined]
+ijl_apply_generic at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/gf.c:4214
+_jl_invoke at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/gf.c:4006 [inlined]
+ijl_apply_generic at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/gf.c:4214
+LocalFFTPreconditioner at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_local_fft_solver_pilots/run_metadata/suite/worker.jl:65
+unknown function (ip: 0x14898db966c2) at (unknown file)
+LocalFFTPreconditioner at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_local_fft_solver_pilots/run_metadata/suite/worker.jl:65
+unknown function (ip: 0x14b12df98742) at (unknown file)
+jl_compile_method_internal at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/gf.c:3528
+jl_compile_method_internal at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/gf.c:3528
+_jl_invoke at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/gf.c:4006 [inlined]
+ijl_apply_generic at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/gf.c:4214
+jl_compile_method_internal at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/gf.c:3528
+_jl_invoke at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/gf.c:4006 [inlined]
+ijl_apply_generic at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/gf.c:4214
+LocalFFTPreconditioner at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_local_fft_solver_pilots/run_metadata/suite/worker.jl:65
+unknown function (ip: 0x14b7ff1965a5) at (unknown file)
+jl_compile_method_internal at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/gf.c:3528
+_jl_invoke at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/gf.c:4006 [inlined]
+ijl_apply_generic at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/gf.c:4214
+_jl_invoke at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/gf.c:4006 [inlined]
+ijl_apply_generic at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/gf.c:4214
+LocalFFTPreconditioner at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_local_fft_solver_pilots/run_metadata/suite/worker.jl:65
+unknown function (ip: 0x15322a998775) at (unknown file)
+jl_compile_method_internal at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/gf.c:3528
+_jl_invoke at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/gf.c:4006 [inlined]
+ijl_apply_generic at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/gf.c:4214
+LocalFFTPreconditioner at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_local_fft_solver_pilots/run_metadata/suite/worker.jl:65
+unknown function (ip: 0x14fbd6198732) at (unknown file)
+LocalFFTPreconditioner at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_local_fft_solver_pilots/run_metadata/suite/worker.jl:65
+unknown function (ip: 0x147681396565) at (unknown file)
+LocalFFTPreconditioner at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_local_fft_solver_pilots/run_metadata/suite/worker.jl:65
+unknown function (ip: 0x15236c7985e5) at (unknown file)
+LocalFFTPreconditioner at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_local_fft_solver_pilots/run_metadata/suite/worker.jl:65
+unknown function (ip: 0x148a0f9965f5) at (unknown file)
+LocalFFTPreconditioner at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_local_fft_solver_pilots/run_metadata/suite/worker.jl:65
+unknown function (ip: 0x1513ed9985d2) at (unknown file)
+jl_apply at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/julia.h:2391 [inlined]
+jl_f__call_in_world_total at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/builtins.c:919
+jl_apply at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/julia.h:2391 [inlined]
+jl_f__apply_iterate at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/builtins.c:868
+jl_apply at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/julia.h:2391 [inlined]
+do_call at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:123
+jl_apply at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/julia.h:2391 [inlined]
+do_call at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:123
+eval_value at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:243
+eval_value at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:243
+eval_body at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:581
+jl_interpret_toplevel_thunk at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:898
+eval_body at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:581
+jl_interpret_toplevel_thunk at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:898
+jl_apply at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/julia.h:2391 [inlined]
+do_call at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:123
+eval_value at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:243
+eval_body at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:581
+jl_interpret_toplevel_thunk at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:898
+jl_apply at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/julia.h:2391 [inlined]
+do_call at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:123
+eval_value at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:243
+eval_body at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:581
+jl_interpret_toplevel_thunk at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:898
+jl_apply at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/julia.h:2391 [inlined]
+do_call at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:123
+eval_value at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:243
+eval_body at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:581
+jl_apply at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/julia.h:2391 [inlined]
+do_call at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:123
+eval_value at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:243
+jl_interpret_toplevel_thunk at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:898
+jl_apply at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/julia.h:2391 [inlined]
+do_call at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:123
+eval_value at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:243
+eval_body at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:581
+jl_interpret_toplevel_thunk at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:898
+eval_body at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:581
+jl_interpret_toplevel_thunk at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:898
+jl_apply at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/julia.h:2391 [inlined]
+do_call at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:123
+eval_value at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:243
+jl_apply at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/julia.h:2391 [inlined]
+do_call at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:123
+eval_value at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:243
+eval_body at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:581
+eval_body at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:581
+jl_interpret_toplevel_thunk at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:898
+jl_interpret_toplevel_thunk at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:898
+jl_toplevel_eval_flex at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:1035
+jl_toplevel_eval_flex at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:1035
+jl_toplevel_eval_flex at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:975
+ijl_toplevel_eval at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:1047
+jl_toplevel_eval_flex at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:975
+ijl_toplevel_eval at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:1047
+ijl_toplevel_eval_in at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:1092
+ijl_toplevel_eval_in at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:1092
+jl_toplevel_eval_flex at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:1035
+jl_toplevel_eval_flex at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:975
+ijl_toplevel_eval at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:1047
+ijl_toplevel_eval_in at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:1092
+jl_toplevel_eval_flex at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:1035
+jl_toplevel_eval_flex at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:975
+ijl_toplevel_eval at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:1047
+ijl_toplevel_eval_in at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:1092
+jl_toplevel_eval_flex at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:1035
+jl_toplevel_eval_flex at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:975
+jl_toplevel_eval_flex at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:1035
+jl_toplevel_eval_flex at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:975
+ijl_toplevel_eval at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:1047
+ijl_toplevel_eval_in at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:1092
+jl_toplevel_eval_flex at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:1035
+ijl_toplevel_eval at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:1047
+ijl_toplevel_eval_in at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:1092
+jl_toplevel_eval_flex at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:975
+ijl_toplevel_eval at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:1047
+ijl_toplevel_eval_in at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:1092
+jl_toplevel_eval_flex at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:1035
+jl_toplevel_eval_flex at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:1035
+jl_toplevel_eval_flex at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:975
+ijl_toplevel_eval at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:1047
+jl_toplevel_eval_flex at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:975
+ijl_toplevel_eval at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:1047
+ijl_toplevel_eval_in at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:1092
+ijl_toplevel_eval_in at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:1092
+concrete_eval_call at ./../usr/share/julia/Compiler/src/abstractinterpretation.jl:1009
+abstract_call_method_with_const_args at ./../usr/share/julia/Compiler/src/abstractinterpretation.jl:874
+abstract_call_method_with_const_args at ./../usr/share/julia/Compiler/src/abstractinterpretation.jl:868
+handle1 at ./../usr/share/julia/Compiler/src/abstractinterpretation.jl:168
+infercalls at ./../usr/share/julia/Compiler/src/abstractinterpretation.jl:252
+abstract_call_gf_by_type at ./../usr/share/julia/Compiler/src/abstractinterpretation.jl:338
+abstract_call_known at ./../usr/share/julia/Compiler/src/abstractinterpretation.jl:2783
+abstract_call at ./../usr/share/julia/Compiler/src/abstractinterpretation.jl:2890
+abstract_call at ./../usr/share/julia/Compiler/src/abstractinterpretation.jl:2883 [inlined]
+abstract_call at ./../usr/share/julia/Compiler/src/abstractinterpretation.jl:3043
+eval at ./boot.jl:489
+abstract_eval_statement_expr at ./../usr/share/julia/Compiler/src/abstractinterpretation.jl:3386
+include_string at ./loading.jl:2870
+_include at ./loading.jl:2930
+include at ./Base.jl:306
+exec_options at ./client.jl:317
+_start at ./client.jl:550
+jfptr__start_74358.1 at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/lib/julia/sys.so (unknown line)
+jl_apply at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/julia.h:2391 [inlined]
+true_main at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jlapi.c:971
+jl_repl_entrypoint at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jlapi.c:1139
+main at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/cli/loader_exe.c:58
+unknown function (ip: 0x1489a33de949) at /cvmfs/soft.computecanada.ca/gentoo/2023/x86-64-v3/usr/lib64/libc.so.6
+__libc_start_main at /cvmfs/soft.computecanada.ca/gentoo/2023/x86-64-v3/usr/lib64/libc.so.6 (unknown line)
+unknown function (ip: 0x4010b8) at /workspace/srcdir/glibc-2.17/csu/../sysdeps/x86_64/start.S
+eval at ./boot.jl:489
+unknown function (ip: (nil)) at (unknown file)
+Allocations: 50416086 (Pool: 50415573; Big: 513); GC: 22
+eval at ./boot.jl:489
+abstract_eval_basic_statement at ./../usr/share/julia/Compiler/src/abstractinterpretation.jl:3836 [inlined]
+abstract_eval_basic_statement at ./../usr/share/julia/Compiler/src/abstractinterpretation.jl:3793 [inlined]
+typeinf_local at ./../usr/share/julia/Compiler/src/abstractinterpretation.jl:4343
+jfptr_typeinf_local_83385.1 at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/lib/julia/sys.so (unknown line)
+include_string at ./loading.jl:2870
+include_string at ./loading.jl:2870
+_include at ./loading.jl:2930
+typeinf at ./../usr/share/julia/Compiler/src/abstractinterpretation.jl:4501
+include at ./Base.jl:306
+_include at ./loading.jl:2930
+include at ./Base.jl:306
+typeinf_ext at ./../usr/share/julia/Compiler/src/typeinfer.jl:1254
+typeinf_ext_toplevel at ./../usr/share/julia/Compiler/src/typeinfer.jl:1437 [inlined]
+typeinf_ext_toplevel at ./../usr/share/julia/Compiler/src/typeinfer.jl:1446
+jfptr_typeinf_ext_toplevel_82377.1 at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/lib/julia/sys.so (unknown line)
+jl_apply at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/julia.h:2391 [inlined]
+jl_type_infer at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/gf.c:466
+jl_compile_method_internal at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/gf.c:3516
+exec_options at ./client.jl:317
+_jl_invoke at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/gf.c:4006 [inlined]
+ijl_apply_generic at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/gf.c:4214
+exec_options at ./client.jl:317
+_start at ./client.jl:550
+jfptr__start_74358.1 at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/lib/julia/sys.so (unknown line)
+_start at ./client.jl:550
+jfptr__start_74358.1 at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/lib/julia/sys.so (unknown line)
+jl_apply at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/julia.h:2391 [inlined]
+true_main at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jlapi.c:971
+jl_repl_entrypoint at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jlapi.c:1139
+jl_apply at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/julia.h:2391 [inlined]
+true_main at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jlapi.c:971
+jl_repl_entrypoint at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jlapi.c:1139
+main at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/cli/loader_exe.c:58
+main at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/cli/loader_exe.c:58
+unknown function (ip: 0x1532324ae949) at /cvmfs/soft.computecanada.ca/gentoo/2023/x86-64-v3/usr/lib64/libc.so.6
+__libc_start_main at /cvmfs/soft.computecanada.ca/gentoo/2023/x86-64-v3/usr/lib64/libc.so.6 (unknown line)
+unknown function (ip: 0x4010b8) at /workspace/srcdir/glibc-2.17/csu/../sysdeps/x86_64/start.S
+unknown function (ip: 0x14b8149e7949) at /cvmfs/soft.computecanada.ca/gentoo/2023/x86-64-v3/usr/lib64/libc.so.6
+__libc_start_main at /cvmfs/soft.computecanada.ca/gentoo/2023/x86-64-v3/usr/lib64/libc.so.6 (unknown line)
+unknown function (ip: 0x4010b8) at /workspace/srcdir/glibc-2.17/csu/../sysdeps/x86_64/start.S
+unknown function (ip: (nil)) at (unknown file)
+Allocations: 51535387 (Pool: 51534872; Big: 515); GC: 21
+unknown function (ip: (nil)) at (unknown file)
+Allocations: 51693174 (Pool: 51692659; Big: 515); GC: 21
+eval at ./boot.jl:489
+include_string at ./loading.jl:2870
+eval at ./boot.jl:489
+_include at ./loading.jl:2930
+include at ./Base.jl:306
+eval at ./boot.jl:489
+jl_apply at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/julia.h:2391 [inlined]
+do_call at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:123
+include_string at ./loading.jl:2870
+eval_value at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:243
+eval_stmt_value at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:194 [inlined]
+eval_body at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:707
+jl_interpret_toplevel_thunk at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/interpreter.c:898
+include_string at ./loading.jl:2870
+_include at ./loading.jl:2930
+include at ./Base.jl:306
+exec_options at ./client.jl:317
+_include at ./loading.jl:2930
+include at ./Base.jl:306
+_start at ./client.jl:550
+jfptr__start_74358.1 at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/lib/julia/sys.so (unknown line)
+jl_toplevel_eval_flex at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:1035
+jl_toplevel_eval_flex at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:975
+ijl_toplevel_eval at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:1047
+ijl_toplevel_eval_in at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/toplevel.c:1092
+eval at ./boot.jl:489
+exec_options at ./client.jl:317
+include_string at ./loading.jl:2870
+jl_apply at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/julia.h:2391 [inlined]
+true_main at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jlapi.c:971
+_start at ./client.jl:550
+jfptr__start_74358.1 at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/lib/julia/sys.so (unknown line)
+jl_repl_entrypoint at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jlapi.c:1139
+_include at ./loading.jl:2930
+exec_options at ./client.jl:317
+include at ./Base.jl:306
+main at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/cli/loader_exe.c:58
+_start at ./client.jl:550
+unknown function (ip: 0x14b135aa4949) at /cvmfs/soft.computecanada.ca/gentoo/2023/x86-64-v3/usr/lib64/libc.so.6
+__libc_start_main at /cvmfs/soft.computecanada.ca/gentoo/2023/x86-64-v3/usr/lib64/libc.so.6 (unknown line)
+unknown function (ip: 0x4010b8) at /workspace/srcdir/glibc-2.17/csu/../sysdeps/x86_64/start.S
+jfptr__start_74358.1 at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/lib/julia/sys.so (unknown line)
+jl_apply at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/julia.h:2391 [inlined]
+true_main at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jlapi.c:971
+unknown function (ip: (nil)) at (unknown file)
+Allocations: 50011995 (Pool: 50011483; Big: 512); GC: 21
+jl_repl_entrypoint at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jlapi.c:1139
+main at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/cli/loader_exe.c:58
+jl_apply at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/julia.h:2391 [inlined]
+true_main at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jlapi.c:971
+jl_repl_entrypoint at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jlapi.c:1139
+unknown function (ip: 0x148a251c8949) at /cvmfs/soft.computecanada.ca/gentoo/2023/x86-64-v3/usr/lib64/libc.so.6
+__libc_start_main at /cvmfs/soft.computecanada.ca/gentoo/2023/x86-64-v3/usr/lib64/libc.so.6 (unknown line)
+unknown function (ip: 0x4010b8) at /workspace/srcdir/glibc-2.17/csu/../sysdeps/x86_64/start.S
+main at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/cli/loader_exe.c:58
+exec_options at ./client.jl:317
+unknown function (ip: (nil)) at (unknown file)
+Allocations: 49900922 (Pool: 49900410; Big: 512); GC: 22
+unknown function (ip: 0x1513f5550949) at /cvmfs/soft.computecanada.ca/gentoo/2023/x86-64-v3/usr/lib64/libc.so.6
+__libc_start_main at /cvmfs/soft.computecanada.ca/gentoo/2023/x86-64-v3/usr/lib64/libc.so.6 (unknown line)
+unknown function (ip: 0x4010b8) at /workspace/srcdir/glibc-2.17/csu/../sysdeps/x86_64/start.S
+_start at ./client.jl:550
+jfptr__start_74358.1 at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/lib/julia/sys.so (unknown line)
+unknown function (ip: (nil)) at (unknown file)
+Allocations: 50091599 (Pool: 50091086; Big: 513); GC: 21
+eval at ./boot.jl:489
+jl_apply at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/julia.h:2391 [inlined]
+true_main at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jlapi.c:971
+jl_repl_entrypoint at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jlapi.c:1139
+include_string at ./loading.jl:2870
+eval at ./boot.jl:489
+main at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/cli/loader_exe.c:58
+unknown function (ip: 0x14d937227949) at /cvmfs/soft.computecanada.ca/gentoo/2023/x86-64-v3/usr/lib64/libc.so.6
+__libc_start_main at /cvmfs/soft.computecanada.ca/gentoo/2023/x86-64-v3/usr/lib64/libc.so.6 (unknown line)
+eval at ./boot.jl:489
+unknown function (ip: 0x4010b8) at /workspace/srcdir/glibc-2.17/csu/../sysdeps/x86_64/start.S
+_include at ./loading.jl:2930
+include at ./Base.jl:306
+include_string at ./loading.jl:2870
+unknown function (ip: (nil)) at (unknown file)
+Allocations: 52257520 (Pool: 52257001; Big: 519); GC: 22
+include_string at ./loading.jl:2870
+_include at ./loading.jl:2930
+include at ./Base.jl:306
+_include at ./loading.jl:2930
+include at ./Base.jl:306
+exec_options at ./client.jl:317
+_start at ./client.jl:550
+jfptr__start_74358.1 at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/lib/julia/sys.so (unknown line)
+exec_options at ./client.jl:317
+exec_options at ./client.jl:317
+_start at ./client.jl:550
+jfptr__start_74358.1 at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/lib/julia/sys.so (unknown line)
+jl_apply at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/julia.h:2391 [inlined]
+true_main at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jlapi.c:971
+jl_repl_entrypoint at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jlapi.c:1139
+_start at ./client.jl:550
+jfptr__start_74358.1 at /cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/lib/julia/sys.so (unknown line)
+main at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/cli/loader_exe.c:58
+unknown function (ip: 0x147696c31949) at /cvmfs/soft.computecanada.ca/gentoo/2023/x86-64-v3/usr/lib64/libc.so.6
+__libc_start_main at /cvmfs/soft.computecanada.ca/gentoo/2023/x86-64-v3/usr/lib64/libc.so.6 (unknown line)
+unknown function (ip: 0x4010b8) at /workspace/srcdir/glibc-2.17/csu/../sysdeps/x86_64/start.S
+unknown function (ip: (nil)) at (unknown file)
+Allocations: 49287874 (Pool: 49287373; Big: 501); GC: 21
+jl_apply at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/julia.h:2391 [inlined]
+true_main at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jlapi.c:971
+jl_repl_entrypoint at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jlapi.c:1139
+main at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/cli/loader_exe.c:58
+jl_apply at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/julia.h:2391 [inlined]
+true_main at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jlapi.c:971
+jl_repl_entrypoint at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/src/jlapi.c:1139
+unknown function (ip: 0x14fbddc77949) at /cvmfs/soft.computecanada.ca/gentoo/2023/x86-64-v3/usr/lib64/libc.so.6
+__libc_start_main at /cvmfs/soft.computecanada.ca/gentoo/2023/x86-64-v3/usr/lib64/libc.so.6 (unknown line)
+unknown function (ip: 0x4010b8) at /workspace/srcdir/glibc-2.17/csu/../sysdeps/x86_64/start.S
+main at /cache/build/builder-amdci5-3/julialang/julia-release-1-dot-12/cli/loader_exe.c:58
+unknown function (ip: 0x15237429e949) at /cvmfs/soft.computecanada.ca/gentoo/2023/x86-64-v3/usr/lib64/libc.so.6
+__libc_start_main at /cvmfs/soft.computecanada.ca/gentoo/2023/x86-64-v3/usr/lib64/libc.so.6 (unknown line)
+unknown function (ip: (nil)) at (unknown file)
+Allocations: 48977605 (Pool: 48977106; Big: 499); GC: 22
+unknown function (ip: 0x4010b8) at /workspace/srcdir/glibc-2.17/csu/../sysdeps/x86_64/start.S
+unknown function (ip: (nil)) at (unknown file)
+Allocations: 50040631 (Pool: 50040119; Big: 512); GC: 23
+[2026-10-13T13:37:00.917] error:  mpi/pmix_v4: _errhandler: rc13215 [0]: pmixp_client_v2.c:225: Error handler invoked: status = -61, source = [slurm.pmix.23112404.1:4]
+srun: Job step aborted: Waiting up to 62 seconds for job step to finish.
+srun: error: rc13215: tasks 1-3,5-7,9-11,13-15: Killed

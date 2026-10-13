@@ -1,8 +1,9 @@
-# Full benchmark suite
+# Benchmark suite
 
 NonhydrostaticModel; rigid lid; LatitudeLongitudeGrid without bathymetry; Float64, WENO7 momentum/tracers, ScalarDiffusivity (ν=1e-3, κ=1e-5 m²/s), T/S, RungeKutta3. Pressure: ConjugateGradientPoissonSolver; traditional spherical Coriolis and TEOS10 buoyancy.
 Δt=60 s on the standard grids; larger horizontal grids reduce Δt in proportion to grid spacing (see each configuration).
-No free-surface substeps or extended free-surface halos; two untimed steps and five ten-step windows.
+No free-surface substeps or extended free-surface halos.
+Actual timing protocols: 2 untimed steps, 5 windows of 10 steps.
 One MPI rank per CPU core or GPU, one Julia computation thread per rank. Hydrostatic geometry bounds are retained to match partitions between models.
 Window boundaries synchronize MPI ranks and GPUs. Fastest/median statistics use the maximum across ranks.
 Strong efficiency = baseline time × baseline ranks / (time × ranks); weak efficiency = baseline time / time.
@@ -17,10 +18,10 @@ Highest completed count: **0 ranks**.
 
 | Case | Ranks | Partition | Global resolution | Grid type | State | Fastest s/step | Median s/step | Efficiency fastest / median | Details |
 |---|---:|---|---|---|---|---:|---:|---|---|
-| 1_ranks | 1 | 1x1x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
-| 3_ranks | 3 | 3x1x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
-| 6_ranks | 6 | 3x2x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
-| 12_ranks | 12 | 4x3x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
+| 1_ranks | 1 | 1x1x1 | 1440x720x200 | LatitudeLongitudeGrid | CANCELLED | — | — | — | Exit 0:0; None |
+| 3_ranks | 3 | 3x1x1 | 1440x720x200 | LatitudeLongitudeGrid | CANCELLED | — | — | — | Exit 0:0; None |
+| 6_ranks | 6 | 3x2x1 | 1440x720x200 | LatitudeLongitudeGrid | CANCELLED | — | — | — | Exit 0:0; None |
+| 12_ranks | 12 | 4x3x1 | 1440x720x200 | LatitudeLongitudeGrid | CANCELLED | — | — | — | Exit 0:0; None |
 | 24_ranks | 24 | 6x4x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
 | 48_ranks | 48 | 8x6x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
 | 96_ranks | 96 | 12x8x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
@@ -38,15 +39,15 @@ Highest completed count: **0 ranks**.
 
 | Case | Ranks | Partition | Global resolution | Grid type | State | Fastest s/step | Median s/step | Efficiency fastest / median | Details |
 |---|---:|---|---|---|---|---:|---:|---|---|
-| 1_ranks | 1 | 1x1x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 2_ranks | 2 | 2x1x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 4_ranks | 4 | 2x2x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 8_ranks | 8 | 4x2x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 16_ranks | 16 | 4x4x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 32_ranks | 32 | 8x4x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 64_ranks | 64 | 8x8x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 128_ranks | 128 | 16x8x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 256_ranks | 256 | 16x16x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
+| 1_ranks | 1 | 1x1x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 2_ranks | 2 | 2x1x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 4_ranks | 4 | 2x2x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 8_ranks | 8 | 4x2x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 16_ranks | 16 | 4x4x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 32_ranks | 32 | 8x4x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 64_ranks | 64 | 8x8x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 128_ranks | 128 | 16x8x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 256_ranks | 256 | 16x16x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
 | 512_ranks | 512 | 32x16x1 | 1440x720x200 | LatitudeLongitudeGrid | RESOURCE_LIMIT | — | — | — | Requires 512; configured capacity is 264 |
 ## cpu_resolution
 
@@ -57,8 +58,8 @@ Highest completed count: **1 ranks**.
 | Case | Ranks | Partition | Global resolution | Grid type | State | Fastest s/step | Median s/step | Efficiency fastest / median | Details |
 |---|---:|---|---|---|---|---:|---:|---|---|
 | default | 1 | 1x1x1 | 360x180x50 | LatitudeLongitudeGrid | COMPLETED | 225.153769 | 276.558927 | — | Rank results, finite fields and resource placement verified |
-| fine | 1 | 1x1x1 | 720x360x100 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
-| super_fine | 1 | 1x1x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
+| fine | 1 | 1x1x1 | 720x360x100 | LatitudeLongitudeGrid | CANCELLED | — | — | — | Exit 0:0; None |
+| super_fine | 1 | 1x1x1 | 1440x720x200 | LatitudeLongitudeGrid | CANCELLED | — | — | — | Exit 0:0; None |
 
 [default configuration](cpu_resolution/default/configuration.md): local resolution **360–360 × 180–180 × 50**, rigid lid; free-surface substeps not applicable.
 ## gpu_resolution
@@ -67,9 +68,9 @@ Highest completed count: **0 ranks**.
 
 | Case | Ranks | Partition | Global resolution | Grid type | State | Fastest s/step | Median s/step | Efficiency fastest / median | Details |
 |---|---:|---|---|---|---|---:|---:|---|---|
-| default | 1 | 1x1x1 | 360x180x50 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| fine | 1 | 1x1x1 | 720x360x100 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| super_fine | 1 | 1x1x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
+| default | 1 | 1x1x1 | 360x180x50 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| fine | 1 | 1x1x1 | 720x360x100 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| super_fine | 1 | 1x1x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
 ## cpu_partition_cores_super_fine
 
 Highest completed count: **0 ranks**.
@@ -77,18 +78,18 @@ Highest completed count: **0 ranks**.
 | Case | Ranks | Partition | Global resolution | Grid type | State | Fastest s/step | Median s/step | Efficiency fastest / median | Details |
 |---|---:|---|---|---|---|---:|---:|---|---|
 | 192x1x1 | 192 | 192x1x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
-| 96x2x1 | 192 | 96x2x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
-| 64x3x1 | 192 | 64x3x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
-| 48x4x1 | 192 | 48x4x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
-| 32x6x1 | 192 | 32x6x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
-| 24x8x1 | 192 | 24x8x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
-| 16x12x1 | 192 | 16x12x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
-| 12x16x1 | 192 | 12x16x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
-| 8x24x1 | 192 | 8x24x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
-| 6x32x1 | 192 | 6x32x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
-| 4x48x1 | 192 | 4x48x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
-| 3x64x1 | 192 | 3x64x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
-| 2x96x1 | 192 | 2x96x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
+| 96x2x1 | 192 | 96x2x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; shared allocation 23088867 timed out while executing an earlier layout |
+| 64x3x1 | 192 | 64x3x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; shared allocation 23088867 timed out while executing an earlier layout |
+| 48x4x1 | 192 | 48x4x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; shared allocation 23088867 timed out while executing an earlier layout |
+| 32x6x1 | 192 | 32x6x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; shared allocation 23088867 timed out while executing an earlier layout |
+| 24x8x1 | 192 | 24x8x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; shared allocation 23088867 timed out while executing an earlier layout |
+| 16x12x1 | 192 | 16x12x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; shared allocation 23088867 timed out while executing an earlier layout |
+| 12x16x1 | 192 | 12x16x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; shared allocation 23088867 timed out while executing an earlier layout |
+| 8x24x1 | 192 | 8x24x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; shared allocation 23088867 timed out while executing an earlier layout |
+| 6x32x1 | 192 | 6x32x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; shared allocation 23088867 timed out while executing an earlier layout |
+| 4x48x1 | 192 | 4x48x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; shared allocation 23088867 timed out while executing an earlier layout |
+| 3x64x1 | 192 | 3x64x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; shared allocation 23088867 timed out while executing an earlier layout |
+| 2x96x1 | 192 | 2x96x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; shared allocation 23088867 timed out while executing an earlier layout |
 | 1x192x1 | 192 | 1x192x1 | 1440x720x200 | LatitudeLongitudeGrid | GEOMETRY_LIMIT | — | — | — | Partition [1, 192, 1] has fewer than 7 local cells per horizontal direction |
 ## gpu_nsight_scaling_super_fine
 
@@ -96,15 +97,15 @@ Highest completed count: **0 ranks**.
 
 | Case | Ranks | Partition | Global resolution | Grid type | State | Fastest s/step | Median s/step | Efficiency fastest / median | Details |
 |---|---:|---|---|---|---|---:|---:|---|---|
-| 1_ranks | 1 | 1x1x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 2_ranks | 2 | 2x1x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 4_ranks | 4 | 2x2x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 8_ranks | 8 | 4x2x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 16_ranks | 16 | 4x4x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 32_ranks | 32 | 8x4x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 64_ranks | 64 | 8x8x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 128_ranks | 128 | 16x8x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 256_ranks | 256 | 16x16x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
+| 1_ranks | 1 | 1x1x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 2_ranks | 2 | 2x1x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 4_ranks | 4 | 2x2x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 8_ranks | 8 | 4x2x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 16_ranks | 16 | 4x4x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 32_ranks | 32 | 8x4x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 64_ranks | 64 | 8x8x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 128_ranks | 128 | 16x8x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 256_ranks | 256 | 16x16x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
 | 512_ranks | 512 | 32x16x1 | 1440x720x200 | LatitudeLongitudeGrid | RESOURCE_LIMIT | — | — | — | Requires 512; configured capacity is 264 |
 ## gpu_partition_super_fine
 
@@ -116,32 +117,32 @@ MPI efficiency awaits the measured 1 × 1 × 1 baseline.
 
 | Case | Ranks | Partition | Global resolution | Grid type | State | Fastest s/step | Median s/step | Efficiency fastest / median | Details |
 |---|---:|---|---|---|---|---:|---:|---|---|
-| 1x1x1 | 1 | 1x1x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 2x1x1 | 2 | 2x1x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 1x2x1 | 2 | 1x2x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 4x1x1 | 4 | 4x1x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 2x2x1 | 4 | 2x2x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 1x4x1 | 4 | 1x4x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 8x1x1 | 8 | 8x1x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 4x2x1 | 8 | 4x2x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 2x4x1 | 8 | 2x4x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 1x8x1 | 8 | 1x8x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 16x1x1 | 16 | 16x1x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 8x2x1 | 16 | 8x2x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 4x4x1 | 16 | 4x4x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 2x8x1 | 16 | 2x8x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 1x16x1 | 16 | 1x16x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 32x1x1 | 32 | 32x1x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 16x2x1 | 32 | 16x2x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 8x4x1 | 32 | 8x4x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 4x8x1 | 32 | 4x8x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 2x16x1 | 32 | 2x16x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
+| 1x1x1 | 1 | 1x1x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 2x1x1 | 2 | 2x1x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 1x2x1 | 2 | 1x2x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 4x1x1 | 4 | 4x1x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 2x2x1 | 4 | 2x2x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 1x4x1 | 4 | 1x4x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 8x1x1 | 8 | 8x1x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 4x2x1 | 8 | 4x2x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 2x4x1 | 8 | 2x4x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 1x8x1 | 8 | 1x8x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 16x1x1 | 16 | 16x1x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 8x2x1 | 16 | 8x2x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 4x4x1 | 16 | 4x4x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 2x8x1 | 16 | 2x8x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 1x16x1 | 16 | 1x16x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 32x1x1 | 32 | 32x1x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 16x2x1 | 32 | 16x2x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 8x4x1 | 32 | 8x4x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 4x8x1 | 32 | 4x8x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 2x16x1 | 32 | 2x16x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
 | 1x32x1 | 32 | 1x32x1 | 1440x720x200 | LatitudeLongitudeGrid | GEOMETRY_LIMIT | — | — | — | Partition [1, 32, 1] has fewer than 23 local cells per horizontal direction |
 | 64x1x1 | 64 | 64x1x1 | 1440x720x200 | LatitudeLongitudeGrid | GEOMETRY_LIMIT | — | — | — | Partition [64, 1, 1] has fewer than 23 local cells per horizontal direction |
-| 32x2x1 | 64 | 32x2x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 16x4x1 | 64 | 16x4x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 8x8x1 | 64 | 8x8x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 4x16x1 | 64 | 4x16x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
+| 32x2x1 | 64 | 32x2x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 16x4x1 | 64 | 16x4x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 8x8x1 | 64 | 8x8x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 4x16x1 | 64 | 4x16x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
 | 2x32x1 | 64 | 2x32x1 | 1440x720x200 | LatitudeLongitudeGrid | GEOMETRY_LIMIT | — | — | — | Partition [2, 32, 1] has fewer than 23 local cells per horizontal direction |
 | 1x64x1 | 64 | 1x64x1 | 1440x720x200 | LatitudeLongitudeGrid | GEOMETRY_LIMIT | — | — | — | Partition [1, 64, 1] has fewer than 23 local cells per horizontal direction |
 ## gpu_scaling_super_super_fine
@@ -150,13 +151,13 @@ Highest completed count: **0 ranks**.
 
 | Case | Ranks | Partition | Global resolution | Grid type | State | Fastest s/step | Median s/step | Efficiency fastest / median | Details |
 |---|---:|---|---|---|---|---:|---:|---|---|
-| 4_ranks | 4 | 2x2x1 | 2880x1440x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 8_ranks | 8 | 4x2x1 | 2880x1440x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 16_ranks | 16 | 4x4x1 | 2880x1440x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 32_ranks | 32 | 8x4x1 | 2880x1440x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 64_ranks | 64 | 8x8x1 | 2880x1440x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 128_ranks | 128 | 16x8x1 | 2880x1440x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 256_ranks | 256 | 16x16x1 | 2880x1440x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
+| 4_ranks | 4 | 2x2x1 | 2880x1440x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 8_ranks | 8 | 4x2x1 | 2880x1440x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 16_ranks | 16 | 4x4x1 | 2880x1440x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 32_ranks | 32 | 8x4x1 | 2880x1440x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 64_ranks | 64 | 8x8x1 | 2880x1440x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 128_ranks | 128 | 16x8x1 | 2880x1440x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 256_ranks | 256 | 16x16x1 | 2880x1440x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
 | 512_ranks | 512 | 32x16x1 | 2880x1440x200 | LatitudeLongitudeGrid | RESOURCE_LIMIT | — | — | — | Requires 512; configured capacity is 264 |
 ## gpu_scaling_super_super_super_fine
 
@@ -164,11 +165,11 @@ Highest completed count: **0 ranks**.
 
 | Case | Ranks | Partition | Global resolution | Grid type | State | Fastest s/step | Median s/step | Efficiency fastest / median | Details |
 |---|---:|---|---|---|---|---:|---:|---|---|
-| 16_ranks | 16 | 4x4x1 | 5760x2880x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 32_ranks | 32 | 8x4x1 | 5760x2880x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 64_ranks | 64 | 8x8x1 | 5760x2880x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 128_ranks | 128 | 16x8x1 | 5760x2880x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 256_ranks | 256 | 16x16x1 | 5760x2880x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
+| 16_ranks | 16 | 4x4x1 | 5760x2880x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 32_ranks | 32 | 8x4x1 | 5760x2880x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 64_ranks | 64 | 8x8x1 | 5760x2880x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 128_ranks | 128 | 16x8x1 | 5760x2880x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 256_ranks | 256 | 16x16x1 | 5760x2880x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
 | 512_ranks | 512 | 32x16x1 | 5760x2880x200 | LatitudeLongitudeGrid | RESOURCE_LIMIT | — | — | — | Requires 512; configured capacity is 264 |
 ## gpu_weak_scaling_super_fine
 
@@ -176,17 +177,121 @@ Highest completed count: **0 ranks**.
 
 | Case | Ranks | Partition | Global resolution | Grid type | State | Fastest s/step | Median s/step | Efficiency fastest / median | Details |
 |---|---:|---|---|---|---|---:|---:|---|---|
-| 1_ranks | 1 | 1x1x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 4_ranks | 4 | 2x2x1 | 2880x1440x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 16_ranks | 16 | 4x4x1 | 5760x2880x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 64_ranks | 64 | 8x8x1 | 11520x5760x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
-| 256_ranks | 256 | 16x16x1 | 23040x11520x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Dependency); estimated start N/A (scheduler timezone) |
+| 1_ranks | 1 | 1x1x1 | 1440x720x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 4_ranks | 4 | 2x2x1 | 2880x1440x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 16_ranks | 16 | 4x4x1 | 5760x2880x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 64_ranks | 64 | 8x8x1 | 11520x5760x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
+| 256_ranks | 256 | 16x16x1 | 23040x11520x200 | LatitudeLongitudeGrid | NOT_RUN | — | — | — | Case never started; allocation CANCELLED: Exit 0:0; Dependency |
 | 1024_ranks | 1024 | 32x32x1 | 46080x23040x200 | LatitudeLongitudeGrid | RESOURCE_LIMIT | — | — | — | Requires 1024; configured capacity is 264 |
+
+## Pressure convergence checks
+
+Validation pilots are separate from production comparisons. Each new accepted result checks every pressure stage and the independently recomputed final residual.
+
+| Case | Preconditioner | Recorded solves | Maximum iterations | Last residual / tolerance | Recomputed final residual | Outcome |
+|---|---|---:|---:|---|---|---|
+| cpu_mpi_scaling_super_fine/1_ranks | historical default | — | — | — | — | CANCELLED |
+| cpu_mpi_scaling_super_fine/3_ranks | historical default | — | — | — | — | CANCELLED |
+| cpu_mpi_scaling_super_fine/6_ranks | historical default | — | — | — | — | CANCELLED |
+| cpu_mpi_scaling_super_fine/12_ranks | historical default | — | — | — | — | CANCELLED |
+| cpu_mpi_scaling_super_fine/24_ranks | historical default | — | — | — | — | TIMEOUT |
+| cpu_mpi_scaling_super_fine/48_ranks | historical default | — | — | — | — | TIMEOUT |
+| cpu_mpi_scaling_super_fine/96_ranks | historical default | — | — | — | — | TIMEOUT |
+| cpu_mpi_scaling_super_fine/192_ranks | historical default | — | — | — | — | TIMEOUT |
+| cpu_mpi_scaling_super_fine/384_ranks | historical default | — | — | — | — | TIMEOUT |
+| cpu_mpi_scaling_super_fine/768_ranks | historical default | — | — | — | — | TIMEOUT |
+| cpu_mpi_scaling_super_fine/1536_ranks | historical default | — | — | — | — | TIMEOUT |
+| cpu_mpi_scaling_super_fine/3072_ranks | historical default | — | — | — | — | TIMEOUT |
+| cpu_mpi_scaling_super_fine/6144_ranks | historical default | — | — | — | — | TIMEOUT |
+| cpu_mpi_scaling_super_fine/12288_ranks | historical default | — | — | — | — | TIMEOUT |
+| gpu_scaling_super_fine/1_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_scaling_super_fine/2_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_scaling_super_fine/4_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_scaling_super_fine/8_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_scaling_super_fine/16_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_scaling_super_fine/32_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_scaling_super_fine/64_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_scaling_super_fine/128_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_scaling_super_fine/256_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_scaling_super_fine/512_ranks | historical default | — | — | — | — | RESOURCE_LIMIT |
+| cpu_resolution/default | historical default | — | — | — | — | COMPLETED |
+| cpu_resolution/fine | historical default | — | — | — | — | CANCELLED |
+| cpu_resolution/super_fine | historical default | — | — | — | — | CANCELLED |
+| gpu_resolution/default | historical default | — | — | — | — | NOT_RUN |
+| gpu_resolution/fine | historical default | — | — | — | — | NOT_RUN |
+| gpu_resolution/super_fine | historical default | — | — | — | — | NOT_RUN |
+| cpu_partition_cores_super_fine/192x1x1 | historical default | — | — | — | — | TIMEOUT |
+| cpu_partition_cores_super_fine/96x2x1 | historical default | — | — | — | — | NOT_RUN |
+| cpu_partition_cores_super_fine/64x3x1 | historical default | — | — | — | — | NOT_RUN |
+| cpu_partition_cores_super_fine/48x4x1 | historical default | — | — | — | — | NOT_RUN |
+| cpu_partition_cores_super_fine/32x6x1 | historical default | — | — | — | — | NOT_RUN |
+| cpu_partition_cores_super_fine/24x8x1 | historical default | — | — | — | — | NOT_RUN |
+| cpu_partition_cores_super_fine/16x12x1 | historical default | — | — | — | — | NOT_RUN |
+| cpu_partition_cores_super_fine/12x16x1 | historical default | — | — | — | — | NOT_RUN |
+| cpu_partition_cores_super_fine/8x24x1 | historical default | — | — | — | — | NOT_RUN |
+| cpu_partition_cores_super_fine/6x32x1 | historical default | — | — | — | — | NOT_RUN |
+| cpu_partition_cores_super_fine/4x48x1 | historical default | — | — | — | — | NOT_RUN |
+| cpu_partition_cores_super_fine/3x64x1 | historical default | — | — | — | — | NOT_RUN |
+| cpu_partition_cores_super_fine/2x96x1 | historical default | — | — | — | — | NOT_RUN |
+| gpu_nsight_scaling_super_fine/1_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_nsight_scaling_super_fine/2_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_nsight_scaling_super_fine/4_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_nsight_scaling_super_fine/8_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_nsight_scaling_super_fine/16_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_nsight_scaling_super_fine/32_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_nsight_scaling_super_fine/64_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_nsight_scaling_super_fine/128_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_nsight_scaling_super_fine/256_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_nsight_scaling_super_fine/512_ranks | historical default | — | — | — | — | RESOURCE_LIMIT |
+| gpu_partition_super_fine/1x1x1 | historical default | — | — | — | — | NOT_RUN |
+| gpu_partition_super_fine/2x1x1 | historical default | — | — | — | — | NOT_RUN |
+| gpu_partition_super_fine/1x2x1 | historical default | — | — | — | — | NOT_RUN |
+| gpu_partition_super_fine/4x1x1 | historical default | — | — | — | — | NOT_RUN |
+| gpu_partition_super_fine/2x2x1 | historical default | — | — | — | — | NOT_RUN |
+| gpu_partition_super_fine/1x4x1 | historical default | — | — | — | — | NOT_RUN |
+| gpu_partition_super_fine/8x1x1 | historical default | — | — | — | — | NOT_RUN |
+| gpu_partition_super_fine/4x2x1 | historical default | — | — | — | — | NOT_RUN |
+| gpu_partition_super_fine/2x4x1 | historical default | — | — | — | — | NOT_RUN |
+| gpu_partition_super_fine/1x8x1 | historical default | — | — | — | — | NOT_RUN |
+| gpu_partition_super_fine/16x1x1 | historical default | — | — | — | — | NOT_RUN |
+| gpu_partition_super_fine/8x2x1 | historical default | — | — | — | — | NOT_RUN |
+| gpu_partition_super_fine/4x4x1 | historical default | — | — | — | — | NOT_RUN |
+| gpu_partition_super_fine/2x8x1 | historical default | — | — | — | — | NOT_RUN |
+| gpu_partition_super_fine/1x16x1 | historical default | — | — | — | — | NOT_RUN |
+| gpu_partition_super_fine/32x1x1 | historical default | — | — | — | — | NOT_RUN |
+| gpu_partition_super_fine/16x2x1 | historical default | — | — | — | — | NOT_RUN |
+| gpu_partition_super_fine/8x4x1 | historical default | — | — | — | — | NOT_RUN |
+| gpu_partition_super_fine/4x8x1 | historical default | — | — | — | — | NOT_RUN |
+| gpu_partition_super_fine/2x16x1 | historical default | — | — | — | — | NOT_RUN |
+| gpu_partition_super_fine/32x2x1 | historical default | — | — | — | — | NOT_RUN |
+| gpu_partition_super_fine/16x4x1 | historical default | — | — | — | — | NOT_RUN |
+| gpu_partition_super_fine/8x8x1 | historical default | — | — | — | — | NOT_RUN |
+| gpu_partition_super_fine/4x16x1 | historical default | — | — | — | — | NOT_RUN |
+| gpu_scaling_super_super_fine/4_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_scaling_super_super_fine/8_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_scaling_super_super_fine/16_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_scaling_super_super_fine/32_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_scaling_super_super_fine/64_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_scaling_super_super_fine/128_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_scaling_super_super_fine/256_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_scaling_super_super_fine/512_ranks | historical default | — | — | — | — | RESOURCE_LIMIT |
+| gpu_scaling_super_super_super_fine/16_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_scaling_super_super_super_fine/32_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_scaling_super_super_super_fine/64_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_scaling_super_super_super_fine/128_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_scaling_super_super_super_fine/256_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_scaling_super_super_super_fine/512_ranks | historical default | — | — | — | — | RESOURCE_LIMIT |
+| gpu_weak_scaling_super_fine/1_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_weak_scaling_super_fine/4_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_weak_scaling_super_fine/16_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_weak_scaling_super_fine/64_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_weak_scaling_super_fine/256_ranks | historical default | — | — | — | — | NOT_RUN |
+| gpu_weak_scaling_super_fine/1024_ranks | historical default | — | — | — | — | RESOURCE_LIMIT |
 
 ## GPU scaling comparison (DRAC table format)
 
 Reference: Oceananigans-DRAC/docs/drac.md, section 8. These are Rorqual measurements, not the reference’s Nibi timings.
-This suite uses five ten-step windows; the reference uses five 100-step windows. Tables use median seconds per step.
+Timing protocols are recorded per case; the reference uses five 100-step windows. Tables use median seconds per step.
 LatitudeLongitudeGrid; partitions are Px × Py × Pz. Nodes are measured from rank placement.
 Throughput = global interior cells / median step time. Memory is maximum device-used GiB across ranks after timing, including CUDA context and buffers; it is not peak memory.
 Missing memory measurements and unfinished timings are shown as —.
@@ -197,27 +302,27 @@ Strong efficiency = baseline time × baseline GPUs / (measured time × GPUs); id
 
 | Grid | Global resolution (cells) | GPUs | Nodes | Partition | Δt (s) | Median s/step | Efficiency | Throughput (cells/s) | Memory/GPU (GiB) | State |
 |---|---|---:|---:|---|---:|---:|---:|---:|---:|---|
-| super_fine | 1440 × 720 × 200 (207,360,000) | 1 | — | 1 × 1 × 1 | 60 | — | — | — | — | PENDING |
-| super_fine | 1440 × 720 × 200 (207,360,000) | 2 | — | 2 × 1 × 1 | 60 | — | — | — | — | PENDING |
-| super_fine | 1440 × 720 × 200 (207,360,000) | 4 | — | 2 × 2 × 1 | 60 | — | — | — | — | PENDING |
-| super_fine | 1440 × 720 × 200 (207,360,000) | 8 | — | 4 × 2 × 1 | 60 | — | — | — | — | PENDING |
-| super_fine | 1440 × 720 × 200 (207,360,000) | 16 | — | 4 × 4 × 1 | 60 | — | — | — | — | PENDING |
-| super_fine | 1440 × 720 × 200 (207,360,000) | 32 | — | 8 × 4 × 1 | 60 | — | — | — | — | PENDING |
-| super_fine | 1440 × 720 × 200 (207,360,000) | 64 | — | 8 × 8 × 1 | 60 | — | — | — | — | PENDING |
-| super_fine | 1440 × 720 × 200 (207,360,000) | 128 | — | 16 × 8 × 1 | 60 | — | — | — | — | PENDING |
-| super_fine | 1440 × 720 × 200 (207,360,000) | 256 | — | 16 × 16 × 1 | 60 | — | — | — | — | PENDING |
-| super_super_fine | 2880 × 1440 × 200 (829,440,000) | 4 | — | 2 × 2 × 1 | 30 | — | — | — | — | PENDING |
-| super_super_fine | 2880 × 1440 × 200 (829,440,000) | 8 | — | 4 × 2 × 1 | 30 | — | — | — | — | PENDING |
-| super_super_fine | 2880 × 1440 × 200 (829,440,000) | 16 | — | 4 × 4 × 1 | 30 | — | — | — | — | PENDING |
-| super_super_fine | 2880 × 1440 × 200 (829,440,000) | 32 | — | 8 × 4 × 1 | 30 | — | — | — | — | PENDING |
-| super_super_fine | 2880 × 1440 × 200 (829,440,000) | 64 | — | 8 × 8 × 1 | 30 | — | — | — | — | PENDING |
-| super_super_fine | 2880 × 1440 × 200 (829,440,000) | 128 | — | 16 × 8 × 1 | 30 | — | — | — | — | PENDING |
-| super_super_fine | 2880 × 1440 × 200 (829,440,000) | 256 | — | 16 × 16 × 1 | 30 | — | — | — | — | PENDING |
-| super_super_super_fine | 5760 × 2880 × 200 (3,317,760,000) | 16 | — | 4 × 4 × 1 | 15 | — | — | — | — | PENDING |
-| super_super_super_fine | 5760 × 2880 × 200 (3,317,760,000) | 32 | — | 8 × 4 × 1 | 15 | — | — | — | — | PENDING |
-| super_super_super_fine | 5760 × 2880 × 200 (3,317,760,000) | 64 | — | 8 × 8 × 1 | 15 | — | — | — | — | PENDING |
-| super_super_super_fine | 5760 × 2880 × 200 (3,317,760,000) | 128 | — | 16 × 8 × 1 | 15 | — | — | — | — | PENDING |
-| super_super_super_fine | 5760 × 2880 × 200 (3,317,760,000) | 256 | — | 16 × 16 × 1 | 15 | — | — | — | — | PENDING |
+| super_fine | 1440 × 720 × 200 (207,360,000) | 1 | — | 1 × 1 × 1 | 60 | — | — | — | — | NOT_RUN |
+| super_fine | 1440 × 720 × 200 (207,360,000) | 2 | — | 2 × 1 × 1 | 60 | — | — | — | — | NOT_RUN |
+| super_fine | 1440 × 720 × 200 (207,360,000) | 4 | — | 2 × 2 × 1 | 60 | — | — | — | — | NOT_RUN |
+| super_fine | 1440 × 720 × 200 (207,360,000) | 8 | — | 4 × 2 × 1 | 60 | — | — | — | — | NOT_RUN |
+| super_fine | 1440 × 720 × 200 (207,360,000) | 16 | — | 4 × 4 × 1 | 60 | — | — | — | — | NOT_RUN |
+| super_fine | 1440 × 720 × 200 (207,360,000) | 32 | — | 8 × 4 × 1 | 60 | — | — | — | — | NOT_RUN |
+| super_fine | 1440 × 720 × 200 (207,360,000) | 64 | — | 8 × 8 × 1 | 60 | — | — | — | — | NOT_RUN |
+| super_fine | 1440 × 720 × 200 (207,360,000) | 128 | — | 16 × 8 × 1 | 60 | — | — | — | — | NOT_RUN |
+| super_fine | 1440 × 720 × 200 (207,360,000) | 256 | — | 16 × 16 × 1 | 60 | — | — | — | — | NOT_RUN |
+| super_super_fine | 2880 × 1440 × 200 (829,440,000) | 4 | — | 2 × 2 × 1 | 30 | — | — | — | — | NOT_RUN |
+| super_super_fine | 2880 × 1440 × 200 (829,440,000) | 8 | — | 4 × 2 × 1 | 30 | — | — | — | — | NOT_RUN |
+| super_super_fine | 2880 × 1440 × 200 (829,440,000) | 16 | — | 4 × 4 × 1 | 30 | — | — | — | — | NOT_RUN |
+| super_super_fine | 2880 × 1440 × 200 (829,440,000) | 32 | — | 8 × 4 × 1 | 30 | — | — | — | — | NOT_RUN |
+| super_super_fine | 2880 × 1440 × 200 (829,440,000) | 64 | — | 8 × 8 × 1 | 30 | — | — | — | — | NOT_RUN |
+| super_super_fine | 2880 × 1440 × 200 (829,440,000) | 128 | — | 16 × 8 × 1 | 30 | — | — | — | — | NOT_RUN |
+| super_super_fine | 2880 × 1440 × 200 (829,440,000) | 256 | — | 16 × 16 × 1 | 30 | — | — | — | — | NOT_RUN |
+| super_super_super_fine | 5760 × 2880 × 200 (3,317,760,000) | 16 | — | 4 × 4 × 1 | 15 | — | — | — | — | NOT_RUN |
+| super_super_super_fine | 5760 × 2880 × 200 (3,317,760,000) | 32 | — | 8 × 4 × 1 | 15 | — | — | — | — | NOT_RUN |
+| super_super_super_fine | 5760 × 2880 × 200 (3,317,760,000) | 64 | — | 8 × 8 × 1 | 15 | — | — | — | — | NOT_RUN |
+| super_super_super_fine | 5760 × 2880 × 200 (3,317,760,000) | 128 | — | 16 × 8 × 1 | 15 | — | — | — | — | NOT_RUN |
+| super_super_super_fine | 5760 × 2880 × 200 (3,317,760,000) | 256 | — | 16 × 16 × 1 | 15 | — | — | — | — | NOT_RUN |
 
 ### Weak scaling
 
@@ -225,9 +330,9 @@ Weak efficiency = one-GPU baseline time / measured time; ideal = 100%. Interior 
 
 | Grid | Global resolution (cells) | GPUs | Nodes | Partition | Δt (s) | Median s/step | Efficiency | Throughput (cells/s) | Memory/GPU (GiB) | State |
 |---|---|---:|---:|---|---:|---:|---:|---:|---:|---|
-| super_fine | 1440 × 720 × 200 (207,360,000) | 1 | — | 1 × 1 × 1 | 60 | — | — | — | — | PENDING |
-| weak_4_ranks | 2880 × 1440 × 200 (829,440,000) | 4 | — | 2 × 2 × 1 | 30 | — | — | — | — | PENDING |
-| weak_16_ranks | 5760 × 2880 × 200 (3,317,760,000) | 16 | — | 4 × 4 × 1 | 15 | — | — | — | — | PENDING |
-| weak_64_ranks | 11520 × 5760 × 200 (13,271,040,000) | 64 | — | 8 × 8 × 1 | 7.5 | — | — | — | — | PENDING |
-| weak_256_ranks | 23040 × 11520 × 200 (53,084,160,000) | 256 | — | 16 × 16 × 1 | 3.75 | — | — | — | — | PENDING |
+| super_fine | 1440 × 720 × 200 (207,360,000) | 1 | — | 1 × 1 × 1 | 60 | — | — | — | — | NOT_RUN |
+| weak_4_ranks | 2880 × 1440 × 200 (829,440,000) | 4 | — | 2 × 2 × 1 | 30 | — | — | — | — | NOT_RUN |
+| weak_16_ranks | 5760 × 2880 × 200 (3,317,760,000) | 16 | — | 4 × 4 × 1 | 15 | — | — | — | — | NOT_RUN |
+| weak_64_ranks | 11520 × 5760 × 200 (13,271,040,000) | 64 | — | 8 × 8 × 1 | 7.5 | — | — | — | — | NOT_RUN |
+| weak_256_ranks | 23040 × 11520 × 200 (53,084,160,000) | 256 | — | 16 × 16 × 1 | 3.75 | — | — | — | — | NOT_RUN |
 
