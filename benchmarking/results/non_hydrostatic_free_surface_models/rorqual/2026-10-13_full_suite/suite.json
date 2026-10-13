@@ -1016,8 +1016,8 @@
         48,
         1
       ],
-      "state": "PENDING",
-      "details": "(Nodes required for job are DOWN, DRAINED or reserved for jobs in higher priority partitions); estimated start 2026-10-13T05:51:33 (scheduler timezone)",
+      "state": "RUNNING",
+      "details": "Exit 0:0; None",
       "job_id": "23088849",
       "configuration": {
         "series": "cpu_mpi_scaling_super_fine",
@@ -1412,7 +1412,7 @@
         96,
         1
       ],
-      "state": "RUNNING",
+      "state": "TIMEOUT",
       "details": "Exit 0:0; None",
       "job_id": "23088851",
       "configuration": {
@@ -2611,8 +2611,8 @@
         1,
         1
       ],
-      "state": "PENDING",
-      "details": "(Priority); estimated start 2026-10-13T05:51:33 (scheduler timezone)",
+      "state": "RUNNING",
+      "details": "Exit 0:0; None",
       "job_id": "23088863",
       "configuration": {
         "series": "cpu_resolution",
