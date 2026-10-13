@@ -73,7 +73,10 @@ def configuration(series, ranks, grid_name='super_fine', partition=None, global_
                 pressure_max_iterations=None if hydrostatic else 5000,
                 pressure_reltol=None if hydrostatic else math.sqrt(2.220446049250313e-16),
                 pressure_abstol=None if hydrostatic else math.sqrt(2.220446049250313e-16),
-                pressure_diagnostics=False, initial_condition_seed=None if hydrostatic else 1234,
+                pressure_diagnostics=False, pressure_preserve_residual=False,
+                pressure_check_true_residual=not hydrostatic,
+                pressure_preconditioner_check=not hydrostatic,
+                initial_condition_seed=None if hydrostatic else 1234,
                 dt=60 * min(1, 1440 / grid[0]), free_surface_substeps=30 if hydrostatic else None,
                 extend_free_surface_halos=gpu if hydrostatic else False,
                 warmup_steps=2, samples=5, time_steps=10,
@@ -123,7 +126,7 @@ def build_plan(server, selected=SERIES):
                 case['configuration'] = configuration(series, ranks, grid_name, partition, weak_grid,
                                                       server.get('model_type', 'HydrostaticFreeSurfaceModel'))
                 if server.get('model_type') == 'NonhydrostaticModel':
-                    for key in ('pressure_preconditioner', 'pressure_max_iterations', 'pressure_diagnostics'):
+                    for key in ('pressure_preconditioner', 'pressure_max_iterations', 'pressure_diagnostics', 'pressure_preserve_residual', 'pressure_check_true_residual'):
                         if key in server:
                             case['configuration'][key] = server[key]
                 case['partition'] = case['configuration']['partition']

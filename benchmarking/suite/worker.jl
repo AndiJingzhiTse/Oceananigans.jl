@@ -5,15 +5,103 @@ using Oceananigans.Fields: interior
 using Oceananigans.Architectures: architecture
 using Oceananigans.TurbulenceClosures: ThreeDimensionalFormulation
 using Oceananigans.Solvers: ConjugateGradientPoissonSolver, ConjugateGradientSolver,
-                            DiagonallyDominantPreconditioner, ColumnwiseTridiagonalPreconditioner
+                            DiagonallyDominantPreconditioner, ColumnwiseTridiagonalPreconditioner,
+                            BatchedTridiagonalSolver, ColumnwiseTridiagonalLowerDiagonal,
+                            ColumnwiseTridiagonalUpperDiagonal, Ac,
+                            FourierTridiagonalPoissonSolver, InhomogeneousFormulation,
+                            compute_preconditioner_rhs!, compute_symmetric_laplacian!, FFTW
+using Oceananigans.DistributedComputations: child_architecture
+using Oceananigans.Architectures: on_architecture
+using Oceananigans.Grids: ZDirection
+using Oceananigans.BoundaryConditions: fill_halo_regions!
+import Oceananigans.Solvers: get_coefficient, precondition!, solve!
 import Oceananigans.Models.NonhydrostaticModels: solve_for_pressure!
 using Random: seed!
+using LinearAlgebra: dot
 using Statistics: median
 using Sockets: gethostname
 
+# Exact vertical blocks of the full Poisson matrix: retain its horizontal
+# diagonal instead of imposing the columnwise solver's fixed 1% vertical shift.
+struct VerticalLineDiagonal end
+@inline get_coefficient(i, j, k, grid, ::VerticalLineDiagonal, p, ::ZDirection, args...) = Ac(i, j, k, grid)
+struct VerticalLinePreconditioner{S}
+    solver::S
+end
+function VerticalLinePreconditioner(grid)
+    solver = BatchedTridiagonalSolver(grid;
+        lower_diagonal=ColumnwiseTridiagonalLowerDiagonal(), diagonal=VerticalLineDiagonal(),
+        upper_diagonal=ColumnwiseTridiagonalUpperDiagonal(), tridiagonal_direction=ZDirection())
+    return VerticalLinePreconditioner{typeof(solver)}(solver)
+end
+function precondition!(p, preconditioner::VerticalLinePreconditioner, r, args...)
+    fill_halo_regions!(r)
+    solve!(p, preconditioner.solver, r)
+    return p
+end
+
+# A symmetric local approximate inverse. Only the preconditioner uses a
+# Cartesian metric; CG still solves the original latitude-longitude operator.
+struct LocalFFTPreconditioner{S, D}
+    solver::S
+    details::D
+end
+function LocalFFTPreconditioner(grid, config, arch)
+    nx, ny, nz = size(grid)
+    iy = arch.local_index[2]
+    Nx, Ny, Nz = config["global_resolution"]
+    latitude = -80 + 165 * (sum(Int[x for x in config["y_sizes"][1:iy-1]]) + ny / 2) / Ny
+    Lx = grid.radius * deg2rad(360) * cosd(latitude) * nx / Nx
+    Ly = grid.radius * deg2rad(165) * ny / Ny
+    aux = RectilinearGrid(child_architecture(arch), Float64;
+        size=(nx, ny, nz), halo=(7, 7, 7), topology=(Bounded, Bounded, Bounded),
+        x=(0, Lx), y=(0, Ly), z=ExponentialDiscretization(Nz, -5000, 0; scale=1250))
+    screened = config["ranks"] > 1
+    # The inhomogeneous formulation retains the local constant mode, which a
+    # screened block needs to communicate pressure differences between ranks.
+    formulation = screened ? InhomogeneousFormulation(ZDirection()) : nothing
+    Oceananigans.Solvers.FFTW_NUM_THREADS[] = 1
+    solver = FourierTridiagonalPoissonSolver(aux, FFTW.ESTIMATE; tridiagonal_formulation=formulation)
+    if screened
+        dz = on_architecture(child_architecture(arch), diff(Array(znodes(aux, Face()))))
+        solver.batched_tridiagonal_solver.b .-= reshape(dz, 1, 1, nz) ./ max(Lx, Ly)^2
+    end
+    details = Dict("auxiliary_grid_type" => "RectilinearGrid", "local_resolution" => [nx, ny, nz],
+        "extent_m" => [Lx, Ly, 5000], "latitude_degrees" => latitude,
+        "screening_inverse_m2" => screened ? 1 / max(Lx, Ly)^2 : 0,
+        "fftw_threads" => 1, "planner" => "ESTIMATE")
+    return LocalFFTPreconditioner{typeof(solver), typeof(details)}(solver, details)
+end
+function precondition!(p, preconditioner::LocalFFTPreconditioner, r, args...)
+    return precondition!(p, preconditioner.solver, r, args...)
+end
+
+function validate_local_fft!(native, case_dir, rank)
+    cg = native.conjugate_gradient_solver
+    a, b, Ma, Mb = cg.residual, cg.search_direction, cg.linear_operator_product, cg.preconditioner_product
+    set!(a, (λ, φ, z) -> sinpi(λ / 180) * cosd(φ) * (1 + z / 5000))
+    set!(b, (λ, φ, z) -> sinpi(λ / 180) * cosd(φ) * (1 + z / 5000) +
+                           cospi(λ / 180) * sind(φ) * (2 + z / 5000))
+    precondition!(Ma, cg.preconditioner, a)
+    precondition!(Mb, cg.preconditioner, b)
+    aMb, bMa, energy = dot(a, Mb), dot(b, Ma), dot(a, Ma)
+    relative_error = abs(aMb - bMa) / max(abs(aMb), abs(bMa), abs(energy), eps(Float64))
+    # Near-orthogonal probes need an absolute scale from the quadratic form.
+    symmetric = abs(aMb - bMa) <= 1e-8 * max(abs(aMb), abs(bMa), abs(energy))
+    valid = all(isfinite, (aMb, bMa, energy)) && symmetric && energy < 0
+    record = Dict("passed" => valid, "aMb" => aMb, "bMa" => bMa,
+                  "quadratic_form" => energy, "symmetry_relative_error" => relative_error)
+    rank == 0 && open(joinpath(case_dir, "preconditioner_validation.json"), "w") do io
+        JSON.json(io, record; pretty=true)
+    end
+    valid || error("Local FFT preconditioner failed symmetry/definiteness checks")
+    return record
+end
+
 # Track norm evaluations already performed by CG, without extra MPI reductions.
-mutable struct BenchmarkResidualNorm{N}
+mutable struct BenchmarkResidualNorm{N, F}
     native::N
+    scratch::F
     calls::Int
     initial::Float64
     last::Float64
@@ -23,8 +111,16 @@ mutable struct BenchmarkResidualNorm{N}
 end
 
 function (metric::BenchmarkResidualNorm)(residual)
-    value = metric.native(residual)
+    value = if isnothing(metric.scratch)
+        metric.native(residual)
+    else
+        # VolumeInverseNorm scales its input in place and scales it back.
+        # A copy prevents those roundoff changes from entering the CG recurrence.
+        copyto!(parent(metric.scratch), parent(residual))
+        metric.native(metric.scratch)
+    end
     metric.calls += 1
+    isfinite(value) || error("Nonfinite pressure residual after $(max(0, metric.calls - 2)) iterations")
     metric.calls == 1 && (metric.initial = value)
     metric.last = value
     iteration = max(0, metric.calls - 2)
@@ -43,7 +139,8 @@ end
 
 function checked_pressure_solver(native, config, rank)
     cg = native.conjugate_gradient_solver
-    metric = BenchmarkResidualNorm(cg.residual_norm, 0, 0.0, 0.0, time_ns(),
+    scratch = get(config, "pressure_preserve_residual", false) ? similar(native.right_hand_side) : nothing
+    metric = BenchmarkResidualNorm(cg.residual_norm, scratch, 0, 0.0, 0.0, time_ns(),
                                    get(config, "pressure_diagnostics", false), rank)
     tracked = ConjugateGradientSolver(cg.architecture, cg.grid, cg.linear_operation!,
         cg.reltol, cg.abstol, cg.maxiter, cg.iteration, cg.ρⁱ⁻¹,
@@ -66,6 +163,7 @@ function solve_for_pressure!(pressure, solver::CheckedPressureSolver, free_surfa
     record = Dict{String, Any}("solve" => length(solver.records) + 1, "iterations" => cg.iteration,
         "initial_residual" => metric.initial, "final_residual" => residual,
         "tolerance" => tolerance, "converged" => converged,
+        "projection_dt" => Float64(Δt),
         "seconds" => (time_ns() - metric.started) / 1e9)
     push!(solver.records, record)
     if metric.diagnostics && metric.rank == 0
@@ -152,6 +250,7 @@ arch = Distributed(is_gpu ? GPU() : CPU();
 Nx, Ny, Nz = Int.(config["global_resolution"])
 model_type = get(config, "model_type", "HydrostaticFreeSurfaceModel")
 is_hydrostatic = model_type == "HydrostaticFreeSurfaceModel"
+preconditioner_validation = nothing
 model = if is_hydrostatic
     earth_ocean(arch; Nx, Ny, Nz, float_type=Float64, grid_type="lat_lon",
                     momentum_advection=WENOVectorInvariant(Float64), tracer_advection=WENO(Float64; order=7),
@@ -167,6 +266,10 @@ elseif model_type == "NonhydrostaticModel"
     preconditioner_name = get(config, "pressure_preconditioner", "DiagonallyDominantPreconditioner")
     preconditioner = if preconditioner_name == "ColumnwiseTridiagonalPreconditioner"
         ColumnwiseTridiagonalPreconditioner(grid)
+    elseif preconditioner_name == "VerticalLinePreconditioner"
+        VerticalLinePreconditioner(grid)
+    elseif preconditioner_name == "LocalFFTPreconditioner"
+        LocalFFTPreconditioner(grid, config, arch)
     elseif preconditioner_name == "DiagonallyDominantPreconditioner"
         DiagonallyDominantPreconditioner()
     else
@@ -176,6 +279,9 @@ elseif model_type == "NonhydrostaticModel"
         maxiter=get(config, "pressure_max_iterations", 5000),
         reltol=get(config, "pressure_reltol", sqrt(eps(Float64))),
         abstol=get(config, "pressure_abstol", sqrt(eps(Float64))))
+    if preconditioner isa LocalFFTPreconditioner
+        preconditioner_validation = validate_local_fft!(native_solver, case_dir, rank)
+    end
     pressure_solver = checked_pressure_solver(native_solver, config, rank)
     nonhydrostatic = NonhydrostaticModel(grid;
         momentum_advection=WENO(Float64; order=7), tracer_advection=WENO(Float64; order=7),
@@ -183,7 +289,10 @@ elseif model_type == "NonhydrostaticModel"
         buoyancy=SeawaterBuoyancy(equation_of_state=OceananigansBenchmarks.TEOS10EquationOfState()),
         closure, pressure_solver, tracers=(:T, :S), timestepper=:RungeKutta3)
     initial_seed = get(config, "initial_condition_seed", nothing)
-    isnothing(initial_seed) || seed!(initial_seed + rank)
+    if !isnothing(initial_seed)
+        seed!(initial_seed + rank)
+        is_gpu && CUDA.seed!(initial_seed + rank)
+    end
     Tᵢ(λ, φ, z) = 30 * (1 - tanh((abs(φ) - 45) / 8)) / 2 + rand()
     Sᵢ(λ, φ, z) = 28 - 5e-3 * z + rand()
     set!(nonhydrostatic; T=Tᵢ, S=Sᵢ)
@@ -228,6 +337,20 @@ finally
     is_gpu && CUDA.synchronize()
     config["profile"] && CUDA.CUDACore.cuProfilerStop()
 end
+true_pressure_residual = nothing
+if !is_hydrostatic && get(config, "pressure_check_true_residual", false)
+    solver = model.pressure_solver
+    cg = solver.native.conjugate_gradient_solver
+    compute_symmetric_laplacian!(cg.linear_operator_product, model.pressures.pNHS)
+    # make_pressure_correction! stores physical pressure by dividing the
+    # solved pressure impulse by the RK stage duration. Restore that scale.
+    parent(cg.linear_operator_product) .*= max(eps(Float64), last(solver.records)["projection_dt"])
+    parent(cg.residual) .= parent(solver.native.right_hand_side) .- parent(cg.linear_operator_product)
+    true_pressure_residual = solver.metric.native(cg.residual)
+    tolerance = last(solver.records)["tolerance"]
+    rank == 0 && println("PRESSURE_TRUE_RESIDUAL value=$true_pressure_residual tolerance=$tolerance")
+    isfinite(true_pressure_residual) && true_pressure_residual <= tolerance || error("Recomputed pressure residual exceeds tolerance")
+end
 finite_state = all(all(isfinite, interior(t)) for t in values(model.tracers)) &&
                all(all(isfinite, interior(v)) for v in values(model.velocities)) &&
                (is_hydrostatic ? all(isfinite, interior(model.free_surface.displacement)) :
@@ -248,6 +371,9 @@ entry = Dict("rank" => rank, "grid_size" => collect(size(model.grid)), "float_ty
              "pressure_solver_converged" => is_hydrostatic ? nothing : all(r["converged"] for r in model.pressure_solver.records),
              "pressure_solver_iterations" => is_hydrostatic ? nothing : model.pressure_solver.native.conjugate_gradient_solver.iteration,
              "pressure_solves" => is_hydrostatic ? nothing : model.pressure_solver.records,
+             "pressure_final_true_residual" => true_pressure_residual,
+             "pressure_preconditioner_details" => !is_hydrostatic && model.pressure_solver.native.conjugate_gradient_solver.preconditioner isa LocalFFTPreconditioner ? model.pressure_solver.native.conjugate_gradient_solver.preconditioner.details : nothing,
+             "pressure_preconditioner_validation" => preconditioner_validation,
              "configuration" => config, "metadata" => metadata, "finite_state" => finite_state,
              "retained_free_surface_substeps" => retained_substeps,
              "gpu_memory_used_bytes" => is_gpu ? gpu_memory.total_bytes - gpu_memory.free_bytes : nothing,

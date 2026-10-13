@@ -29,8 +29,10 @@ def fixture(folder, config):
                                pressure_solver='ConjugateGradientPoissonSolver',
                                pressure_solver_converged=True, retained_free_surface_substeps=None)
             entries[-1].update(pressure_preconditioner=config['pressure_preconditioner'],
+                pressure_final_true_residual=1e-10,
+                pressure_preconditioner_validation={'passed': True},
                 pressure_solves=[dict(iterations=10, final_residual=1e-10, tolerance=1e-8, converged=True)
-                                for _ in range(3 * (config['warmup_steps'] + config['samples'] * config['time_steps']))])
+                                for _ in range(1 + 3 * (config['warmup_steps'] + config['samples'] * config['time_steps']))])
         layout.append(dict(rank=rank, hostname='node', affinity=str(rank), threads=1,
                            physical_core=f'0:{rank}', gpu_uuid=f'GPU-{rank}' if config['device'] == 'GPU' else None))
     (folder / 'results.json').write_text(json.dumps(entries))
@@ -93,6 +95,33 @@ class SuiteTests(unittest.TestCase):
             (folder/'results.json').write_text(json.dumps(entries))
             with self.assertRaisesRegex(ValueError, 'Missing pressure stage checks'):
                 report.validate(folder, cfg)
+
+    def test_pressure_validation_requires_independent_residual_and_fft_checks(self):
+        cfg = plan.configuration('cpu_mpi_scaling_super_fine', 1, model_type='NonhydrostaticModel')
+        cfg['pressure_preconditioner'] = 'LocalFFTPreconditioner'
+        with tempfile.TemporaryDirectory() as tmp:
+            folder = Path(tmp) / 'case'
+            entries = fixture(folder, cfg)
+            entries[0]['pressure_final_true_residual'] = 1
+            (folder/'results.json').write_text(json.dumps(entries))
+            with self.assertRaisesRegex(ValueError, 'Invalid recomputed pressure residual'):
+                report.validate(folder, cfg)
+            entries[0]['pressure_final_true_residual'] = 1e-10
+            entries[0]['pressure_preconditioner_validation']['passed'] = False
+            (folder/'results.json').write_text(json.dumps(entries))
+            with self.assertRaisesRegex(ValueError, 'Missing preconditioner'):
+                report.validate(folder, cfg)
+
+    def test_efficiency_does_not_use_a_different_grid_or_solver_as_baseline(self):
+        cases = plan.build_plan(dict(self.server(), model_type='NonhydrostaticModel'), ('cpu_mpi_scaling_super_fine',))
+        baseline, case = cases[:2]
+        for c in (baseline, case):
+            c.update(state='COMPLETED', measurement=dict(fastest=1, median=1))
+        case['configuration']['pressure_preconditioner'] = 'LocalFFTPreconditioner'
+        self.assertEqual(report.efficiencies(case, baseline), (None, None))
+        case['configuration']['pressure_preconditioner'] = baseline['configuration']['pressure_preconditioner']
+        case['configuration']['global_resolution'] = [72, 36, 200]
+        self.assertEqual(report.efficiencies(case, baseline), (None, None))
 
     def test_partition_cases_can_have_independent_allocations(self):
         cases = plan.build_plan(self.server(), ('cpu_partition_cores_super_fine',))

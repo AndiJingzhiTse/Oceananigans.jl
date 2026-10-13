@@ -49,7 +49,8 @@ def validate(case_dir, config):
             raise ValueError('Unexpected nonhydrostatic model or unconverged pressure solver')
         if nonhydrostatic and config.get('pressure_preconditioner'):
             solves = entry.get('pressure_solves', [])
-            expected_solves = 3 * (config['warmup_steps'] + config['samples'] * config['time_steps'])
+            # set!(NonhydrostaticModel) projects the initial velocities once.
+            expected_solves = 1 + 3 * (config['warmup_steps'] + config['samples'] * config['time_steps'])
             if entry.get('pressure_preconditioner') != config['pressure_preconditioner'] or len(solves) != expected_solves:
                 raise ValueError('Missing pressure stage checks or unexpected preconditioner')
             for solve in solves:
@@ -58,6 +59,14 @@ def validate(case_dir, config):
                         not math.isfinite(tolerance) or tolerance < 0 or residual > tolerance or
                         not 0 <= solve['iterations'] <= config['pressure_max_iterations']):
                     raise ValueError('Invalid pressure residual or iteration count')
+            if config.get('pressure_check_true_residual'):
+                true_residual = entry.get('pressure_final_true_residual')
+                if (not isinstance(true_residual, (int, float)) or not math.isfinite(true_residual) or
+                        true_residual < 0 or true_residual > solves[-1]['tolerance']):
+                    raise ValueError('Invalid recomputed pressure residual')
+            if config.get('pressure_preconditioner') == 'LocalFFTPreconditioner' and config.get('pressure_preconditioner_check'):
+                if entry.get('pressure_preconditioner_validation', {}).get('passed') is not True:
+                    raise ValueError('Missing preconditioner symmetry/definiteness check')
         if (entry['configuration'] != config or entry['grid_size'] != expected or
                 entry['float_type'] != 'Float64' or entry['finite_state'] is not True or
                 entry['metadata']['num_threads'] != 1 or not substeps_valid):
@@ -132,6 +141,14 @@ def scaling_baselines(cases):
 
 def efficiencies(case, baseline):
     if not baseline or 'measurement' not in case:
+        return None, None
+    cfg, base_cfg = case['configuration'], baseline['configuration']
+    weak = cfg.get('scaling_type') == 'weak' or case['series'] == 'gpu_weak_scaling_super_fine'
+    common = ('device', 'threads_per_rank', 'momentum_advection', 'tracer_advection', 'closure',
+              'timestepper', 'warmup_steps', 'samples', 'time_steps', 'profile', 'pressure_preconditioner')
+    if any(cfg.get(k) != base_cfg.get(k) for k in common):
+        return None, None
+    if not weak and any(cfg.get(k) != base_cfg.get(k) for k in ('global_resolution', 'dt')):
         return None, None
     divisor = 1 if (case['configuration'].get('scaling_type') == 'weak' or case['series'] == 'gpu_weak_scaling_super_fine') else case['ranks'] / baseline['ranks']
     return tuple(baseline['measurement'][s] / (case['measurement'][s] * divisor)
@@ -265,11 +282,15 @@ def write_report(folder, cases, plotting=True, reference_suites=(), replacement_
         writer = csv.DictWriter(stream, rows[0].keys(), lineterminator='\n')
         writer.writeheader()
         writer.writerows(rows)
-    lines = ['# Full benchmark suite', '',
+    protocols = sorted({(c['configuration']['warmup_steps'], c['configuration']['samples'],
+                         c['configuration']['time_steps']) for c in cases if 'configuration' in c})
+    timing_protocol = '; '.join(f'{w} untimed steps, {s} windows of {t} steps' for w, s, t in protocols)
+    lines = ['# Benchmark suite', '',
              ('NonhydrostaticModel; rigid lid; LatitudeLongitudeGrid without bathymetry; Float64, WENO7 momentum/tracers, ScalarDiffusivity (ν=1e-3, κ=1e-5 m²/s), T/S, RungeKutta3. Pressure: ConjugateGradientPoissonSolver; traditional spherical Coriolis and TEOS10 buoyancy.' if nonhydrostatic else
               'HydrostaticFreeSurfaceModel; LatitudeLongitudeGrid without bathymetry; Float64, WENOVectorInvariantDefault, WENO7, CATKE, T/S, SplitRungeKutta3.'),
              'Δt=60 s on the standard grids; larger horizontal grids reduce Δt in proportion to grid spacing (see each configuration).',
-             ('No free-surface substeps or extended free-surface halos; two untimed steps and five ten-step windows.' if nonhydrostatic else '30 requested free-surface substeps; two untimed steps and five ten-step windows.'),
+             ('No free-surface substeps or extended free-surface halos.' if nonhydrostatic else '30 requested free-surface substeps.'),
+             f'Actual timing protocols: {timing_protocol}.',
              ('One MPI rank per CPU core or GPU, one Julia computation thread per rank. Hydrostatic geometry bounds are retained to match partitions between models.' if nonhydrostatic else 'One MPI rank per CPU core or GPU, one Julia computation thread per rank. CPU extended halos=false; GPU=true.'),
              'Window boundaries synchronize MPI ranks and GPUs. Fastest/median statistics use the maximum across ranks.',
              'Strong efficiency = baseline time × baseline ranks / (time × ranks); weak efficiency = baseline time / time.',
@@ -318,6 +339,33 @@ def write_report(folder, cases, plotting=True, reference_suites=(), replacement_
             solver_note = ('rigid lid; free-surface substeps not applicable' if cfg.get('model_type') == 'NonhydrostaticModel'
                            else f"retained free-surface substeps {case['measurement']['retained_substeps']}")
             lines += ['', f"[{case['id'].split('/')[-1]} configuration]({configuration_path}): local resolution **{local}**, {solver_note}."]
+    if nonhydrostatic:
+        lines += ['', '## Pressure convergence checks', '',
+                  'Validation pilots are separate from production comparisons. Each new accepted result checks every pressure stage and the independently recomputed final residual.', '',
+                  '| Case | Preconditioner | Recorded solves | Maximum iterations | Last residual / tolerance | Recomputed final residual | Outcome |',
+                  '|---|---|---:|---:|---|---|---|']
+        for case in cases:
+            cfg = case.get('configuration', {})
+            if cfg.get('model_type') != 'NonhydrostaticModel':
+                continue
+            source = case_roots[case['id']] / case['id']
+            result, failure = source / 'results.json', source / 'rank_0/pressure_failure.json'
+            records, true_residual = [], None
+            try:
+                if result.exists() and case['state'] in TERMINAL:
+                    entry = json.loads(result.read_text())[0]
+                    records, true_residual = entry.get('pressure_solves', []), entry.get('pressure_final_true_residual')
+                elif failure.exists():
+                    records = [json.loads(failure.read_text())]
+            except (ValueError, IndexError):
+                # Failed/interrupted exports can leave partial JSON evidence.
+                records = []
+            iterations = max((r['iterations'] for r in records), default=None)
+            residual = (' / '.join(f'{v:.3e}' if isinstance(v, (int, float)) and math.isfinite(v)
+                                  else 'nonfinite' for v in (records[-1]['final_residual'], records[-1]['tolerance']))
+                        if records else '—')
+            recomputed = f'{true_residual:.3e}' if true_residual is not None else '—'
+            lines.append(f"| {case['id']} | {cfg.get('pressure_preconditioner', 'historical default')} | {len(records) or '—'} | {iterations if iterations is not None else '—'} | {residual} | {recomputed} | {case['state']} |")
     lines += scaling_tables(folder, cases, reference_suites, plotting=plotting,
                             combined=combined)
     (folder / 'plot.md').write_text('\n'.join(lines) + '\n')
@@ -331,7 +379,7 @@ def scaling_tables(folder, cases, reference_suites, plotting=False, combined=Non
     baselines = scaling_baselines([c for c, _ in combined])
     lines = ['', '## GPU scaling comparison (DRAC table format)', '',
              'Reference: Oceananigans-DRAC/docs/drac.md, section 8. These are Rorqual measurements, not the reference’s Nibi timings.',
-             'This suite uses five ten-step windows; the reference uses five 100-step windows. Tables use median seconds per step.',
+             'Timing protocols are recorded per case; the reference uses five 100-step windows. Tables use median seconds per step.',
              'LatitudeLongitudeGrid; partitions are Px × Py × Pz. Nodes are measured from rank placement.',
              'Throughput = global interior cells / median step time. Memory is maximum device-used GiB across ranks after timing, including CUDA context and buffers; it is not peak memory.',
              'Missing memory measurements and unfinished timings are shown as —.', '']

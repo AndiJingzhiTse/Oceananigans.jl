@@ -64,7 +64,8 @@ def load_server(path=None):
                   reference_suites=[], replacement_suites=[], environment={}, gpu_scaling_partition='balanced',
                   model_type='HydrostaticFreeSurfaceModel', comparison_suites=[], comparison_report='')
     server.update(pressure_preconditioner='DiagonallyDominantPreconditioner',
-                  pressure_max_iterations=5000, pressure_diagnostics=False, separate_partitions=False)
+                  pressure_max_iterations=5000, pressure_diagnostics=False,
+                  pressure_preserve_residual=False, pressure_check_true_residual=True, separate_partitions=False)
     unknown = set(user) - set(server)
     if unknown:
         raise ValueError('Unknown server settings: ' + ', '.join(sorted(unknown)))
@@ -82,11 +83,11 @@ def load_server(path=None):
         raise ValueError('gpu_scaling_partition must be balanced or x')
     if server['model_type'] not in MODEL_FOLDERS:
         raise ValueError('Unknown model_type')
-    if server['pressure_preconditioner'] not in ('DiagonallyDominantPreconditioner', 'ColumnwiseTridiagonalPreconditioner'):
+    if server['pressure_preconditioner'] not in ('DiagonallyDominantPreconditioner', 'ColumnwiseTridiagonalPreconditioner', 'VerticalLinePreconditioner', 'LocalFFTPreconditioner'):
         raise ValueError('Unknown pressure_preconditioner')
     if not isinstance(server['pressure_max_iterations'], int) or server['pressure_max_iterations'] < 1:
         raise ValueError('pressure_max_iterations must be a positive integer')
-    if any(not isinstance(server[k], bool) for k in ('pressure_diagnostics', 'separate_partitions')):
+    if any(not isinstance(server[k], bool) for k in ('pressure_diagnostics', 'pressure_preserve_residual', 'pressure_check_true_residual', 'separate_partitions')):
         raise ValueError('pressure_diagnostics and separate_partitions must be boolean')
     if not isinstance(server['environment'], dict) or any(not isinstance(k, str) or not isinstance(v, str) for k, v in server['environment'].items()):
         raise ValueError('environment must map variable names to string values')

@@ -214,13 +214,37 @@ iterations, residual, tolerance and convergence outcome. Nonhydrostatic initial
 conditions use a recorded seed of 1234 plus MPI rank for reproducible solver pilots.
 
 Server specs can select `pressure_preconditioner` as
-`DiagonallyDominantPreconditioner` or `ColumnwiseTridiagonalPreconditioner`.
+`DiagonallyDominantPreconditioner`, `ColumnwiseTridiagonalPreconditioner`,
+`VerticalLinePreconditioner`, or `LocalFFTPreconditioner`.
 Use `pressure_diagnostics: true` for pilots to log residual progress every 200
 iterations; these records reuse the solver's existing norm evaluations. Keep
 diagnostics disabled for production timings. The columnwise preconditioner
 targets thin, vertically stretched ocean grids; validate its CPU/GPU MPI behavior
 and convergence on a representative production grid before choosing it for a suite.
 Keep convergence tolerances unchanged when comparing preconditioners.
+
+The worker's vertical-line variant retains the full Poisson matrix diagonal
+when solving each vertical block. The local FFT variant applies the existing
+Fourier/tridiagonal solver to a Cartesian approximation of each rank's block,
+with the same stretched vertical coordinates and a screening term of
+`1 / max(local_Lx, local_Ly)^2` on distributed runs. The auxiliary Cartesian
+grid changes only the approximate inverse: the model and pressure operator
+remain on the recorded latitude–longitude grid. This avoids distributed FFT
+transpose divisibility restrictions on partition comparisons. Record each
+rank's auxiliary extent and screening term; FFTW uses one thread and ESTIMATE
+planning. Validate actual convergence rather than assuming an FFT approximation
+is adequate. Local FFT runs also check symmetry and the sign of the quadratic
+form before model initialization. These benchmark preconditioners do not modify
+package solver defaults.
+
+`pressure_check_true_residual: true` independently recomputes the final
+pressure residual outside the timing windows and rejects a result above its
+configured tolerance. Account for the last RK stage duration: the model stores
+physical pressure after applying the pressure impulse, while the solver's
+right-hand side belongs to the impulse equation. All accepted new nonhydrostatic
+runs use this check.
+The optional `pressure_preserve_residual` measures norms on a scratch copy;
+it diagnoses roundoff from the native norm's in-place scaling and restoration.
 
 Use `separate_partitions: true` when a slow layout could exhaust a shared
 allocation. Each layout then receives its own allocation and time limit;
