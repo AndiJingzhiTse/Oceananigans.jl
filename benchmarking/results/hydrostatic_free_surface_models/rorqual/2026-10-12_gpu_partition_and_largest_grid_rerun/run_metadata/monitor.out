@@ -76,3 +76,11 @@ gpu_scaling_super_super_super_fine/512_ranks: RESOURCE_LIMIT [32, 16, 1]
 [codex/benchmarking b6f870972] Record validated benchmark suite results and job outcomes
  6 files changed, 120 insertions(+), 72 deletions(-)
 
+[codex/benchmarking 01c60a6e2] Record validated benchmark suite results and job outcomes
+ 9 files changed, 367 insertions(+), 4 deletions(-)
+ create mode 100644 benchmarking/results/hydrostatic_free_surface_models/rorqual/2026-10-12_gpu_partition_and_largest_grid_rerun/gpu_partition_super_fine/1x4x1/job.out
+ create mode 100644 benchmarking/results/hydrostatic_free_surface_models/rorqual/2026-10-12_gpu_partition_and_largest_grid_rerun/gpu_partition_super_fine/1x4x1/started.txt
+ create mode 100644 benchmarking/results/hydrostatic_free_surface_models/rorqual/2026-10-12_gpu_partition_and_largest_grid_rerun/gpu_partition_super_fine/2x2x1/exit_code.txt
+ create mode 100644 benchmarking/results/hydrostatic_free_surface_models/rorqual/2026-10-12_gpu_partition_and_largest_grid_rerun/gpu_partition_super_fine/2x2x1/finished.txt
+ create mode 100644 benchmarking/results/hydrostatic_free_surface_models/rorqual/2026-10-12_gpu_partition_and_largest_grid_rerun/gpu_partition_super_fine/2x2x1/results.json
+
