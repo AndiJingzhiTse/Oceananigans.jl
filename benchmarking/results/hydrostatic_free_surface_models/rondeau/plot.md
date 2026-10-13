@@ -9,7 +9,7 @@ Each series folder contains its configurations, measurements and provenance. Onl
 | `cpu_scaling_360x180x50` | 8 | [Details](cpu_scaling_360x180x50/plot.md) |
 | `cpu_scaling_720x360x50` | 8 | [Details](cpu_scaling_720x360x50/plot.md) |
 | `gpu_component_ablation` | 6 | [Details](gpu_component_ablation/plot.md) |
-| `gpu_nsight_scaling_super_fine` | 1 | [Details](gpu_nsight_scaling_super_fine/plot.md) |
+| `gpu_nsight_scaling_super_fine` | 2 | [Details](gpu_nsight_scaling_super_fine/plot.md) |
 | `gpu_partition_super_fine` | 5 | [Details](gpu_partition_super_fine/plot.md) |
 | `gpu_profiling` | 2 | [Details](gpu_profiling/plot.md) |
 | `gpu_resolution` | 6 | [Details](gpu_resolution/plot.md) |
@@ -86,6 +86,7 @@ Each series folder contains its configurations, measurements and provenance. Onl
 | Case | Ranks | Global resolution | Partition | Fastest / median s per step | Median MPI efficiency | Validation |
 |---|---:|---|---|---:|---:|---|
 | [2_ranks](gpu_nsight_scaling_super_fine/2_ranks/configuration.md) | 2 | 1440 × 720 × 200 | 2 × 1 × 1 | 2.097548 / 2.127938 | 100.0% | Current suite checks |
+| [4_ranks](gpu_nsight_scaling_super_fine/4_ranks/configuration.md) | 4 | 1440 × 720 × 200 | 2 × 2 × 1 | 0.588694 / 0.633875 | 167.9% | Current suite checks |
 
 ## gpu_partition_super_fine
 
@@ -155,7 +156,7 @@ Historical measurements retain their original validation labels until comparable
 | gpu_resolution | 2 | 0 | [gpu_resolution](gpu_resolution/plot.md) |
 | gpu_scaling_super_fine | 2 | 0 | [gpu_scaling_super_fine](gpu_scaling_super_fine/plot.md) |
 | gpu_partition_super_fine | 5 | 0 | [gpu_partition_super_fine](gpu_partition_super_fine/plot.md) |
-| gpu_nsight_scaling_super_fine | 1 | 1 | [gpu_nsight_scaling_super_fine](gpu_nsight_scaling_super_fine/plot.md) |
+| gpu_nsight_scaling_super_fine | 2 | 0 | [gpu_nsight_scaling_super_fine](gpu_nsight_scaling_super_fine/plot.md) |
 | gpu_scaling_super_super_fine | 0 | 1 | Pending |
 | gpu_weak_scaling_super_fine | 0 | 2 | Pending |
 | gpu_scaling_super_super_super_fine | 0 | 0 | Pending |
