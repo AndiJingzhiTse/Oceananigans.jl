@@ -621,6 +621,28 @@ class SuiteTests(unittest.TestCase):
             self.assertEqual(len(fig.axes[0].lines[0].get_ydata()), 0)
             plt.close(fig)
 
+    def test_resolution_ratio_includes_refinements_beyond_named_grids(self):
+        import matplotlib.pyplot as plt
+        with tempfile.TemporaryDirectory() as tmp:
+            rows = [dict(case=name, state='COMPLETED', fastest=8**i, median=2 * 8**i,
+                         resolution='x'.join(map(str, size)))
+                    for i, (name, size) in enumerate([
+                        ('default', [360, 180, 50]), ('fine', [720, 360, 100]),
+                        ('super_fine', [1440, 720, 200]), ('2880x1440x400', [2880, 1440, 400]),
+                        ('5760x2880x800', [5760, 2880, 800])])]
+            with patch.object(plt, 'close'):
+                report.plot_series(Path(tmp), 'cpu_resolution', rows)
+                fig = plt.gcf()
+            self.assertEqual(list(fig.axes[0].lines[0].get_ydata()), [1/8] * 4)
+            self.assertEqual(list(fig.axes[0].lines[2].get_ydata()), [1/8] * 4)
+            plt.close(fig)
+            rows[3]['state'] = 'FAILED'
+            with patch.object(plt, 'close'):
+                report.plot_series(Path(tmp), 'cpu_resolution', rows)
+                fig = plt.gcf()
+            self.assertEqual(list(fig.axes[0].lines[0].get_ydata()), [1/8] * 2)
+            plt.close(fig)
+
     def test_local_startup_failure_is_terminal(self):
         with tempfile.TemporaryDirectory() as tmp:
             folder=Path(tmp);server=runner.load_server();server.update(max_cpu_cores=1,max_gpus=0,matplotlib=False)

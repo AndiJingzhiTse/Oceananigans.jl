@@ -497,6 +497,16 @@ def plot_series(folder, series, rows):
         pairs = [(all_rows[a], all_rows[b]) for a, b in
                  (('default', 'fine'), ('fine', 'super_fine'))
                  if a in all_rows and b in all_rows]
+        if set(all_rows) & {'default', 'fine', 'super_fine'}:
+            ordered = sorted(rows, key=lambda row: math.prod(map(int, row['resolution'].split('x')))
+                             if 'resolution' in row else math.prod(GRIDS[row['case']]))
+            for a, b in zip(ordered, ordered[1:]):
+                if a['case'] in {'default', 'fine', 'super_fine'} and b['case'] in {'default', 'fine', 'super_fine'}:
+                    continue
+                first = list(map(int, a['resolution'].split('x')))
+                second = list(map(int, b['resolution'].split('x')))
+                if all(y == 2 * x for x, y in zip(first, second)):
+                    pairs.append((a, b))
         if not set(all_rows) & {'default', 'fine', 'super_fine'}:
             ordered = sorted(rows, key=lambda row: math.prod(map(int, row['resolution'].split('x'))))
             pairs = list(zip(ordered, ordered[1:]))
