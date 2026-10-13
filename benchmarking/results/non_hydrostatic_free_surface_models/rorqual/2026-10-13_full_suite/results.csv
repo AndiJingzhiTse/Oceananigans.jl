@@ -24,7 +24,7 @@ gpu_scaling_super_fine,64_ranks,64,8x8x1,1440x720x200,LatitudeLongitudeGrid,PEND
 gpu_scaling_super_fine,128_ranks,128,16x8x1,1440x720x200,LatitudeLongitudeGrid,PENDING,23088859,,,,,(Dependency); estimated start N/A (scheduler timezone)
 gpu_scaling_super_fine,256_ranks,256,16x16x1,1440x720x200,LatitudeLongitudeGrid,PENDING,23088860,,,,,(Dependency); estimated start N/A (scheduler timezone)
 gpu_scaling_super_fine,512_ranks,512,32x16x1,1440x720x200,LatitudeLongitudeGrid,RESOURCE_LIMIT,,,,,,Requires 512; configured capacity is 264
-cpu_resolution,default,1,1x1x1,360x180x50,LatitudeLongitudeGrid,RUNNING,23088861,,,,,Exit 0:0; None
+cpu_resolution,default,1,1x1x1,360x180x50,LatitudeLongitudeGrid,COMPLETED,23088861,225.1537686019,276.558927308,,,"Rank results, finite fields and resource placement verified"
 cpu_resolution,fine,1,1x1x1,720x360x100,LatitudeLongitudeGrid,RUNNING,23088862,,,,,Exit 0:0; None
 cpu_resolution,super_fine,1,1x1x1,1440x720x200,LatitudeLongitudeGrid,RUNNING,23088863,,,,,Exit 0:0; None
 gpu_resolution,default,1,1x1x1,360x180x50,LatitudeLongitudeGrid,PENDING,23088864,,,,,(Dependency); estimated start N/A (scheduler timezone)

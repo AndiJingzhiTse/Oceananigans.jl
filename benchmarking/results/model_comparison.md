@@ -24,7 +24,7 @@ Ideal strong/weak MPI efficiency is 100%. Source plots include expected ratios a
 |---|---:|---:|---:|---|
 | `cpu_mpi_scaling_super_fine` | 14 | 0 | 0 | — |
 | `gpu_scaling_super_fine` | 7 | 0 | 0 | — |
-| `cpu_resolution` | 3 | 0 | 0 | — |
+| `cpu_resolution` | 3 | 1 | 1 | 30.223–30.223 |
 | `gpu_resolution` | 3 | 0 | 0 | — |
 | `cpu_partition_cores_super_fine` | 13 | 0 | 0 | — |
 | `gpu_nsight_scaling_super_fine` | 7 | 0 | 0 | — |
@@ -72,7 +72,7 @@ Ideal strong/weak MPI efficiency is 100%. Source plots include expected ratios a
 
 | Case | Ranks | Global grid | Partition | H outcome | N outcome | H fastest / median s/step | N fastest / median s/step | N/H fastest / median | H / N median efficiency | Pair status |
 |---|---:|---|---|---|---|---:|---:|---:|---:|---|
-| default | 1 | 360 × 180 × 50 | 1 × 1 × 1 | [COMPLETED](hydrostatic_free_surface_models/rorqual/2026-10-07_cpu_retry/cpu_resolution/default/configuration.md) | [RUNNING](non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_resolution/default/configuration.md) | 9.133294 / 9.150603 | — / — | — | — / — | Awaiting validated pair |
+| default | 1 | 360 × 180 × 50 | 1 × 1 × 1 | [COMPLETED](hydrostatic_free_surface_models/rorqual/2026-10-07_cpu_retry/cpu_resolution/default/configuration.md) | [COMPLETED](non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_resolution/default/configuration.md) | 9.133294 / 9.150603 | 225.153769 / 276.558927 | 24.652 / 30.223 | — / — | Matched workload and timing protocol |
 | fine | 1 | 720 × 360 × 100 | 1 × 1 × 1 | [COMPLETED](hydrostatic_free_surface_models/rorqual/2026-10-07_cpu_retry/cpu_resolution/fine/configuration.md) | [RUNNING](non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_resolution/fine/configuration.md) | 71.099241 / 71.252001 | — / — | — | — / — | Awaiting validated pair |
 | super_fine | 1 | 1440 × 720 × 200 | 1 × 1 × 1 | [COMPLETED](hydrostatic_free_surface_models/rorqual/2026-10-07_cpu_retry/cpu_resolution/super_fine/configuration.md) | [RUNNING](non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_resolution/super_fine/configuration.md) | 574.466632 / 575.534054 | — / — | — | — / — | Awaiting validated pair |
 

@@ -50,13 +50,17 @@ Highest completed count: **0 ranks**.
 | 512_ranks | 512 | 32x16x1 | 1440x720x200 | LatitudeLongitudeGrid | RESOURCE_LIMIT | — | — | — | Requires 512; configured capacity is 264 |
 ## cpu_resolution
 
-Highest completed count: **0 ranks**.
+Highest completed count: **1 ranks**.
+
+![cpu_resolution](cpu_resolution.svg)
 
 | Case | Ranks | Partition | Global resolution | Grid type | State | Fastest s/step | Median s/step | Efficiency fastest / median | Details |
 |---|---:|---|---|---|---|---:|---:|---|---|
-| default | 1 | 1x1x1 | 360x180x50 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
+| default | 1 | 1x1x1 | 360x180x50 | LatitudeLongitudeGrid | COMPLETED | 225.153769 | 276.558927 | — | Rank results, finite fields and resource placement verified |
 | fine | 1 | 1x1x1 | 720x360x100 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
 | super_fine | 1 | 1x1x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
+
+[default configuration](cpu_resolution/default/configuration.md): local resolution **360–360 × 180–180 × 50**, rigid lid; free-surface substeps not applicable.
 ## gpu_resolution
 
 Highest completed count: **0 ranks**.
