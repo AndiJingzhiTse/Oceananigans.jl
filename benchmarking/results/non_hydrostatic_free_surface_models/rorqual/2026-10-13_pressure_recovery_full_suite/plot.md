@@ -29,10 +29,10 @@ Highest completed count: **1536 ranks**.
 | 96_ranks | 96 | 12x8x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start N/A (scheduler timezone) |
 | 192_ranks | 192 | 16x12x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 127.564623 | 135.670963 | — | Rank results, finite fields and resource placement verified |
 | 384_ranks | 384 | 24x16x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 50.417595 | 51.516729 | — | Rank results, finite fields and resource placement verified |
-| 768_ranks | 768 | 32x24x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T16:34:48 (scheduler timezone) |
+| 768_ranks | 768 | 32x24x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T19:18:43 (scheduler timezone) |
 | 1536_ranks | 1536 | 32x48x1 | 1440x720x200 | LatitudeLongitudeGrid | COMPLETED | 14.147107 | 14.490786 | — | Rank results, finite fields and resource placement verified |
-| 3072_ranks | 3072 | 64x48x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T21:00:24 (scheduler timezone) |
-| 6144_ranks | 6144 | 96x64x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T22:54:52 (scheduler timezone) |
+| 3072_ranks | 3072 | 64x48x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T19:39:20 (scheduler timezone) |
+| 6144_ranks | 6144 | 96x64x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T22:16:35 (scheduler timezone) |
 | 12288_ranks | 12288 | 128x96x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T17:32:06 (scheduler timezone) |
 | 24576_ranks | 24576 |  | 1440x720x200 | LatitudeLongitudeGrid | GEOMETRY_LIMIT | — | — | — | 24576 ranks have no horizontal partition with at least 7 local cells per direction |
 
@@ -82,13 +82,13 @@ Highest completed count: **0 ranks**.
 | Case | Ranks | Partition | Global resolution | Grid type | State | Fastest s/step | Median s/step | Efficiency fastest / median | Details |
 |---|---:|---|---|---|---|---:|---:|---|---|
 | 192x1x1 | 192 | 192x1x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
-| 96x2x1 | 192 | 96x2x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T17:45:21 (scheduler timezone) |
-| 64x3x1 | 192 | 64x3x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T19:01:38 (scheduler timezone) |
-| 48x4x1 | 192 | 48x4x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T19:18:43 (scheduler timezone) |
-| 32x6x1 | 192 | 32x6x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T17:46:39 (scheduler timezone) |
-| 24x8x1 | 192 | 24x8x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T17:46:39 (scheduler timezone) |
-| 16x12x1 | 192 | 16x12x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T17:46:39 (scheduler timezone) |
-| 12x16x1 | 192 | 12x16x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start N/A (scheduler timezone) |
+| 96x2x1 | 192 | 96x2x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
+| 64x3x1 | 192 | 64x3x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T16:34:48 (scheduler timezone) |
+| 48x4x1 | 192 | 48x4x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T22:16:35 (scheduler timezone) |
+| 32x6x1 | 192 | 32x6x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T20:32:05 (scheduler timezone) |
+| 24x8x1 | 192 | 24x8x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T19:53:23 (scheduler timezone) |
+| 16x12x1 | 192 | 16x12x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T20:17:34 (scheduler timezone) |
+| 12x16x1 | 192 | 12x16x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T21:37:26 (scheduler timezone) |
 | 8x24x1 | 192 | 8x24x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start N/A (scheduler timezone) |
 | 6x32x1 | 192 | 6x32x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start N/A (scheduler timezone) |
 | 4x48x1 | 192 | 4x48x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start N/A (scheduler timezone) |
@@ -225,7 +225,7 @@ Validation pilots are separate from production comparisons. Each new accepted re
 | gpu_resolution/fine | LocalFFTPreconditioner | — | — | — | — | PENDING |
 | gpu_resolution/super_fine | LocalFFTPreconditioner | — | — | — | — | PENDING |
 | cpu_partition_cores_super_fine/192x1x1 | LocalFFTPreconditioner | — | — | — | — | RUNNING |
-| cpu_partition_cores_super_fine/96x2x1 | LocalFFTPreconditioner | — | — | — | — | PENDING |
+| cpu_partition_cores_super_fine/96x2x1 | LocalFFTPreconditioner | — | — | — | — | RUNNING |
 | cpu_partition_cores_super_fine/64x3x1 | LocalFFTPreconditioner | — | — | — | — | PENDING |
 | cpu_partition_cores_super_fine/48x4x1 | LocalFFTPreconditioner | — | — | — | — | PENDING |
 | cpu_partition_cores_super_fine/32x6x1 | LocalFFTPreconditioner | — | — | — | — | PENDING |
