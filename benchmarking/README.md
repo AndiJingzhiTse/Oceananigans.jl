@@ -207,6 +207,8 @@ no free-surface substeps or extended free-surface halos. The hydrostatic
 partition geometry bounds are retained to compare the same layouts. The
 worker validates finite velocities, tracers and pressure, and rejects a
 pressure solve that reaches its iteration limit at a timing-window boundary.
+The pressure iteration bound is the global interior cell count on every rank;
+using different local cell counts as bounds could desynchronize uneven MPI partitions.
 
 Use a small CPU/GPU MPI validation run before submitting a new model's full
 suite. Keep validation timings separate from production results. Package

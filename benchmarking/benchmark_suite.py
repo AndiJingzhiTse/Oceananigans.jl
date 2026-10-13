@@ -183,7 +183,8 @@ def group_script(folder, server, cases):
     first = cases[0]
     destination = folder / first['id'] / 'allocation.sh'
     metadata = folder / 'run_metadata'
-    traces = Path(server['trace_root']) / folder.name
+    model_type = first['configuration'].get('model_type', 'HydrostaticFreeSurfaceModel')
+    traces = Path(server['trace_root']) / MODEL_FOLDERS[model_type] / folder.name
     lines = ['#!/usr/bin/env bash', *environment_lines(server), 'failed=0']
     lines += ['if type module >/dev/null 2>&1; then module -t list > ' + shlex.quote(str(destination.parent / 'modules.txt')) + ' 2>&1; fi',
               shlex.join([server['julia'], '--version']) + ' > ' + shlex.quote(str(destination.parent / 'julia_version.txt')),
