@@ -7,15 +7,15 @@ below through one planner, one Julia worker and one report generator. Python
 required for GPU/profile cases. Use assigned compute resources; on clusters,
 submit through Slurm rather than running computation on a login node.
 
-| Series | Resolution | Resource sequence / partition |
+| Series | Default Resolution | Resource sequence / partition |
 |---|---|---|
-| `cpu_mpi_scaling_super_fine` | 1440×720×200 | 1, 3, 6, 12, 24, … physical cores; one MPI rank/core |
+| `cpu_scaling_super_fine` | 1440×720×200 | 1, 3, 6, 12, 24, … physical cores; one MPI rank/core |
 | `gpu_scaling_super_fine` | 1440×720×200 | 1, 2, 4, 8, … GPUs; one MPI rank/GPU |
 | `cpu_resolution` | 360×180×50 → 720×360×100 → 1440×720×200 | One physical core, one rank/thread |
 | `gpu_resolution` | 360×180×50 → 720×360×100 → 1440×720×200 | One GPU, one rank/thread |
-| `cpu_partition_cores_super_fine` | 1440×720×200 | Exactly 192 cores/ranks; all 14 horizontal factor pairs, 192×1×1 → 96×2×1 → 64×3×1 → … → 1×192×1 |
-| `gpu_nsight_scaling_super_fine` | 1440×720×200 | Nsight on 1, 2, 4, 8, … GPUs, with separate traces per rank |
-| `gpu_partition_super_fine` | 1440×720×200 | 1×1×1 baseline and all horizontal factor pairs for 2, 4, 8, 16, 32 and 64 GPUs; MPI efficiency normalized to the measured 1×1×1 case |
+| `cpu_partition_cores` | 1440×720×200 | Exactly 192 cores/ranks; all 14 horizontal factor pairs, 192×1×1 → 96×2×1 → 64×3×1 → … → 1×192×1 |
+| `gpu_nsight_scaling` | 1440×720×200 | Nsight on 1, 2, 4, 8, … GPUs, with separate traces per rank |
+| `gpu_partition` | 1440×720×200 | 1×1×1 baseline and all horizontal factor pairs for 2, 4, 8, 16, 32 and 64 GPUs; MPI efficiency normalized to the measured 1×1×1 case |
 | `gpu_scaling_super_super_fine` | 2880×1440×200 | 4, 8, 16, … GPUs; measured 4-GPU efficiency baseline; Δt=30 s |
 | `gpu_scaling_super_super_super_fine` | 5760×2880×200 | 16, 32, 64, … GPUs; measured 16-GPU efficiency baseline; Δt=15 s |
 | `gpu_weak_scaling_super_fine` | 1440√n × 720√n × 200 | 1, 4, 16, … GPUs; fixed 207,360,000 cells/GPU; Δt=60/√n s |
