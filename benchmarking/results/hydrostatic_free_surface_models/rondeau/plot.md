@@ -116,7 +116,7 @@ Each series folder contains its configurations, measurements and provenance. Onl
 | Case | Ranks | Global resolution | Partition | Fastest / median s per step | Median MPI efficiency | Validation |
 |---|---:|---|---|---:|---:|---|
 | [2_ranks](gpu_scaling_super_fine/2_ranks/configuration.md) | 2 | 1440 × 720 × 200 | 2 × 1 × 1 | 0.950611 / 0.951165 | 100.0% | Current suite checks |
-| [4_ranks](gpu_scaling_super_fine/4_ranks/configuration.md) | 4 | 1440 × 720 × 200 | 2 × 2 × 1 | 0.517122 / 0.521209 | — | Historical: complete ranks and timing aggregates checked; finite-state/placement checks unavailable |
+| [4_ranks](gpu_scaling_super_fine/4_ranks/configuration.md) | 4 | 1440 × 720 × 200 | 2 × 2 × 1 | 0.520111 / 0.524653 | 90.6% | Current suite checks |
 
 ## README series rerun
 
@@ -129,7 +129,7 @@ Historical measurements retain their original validation labels until comparable
 | Standard series | Completed new cases | Pending cases | Report |
 |---|---:|---:|---|
 | gpu_resolution | 2 | 0 | [gpu_resolution](gpu_resolution/plot.md) |
-| gpu_scaling_super_fine | 1 | 1 | [gpu_scaling_super_fine](gpu_scaling_super_fine/plot.md) |
+| gpu_scaling_super_fine | 2 | 0 | [gpu_scaling_super_fine](gpu_scaling_super_fine/plot.md) |
 | gpu_partition_super_fine | 0 | 6 | Pending |
 | gpu_nsight_scaling_super_fine | 0 | 3 | Pending |
 | gpu_scaling_super_super_fine | 0 | 1 | Pending |

@@ -1,29 +1,80 @@
 [
   {
-    "name": "EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr",
-    "group": "",
+    "configuration": {
+      "series": "gpu_scaling_super_fine",
+      "model_type": "HydrostaticFreeSurfaceModel",
+      "device": "GPU",
+      "ranks": 4,
+      "threads_per_rank": 1,
+      "grid_name": "super_fine",
+      "global_resolution": [
+        1440,
+        720,
+        200
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "partition": [
+        2,
+        2,
+        1
+      ],
+      "x_sizes": [
+        720,
+        720
+      ],
+      "y_sizes": [
+        360,
+        360
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENOVectorInvariantDefault",
+      "tracer_advection": "WENO7",
+      "closure": "CATKE",
+      "tracers": [
+        "T",
+        "S"
+      ],
+      "viscosity": null,
+      "diffusivity": null,
+      "coriolis": "HydrostaticSphericalCoriolis",
+      "buoyancy": "SeawaterBuoyancy(TEOS10)",
+      "timestepper": "SplitRungeKutta3",
+      "free_surface": "SplitExplicitFreeSurface",
+      "pressure_solver": null,
+      "pressure_preconditioner": null,
+      "pressure_max_iterations": null,
+      "pressure_reltol": null,
+      "pressure_abstol": null,
+      "pressure_diagnostics": false,
+      "pressure_preserve_residual": false,
+      "pressure_check_true_residual": false,
+      "pressure_preconditioner_check": false,
+      "initial_condition_seed": null,
+      "dt": 60,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": true,
+      "warmup_steps": 2,
+      "samples": 5,
+      "time_steps": 10,
+      "profile": false,
+      "scaling_type": "strong",
+      "baseline_ranks": 2
+    },
+    "finite_state": true,
     "float_type": "Float64",
+    "free_surface": "SplitExplicitFreeSurface",
+    "gpu_memory_used_bytes": 15024324608,
     "grid_size": [
       720,
       360,
       200
     ],
-    "time_steps": 10,
-    "samples": 5,
-    "Δt": 60.0,
-    "total_time_seconds": 26.061284217,
-    "time_per_step_seconds": 0.5171224081,
-    "time_per_step_median_seconds": 0.5211253026,
-    "time_per_step_max_seconds": 0.5267234175,
-    "steps_per_second": 1.9337781235862095,
-    "grid_points_per_second": 1.002470579267091e8,
-    "gpu_memory_used": 0,
     "metadata": {
       "julia_version": "1.12.7",
       "oceananigans_version": "0.113.0",
-      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Int64, Int64, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
-      "gpu_name": null,
-      "cuda_version": null,
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Sizes{Tuple{Int64, Int64}}, Sizes{Tuple{Int64, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": "NVIDIA A100-SXM4-40GB",
+      "cuda_version": "12.3.0",
       "cpu_model": "AMD EPYC 7713 64-Core Processor (znver3)",
       "num_threads": 1,
       "hostname": "rondeau",
@@ -35,35 +86,107 @@
         "KernelAbstractions": "0.9.42",
         "LLVM": "9.13.2"
       },
-      "timestamp": "2026-10-05T17:36:09.552"
+      "timestamp": "2026-10-13T19:56:58.909",
+      "mpi_library_version": "Open MPI v4.1.7, package: Open MPI dsteinmo@mf003507-apc.math.uwaterloo.ca Distribution, ident: 4.1.7, repo rev: v4.1.7, Oct 31, 2024\u0000"
     },
-    "rank": 0
+    "model_type": "HydrostaticFreeSurfaceModel",
+    "pressure_final_true_residual": null,
+    "pressure_preconditioner": null,
+    "pressure_preconditioner_details": null,
+    "pressure_preconditioner_validation": null,
+    "pressure_solver": null,
+    "pressure_solver_converged": null,
+    "pressure_solver_iterations": null,
+    "pressure_solves": null,
+    "rank": 0,
+    "retained_free_surface_substeps": 21,
+    "time_per_step_max_seconds": 0.6342124252,
+    "time_per_step_median_seconds": 0.5246525349,
+    "time_per_step_seconds": 0.5201113595,
+    "window_seconds": [
+      6.342124252,
+      5.712680442,
+      5.246525349,
+      5.206204276,
+      5.201113595
+    ]
   },
   {
-    "name": "EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr",
-    "group": "",
+    "configuration": {
+      "series": "gpu_scaling_super_fine",
+      "model_type": "HydrostaticFreeSurfaceModel",
+      "device": "GPU",
+      "ranks": 4,
+      "threads_per_rank": 1,
+      "grid_name": "super_fine",
+      "global_resolution": [
+        1440,
+        720,
+        200
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "partition": [
+        2,
+        2,
+        1
+      ],
+      "x_sizes": [
+        720,
+        720
+      ],
+      "y_sizes": [
+        360,
+        360
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENOVectorInvariantDefault",
+      "tracer_advection": "WENO7",
+      "closure": "CATKE",
+      "tracers": [
+        "T",
+        "S"
+      ],
+      "viscosity": null,
+      "diffusivity": null,
+      "coriolis": "HydrostaticSphericalCoriolis",
+      "buoyancy": "SeawaterBuoyancy(TEOS10)",
+      "timestepper": "SplitRungeKutta3",
+      "free_surface": "SplitExplicitFreeSurface",
+      "pressure_solver": null,
+      "pressure_preconditioner": null,
+      "pressure_max_iterations": null,
+      "pressure_reltol": null,
+      "pressure_abstol": null,
+      "pressure_diagnostics": false,
+      "pressure_preserve_residual": false,
+      "pressure_check_true_residual": false,
+      "pressure_preconditioner_check": false,
+      "initial_condition_seed": null,
+      "dt": 60,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": true,
+      "warmup_steps": 2,
+      "samples": 5,
+      "time_steps": 10,
+      "profile": false,
+      "scaling_type": "strong",
+      "baseline_ranks": 2
+    },
+    "finite_state": true,
     "float_type": "Float64",
+    "free_surface": "SplitExplicitFreeSurface",
+    "gpu_memory_used_bytes": 14466416640,
     "grid_size": [
       720,
       360,
       200
     ],
-    "time_steps": 10,
-    "samples": 5,
-    "Δt": 60.0,
-    "total_time_seconds": 26.061756354000003,
-    "time_per_step_seconds": 0.5171113813,
-    "time_per_step_median_seconds": 0.5212089729,
-    "time_per_step_max_seconds": 0.5266919533000001,
-    "steps_per_second": 1.933819359160177,
-    "grid_points_per_second": 1.0024919557886358e8,
-    "gpu_memory_used": 0,
     "metadata": {
       "julia_version": "1.12.7",
       "oceananigans_version": "0.113.0",
-      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Int64, Int64, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
-      "gpu_name": null,
-      "cuda_version": null,
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Sizes{Tuple{Int64, Int64}}, Sizes{Tuple{Int64, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": "NVIDIA A100-SXM4-40GB",
+      "cuda_version": "12.3.0",
       "cpu_model": "AMD EPYC 7713 64-Core Processor (znver3)",
       "num_threads": 1,
       "hostname": "rondeau",
@@ -75,35 +198,107 @@
         "KernelAbstractions": "0.9.42",
         "LLVM": "9.13.2"
       },
-      "timestamp": "2026-10-05T17:36:09.535"
+      "timestamp": "2026-10-13T19:56:58.909",
+      "mpi_library_version": "Open MPI v4.1.7, package: Open MPI dsteinmo@mf003507-apc.math.uwaterloo.ca Distribution, ident: 4.1.7, repo rev: v4.1.7, Oct 31, 2024\u0000"
     },
-    "rank": 1
+    "model_type": "HydrostaticFreeSurfaceModel",
+    "pressure_final_true_residual": null,
+    "pressure_preconditioner": null,
+    "pressure_preconditioner_details": null,
+    "pressure_preconditioner_validation": null,
+    "pressure_solver": null,
+    "pressure_solver_converged": null,
+    "pressure_solver_iterations": null,
+    "pressure_solves": null,
+    "rank": 1,
+    "retained_free_surface_substeps": 21,
+    "time_per_step_max_seconds": 0.6342124914,
+    "time_per_step_median_seconds": 0.5246533254,
+    "time_per_step_seconds": 0.5201114095,
+    "window_seconds": [
+      6.342124914,
+      5.712680912,
+      5.246533254,
+      5.206204546,
+      5.201114095
+    ]
   },
   {
-    "name": "EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr",
-    "group": "",
+    "configuration": {
+      "series": "gpu_scaling_super_fine",
+      "model_type": "HydrostaticFreeSurfaceModel",
+      "device": "GPU",
+      "ranks": 4,
+      "threads_per_rank": 1,
+      "grid_name": "super_fine",
+      "global_resolution": [
+        1440,
+        720,
+        200
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "partition": [
+        2,
+        2,
+        1
+      ],
+      "x_sizes": [
+        720,
+        720
+      ],
+      "y_sizes": [
+        360,
+        360
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENOVectorInvariantDefault",
+      "tracer_advection": "WENO7",
+      "closure": "CATKE",
+      "tracers": [
+        "T",
+        "S"
+      ],
+      "viscosity": null,
+      "diffusivity": null,
+      "coriolis": "HydrostaticSphericalCoriolis",
+      "buoyancy": "SeawaterBuoyancy(TEOS10)",
+      "timestepper": "SplitRungeKutta3",
+      "free_surface": "SplitExplicitFreeSurface",
+      "pressure_solver": null,
+      "pressure_preconditioner": null,
+      "pressure_max_iterations": null,
+      "pressure_reltol": null,
+      "pressure_abstol": null,
+      "pressure_diagnostics": false,
+      "pressure_preserve_residual": false,
+      "pressure_check_true_residual": false,
+      "pressure_preconditioner_check": false,
+      "initial_condition_seed": null,
+      "dt": 60,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": true,
+      "warmup_steps": 2,
+      "samples": 5,
+      "time_steps": 10,
+      "profile": false,
+      "scaling_type": "strong",
+      "baseline_ranks": 2
+    },
+    "finite_state": true,
     "float_type": "Float64",
+    "free_surface": "SplitExplicitFreeSurface",
+    "gpu_memory_used_bytes": 14466416640,
     "grid_size": [
       720,
       360,
       200
     ],
-    "time_steps": 10,
-    "samples": 5,
-    "Δt": 60.0,
-    "total_time_seconds": 26.061509891,
-    "time_per_step_seconds": 0.5170981063,
-    "time_per_step_median_seconds": 0.5212028925000001,
-    "time_per_step_max_seconds": 0.5267033356999999,
-    "steps_per_second": 1.9338690043854838,
-    "grid_points_per_second": 1.0025176918734348e8,
-    "gpu_memory_used": 0,
     "metadata": {
       "julia_version": "1.12.7",
       "oceananigans_version": "0.113.0",
-      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Int64, Int64, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
-      "gpu_name": null,
-      "cuda_version": null,
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Sizes{Tuple{Int64, Int64}}, Sizes{Tuple{Int64, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": "NVIDIA A100-SXM4-40GB",
+      "cuda_version": "12.3.0",
       "cpu_model": "AMD EPYC 7713 64-Core Processor (znver3)",
       "num_threads": 1,
       "hostname": "rondeau",
@@ -115,35 +310,107 @@
         "KernelAbstractions": "0.9.42",
         "LLVM": "9.13.2"
       },
-      "timestamp": "2026-10-05T17:36:09.534"
+      "timestamp": "2026-10-13T19:56:58.930",
+      "mpi_library_version": "Open MPI v4.1.7, package: Open MPI dsteinmo@mf003507-apc.math.uwaterloo.ca Distribution, ident: 4.1.7, repo rev: v4.1.7, Oct 31, 2024\u0000"
     },
-    "rank": 2
+    "model_type": "HydrostaticFreeSurfaceModel",
+    "pressure_final_true_residual": null,
+    "pressure_preconditioner": null,
+    "pressure_preconditioner_details": null,
+    "pressure_preconditioner_validation": null,
+    "pressure_solver": null,
+    "pressure_solver_converged": null,
+    "pressure_solver_iterations": null,
+    "pressure_solves": null,
+    "rank": 2,
+    "retained_free_surface_substeps": 21,
+    "time_per_step_max_seconds": 0.6342125054000001,
+    "time_per_step_median_seconds": 0.524652565,
+    "time_per_step_seconds": 0.5201114145,
+    "window_seconds": [
+      6.342125054,
+      5.712687555,
+      5.24652565,
+      5.206205067,
+      5.201114145
+    ]
   },
   {
-    "name": "EarthOcean_lat_lon_1440x720x200_F64_WENOVectorInvariantDefault_WENO7_CATKE_2tr",
-    "group": "",
+    "configuration": {
+      "series": "gpu_scaling_super_fine",
+      "model_type": "HydrostaticFreeSurfaceModel",
+      "device": "GPU",
+      "ranks": 4,
+      "threads_per_rank": 1,
+      "grid_name": "super_fine",
+      "global_resolution": [
+        1440,
+        720,
+        200
+      ],
+      "grid_type": "LatitudeLongitudeGrid",
+      "partition": [
+        2,
+        2,
+        1
+      ],
+      "x_sizes": [
+        720,
+        720
+      ],
+      "y_sizes": [
+        360,
+        360
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENOVectorInvariantDefault",
+      "tracer_advection": "WENO7",
+      "closure": "CATKE",
+      "tracers": [
+        "T",
+        "S"
+      ],
+      "viscosity": null,
+      "diffusivity": null,
+      "coriolis": "HydrostaticSphericalCoriolis",
+      "buoyancy": "SeawaterBuoyancy(TEOS10)",
+      "timestepper": "SplitRungeKutta3",
+      "free_surface": "SplitExplicitFreeSurface",
+      "pressure_solver": null,
+      "pressure_preconditioner": null,
+      "pressure_max_iterations": null,
+      "pressure_reltol": null,
+      "pressure_abstol": null,
+      "pressure_diagnostics": false,
+      "pressure_preserve_residual": false,
+      "pressure_check_true_residual": false,
+      "pressure_preconditioner_check": false,
+      "initial_condition_seed": null,
+      "dt": 60,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": true,
+      "warmup_steps": 2,
+      "samples": 5,
+      "time_steps": 10,
+      "profile": false,
+      "scaling_type": "strong",
+      "baseline_ranks": 2
+    },
+    "finite_state": true,
     "float_type": "Float64",
+    "free_surface": "SplitExplicitFreeSurface",
+    "gpu_memory_used_bytes": 14466416640,
     "grid_size": [
       720,
       360,
       200
     ],
-    "time_steps": 10,
-    "samples": 5,
-    "Δt": 60.0,
-    "total_time_seconds": 26.061573211000002,
-    "time_per_step_seconds": 0.5171099687,
-    "time_per_step_median_seconds": 0.5212068489,
-    "time_per_step_max_seconds": 0.5266917849999999,
-    "steps_per_second": 1.9338246418145293,
-    "grid_points_per_second": 1.002494694316652e8,
-    "gpu_memory_used": 0,
     "metadata": {
       "julia_version": "1.12.7",
       "oceananigans_version": "0.113.0",
-      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Int64, Int64, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
-      "gpu_name": null,
-      "cuda_version": null,
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Sizes{Tuple{Int64, Int64}}, Sizes{Tuple{Int64, Int64}}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Int64, Int64, Int64, Int64, Int64, Int64}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": "NVIDIA A100-SXM4-40GB",
+      "cuda_version": "12.3.0",
       "cpu_model": "AMD EPYC 7713 64-Core Processor (znver3)",
       "num_threads": 1,
       "hostname": "rondeau",
@@ -155,8 +422,29 @@
         "KernelAbstractions": "0.9.42",
         "LLVM": "9.13.2"
       },
-      "timestamp": "2026-10-05T17:36:09.535"
+      "timestamp": "2026-10-13T19:56:58.909",
+      "mpi_library_version": "Open MPI v4.1.7, package: Open MPI dsteinmo@mf003507-apc.math.uwaterloo.ca Distribution, ident: 4.1.7, repo rev: v4.1.7, Oct 31, 2024\u0000"
     },
-    "rank": 3
+    "model_type": "HydrostaticFreeSurfaceModel",
+    "pressure_final_true_residual": null,
+    "pressure_preconditioner": null,
+    "pressure_preconditioner_details": null,
+    "pressure_preconditioner_validation": null,
+    "pressure_solver": null,
+    "pressure_solver_converged": null,
+    "pressure_solver_iterations": null,
+    "pressure_solves": null,
+    "rank": 3,
+    "retained_free_surface_substeps": 21,
+    "time_per_step_max_seconds": 0.6342125014,
+    "time_per_step_median_seconds": 0.52465259,
+    "time_per_step_seconds": 0.5201110349,
+    "window_seconds": [
+      6.342125014,
+      5.712681213,
+      5.2465259,
+      5.206211249,
+      5.201110349
+    ]
   }
 ]
