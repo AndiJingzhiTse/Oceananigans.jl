@@ -1,4 +1,4 @@
-# Full benchmark suite
+# Hydrostatic free-surface benchmarks
 
 Use **`benchmark_suite.py`** for new server studies. It runs the ten series
 below through one planner, one Julia worker and one report generator. Python
@@ -19,6 +19,158 @@ submit through Slurm rather than running computation on a login node.
 | `gpu_scaling_super_super_fine` | 2880×1440×200 | 4, 8, 16, … GPUs; measured 4-GPU efficiency baseline; Δt=30 s |
 | `gpu_scaling_super_super_super_fine` | 5760×2880×200 | 16, 32, 64, … GPUs; measured 16-GPU efficiency baseline; Δt=15 s |
 | `gpu_weak_scaling_super_fine` | 1440√n × 720√n × 200 | 1, 4, 16, … GPUs; fixed 207,360,000 cells/GPU; Δt=60/√n s |
+
+## Saved series inventory
+
+This is a **2026-10-13 UTC snapshot of saved records**. Completed counts
+refer to validated measurements, not completion of every planned case. Follow
+each run's `plot.md` and `suite.json` for updated outcomes; records on other
+clusters may reflect an earlier refresh. The identifiers below are the exact
+names accepted by the current controller's `--series` option.
+
+| Series identifier | Study | Completed Rorqual measurements |
+|---|---|---|
+| `cpu_mpi_scaling_super_fine` | CPU strong scaling | Through 12,288 cores after CPU rerun |
+| `gpu_scaling_super_fine` | GPU strong scaling | Through 64 GPUs |
+| `cpu_resolution` | CPU resolution comparison | All three grids |
+| `gpu_resolution` | GPU resolution comparison | All three grids |
+| `cpu_partition_cores_super_fine` | CPU partition comparison at 192 cores | 13 valid partitions; remaining layout is a geometry limit |
+| `gpu_nsight_scaling_super_fine` | GPU scaling under Nsight profiling | Through 64 GPUs |
+| `gpu_partition_super_fine` | GPU partition comparison | Original sweep through 16 GPUs; expanded rerun in progress |
+| `gpu_scaling_super_super_fine` | Strong scaling, 2880×1440×200 | Through 64 GPUs |
+| `gpu_scaling_super_super_super_fine` | Strong scaling, 5760×2880×200 | Earlier results through 64 GPUs; fresh rerun pending |
+| `gpu_weak_scaling_super_fine` | Fixed cells/GPU, starting at super_fine | Through 64 GPUs |
+
+All saved hydrostatic studies, including historical protocols and retries,
+live under [results/hydrostatic_free_surface_models/](results/hydrostatic_free_surface_models/):
+
+| Location | Saved studies |
+|---|---|
+| [Rorqual](results/hydrostatic_free_surface_models/rorqual/) | All ten standard series; original full suite, CPU retry, extended GPU suite, and latest partition/largest-grid rerun |
+| [Nibi](results/hydrostatic_free_surface_models/nibi/) | GPU strong scaling; CPU hybrid scaling with 192 threads/rank; CPU scaling with one rank/core; four-node CPU partition comparison; four-GPU partition comparison; GPU Nsight partition study; extended GPU strong/weak scaling and partition suite |
+| [Fir](results/hydrostatic_free_surface_models/fir/) | Initial seven-series suite: CPU/GPU strong scaling, CPU/GPU resolution, CPU/GPU partitions, and GPU Nsight scaling. GPU scaling measurements are saved; other cases include failed and pending attempts |
+| [Rondeau](results/hydrostatic_free_surface_models/rondeau/) | CPU/GPU resolution comparisons; CPU strong scaling on default and fine grids; GPU strong scaling on fine and super_fine grids; CPU/GPU profiling; targeted super_fine rerun; six-case component ablation |
+| [Andi-5070ti](results/hydrostatic_free_surface_models/Andi-5070ti/) | Local CPU/GPU benchmark sweeps; distributed CPU benchmarks; GPU profiling at 720×360×50 and 360×180×50; CPU profiling at 720×360×50 |
+| [Suite validation](results/hydrostatic_free_surface_models/suite_validation/) | Completed two-rank CPU MPI smoke test on a 72×36×8 grid; validation rather than production scaling |
+
+The Rondeau component ablation cases are baseline, no tracer advection,
+no Coriolis, no buoyancy, no closure, and no user tracers. The last case also
+disables buoyancy because the default seawater formulation requires T/S.
+Historical protocols differ: some Rondeau grids retain 50 vertical levels,
+the initial Nibi CPU study uses 192 threads/rank, and the extended Nibi GPU
+scaling study uses five 100-step windows. Consult each run's configuration;
+matching grid or series names do not establish identical settings.
+
+## Terminology
+
+| Term | Meaning |
+|---|---|
+| Case / series / suite | A case is one configuration. A series varies resources, resolution, partition, or model components. A suite groups series in one run directory. |
+| Node / allocation | A node is a compute machine. A Slurm allocation grants specified nodes, CPUs, GPUs, memory, and wall time; it can execute several cases sequentially. |
+| MPI rank / Julia thread / physical core | A rank is a process communicating through MPI. Threads share a process. Physical cores exclude SMT hardware threads. Standard CPU cases use one rank and one computation thread/core; GPU cases use one rank/GPU. Requested GPU host CPUs are separate from Julia computation threads. |
+| Global / local resolution | Global `Nx × Ny × Nz` describes the entire grid. Local resolution describes one rank's interior cells; remainder cells can make local sizes differ between ranks. |
+| MPI partition | `Px × Py × Pz` splits the grid across ranks, with `Px × Py × Pz = rank count`. Standard cases use horizontal decomposition (`Pz=1`); a single rank is `1 × 1 × 1`. |
+| Grid type | The geometry implementation, such as `LatitudeLongitudeGrid`, `RectilinearGrid`, or a tripolar grid. Record it separately from resolution. |
+| Halo / extended halos | Extra boundary cells exchanged between ranks. `extend_halos` enlarges the free-surface halo region; record it because it changes communication and the minimum feasible local domain. |
+| Δt / free-surface substeps | Δt is simulated time advanced per model step. The free-surface solver takes smaller internal steps; record both requested and actually retained substep counts. |
+| Warmup / timing window | Warmup is untimed preparation. A timing window measures a block of model steps. Standard cases use two untimed steps and five windows of ten steps. |
+| Fastest / median seconds per step | For each rank, divide its minimum/median window duration by steps/window. Report the maximum of those per-rank values, so the slowest rank determines the statistic. |
+| Strong / weak scaling | Strong scaling fixes the global grid while increasing resources. Weak scaling fixes work per resource while increasing the global grid and resources together. |
+| Baseline / speedup / MPI efficiency | A baseline is a measured reference case. Speedup is baseline time divided by measured time. Strong efficiency accounts for the resource-count increase; weak efficiency compares times at fixed work/resource. See formulas below. |
+| Resolution / partition comparison | Resolution studies change grid size at fixed resources. Partition studies change decomposition; compare layouts at the same resource count and model settings. |
+| Component ablation | Disable a selected model component to measure its contribution; record dependent changes such as disabling buoyancy when removing T/S. |
+| Nsight profiling | Instrumented CUDA/MPI/NVTX capture. Profiled timings remain separate from unprofiled timings because capture can affect performance. |
+| Throughput / GiB per GPU | Throughput is global interior cells divided by seconds/step. GiB is bytes/2³⁰. Device memory is measured after timing and reported as the maximum across ranks; it includes context/buffers and is not peak memory. |
+| Outcome / limit | `PENDING` or `RUNNING` is unfinished. `COMPLETED` requires validated artifacts. Geometry, configured resource bounds, scheduler restrictions, timeouts, application failures, and invalid results are different outcomes. |
+
+Canonical names for new standard series are:
+
+| Grid name | Global resolution |
+|---|---|
+| `default` | 360 × 180 × 50 |
+| `fine` | 720 × 360 × 100 |
+| `super_fine` | 1440 × 720 × 200 |
+| `super_super_fine` | 2880 × 1440 × 200 |
+| `super_super_super_fine` | 5760 × 2880 × 200 |
+
+## Instructions for every series
+
+These requirements apply to new series and reruns. Explicit user settings
+override defaults; document intentional exceptions. Follow the repository's
+[benchmark and Git rules](../AGENTS.md#benchmark-records) as well.
+
+1. **Plan and preserve provenance.** Use `benchmark_suite.py` and a profile under
+   `configs/` for standard series. Create a fresh dated directory under
+   `results/hydrostatic_free_surface_models/<server>/`. Record the purpose,
+   configurations, source revision, exact launch/submission commands, executable
+   snapshot, and resolved Julia environment. Preserve previous results and failures.
+2. **Keep comparisons consistent.** Use the model settings below unless explicitly
+   changed. Record actual global/local resolution, grid type, partition, rank/thread
+   counts, Δt, warmup, samples, steps/window, requested/retained substeps, and halo
+   settings for every case. Keep physics, precision, solver, and timing protocol
+   consistent within a comparison. Explain historical differences before comparing.
+3. **Use assigned resources.** Submit cluster computation through Slurm. Record
+   requested resources and actual nodes, physical cores, affinity, GPUs, hardware,
+   and Julia/package/MPI/CUDA/profiler versions. Query current scheduler availability;
+   configured capacity does not guarantee allocation. Prepare the environment before
+   submitting, and keep developed source paths stable until jobs finish.
+4. **Validate before accepting timing.** Verify every rank result, expected local
+   sizes, unique CPU/GPU placement, MPI communication, and finite model fields.
+   GPU runs must use distinct GPUs and pass CUDA-aware MPI checks. Synchronize ranks
+   and GPUs around timing windows. Use the slowest-rank statistics defined above.
+5. **Use measured baselines.** Use one core/GPU where feasible, or the explicitly
+   planned 4-/16-GPU baseline for larger grids. Leave efficiency unavailable until
+   the baseline completes successfully. Never invent timings or combine an old
+   baseline with a fresh rerun. Investigate efficiency above 100% using raw windows,
+   configuration, and placement; retain observed values without clipping them.
+6. **Report timings and references.** Plot strong-scaling timings and efficiencies,
+   weak-scaling timings and efficiencies, resolution timings and raw ratios, and
+   partition comparisons. GPU partition plots use MPI efficiency relative to
+   measured `1 × 1 × 1`, start the y-axis at zero, and show ideal 100%. Draw the
+   applicable expected ratio/efficiency and ideal timing from the formulas below.
+   Label numerator, denominator, baseline, resource count, and units. Order the
+   strong-grid comparison legend by 1-, 4-, then 16-GPU baseline. Use plain ticks
+   when scientific notation adds no information.
+7. **Separate measurements from outcomes.** Plot only completed, validated cases.
+   Record the largest completed count and the observed reason larger cases did
+   not complete. Preserve raw windows, logs, failure evidence, trace locations,
+   checksums, and profile summaries. Keep profiled and unprofiled results separate.
+   GPU comparison tables include resolution, ranks, actual nodes, partition, Δt,
+   median seconds/step, efficiency, throughput, measured GiB/GPU, and outcome;
+   unavailable measurements stay blank.
+8. **Finish with reviewable records.** Refresh reports, run checks appropriate to
+   the change, and commit the task's source/documentation and benchmark records.
+   Identify in-progress logs separately from validated measurements. Verify
+   `git status --short` is empty before reporting completion. Preserve unrelated
+   edits; if active writers prevent a clean tree, report the remaining paths and
+   their cause. Never remove evidence just to clean the tree.
+
+### Efficiency and expected references
+
+Let `T(n)` be fastest or median seconds/step at `n` resources, and let `nb`
+be the measured baseline resource count. Use the same timing statistic in
+both numerator and denominator.
+
+| Quantity | Formula | Expected reference |
+|---|---|---|
+| Speedup | `T(nb) / T(n)` | Strong scaling: `n / nb` |
+| Strong MPI efficiency (%) | `100 × T(nb) × nb / (T(n) × n)` | 100% |
+| GPU partition MPI efficiency (%) | `100 × T(1×1×1) / (T(partition) × ranks)` | 100% |
+| Weak efficiency (%) | `100 × T(nb) / T(n)` at fixed cells/resource | 100% |
+| Strong timing | `T(n)` | `T(nb) × nb / n` |
+| Weak timing | `T(n)` | Constant `T(nb)` |
+| Strong adjacent time ratio | `T(next count) / T(previous count)` | 1/2 when doubling resources |
+| Resolution time ratio | `T(previous grid) / T(next grid)` | 1/8 when doubling Nx, Ny, and Nz |
+
+Plot the raw resolution ratio without a cube root. For historical grids with
+fixed Nz or other size changes, derive the expected ratio from actual interior
+cell counts; doubling only Nx and Ny gives 1/4 under linear cell-count scaling.
+For GPU weak scaling starting at `super_fine`, use 1, 4, 16, 64, … GPUs,
+207,360,000 interior cells/GPU, 200 vertical levels, and
+`Δt = 60 × 1440 / Nx` seconds. Doubling both horizontal dimensions at each
+stage quadruples the GPU count.
+
+### Default model and timing settings
 
 Scaling counts continue to the configured server capacity or the first geometry
 limit. The next doubling is recorded as a resource/geometry boundary. A
@@ -167,9 +319,10 @@ not push. Benchmark suite source changes and records are committed separately.
   retains CUDA kernel/API/memory, MPI and NVTX exports when available. Required
   kernel summaries and raw trace SHA-256 checksums are validated; manifests
   are saved in `raw_traces.csv`. Missing optional reports have export logs.
-- Scaling plots use the measured one-rank baseline. A failed baseline leaves
-  efficiency blank. Only validated completed cases enter plots. Profile timing
-  and kernel breakdowns are kept in their own series.
+- Scaling plots use the measured one-rank baseline, or the planned 4-/16-GPU
+  baseline for larger grids. A failed baseline leaves efficiency blank. Only
+  validated completed cases enter plots. Profile timing and kernel breakdowns
+  are kept in their own series.
 - CPU local domains need at least seven horizontal cells; GPU extended halos
   require at least 23 for distributed cases with the current 30-substep model.
   Balanced partitions preserve all remainder cells. The 1×192×1 CPU layout
