@@ -20,9 +20,9 @@ The no-user-tracers case retains CATKE, which automatically adds its required TK
 Run the series from the repository root with:
 
 ```bash
-bash benchmarking/results/rondeau/run_component_ablation.sh
+bash benchmarking/results/hydrostatic_free_surface_models/rondeau/run_component_ablation.sh
 ```
 
 Set `GPU_ID` to select the single visible GPU. `RUN_ROOT` and case names can be supplied to resume selected cases in an existing result directory.
 
-Regenerate the chart from the saved JSON results with `python3 benchmarking/results/rondeau/2026-09-30T034053Z_component_ablation_671689/plot.py`.
+Regenerate the chart from the saved JSON results with `python3 benchmarking/results/hydrostatic_free_surface_models/rondeau/2026-09-30T034053Z_component_ablation_671689/plot.py`.

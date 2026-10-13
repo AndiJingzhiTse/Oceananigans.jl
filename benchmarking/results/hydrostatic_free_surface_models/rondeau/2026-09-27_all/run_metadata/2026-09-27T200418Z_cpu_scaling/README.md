@@ -11,7 +11,7 @@ to the launcher relative to the captured revision as a zero-context diff
 ```bash
 source ~/.config/oceananigans/rondeau-env.sh
 CPU_COUNTS="32 64 128" OUTPUT_ROOT=/local_scratch/ajtse/rondeau-extensions \
-    bash benchmarking/results/rondeau/run_rondeau_suite.sh cpu_scaling
+    bash benchmarking/results/hydrostatic_free_surface_models/rondeau/run_rondeau_suite.sh cpu_scaling
 ```
 
 Validated results are copied into the parent run's `cpu_scaling/` folders.

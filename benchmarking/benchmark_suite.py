@@ -405,7 +405,9 @@ def main():
     selected = tuple(args.series.split(','))
     if not selected or len(set(selected)) != len(selected) or set(selected) - set(SERIES):
         parser.error('Choose unique series names from: ' + ', '.join(SERIES))
-    folder = (args.output or ROOT / 'results' / ('%s_full_suite' % datetime.now(timezone.utc).strftime('%Y-%m-%dT%H%M%SZ'))).resolve()
+    default_folder = ROOT / 'results' / 'hydrostatic_free_surface_models' / (
+        '%s_full_suite' % datetime.now(timezone.utc).strftime('%Y-%m-%dT%H%M%SZ'))
+    folder = (args.output or default_folder).resolve()
     folder.mkdir(parents=True, exist_ok=True)
     with (folder / '.suite.lock').open('a') as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)

@@ -10,7 +10,7 @@ and Nsight activity pies. Recreate the SVG charts and Markdown tables using
 Python 3 with matplotlib:
 
 ```bash
-python3 benchmarking/results/rondeau/plot_rondeau_results.py
+python3 benchmarking/results/hydrostatic_free_surface_models/rondeau/plot_rondeau_results.py
 ```
 
 Pass another run folder as the positional argument to plot a different complete
@@ -21,8 +21,8 @@ from a local Nsight capture first:
 ```bash
 source ~/.config/oceananigans/rondeau-env.sh
 nsys export --type=sqlite --output=/tmp/rondeau-cpu.sqlite \
-    benchmarking/results/rondeau/2026-09-27_all/nsys_cpu/720x360x50/profile.nsys-rep
-python3 benchmarking/results/rondeau/plot_rondeau_results.py --cpu-sqlite /tmp/rondeau-cpu.sqlite
+    benchmarking/results/hydrostatic_free_surface_models/rondeau/2026-09-27_all/nsys_cpu/720x360x50/profile.nsys-rep
+python3 benchmarking/results/hydrostatic_free_surface_models/rondeau/plot_rondeau_results.py --cpu-sqlite /tmp/rondeau-cpu.sqlite
 ```
 
 GPU pies sum kernel durations using the Andi Gc/Gu/Gv/Others grouping. The CPU
@@ -103,36 +103,36 @@ Start in the repository root on Rondeau, optionally inside `tmux` so a disconnec
 Preview all commands without launching jobs or creating outputs:
 
 ```bash
-DRY_RUN=1 bash benchmarking/results/rondeau/run_rondeau_suite.sh all
+DRY_RUN=1 bash benchmarking/results/hydrostatic_free_surface_models/rondeau/run_rondeau_suite.sh all
 ```
 
 Run the complete suite, including scaling across 1, 2, and 4 GPUs:
 
 ```bash
-CUDA_VISIBLE_DEVICES=0,1,2,3 bash benchmarking/results/rondeau/run_rondeau_suite.sh all
+CUDA_VISIBLE_DEVICES=0,1,2,3 bash benchmarking/results/hydrostatic_free_surface_models/rondeau/run_rondeau_suite.sh all
 ```
 
 Or launch each series separately:
 
 ```bash
-bash benchmarking/results/rondeau/run_rondeau_suite.sh cpu_resolution
-CUDA_VISIBLE_DEVICES=0 bash benchmarking/results/rondeau/run_rondeau_suite.sh gpu_resolution
-CPU_COUNTS="1 2 4 8 16 32 64 128" bash benchmarking/results/rondeau/run_rondeau_suite.sh cpu_scaling_default
-CPU_COUNTS="1 2 4 8 16 32 64 128" bash benchmarking/results/rondeau/run_rondeau_suite.sh cpu_scaling_fine
-CUDA_VISIBLE_DEVICES=0,1,2,3 bash benchmarking/results/rondeau/run_rondeau_suite.sh gpu_scaling_fine
-CUDA_VISIBLE_DEVICES=0,1,2,3 bash benchmarking/results/rondeau/run_rondeau_suite.sh gpu_scaling_super_fine
-CUDA_VISIBLE_DEVICES=0 bash benchmarking/results/rondeau/run_rondeau_suite.sh nsys_gpu
-bash benchmarking/results/rondeau/run_rondeau_suite.sh nsys_cpu
+bash benchmarking/results/hydrostatic_free_surface_models/rondeau/run_rondeau_suite.sh cpu_resolution
+CUDA_VISIBLE_DEVICES=0 bash benchmarking/results/hydrostatic_free_surface_models/rondeau/run_rondeau_suite.sh gpu_resolution
+CPU_COUNTS="1 2 4 8 16 32 64 128" bash benchmarking/results/hydrostatic_free_surface_models/rondeau/run_rondeau_suite.sh cpu_scaling_default
+CPU_COUNTS="1 2 4 8 16 32 64 128" bash benchmarking/results/hydrostatic_free_surface_models/rondeau/run_rondeau_suite.sh cpu_scaling_fine
+CUDA_VISIBLE_DEVICES=0,1,2,3 bash benchmarking/results/hydrostatic_free_surface_models/rondeau/run_rondeau_suite.sh gpu_scaling_fine
+CUDA_VISIBLE_DEVICES=0,1,2,3 bash benchmarking/results/hydrostatic_free_surface_models/rondeau/run_rondeau_suite.sh gpu_scaling_super_fine
+CUDA_VISIBLE_DEVICES=0 bash benchmarking/results/hydrostatic_free_surface_models/rondeau/run_rondeau_suite.sh nsys_gpu
+bash benchmarking/results/hydrostatic_free_surface_models/rondeau/run_rondeau_suite.sh nsys_cpu
 ```
 
 Supported MPI counts and partitions are 1 → 1 × 1 × 1, 2 → 1 × 2 × 1, 4 → 2 × 2 × 1, 8 → 2 × 4 × 1, 16 → 4 × 4 × 1, 32 → 8 × 4 × 1, 64 → 8 × 8 × 1, and 128 → 16 × 8 × 1 on the 720 CPU grid. The 360 CPU grid uses 8 × 16 × 1 at 128 ranks to keep its tripolar x direction evenly partitioned. The default GPU scaling counts are 1, 2, and 4. Every MPI rank uses one GPU; the global grid stays fixed across counts. Oceananigans assigns the first N GPUs from the visible list to an N rank run.
 
-Each invocation creates a unique folder under `benchmarking/results/rondeau/`. Every configuration has its own `results.json`, generated `results.md`, and `run.log`. The suite also records the repository revision, Julia version, working tree status, CPU information, GPU topology, and the environment manifest when available. MPI results contain one record per rank; use the slowest rank to compute run time, speedup, and efficiency.
+Each invocation creates a unique folder under `benchmarking/results/hydrostatic_free_surface_models/rondeau/`. Every configuration has its own `results.json`, generated `results.md`, and `run.log`. The suite also records the repository revision, Julia version, working tree status, CPU information, GPU topology, and the environment manifest when available. MPI results contain one record per rank; use the slowest rank to compute run time, speedup, and efficiency.
 
 Nsight captures and exported databases can be several gigabytes. Store large outputs on the shared data volume by setting `OUTPUT_ROOT` to your directory there:
 
 ```bash
-OUTPUT_ROOT=/mnt/autofs/sutton.math/fsys2/ajtse/benchmark_results/Rondeau CUDA_VISIBLE_DEVICES=0,1,2,3 bash benchmarking/results/rondeau/run_rondeau_suite.sh all
+OUTPUT_ROOT=/mnt/autofs/sutton.math/fsys2/ajtse/benchmark_results/Rondeau CUDA_VISIBLE_DEVICES=0,1,2,3 bash benchmarking/results/hydrostatic_free_surface_models/rondeau/run_rondeau_suite.sh all
 ```
 
-Replace the userid and path if needed. The small reports can later be copied into `benchmarking/results/rondeau/` for comparison. Large profile files remain ignored by Git. Open `profile.nsys-rep` in Nsight Systems. GPU kernel summaries are exported beside the captures and can be grouped into Gc, Gu, Gv, and all other kernels.
+Replace the userid and path if needed. The small reports can later be copied into `benchmarking/results/hydrostatic_free_surface_models/rondeau/` for comparison. Large profile files remain ignored by Git. Open `profile.nsys-rep` in Nsight Systems. GPU kernel summaries are exported beside the captures and can be grouped into Gc, Gu, Gv, and all other kernels.

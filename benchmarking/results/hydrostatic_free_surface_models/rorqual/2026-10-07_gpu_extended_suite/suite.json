@@ -19,7 +19,7 @@
     "cpu_constraint": "",
     "exclusive_cpu": true,
     "environment_script": "",
-    "mpi_init": "/home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-05_gpu_scaling/run_metadata/drac_mpi.jl",
+    "mpi_init": "/home/anditse/Oceananigans.jl/benchmarking/results/hydrostatic_free_surface_models/nibi/2026-10-05_gpu_scaling/run_metadata/drac_mpi.jl",
     "cpu_time": "03:00:00",
     "gpu_time": "00:45:00",
     "partition_time": "03:00:00",
@@ -1433,8 +1433,8 @@
         1
       ],
       "state": "PENDING",
-      "details": "(Priority); estimated start 2026-10-13T19:19:19 (scheduler timezone)",
-      "job_id": "22690713",
+      "details": "(Priority); estimated start N/A (scheduler timezone)",
+      "job_id": "23085623",
       "configuration": {
         "series": "gpu_scaling_super_super_fine",
         "device": "GPU",
@@ -1511,8 +1511,8 @@
         1
       ],
       "state": "PENDING",
-      "details": "(Nodes required for job are DOWN, DRAINED or reserved for jobs in higher priority partitions); estimated start N/A (scheduler timezone)",
-      "job_id": "22690714",
+      "details": "(PartitionNodeLimit); estimated start N/A (scheduler timezone)",
+      "job_id": "23085620",
       "configuration": {
         "series": "gpu_scaling_super_super_fine",
         "device": "GPU",
@@ -2480,7 +2480,7 @@
       ],
       "state": "PENDING",
       "details": "(PartitionNodeLimit); estimated start N/A (scheduler timezone)",
-      "job_id": "22690724",
+      "job_id": "23085621",
       "configuration": {
         "series": "gpu_weak_scaling_super_fine",
         "device": "GPU",
@@ -2674,6 +2674,6 @@
     }
   ],
   "submitted_at": "2026-10-08T00:01:08.261550+00:00",
-  "commit": true,
-  "finalizer_job_id": "22690725"
+  "commit": false,
+  "finalizer_job_id": "23085627"
 }

@@ -8,4 +8,4 @@ set -e
 source /home/anditse/Oceananigans-DRAC/env/nibi.sh
 export JULIA_NUM_THREADS=1
 export OPENBLAS_NUM_THREADS=1
-julia --project=/home/anditse/Oceananigans.jl/benchmarking/results/nibi/environment /home/anditse/Oceananigans.jl/benchmarking/results/nibi/test_cpu_core_model.jl
+julia --project=/home/anditse/Oceananigans.jl/benchmarking/results/hydrostatic_free_surface_models/nibi/environment /home/anditse/Oceananigans.jl/benchmarking/results/hydrostatic_free_surface_models/nibi/test_cpu_core_model.jl

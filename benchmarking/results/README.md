@@ -1,5 +1,7 @@
 # Benchmark results
 
+Hydrostatic free-surface model results live under
+`hydrostatic_free_surface_models/`, grouped by server where applicable.
 Each benchmark run has its own folder. A run folder may contain:
 
 - `results.json`: machine readable benchmark output
@@ -24,6 +26,6 @@ Nsight Systems capture and database files are kept locally and ignored by Git be
 For future runs, create a new folder and pass its JSON path to the benchmark command. For example:
 
 ```powershell
-New-Item -ItemType Directory -Path benchmarking/results/2026-09-22_gpu
-julia --project=benchmarking benchmarking/run_benchmarks.jl --device=GPU --output=benchmarking/results/2026-09-22_gpu/results.json
+New-Item -ItemType Directory -Path benchmarking/results/hydrostatic_free_surface_models/2026-09-22_gpu
+julia --project=benchmarking benchmarking/run_benchmarks.jl --device=GPU --output=benchmarking/results/hydrostatic_free_surface_models/2026-09-22_gpu/results.json
 ```

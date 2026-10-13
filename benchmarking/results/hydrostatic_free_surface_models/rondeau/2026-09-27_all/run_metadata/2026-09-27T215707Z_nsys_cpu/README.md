@@ -7,7 +7,7 @@ Resolution and MPI scaling measurements were not rerun.
 ```bash
 source ~/.config/oceananigans/rondeau-env.sh
 OUTPUT_ROOT=/local_scratch/ajtse/rondeau-plot-profiles \
-    bash benchmarking/results/rondeau/run_rondeau_suite.sh nsys_cpu
+    bash benchmarking/results/hydrostatic_free_surface_models/rondeau/run_rondeau_suite.sh nsys_cpu
 ```
 
 The invocation also set `CPU_COUNTS=1`, which has no effect on the CPU

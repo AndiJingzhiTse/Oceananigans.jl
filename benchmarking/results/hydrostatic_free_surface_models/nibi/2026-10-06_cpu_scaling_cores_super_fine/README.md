@@ -77,9 +77,9 @@ zero, avoiding serial read/append/rewrite by thousands of ranks.
 Submit and monitor from the repository root:
 
 ```bash
-python3 benchmarking/results/nibi/cpu_core_scaling.py benchmarking/results/nibi/2026-10-06_cpu_scaling_cores_super_fine --submit
+python3 benchmarking/results/hydrostatic_free_surface_models/nibi/cpu_core_scaling.py benchmarking/results/hydrostatic_free_surface_models/nibi/2026-10-06_cpu_scaling_cores_super_fine --submit
 module load python/3.11 scipy-stack/2025a
-python3 benchmarking/results/nibi/cpu_core_scaling.py benchmarking/results/nibi/2026-10-06_cpu_scaling_cores_super_fine --watch --commit
+python3 benchmarking/results/hydrostatic_free_surface_models/nibi/cpu_core_scaling.py benchmarking/results/hydrostatic_free_surface_models/nibi/2026-10-06_cpu_scaling_cores_super_fine --watch --commit
 python3 -m unittest discover -s benchmarking/results/nibi -p 'test_cpu_core_scaling.py'
 ```
 

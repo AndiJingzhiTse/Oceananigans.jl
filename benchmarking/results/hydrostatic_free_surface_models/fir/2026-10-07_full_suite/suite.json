@@ -1,7 +1,7 @@
 {
   "server": {
     "backend": "slurm",
-    "project": "/home/anditse/Oceananigans.jl/benchmarking/results/fir/environment",
+    "project": "/home/anditse/Oceananigans.jl/benchmarking/results/hydrostatic_free_surface_models/fir/environment",
     "julia": "/cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/julia",
     "mpi": [
       "mpiexec"
@@ -18,8 +18,8 @@
     "gpu_type": "h100",
     "cpu_constraint": "",
     "exclusive_cpu": true,
-    "environment_script": "/home/anditse/Oceananigans.jl/benchmarking/results/fir/environment/modules.sh",
-    "mpi_init": "/home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-05_gpu_scaling/run_metadata/drac_mpi.jl",
+    "environment_script": "/home/anditse/Oceananigans.jl/benchmarking/results/hydrostatic_free_surface_models/fir/environment/modules.sh",
+    "mpi_init": "/home/anditse/Oceananigans.jl/benchmarking/results/hydrostatic_free_surface_models/nibi/2026-10-05_gpu_scaling/run_metadata/drac_mpi.jl",
     "cpu_time": "03:00:00",
     "gpu_time": "00:45:00",
     "partition_time": "03:00:00",

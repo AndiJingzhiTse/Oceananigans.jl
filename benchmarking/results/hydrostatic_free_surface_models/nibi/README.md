@@ -59,12 +59,12 @@ All counts, including one GPU, use `Distributed(GPU())`.
 From the Oceananigans checkout, on a Nibi login node:
 
 ```bash
-bash benchmarking/results/nibi/setup.sh
-python3 benchmarking/results/nibi/scaling.py \
-    benchmarking/results/nibi/2026-10-05_gpu_scaling --account=def-fpoulin_gpu
+bash benchmarking/results/hydrostatic_free_surface_models/nibi/setup.sh
+python3 benchmarking/results/hydrostatic_free_surface_models/nibi/scaling.py \
+    benchmarking/results/hydrostatic_free_surface_models/nibi/2026-10-05_gpu_scaling --account=def-fpoulin_gpu
 module load python/3.11 scipy-stack/2025a
-python3 benchmarking/results/nibi/plot_scaling.py \
-    benchmarking/results/nibi/2026-10-05_gpu_scaling
+python3 benchmarking/results/hydrostatic_free_surface_models/nibi/plot_scaling.py \
+    benchmarking/results/hydrostatic_free_surface_models/nibi/2026-10-05_gpu_scaling
 ```
 
 `DRAC_ROOT` defaults to `$HOME/Oceananigans-DRAC`. Its `env/nibi.sh` loads
@@ -98,12 +98,12 @@ before a retry. `--time-limit=00:20:00` overrides the default wall time.
 To queue and monitor independent counts concurrently:
 
 ```bash
-python3 benchmarking/results/nibi/scaling.py \
-    benchmarking/results/nibi/2026-10-05_gpu_scaling \
+python3 benchmarking/results/hydrostatic_free_surface_models/nibi/scaling.py \
+    benchmarking/results/hydrostatic_free_surface_models/nibi/2026-10-05_gpu_scaling \
     --counts=8,16,64,128 --time-limit=00:20:00 --submit-only
 module load python/3.11 scipy-stack/2025a
-python3 benchmarking/results/nibi/refresh_scaling.py \
-    benchmarking/results/nibi/2026-10-05_gpu_scaling --watch --commit
+python3 benchmarking/results/hydrostatic_free_surface_models/nibi/refresh_scaling.py \
+    benchmarking/results/hydrostatic_free_surface_models/nibi/2026-10-05_gpu_scaling --watch --commit
 ```
 
 The refresher updates `retry_status.md`, validates completed jobs, and
@@ -130,11 +130,11 @@ fresh Julia/MPI processes and the same model and timing settings as above.
 The whole allocation requests 32 CPUs, 64 GiB host RAM, and 30 minutes.
 
 ```bash
-python3 benchmarking/results/nibi/partition_series.py \
-    benchmarking/results/nibi/2026-10-06_gpu_partition_super_fine --submit
+python3 benchmarking/results/hydrostatic_free_surface_models/nibi/partition_series.py \
+    benchmarking/results/hydrostatic_free_surface_models/nibi/2026-10-06_gpu_partition_super_fine --submit
 module load python/3.11 scipy-stack/2025a
-python3 benchmarking/results/nibi/partition_series.py \
-    benchmarking/results/nibi/2026-10-06_gpu_partition_super_fine --watch --commit
+python3 benchmarking/results/hydrostatic_free_surface_models/nibi/partition_series.py \
+    benchmarking/results/hydrostatic_free_surface_models/nibi/2026-10-06_gpu_partition_super_fine --watch --commit
 ```
 
 Each partition retains separate raw results and logs. The report compares
@@ -157,11 +157,11 @@ and 192 Julia threads. The grid is fixed at 1440×720×200. CPU settings
 match the GPU model, warmup, and five ten-step timing windows.
 
 ```bash
-python3 benchmarking/results/nibi/cpu_series.py benchmarking/results/nibi/2026-10-06_cpu_scaling_super_fine --submit scaling
-python3 benchmarking/results/nibi/cpu_series.py benchmarking/results/nibi/2026-10-06_cpu_partition_super_fine --submit partition
+python3 benchmarking/results/hydrostatic_free_surface_models/nibi/cpu_series.py benchmarking/results/hydrostatic_free_surface_models/nibi/2026-10-06_cpu_scaling_super_fine --submit scaling
+python3 benchmarking/results/hydrostatic_free_surface_models/nibi/cpu_series.py benchmarking/results/hydrostatic_free_surface_models/nibi/2026-10-06_cpu_partition_super_fine --submit partition
 module load python/3.11 scipy-stack/2025a
-python3 benchmarking/results/nibi/cpu_series.py benchmarking/results/nibi/2026-10-06_cpu_scaling_super_fine --watch --commit
-python3 benchmarking/results/nibi/cpu_series.py benchmarking/results/nibi/2026-10-06_cpu_partition_super_fine --watch --commit
+python3 benchmarking/results/hydrostatic_free_surface_models/nibi/cpu_series.py benchmarking/results/hydrostatic_free_surface_models/nibi/2026-10-06_cpu_scaling_super_fine --watch --commit
+python3 benchmarking/results/hydrostatic_free_surface_models/nibi/cpu_series.py benchmarking/results/hydrostatic_free_surface_models/nibi/2026-10-06_cpu_partition_super_fine --watch --commit
 python3 -m unittest discover -s benchmarking/results/nibi -p 'test_cpu_series.py'
 ```
 
@@ -186,9 +186,9 @@ global/local resolution and grid type. Balanced partitions preserve the
 The next doubling is blocked by the seven-cell local halo requirement.
 
 ```bash
-python3 benchmarking/results/nibi/cpu_core_scaling.py benchmarking/results/nibi/2026-10-06_cpu_scaling_cores_super_fine --submit
+python3 benchmarking/results/hydrostatic_free_surface_models/nibi/cpu_core_scaling.py benchmarking/results/hydrostatic_free_surface_models/nibi/2026-10-06_cpu_scaling_cores_super_fine --submit
 module load python/3.11 scipy-stack/2025a
-python3 benchmarking/results/nibi/cpu_core_scaling.py benchmarking/results/nibi/2026-10-06_cpu_scaling_cores_super_fine --watch --commit
+python3 benchmarking/results/hydrostatic_free_surface_models/nibi/cpu_core_scaling.py benchmarking/results/hydrostatic_free_surface_models/nibi/2026-10-06_cpu_scaling_cores_super_fine --watch --commit
 ```
 
 The earlier whole-node, 192-thread-per-rank CPU scaling series is historical;
@@ -204,8 +204,8 @@ during five ten-step windows after two untimed steps. Raw traces remain in
 scratch; timing results, trace manifests, text summaries and plots are committed.
 
 ```bash
-python3 benchmarking/results/nibi/nsight_series.py benchmarking/results/nibi/2026-10-06_gpu_nsight_super_fine --submit
+python3 benchmarking/results/hydrostatic_free_surface_models/nibi/nsight_series.py benchmarking/results/hydrostatic_free_surface_models/nibi/2026-10-06_gpu_nsight_super_fine --submit
 module load python/3.11 scipy-stack/2025a
-python3 benchmarking/results/nibi/nsight_series.py benchmarking/results/nibi/2026-10-06_gpu_nsight_super_fine --watch --commit
+python3 benchmarking/results/hydrostatic_free_surface_models/nibi/nsight_series.py benchmarking/results/hydrostatic_free_surface_models/nibi/2026-10-06_gpu_nsight_super_fine --watch --commit
 python3 -m unittest discover -s benchmarking/results/nibi -p test_nsight_series.py
 ```

@@ -46,9 +46,9 @@ across ranks; they are not wall-time percentages. An after-any CPU finalizer and
 login-host monitor regenerate reports and commit completed outcomes.
 
 ```bash
-python3 benchmarking/results/nibi/nsight_series.py benchmarking/results/nibi/2026-10-06_gpu_nsight_super_fine --submit
+python3 benchmarking/results/hydrostatic_free_surface_models/nibi/nsight_series.py benchmarking/results/hydrostatic_free_surface_models/nibi/2026-10-06_gpu_nsight_super_fine --submit
 module load python/3.11 scipy-stack/2025a
-python3 benchmarking/results/nibi/nsight_series.py benchmarking/results/nibi/2026-10-06_gpu_nsight_super_fine --watch --commit
+python3 benchmarking/results/hydrostatic_free_surface_models/nibi/nsight_series.py benchmarking/results/hydrostatic_free_surface_models/nibi/2026-10-06_gpu_nsight_super_fine --watch --commit
 ```
 
 [Official Nsight Systems capture and MPI documentation](https://docs.nvidia.com/nsight-systems/UserGuide/index.html).

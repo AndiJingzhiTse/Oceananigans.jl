@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Regenerate Rondeau charts from saved JSON, GPU summaries, and CPU samples.
 
-Usage: python3 benchmarking/results/rondeau/plot_rondeau_results.py [run_folder]
+Usage: python3 benchmarking/results/hydrostatic_free_surface_models/rondeau/plot_rondeau_results.py [run_folder]
 Requires matplotlib. No benchmarks are launched by this script.
 """
 import argparse

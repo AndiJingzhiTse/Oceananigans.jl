@@ -15,7 +15,7 @@ The suite launcher was bypassed for this targeted replacement.
 source ~/.config/oceananigans/rondeau-env.sh
 export CUDA_VISIBLE_DEVICES=0,1,2,3
 export JULIA_CUDA_MEMORY_POOL=none OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1
-rankfile=benchmarking/results/rondeau/2026-09-27_all/run_metadata/2026-09-30T023910Z_gpu_scaling_super_fine/gpu_rankfile.txt
+rankfile=benchmarking/results/hydrostatic_free_surface_models/rondeau/2026-09-27_all/run_metadata/2026-09-30T023910Z_gpu_scaling_super_fine/gpu_rankfile.txt
 # Use count/partition pairs 1/1x1x1, 2/1x2x1, and 4/2x2x1.
 mpiexec -n "$count" --rankfile "$rankfile" --report-bindings \
   julia --threads=1 --project=benchmarking benchmarking/run_benchmarks.jl \
@@ -24,7 +24,7 @@ mpiexec -n "$count" --rankfile "$rankfile" --report-bindings \
   --tracers=T,S --dt=60 --warmup_steps=2 --time_steps=10 --samples=5 \
   --device=GPU --size=1440x720x200 --grid_type=lat_lon --distributed \
   --partition="$partition" \
-  --output="benchmarking/results/rondeau/2026-09-27_all/gpu_scaling_super_fine/${count}_gpus/results.json"
+  --output="benchmarking/results/hydrostatic_free_surface_models/rondeau/2026-09-27_all/gpu_scaling_super_fine/${count}_gpus/results.json"
 ```
 
 Each count runs `check_rondeau_mpi.jl GPU "$count"` first with the same launcher

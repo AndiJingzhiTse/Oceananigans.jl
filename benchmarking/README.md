@@ -104,28 +104,28 @@ First generate a plan without launching computation:
 
 ```bash
 python3 benchmarking/benchmark_suite.py --config benchmarking/configs/nibi.json \
-  --output benchmarking/results/new_server/2026-10-07_full_suite --plan
+  --output benchmarking/results/hydrostatic_free_surface_models/new_server/2026-10-07_full_suite --plan
 ```
 
 Review the resulting configurations, then execute that plan:
 
 ```bash
 python3 benchmarking/benchmark_suite.py \
-  --output benchmarking/results/new_server/2026-10-07_full_suite --resume --watch --commit
+  --output benchmarking/results/hydrostatic_free_surface_models/new_server/2026-10-07_full_suite --resume --watch --commit
 ```
 
 Or submit the full table to Slurm in one command with a fresh directory:
 
 ```bash
 python3 benchmarking/benchmark_suite.py --config benchmarking/configs/nibi.json \
-  --output benchmarking/results/new_server/2026-10-07_full_suite --submit --watch --commit
+  --output benchmarking/results/hydrostatic_free_surface_models/new_server/2026-10-07_full_suite --submit --watch --commit
 ```
 
 For a standalone server or an existing local allocation, use a local profile:
 
 ```bash
 python3 benchmarking/benchmark_suite.py --config benchmarking/configs/server.example.json \
-  --output benchmarking/results/new_server/2026-10-07_full_suite --run --commit
+  --output benchmarking/results/hydrostatic_free_surface_models/new_server/2026-10-07_full_suite --run --commit
 ```
 
 Without a profile, local planning detects available CPU affinity and NVIDIA
@@ -141,7 +141,7 @@ Refresh saved outcomes and plots at any time:
 
 ```bash
 python3 benchmarking/benchmark_suite.py \
-  --output benchmarking/results/new_server/2026-10-07_full_suite --refresh --watch --commit
+  --output benchmarking/results/hydrostatic_free_surface_models/new_server/2026-10-07_full_suite --refresh --watch --commit
 ```
 
 Slurm submission also schedules an after-any CPU finalizer using the executable
@@ -190,20 +190,23 @@ utilities. Component ablation and historical Rondeau profiling retain their
 compatibility launchers; they are not additional series in this ten-series table.
 
 Older independent controllers live under `legacy/`. Thin wrappers at their
-original `results/hydrostatic_free_surface_models/nibi/` and `results/hydrostatic_free_surface_models/rondeau/` paths preserve existing queued
-jobs, finalizers and historical commands. Their dependent Julia/Slurm workers
-and environment setup remain in place. Historical measurements and snapshots
-have not been deleted or rewritten.
+relocated `results/hydrostatic_free_surface_models/nibi/` and
+`results/hydrostatic_free_surface_models/rondeau/` paths support the historical
+controllers and commands. Their dependent Julia/Slurm workers
+and environment setup remain in place. Historical measurements and logs are
+retained; executable snapshots use the relocated paths.
 
 Run validation without production benchmarks:
 
 ```bash
 module load python/3.11 scipy-stack/2025a  # Nibi; use your server's Python elsewhere
 python3 -m unittest discover -s benchmarking/tests -v
-python3 -m unittest discover -s benchmarking/results/nibi -p 'test_*series.py'
-python3 -m unittest discover -s benchmarking/results/nibi -p test_cpu_core_scaling.py
+python3 -m unittest discover -s benchmarking/results/hydrostatic_free_surface_models/nibi -p 'test_*series.py'
+python3 -m unittest discover -s benchmarking/results/hydrostatic_free_surface_models/nibi -p test_cpu_core_scaling.py
 ```
 
-The previous Nibi runtime path is ignored by Git and may contain compatibility
-aliases for already submitted jobs. Keep its installed Julia environment and
-controller locks intact. New checked-in results use `results/hydrostatic_free_surface_models/`.
+Hydrostatic benchmark runs live under `results/hydrostatic_free_surface_models/<server>/`.
+Use these paths directly; the former `results/nibi` and `results/rorqual` aliases
+have been removed. Queued jobs that embedded the old paths were resubmitted,
+with their original scripts and job IDs preserved in `run_metadata/path_relocation.json`.
+Raw historical logs retain the addresses used when those jobs ran.
