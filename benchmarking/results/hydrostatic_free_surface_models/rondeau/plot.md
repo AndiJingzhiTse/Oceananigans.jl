@@ -9,6 +9,7 @@ Each series folder contains its configurations, measurements and provenance. Onl
 | `cpu_scaling_360x180x50` | 8 | [Details](cpu_scaling_360x180x50/plot.md) |
 | `cpu_scaling_720x360x50` | 8 | [Details](cpu_scaling_720x360x50/plot.md) |
 | `gpu_component_ablation` | 6 | [Details](gpu_component_ablation/plot.md) |
+| `gpu_partition_super_fine` | 1 | [Details](gpu_partition_super_fine/plot.md) |
 | `gpu_profiling` | 2 | [Details](gpu_profiling/plot.md) |
 | `gpu_resolution` | 6 | [Details](gpu_resolution/plot.md) |
 | `gpu_scaling_720x360x50` | 3 | [Details](gpu_scaling_720x360x50/plot.md) |
@@ -75,6 +76,14 @@ Each series folder contains its configurations, measurements and provenance. Onl
 | [no_tracer_advection](gpu_component_ablation/no_tracer_advection/configuration.md) | 1 | 360 × 180 × 50 | 1 × 1 × 1 | 0.033992 / 0.034004 | — | Historical: complete ranks and timing aggregates checked; finite-state/placement checks unavailable |
 | [no_tracers](gpu_component_ablation/no_tracers/configuration.md) | 1 | 360 × 180 × 50 | 1 × 1 × 1 | 0.016565 / 0.016587 | — | Historical: complete ranks and timing aggregates checked; finite-state/placement checks unavailable |
 
+## gpu_partition_super_fine
+
+![gpu_partition_super_fine](gpu_partition_super_fine/gpu_partition_super_fine.svg)
+
+| Case | Ranks | Global resolution | Partition | Fastest / median s per step | Median MPI efficiency | Validation |
+|---|---:|---|---|---:|---:|---|
+| [2x1x1](gpu_partition_super_fine/2x1x1/configuration.md) | 2 | 1440 × 720 × 200 | 2 × 1 × 1 | 0.951312 / 0.953770 | — | Current suite checks |
+
 ## gpu_profiling
 
 ![gpu_profiling](gpu_profiling/gpu_profiling.svg)
@@ -130,7 +139,7 @@ Historical measurements retain their original validation labels until comparable
 |---|---:|---:|---|
 | gpu_resolution | 2 | 0 | [gpu_resolution](gpu_resolution/plot.md) |
 | gpu_scaling_super_fine | 2 | 0 | [gpu_scaling_super_fine](gpu_scaling_super_fine/plot.md) |
-| gpu_partition_super_fine | 0 | 6 | [gpu_partition_super_fine](gpu_partition_super_fine/plot.md) |
+| gpu_partition_super_fine | 1 | 4 | [gpu_partition_super_fine](gpu_partition_super_fine/plot.md) |
 | gpu_nsight_scaling_super_fine | 0 | 3 | Pending |
 | gpu_scaling_super_super_fine | 0 | 1 | Pending |
 | gpu_weak_scaling_super_fine | 0 | 2 | Pending |
