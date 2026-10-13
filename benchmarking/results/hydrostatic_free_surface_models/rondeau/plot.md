@@ -4,6 +4,7 @@ Each series folder contains its configurations, measurements and provenance. Onl
 
 | Series | Completed cases | Report |
 |---|---:|---|
+| `cpu_mpi_scaling_super_fine` | 1 | [Details](cpu_mpi_scaling_super_fine/plot.md) |
 | `cpu_profiling` | 1 | [Details](cpu_profiling/plot.md) |
 | `cpu_resolution` | 3 | [Details](cpu_resolution/plot.md) |
 | `cpu_scaling_360x180x50` | 8 | [Details](cpu_scaling_360x180x50/plot.md) |
@@ -15,6 +16,14 @@ Each series folder contains its configurations, measurements and provenance. Onl
 | `gpu_resolution` | 6 | [Details](gpu_resolution/plot.md) |
 | `gpu_scaling_720x360x50` | 3 | [Details](gpu_scaling_720x360x50/plot.md) |
 | `gpu_scaling_super_fine` | 2 | [Details](gpu_scaling_super_fine/plot.md) |
+
+## cpu_mpi_scaling_super_fine
+
+![cpu_mpi_scaling_super_fine](cpu_mpi_scaling_super_fine/cpu_mpi_scaling_super_fine.svg)
+
+| Case | Ranks | Global resolution | Partition | Fastest / median s per step | Median MPI efficiency | Validation |
+|---|---:|---|---|---:|---:|---|
+| [96_ranks](cpu_mpi_scaling_super_fine/96_ranks/configuration.md) | 96 | 1440 × 720 × 200 | 12 × 8 × 1 | 13.242835 / 13.322377 | — | Current suite checks |
 
 ## cpu_profiling
 
@@ -161,5 +170,5 @@ Historical measurements retain their original validation labels until comparable
 | gpu_weak_scaling_super_fine | 0 | 0 | [gpu_weak_scaling_super_fine](gpu_weak_scaling_super_fine/plot.md) |
 | gpu_scaling_super_super_super_fine | 0 | 0 | [gpu_scaling_super_super_super_fine](gpu_scaling_super_super_super_fine/plot.md) |
 | cpu_partition_cores_super_fine | 0 | 0 | [cpu_partition_cores_super_fine](cpu_partition_cores_super_fine/plot.md) |
-| cpu_mpi_scaling_super_fine | 0 | 7 | Pending |
+| cpu_mpi_scaling_super_fine | 1 | 6 | [cpu_mpi_scaling_super_fine](cpu_mpi_scaling_super_fine/plot.md) |
 | cpu_resolution | 0 | 3 | [cpu_resolution](cpu_resolution/plot.md) |
