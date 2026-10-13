@@ -33,8 +33,10 @@ def atomic_json(path, data):
     temporary.replace(path)
 
 
-def load_server(path=None):
+def load_server(path=None, model_type=None):
     user = json.loads(Path(path).read_text()) if path else {}
+    if model_type:
+        user['model_type'] = model_type
     backend = user.get('backend', 'local')
     assigned_cpus = os.sched_getaffinity(0) if hasattr(os, 'sched_getaffinity') else range(os.cpu_count())
     physical_cores = set()
@@ -66,6 +68,12 @@ def load_server(path=None):
     server.update(pressure_preconditioner='DiagonallyDominantPreconditioner',
                   pressure_max_iterations=5000, pressure_diagnostics=False,
                   pressure_preserve_residual=False, pressure_check_true_residual=True, separate_partitions=False)
+    server['cpu_time_overrides'] = {}
+    server['full_gpu_nodes'] = False
+    if user.get('model_type') == 'NonhydrostaticModel':
+        server.update(pressure_preconditioner='LocalFFTPreconditioner', separate_partitions=True,
+                      full_gpu_nodes=backend == 'slurm', cpu_time='08:00:00', gpu_time='06:00:00',
+                      cpu_time_overrides={'1': '72:00:00', '3': '48:00:00', '6': '24:00:00', '12': '12:00:00'})
     unknown = set(user) - set(server)
     if unknown:
         raise ValueError('Unknown server settings: ' + ', '.join(sorted(unknown)))
@@ -87,8 +95,13 @@ def load_server(path=None):
         raise ValueError('Unknown pressure_preconditioner')
     if not isinstance(server['pressure_max_iterations'], int) or server['pressure_max_iterations'] < 1:
         raise ValueError('pressure_max_iterations must be a positive integer')
-    if any(not isinstance(server[k], bool) for k in ('pressure_diagnostics', 'pressure_preserve_residual', 'pressure_check_true_residual', 'separate_partitions')):
+    if any(not isinstance(server[k], bool) for k in ('pressure_diagnostics', 'pressure_preserve_residual', 'pressure_check_true_residual', 'separate_partitions', 'full_gpu_nodes')):
         raise ValueError('pressure_diagnostics and separate_partitions must be boolean')
+    if (not isinstance(server['cpu_time_overrides'], dict) or
+            any(not re.fullmatch(r'[1-9]\d*', k) or not isinstance(v, str) or
+                not re.fullmatch(r'(?:\d+-)?\d{1,3}:\d{2}:\d{2}', v)
+                for k, v in server['cpu_time_overrides'].items())):
+        raise ValueError('cpu_time_overrides must map rank counts to Slurm time limits')
     if not isinstance(server['environment'], dict) or any(not isinstance(k, str) or not isinstance(v, str) for k, v in server['environment'].items()):
         raise ValueError('environment must map variable names to string values')
     for key in ('project', 'trace_root', 'environment_script', 'mpi_init', 'comparison_report'):
@@ -170,7 +183,9 @@ def launch_command(server, config, case_dir, metadata, trace_root):
             str(trace_root / config['series'] / case_dir.name), server['julia']]
     if server['backend'] == 'slurm':
         return ['srun', '--kill-on-bad-exit=1', '--distribution=block:block',
-                '--cpu-bind=cores' if config['device'] == 'CPU' else '--cpu-bind=none', *args]
+                '--cpu-bind=cores' if config['device'] == 'CPU' else '--cpu-bind=none',
+                *(['--gpus-per-task=' + (server['gpu_type'] + ':' if server['gpu_type'] else '') + '1']
+                  if config['device'] == 'GPU' and server.get('full_gpu_nodes', False) else []), *args]
     return [*server['mpi'], '-n', str(config['ranks']), '--map-by', 'core', '--bind-to', 'core', '--report-bindings', *args]
 
 
@@ -245,11 +260,17 @@ def sbatch_command(server, group, script):
     limit = server['partition_time'] if len(group) > 1 else server['gpu_time' if gpu else 'cpu_time']
     if not gpu and config['ranks'] < 24 and len(group) == 1:
         limit = f'{max(3, min(24, math.ceil(72 / config["ranks"]))):02}:00:00'
+    if not gpu:
+        limit = server.get('cpu_time_overrides', {}).get(str(config['ranks']), limit)
     args.append('--time=' + limit)
     if gpu:
         kind = server['gpu_type'] + ':' if server['gpu_type'] else ''
-        memory = '0' if tasks_per_node == per_node else server['gpu_memory']
-        args += [f'--gpus-per-task={kind}1', '--mem=' + memory]
+        full_nodes = server.get('full_gpu_nodes', False)
+        memory = '0' if tasks_per_node == per_node or full_nodes else server['gpu_memory']
+        assigned = per_node // tasks_per_node if full_nodes and tasks_per_node < per_node else 1
+        args += [f'--gpus-per-task={kind}{assigned}', '--mem=' + memory]
+        if full_nodes and tasks_per_node < per_node:
+            args += ['--exclusive']
     else:
         args.append('--hint=nomultithread')
         if server['cpu_constraint']:
@@ -259,7 +280,10 @@ def sbatch_command(server, group, script):
         else:
             memory = server['cpu_memory_base_gb'] + server['cpu_memory_per_rank_gb'] * tasks_per_node
             args.append(f'--mem={memory}G')
-    return args + server['gpu_sbatch_extra' if gpu else 'cpu_sbatch_extra'] + [str(script)]
+    extra = server['gpu_sbatch_extra' if gpu else 'cpu_sbatch_extra']
+    if any(a.startswith('--dependency=afterok:') for a in extra):
+        args.append('--kill-on-invalid-dep=yes')
+    return args + extra + [str(script)]
 
 
 def execute(folder, data):
@@ -439,7 +463,7 @@ def main():
     selected = tuple(args.series.split(','))
     if not selected or len(set(selected)) != len(selected) or set(selected) - set(SERIES):
         parser.error('Choose unique series names from: ' + ', '.join(SERIES))
-    server = None if args.refresh or args.resume else load_server(args.config)
+    server = None if args.refresh or args.resume else load_server(args.config, args.model)
     model_type = args.model or (server['model_type'] if server else 'HydrostaticFreeSurfaceModel')
     default_folder = ROOT / 'results' / MODEL_FOLDERS[model_type] / (
         '%s_full_suite' % datetime.now(timezone.utc).strftime('%Y-%m-%dT%H%M%SZ'))

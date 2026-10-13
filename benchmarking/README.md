@@ -226,8 +226,9 @@ Keep convergence tolerances unchanged when comparing preconditioners.
 The worker's vertical-line variant retains the full Poisson matrix diagonal
 when solving each vertical block. The local FFT variant applies the existing
 Fourier/tridiagonal solver to a Cartesian approximation of each rank's block,
-with the same stretched vertical coordinates and a screening term of
-`1 / max(local_Lx, local_Ly)^2` on distributed runs. The auxiliary Cartesian
+with the same stretched vertical coordinates. Its screening term is the sum
+of `1/local_L²` over the horizontally partitioned directions; an unsplit
+longitude direction retains its physical periodic topology. The auxiliary Cartesian
 grid changes only the approximate inverse: the model and pressure operator
 remain on the recorded latitude–longitude grid. This avoids distributed FFT
 transpose divisibility restrictions on partition comparisons. Record each
@@ -236,6 +237,13 @@ planning. Validate actual convergence rather than assuming an FFT approximation
 is adequate. Local FFT runs also check symmetry and the sign of the quadratic
 form before model initialization. These benchmark preconditioners do not modify
 package solver defaults.
+
+New nonhydrostatic suites default to the local FFT preconditioner, independent
+partition allocations, full GPU-node reservations on Slurm, eight-hour CPU
+allocations and six-hour GPU allocations. Low-rank CPU limits are 72/48/24/12
+hours at 1/3/6/12 ranks. Explicit server specs override these defaults.
+These limits accommodate the measured global-pressure cost while retaining
+the same two warmup steps and five ten-step windows as the hydrostatic runs.
 
 `pressure_check_true_residual: true` independently recomputes the final
 pressure residual outside the timing windows and rejects a result above its
@@ -251,6 +259,14 @@ allocation. Each layout then receives its own allocation and time limit;
 record placement because the layouts may run on different nodes. An allocation
 timeout does not mean every bundled case ran: cases without a start marker are
 reported as `NOT_RUN`, with the allocation outcome preserved.
+
+Server specs can set `cpu_time_overrides` to a mapping such as
+`{"1": "72:00:00", "3": "48:00:00"}` when measured nonhydrostatic costs
+require longer low-rank allocations. `full_gpu_nodes: true` reserves all GPUs
+on each node while the execution step assigns one GPU per MPI rank. Use it when
+fractional-GPU partitions are unavailable; record allocated resources separately
+from the GPUs actually used. One- and two-GPU timings still use one and two
+GPUs, although their allocations reserve four on Rorqual.
 
 Use a small CPU/GPU MPI validation run before submitting a new model's full
 suite. Keep validation timings separate from production results. Package

@@ -123,6 +123,37 @@ class SuiteTests(unittest.TestCase):
         case['configuration']['global_resolution'] = [72, 36, 200]
         self.assertEqual(report.efficiencies(case, baseline), (None, None))
 
+    def test_full_gpu_node_reservations_keep_one_gpu_per_execution_rank(self):
+        server = runner.load_server()
+        server.update(backend='slurm', gpu_type='h100', gpus_per_node=4, full_gpu_nodes=True)
+        case = plan.build_plan(dict(self.server(), model_type='NonhydrostaticModel'), ('gpu_scaling_super_fine',))[1]
+        cfg = case['configuration']
+        args = runner.sbatch_command(server, [case], Path('/tmp/allocation.sh'))
+        self.assertIn('--gpus-per-task=h100:2', args)
+        self.assertIn('--mem=0', args)
+        self.assertIn('--exclusive', args)
+        launch = runner.launch_command(server, cfg, Path('/tmp/case'), Path('/tmp/metadata'), Path('/tmp/traces'))
+        self.assertIn('--gpus-per-task=h100:1', launch)
+
+    def test_explicit_low_rank_cpu_time_overrides_are_honored(self):
+        server = runner.load_server()
+        server['cpu_time_overrides'] = {'1': '72:00:00'}
+        case = plan.build_plan(self.server(), ('cpu_mpi_scaling_super_fine',))[0]
+        args = runner.sbatch_command(server, [case], Path('/tmp/allocation.sh'))
+        self.assertIn('--time=72:00:00', args)
+
+    def test_nonhydrostatic_defaults_and_explicit_server_overrides(self):
+        server = runner.load_server(model_type='NonhydrostaticModel')
+        self.assertEqual(server['pressure_preconditioner'], 'LocalFFTPreconditioner')
+        self.assertTrue(server['separate_partitions'])
+        self.assertEqual(server['cpu_time_overrides']['1'], '72:00:00')
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp)/'server.json'
+            path.write_text(json.dumps(dict(cpu_time='02:00:00', pressure_preconditioner='DiagonallyDominantPreconditioner')))
+            explicit = runner.load_server(path, 'NonhydrostaticModel')
+            self.assertEqual(explicit['cpu_time'], '02:00:00')
+            self.assertEqual(explicit['pressure_preconditioner'], 'DiagonallyDominantPreconditioner')
+
     def test_partition_cases_can_have_independent_allocations(self):
         cases = plan.build_plan(self.server(), ('cpu_partition_cores_super_fine',))
         self.assertEqual(len(plan.allocation_groups(cases)), 1)

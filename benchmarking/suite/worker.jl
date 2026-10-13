@@ -54,9 +54,12 @@ function LocalFFTPreconditioner(grid, config, arch)
     Lx = grid.radius * deg2rad(360) * cosd(latitude) * nx / Nx
     Ly = grid.radius * deg2rad(165) * ny / Ny
     aux = RectilinearGrid(child_architecture(arch), Float64;
-        size=(nx, ny, nz), halo=(7, 7, 7), topology=(Bounded, Bounded, Bounded),
+        size=(nx, ny, nz), halo=(7, 7, 7),
+        topology=(config["partition"][1] == 1 ? Periodic : Bounded, Bounded, Bounded),
         x=(0, Lx), y=(0, Ly), z=ExponentialDiscretization(Nz, -5000, 0; scale=1250))
-    screened = config["ranks"] > 1
+    screening = (config["partition"][1] > 1 ? 1 / Lx^2 : 0) +
+                (config["partition"][2] > 1 ? 1 / Ly^2 : 0)
+    screened = screening > 0
     # The inhomogeneous formulation retains the local constant mode, which a
     # screened block needs to communicate pressure differences between ranks.
     formulation = screened ? InhomogeneousFormulation(ZDirection()) : nothing
@@ -64,11 +67,12 @@ function LocalFFTPreconditioner(grid, config, arch)
     solver = FourierTridiagonalPoissonSolver(aux, FFTW.ESTIMATE; tridiagonal_formulation=formulation)
     if screened
         dz = on_architecture(child_architecture(arch), diff(Array(znodes(aux, Face()))))
-        solver.batched_tridiagonal_solver.b .-= reshape(dz, 1, 1, nz) ./ max(Lx, Ly)^2
+        solver.batched_tridiagonal_solver.b .-= reshape(dz, 1, 1, nz) .* screening
     end
     details = Dict("auxiliary_grid_type" => "RectilinearGrid", "local_resolution" => [nx, ny, nz],
         "extent_m" => [Lx, Ly, 5000], "latitude_degrees" => latitude,
-        "screening_inverse_m2" => screened ? 1 / max(Lx, Ly)^2 : 0,
+        "screening_inverse_m2" => screening,
+        "x_topology" => config["partition"][1] == 1 ? "Periodic" : "Bounded",
         "fftw_threads" => 1, "planner" => "ESTIMATE")
     return LocalFFTPreconditioner{typeof(solver), typeof(details)}(solver, details)
 end

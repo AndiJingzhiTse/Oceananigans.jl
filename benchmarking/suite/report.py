@@ -512,7 +512,7 @@ def plot_series(folder, series, rows):
             ax.yaxis.set_major_formatter(StrMethodFormatter('{x:g}'))
         baseline = next((r for r in rows if r['efficiency_fastest'] is not None
                          and math.isclose(r['efficiency_fastest'], 1)), None)
-        if baseline:
+        if baseline and all(r['efficiency_fastest'] is not None for r in rows):
             ideal = [baseline['fastest'] if weak else baseline['fastest'] * baseline['ranks'] / n for n in x]
             label = ('Ideal: constant time' if weak else 'Ideal: one-rank fastest / ranks'
                      if baseline['ranks'] == 1 else f"Ideal: {baseline['ranks']}-rank fastest × {baseline['ranks']} / ranks")
