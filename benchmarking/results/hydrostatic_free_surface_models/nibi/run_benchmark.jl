@@ -22,5 +22,6 @@ MPI.Allreduce(correct ? 1 : 0, MPI.MIN, comm) == 1 || error("CUDA-aware MPI ring
 rank == 0 && println("PASS: $ranks distinct GPUs and CUDA-aware MPI")
 MPI.Barrier(comm)
 
-include(joinpath(@__DIR__, "..", "..", "run_benchmarks.jl"))
+benchmark_dir = first(filter(p -> isfile(joinpath(p, "run_benchmarks.jl")), [@__DIR__, dirname(@__DIR__), dirname(dirname(@__DIR__)), dirname(dirname(dirname(@__DIR__)))]))
+include(joinpath(benchmark_dir, "run_benchmarks.jl"))
 main()  # The suite's PROGRAM_FILE guard does not run when included by this wrapper.

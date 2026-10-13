@@ -6,7 +6,8 @@
 set -e
 SCRIPT_DIR=$3  # Slurm runs a spool copy, so BASH_SOURCE is not the source path.
 DRAC_ROOT=${DRAC_ROOT:-$HOME/Oceananigans-DRAC}
-source "$DRAC_ROOT/env/nibi.sh"
+export JULIA_DEPOT_PATH="${JULIA_DEPOT_PATH:-/scratch/$USER/julia_depot}"
+source "$DRAC_ROOT/env/drac.sh"
 set -eo pipefail
 export JULIA_NUM_THREADS=1
 export OPENBLAS_NUM_THREADS=1
@@ -14,7 +15,9 @@ export JULIA_PKG_PRECOMPILE_AUTO=0
 RUN_DIR=$1
 PARTITION=$2
 mkdir -p "$RUN_DIR"
-cd "$SCRIPT_DIR/../.."
+_benchmark_dir="$SCRIPT_DIR"
+while [[ ! -f "$_benchmark_dir/run_benchmarks.jl" ]]; do _benchmark_dir=$(dirname "$_benchmark_dir"); done
+cd "$_benchmark_dir"
 git rev-parse HEAD > "$RUN_DIR/revision.txt"
 module -t list > "$RUN_DIR/modules.txt" 2>&1
 scontrol show job "$SLURM_JOB_ID" > "$RUN_DIR/slurm_job.txt"

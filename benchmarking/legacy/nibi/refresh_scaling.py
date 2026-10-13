@@ -85,7 +85,7 @@ def refresh(folder, counts):
 
 
 def commit_results(folder, branch, message="Record completed Nibi 8, 16, 64, and 128 GPU benchmark attempts"):
-    repository = Path(__file__).resolve().parents[3]
+    repository = next(p for p in Path(__file__).resolve().parents if (p / ".git").exists())
     current = run("git", "-C", str(repository), "branch", "--show-current")
     if current.returncode or current.stdout.strip() != branch:
         raise RuntimeError("Results saved; automatic commit skipped because the git branch changed")

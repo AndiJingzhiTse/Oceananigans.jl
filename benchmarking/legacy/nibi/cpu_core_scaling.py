@@ -14,6 +14,7 @@ import time
 from refresh_scaling import TERMINAL, commit_results
 
 SCRIPT_DIR = Path(__file__).resolve().parent
+BENCHMARK_DIR = next(p for p in SCRIPT_DIR.parents if (p / "run_benchmarks.jl").is_file())
 BRANCH = 'codex/benchmarking'
 GRID = (1440, 720, 200)
 TERMINAL_STATES = TERMINAL | {'GEOMETRY_LIMIT'}
@@ -100,7 +101,7 @@ def submit(folder, layout):
     for name in ('cpu_core_scaling.py', 'cpu_core_benchmark.sbatch', 'run_cpu_core_benchmark.jl',
                  'finalize_cpu_cores.sbatch', 'refresh_scaling.py'):
         shutil.copy2(SCRIPT_DIR / name, metadata / name)
-    shutil.copy2(SCRIPT_DIR.parents[1] / 'src' / 'earth_ocean.jl', metadata / 'earth_ocean.jl')
+    shutil.copy2(BENCHMARK_DIR / 'src' / 'earth_ocean.jl', metadata / 'earth_ocean.jl')
     (metadata / 'revision.txt').write_text(run('git', '-C', str(SCRIPT_DIR), 'rev-parse', 'HEAD').stdout)
     snapshot = run('scontrol', 'show', 'partition', 'cpubase_bynode_b1')
     if snapshot.returncode:

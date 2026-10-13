@@ -2,7 +2,7 @@ using Pkg
 using TOML
 
 environment = abspath(only(ARGS))
-benchmark_dir = realpath(joinpath(@__DIR__, "..", ".."))
+benchmark_dir = first(filter(p -> isfile(joinpath(p, "run_benchmarks.jl")), [@__DIR__, dirname(@__DIR__), dirname(dirname(@__DIR__)), dirname(dirname(dirname(@__DIR__)))]))
 repository = dirname(benchmark_dir)
 mkpath(environment)
 

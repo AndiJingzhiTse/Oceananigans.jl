@@ -66,7 +66,7 @@ julia --project=benchmarking -e 'using Pkg; Pkg.instantiate(); Pkg.precompile()'
 On Nibi, the retained compatibility setup command prepares its isolated project:
 
 ```bash
-bash benchmarking/results/nibi/setup.sh
+bash benchmarking/results/hydrostatic_free_surface_models/nibi/setup.sh
 ```
 
 The loaded MPI library, NetCDF/HDF5 MPI dependencies and launcher must match.
@@ -182,7 +182,7 @@ utilities. Component ablation and historical Rondeau profiling retain their
 compatibility launchers; they are not additional series in this ten-series table.
 
 Older independent controllers live under `legacy/`. Thin wrappers at their
-original `results/nibi/` and `results/rondeau/` paths preserve existing queued
+original `results/hydrostatic_free_surface_models/nibi/` and `results/hydrostatic_free_surface_models/rondeau/` paths preserve existing queued
 jobs, finalizers and historical commands. Their dependent Julia/Slurm workers
 and environment setup remain in place. Historical measurements and snapshots
 have not been deleted or rewritten.
@@ -195,3 +195,7 @@ python3 -m unittest discover -s benchmarking/tests -v
 python3 -m unittest discover -s benchmarking/results/nibi -p 'test_*series.py'
 python3 -m unittest discover -s benchmarking/results/nibi -p test_cpu_core_scaling.py
 ```
+
+The previous Nibi runtime path is ignored by Git and may contain compatibility
+aliases for already submitted jobs. Keep its installed Julia environment and
+controller locks intact. New checked-in results use `results/hydrostatic_free_surface_models/`.

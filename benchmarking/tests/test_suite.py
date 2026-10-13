@@ -308,6 +308,23 @@ class SuiteTests(unittest.TestCase):
             self.assertEqual(cases[0]['state'],'TIMEOUT')
             kill.assert_called_once_with(1234,runner.signal.SIGTERM)
 
+    def test_rebased_server_config_preserves_environment_and_references(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path=Path(tmp)/'server.json'
+            path.write_text(json.dumps(dict(max_cpu_cores=1,max_gpus=0,environment={'JULIA_DEPOT_PATH':'/tmp/depot with spaces'},reference_suites=['/tmp/reference'],gpu_scaling_partition='x')))
+            server=runner.load_server(path)
+            self.assertEqual(server['reference_suites'],['/tmp/reference'])
+            self.assertIn("export JULIA_DEPOT_PATH='/tmp/depot with spaces'",runner.environment_lines(server))
+            case=next(c for c in plan.build_plan(dict(max_cpu_cores=192,max_gpus=4,gpu_scaling_partition='x'),('gpu_scaling_super_fine',)) if c['ranks']==4)
+            self.assertEqual(case['configuration']['partition'],[4,1,1])
+
+    def test_historical_weak_results_without_new_schema_fields(self):
+        baseline=dict(series='gpu_weak_scaling_super_fine',state='COMPLETED',ranks=1,configuration={},measurement=dict(fastest=1,median=1))
+        case=dict(series='gpu_weak_scaling_super_fine',state='COMPLETED',ranks=4,configuration={},measurement=dict(fastest=1.25,median=1.25))
+        self.assertEqual(report.efficiencies(case,baseline),(0.8,0.8))
+        larger=dict(series='gpu_scaling_super_super_fine',state='COMPLETED',ranks=4,configuration={},measurement=dict(fastest=1,median=1))
+        self.assertEqual(report.scaling_baselines([larger])[larger['series']],larger)
+
     def test_resume_does_not_resubmit_pending_jobs(self):
         cases=plan.build_plan(self.server(),('gpu_partition_super_fine',))
         cases[0]['state']='PENDING';cases[1]['state']='RUNNING'

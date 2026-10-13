@@ -4,7 +4,9 @@ set -euo pipefail
 # Run inside an allocation or on the GPUs and cores assigned to you.
 suite=${1:-all}
 script_dir=${BENCHMARK_SCRIPT_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)}
-repo_root=$(cd "$script_dir/../../.." && pwd)
+benchmark_dir="$script_dir"
+while [[ ! -f "$benchmark_dir/run_benchmarks.jl" ]]; do benchmark_dir=$(dirname "$benchmark_dir"); done
+repo_root=$(dirname "$benchmark_dir")
 cd "$repo_root"
 dry_run=${DRY_RUN:-0}
 julia_bin=${JULIA_BIN:-julia}

@@ -26,5 +26,6 @@ MPI.Allreduce(all(receive_buffer .== source) ? 1 : 0, MPI.MIN, comm) == 1 || err
 println("rank $rank on $(gethostname()): 192 threads; CPU affinity $affinity")
 MPI.Barrier(comm)
 rank == 0 && println("PASS: $ranks distinct CPU nodes and CPU MPI ring")
-include(joinpath(@__DIR__, "..", "..", "run_benchmarks.jl"))
+benchmark_dir = first(filter(p -> isfile(joinpath(p, "run_benchmarks.jl")), [@__DIR__, dirname(@__DIR__), dirname(dirname(@__DIR__)), dirname(dirname(dirname(@__DIR__)))]))
+include(joinpath(benchmark_dir, "run_benchmarks.jl"))
 main()

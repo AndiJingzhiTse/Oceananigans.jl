@@ -5,6 +5,7 @@ import json
 import math
 from pathlib import Path
 import statistics
+from .plan import GPU_BASELINES
 
 TERMINAL = {'COMPLETED', 'FAILED', 'CANCELLED', 'TIMEOUT', 'OUT_OF_MEMORY', 'NODE_FAIL',
             'PREEMPTED', 'BOOT_FAIL', 'DEADLINE', 'REVOKED', 'INVALID_RESULTS',
@@ -100,13 +101,13 @@ def validate(case_dir, config):
 def scaling_baselines(cases):
     return {c['series']: c for c in cases if c['state'] == 'COMPLETED'
             and 'measurement' in c and 'scaling' in c['series']
-            and c['ranks'] == c['configuration'].get('baseline_ranks', 1)}
+            and c['ranks'] == c['configuration'].get('baseline_ranks', GPU_BASELINES.get(c['series'], 1))}
 
 
 def efficiencies(case, baseline):
     if not baseline or 'measurement' not in case:
         return None, None
-    divisor = 1 if case['configuration'].get('scaling_type') == 'weak' else case['ranks'] / baseline['ranks']
+    divisor = 1 if (case['configuration'].get('scaling_type') == 'weak' or case['series'] == 'gpu_weak_scaling_super_fine') else case['ranks'] / baseline['ranks']
     return tuple(baseline['measurement'][s] / (case['measurement'][s] * divisor)
                  for s in ('fastest', 'median'))
 
@@ -224,6 +225,8 @@ def scaling_tables(folder, cases, reference_suites, plotting=False):
             percent = f'{100*efficiency:.1f}%' if efficiency is not None else '—'
             throughput = f'{cells / median:.3e}' if median is not None else '—'
             memory = measurement.get('gpu_memory_used_bytes')
+            if memory is None and measurement.get('gpu_memory_max_gib') is not None:
+                memory = measurement['gpu_memory_max_gib'] * 2**30
             gib = f'{memory / 2**30:.2f}' if memory is not None else '—'
             lines.append(f"| {cfg['grid_name']} | {resolution} ({cells:,}) | {case['ranks']} | {nodes if nodes is not None else '—'} | {partition} | {cfg['dt']:g} | {elapsed} | {percent} | {throughput} | {gib} | {case['state']} |")
         lines.append('')

@@ -158,7 +158,7 @@ final response.
 For new standard benchmark series, use `benchmarking/benchmark_suite.py`
 with a server configuration under `benchmarking/configs/`. Shared planning,
 execution and reporting live in `benchmarking/suite/`. The older entry points
-under `benchmarking/results/nibi/` and `benchmarking/results/rondeau/` are
+under `benchmarking/results/hydrostatic_free_surface_models/nibi/` and `benchmarking/results/hydrostatic_free_surface_models/rondeau/` are
 historical compatibility launchers; preserve them while queued jobs depend
 on their paths. See `benchmarking/README.md` for the full series table.
 

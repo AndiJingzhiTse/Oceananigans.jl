@@ -2,7 +2,8 @@
 using OceananigansBenchmarks, Oceananigans, CUDA, NCDatasets, MPI, JSON
 include(joinpath(ENV["OCEANANIGANS_DRAC_ROOT"], "src", "drac_mpi.jl"))
 drac_mpi_init()
-include(joinpath(@__DIR__, "..", "..", "run_benchmarks.jl"))
+benchmark_dir = first(filter(p -> isfile(joinpath(p, "run_benchmarks.jl")), [@__DIR__, dirname(@__DIR__), dirname(dirname(@__DIR__)), dirname(dirname(dirname(@__DIR__)))]))
+include(joinpath(benchmark_dir, "run_benchmarks.jl"))
 using Oceananigans.Fields: interior
 
 case_dir = ENV["NSIGHT_CASE_DIR"]

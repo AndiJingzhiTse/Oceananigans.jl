@@ -3,7 +3,9 @@ set -euo pipefail
 
 # Run six Earth-ocean configurations sequentially on one visible GPU.
 script_dir=${BENCHMARK_SCRIPT_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)}
-repo_root=$(cd "$script_dir/../../.." && pwd)
+benchmark_dir="$script_dir"
+while [[ ! -f "$benchmark_dir/run_benchmarks.jl" ]]; do benchmark_dir=$(dirname "$benchmark_dir"); done
+repo_root=$(dirname "$benchmark_dir")
 cd "$repo_root"
 
 julia_bin=${JULIA_BIN:-julia}

@@ -13,6 +13,7 @@ import shutil
 import time
 
 SCRIPT_DIR = Path(__file__).resolve().parent
+BENCHMARK_DIR = next(p for p in SCRIPT_DIR.parents if (p / "run_benchmarks.jl").is_file())
 FIELDS = ("gpus", "nodes", "partition", "job_id", "state", "exit_code", "reason")
 
 
@@ -90,7 +91,7 @@ def main():
             shutil.copy2(SCRIPT_DIR / "environment" / name, metadata / name)
         for name in ("benchmark.sbatch", "run_benchmark.jl", "scaling.py", "plot_scaling.py"):
             shutil.copy2(SCRIPT_DIR / name, metadata / name)
-        repository = SCRIPT_DIR.parents[2]
+        repository = BENCHMARK_DIR.parent
         (metadata / "revision.txt").write_text(command("git", "-C", str(repository), "rev-parse", "HEAD").stdout)
         (metadata / "working_tree.txt").write_text(command("git", "-C", str(repository), "status", "--short").stdout)
         drac_root = Path(os.environ.get("DRAC_ROOT", str(Path.home() / "Oceananigans-DRAC")))

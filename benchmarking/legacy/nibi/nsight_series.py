@@ -15,6 +15,7 @@ from refresh_scaling import TERMINAL, commit_results
 from scaling import read_results
 
 SCRIPT_DIR = Path(__file__).resolve().parent
+BENCHMARK_DIR = next(p for p in SCRIPT_DIR.parents if (p / "run_benchmarks.jl").is_file())
 BRANCH = 'codex/benchmarking'
 CASES = {1: ('1x1x1',), 2: ('2x1x1', '1x2x1'), 4: ('4x1x1', '2x2x1', '1x4x1')}
 CATEGORIES = ('Gc', 'Gu', 'Gv', 'Others')
@@ -51,7 +52,7 @@ def submit(folder):
     for name in ('nsight_series.py', 'nsight_series.sbatch', 'nsight_rank.sh', 'run_gpu_nsight.jl',
                  'finalize_nsight.sbatch', 'scaling.py', 'refresh_scaling.py'):
         shutil.copy2(SCRIPT_DIR / name, metadata / name)
-    for source in (SCRIPT_DIR / '../../run_benchmarks.jl', SCRIPT_DIR / '../../src/earth_ocean.jl'):
+    for source in (BENCHMARK_DIR / 'run_benchmarks.jl', BENCHMARK_DIR / 'src/earth_ocean.jl'):
         shutil.copy2(source, metadata / source.name)
     (metadata / 'revision.txt').write_text(run('git', '-C', str(SCRIPT_DIR), 'rev-parse', 'HEAD').stdout)
     trace_root = Path('/scratch/anditse/nsight_traces') / folder.name

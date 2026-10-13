@@ -4,7 +4,7 @@ New studies use `../benchmark_suite.py` and its shared `../suite/` planner,
 worker and reporting modules. This directory retains the older independent
 Nibi and Rondeau controllers to reproduce historical runs and finish queued jobs.
 
-Use their compatibility entry points under `results/nibi/` or `results/rondeau/`.
+Use their compatibility entry points under `results/hydrostatic_free_surface_models/nibi/` or `results/hydrostatic_free_surface_models/rondeau/`.
 Python wrappers preserve the original `__file__` and import context, so existing
 relative paths, source snapshots and finalizers continue to resolve. Rondeau
 shell wrappers supply their original script directory explicitly.

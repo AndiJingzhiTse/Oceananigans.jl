@@ -3,14 +3,17 @@ set -e
 RUN_DIR=$1
 PARTITION=$2
 SCRIPT_DIR=$3
-source "${DRAC_ROOT:-$HOME/Oceananigans-DRAC}/env/nibi.sh"
+export JULIA_DEPOT_PATH="${JULIA_DEPOT_PATH:-/scratch/$USER/julia_depot}"
+source "${DRAC_ROOT:-$HOME/Oceananigans-DRAC}/env/drac.sh"
 set -eo pipefail
 export JULIA_NUM_THREADS=192
 export OPENBLAS_NUM_THREADS=1
 export JULIA_PKG_PRECOMPILE_AUTO=0
 export CPU_CASE_DIR="$RUN_DIR"
 mkdir -p "$RUN_DIR"
-cd "$SCRIPT_DIR/../.."
+_benchmark_dir="$SCRIPT_DIR"
+while [[ ! -f "$_benchmark_dir/run_benchmarks.jl" ]]; do _benchmark_dir=$(dirname "$_benchmark_dir"); done
+cd "$_benchmark_dir"
 git rev-parse HEAD > "$RUN_DIR/revision.txt"
 module -t list > "$RUN_DIR/modules.txt" 2>&1
 scontrol show job "$SLURM_JOB_ID" > "$RUN_DIR/slurm_job.txt"
