@@ -8,6 +8,7 @@ Latest accepted measurement for each case. Configuration links record the actual
 |---|---:|---:|---:|---|
 | [96_ranks](96_ranks/configuration.md) | 96 | 13.242835 | 13.322377 | Current suite checks |
 | [48_ranks](48_ranks/configuration.md) | 48 | 22.291999 | 22.308046 | Current suite checks |
+| [24_ranks](24_ranks/configuration.md) | 24 | 41.004804 | 41.094211 | Current suite checks |
 
 <!-- current-rerun -->
 ## Current rerun
@@ -23,3 +24,4 @@ Highest completed case: **96_ranks**.
 | 192_ranks | 1440 × 720 × 200 | 16 × 12 × 1 | RESOURCE_LIMIT | Requires 192; configured capacity is 128 |
 | 96_ranks | 1440 × 720 × 200 | 12 × 8 × 1 | COMPLETED | Rank results, finite fields and resource placement verified |
 | 48_ranks | 1440 × 720 × 200 | 8 × 6 × 1 | COMPLETED | Rank results, finite fields and resource placement verified |
+| 24_ranks | 1440 × 720 × 200 | 6 × 4 × 1 | COMPLETED | Rank results, finite fields and resource placement verified |
