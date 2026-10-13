@@ -9,7 +9,7 @@ Each series folder contains its configurations, measurements and provenance. Onl
 | `cpu_scaling_360x180x50` | 8 | [Details](cpu_scaling_360x180x50/plot.md) |
 | `cpu_scaling_720x360x50` | 8 | [Details](cpu_scaling_720x360x50/plot.md) |
 | `gpu_component_ablation` | 6 | [Details](gpu_component_ablation/plot.md) |
-| `gpu_partition_super_fine` | 1 | [Details](gpu_partition_super_fine/plot.md) |
+| `gpu_partition_super_fine` | 2 | [Details](gpu_partition_super_fine/plot.md) |
 | `gpu_profiling` | 2 | [Details](gpu_profiling/plot.md) |
 | `gpu_resolution` | 6 | [Details](gpu_resolution/plot.md) |
 | `gpu_scaling_720x360x50` | 3 | [Details](gpu_scaling_720x360x50/plot.md) |
@@ -82,6 +82,7 @@ Each series folder contains its configurations, measurements and provenance. Onl
 
 | Case | Ranks | Global resolution | Partition | Fastest / median s per step | Median MPI efficiency | Validation |
 |---|---:|---|---|---:|---:|---|
+| [1x2x1](gpu_partition_super_fine/1x2x1/configuration.md) | 2 | 1440 × 720 × 200 | 1 × 2 × 1 | 0.991286 / 0.992599 | — | Current suite checks |
 | [2x1x1](gpu_partition_super_fine/2x1x1/configuration.md) | 2 | 1440 × 720 × 200 | 2 × 1 × 1 | 0.951312 / 0.953770 | — | Current suite checks |
 
 ## gpu_profiling
@@ -139,7 +140,7 @@ Historical measurements retain their original validation labels until comparable
 |---|---:|---:|---|
 | gpu_resolution | 2 | 0 | [gpu_resolution](gpu_resolution/plot.md) |
 | gpu_scaling_super_fine | 2 | 0 | [gpu_scaling_super_fine](gpu_scaling_super_fine/plot.md) |
-| gpu_partition_super_fine | 1 | 4 | [gpu_partition_super_fine](gpu_partition_super_fine/plot.md) |
+| gpu_partition_super_fine | 2 | 3 | [gpu_partition_super_fine](gpu_partition_super_fine/plot.md) |
 | gpu_nsight_scaling_super_fine | 0 | 3 | Pending |
 | gpu_scaling_super_super_fine | 0 | 1 | Pending |
 | gpu_weak_scaling_super_fine | 0 | 2 | Pending |

@@ -7,6 +7,7 @@ Latest accepted measurement for each case. Configuration links record the actual
 | Case | MPI ranks | Fastest s/step | Median s/step | Validation |
 |---|---:|---:|---:|---|
 | [2x1x1](2x1x1/configuration.md) | 2 | 0.951312 | 0.953770 | Current suite checks |
+| [1x2x1](1x2x1/configuration.md) | 2 | 0.991286 | 0.992599 | Current suite checks |
 
 <!-- current-rerun -->
 ## Current rerun
@@ -21,6 +22,7 @@ Highest completed case: **2x1x1**.
 |---|---|---|---|---|
 | 1x1x1 | 1440 × 720 × 200 | 1 × 1 × 1 | FAILED | GPU VRAM exhausted; see original job.out and profiler logs in scratch study |
 | 2x1x1 | 1440 × 720 × 200 | 2 × 1 × 1 | COMPLETED | Rank results, finite fields and resource placement verified |
+| 1x2x1 | 1440 × 720 × 200 | 1 × 2 × 1 | COMPLETED | Rank results, finite fields and resource placement verified |
 | 8x1x1 | 1440 × 720 × 200 | 8 × 1 × 1 | RESOURCE_LIMIT | Requires 8; configured capacity is 4 |
 | 4x2x1 | 1440 × 720 × 200 | 4 × 2 × 1 | RESOURCE_LIMIT | Requires 8; configured capacity is 4 |
 | 2x4x1 | 1440 × 720 × 200 | 2 × 4 × 1 | RESOURCE_LIMIT | Requires 8; configured capacity is 4 |
