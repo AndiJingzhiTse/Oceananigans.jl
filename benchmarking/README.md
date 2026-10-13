@@ -3,23 +3,112 @@
 One shared controller runs benchmark series for `HydrostaticFreeSurfaceModel`
 (default) or `NonhydrostaticModel`. Run commands from the repository root.
 
+## Folder structure
+
+Shared code and instructions live at the top level. Model-specific measurements
+live under `results/`.
+
 ```text
 benchmarking/
-├── README.md                 Instructions and series definitions
-├── Project.toml              Julia benchmark environment
-├── scripts/                  Shared entry points, machine profiles, environment setup
-├── src/                      Julia benchmark models; suite planner, worker and reports
-├── test/                     Tests of planning, validation, launching and reporting
-└── results/
-    ├── hydrostatic_free_surface_models/
-    └── non_hydrostatic_models/
-        └── <machine>/
-            ├── plot.md       Combined machine report
-            └── <series>/
-                ├── plot.md, results.csv, plots
-                ├── suite.json
-                └── <case>/   Configuration, per-rank results and provenance
+├── .gitignore
+├── README.md                          Instructions and series definitions
+├── Project.toml                       Benchmark package and dependency requirements
+├── Manifest.toml                      Resolved local dependency versions, when present
+├── LocalPreferences.toml              Local CUDA/MPI preferences, when present
+├── scripts/
+│   ├── benchmark_suite.py             Shared controller for both model types
+│   ├── run_benchmarks.jl              Configurable hydrostatic and I/O benchmarks
+│   ├── generate_bathymetry.jl         Optional bathymetry preparation
+│   ├── configs/
+│   │   ├── Andi-5070ti.json
+│   │   ├── fir.json
+│   │   ├── nibi.json
+│   │   ├── rondeau.json
+│   │   └── rorqual.json
+│   └── env/
+│       ├── setup.sh                   Cluster environment setup entry point
+│       ├── setup_environment.jl       Creates the isolated Julia environment
+│       ├── modules.sh                 Cluster software modules
+│       └── drac_mpi.jl                System OpenMPI initialization
+├── src/
+│   ├── OceananigansBenchmarks.jl      Julia benchmark package entry point
+│   ├── earth_ocean.jl                 Benchmark model construction
+│   ├── metadata.jl
+│   ├── result.jl
+│   ├── timestepping.jl
+│   ├── utils.jl
+│   └── suite/
+│       ├── plan.py                    Series configurations and resource planning
+│       ├── rank.sh                    MPI rank launcher and profiler capture
+│       ├── worker.jl                  Shared model validation and timing worker
+│       ├── report.py                  Validation, timing reports and plots
+│       └── catalog.py                 Result publication and machine reports
+├── test/
+│   └── test_suite.py
+└── results/                           Curated measurements; layout below
 ```
+
+`Project.toml` defines the benchmark environment selected by
+`julia --project=benchmarking`. `Manifest.toml` records the resolved dependency
+versions, and `LocalPreferences.toml` configures the local CUDA/MPI installation.
+The optional generated bathymetry files go into `data/bathymetry/` and are ignored
+by Git.
+
+### Results by model and machine
+
+```text
+results/
+├── hydrostatic_free_surface_models/
+│   ├── Andi-5070ti/
+│   ├── fir/
+│   ├── nibi/
+│   ├── rondeau/
+│   └── rorqual/
+└── non_hydrostatic_models/
+    ├── Andi-5070ti/
+    ├── fir/
+    ├── nibi/
+    ├── rondeau/
+    └── rorqual/
+```
+
+Each machine uses the following layout. `<series>` is a series name such as
+`gpu_scaling_super_fine`; `<case>` is a configuration such as `4_ranks`, `default`,
+or `2x2x1`. Optional evidence files depend on what the original run recorded.
+
+```text
+<machine>/
+├── plot.md                            Combined report for this machine and model
+└── <series>/                          One folder for each available series
+    ├── plot.md                        Series report
+    ├── results.csv                    Timing and efficiency table
+    ├── <series>.svg                   Timing/scaling plot
+    ├── <series>_kernels.svg           Kernel shares, when available
+    ├── suite.json                     Accepted cases and their measurement metadata
+    └── <case>/                        One folder per retained configuration
+        ├── configuration.json         Model, grid, partition and numerical settings
+        ├── configuration.md           Readable settings and validation limits
+        ├── results.json               Original per-rank measurements
+        ├── layout.json                Rank placement, when available
+        ├── rank_<n>/                  Per-rank profiler summaries, when available
+        └── provenance/
+            ├── record.json            Original run, measurement date and result hash
+            ├── revision.txt           Source revision, when recorded
+            ├── Project.toml           Original environment requirements, when saved
+            ├── Manifest.toml          Original resolved dependencies, when saved
+            ├── LocalPreferences.toml  Original machine preferences, when saved
+            └── source.tar.gz          Source snapshot for newly published cases
+```
+
+Historical placement records may instead be named `cpu_layout.json` or
+`gpu_layout.json`. Additional profile summaries, capture references and execution
+metadata remain alongside the case measurements. Raw Nsight captures and SQLite
+databases are ignored by Git.
+
+Scratch studies follow the same machine → series → case hierarchy, with a
+`run_metadata/` folder inside each series containing executable source snapshots
+and environment records. Allocation scripts and execution logs stay in the scratch
+study; publication copies accepted measurements and provenance into `results/`.
 
 Both model folders contain the same five machines: `Andi-5070ti`, `fir`, `nibi`,
 `rondeau`, and `rorqual`. Machine folders with no accepted measurements contain a
