@@ -256,3 +256,19 @@ See "git help gc" for manual housekeeping.
  create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_pressure_recovery_full_suite/cpu_mpi_scaling_super_fine/384_ranks/slurm_job.txt
  create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_pressure_recovery_full_suite/cpu_mpi_scaling_super_fine/384_ranks/started.txt
 
+[codex/benchmarking c8db770c5] Record validated benchmark suite results and job outcomes
+ 22 files changed, 671089 insertions(+), 394 deletions(-)
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_pressure_recovery_full_suite/cpu_mpi_scaling_super_fine/384_ranks/exit_code.txt
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_pressure_recovery_full_suite/cpu_mpi_scaling_super_fine/384_ranks/finished.txt
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_pressure_recovery_full_suite/cpu_mpi_scaling_super_fine/384_ranks/results.json
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_pressure_recovery_full_suite/cpu_partition_cores_super_fine/192x1x1/allocation.out
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_pressure_recovery_full_suite/cpu_partition_cores_super_fine/192x1x1/compute_hardware.txt
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_pressure_recovery_full_suite/cpu_partition_cores_super_fine/192x1x1/job.out
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_pressure_recovery_full_suite/cpu_partition_cores_super_fine/192x1x1/julia_version.txt
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_pressure_recovery_full_suite/cpu_partition_cores_super_fine/192x1x1/layout.json
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_pressure_recovery_full_suite/cpu_partition_cores_super_fine/192x1x1/modules.txt
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_pressure_recovery_full_suite/cpu_partition_cores_super_fine/192x1x1/nsight_version.txt
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_pressure_recovery_full_suite/cpu_partition_cores_super_fine/192x1x1/preconditioner_validation.json
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_pressure_recovery_full_suite/cpu_partition_cores_super_fine/192x1x1/slurm_job.txt
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_pressure_recovery_full_suite/cpu_partition_cores_super_fine/192x1x1/started.txt
+
