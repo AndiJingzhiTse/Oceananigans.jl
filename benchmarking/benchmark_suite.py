@@ -15,8 +15,8 @@ import subprocess
 import sys
 import time
 
-from suite.plan import SERIES, GRIDS, build_plan, allocation_groups
-from suite.report import TERMINAL, validate, write_report
+from suite.plan import SERIES, GRIDS, MODEL_FOLDERS, build_plan, allocation_groups
+from suite.report import TERMINAL, validate, write_report, write_model_comparison
 
 ROOT = Path(__file__).resolve().parent
 REPO = ROOT.parent
@@ -61,7 +61,8 @@ def load_server(path=None):
                   cpu_sbatch_extra=[], gpu_sbatch_extra=[],
                   trace_root=str(Path(os.environ.get('SCRATCH', str(ROOT / 'results'))) / 'benchmark_traces'),
                   case_timeout_seconds=86400, matplotlib=True, python='python3', report_modules=[],
-                  reference_suites=[], replacement_suites=[], environment={}, gpu_scaling_partition='balanced')
+                  reference_suites=[], replacement_suites=[], environment={}, gpu_scaling_partition='balanced',
+                  model_type='HydrostaticFreeSurfaceModel', comparison_suites=[], comparison_report='')
     unknown = set(user) - set(server)
     if unknown:
         raise ValueError('Unknown server settings: ' + ', '.join(sorted(unknown)))
@@ -72,20 +73,24 @@ def load_server(path=None):
         raise ValueError('CPU capacity and per-node resource counts must be positive integers')
     if not isinstance(server['max_gpus'], int) or server['max_gpus'] < 0:
         raise ValueError('max_gpus must be a nonnegative integer')
-    for key in ('mpi', 'cpu_sbatch_extra', 'gpu_sbatch_extra', 'report_modules', 'reference_suites', 'replacement_suites'):
+    for key in ('mpi', 'cpu_sbatch_extra', 'gpu_sbatch_extra', 'report_modules', 'reference_suites', 'replacement_suites', 'comparison_suites'):
         if not isinstance(server[key], list) or any(not isinstance(a, str) for a in server[key]):
             raise ValueError(f'{key} must be an array of command arguments')
     if server['gpu_scaling_partition'] not in ('balanced', 'x'):
         raise ValueError('gpu_scaling_partition must be balanced or x')
+    if server['model_type'] not in MODEL_FOLDERS:
+        raise ValueError('Unknown model_type')
     if not isinstance(server['environment'], dict) or any(not isinstance(k, str) or not isinstance(v, str) for k, v in server['environment'].items()):
         raise ValueError('environment must map variable names to string values')
-    for key in ('project', 'trace_root', 'environment_script', 'mpi_init'):
+    for key in ('project', 'trace_root', 'environment_script', 'mpi_init', 'comparison_report'):
         if server[key]:
             server[key] = str(Path(os.path.expandvars(server[key])).expanduser().resolve())
     server['reference_suites'] = [str(Path(os.path.expandvars(p)).expanduser().resolve())
                                 for p in server['reference_suites']]
     server['replacement_suites'] = [str(Path(os.path.expandvars(p)).expanduser().resolve())
                                   for p in server['replacement_suites']]
+    server['comparison_suites'] = [str(Path(os.path.expandvars(p)).expanduser().resolve())
+                                  for p in server['comparison_suites']]
     return server
 
 
@@ -117,10 +122,12 @@ def snapshot(folder, server):
 def config_markdown(config):
     return ('# Benchmark configuration\n\n'
             f"Series: {config['series']}. Device: {config['device']}; MPI ranks: {config['ranks']}; one thread/rank.\n"
+            f"Model: {config.get('model_type', 'HydrostaticFreeSurfaceModel')}; surface: {config.get('free_surface', 'SplitExplicitFreeSurface')}.\n"
             f"Grid: {config['grid_name']}, {' × '.join(map(str, config['global_resolution']))}, {config['grid_type']}.\n"
             f"Partition: {' × '.join(map(str, config['partition']))}.\n"
             f"Local resolution: x {min(config['x_sizes'])}–{max(config['x_sizes'])}, y {min(config['y_sizes'])}–{max(config['y_sizes'])}, z {config['global_resolution'][2]}.\n"
-            'Float64; WENOVectorInvariantDefault, WENO7, CATKE, T/S, SplitRungeKutta3.\n'
+            f"Float64; momentum {config['momentum_advection']}, tracers {config['tracer_advection']}, {config['closure']}, T/S, {config['timestepper']}.\n"
+            f"Viscosity={config.get('viscosity')}; diffusivity={config.get('diffusivity')} m²/s; pressure solver={config.get('pressure_solver')}.\n"
             f"Δt={config['dt']} s; free-surface substeps={config['free_surface_substeps']} requested; extend_halos={config['extend_free_surface_halos']}.\n"
             f"Two untimed steps, {config['samples']} windows of {config['time_steps']} steps. Profile={config['profile']}.\n")
 
@@ -214,7 +221,8 @@ def sbatch_command(server, group, script):
     # Slurm can distribute a non-multiple rank count evenly without allocating
     # more ranks than requested. Recorded layouts verify the actual mapping.
     tasks_per_node = math.ceil(config['ranks'] / nodes)
-    args = ['sbatch', '--parsable', f'--job-name=bench_{config["series"][:30]}',
+    prefix = 'bench_nh_' if config.get('model_type') == 'NonhydrostaticModel' else 'bench_'
+    args = ['sbatch', '--parsable', f'--job-name={prefix}{config["series"][:30]}',
             f'--nodes={nodes}', f'--ntasks={config["ranks"]}', f'--ntasks-per-node={tasks_per_node}',
             f'--cpus-per-task={server["gpu_host_cores"] if gpu else 1}',
             f'--output={script.parent}/allocation.out']
@@ -361,6 +369,9 @@ def refresh(folder, data, query_slurm=True):
     write_report(folder, cases, plotting=data['server']['matplotlib'],
                  reference_suites=data['server'].get('reference_suites', []),
                  replacement_suites=data['server'].get('replacement_suites', []))
+    if data['server'].get('comparison_report'):
+        write_model_comparison(Path(data['server']['comparison_report']), folder, cases,
+                               data['server'].get('comparison_suites', []))
     return all(c['state'] in TERMINAL for c in cases)
 
 
@@ -374,6 +385,12 @@ def commit_artifacts(folder):
     staged = command(['git', '-C', repo, 'add', '--', str(folder.relative_to(repo))])
     if staged.returncode:
         raise RuntimeError(staged.stdout)
+    data = json.loads((folder / 'suite.json').read_text())
+    comparison = data['server'].get('comparison_report')
+    if comparison:
+        result = command(['git', '-C', repo, 'add', '--', str(Path(comparison).relative_to(repo))])
+        if result.returncode:
+            raise RuntimeError(result.stdout)
     if command(['git', '-C', repo, 'diff', '--cached', '--quiet']).returncode:
         committed = command(['git', '-C', repo, 'commit', '-m', 'Record validated benchmark suite results and job outcomes'])
         if committed.returncode:
@@ -388,6 +405,9 @@ def main():
     parser.add_argument('--series', default=','.join(SERIES), help='Comma-separated subset; default all series')
     parser.add_argument('--max-cpu-cores', type=int)
     parser.add_argument('--max-gpus', type=int)
+    parser.add_argument('--model', choices=tuple(MODEL_FOLDERS), help='Model for a new suite; default hydrostatic')
+    parser.add_argument('--compare-with', action='append', type=Path, default=[], help='Other-model suite; earlier paths take precedence for whole series')
+    parser.add_argument('--comparison-report', type=Path, help='Markdown comparison refreshed alongside this suite')
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument('--plan', action='store_true', help='Write configurations without executing or submitting')
     mode.add_argument('--run', action='store_true', help='Run locally inside assigned resources')
@@ -405,7 +425,9 @@ def main():
     selected = tuple(args.series.split(','))
     if not selected or len(set(selected)) != len(selected) or set(selected) - set(SERIES):
         parser.error('Choose unique series names from: ' + ', '.join(SERIES))
-    default_folder = ROOT / 'results' / 'hydrostatic_free_surface_models' / (
+    server = None if args.refresh or args.resume else load_server(args.config)
+    model_type = args.model or (server['model_type'] if server else 'HydrostaticFreeSurfaceModel')
+    default_folder = ROOT / 'results' / MODEL_FOLDERS[model_type] / (
         '%s_full_suite' % datetime.now(timezone.utc).strftime('%Y-%m-%dT%H%M%SZ'))
     folder = (args.output or default_folder).resolve()
     folder.mkdir(parents=True, exist_ok=True)
@@ -417,7 +439,16 @@ def main():
                 for case in data['cases']:
                     case.pop('measurement', None)
         else:
-            server = load_server(args.config)
+            if args.model:
+                server['model_type'] = args.model
+            if args.compare_with:
+                server['comparison_suites'] = [str(p.resolve()) for p in args.compare_with]
+            if args.comparison_report:
+                server['comparison_report'] = str(args.comparison_report.resolve())
+            if server['model_type'] == 'NonhydrostaticModel':
+                # Hydrostatic reference cases must never supply nonhydrostatic baselines.
+                server['reference_suites'] = []
+                server['replacement_suites'] = []
             for key in ('max_cpu_cores', 'max_gpus'):
                 value = getattr(args, key)
                 if value is not None:

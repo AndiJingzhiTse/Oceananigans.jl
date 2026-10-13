@@ -23,6 +23,10 @@ def fixture(folder, config):
                             metadata={'num_threads': 1}, finite_state=True, retained_free_surface_substeps=21,
                             window_seconds=[10, 11, 12, 13, 14], time_per_step_seconds=1.0,
                             time_per_step_median_seconds=1.2, time_per_step_max_seconds=1.4))
+        if config.get('model_type') == 'NonhydrostaticModel':
+            entries[-1].update(model_type='NonhydrostaticModel', free_surface='RigidLid',
+                               pressure_solver='ConjugateGradientPoissonSolver',
+                               pressure_solver_converged=True, retained_free_surface_substeps=None)
         layout.append(dict(rank=rank, hostname='node', affinity=str(rank), threads=1,
                            physical_core=f'0:{rank}', gpu_uuid=f'GPU-{rank}' if config['device'] == 'GPU' else None))
     (folder / 'results.json').write_text(json.dumps(entries))
@@ -35,6 +39,65 @@ def fixture(folder, config):
 class SuiteTests(unittest.TestCase):
     def server(self, cpu=192, gpu=8):
         return dict(max_cpu_cores=cpu, max_gpus=gpu)
+
+    def test_nonhydrostatic_plan_preserves_workloads_and_records_supported_methods(self):
+        server = self.server(gpu=64)
+        hydro = plan.build_plan(server)
+        nonhydro = plan.build_plan(dict(server, model_type='NonhydrostaticModel'))
+        for h, n in zip(hydro, nonhydro):
+            self.assertEqual((h['id'], h['partition'], h['state']), (n['id'], n['partition'], n['state']))
+            if 'configuration' not in h:
+                continue
+            cfg = n['configuration']
+            for key in ('global_resolution', 'x_sizes', 'y_sizes', 'dt', 'samples', 'time_steps'):
+                self.assertEqual(h['configuration'][key], cfg[key])
+            self.assertEqual(cfg['model_type'], 'NonhydrostaticModel')
+            self.assertEqual(cfg['timestepper'], 'RungeKutta3')
+            self.assertEqual(cfg['free_surface'], 'RigidLid')
+            self.assertEqual(cfg['momentum_advection'], 'WENO7')
+            self.assertEqual(cfg['closure'], 'ScalarDiffusivity')
+            self.assertIsNone(cfg['free_surface_substeps'])
+
+    def test_nonhydrostatic_validation_requires_model_and_pressure_convergence(self):
+        cfg = plan.configuration('cpu_mpi_scaling_super_fine', 2,
+                                 global_resolution=[72,36,8], model_type='NonhydrostaticModel')
+        with tempfile.TemporaryDirectory() as tmp:
+            folder = Path(tmp)/'case'
+            entries = fixture(folder, cfg)
+            self.assertEqual(report.validate(folder,cfg)['retained_substeps'], [])
+            entries[0]['pressure_solver_converged'] = False
+            (folder/'results.json').write_text(json.dumps(entries))
+            with self.assertRaisesRegex(ValueError, 'unconverged pressure solver'):
+                report.validate(folder,cfg)
+            entries[0]['pressure_solver_converged'] = True
+            entries[0]['model_type'] = 'HydrostaticFreeSurfaceModel'
+            (folder/'results.json').write_text(json.dumps(entries))
+            with self.assertRaisesRegex(ValueError, 'Unexpected nonhydrostatic model'):
+                report.validate(folder,cfg)
+
+    def test_model_comparison_requires_validated_matching_workloads_and_protocol(self):
+        series = 'gpu_scaling_super_fine'
+        h = plan.build_plan(self.server(gpu=1),(series,))[0]
+        n = plan.build_plan(dict(self.server(gpu=1),model_type='NonhydrostaticModel'),(series,))[0]
+        h.update(state='COMPLETED',measurement=dict(fastest=1,median=1.2))
+        n.update(state='COMPLETED',measurement=dict(fastest=2,median=2.4))
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);reference=root/'hydro';reference.mkdir()
+            (reference/'suite.json').write_text(json.dumps(dict(cases=[h])))
+            path=root/'comparison.md'
+            report.write_model_comparison(path,root/'nonhydro',[n],[reference])
+            text=path.read_text()
+            self.assertIn('2.000 / 2.000',text)
+            self.assertIn('100.0% / 100.0%',text)
+            self.assertIn('Rigid',text.replace('rigid','Rigid'))
+            n['configuration']['time_steps']=100
+            report.write_model_comparison(path,root/'nonhydro',[n],[reference])
+            self.assertIn('Unmatched: time_steps',path.read_text())
+            self.assertNotIn('2.000 / 2.000',path.read_text())
+            n['configuration']['time_steps']=10
+            n['state']='FAILED'
+            report.write_model_comparison(path,root/'nonhydro',[n],[reference])
+            self.assertNotIn('2.400000',path.read_text())
 
     def test_sequences_start_at_one_and_record_next_boundary(self):
         cases = plan.build_plan(self.server(), ('cpu_mpi_scaling_super_fine', 'gpu_scaling_super_fine'))

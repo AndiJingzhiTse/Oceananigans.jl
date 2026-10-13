@@ -5,6 +5,8 @@ GRIDS = {'default': [360, 180, 50], 'fine': [720, 360, 100], 'super_fine': [1440
          'super_super_fine': [2880, 1440, 200], 'super_super_super_fine': [5760, 2880, 200]}
 RESOLUTION_GRIDS = ('default', 'fine', 'super_fine')
 GPU_BASELINES = {'gpu_scaling_super_super_fine': 4, 'gpu_scaling_super_super_super_fine': 16}
+MODEL_FOLDERS = {'HydrostaticFreeSurfaceModel': 'hydrostatic_free_surface_models',
+                 'NonhydrostaticModel': 'non_hydrostatic_free_surface_models'}
 SERIES = ('cpu_mpi_scaling_super_fine', 'gpu_scaling_super_fine', 'cpu_resolution',
           'gpu_resolution', 'cpu_partition_cores_super_fine',
           'gpu_nsight_scaling_super_fine', 'gpu_partition_super_fine',
@@ -43,7 +45,10 @@ def partition_for(ranks, grid, extended=False):
     return [x, y, 1]
 
 
-def configuration(series, ranks, grid_name='super_fine', partition=None, global_resolution=None):
+def configuration(series, ranks, grid_name='super_fine', partition=None, global_resolution=None,
+                  model_type='HydrostaticFreeSurfaceModel'):
+    if model_type not in MODEL_FOLDERS:
+        raise ValueError('Unknown benchmark model: ' + model_type)
     grid = global_resolution if global_resolution is not None else GRIDS[grid_name]
     gpu = series.startswith('gpu_')
     partition = partition or partition_for(ranks, grid, extended=gpu)
@@ -53,13 +58,20 @@ def configuration(series, ranks, grid_name='super_fine', partition=None, global_
     minimum = 23 if gpu and ranks > 1 else 7
     if min(xs) < minimum or min(ys) < minimum:
         raise ValueError(f'Partition {partition} has fewer than {minimum} local cells per horizontal direction')
-    return dict(series=series, device='GPU' if gpu else 'CPU', ranks=ranks,
+    hydrostatic = model_type == 'HydrostaticFreeSurfaceModel'
+    return dict(series=series, model_type=model_type, device='GPU' if gpu else 'CPU', ranks=ranks,
                 threads_per_rank=1, grid_name=grid_name, global_resolution=list(grid),
                 grid_type='LatitudeLongitudeGrid', partition=partition, x_sizes=xs, y_sizes=ys,
-                float_type='Float64', momentum_advection='WENOVectorInvariantDefault',
-                tracer_advection='WENO7', closure='CATKE', tracers=['T', 'S'],
-                timestepper='SplitRungeKutta3', dt=60 * min(1, 1440 / grid[0]), free_surface_substeps=30,
-                extend_free_surface_halos=gpu, warmup_steps=2, samples=5, time_steps=10,
+                float_type='Float64', momentum_advection='WENOVectorInvariantDefault' if hydrostatic else 'WENO7',
+                tracer_advection='WENO7', closure='CATKE' if hydrostatic else 'ScalarDiffusivity', tracers=['T', 'S'],
+                viscosity=None if hydrostatic else 1e-3, diffusivity=None if hydrostatic else 1e-5,
+                coriolis='HydrostaticSphericalCoriolis', buoyancy='SeawaterBuoyancy(TEOS10)',
+                timestepper='SplitRungeKutta3' if hydrostatic else 'RungeKutta3',
+                free_surface='SplitExplicitFreeSurface' if hydrostatic else 'RigidLid',
+                pressure_solver=None if hydrostatic else 'ConjugateGradientPoissonSolver',
+                dt=60 * min(1, 1440 / grid[0]), free_surface_substeps=30 if hydrostatic else None,
+                extend_free_surface_halos=gpu if hydrostatic else False,
+                warmup_steps=2, samples=5, time_steps=10,
                 profile=series == 'gpu_nsight_scaling_super_fine',
                 scaling_type='weak' if series == 'gpu_weak_scaling_super_fine' else
                              'strong' if 'scaling' in series else 'comparison',
@@ -103,7 +115,8 @@ def build_plan(server, selected=SERIES):
                              if series == 'gpu_weak_scaling_super_fine' else None)
                 if series.startswith('gpu_scaling_') and server.get('gpu_scaling_partition') == 'x':
                     partition = [ranks, 1, 1]
-                case['configuration'] = configuration(series, ranks, grid_name, partition, weak_grid)
+                case['configuration'] = configuration(series, ranks, grid_name, partition, weak_grid,
+                                                      server.get('model_type', 'HydrostaticFreeSurfaceModel'))
                 case['partition'] = case['configuration']['partition']
                 if ranks > maximum:
                     case.update(state='RESOURCE_LIMIT', details=f'Requires {ranks}; configured capacity is {maximum}')

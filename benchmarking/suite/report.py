@@ -6,12 +6,16 @@ import math
 import os
 from pathlib import Path
 import statistics
-from .plan import GPU_BASELINES
+from .plan import GPU_BASELINES, SERIES
 
 TERMINAL = {'COMPLETED', 'FAILED', 'CANCELLED', 'TIMEOUT', 'OUT_OF_MEMORY', 'NODE_FAIL',
             'PREEMPTED', 'BOOT_FAIL', 'DEADLINE', 'REVOKED', 'INVALID_RESULTS',
             'SUBMISSION_FAILED', 'RESOURCE_LIMIT', 'GEOMETRY_LIMIT', 'INTERRUPTED'}
 CATEGORIES = ('Gc', 'Gu', 'Gv', 'Others')
+
+
+def kernel_categories(config):
+    return ('Gc', 'Gu', 'Gv', 'Gw', 'Others') if config.get('model_type') == 'NonhydrostaticModel' else CATEGORIES
 
 
 def validate(case_dir, config):
@@ -35,9 +39,17 @@ def validate(case_dir, config):
         rank = entry['rank']
         py = config['partition'][1]
         expected = [config['x_sizes'][rank // py], config['y_sizes'][rank % py], config['global_resolution'][2]]
+        nonhydrostatic = config.get('model_type') == 'NonhydrostaticModel'
+        substeps_valid = (entry['retained_free_surface_substeps'] is None if nonhydrostatic
+                          else isinstance(entry['retained_free_surface_substeps'], int) and entry['retained_free_surface_substeps'] > 0)
+        if nonhydrostatic and (entry.get('model_type') != 'NonhydrostaticModel' or
+                               entry.get('free_surface') != 'RigidLid' or
+                               entry.get('pressure_solver') != config['pressure_solver'] or
+                               entry.get('pressure_solver_converged') is not True):
+            raise ValueError('Unexpected nonhydrostatic model or unconverged pressure solver')
         if (entry['configuration'] != config or entry['grid_size'] != expected or
                 entry['float_type'] != 'Float64' or entry['finite_state'] is not True or
-                entry['metadata']['num_threads'] != 1 or entry['retained_free_surface_substeps'] <= 0):
+                entry['metadata']['num_threads'] != 1 or not substeps_valid):
             raise ValueError('Unexpected model, resolution, thread count or nonfinite fields')
         windows = entry['window_seconds']
         if len(windows) != config['samples'] or any(not math.isfinite(w) or w <= 0 for w in windows):
@@ -49,7 +61,7 @@ def validate(case_dir, config):
     result = dict(fastest=max(e['time_per_step_seconds'] for e in entries),
                   median=max(e['time_per_step_median_seconds'] for e in entries),
                   maximum=max(e['time_per_step_max_seconds'] for e in entries),
-                  retained_substeps=sorted({e['retained_free_surface_substeps'] for e in entries}))
+                  retained_substeps=sorted({e['retained_free_surface_substeps'] for e in entries if e['retained_free_surface_substeps'] is not None}))
     result['nodes'] = len({l['hostname'] for l in layout})
     memory = [e.get('gpu_memory_used_bytes') for e in entries]
     if gpu and any(m is not None for m in memory):
@@ -58,7 +70,8 @@ def validate(case_dir, config):
         result['gpu_memory_used_bytes'] = max(memory)
         result['gpu_memory_max_gib'] = max(memory) / 2**30
     if config['profile']:
-        totals = dict.fromkeys(CATEGORIES, 0)
+        categories = kernel_categories(config)
+        totals = dict.fromkeys(categories, 0)
         traces = []
         for rank in range(ranks):
             folder = case_dir / f'rank_{rank}'
@@ -85,7 +98,8 @@ def validate(case_dir, config):
                 duration = int(row['Total Time (ns)'].replace(',', ''))
                 if duration < 0 or int(row['Instances'].replace(',', '')) <= 0:
                     raise ValueError('Invalid kernel profile')
-                category = next((c for c in CATEGORIES[:-1] if f'compute_hydrostatic_free_surface_{c}' in row['Name']), 'Others')
+                prefix = 'compute_' if config.get('model_type') == 'NonhydrostaticModel' else 'compute_hydrostatic_free_surface_'
+                category = next((c for c in categories[:-1] if prefix + c in row['Name']), 'Others')
                 totals[category] += duration
                 rank_total += duration
             if rank_total <= 0:
@@ -131,12 +145,97 @@ def report_cases(folder, cases, reference_suites=(), replacement_suites=()):
     return selected
 
 
+def write_model_comparison(path, folder, cases, comparison_suites):
+    """Compare validated case timings, keeping each model's measured baseline separate."""
+    path, folder = Path(path), Path(folder)
+    current_model = next(c['configuration'].get('model_type', 'HydrostaticFreeSurfaceModel')
+                         for c in cases if 'configuration' in c)
+    current = [(c, folder) for c in cases]
+    references = report_cases(path.parent, [], replacement_suites=comparison_suites)
+    models = {'HydrostaticFreeSurfaceModel': [], 'NonhydrostaticModel': []}
+    models[current_model] = current
+    for case, root in references:
+        model = case.get('configuration', {}).get('model_type', 'HydrostaticFreeSurfaceModel')
+        if model == current_model:
+            raise ValueError('Comparison suites must belong to the other model')
+        models[model].append((case, root))
+    baselines = {model: scaling_baselines([c for c, _ in items]) for model, items in models.items()}
+    indices = {model: {c['id']: (c, root) for c, root in items} for model, items in models.items()}
+    hydro, nonhydro = indices.values()
+    pairs = []
+    match_fields = ('device', 'ranks', 'grid_type', 'float_type', 'global_resolution', 'partition',
+                    'threads_per_rank', 'dt', 'warmup_steps', 'samples', 'time_steps', 'profile')
+    for key in dict.fromkeys([*hydro, *nonhydro]):
+        h, n = hydro.get(key), nonhydro.get(key)
+        mismatch = [k for k in match_fields if h and n and
+                    h[0].get('configuration', {}).get(k) != n[0].get('configuration', {}).get(k)]
+        valid = (h and n and not mismatch and all(c['state'] == 'COMPLETED' and
+                                                'measurement' in c for c, _ in (h, n)))
+        pairs.append((key, h, n, mismatch, bool(valid)))
+    def link(root, case):
+        target = root / case['id'] / ('configuration.md' if 'configuration' in case else 'limit.md')
+        return Path(os.path.relpath(target, path.parent)).as_posix()
+    def value(item, statistic):
+        if item and item[0]['state'] == 'COMPLETED' and 'measurement' in item[0]:
+            return item[0]['measurement'][statistic]
+        return None
+    def number(value):
+        return f'{value:.6f}' if value is not None else '—'
+    lines = ['# Hydrostatic and nonhydrostatic performance on Rorqual', '',
+             'H = HydrostaticFreeSurfaceModel; N = NonhydrostaticModel. Only completed, validated measurements supply timings.',
+             'Ratios are N seconds/step divided by H seconds/step: 1 means equal time, above 1 means N takes longer. They compare full configurations, not an isolated change in the model equations.',
+             'Shared settings: latitude–longitude grid without bathymetry, Float64, T/S, TEOS10 buoyancy, traditional spherical Coriolis, global/local resolution and partition, one thread/rank, Δt, and timing windows.',
+             'H uses WENOVectorInvariant momentum, WENO7 tracers, CATKE, SplitRungeKutta3 and a split-explicit free surface (30 requested substeps; extended halos on GPU).',
+             'N uses WENO7 momentum/tracers, ScalarDiffusivity (ν=1e-3, κ=1e-5 m²/s), RungeKutta3, a rigid lid, and a three-dimensional ConjugateGradientPoissonSolver. Free-surface substeps are not applicable.',
+             'The physics and numerical-method differences above are intentional. CATKE can also introduce a TKE tracer beyond T/S. Per-case links retain actual settings, placement, solver checks, and source/environment provenance.',
+             'Each series comes entirely from its selected run; a pending rerun does not borrow an older baseline. Efficiencies use each model’s own measured baseline and are not cross-model timing ratios.', '',
+             'Ideal strong/weak MPI efficiency is 100%. Source plots include expected ratios and ideal timing/efficiency references. Profiled timings are compared only with profiled timings.', '',
+             '## Selected runs', '']
+    for model, items in models.items():
+        for root in dict.fromkeys(root for _, root in items):
+            target = Path(os.path.relpath(root / 'plot.md', path.parent)).as_posix()
+            lines.append(f'- {model}: [{root.name}]({target})')
+    lines += ['', '## Series overview', '',
+              '| Series | H completed | N completed | Matched completed pairs | N/H median time ratio range |',
+              '|---|---:|---:|---:|---|']
+    for series in SERIES:
+        selected = [p for p in pairs if p[0].split('/')[0] == series]
+        completed = [sum(c['series'] == series and c['state'] == 'COMPLETED' and 'measurement' in c
+                         for c, _ in items) for items in models.values()]
+        ratios = [value(n, 'median') / value(h, 'median') for _, h, n, _, valid in selected if valid]
+        span = f'{min(ratios):.3f}–{max(ratios):.3f}' if ratios else '—'
+        lines.append(f'| `{series}` | {completed[0]} | {completed[1]} | {len(ratios)} | {span} |')
+    for series in SERIES:
+        lines += ['', f'## {series}', '',
+                  '| Case | Ranks | Global grid | Partition | H outcome | N outcome | H fastest / median s/step | N fastest / median s/step | N/H fastest / median | H / N median efficiency | Pair status |',
+                  '|---|---:|---|---|---|---|---:|---:|---:|---:|---|']
+        for key, h, n, mismatch, valid in (p for p in pairs if p[0].split('/')[0] == series):
+            case = (n or h)[0]
+            cfg = case.get('configuration', {})
+            grid = ' × '.join(map(str, cfg.get('global_resolution', []))) or 'See limit'
+            partition = ' × '.join(map(str, case.get('partition') or [])) or '—'
+            statuses = [f"[{item[0]['state']}]({link(item[1], item[0])})" if item else 'NOT RUN' for item in (h, n)]
+            timings = [' / '.join(number(value(item, statistic)) for statistic in ('fastest', 'median')) for item in (h, n)]
+            ratios = ' / '.join(f'{value(n, statistic)/value(h, statistic):.3f}' for statistic in ('fastest', 'median')) if valid else '—'
+            efficiency = []
+            for model, item in zip(models, (h, n)):
+                _, eff = efficiencies(item[0], baselines[model].get(series)) if value(item, 'median') is not None else (None, None)
+                efficiency.append(f'{100*eff:.1f}%' if eff is not None else '—')
+            status = 'Matched workload and timing protocol' if valid else 'Unmatched: ' + ', '.join(mismatch) if mismatch else 'Awaiting validated pair'
+            lines.append(f"| {key.split('/')[-1]} | {case['ranks']} | {grid} | {partition} | {statuses[0]} | {statuses[1]} | {timings[0]} | {timings[1]} | {ratios} | {' / '.join(efficiency)} | {status} |")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_suffix(path.suffix + '.tmp')
+    temporary.write_text('\n'.join(lines) + '\n')
+    temporary.replace(path)
+
+
 def write_report(folder, cases, plotting=True, reference_suites=(), replacement_suites=()):
     combined = report_cases(folder, cases, reference_suites, replacement_suites)
     case_roots = {c['id']: root for c, root in combined}
     display_series = {c['series'] for c in cases}
     cases = [c for c, _ in combined if c['series'] in display_series]
     successful = [c for c in cases if c['state'] == 'COMPLETED' and 'measurement' in c]
+    nonhydrostatic = any(c.get('configuration', {}).get('model_type') == 'NonhydrostaticModel' for c in cases)
     baselines = scaling_baselines(cases)
     rows = []
     for case in cases:
@@ -155,10 +254,11 @@ def write_report(folder, cases, plotting=True, reference_suites=(), replacement_
         writer.writeheader()
         writer.writerows(rows)
     lines = ['# Full benchmark suite', '',
-             'LatitudeLongitudeGrid without bathymetry; Float64, WENOVectorInvariantDefault, WENO7, CATKE, T/S, SplitRungeKutta3.',
+             ('NonhydrostaticModel; rigid lid; LatitudeLongitudeGrid without bathymetry; Float64, WENO7 momentum/tracers, ScalarDiffusivity (ν=1e-3, κ=1e-5 m²/s), T/S, RungeKutta3. Pressure: ConjugateGradientPoissonSolver; traditional spherical Coriolis and TEOS10 buoyancy.' if nonhydrostatic else
+              'HydrostaticFreeSurfaceModel; LatitudeLongitudeGrid without bathymetry; Float64, WENOVectorInvariantDefault, WENO7, CATKE, T/S, SplitRungeKutta3.'),
              'Δt=60 s on the standard grids; larger horizontal grids reduce Δt in proportion to grid spacing (see each configuration).',
-             '30 requested free-surface substeps; two untimed steps and five ten-step windows.',
-             'One MPI rank per CPU core or GPU, one Julia computation thread per rank. CPU extended halos=false; GPU=true.',
+             ('No free-surface substeps or extended free-surface halos; two untimed steps and five ten-step windows.' if nonhydrostatic else '30 requested free-surface substeps; two untimed steps and five ten-step windows.'),
+             ('One MPI rank per CPU core or GPU, one Julia computation thread per rank. Hydrostatic geometry bounds are retained to match partitions between models.' if nonhydrostatic else 'One MPI rank per CPU core or GPU, one Julia computation thread per rank. CPU extended halos=false; GPU=true.'),
              'Window boundaries synchronize MPI ranks and GPUs. Fastest/median statistics use the maximum across ranks.',
              'Strong efficiency = baseline time × baseline ranks / (time × ranks); weak efficiency = baseline time / time.',
              'Standard baselines use one rank; the larger GPU grids use 4 and 16 ranks. Missing baselines have no efficiency estimate.',
@@ -193,16 +293,19 @@ def write_report(folder, cases, plotting=True, reference_suites=(), replacement_
             if plotting:
                 plot_kernels(folder, series, profiles)
                 lines += ['', f'![Kernel duration shares]({series}_kernels.svg)']
-            lines += ['', '| Profile | Gc | Gu | Gv | Others |', '|---|---:|---:|---:|---:|']
+            categories = list(profiles[0]['measurement']['kernel_nanoseconds'])
+            lines += ['', '| Profile | ' + ' | '.join(categories) + ' |', '|---|' + '---:|' * len(categories)]
             for profile in profiles:
                 totals = profile['measurement']['kernel_nanoseconds']
-                shares = ' | '.join(f'{100*totals[k]/sum(totals.values()):.2f}%' for k in CATEGORIES)
+                shares = ' | '.join(f'{100*totals[k]/sum(totals.values()):.2f}%' for k in categories)
                 lines.append(f"| {profile['id'].split('/')[-1]} | {shares} |")
         for case in (c for c in successful if c['series'] == series):
             cfg = case['configuration']
             local = f"{min(cfg['x_sizes'])}–{max(cfg['x_sizes'])} × {min(cfg['y_sizes'])}–{max(cfg['y_sizes'])} × {cfg['global_resolution'][2]}"
             configuration_path = Path(os.path.relpath(case_roots[case['id']] / case['id'] / 'configuration.md', folder)).as_posix()
-            lines += ['', f"[{case['id'].split('/')[-1]} configuration]({configuration_path}): local resolution **{local}**, retained free-surface substeps {case['measurement']['retained_substeps']}."]
+            solver_note = ('rigid lid; free-surface substeps not applicable' if cfg.get('model_type') == 'NonhydrostaticModel'
+                           else f"retained free-surface substeps {case['measurement']['retained_substeps']}")
+            lines += ['', f"[{case['id'].split('/')[-1]} configuration]({configuration_path}): local resolution **{local}**, {solver_note}."]
     lines += scaling_tables(folder, cases, reference_suites, plotting=plotting,
                             combined=combined)
     (folder / 'plot.md').write_text('\n'.join(lines) + '\n')
@@ -384,7 +487,7 @@ def plot_kernels(folder, series, cases):
     fig, ax = plt.subplots(figsize=(8, 4.5))
     labels = [str(c['ranks']) for c in cases]
     bottom = [0.0] * len(cases)
-    for category in CATEGORIES:
+    for category in cases[0]['measurement']['kernel_nanoseconds']:
         totals = [c['measurement']['kernel_nanoseconds'] for c in cases]
         shares = [100*t[category]/sum(t.values()) for t in totals]
         ax.bar(labels, shares, bottom=bottom, label=category)

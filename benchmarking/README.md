@@ -1,4 +1,4 @@
-# Hydrostatic free-surface benchmarks
+# Ocean model benchmarks
 
 Use **`benchmark_suite.py`** for new server studies. It runs the ten series
 below through one planner, one Julia worker and one report generator. Python
@@ -101,7 +101,7 @@ override defaults; document intentional exceptions. Follow the repository's
 
 1. **Plan and preserve provenance.** Use `benchmark_suite.py` and a profile under
    `configs/` for standard series. Create a fresh dated directory under
-   `results/hydrostatic_free_surface_models/<server>/`. Record the purpose,
+   `results/<model_family>/<server>/` (hydrostatic or nonhydrostatic). Record the purpose,
    configurations, source revision, exact launch/submission commands, executable
    snapshot, and resolved Julia environment. Preserve previous results and failures.
 2. **Keep comparisons consistent.** Use the model settings below unless explicitly
@@ -188,6 +188,57 @@ There are two untimed steps (one warmup and one helper preflight step), then
 five ten-step timing windows. Windows synchronize ranks and GPUs at both
 boundaries. This explicit synchronization differs from the historical helpers;
 the worker records individual windows and actual retained free-surface substeps.
+
+## Nonhydrostatic suite and model comparison
+
+The suite defaults to `HydrostaticFreeSurfaceModel`. Use `--model NonhydrostaticModel`
+to repeat all ten series with the standard **rigid-lid** nonhydrostatic model.
+Its results live under `results/non_hydrostatic_free_surface_models/<server>/`;
+the directory name is an organizational label and does not imply an evolving
+free surface. The controller keeps the same grid sizes, resource sequences,
+partitions, Float64 precision, T/S, TEOS10 buoyancy, traditional spherical
+Coriolis, Δt, and five ten-step timing windows.
+
+Nonhydrostatic cases use WENO7 momentum/tracer advection, `ScalarDiffusivity`
+with ν=1e-3 and κ=1e-5 m²/s, `RungeKutta3`, and a three-dimensional
+`ConjugateGradientPoissonSolver`. CATKE, `SplitRungeKutta3`, and the
+split-explicit free surface are hydrostatic settings. Nonhydrostatic runs have
+no free-surface substeps or extended free-surface halos. The hydrostatic
+partition geometry bounds are retained to compare the same layouts. The
+worker validates finite velocities, tracers and pressure, and rejects a
+pressure solve that reaches its iteration limit at a timing-window boundary.
+
+Use a small CPU/GPU MPI validation run before submitting a new model's full
+suite. Keep validation timings separate from production results. Package
+loading/precompilation and model initialization must finish before timing;
+record timeouts and memory failures rather than treating partial windows as
+measurements.
+
+```bash
+python3 benchmarking/benchmark_suite.py --config benchmarking/configs/rorqual.json \
+  --model NonhydrostaticModel \
+  --output benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite \
+  --compare-with benchmarking/results/hydrostatic_free_surface_models/rorqual/2026-10-12_gpu_partition_and_largest_grid_rerun \
+  --compare-with benchmarking/results/hydrostatic_free_surface_models/rorqual/2026-10-07_cpu_retry \
+  --compare-with benchmarking/results/hydrostatic_free_surface_models/rorqual/2026-10-07_gpu_extended_suite \
+  --compare-with benchmarking/results/hydrostatic_free_surface_models/rorqual/2026-10-07_full_suite \
+  --comparison-report benchmarking/results/model_comparison.md --submit --watch --commit
+```
+
+`--compare-with` paths select the other model's records, with earlier paths
+taking precedence for an entire series. They do not provide baselines for the
+new model. `--comparison-report` saves a Markdown comparison across all ten
+series and updates it on every refresh. Ratios use nonhydrostatic/hydrostatic
+seconds per step: 1 means equal time, above 1 means nonhydrostatic takes longer.
+Only pairs with validated timings and matching workload, partition, precision,
+rank/thread counts, Δt, and timing/profiling protocol receive a ratio.
+Missing or unfinished measurements remain blank. Efficiencies use each model's
+own measured baseline; profile timings remain separate from unprofiled timings.
+
+The ratio compares the full configurations, including different advection,
+closure, pressure treatment, tracer sets (CATKE can add TKE), and time stepper.
+It does not isolate the cost of changing only the hydrostatic approximation.
+Per-case configuration links and selected-run links retain that provenance.
 
 ## Configure a server
 

@@ -3,6 +3,7 @@ using OceananigansBenchmarks, Oceananigans, CUDA, NCDatasets, MPI, JSON
 using Oceananigans.DistributedComputations: Distributed, Partition, Sizes
 using Oceananigans.Fields: interior
 using Oceananigans.Architectures: architecture
+using Oceananigans.TurbulenceClosures: ThreeDimensionalFormulation
 using Statistics: median
 using Sockets: gethostname
 
@@ -75,13 +76,34 @@ MPI.Allreduce(all(Array(receive_buffer) .== source) ? 1 : 0, MPI.MIN, comm) == 1
 arch = Distributed(is_gpu ? GPU() : CPU();
                    partition=Partition(Sizes(config["x_sizes"]...), Sizes(config["y_sizes"]...), 1))
 Nx, Ny, Nz = Int.(config["global_resolution"])
-model = earth_ocean(arch; Nx, Ny, Nz, float_type=Float64, grid_type="lat_lon",
+model_type = get(config, "model_type", "HydrostaticFreeSurfaceModel")
+is_hydrostatic = model_type == "HydrostaticFreeSurfaceModel"
+model = if is_hydrostatic
+    earth_ocean(arch; Nx, Ny, Nz, float_type=Float64, grid_type="lat_lon",
                     momentum_advection=WENOVectorInvariant(Float64), tracer_advection=WENO(Float64; order=7),
                     timestepper=:SplitRungeKutta3, tracers=(:T, :S),
                     extend_free_surface_halos=config["extend_free_surface_halos"])
+elseif model_type == "NonhydrostaticModel"
+    grid = LatitudeLongitudeGrid(arch, Float64; size=(Nx, Ny, Nz), halo=(7, 7, 7),
+                                 longitude=(0, 360), latitude=(-80, 85),
+                                 z=ExponentialDiscretization(Nz, -5000, 0; scale=1250))
+    closure = ScalarDiffusivity(ExplicitTimeDiscretization(), ThreeDimensionalFormulation(), Float64;
+                               ν=config["viscosity"], κ=config["diffusivity"])
+    nonhydrostatic = NonhydrostaticModel(grid;
+        momentum_advection=WENO(Float64; order=7), tracer_advection=WENO(Float64; order=7),
+        coriolis=HydrostaticSphericalCoriolis(Float64),
+        buoyancy=SeawaterBuoyancy(equation_of_state=OceananigansBenchmarks.TEOS10EquationOfState()),
+        closure, tracers=(:T, :S), timestepper=:RungeKutta3)
+    Tᵢ(λ, φ, z) = 30 * (1 - tanh((abs(φ) - 45) / 8)) / 2 + rand()
+    Sᵢ(λ, φ, z) = 28 - 5e-3 * z + rand()
+    set!(nonhydrostatic; T=Tᵢ, S=Sᵢ)
+    nonhydrostatic
+else
+    error("Unknown model type: $model_type")
+end
 expected = (config["x_sizes"][arch.local_index[1]], config["y_sizes"][arch.local_index[2]], Nz)
 size(model.grid) == expected || error("Unexpected local resolution")
-retained_substeps = length(model.free_surface.substepping.averaging_weights)
+retained_substeps = is_hydrostatic ? length(model.free_surface.substepping.averaging_weights) : nothing
 
 function synchronize_model(arch, comm, is_gpu)
     is_gpu && CUDA.synchronize()
@@ -98,6 +120,10 @@ function timing_windows!(model, config, comm, is_gpu)
         OceananigansBenchmarks.many_time_steps!(model, config["dt"], config["time_steps"])
         synchronize_model(architecture(model.grid), comm, is_gpu)
         push!(durations, (time_ns() - start) / 1e9)
+        if !is_hydrostatic
+            solver = model.pressure_solver.conjugate_gradient_solver
+            solver.iteration < solver.maxiter || error("Pressure solver reached its iteration limit")
+        end
     end
     return durations
 end
@@ -116,7 +142,9 @@ finally
     config["profile"] && CUDA.CUDACore.cuProfilerStop()
 end
 finite_state = all(all(isfinite, interior(t)) for t in values(model.tracers)) &&
-               all(isfinite, interior(model.free_surface.displacement))
+               all(all(isfinite, interior(v)) for v in values(model.velocities)) &&
+               (is_hydrostatic ? all(isfinite, interior(model.free_surface.displacement)) :
+                all(isfinite, interior(model.pressures.pNHS)))
 MPI.Allreduce(finite_state ? 1 : 0, MPI.MIN, comm) == 1 || error("Nonfinite model fields")
 metadata = JSON.parse(JSON.json(OceananigansBenchmarks.BenchmarkMetadata(arch)))
 metadata["mpi_library_version"] = MPI.Get_library_version()
@@ -127,6 +155,10 @@ if is_gpu
 end
 steps = config["time_steps"]
 entry = Dict("rank" => rank, "grid_size" => collect(size(model.grid)), "float_type" => "Float64",
+             "model_type" => model_type, "free_surface" => is_hydrostatic ? "SplitExplicitFreeSurface" : "RigidLid",
+             "pressure_solver" => is_hydrostatic ? nothing : string(nameof(typeof(model.pressure_solver))),
+             "pressure_solver_converged" => is_hydrostatic ? nothing : model.pressure_solver.conjugate_gradient_solver.iteration < model.pressure_solver.conjugate_gradient_solver.maxiter,
+             "pressure_solver_iterations" => is_hydrostatic ? nothing : model.pressure_solver.conjugate_gradient_solver.iteration,
              "configuration" => config, "metadata" => metadata, "finite_state" => finite_state,
              "retained_free_surface_substeps" => retained_substeps,
              "gpu_memory_used_bytes" => is_gpu ? gpu_memory.total_bytes - gpu_memory.free_bytes : nothing,
