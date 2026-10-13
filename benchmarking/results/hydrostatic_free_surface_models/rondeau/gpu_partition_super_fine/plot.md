@@ -8,6 +8,7 @@ Latest accepted measurement for each case. Configuration links record the actual
 |---|---:|---:|---:|---|
 | [2x1x1](2x1x1/configuration.md) | 2 | 0.951312 | 0.953770 | Current suite checks |
 | [1x2x1](1x2x1/configuration.md) | 2 | 0.991286 | 0.992599 | Current suite checks |
+| [4x1x1](4x1x1/configuration.md) | 4 | 0.487795 | 0.534275 | Current suite checks |
 
 <!-- current-rerun -->
 ## Current rerun
@@ -16,13 +17,14 @@ Study: `/local_scratch/ajtse/benchmark_studies/hydrostatic_free_surface_models/2
 Two untimed steps, then five synchronized windows of ten steps; one Julia thread per MPI rank.
 This rerun validates all rank results, MPI communication, distinct resources and finite model fields.
 
-Highest completed case: **2x1x1**.
+Highest completed case: **4x1x1**.
 
 | Case | Global resolution | MPI partition | Outcome | Details |
 |---|---|---|---|---|
 | 1x1x1 | 1440 × 720 × 200 | 1 × 1 × 1 | FAILED | GPU VRAM exhausted; see original job.out and profiler logs in scratch study |
 | 2x1x1 | 1440 × 720 × 200 | 2 × 1 × 1 | COMPLETED | Rank results, finite fields and resource placement verified |
 | 1x2x1 | 1440 × 720 × 200 | 1 × 2 × 1 | COMPLETED | Rank results, finite fields and resource placement verified |
+| 4x1x1 | 1440 × 720 × 200 | 4 × 1 × 1 | COMPLETED | Rank results, finite fields and resource placement verified |
 | 8x1x1 | 1440 × 720 × 200 | 8 × 1 × 1 | RESOURCE_LIMIT | Requires 8; configured capacity is 4 |
 | 4x2x1 | 1440 × 720 × 200 | 4 × 2 × 1 | RESOURCE_LIMIT | Requires 8; configured capacity is 4 |
 | 2x4x1 | 1440 × 720 × 200 | 2 × 4 × 1 | RESOURCE_LIMIT | Requires 8; configured capacity is 4 |
