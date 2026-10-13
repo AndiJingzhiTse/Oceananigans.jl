@@ -162,6 +162,8 @@ Efficiency baseline: **1 measured ranks**.
 
 Highest completed count: **4 ranks**.
 
+MPI efficiency awaits the measured 1 × 1 × 1 baseline.
+
 ![gpu_partition_super_fine](gpu_partition_super_fine.svg)
 
 | Case | Ranks | Partition | Global resolution | Grid type | State | Fastest s/step | Median s/step | Efficiency fastest / median | Details |
