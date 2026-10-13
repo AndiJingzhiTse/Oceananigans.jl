@@ -10,7 +10,7 @@ cpu_mpi_scaling_super_fine,192_ranks,192,16x12x1,1440x720x200,LatitudeLongitudeG
 cpu_mpi_scaling_super_fine,384_ranks,384,24x16x1,1440x720x200,LatitudeLongitudeGrid,TIMEOUT,23088846,,,,,Exit 0:0; None
 cpu_mpi_scaling_super_fine,768_ranks,768,32x24x1,1440x720x200,LatitudeLongitudeGrid,RUNNING,23088847,,,,,Exit 0:0; None
 cpu_mpi_scaling_super_fine,1536_ranks,1536,32x48x1,1440x720x200,LatitudeLongitudeGrid,TIMEOUT,23088848,,,,,Exit 0:0; None
-cpu_mpi_scaling_super_fine,3072_ranks,3072,64x48x1,1440x720x200,LatitudeLongitudeGrid,PENDING,23088849,,,,,(Priority); estimated start 2026-10-13T05:40:00 (scheduler timezone)
+cpu_mpi_scaling_super_fine,3072_ranks,3072,64x48x1,1440x720x200,LatitudeLongitudeGrid,PENDING,23088849,,,,,(Priority); estimated start 2026-10-13T05:23:56 (scheduler timezone)
 cpu_mpi_scaling_super_fine,6144_ranks,6144,96x64x1,1440x720x200,LatitudeLongitudeGrid,RUNNING,23088850,,,,,Exit 0:0; None
 cpu_mpi_scaling_super_fine,12288_ranks,12288,128x96x1,1440x720x200,LatitudeLongitudeGrid,RUNNING,23088851,,,,,Exit 0:0; None
 cpu_mpi_scaling_super_fine,24576_ranks,24576,,1440x720x200,LatitudeLongitudeGrid,GEOMETRY_LIMIT,,,,,,24576 ranks have no horizontal partition with at least 7 local cells per direction
@@ -26,23 +26,23 @@ gpu_scaling_super_fine,256_ranks,256,16x16x1,1440x720x200,LatitudeLongitudeGrid,
 gpu_scaling_super_fine,512_ranks,512,32x16x1,1440x720x200,LatitudeLongitudeGrid,RESOURCE_LIMIT,,,,,,Requires 512; configured capacity is 264
 cpu_resolution,default,1,1x1x1,360x180x50,LatitudeLongitudeGrid,RUNNING,23088861,,,,,Exit 0:0; None
 cpu_resolution,fine,1,1x1x1,720x360x100,LatitudeLongitudeGrid,RUNNING,23088862,,,,,Exit 0:0; None
-cpu_resolution,super_fine,1,1x1x1,1440x720x200,LatitudeLongitudeGrid,PENDING,23088863,,,,,(Priority); estimated start 2026-10-13T04:52:56 (scheduler timezone)
+cpu_resolution,super_fine,1,1x1x1,1440x720x200,LatitudeLongitudeGrid,PENDING,23088863,,,,,(Priority); estimated start 2026-10-13T05:41:18 (scheduler timezone)
 gpu_resolution,default,1,1x1x1,360x180x50,LatitudeLongitudeGrid,PENDING,23088864,,,,,(Dependency); estimated start N/A (scheduler timezone)
 gpu_resolution,fine,1,1x1x1,720x360x100,LatitudeLongitudeGrid,PENDING,23088865,,,,,(Dependency); estimated start N/A (scheduler timezone)
 gpu_resolution,super_fine,1,1x1x1,1440x720x200,LatitudeLongitudeGrid,PENDING,23088866,,,,,(Dependency); estimated start N/A (scheduler timezone)
-cpu_partition_cores_super_fine,192x1x1,192,192x1x1,1440x720x200,LatitudeLongitudeGrid,RUNNING,23088867,,,,,Exit 0:0; None
-cpu_partition_cores_super_fine,96x2x1,192,96x2x1,1440x720x200,LatitudeLongitudeGrid,RUNNING,23088867,,,,,Exit 0:0; None
-cpu_partition_cores_super_fine,64x3x1,192,64x3x1,1440x720x200,LatitudeLongitudeGrid,RUNNING,23088867,,,,,Exit 0:0; None
-cpu_partition_cores_super_fine,48x4x1,192,48x4x1,1440x720x200,LatitudeLongitudeGrid,RUNNING,23088867,,,,,Exit 0:0; None
-cpu_partition_cores_super_fine,32x6x1,192,32x6x1,1440x720x200,LatitudeLongitudeGrid,RUNNING,23088867,,,,,Exit 0:0; None
-cpu_partition_cores_super_fine,24x8x1,192,24x8x1,1440x720x200,LatitudeLongitudeGrid,RUNNING,23088867,,,,,Exit 0:0; None
-cpu_partition_cores_super_fine,16x12x1,192,16x12x1,1440x720x200,LatitudeLongitudeGrid,RUNNING,23088867,,,,,Exit 0:0; None
-cpu_partition_cores_super_fine,12x16x1,192,12x16x1,1440x720x200,LatitudeLongitudeGrid,RUNNING,23088867,,,,,Exit 0:0; None
-cpu_partition_cores_super_fine,8x24x1,192,8x24x1,1440x720x200,LatitudeLongitudeGrid,RUNNING,23088867,,,,,Exit 0:0; None
-cpu_partition_cores_super_fine,6x32x1,192,6x32x1,1440x720x200,LatitudeLongitudeGrid,RUNNING,23088867,,,,,Exit 0:0; None
-cpu_partition_cores_super_fine,4x48x1,192,4x48x1,1440x720x200,LatitudeLongitudeGrid,RUNNING,23088867,,,,,Exit 0:0; None
-cpu_partition_cores_super_fine,3x64x1,192,3x64x1,1440x720x200,LatitudeLongitudeGrid,RUNNING,23088867,,,,,Exit 0:0; None
-cpu_partition_cores_super_fine,2x96x1,192,2x96x1,1440x720x200,LatitudeLongitudeGrid,RUNNING,23088867,,,,,Exit 0:0; None
+cpu_partition_cores_super_fine,192x1x1,192,192x1x1,1440x720x200,LatitudeLongitudeGrid,TIMEOUT,23088867,,,,,Exit 0:0; None
+cpu_partition_cores_super_fine,96x2x1,192,96x2x1,1440x720x200,LatitudeLongitudeGrid,TIMEOUT,23088867,,,,,Exit 0:0; None
+cpu_partition_cores_super_fine,64x3x1,192,64x3x1,1440x720x200,LatitudeLongitudeGrid,TIMEOUT,23088867,,,,,Exit 0:0; None
+cpu_partition_cores_super_fine,48x4x1,192,48x4x1,1440x720x200,LatitudeLongitudeGrid,TIMEOUT,23088867,,,,,Exit 0:0; None
+cpu_partition_cores_super_fine,32x6x1,192,32x6x1,1440x720x200,LatitudeLongitudeGrid,TIMEOUT,23088867,,,,,Exit 0:0; None
+cpu_partition_cores_super_fine,24x8x1,192,24x8x1,1440x720x200,LatitudeLongitudeGrid,TIMEOUT,23088867,,,,,Exit 0:0; None
+cpu_partition_cores_super_fine,16x12x1,192,16x12x1,1440x720x200,LatitudeLongitudeGrid,TIMEOUT,23088867,,,,,Exit 0:0; None
+cpu_partition_cores_super_fine,12x16x1,192,12x16x1,1440x720x200,LatitudeLongitudeGrid,TIMEOUT,23088867,,,,,Exit 0:0; None
+cpu_partition_cores_super_fine,8x24x1,192,8x24x1,1440x720x200,LatitudeLongitudeGrid,TIMEOUT,23088867,,,,,Exit 0:0; None
+cpu_partition_cores_super_fine,6x32x1,192,6x32x1,1440x720x200,LatitudeLongitudeGrid,TIMEOUT,23088867,,,,,Exit 0:0; None
+cpu_partition_cores_super_fine,4x48x1,192,4x48x1,1440x720x200,LatitudeLongitudeGrid,TIMEOUT,23088867,,,,,Exit 0:0; None
+cpu_partition_cores_super_fine,3x64x1,192,3x64x1,1440x720x200,LatitudeLongitudeGrid,TIMEOUT,23088867,,,,,Exit 0:0; None
+cpu_partition_cores_super_fine,2x96x1,192,2x96x1,1440x720x200,LatitudeLongitudeGrid,TIMEOUT,23088867,,,,,Exit 0:0; None
 cpu_partition_cores_super_fine,1x192x1,192,1x192x1,1440x720x200,LatitudeLongitudeGrid,GEOMETRY_LIMIT,,,,,,"Partition [1, 192, 1] has fewer than 7 local cells per horizontal direction"
 gpu_nsight_scaling_super_fine,1_ranks,1,1x1x1,1440x720x200,LatitudeLongitudeGrid,PENDING,23088868,,,,,(Dependency); estimated start N/A (scheduler timezone)
 gpu_nsight_scaling_super_fine,2_ranks,2,2x1x1,1440x720x200,LatitudeLongitudeGrid,PENDING,23088869,,,,,(Dependency); estimated start N/A (scheduler timezone)

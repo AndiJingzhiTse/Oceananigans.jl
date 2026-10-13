@@ -1,0 +1,2274 @@
+srun: Job step aborted: Waiting up to 62 seconds for job step to finish.
+[2026-10-13T08:56:06.038] error: *** STEP 23088867.1 ON rc12608 CANCELLED AT 2026-10-13T08:56:06 DUE TO TIME LIMIT ***
+
+[267077] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267078] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267079] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267080] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267081] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267082] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267083] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267076] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267097] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267114] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267124] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267134] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14ed649dc77d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14ed649d9a02) at (unknown file)
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x150de2f6d40d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x150de2f69b42) at (unknown file)
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x146c7d19704d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x146c7d193d32) at (unknown file)
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity2 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x149b9f5acc4d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x149b9f5a9382) at (unknown file)
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity2 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x148e7edab90d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x148e7eda8b92) at (unknown file)
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14ab9d947c4d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14ab9d944382) at (unknown file)
+
+[267093] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267115] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity2 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14bbb837310d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14bbb836ff12) at (unknown file)
+
+[267084] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267085] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267086] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267087] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267088] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267089] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267090] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267091] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267092] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267094] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267095] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267098] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267099] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267100] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267101] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267103] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267111] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity2 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x152d66d8289d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x152d66d7fb22) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14ade3b491bd) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14ade3b46442) at (unknown file)
+
+[267102] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267104] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267105] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267106] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267107] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267108] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267109] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267110] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267112] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267113] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267116] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267117] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267118] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267119] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267123] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+
+[267131] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity2 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x1478c9f3141d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x1478c9f2e6a2) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+
+[267135] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267136] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267146] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267157] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x145e53dbfd1d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x145e53dbc8d2) at (unknown file)
+
+[267121] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267122] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267125] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267126] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267127] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267128] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267129] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267130] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267132] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267133] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267137] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267138] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267139] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267140] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267141] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267150] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267171] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x15152714e01d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x15152714b2a2) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+
+[267142] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267143] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267145] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267147] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267148] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267149] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267151] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267152] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267153] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267154] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267155] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267160] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267161] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267163] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x148bac3cc7ad) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x148bac3c8ee2) at (unknown file)
++ at ./int.jl:87 [inlined]
+_sub2ind_recurse at ./abstractarray.jl:3081 [inlined]
+_sub2ind_recurse at ./abstractarray.jl:3081 [inlined]
+_sub2ind_recurse at ./abstractarray.jl:3081 [inlined]
+_sub2ind at ./abstractarray.jl:3065 [inlined]
+_sub2ind at ./abstractarray.jl:3049 [inlined]
+_to_linear_index at ./abstractarray.jl:1377 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity2 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14c14c94583d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14c14c941f72) at (unknown file)
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14fbf459e38d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14fbf459b192) at (unknown file)
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity2 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x149f2b3e3d0d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x149f2b3e0452) at (unknown file)
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity2 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x151c64fbc87d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x151c64fb9562) at (unknown file)
++ at ./int.jl:87 [inlined]
+_sub2ind_recurse at ./abstractarray.jl:3081 [inlined]
+_sub2ind_recurse at ./abstractarray.jl:3081 [inlined]
+_sub2ind_recurse at ./abstractarray.jl:3081 [inlined]
+_sub2ind at ./abstractarray.jl:3065 [inlined]
+_sub2ind at ./abstractarray.jl:3049 [inlined]
+_to_linear_index at ./abstractarray.jl:1377 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity2 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14ed805a2bbd) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14ed8059f302) at (unknown file)
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x1549a313a7cd) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x1549a3137382) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14a9ca3b4bed) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14a9ca3b18c2) at (unknown file)
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity2 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14b123377c1d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14b123374482) at (unknown file)
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity2 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x149b7aff448d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x149b7aff1712) at (unknown file)
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity2 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14f99e73e10d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14f99e73a962) at (unknown file)
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity2 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14ef13547add) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14ef13544d62) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+
+[267156] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity2 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14ef47d95ddd) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14ef47d92f32) at (unknown file)
+
+[267159] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267162] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267164] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267165] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267166] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267167] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267168] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267169] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+
+[267170] signal 15: Terminated
+in expression starting at /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/run_metadata/suite/worker.jl:136
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+solve_for_pressure! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/solve_for_pressure.jl:160
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+solve_for_pressure! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/solve_for_pressure.jl:160
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+solve_for_pressure! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/solve_for_pressure.jl:160
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity2 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14a128d9a53d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14a128d96da2) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity2 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x1463c855ca4d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x1463c8559cd2) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x147d97979c6d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x147d97976ef2) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity2 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x1494385f82bd) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x1494385f4e82) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14f264fca67d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14f264fc6dc2) at (unknown file)
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x1553cbbf41cd) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x1553cbbf1322) at (unknown file)
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x15163094a41d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x1516309470f2) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14e42d341c5d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14e42d33ea62) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x15226cd4873d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x15226cd45542) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x1518e9dd5dad) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x1518e9dd3032) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14f9c25363fd) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14f9c2533682) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14e20636aa7d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14e206367772) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x150199d30f4d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x150199d2d7b2) at (unknown file)
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x148804fcb06d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x148804fc7d52) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x152fca74caed) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x152fca7497c2) at (unknown file)
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity2 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14fc07d74c6d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14fc07d71a72) at (unknown file)
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14d4bf362ffd) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14d4bf360282) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14e3e4755a1d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14e3e4752282) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x1511e9f2d42d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x1511e9f2a112) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14d342bd34ad) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14d342bcfd12) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14795635cc3d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x147956359372) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x15298d97ecad) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x15298d97bf32) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14ab3b33ec6d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14ab3b33b832) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+solve_for_pressure! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/solve_for_pressure.jl:160
+compute_pressure_correction! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/pressure_correction.jl:16
+pressure_correction_rk3_substep! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/nonhydrostatic_rk3_substep.jl:45
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14b54f77939d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14b54f776072) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity2 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x1498df1b883d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x1498df1b4f72) at (unknown file)
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x150d31bbc2bd) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x150d31bb90c2) at (unknown file)
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+solve_for_pressure! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/solve_for_pressure.jl:160
+compute_pressure_correction! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/pressure_correction.jl:16
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x147653bf7d0d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x147653bf4b12) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x1477f5f40eed) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x1477f5f3d622) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14c3349575ad) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14c334954832) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14d6b19a49bd) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14d6b19a1b12) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+compute_pressure_correction! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/pressure_correction.jl:16
+solve_for_pressure! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/solve_for_pressure.jl:160
+solve_for_pressure! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/solve_for_pressure.jl:160
+compute_pressure_correction! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/pressure_correction.jl:16
+compute_pressure_correction! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/pressure_correction.jl:16
+solve_for_pressure! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/solve_for_pressure.jl:160
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+solve_for_pressure! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/solve_for_pressure.jl:160
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14ed385b4b6d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14ed385b1cc2) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+solve_for_pressure! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/solve_for_pressure.jl:160
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+solve_for_pressure! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/solve_for_pressure.jl:160
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x149101584c0d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x149101581a12) at (unknown file)
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity2 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x15437b18c9ad) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x15437b189692) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14ce6f38c0fd) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14ce6f388cb2) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x150cc9356add) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x150cc9353d62) at (unknown file)
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x1471c696b22d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x1471c69684b2) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14ccd2db1a2d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14ccd2dae722) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14cd6dfcb8dd) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14cd6dfc8a32) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14af2c3345ed) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14af2c3311a2) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x1463a1b51f4d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x1463a1b4ec22) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14c2b3767d6d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14c2b3764ff2) at (unknown file)
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity2 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14c847931c9d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14c84792e502) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity2 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14d030746f2d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14d0307441b2) at (unknown file)
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x1532ce738ddd) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x1532ce735f32) at (unknown file)
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity2 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x1527aa95338d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x1527aa94ff42) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x1473f7dcaead) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x1473f7dc7b82) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14bd4dbb1afd) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14bd4dbaed82) at (unknown file)
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x146aa5732cdd) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x146aa572ff62) at (unknown file)
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x15417d17938d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x15417d176612) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x15000898383d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x15000897ff82) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14e22432f0cd) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14e22432b802) at (unknown file)
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x1534eff3502d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x1534eff31be2) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x147112fe546d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x147112fe2022) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x1508a53f3c4d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x1508a53f0382) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14a6e9ff0dad) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14a6e9fee032) at (unknown file)
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14703a5f48cd) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14703a5f1b52) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x1539ee5aa79d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x1539ee5a75a2) at (unknown file)
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x15530bb685ed) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x15530bb65872) at (unknown file)
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x1459d7bf7dad) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x1459d7bf44e2) at (unknown file)
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity2 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x149b5275019d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x149b5274cfa2) at (unknown file)
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x154eb6bdfa1d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x154eb6bdc5e2) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x1514fbd695ad) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x1514fbd66832) at (unknown file)
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x15239b9dbb8d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x15239b9d8992) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+pressure_correction_rk3_substep! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/nonhydrostatic_rk3_substep.jl:45
+compute_pressure_correction! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/pressure_correction.jl:16
+pressure_correction_rk3_substep! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/nonhydrostatic_rk3_substep.jl:45
+pressure_correction_rk3_substep! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/nonhydrostatic_rk3_substep.jl:45
+compute_pressure_correction! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/pressure_correction.jl:16
+pressure_correction_rk3_substep! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/nonhydrostatic_rk3_substep.jl:45
+pressure_correction_rk3_substep! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/nonhydrostatic_rk3_substep.jl:45
+compute_pressure_correction! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/pressure_correction.jl:16
+compute_pressure_correction! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/pressure_correction.jl:16
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+solve_for_pressure! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/solve_for_pressure.jl:160
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+solve_for_pressure! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/solve_for_pressure.jl:160
+compute_pressure_correction! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/pressure_correction.jl:16
+pressure_correction_rk3_substep! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/nonhydrostatic_rk3_substep.jl:45
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+solve_for_pressure! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/solve_for_pressure.jl:160
+compute_pressure_correction! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/pressure_correction.jl:16
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+rk3_substep! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/nonhydrostatic_rk3_substep.jl:11 [inlined]
+#time_step!#9 at /home/anditse/Oceananigans.jl/src/TimeSteppers/runge_kutta_3.jl:128
+time_step! at /home/anditse/Oceananigans.jl/src/TimeSteppers/runge_kutta_3.jl:103 [inlined]
+many_time_steps! at /home/anditse/Oceananigans.jl/benchmarking/src/timestepping.jl:13
+unknown function (ip: 0x152d66d9ecb0) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+pressure_correction_rk3_substep! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/nonhydrostatic_rk3_substep.jl:45
+rk3_substep! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/nonhydrostatic_rk3_substep.jl:11 [inlined]
+#time_step!#9 at /home/anditse/Oceananigans.jl/src/TimeSteppers/runge_kutta_3.jl:128
+time_step! at /home/anditse/Oceananigans.jl/src/TimeSteppers/runge_kutta_3.jl:103 [inlined]
+many_time_steps! at /home/anditse/Oceananigans.jl/benchmarking/src/timestepping.jl:13
+unknown function (ip: 0x1478c9f77760) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+solve_for_pressure! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/solve_for_pressure.jl:160
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+solve_for_pressure! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/solve_for_pressure.jl:160
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14c0949b17fd) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14c0949aea82) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x146fa8ba7c1d) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x146fa8ba4d72) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity2 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x151c047369fd) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x151c04733272) at (unknown file)
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+#dot#46 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:264 [inlined]
+dot at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:257 [inlined]
+#norm#45 at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:252 [inlined]
+norm at /home/anditse/Oceananigans.jl/src/DistributedComputations/distributed_fields.jl:251 [inlined]
+VolumeInverseNorm at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_poisson_solver.jl:31
+getindex at ./essentials.jl:920 [inlined]
+getindex at ./array.jl:929 [inlined]
+getindex at /scratch/anditse/julia_depot/packages/OffsetArrays/b7qpm/src/OffsetArrays.jl:421 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/Fields/field.jl:425 [inlined]
+identity1 at /home/anditse/Oceananigans.jl/src/Operators/interpolation_utils.jl:38 [inlined]
+* at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:74 [inlined]
+getindex at /home/anditse/Oceananigans.jl/src/AbstractOperations/binary_operations.jl:26 [inlined]
+_getindex at ./abstractarray.jl:1388 [inlined]
+getindex at ./abstractarray.jl:1342 [inlined]
+macro expansion at ./reducedim.jl:277 [inlined]
+macro expansion at ./simdloop.jl:77 [inlined]
+_mapreducedim! at ./reducedim.jl:276
+unknown function (ip: 0x14da0c5ad9ad) at (unknown file)
+mapreducedim! at ./reducedim.jl:293
+unknown function (ip: 0x14da0c5aa212) at (unknown file)
+rk3_substep! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/nonhydrostatic_rk3_substep.jl:11 [inlined]
+#time_step!#9 at /home/anditse/Oceananigans.jl/src/TimeSteppers/runge_kutta_3.jl:128
+rk3_substep! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/nonhydrostatic_rk3_substep.jl:11 [inlined]
+#time_step!#9 at /home/anditse/Oceananigans.jl/src/TimeSteppers/runge_kutta_3.jl:128
+pressure_correction_rk3_substep! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/nonhydrostatic_rk3_substep.jl:45
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+solve_for_pressure! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/solve_for_pressure.jl:160
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+solve_for_pressure! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/solve_for_pressure.jl:160
+solve_for_pressure! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/solve_for_pressure.jl:160
+solve_for_pressure! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/solve_for_pressure.jl:160
+solve_for_pressure! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/solve_for_pressure.jl:160
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+rk3_substep! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/nonhydrostatic_rk3_substep.jl:11 [inlined]
+#time_step!#9 at /home/anditse/Oceananigans.jl/src/TimeSteppers/runge_kutta_3.jl:128
+time_step! at /home/anditse/Oceananigans.jl/src/TimeSteppers/runge_kutta_3.jl:103 [inlined]
+many_time_steps! at /home/anditse/Oceananigans.jl/benchmarking/src/timestepping.jl:13
+unknown function (ip: 0x14ade3b59c60) at (unknown file)
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+solve_for_pressure! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/solve_for_pressure.jl:160
+solve_for_pressure! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/solve_for_pressure.jl:160
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+solve_for_pressure! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/solve_for_pressure.jl:160
+pressure_correction_rk3_substep! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/nonhydrostatic_rk3_substep.jl:45
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+solve_for_pressure! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/solve_for_pressure.jl:160
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+iterating at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:279 [inlined]
+solve! at /home/anditse/Oceananigans.jl/src/Solvers/conjugate_gradient_solver.jl:192
+solve_for_pressure! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/solve_for_pressure.jl:160
+rk3_substep! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/nonhydrostatic_rk3_substep.jl:11 [inlined]
+#time_step!#9 at /home/anditse/Oceananigans.jl/src/TimeSteppers/runge_kutta_3.jl:128
+time_step! at /home/anditse/Oceananigans.jl/src/TimeSteppers/runge_kutta_3.jl:103 [inlined]
+many_time_steps! at /home/anditse/Oceananigans.jl/benchmarking/src/timestepping.jl:13
+unknown function (ip: 0x14ed649ec3d0) at (unknown file)
+time_step! at /home/anditse/Oceananigans.jl/src/TimeSteppers/runge_kutta_3.jl:103 [inlined]
+many_time_steps! at /home/anditse/Oceananigans.jl/benchmarking/src/timestepping.jl:13
+unknown function (ip: 0x150de2f822e0) at (unknown file)
+rk3_substep! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/nonhydrostatic_rk3_substep.jl:11 [inlined]
+#time_step!#9 at /home/anditse/Oceananigans.jl/src/TimeSteppers/runge_kutta_3.jl:128
+time_step! at /home/anditse/Oceananigans.jl/src/TimeSteppers/runge_kutta_3.jl:103 [inlined]
+many_time_steps! at /home/anditse/Oceananigans.jl/benchmarking/src/timestepping.jl:13
+unknown function (ip: 0x146c7d1c8670) at (unknown file)
+rk3_substep! at /home/anditse/Oceananigans.jl/src/Models/NonhydrostaticModels/nonhydrostatic_rk3_substep.jl:11 [inlined]
+#time_step!#9 at /home/anditse/Oceananigans.jl/src/TimeSteppers/runge_kutta_3.jl:128
+time_step! at /home/anditse/Oceananigans.jl/src/TimeSteppers/runge_kutta_3.jl:103 [inlined]
+many_time_steps! at /home/anditse/Oceananigans.jl/benchmarking/src/timestepping.jl:13
+unknown function (ip: 0x149b9f5e9790) at (unknown file)

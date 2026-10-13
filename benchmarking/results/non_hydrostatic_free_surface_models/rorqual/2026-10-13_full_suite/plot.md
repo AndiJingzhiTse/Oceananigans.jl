@@ -28,7 +28,7 @@ Highest completed count: **0 ranks**.
 | 384_ranks | 384 | 24x16x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
 | 768_ranks | 768 | 32x24x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
 | 1536_ranks | 1536 | 32x48x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
-| 3072_ranks | 3072 | 64x48x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T05:40:00 (scheduler timezone) |
+| 3072_ranks | 3072 | 64x48x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T05:23:56 (scheduler timezone) |
 | 6144_ranks | 6144 | 96x64x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
 | 12288_ranks | 12288 | 128x96x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
 | 24576_ranks | 24576 |  | 1440x720x200 | LatitudeLongitudeGrid | GEOMETRY_LIMIT | — | — | — | 24576 ranks have no horizontal partition with at least 7 local cells per direction |
@@ -56,7 +56,7 @@ Highest completed count: **0 ranks**.
 |---|---:|---|---|---|---|---:|---:|---|---|
 | default | 1 | 1x1x1 | 360x180x50 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
 | fine | 1 | 1x1x1 | 720x360x100 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
-| super_fine | 1 | 1x1x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T04:52:56 (scheduler timezone) |
+| super_fine | 1 | 1x1x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T05:41:18 (scheduler timezone) |
 ## gpu_resolution
 
 Highest completed count: **0 ranks**.
@@ -72,19 +72,19 @@ Highest completed count: **0 ranks**.
 
 | Case | Ranks | Partition | Global resolution | Grid type | State | Fastest s/step | Median s/step | Efficiency fastest / median | Details |
 |---|---:|---|---|---|---|---:|---:|---|---|
-| 192x1x1 | 192 | 192x1x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
-| 96x2x1 | 192 | 96x2x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
-| 64x3x1 | 192 | 64x3x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
-| 48x4x1 | 192 | 48x4x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
-| 32x6x1 | 192 | 32x6x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
-| 24x8x1 | 192 | 24x8x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
-| 16x12x1 | 192 | 16x12x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
-| 12x16x1 | 192 | 12x16x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
-| 8x24x1 | 192 | 8x24x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
-| 6x32x1 | 192 | 6x32x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
-| 4x48x1 | 192 | 4x48x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
-| 3x64x1 | 192 | 3x64x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
-| 2x96x1 | 192 | 2x96x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
+| 192x1x1 | 192 | 192x1x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
+| 96x2x1 | 192 | 96x2x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
+| 64x3x1 | 192 | 64x3x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
+| 48x4x1 | 192 | 48x4x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
+| 32x6x1 | 192 | 32x6x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
+| 24x8x1 | 192 | 24x8x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
+| 16x12x1 | 192 | 16x12x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
+| 12x16x1 | 192 | 12x16x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
+| 8x24x1 | 192 | 8x24x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
+| 6x32x1 | 192 | 6x32x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
+| 4x48x1 | 192 | 4x48x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
+| 3x64x1 | 192 | 3x64x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
+| 2x96x1 | 192 | 2x96x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
 | 1x192x1 | 192 | 1x192x1 | 1440x720x200 | LatitudeLongitudeGrid | GEOMETRY_LIMIT | — | — | — | Partition [1, 192, 1] has fewer than 7 local cells per horizontal direction |
 ## gpu_nsight_scaling_super_fine
 
