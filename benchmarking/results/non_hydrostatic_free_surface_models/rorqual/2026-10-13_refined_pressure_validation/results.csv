@@ -1,6 +1,6 @@
 series,case,ranks,partition,resolution,grid_type,state,job_id,fastest,median,efficiency_fastest,efficiency_median,details
 cpu_mpi_scaling_super_fine,balanced_192,192,16x12x1,1440x720x200,LatitudeLongitudeGrid,COMPLETED,23117412,121.662907565,121.662907565,,,"Rank results, finite fields and resource placement verified"
-cpu_partition_cores_super_fine,extreme_192x1x1,192,192x1x1,1440x720x200,LatitudeLongitudeGrid,RUNNING,23117413,,,,,Exit 0:0; None
+cpu_partition_cores_super_fine,extreme_192x1x1,192,192x1x1,1440x720x200,LatitudeLongitudeGrid,FAILED,23117413,,,,,Execution/export exit 1; see job.out and rank logs
 gpu_scaling_super_fine,smoke_1,1,1x1x1,72x36x200,LatitudeLongitudeGrid,PENDING,23117414,,,,,(Priority); estimated start N/A (scheduler timezone)
 gpu_scaling_super_fine,smoke_2,2,2x1x1,72x36x200,LatitudeLongitudeGrid,PENDING,23117415,,,,,(Priority); estimated start N/A (scheduler timezone)
 gpu_scaling_super_fine,super_fine_4,4,2x2x1,1440x720x200,LatitudeLongitudeGrid,PENDING,23117416,,,,,(Priority); estimated start N/A (scheduler timezone)

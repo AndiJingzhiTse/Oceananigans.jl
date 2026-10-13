@@ -29,7 +29,7 @@ Highest completed count: **0 ranks**.
 
 | Case | Ranks | Partition | Global resolution | Grid type | State | Fastest s/step | Median s/step | Efficiency fastest / median | Details |
 |---|---:|---|---|---|---|---:|---:|---|---|
-| extreme_192x1x1 | 192 | 192x1x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
+| extreme_192x1x1 | 192 | 192x1x1 | 1440x720x200 | LatitudeLongitudeGrid | FAILED | — | — | — | Execution/export exit 1; see job.out and rank logs |
 ## gpu_scaling_super_fine
 
 Highest completed count: **0 ranks**.
@@ -47,7 +47,7 @@ Validation pilots are separate from production comparisons. Each new accepted re
 | Case | Preconditioner | Recorded solves | Maximum iterations | Last residual / tolerance | Recomputed final residual | Outcome |
 |---|---|---:|---:|---|---|---|
 | cpu_mpi_scaling_super_fine/balanced_192 | LocalFFTPreconditioner | 10 | 317 | 1.363e-08 / 1.490e-08 | 1.374e-08 | COMPLETED |
-| cpu_partition_cores_super_fine/extreme_192x1x1 | LocalFFTPreconditioner | — | — | — | — | RUNNING |
+| cpu_partition_cores_super_fine/extreme_192x1x1 | LocalFFTPreconditioner | — | — | — | — | FAILED |
 | gpu_scaling_super_fine/smoke_1 | LocalFFTPreconditioner | — | — | — | — | PENDING |
 | gpu_scaling_super_fine/smoke_2 | LocalFFTPreconditioner | — | — | — | — | PENDING |
 | gpu_scaling_super_fine/super_fine_4 | LocalFFTPreconditioner | — | — | — | — | PENDING |
