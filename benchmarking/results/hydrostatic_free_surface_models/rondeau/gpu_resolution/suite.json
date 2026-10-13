@@ -1,9 +1,54 @@
 {
   "server": {
+    "machine": "rondeau",
     "backend": "local",
+    "project": "/u/ajtse/Oceananigans.jl/benchmarking",
+    "julia": "julia",
+    "mpi": [
+      "mpiexec"
+    ],
+    "max_cpu_cores": 128,
+    "max_gpus": 4,
+    "cpu_cores_per_node": 128,
+    "gpus_per_node": 4,
+    "gpu_host_cores": 8,
+    "cpu_account": "",
+    "gpu_account": "",
+    "cpu_partition": "",
+    "gpu_partition": "",
+    "gpu_type": "",
+    "cpu_constraint": "",
+    "exclusive_cpu": true,
+    "environment_script": "",
+    "mpi_init": "",
+    "cpu_time": "03:00:00",
+    "gpu_time": "00:45:00",
+    "partition_time": "03:00:00",
+    "gpu_memory": "128G",
+    "cpu_memory_base_gb": 64,
+    "cpu_memory_per_rank_gb": 4,
+    "cpu_sbatch_extra": [],
+    "gpu_sbatch_extra": [],
+    "trace_root": "/local_scratch/ajtse/benchmark_traces",
+    "case_timeout_seconds": 1209600,
     "matplotlib": true,
+    "python": "python3",
+    "report_modules": [],
+    "reference_suites": [],
+    "replacement_suites": [],
+    "environment": {},
+    "gpu_scaling_partition": "balanced",
     "model_type": "HydrostaticFreeSurfaceModel",
-    "machine": "rondeau"
+    "comparison_suites": [],
+    "comparison_report": "",
+    "pressure_preconditioner": "DiagonallyDominantPreconditioner",
+    "pressure_max_iterations": 5000,
+    "pressure_diagnostics": false,
+    "pressure_preserve_residual": false,
+    "pressure_check_true_residual": true,
+    "separate_partitions": false,
+    "cpu_time_overrides": {},
+    "full_gpu_nodes": false
   },
   "cases": [
     {
@@ -273,7 +318,184 @@
         "original_case": "hydrostatic_free_surface_models/rondeau/2026-09-27_all/gpu_resolution/720x360x50",
         "results_sha256": "779345397e88bd3aae5691dca919352099cfbb563c0b27e68a017f5b68d7b22e"
       }
+    },
+    {
+      "id": "default",
+      "series": "gpu_resolution",
+      "ranks": 1,
+      "grid_name": "default",
+      "partition": [
+        1,
+        1,
+        1
+      ],
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
+      "job_id": "",
+      "configuration": {
+        "series": "gpu_resolution",
+        "model_type": "HydrostaticFreeSurfaceModel",
+        "device": "GPU",
+        "ranks": 1,
+        "threads_per_rank": 1,
+        "grid_name": "default",
+        "global_resolution": [
+          360,
+          180,
+          50
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "partition": [
+          1,
+          1,
+          1
+        ],
+        "x_sizes": [
+          360
+        ],
+        "y_sizes": [
+          180
+        ],
+        "float_type": "Float64",
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "viscosity": null,
+        "diffusivity": null,
+        "coriolis": "HydrostaticSphericalCoriolis",
+        "buoyancy": "SeawaterBuoyancy(TEOS10)",
+        "timestepper": "SplitRungeKutta3",
+        "free_surface": "SplitExplicitFreeSurface",
+        "pressure_solver": null,
+        "pressure_preconditioner": null,
+        "pressure_max_iterations": null,
+        "pressure_reltol": null,
+        "pressure_abstol": null,
+        "pressure_diagnostics": false,
+        "pressure_preserve_residual": false,
+        "pressure_check_true_residual": false,
+        "pressure_preconditioner_check": false,
+        "initial_condition_seed": null,
+        "dt": 60,
+        "free_surface_substeps": 30,
+        "extend_free_surface_halos": true,
+        "warmup_steps": 2,
+        "samples": 5,
+        "time_steps": 10,
+        "profile": false,
+        "scaling_type": "comparison",
+        "baseline_ranks": 1
+      },
+      "measurement": {
+        "fastest": 0.0339902021,
+        "median": 0.0340294088,
+        "maximum": 0.035488213899999996,
+        "retained_substeps": [
+          21
+        ],
+        "nodes": 1,
+        "gpu_memory_used_bytes": 1516503040,
+        "gpu_memory_max_gib": 1.412353515625
+      },
+      "provenance": {
+        "source": "/local_scratch/ajtse/benchmark_studies/hydrostatic_free_surface_models/2026-10-13T193658Z/rondeau/gpu_resolution",
+        "submitted_at": "2026-10-13T19:46:21.573044+00:00",
+        "measured_at": "2026-10-13T19:40:36.147"
+      }
+    },
+    {
+      "id": "fine",
+      "series": "gpu_resolution",
+      "ranks": 1,
+      "grid_name": "fine",
+      "partition": [
+        1,
+        1,
+        1
+      ],
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
+      "job_id": "",
+      "configuration": {
+        "series": "gpu_resolution",
+        "model_type": "HydrostaticFreeSurfaceModel",
+        "device": "GPU",
+        "ranks": 1,
+        "threads_per_rank": 1,
+        "grid_name": "fine",
+        "global_resolution": [
+          720,
+          360,
+          100
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "partition": [
+          1,
+          1,
+          1
+        ],
+        "x_sizes": [
+          720
+        ],
+        "y_sizes": [
+          360
+        ],
+        "float_type": "Float64",
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "viscosity": null,
+        "diffusivity": null,
+        "coriolis": "HydrostaticSphericalCoriolis",
+        "buoyancy": "SeawaterBuoyancy(TEOS10)",
+        "timestepper": "SplitRungeKutta3",
+        "free_surface": "SplitExplicitFreeSurface",
+        "pressure_solver": null,
+        "pressure_preconditioner": null,
+        "pressure_max_iterations": null,
+        "pressure_reltol": null,
+        "pressure_abstol": null,
+        "pressure_diagnostics": false,
+        "pressure_preserve_residual": false,
+        "pressure_check_true_residual": false,
+        "pressure_preconditioner_check": false,
+        "initial_condition_seed": null,
+        "dt": 60,
+        "free_surface_substeps": 30,
+        "extend_free_surface_halos": true,
+        "warmup_steps": 2,
+        "samples": 5,
+        "time_steps": 10,
+        "profile": false,
+        "scaling_type": "comparison",
+        "baseline_ranks": 1
+      },
+      "measurement": {
+        "fastest": 0.2483648943,
+        "median": 0.2484575919,
+        "maximum": 0.24878010590000002,
+        "retained_substeps": [
+          21
+        ],
+        "nodes": 1,
+        "gpu_memory_used_bytes": 7319322624,
+        "gpu_memory_max_gib": 6.816650390625
+      },
+      "provenance": {
+        "source": "/local_scratch/ajtse/benchmark_studies/hydrostatic_free_surface_models/2026-10-13T193658Z/rondeau/gpu_resolution",
+        "submitted_at": "2026-10-13T19:46:21.573044+00:00",
+        "measured_at": "2026-10-13T19:43:09.595"
+      }
     }
   ],
+  "submitted_at": "2026-10-13T19:46:21.573044+00:00",
   "curated": true
 }

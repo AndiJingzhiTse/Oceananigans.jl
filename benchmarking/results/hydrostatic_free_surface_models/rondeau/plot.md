@@ -10,7 +10,7 @@ Each series folder contains its configurations, measurements and provenance. Onl
 | `cpu_scaling_720x360x50` | 8 | [Details](cpu_scaling_720x360x50/plot.md) |
 | `gpu_component_ablation` | 6 | [Details](gpu_component_ablation/plot.md) |
 | `gpu_profiling` | 2 | [Details](gpu_profiling/plot.md) |
-| `gpu_resolution` | 4 | [Details](gpu_resolution/plot.md) |
+| `gpu_resolution` | 6 | [Details](gpu_resolution/plot.md) |
 | `gpu_scaling_720x360x50` | 3 | [Details](gpu_scaling_720x360x50/plot.md) |
 | `gpu_scaling_super_fine` | 2 | [Details](gpu_scaling_super_fine/plot.md) |
 
@@ -96,6 +96,8 @@ Each series folder contains its configurations, measurements and provenance. Onl
 | [180x90x50](gpu_resolution/180x90x50/configuration.md) | 1 | 180 × 90 × 50 | 1 × 1 × 1 | 0.011853 / 0.011891 | — | Historical: complete ranks and timing aggregates checked; finite-state/placement checks unavailable |
 | [360x180x50](gpu_resolution/360x180x50/configuration.md) | 1 | 360 × 180 × 50 | 1 × 1 × 1 | 0.033800 / 0.033816 | — | Historical: complete ranks and timing aggregates checked; finite-state/placement checks unavailable |
 | [720x360x50](gpu_resolution/720x360x50/configuration.md) | 1 | 720 × 360 × 50 | 1 × 1 × 1 | 0.125816 / 0.125869 | — | Historical: complete ranks and timing aggregates checked; finite-state/placement checks unavailable |
+| [default](gpu_resolution/default/configuration.md) | 1 | 360 × 180 × 50 | 1 × 1 × 1 | 0.033990 / 0.034029 | — | Current suite checks |
+| [fine](gpu_resolution/fine/configuration.md) | 1 | 720 × 360 × 100 | 1 × 1 × 1 | 0.248365 / 0.248458 | — | Current suite checks |
 
 ## gpu_scaling_720x360x50
 
@@ -115,3 +117,24 @@ Each series folder contains its configurations, measurements and provenance. Onl
 |---|---:|---|---|---:|---:|---|
 | [2_ranks](gpu_scaling_super_fine/2_ranks/configuration.md) | 2 | 1440 × 720 × 200 | 1 × 2 × 1 | 0.991023 / 0.992988 | — | Historical: complete ranks and timing aggregates checked; finite-state/placement checks unavailable |
 | [4_ranks](gpu_scaling_super_fine/4_ranks/configuration.md) | 4 | 1440 × 720 × 200 | 2 × 2 × 1 | 0.517122 / 0.521209 | — | Historical: complete ranks and timing aggregates checked; finite-state/placement checks unavailable |
+
+## README series rerun
+
+Host: Rondeau; 128 physical CPU cores and four NVIDIA A100-SXM4-40GB GPUs.
+Serial execution prevents benchmark cases from competing with one another.
+Full study and live logs: `/local_scratch/ajtse/benchmark_studies/hydrostatic_free_surface_models/2026-10-13T193658Z`.
+GPU resolution stops at the first observed VRAM failure. CPU resolution doubles all three grid dimensions until a host allocation failure; available RAM bounds each process address space.
+Historical measurements retain their original validation labels until comparable reruns complete.
+
+| Standard series | Completed new cases | Pending cases | Report |
+|---|---:|---:|---|
+| gpu_resolution | 2 | 0 | [gpu_resolution](gpu_resolution/plot.md) |
+| gpu_scaling_super_fine | 0 | 3 | [gpu_scaling_super_fine](gpu_scaling_super_fine/plot.md) |
+| gpu_partition_super_fine | 0 | 6 | Pending |
+| gpu_nsight_scaling_super_fine | 0 | 3 | Pending |
+| gpu_scaling_super_super_fine | 0 | 1 | Pending |
+| gpu_weak_scaling_super_fine | 0 | 2 | Pending |
+| gpu_scaling_super_super_super_fine | 0 | 0 | Pending |
+| cpu_partition_cores_super_fine | 0 | 0 | Pending |
+| cpu_mpi_scaling_super_fine | 0 | 7 | Pending |
+| cpu_resolution | 0 | 3 | [cpu_resolution](cpu_resolution/plot.md) |
