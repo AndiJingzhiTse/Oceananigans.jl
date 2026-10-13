@@ -13,23 +13,25 @@ Profiled timings are separate; Nsight captures CUDA/NVTX/MPI after warmup. Kerne
 
 ## cpu_mpi_scaling_super_fine
 
-Highest completed count: **2 ranks**.
+Highest completed count: **16 ranks**.
 
 ![cpu_mpi_scaling_super_fine](cpu_mpi_scaling_super_fine.svg)
 
 | Case | Ranks | Partition | Global resolution | Grid type | State | Fastest s/step | Median s/step | Efficiency fastest / median | Details |
 |---|---:|---|---|---|---|---:|---:|---|---|
 | 2_ranks | 2 | 2x1x1 | 72x36x8 | LatitudeLongitudeGrid | COMPLETED | 0.042401 | 0.092381 | — | Rank results, finite fields and resource placement verified |
-| 16_ranks_200_levels | 16 | 4x4x1 | 72x36x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (None); estimated start N/A (scheduler timezone) |
+| 16_ranks_200_levels | 16 | 4x4x1 | 72x36x200 | LatitudeLongitudeGrid | COMPLETED | 7.633759 | 10.754958 | — | Rank results, finite fields and resource placement verified |
 
 [2_ranks configuration](cpu_mpi_scaling_super_fine/2_ranks/configuration.md): local resolution **36–36 × 36–36 × 8**, rigid lid; free-surface substeps not applicable.
+
+[16_ranks_200_levels configuration](cpu_mpi_scaling_super_fine/16_ranks_200_levels/configuration.md): local resolution **18–18 × 9–9 × 200**, rigid lid; free-surface substeps not applicable.
 ## gpu_scaling_super_fine
 
 Highest completed count: **0 ranks**.
 
 | Case | Ranks | Partition | Global resolution | Grid type | State | Fastest s/step | Median s/step | Efficiency fastest / median | Details |
 |---|---:|---|---|---|---|---:|---:|---|---|
-| 2_ranks | 2 | 2x1x1 | 72x36x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start N/A (scheduler timezone) |
+| 2_ranks | 2 | 2x1x1 | 72x36x200 | LatitudeLongitudeGrid | CANCELLED | — | — | — | Replaced before execution by shorter functional validation in 2026-10-13_cpu_gpu_validation; original submission preserved |
 
 ## GPU scaling comparison (DRAC table format)
 
@@ -45,5 +47,5 @@ Strong efficiency = baseline time × baseline GPUs / (measured time × GPUs); id
 
 | Grid | Global resolution (cells) | GPUs | Nodes | Partition | Δt (s) | Median s/step | Efficiency | Throughput (cells/s) | Memory/GPU (GiB) | State |
 |---|---|---:|---:|---|---:|---:|---:|---:|---:|---|
-| smoke | 72 × 36 × 200 (518,400) | 2 | — | 2 × 1 × 1 | 60 | — | — | — | — | PENDING |
+| smoke | 72 × 36 × 200 (518,400) | 2 | — | 2 × 1 × 1 | 60 | — | — | — | — | CANCELLED |
 

@@ -182,8 +182,8 @@
         "scaling_type": "strong",
         "baseline_ranks": 1
       },
-      "state": "PENDING",
-      "details": "(Priority); estimated start N/A (scheduler timezone)",
+      "state": "CANCELLED",
+      "details": "Replaced before execution by shorter functional validation in 2026-10-13_cpu_gpu_validation; original submission preserved",
       "job_id": "23087632"
     },
     {
@@ -251,9 +251,16 @@
         "scaling_type": "strong",
         "baseline_ranks": 1
       },
-      "state": "PENDING",
-      "details": "(None); estimated start N/A (scheduler timezone)",
-      "job_id": "23088086"
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
+      "job_id": "23088086",
+      "measurement": {
+        "fastest": 7.633758759,
+        "median": 10.7549577637,
+        "maximum": 17.3310932604,
+        "retained_substeps": [],
+        "nodes": 1
+      }
     }
   ],
   "submitted_at": null,
