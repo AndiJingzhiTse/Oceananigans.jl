@@ -159,7 +159,7 @@ Historical measurements retain their original validation labels until comparable
 | gpu_nsight_scaling_super_fine | 2 | 0 | [gpu_nsight_scaling_super_fine](gpu_nsight_scaling_super_fine/plot.md) |
 | gpu_scaling_super_super_fine | 0 | 0 | [gpu_scaling_super_super_fine](gpu_scaling_super_super_fine/plot.md) |
 | gpu_weak_scaling_super_fine | 0 | 0 | [gpu_weak_scaling_super_fine](gpu_weak_scaling_super_fine/plot.md) |
-| gpu_scaling_super_super_super_fine | 0 | 0 | Pending |
+| gpu_scaling_super_super_super_fine | 0 | 0 | [gpu_scaling_super_super_super_fine](gpu_scaling_super_super_super_fine/plot.md) |
 | cpu_partition_cores_super_fine | 0 | 0 | Pending |
 | cpu_mpi_scaling_super_fine | 0 | 7 | Pending |
 | cpu_resolution | 0 | 3 | [cpu_resolution](cpu_resolution/plot.md) |
