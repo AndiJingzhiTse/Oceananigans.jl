@@ -292,3 +292,7 @@ gpu_weak_scaling_super_fine/1024_ranks: RESOURCE_LIMIT [32, 32, 1]
  create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_resolution/super_fine/slurm_job.txt
  create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_resolution/super_fine/started.txt
 
+[codex/benchmarking b57839bba] Record validated benchmark suite results and job outcomes
+ 10 files changed, 27688 insertions(+), 16 deletions(-)
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_mpi_scaling_super_fine/3072_ranks/layout.json
+
