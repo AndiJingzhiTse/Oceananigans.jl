@@ -1,0 +1,29 @@
+JobId=23088851 JobName=bench_nh_cpu_mpi_scaling_super_fine
+   UserId=anditse(3165591) GroupId=anditse(3165591) MCS_label=N/A
+   Priority=2589393 Nice=0 Account=def-fpoulin_cpu QOS=normal
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:00:05 TimeLimit=03:00:00 TimeMin=N/A
+   SubmitTime=2026-10-13T01:00:15 EligibleTime=2026-10-13T01:00:15
+   AccrueTime=2026-10-13T01:00:15
+   StartTime=2026-10-13T02:51:33 EndTime=2026-10-13T05:51:33 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-13T02:51:33 Scheduler=Main
+   Partition=cpubase_bynode_b1 AllocNode:Sid=rorqual2:885124
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=rc[12908-12910,12915,12919,12931,13201-13203,13205-13206,13208-13210,13212,13219,13221,13223,13225,13228,13309,13315,13318,13327-13329,13405,13409,13417,13422,13424-13425,13427,13430,13503,13508-13510,13513-13514,13516-13519,13522-13523,13529,13531,13602,13604,13606-13608,13610,13612-13613,13616,31709,31711-31712,31719-31720,31816,31822]
+   BatchHost=rc12908
+   NumNodes=64 NumCPUs=12288 NumTasks=12288 CPUs/Task=1 ReqB:S:C:T=0:0:*:1
+   ReqTRES=cpu=12288,mem=48000G,node=64,billing=12288000
+   AllocTRES=cpu=12288,mem=48000G,node=64,billing=12288000
+   Socks/Node=* NtasksPerN:B:S:C=192:0:*:* CoreSpec=*
+   MinCPUsNode=192 MinMemoryNode=0 MinTmpDiskNode=0
+   Features=[genoa|sapphirerapids] DelayBoot=00:00:00
+   OverSubscribe=NO Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)
+   Command=/home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_mpi_scaling_super_fine/12288_ranks/allocation.sh
+   SubmitLine=sbatch --parsable --job-name=bench_nh_cpu_mpi_scaling_super_fine --nodes=64 --ntasks=12288 --ntasks-per-node=192 --cpus-per-task=1 --output=/home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_mpi_scaling_super_fine/12288_ranks/allocation.out --account=def-fpoulin_cpu --time=03:00:00 --hint=nomultithread --exclusive --mem=0 --export=ALL,JULIA_DEPOT_PATH=/scratch/anditse/julia_depot: --dependency=afterok:23088622 /home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_mpi_scaling_super_fine/12288_ranks/allocation.sh
+   WorkDir=/home/anditse/Oceananigans.jl
+   StdErr=
+   StdIn=/dev/null
+   StdOut=/home/anditse/Oceananigans.jl/benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_mpi_scaling_super_fine/12288_ranks/allocation.out
+   TresPerTask=cpu=1
+
