@@ -245,3 +245,15 @@ gpu_weak_scaling_super_fine/1024_ranks: RESOURCE_LIMIT [32, 32, 1]
  create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_resolution/fine/slurm_job.txt
  create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_resolution/fine/started.txt
 
+[codex/benchmarking 54a506b8d] Record validated benchmark suite results and job outcomes
+ 18 files changed, 57051 insertions(+), 20 deletions(-)
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_mpi_scaling_super_fine/6144_ranks/allocation.out
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_mpi_scaling_super_fine/6144_ranks/compute_hardware.txt
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_mpi_scaling_super_fine/6144_ranks/job.out
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_mpi_scaling_super_fine/6144_ranks/julia_version.txt
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_mpi_scaling_super_fine/6144_ranks/layout.json
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_mpi_scaling_super_fine/6144_ranks/modules.txt
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_mpi_scaling_super_fine/6144_ranks/nsight_version.txt
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_mpi_scaling_super_fine/6144_ranks/slurm_job.txt
+ create mode 100644 benchmarking/results/non_hydrostatic_free_surface_models/rorqual/2026-10-13_full_suite/cpu_mpi_scaling_super_fine/6144_ranks/started.txt
+

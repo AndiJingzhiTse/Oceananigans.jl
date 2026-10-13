@@ -24,7 +24,7 @@ Highest completed count: **0 ranks**.
 | 24_ranks | 24 | 6x4x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
 | 48_ranks | 48 | 8x6x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
 | 96_ranks | 96 | 12x8x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
-| 192_ranks | 192 | 16x12x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
+| 192_ranks | 192 | 16x12x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
 | 384_ranks | 384 | 24x16x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
 | 768_ranks | 768 | 32x24x1 | 1440x720x200 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
 | 1536_ranks | 1536 | 32x48x1 | 1440x720x200 | LatitudeLongitudeGrid | TIMEOUT | — | — | — | Exit 0:0; None |
@@ -56,7 +56,7 @@ Highest completed count: **0 ranks**.
 |---|---:|---|---|---|---|---:|---:|---|---|
 | default | 1 | 1x1x1 | 360x180x50 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
 | fine | 1 | 1x1x1 | 720x360x100 | LatitudeLongitudeGrid | RUNNING | — | — | — | Exit 0:0; None |
-| super_fine | 1 | 1x1x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T04:52:22 (scheduler timezone) |
+| super_fine | 1 | 1x1x1 | 1440x720x200 | LatitudeLongitudeGrid | PENDING | — | — | — | (Priority); estimated start 2026-10-13T04:52:56 (scheduler timezone) |
 ## gpu_resolution
 
 Highest completed count: **0 ranks**.
