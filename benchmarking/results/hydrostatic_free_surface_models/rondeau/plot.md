@@ -4,7 +4,7 @@ Each series folder contains its configurations, measurements and provenance. Onl
 
 | Series | Completed cases | Report |
 |---|---:|---|
-| `cpu_mpi_scaling_super_fine` | 6 | [Details](cpu_mpi_scaling_super_fine/plot.md) |
+| `cpu_mpi_scaling_super_fine` | 7 | [Details](cpu_mpi_scaling_super_fine/plot.md) |
 | `cpu_profiling` | 1 | [Details](cpu_profiling/plot.md) |
 | `cpu_resolution` | 3 | [Details](cpu_resolution/plot.md) |
 | `cpu_scaling_360x180x50` | 8 | [Details](cpu_scaling_360x180x50/plot.md) |
@@ -23,12 +23,13 @@ Each series folder contains its configurations, measurements and provenance. Onl
 
 | Case | Ranks | Global resolution | Partition | Fastest / median s per step | Median MPI efficiency | Validation |
 |---|---:|---|---|---:|---:|---|
-| [3_ranks](cpu_mpi_scaling_super_fine/3_ranks/configuration.md) | 3 | 1440 × 720 × 200 | 3 × 1 × 1 | 296.836258 / 297.374857 | — | Current suite checks |
-| [6_ranks](cpu_mpi_scaling_super_fine/6_ranks/configuration.md) | 6 | 1440 × 720 × 200 | 3 × 2 × 1 | 148.776940 / 148.953459 | — | Current suite checks |
-| [12_ranks](cpu_mpi_scaling_super_fine/12_ranks/configuration.md) | 12 | 1440 × 720 × 200 | 4 × 3 × 1 | 77.926198 / 78.058682 | — | Current suite checks |
-| [24_ranks](cpu_mpi_scaling_super_fine/24_ranks/configuration.md) | 24 | 1440 × 720 × 200 | 6 × 4 × 1 | 41.004804 / 41.094211 | — | Current suite checks |
-| [48_ranks](cpu_mpi_scaling_super_fine/48_ranks/configuration.md) | 48 | 1440 × 720 × 200 | 8 × 6 × 1 | 22.291999 / 22.308046 | — | Current suite checks |
-| [96_ranks](cpu_mpi_scaling_super_fine/96_ranks/configuration.md) | 96 | 1440 × 720 × 200 | 12 × 8 × 1 | 13.242835 / 13.322377 | — | Current suite checks |
+| [1_ranks](cpu_mpi_scaling_super_fine/1_ranks/configuration.md) | 1 | 1440 × 720 × 200 | 1 × 1 × 1 | 974.460472 / 974.754017 | 100.0% | Current suite checks |
+| [3_ranks](cpu_mpi_scaling_super_fine/3_ranks/configuration.md) | 3 | 1440 × 720 × 200 | 3 × 1 × 1 | 296.836258 / 297.374857 | 109.3% | Current suite checks |
+| [6_ranks](cpu_mpi_scaling_super_fine/6_ranks/configuration.md) | 6 | 1440 × 720 × 200 | 3 × 2 × 1 | 148.776940 / 148.953459 | 109.1% | Current suite checks |
+| [12_ranks](cpu_mpi_scaling_super_fine/12_ranks/configuration.md) | 12 | 1440 × 720 × 200 | 4 × 3 × 1 | 77.926198 / 78.058682 | 104.1% | Current suite checks |
+| [24_ranks](cpu_mpi_scaling_super_fine/24_ranks/configuration.md) | 24 | 1440 × 720 × 200 | 6 × 4 × 1 | 41.004804 / 41.094211 | 98.8% | Current suite checks |
+| [48_ranks](cpu_mpi_scaling_super_fine/48_ranks/configuration.md) | 48 | 1440 × 720 × 200 | 8 × 6 × 1 | 22.291999 / 22.308046 | 91.0% | Current suite checks |
+| [96_ranks](cpu_mpi_scaling_super_fine/96_ranks/configuration.md) | 96 | 1440 × 720 × 200 | 12 × 8 × 1 | 13.242835 / 13.322377 | 76.2% | Current suite checks |
 
 ## cpu_profiling
 
@@ -175,5 +176,5 @@ Historical measurements retain their original validation labels until comparable
 | gpu_weak_scaling_super_fine | 0 | 0 | [gpu_weak_scaling_super_fine](gpu_weak_scaling_super_fine/plot.md) |
 | gpu_scaling_super_super_super_fine | 0 | 0 | [gpu_scaling_super_super_super_fine](gpu_scaling_super_super_super_fine/plot.md) |
 | cpu_partition_cores_super_fine | 0 | 0 | [cpu_partition_cores_super_fine](cpu_partition_cores_super_fine/plot.md) |
-| cpu_mpi_scaling_super_fine | 6 | 1 | [cpu_mpi_scaling_super_fine](cpu_mpi_scaling_super_fine/plot.md) |
+| cpu_mpi_scaling_super_fine | 7 | 0 | [cpu_mpi_scaling_super_fine](cpu_mpi_scaling_super_fine/plot.md) |
 | cpu_resolution | 0 | 3 | [cpu_resolution](cpu_resolution/plot.md) |

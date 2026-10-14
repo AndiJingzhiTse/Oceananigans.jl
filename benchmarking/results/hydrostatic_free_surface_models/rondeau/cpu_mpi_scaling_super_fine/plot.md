@@ -12,6 +12,7 @@ Latest accepted measurement for each case. Configuration links record the actual
 | [12_ranks](12_ranks/configuration.md) | 12 | 77.926198 | 78.058682 | Current suite checks |
 | [6_ranks](6_ranks/configuration.md) | 6 | 148.776940 | 148.953459 | Current suite checks |
 | [3_ranks](3_ranks/configuration.md) | 3 | 296.836258 | 297.374857 | Current suite checks |
+| [1_ranks](1_ranks/configuration.md) | 1 | 974.460472 | 974.754017 | Current suite checks |
 
 <!-- current-rerun -->
 ## Current rerun
@@ -31,3 +32,4 @@ Highest completed case: **96_ranks**.
 | 12_ranks | 1440 × 720 × 200 | 4 × 3 × 1 | COMPLETED | Rank results, finite fields and resource placement verified |
 | 6_ranks | 1440 × 720 × 200 | 3 × 2 × 1 | COMPLETED | Rank results, finite fields and resource placement verified |
 | 3_ranks | 1440 × 720 × 200 | 3 × 1 × 1 | COMPLETED | Rank results, finite fields and resource placement verified |
+| 1_ranks | 1440 × 720 × 200 | 1 × 1 × 1 | COMPLETED | Rank results, finite fields and resource placement verified |
