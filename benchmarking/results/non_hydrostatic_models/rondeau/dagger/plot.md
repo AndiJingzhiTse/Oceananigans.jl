@@ -4,7 +4,7 @@ Each series folder contains its configurations, measurements and provenance. Onl
 
 | Series | Completed cases | Report |
 |---|---:|---|
-| `gpu_resolution` | 1 | [Details](gpu_resolution/plot.md) |
+| `gpu_resolution` | 2 | [Details](gpu_resolution/plot.md) |
 
 ## gpu_resolution
 
@@ -13,3 +13,4 @@ Each series folder contains its configurations, measurements and provenance. Onl
 | Case | Ranks | Global resolution | Partition | Fastest / median s per step | Median MPI efficiency | Validation |
 |---|---:|---|---|---:|---:|---|
 | [default](gpu_resolution/default/configuration.md) | 1 | 360 × 180 × 50 | 1 × 1 × 1 | 1.301655 / 1.571387 | — | Current suite checks |
+| [fine](gpu_resolution/fine/configuration.md) | 1 | 720 × 360 × 100 | 1 × 1 × 1 | 9.851031 / 11.325562 | — | Current suite checks |
