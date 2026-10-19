@@ -8,7 +8,7 @@ cpu_mpi_scaling_super_fine,48_ranks,48,1440x720x200,8x6x1,LatitudeLongitudeGrid,
 cpu_mpi_scaling_super_fine,6_ranks,6,1440x720x200,3x2x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
 cpu_mpi_scaling_super_fine,96_ranks,96,1440x720x200,12x8x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
 gpu_scaling_super_fine,1_ranks,1,1440x720x200,1x1x1,LatitudeLongitudeGrid,False,OUT_OF_MEMORY,OUT_OF_MEMORY,,,,,,,baseline: Execution failed; ERROR: LoadError: Out of GPU memory trying to allocate 1.702 GiB; dagger: Execution failed; ERROR: LoadError: Out of GPU memory trying to allocate 1.702 GiB
-gpu_scaling_super_fine,2_ranks,2,1440x720x200,2x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
+gpu_scaling_super_fine,2_ranks,2,1440x720x200,2x1x1,LatitudeLongitudeGrid,False,PLANNED,RUNNING,,,,,,,baseline: ; dagger: Local allocation started; see job.out
 gpu_scaling_super_fine,4_ranks,4,1440x720x200,2x2x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
 gpu_scaling_super_fine,8_ranks,8,1440x720x200,4x2x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 8; configured capacity is 4; dagger: Requires 8; configured capacity is 4
 cpu_resolution,default,1,360x180x50,1x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
