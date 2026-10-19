@@ -14,7 +14,7 @@ gpu_scaling_super_fine,8_ranks,8,1440x720x200,4x2x1,LatitudeLongitudeGrid,False,
 cpu_resolution,default,1,360x180x50,1x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
 cpu_resolution,fine,1,720x360x100,1x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
 cpu_resolution,super_fine,1,1440x720x200,1x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
-gpu_resolution,default,1,360x180x50,1x1x1,LatitudeLongitudeGrid,False,COMPLETED,PLANNED,,,,,,,"baseline: Rank results, finite fields and resource placement verified; dagger: "
+gpu_resolution,default,1,360x180x50,1x1x1,LatitudeLongitudeGrid,False,COMPLETED,RUNNING,,,,,,,"baseline: Rank results, finite fields and resource placement verified; dagger: Local allocation started; see job.out"
 gpu_resolution,fine,1,720x360x100,1x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
 gpu_resolution,super_fine,1,1440x720x200,1x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
 cpu_partition_cores_super_fine,12x16x1,192,1440x720x200,12x16x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 192; configured capacity is 128; dagger: Requires 192; configured capacity is 128
