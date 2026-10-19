@@ -1,0 +1,37 @@
+{
+  "model": "NonhydrostaticModel",
+  "machine": "rondeau",
+  "started_at": "2026-10-19T20:48:16.364091+00:00",
+  "controller_pid": 2902117,
+  "controller_log": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-19-dagger/rondeau/controller.log",
+  "command": [
+    "/usr/bin/python3",
+    "/u/ajtse/Oceananigans.jl/benchmarking/scripts/compare_dagger.py",
+    "--config",
+    "/u/ajtse/Oceananigans.jl/benchmarking/scripts/configs/rondeau.json",
+    "--project",
+    "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-19-dagger/rondeau/environment",
+    "--study",
+    "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-19-dagger/rondeau",
+    "--publish",
+    "/u/ajtse/Oceananigans.jl/benchmarking/results/non_hydrostatic_models/rondeau",
+    "--commit"
+  ],
+  "source_revision": "0c9dfe73170c0bc56facd8fe91da96cdcaeb9806",
+  "frozen_source": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-19-dagger/rondeau/source",
+  "julia_project": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-19-dagger/rondeau/environment",
+  "environment_sha256": {
+    "Project.toml": "8b3d2aa633c495a4a4c19c474839d380fd0c8dc8587505022c7c780b9ed631de",
+    "Manifest.toml": "44d97a7106f4c61f48b1c8d37c380359648a7c0927a8c70c45788eb3d2067976",
+    "LocalPreferences.toml": "93f04aa880289e651ee6720d1e27a11275d864304c1750f68a50bcc6e9f54352"
+  },
+  "execution": "one local Dagger task per ten-step timing window; baseline calls the same synchronized helper directly",
+  "warmup_steps": 2,
+  "samples": 5,
+  "steps_per_window": 10,
+  "case_timeout_seconds": 86400,
+  "physical_cpu_cores": 128,
+  "available_gpus": 4,
+  "gpu_type": "NVIDIA A100-SXM4-40GB",
+  "resource_exclusivity": "Shared host; existing unrelated simulations were preserved"
+}

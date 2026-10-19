@@ -1,0 +1,71 @@
+series,case,ranks,resolution,partition,grid_type,profile,baseline_state,dagger_state,baseline_fastest,dagger_fastest,baseline_median,dagger_median,speedup_fastest,speedup_median,details
+cpu_mpi_scaling_super_fine,12_ranks,12,1440x720x200,4x3x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
+cpu_mpi_scaling_super_fine,192_ranks,192,1440x720x200,16x12x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 192; configured capacity is 128; dagger: Requires 192; configured capacity is 128
+cpu_mpi_scaling_super_fine,1_ranks,1,1440x720x200,1x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
+cpu_mpi_scaling_super_fine,24_ranks,24,1440x720x200,6x4x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
+cpu_mpi_scaling_super_fine,3_ranks,3,1440x720x200,3x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
+cpu_mpi_scaling_super_fine,48_ranks,48,1440x720x200,8x6x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
+cpu_mpi_scaling_super_fine,6_ranks,6,1440x720x200,3x2x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
+cpu_mpi_scaling_super_fine,96_ranks,96,1440x720x200,12x8x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
+gpu_scaling_super_fine,1_ranks,1,1440x720x200,1x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
+gpu_scaling_super_fine,2_ranks,2,1440x720x200,2x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
+gpu_scaling_super_fine,4_ranks,4,1440x720x200,2x2x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
+gpu_scaling_super_fine,8_ranks,8,1440x720x200,4x2x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 8; configured capacity is 4; dagger: Requires 8; configured capacity is 4
+cpu_resolution,default,1,360x180x50,1x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
+cpu_resolution,fine,1,720x360x100,1x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
+cpu_resolution,super_fine,1,1440x720x200,1x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
+gpu_resolution,default,1,360x180x50,1x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
+gpu_resolution,fine,1,720x360x100,1x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
+gpu_resolution,super_fine,1,1440x720x200,1x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
+cpu_partition_cores_super_fine,12x16x1,192,1440x720x200,12x16x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 192; configured capacity is 128; dagger: Requires 192; configured capacity is 128
+cpu_partition_cores_super_fine,16x12x1,192,1440x720x200,16x12x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 192; configured capacity is 128; dagger: Requires 192; configured capacity is 128
+cpu_partition_cores_super_fine,192x1x1,192,1440x720x200,192x1x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 192; configured capacity is 128; dagger: Requires 192; configured capacity is 128
+cpu_partition_cores_super_fine,1x192x1,192,,,,False,GEOMETRY_LIMIT,GEOMETRY_LIMIT,,,,,,,"baseline: Partition [1, 192, 1] has fewer than 7 local cells per horizontal direction; dagger: Partition [1, 192, 1] has fewer than 7 local cells per horizontal direction"
+cpu_partition_cores_super_fine,24x8x1,192,1440x720x200,24x8x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 192; configured capacity is 128; dagger: Requires 192; configured capacity is 128
+cpu_partition_cores_super_fine,2x96x1,192,1440x720x200,2x96x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 192; configured capacity is 128; dagger: Requires 192; configured capacity is 128
+cpu_partition_cores_super_fine,32x6x1,192,1440x720x200,32x6x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 192; configured capacity is 128; dagger: Requires 192; configured capacity is 128
+cpu_partition_cores_super_fine,3x64x1,192,1440x720x200,3x64x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 192; configured capacity is 128; dagger: Requires 192; configured capacity is 128
+cpu_partition_cores_super_fine,48x4x1,192,1440x720x200,48x4x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 192; configured capacity is 128; dagger: Requires 192; configured capacity is 128
+cpu_partition_cores_super_fine,4x48x1,192,1440x720x200,4x48x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 192; configured capacity is 128; dagger: Requires 192; configured capacity is 128
+cpu_partition_cores_super_fine,64x3x1,192,1440x720x200,64x3x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 192; configured capacity is 128; dagger: Requires 192; configured capacity is 128
+cpu_partition_cores_super_fine,6x32x1,192,1440x720x200,6x32x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 192; configured capacity is 128; dagger: Requires 192; configured capacity is 128
+cpu_partition_cores_super_fine,8x24x1,192,1440x720x200,8x24x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 192; configured capacity is 128; dagger: Requires 192; configured capacity is 128
+cpu_partition_cores_super_fine,96x2x1,192,1440x720x200,96x2x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 192; configured capacity is 128; dagger: Requires 192; configured capacity is 128
+gpu_nsight_scaling_super_fine,1_ranks,1,1440x720x200,1x1x1,LatitudeLongitudeGrid,True,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
+gpu_nsight_scaling_super_fine,2_ranks,2,1440x720x200,2x1x1,LatitudeLongitudeGrid,True,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
+gpu_nsight_scaling_super_fine,4_ranks,4,1440x720x200,2x2x1,LatitudeLongitudeGrid,True,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
+gpu_nsight_scaling_super_fine,8_ranks,8,1440x720x200,4x2x1,LatitudeLongitudeGrid,True,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 8; configured capacity is 4; dagger: Requires 8; configured capacity is 4
+gpu_partition_super_fine,16x1x1,16,1440x720x200,16x1x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 16; configured capacity is 4; dagger: Requires 16; configured capacity is 4
+gpu_partition_super_fine,16x2x1,32,1440x720x200,16x2x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 32; configured capacity is 4; dagger: Requires 32; configured capacity is 4
+gpu_partition_super_fine,16x4x1,64,1440x720x200,16x4x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 64; configured capacity is 4; dagger: Requires 64; configured capacity is 4
+gpu_partition_super_fine,1x16x1,16,1440x720x200,1x16x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 16; configured capacity is 4; dagger: Requires 16; configured capacity is 4
+gpu_partition_super_fine,1x1x1,1,1440x720x200,1x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
+gpu_partition_super_fine,1x2x1,2,1440x720x200,1x2x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
+gpu_partition_super_fine,1x32x1,32,,,,False,GEOMETRY_LIMIT,GEOMETRY_LIMIT,,,,,,,"baseline: Partition [1, 32, 1] has fewer than 23 local cells per horizontal direction; dagger: Partition [1, 32, 1] has fewer than 23 local cells per horizontal direction"
+gpu_partition_super_fine,1x4x1,4,1440x720x200,1x4x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
+gpu_partition_super_fine,1x64x1,64,,,,False,GEOMETRY_LIMIT,GEOMETRY_LIMIT,,,,,,,"baseline: Partition [1, 64, 1] has fewer than 23 local cells per horizontal direction; dagger: Partition [1, 64, 1] has fewer than 23 local cells per horizontal direction"
+gpu_partition_super_fine,1x8x1,8,1440x720x200,1x8x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 8; configured capacity is 4; dagger: Requires 8; configured capacity is 4
+gpu_partition_super_fine,2x16x1,32,1440x720x200,2x16x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 32; configured capacity is 4; dagger: Requires 32; configured capacity is 4
+gpu_partition_super_fine,2x1x1,2,1440x720x200,2x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
+gpu_partition_super_fine,2x2x1,4,1440x720x200,2x2x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
+gpu_partition_super_fine,2x32x1,64,,,,False,GEOMETRY_LIMIT,GEOMETRY_LIMIT,,,,,,,"baseline: Partition [2, 32, 1] has fewer than 23 local cells per horizontal direction; dagger: Partition [2, 32, 1] has fewer than 23 local cells per horizontal direction"
+gpu_partition_super_fine,2x4x1,8,1440x720x200,2x4x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 8; configured capacity is 4; dagger: Requires 8; configured capacity is 4
+gpu_partition_super_fine,2x8x1,16,1440x720x200,2x8x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 16; configured capacity is 4; dagger: Requires 16; configured capacity is 4
+gpu_partition_super_fine,32x1x1,32,1440x720x200,32x1x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 32; configured capacity is 4; dagger: Requires 32; configured capacity is 4
+gpu_partition_super_fine,32x2x1,64,1440x720x200,32x2x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 64; configured capacity is 4; dagger: Requires 64; configured capacity is 4
+gpu_partition_super_fine,4x16x1,64,1440x720x200,4x16x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 64; configured capacity is 4; dagger: Requires 64; configured capacity is 4
+gpu_partition_super_fine,4x1x1,4,1440x720x200,4x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
+gpu_partition_super_fine,4x2x1,8,1440x720x200,4x2x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 8; configured capacity is 4; dagger: Requires 8; configured capacity is 4
+gpu_partition_super_fine,4x4x1,16,1440x720x200,4x4x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 16; configured capacity is 4; dagger: Requires 16; configured capacity is 4
+gpu_partition_super_fine,4x8x1,32,1440x720x200,4x8x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 32; configured capacity is 4; dagger: Requires 32; configured capacity is 4
+gpu_partition_super_fine,64x1x1,64,,,,False,GEOMETRY_LIMIT,GEOMETRY_LIMIT,,,,,,,"baseline: Partition [64, 1, 1] has fewer than 23 local cells per horizontal direction; dagger: Partition [64, 1, 1] has fewer than 23 local cells per horizontal direction"
+gpu_partition_super_fine,8x1x1,8,1440x720x200,8x1x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 8; configured capacity is 4; dagger: Requires 8; configured capacity is 4
+gpu_partition_super_fine,8x2x1,16,1440x720x200,8x2x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 16; configured capacity is 4; dagger: Requires 16; configured capacity is 4
+gpu_partition_super_fine,8x4x1,32,1440x720x200,8x4x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 32; configured capacity is 4; dagger: Requires 32; configured capacity is 4
+gpu_partition_super_fine,8x8x1,64,1440x720x200,8x8x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 64; configured capacity is 4; dagger: Requires 64; configured capacity is 4
+gpu_scaling_super_super_fine,4_ranks,4,2880x1440x200,2x2x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
+gpu_scaling_super_super_fine,8_ranks,8,2880x1440x200,4x2x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 8; configured capacity is 4; dagger: Requires 8; configured capacity is 4
+gpu_scaling_super_super_super_fine,16_ranks,16,5760x2880x200,4x4x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 16; configured capacity is 4; dagger: Requires 16; configured capacity is 4
+gpu_weak_scaling_super_fine,16_ranks,16,5760x2880x200,4x4x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 16; configured capacity is 4; dagger: Requires 16; configured capacity is 4
+gpu_weak_scaling_super_fine,1_ranks,1,1440x720x200,1x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
+gpu_weak_scaling_super_fine,4_ranks,4,2880x1440x200,2x2x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
