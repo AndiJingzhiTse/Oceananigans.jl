@@ -15,7 +15,7 @@ cpu_resolution,default,1,360x180x50,1x1x1,LatitudeLongitudeGrid,False,PLANNED,PL
 cpu_resolution,fine,1,720x360x100,1x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
 cpu_resolution,super_fine,1,1440x720x200,1x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
 gpu_resolution,default,1,360x180x50,1x1x1,LatitudeLongitudeGrid,False,COMPLETED,COMPLETED,1.1607207771,1.3016553841,1.3982439928,1.5713868117,0.8917266361576601,0.8898152780646758,"baseline: Rank results, finite fields and resource placement verified; dagger: Rank results, finite fields and resource placement verified"
-gpu_resolution,fine,1,720x360x100,1x1x1,LatitudeLongitudeGrid,False,RUNNING,COMPLETED,,,,,,,"baseline: Local allocation started; see job.out; dagger: Rank results, finite fields and resource placement verified"
+gpu_resolution,fine,1,720x360x100,1x1x1,LatitudeLongitudeGrid,False,COMPLETED,COMPLETED,10.094606167,9.8510313607,10.642402601899999,11.3255617694,1.0247258177729213,0.9396798868427174,"baseline: Rank results, finite fields and resource placement verified; dagger: Rank results, finite fields and resource placement verified"
 gpu_resolution,super_fine,1,1440x720x200,1x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
 cpu_partition_cores_super_fine,12x16x1,192,1440x720x200,12x16x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 192; configured capacity is 128; dagger: Requires 192; configured capacity is 128
 cpu_partition_cores_super_fine,16x12x1,192,1440x720x200,16x12x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 192; configured capacity is 128; dagger: Requires 192; configured capacity is 128
