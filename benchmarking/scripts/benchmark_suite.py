@@ -133,6 +133,7 @@ def snapshot(folder, server):
     # Executable planner/worker snapshot: queued jobs do not depend on later edits.
     (metadata / 'scripts').mkdir()
     shutil.copy2(ROOT / 'scripts/benchmark_suite.py', metadata / 'scripts/benchmark_suite.py')
+    shutil.copy2(ROOT / 'scripts/compare_dagger.py', metadata / 'scripts/compare_dagger.py')
     for name in ('Project.toml', 'Manifest.toml', 'LocalPreferences.toml'):
         source = Path(server['project']) / name
         if source.exists():

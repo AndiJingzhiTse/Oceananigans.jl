@@ -90,6 +90,7 @@ def main():
                 annotate_failures(folder, data)
                 publish_series(folder, destination / mode / series)
             for mode in ('baseline', 'dagger'):
+                (destination / mode).mkdir(parents=True, exist_ok=True)
                 write_machine_report(destination / mode)
                 write_machine_report(study / mode)
             write_comparison(study, destination)

@@ -4,13 +4,29 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from test_suite import runner, plan
 from suite.variants import comparison_rows, write_comparison
 from compare_dagger import annotate_failures
+import compare_dagger
 
 
 class VariantTests(unittest.TestCase):
+    def test_paired_plan_creates_empty_variant_destinations(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            args = ['compare_dagger.py', '--config', str(runner.ROOT / 'scripts/configs/rondeau.json'),
+                    '--project', str(root / 'environment'), '--study', str(root / 'study'),
+                    '--publish', str(root / 'results'), '--plan']
+            with patch('sys.argv', args), patch.object(runner, 'snapshot'):
+                compare_dagger.main()
+            for mode in ('baseline', 'dagger'):
+                self.assertTrue((root / 'results' / mode / 'plot.md').exists())
+                self.assertTrue((root / 'results' / mode / 'status.json').exists())
+            rows = comparison_rows(root / 'study')
+            self.assertEqual({r['series'] for r in rows}, set(plan.SERIES))
+
     def test_nested_gpu_memory_error_is_reported_after_refresh(self):
         with tempfile.TemporaryDirectory() as tmp:
             folder = Path(tmp)
