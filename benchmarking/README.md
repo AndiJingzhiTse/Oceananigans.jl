@@ -294,6 +294,40 @@ protocols, and retain separate baselines for the two models.
 
 ## Other entry points and tests
 
+### Matched baseline and Dagger runs
+
+`--execution-mode baseline` (the default) calls the timestep window directly.
+`--execution-mode dagger` submits the same window as one `Dagger.@spawn` task
+and fetches its completion. The task stays on the current MPI process and its
+sole Julia computation thread; CUDA runs explicitly select the assigned device
+and synchronize the task's stream before completion. This measures wrapping
+overhead with the existing Oceananigans MPI decomposition. It does not expose
+parallelism inside a timestep to Dagger.
+
+Install Dagger in an isolated environment alongside the local Oceananigans and
+OceananigansBenchmarks packages. Use that same environment for both variants;
+the baseline does not import Dagger. The paired local runner covers all ten
+nonhydrostatic series and alternates variant order between cases:
+
+```bash
+python3 benchmarking/scripts/compare_dagger.py \
+  --config benchmarking/scripts/configs/rondeau.json \
+  --project /absolute/path/to/isolated/environment \
+  --study /local_scratch/$USER/benchmark_studies/nonhydrostatic_dagger/rondeau \
+  --publish benchmarking/results/non_hydrostatic_models/rondeau
+```
+
+Accepted records go into `baseline/<series>/` and `dagger/<series>/`.
+`comparison.md` and `comparison.csv` include every series and all outcomes;
+ratios and plots require completed pairs with identical configurations except
+for execution mode. Speedup is baseline time divided by Dagger time, with an
+equal-time reference of 1. Nsight runs remain separate from unprofiled timings.
+Raw failures and resource limits stay in scratch and are summarized in each
+variant's `status.json`. Repeating the command resumes only unstarted cases;
+`--refresh` regenerates reports without running cases. `--plan` prepares all
+cases without executing. Optional `--commit` commits the designated result
+tree after each completed outcome and refuses an already populated Git index.
+
 [scripts/run_benchmarks.jl](scripts/run_benchmarks.jl) supports configurable
 hydrostatic sweeps, simulation output, I/O and read benchmarks used by benchmark
 CI. It uses the same Julia benchmark package under `src/`.

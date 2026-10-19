@@ -200,6 +200,34 @@ ranks = MPI.Comm_size(comm)
 ranks == config["ranks"] || error("Unexpected MPI rank count")
 Threads.nthreads() == 1 || error("Expected one Julia thread per rank")
 is_gpu = config["device"] == "GPU"
+execution_mode = get(config, "execution_mode", "baseline")
+execution_mode in ("baseline", "dagger") || error("Unknown execution mode: $execution_mode")
+
+function synchronized_window!(model, Δt, steps, is_gpu, device)
+    # CUDA device and stream state are task-local. Both variants bind the
+    # assigned device and complete the current stream inside the same helper.
+    is_gpu && CUDA.device!(device)
+    OceananigansBenchmarks.many_time_steps!(model, Δt, steps)
+    is_gpu && CUDA.synchronize()
+    return nothing
+end
+
+# MPI communicators and mutable models must stay on this process. Each rank
+# has exactly one Julia computation thread; no Distributed workers are added.
+# Define this only for Dagger runs so baseline does not load its scheduler.
+if execution_mode == "dagger"
+    @eval using Dagger
+    @eval function execute_window!(model, Δt, steps, is_gpu, device, ::Val{:dagger})
+        task = Dagger.@spawn scope=Dagger.scope(worker=1, thread=1) synchronized_window!(model, Δt, steps, is_gpu, device)
+        fetch(task)
+        return nothing
+    end
+end
+
+function execute_window!(model, Δt, steps, is_gpu, device, ::Val{:baseline})
+    synchronized_window!(model, Δt, steps, is_gpu, device)
+    return nothing
+end
 
 function affinity()
     if Sys.islinux()
@@ -255,6 +283,10 @@ Nx, Ny, Nz = Int.(config["global_resolution"])
 model_type = get(config, "model_type", "HydrostaticFreeSurfaceModel")
 is_hydrostatic = model_type == "HydrostaticFreeSurfaceModel"
 preconditioner_validation = nothing
+if rank == 0
+    println("MODEL_BUILD_START mode=$execution_mode resolution=$(config["global_resolution"]) partition=$(config["partition"])")
+    flush(stdout)
+end
 model = if is_hydrostatic
     earth_ocean(arch; Nx, Ny, Nz, float_type=Float64, grid_type="lat_lon",
                     momentum_advection=WENOVectorInvariant(Float64), tracer_advection=WENO(Float64; order=7),
@@ -307,6 +339,10 @@ end
 expected = (config["x_sizes"][arch.local_index[1]], config["y_sizes"][arch.local_index[2]], Nz)
 size(model.grid) == expected || error("Unexpected local resolution")
 retained_substeps = is_hydrostatic ? length(model.free_surface.substepping.averaging_weights) : nothing
+if rank == 0
+    println("MODEL_BUILD_FINISHED mode=$execution_mode")
+    flush(stdout)
+end
 
 function synchronize_model(arch, comm, is_gpu)
     is_gpu && CUDA.synchronize()
@@ -317,23 +353,30 @@ end
 function timing_windows!(model, config, comm, is_gpu)
     # Compile this helper before profiling; the preflight supplies one untimed step.
     durations = Float64[]
+    mode = Val(Symbol(get(config, "execution_mode", "baseline")))
+    device = is_gpu ? CUDA.device() : nothing
     for sample in 1:config["samples"]
         synchronize_model(architecture(model.grid), comm, is_gpu)
         start = time_ns()
-        OceananigansBenchmarks.many_time_steps!(model, config["dt"], config["time_steps"])
+        execute_window!(model, config["dt"], config["time_steps"], is_gpu, device, mode)
         synchronize_model(architecture(model.grid), comm, is_gpu)
         push!(durations, (time_ns() - start) / 1e9)
-        rank == 0 && get(config, "pressure_diagnostics", false) && println("TIMING_WINDOW sample=$sample seconds=$(last(durations))")
+        if rank == 0
+            println("TIMING_WINDOW mode=$(get(config, "execution_mode", "baseline")) sample=$sample seconds=$(last(durations))")
+            flush(stdout)
+        end
     end
     return durations
 end
 
 # One warmup + one unprofiled helper window = two untimed steps.
+rank == 0 && println("WARMUP_START mode=$execution_mode")
 OceananigansBenchmarks.many_time_steps!(model, config["dt"], config["warmup_steps"] - 1)
 preflight = copy(config)
 preflight["samples"], preflight["time_steps"] = 1, 1
 timing_windows!(model, preflight, comm, is_gpu)
 synchronize_model(arch, comm, is_gpu)
+rank == 0 && println("WARMUP_FINISHED mode=$execution_mode")
 config["profile"] && CUDA.CUDACore.cuProfilerStart()
 windows = try
     timing_windows!(model, config, comm, is_gpu)
@@ -362,6 +405,13 @@ finite_state = all(all(isfinite, interior(t)) for t in values(model.tracers)) &&
 MPI.Allreduce(finite_state ? 1 : 0, MPI.MIN, comm) == 1 || error("Nonfinite model fields")
 metadata = JSON.parse(JSON.json(OceananigansBenchmarks.BenchmarkMetadata(arch)))
 metadata["mpi_library_version"] = MPI.Get_library_version()
+metadata["execution_mode"] = execution_mode
+metadata["dagger_version"] = execution_mode == "dagger" ? string(pkgversion(Dagger)) : nothing
+metadata["mpi_thread_support"] = string(MPI.Query_thread())
+if Sys.islinux()
+    peak_rss = match(r"(?m)^VmHWM:\s*(\d+) kB", read("/proc/self/status", String))
+    metadata["process_peak_rss_bytes"] = isnothing(peak_rss) ? nothing : parse(Int, peak_rss.captures[1]) * 1024
+end
 gpu_memory = is_gpu ? CUDA.CUDACore.MemoryInfo() : nothing
 if is_gpu
     metadata["gpu_name"] = CUDA.name(CUDA.device())

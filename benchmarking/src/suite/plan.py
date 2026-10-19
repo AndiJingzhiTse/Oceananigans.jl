@@ -125,6 +125,7 @@ def build_plan(server, selected=SERIES):
                     partition = [ranks, 1, 1]
                 case['configuration'] = configuration(series, ranks, grid_name, partition, weak_grid,
                                                       server.get('model_type', 'HydrostaticFreeSurfaceModel'))
+                case['configuration']['execution_mode'] = server.get('execution_mode', 'baseline')
                 if server.get('model_type') == 'NonhydrostaticModel':
                     for key in ('pressure_preconditioner', 'pressure_max_iterations', 'pressure_diagnostics', 'pressure_preserve_residual', 'pressure_check_true_residual'):
                         if key in server:

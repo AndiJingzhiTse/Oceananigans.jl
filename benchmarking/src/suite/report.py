@@ -144,6 +144,8 @@ def efficiencies(case, baseline):
     if not baseline or 'measurement' not in case:
         return None, None
     cfg, base_cfg = case['configuration'], baseline['configuration']
+    if cfg.get('execution_mode', 'baseline') != base_cfg.get('execution_mode', 'baseline'):
+        return None, None
     weak = cfg.get('scaling_type') == 'weak' or case['series'] == 'gpu_weak_scaling_super_fine'
     common = ('model_type', 'device', 'grid_type', 'float_type', 'threads_per_rank',
               'momentum_advection', 'tracer_advection', 'closure', 'tracers', 'timestepper',

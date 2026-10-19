@@ -70,7 +70,8 @@ def load_server(path=None, model_type=None):
                   trace_root=str(Path(os.environ.get('SCRATCH', '/tmp')) / 'benchmark_traces'),
                   case_timeout_seconds=86400, matplotlib=True, python='python3', report_modules=[],
                   reference_suites=[], replacement_suites=[], environment={}, gpu_scaling_partition='balanced',
-                  model_type='HydrostaticFreeSurfaceModel', comparison_suites=[], comparison_report='')
+                  model_type='HydrostaticFreeSurfaceModel', comparison_suites=[], comparison_report='',
+                  execution_mode='baseline')
     server.update(pressure_preconditioner='DiagonallyDominantPreconditioner',
                   pressure_max_iterations=5000, pressure_diagnostics=False,
                   pressure_preserve_residual=False, pressure_check_true_residual=True, separate_partitions=False)
@@ -99,6 +100,8 @@ def load_server(path=None, model_type=None):
         raise ValueError('gpu_scaling_partition must be balanced or x')
     if server['model_type'] not in MODEL_FOLDERS:
         raise ValueError('Unknown model_type')
+    if server['execution_mode'] not in ('baseline', 'dagger'):
+        raise ValueError('execution_mode must be baseline or dagger')
     if server['pressure_preconditioner'] not in ('DiagonallyDominantPreconditioner', 'ColumnwiseTridiagonalPreconditioner', 'VerticalLinePreconditioner', 'LocalFFTPreconditioner'):
         raise ValueError('Unknown pressure_preconditioner')
     if not isinstance(server['pressure_max_iterations'], int) or server['pressure_max_iterations'] < 1:
@@ -153,6 +156,7 @@ def config_markdown(config):
     return ('# Benchmark configuration\n\n'
             f"Series: {config['series']}. Device: {config['device']}; MPI ranks: {config['ranks']}; one thread/rank.\n"
             f"Model: {config.get('model_type', 'HydrostaticFreeSurfaceModel')}; surface: {config.get('free_surface', 'SplitExplicitFreeSurface')}.\n"
+            f"Execution: {config.get('execution_mode', 'baseline')}; Dagger wraps one timing window in one local CPU task.\n"
             f"Grid: {config['grid_name']}, {' × '.join(map(str, config['global_resolution']))}, {config['grid_type']}.\n"
             f"Partition: {' × '.join(map(str, config['partition']))}.\n"
             f"Local resolution: x {min(config['x_sizes'])}–{max(config['x_sizes'])}, y {min(config['y_sizes'])}–{max(config['y_sizes'])}, z {config['global_resolution'][2]}.\n"
@@ -298,9 +302,10 @@ def sbatch_command(server, group, script):
     return args + extra + [str(script)]
 
 
-def execute(folder, data):
+def execute(folder, data, case_ids=None, on_start=None):
     server, cases = data['server'], data['cases']
-    for key, group in allocation_groups(cases, server.get('separate_partitions', False)).items():
+    selected = cases if case_ids is None else [c for c in cases if c['id'] in case_ids]
+    for key, group in allocation_groups(selected, server.get('separate_partitions', False)).items():
         script = group_script(folder, server, group)
         if server['backend'] == 'slurm':
             args = sbatch_command(server, group, script)
@@ -317,6 +322,11 @@ def execute(folder, data):
             with (script.parent / 'allocation.out').open('w') as log:
                 try:
                     process = subprocess.Popen(['bash', str(script)], stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
+                    for case in group:
+                        case.update(state='RUNNING', details='Local allocation started; see job.out')
+                    atomic_json(folder / 'suite.json', data)
+                    if on_start is not None:
+                        on_start()
                     status = process.wait(timeout=server['case_timeout_seconds'] * len(group))
                     for case in group:
                         if not (folder / case['id'] / 'finished.txt').exists():
@@ -475,6 +485,8 @@ def main():
     parser.add_argument('--max-cpu-cores', type=int)
     parser.add_argument('--max-gpus', type=int)
     parser.add_argument('--model', choices=tuple(MODEL_FOLDERS), help='Model for a new suite; default hydrostatic')
+    parser.add_argument('--execution-mode', choices=('baseline', 'dagger'),
+                        help='Direct execution or one local Dagger task per timing window')
     parser.add_argument('--compare-with', action='append', type=Path, default=[], help='Other-model suite; earlier paths take precedence for whole series')
     parser.add_argument('--comparison-report', type=Path, help='Markdown comparison refreshed alongside this suite')
     mode = parser.add_mutually_exclusive_group()
@@ -499,6 +511,8 @@ def main():
     model_type = args.model or (server['model_type'] if server else 'HydrostaticFreeSurfaceModel')
     default_folder = None
     if server:
+        if args.execution_mode:
+            server['execution_mode'] = args.execution_mode
         default_folder = (Path(os.environ.get('SCRATCH', '/tmp')) / 'benchmark_studies' /
                           MODEL_FOLDERS[model_type] /
                           (datetime.now(timezone.utc).strftime('%Y-%m-%dT%H%M%SZ') + '_' + str(os.getpid())) /
