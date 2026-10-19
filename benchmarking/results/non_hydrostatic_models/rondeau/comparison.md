@@ -80,13 +80,13 @@ super_fine: baseline: ; dagger:
 
 | Case | Resolution / partition | Baseline outcome | Dagger outcome | Median s/step baseline / Dagger | Speedup |
 |---|---|---|---|---:|---:|
-| default | 360x180x50 / 1x1x1 | RUNNING | PLANNED | — | — |
+| default | 360x180x50 / 1x1x1 | COMPLETED | PLANNED | — | — |
 | fine | 720x360x100 / 1x1x1 | PLANNED | PLANNED | — | — |
 | super_fine | 1440x720x200 / 1x1x1 | PLANNED | PLANNED | — | — |
 
 No completed, validated pair is available.
 
-default: baseline: Local allocation started; see job.out; dagger: 
+default: baseline: Rank results, finite fields and resource placement verified; dagger: 
 
 fine: baseline: ; dagger: 
 

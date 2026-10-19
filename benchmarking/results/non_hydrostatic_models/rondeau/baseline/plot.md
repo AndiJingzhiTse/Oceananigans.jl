@@ -4,5 +4,12 @@ Each series folder contains its configurations, measurements and provenance. Onl
 
 | Series | Completed cases | Report |
 |---|---:|---|
+| `gpu_resolution` | 1 | [Details](gpu_resolution/plot.md) |
 
-No validated measurements are available for this machine and model.
+## gpu_resolution
+
+![gpu_resolution](gpu_resolution/gpu_resolution.svg)
+
+| Case | Ranks | Global resolution | Partition | Fastest / median s per step | Median MPI efficiency | Validation |
+|---|---:|---|---|---:|---:|---|
+| [default](gpu_resolution/default/configuration.md) | 1 | 360 × 180 × 50 | 1 × 1 × 1 | 1.160721 / 1.398244 | — | Current suite checks |
