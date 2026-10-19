@@ -84,9 +84,9 @@ super_fine: baseline: ; dagger:
 |---|---|---|---|---:|---:|
 | default | 360x180x50 / 1x1x1 | COMPLETED | COMPLETED | 1.39824 / 1.57139 | 0.8898 |
 | fine | 720x360x100 / 1x1x1 | COMPLETED | COMPLETED | 10.6424 / 11.3256 | 0.9397 |
-| super_fine | 1440x720x200 / 1x1x1 | OUT_OF_MEMORY | PLANNED | — | — |
+| super_fine | 1440x720x200 / 1x1x1 | OUT_OF_MEMORY | RUNNING | — | — |
 
-super_fine: baseline: Execution failed; ERROR: LoadError: Out of GPU memory trying to allocate 1.702 GiB; dagger: 
+super_fine: baseline: Execution failed; ERROR: LoadError: Out of GPU memory trying to allocate 1.702 GiB; dagger: Local allocation started; see job.out
 
 ## cpu_partition_cores_super_fine
 
