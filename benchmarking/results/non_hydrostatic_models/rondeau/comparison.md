@@ -84,9 +84,9 @@ super_fine: baseline: ; dagger:
 |---|---|---|---|---:|---:|
 | default | 360x180x50 / 1x1x1 | COMPLETED | COMPLETED | 1.39824 / 1.57139 | 0.8898 |
 | fine | 720x360x100 / 1x1x1 | COMPLETED | COMPLETED | 10.6424 / 11.3256 | 0.9397 |
-| super_fine | 1440x720x200 / 1x1x1 | PLANNED | PLANNED | — | — |
+| super_fine | 1440x720x200 / 1x1x1 | RUNNING | PLANNED | — | — |
 
-super_fine: baseline: ; dagger: 
+super_fine: baseline: Local allocation started; see job.out; dagger: 
 
 ## cpu_partition_cores_super_fine
 
