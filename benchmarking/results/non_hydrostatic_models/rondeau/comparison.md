@@ -174,7 +174,7 @@ No completed, validated pair is available.
 | 1x8x1 | 1440x720x200 / 1x8x1 | RESOURCE_LIMIT | RESOURCE_LIMIT | — | — |
 | 2x16x1 | 1440x720x200 / 2x16x1 | RESOURCE_LIMIT | RESOURCE_LIMIT | — | — |
 | 2x1x1 | 1440x720x200 / 2x1x1 | OUT_OF_MEMORY | OUT_OF_MEMORY | — | — |
-| 2x2x1 | 1440x720x200 / 2x2x1 | FAILED | PLANNED | — | — |
+| 2x2x1 | 1440x720x200 / 2x2x1 | FAILED | RUNNING | — | — |
 | 2x32x1 |  /  | GEOMETRY_LIMIT | GEOMETRY_LIMIT | — | — |
 | 2x4x1 | 1440x720x200 / 2x4x1 | RESOURCE_LIMIT | RESOURCE_LIMIT | — | — |
 | 2x8x1 | 1440x720x200 / 2x8x1 | RESOURCE_LIMIT | RESOURCE_LIMIT | — | — |
@@ -211,7 +211,7 @@ No completed, validated pair is available.
 
 2x1x1: baseline: Execution failed; ERROR: LoadError: Out of GPU memory trying to allocate 880.820 MiB; dagger: Execution failed; ERROR: LoadError: Out of GPU memory trying to allocate 879.622 MiB
 
-2x2x1: baseline: Execution failed; ERROR: ERROR: LoadError: LoadError: ERROR: LoadError: ERROR: LoadError: Recomputed pressure residual exceeds tolerance; dagger: 
+2x2x1: baseline: Execution failed; ERROR: ERROR: LoadError: LoadError: ERROR: LoadError: ERROR: LoadError: Recomputed pressure residual exceeds tolerance; dagger: Local allocation started; see job.out
 
 2x32x1: baseline: Partition [2, 32, 1] has fewer than 23 local cells per horizontal direction; dagger: Partition [2, 32, 1] has fewer than 23 local cells per horizontal direction
 
