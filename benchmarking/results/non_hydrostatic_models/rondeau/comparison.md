@@ -181,7 +181,7 @@ No completed, validated pair is available.
 | 32x1x1 | 1440x720x200 / 32x1x1 | RESOURCE_LIMIT | RESOURCE_LIMIT | — | — |
 | 32x2x1 | 1440x720x200 / 32x2x1 | RESOURCE_LIMIT | RESOURCE_LIMIT | — | — |
 | 4x16x1 | 1440x720x200 / 4x16x1 | RESOURCE_LIMIT | RESOURCE_LIMIT | — | — |
-| 4x1x1 | 1440x720x200 / 4x1x1 | RUNNING | COMPLETED | — | — |
+| 4x1x1 | 1440x720x200 / 4x1x1 | COMPLETED | COMPLETED | 147.908 / 151.928 | 0.9735 |
 | 4x2x1 | 1440x720x200 / 4x2x1 | RESOURCE_LIMIT | RESOURCE_LIMIT | — | — |
 | 4x4x1 | 1440x720x200 / 4x4x1 | RESOURCE_LIMIT | RESOURCE_LIMIT | — | — |
 | 4x8x1 | 1440x720x200 / 4x8x1 | RESOURCE_LIMIT | RESOURCE_LIMIT | — | — |
@@ -224,8 +224,6 @@ No completed, validated pair is available.
 32x2x1: baseline: Requires 64; configured capacity is 4; dagger: Requires 64; configured capacity is 4
 
 4x16x1: baseline: Requires 64; configured capacity is 4; dagger: Requires 64; configured capacity is 4
-
-4x1x1: baseline: Local allocation started; see job.out; dagger: Rank results, finite fields and resource placement verified
 
 4x2x1: baseline: Requires 8; configured capacity is 4; dagger: Requires 8; configured capacity is 4
 
