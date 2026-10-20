@@ -142,7 +142,7 @@ No completed, validated pair is available.
 | Case | Resolution / partition | Baseline outcome | Dagger outcome | Median s/step baseline / Dagger | Speedup |
 |---|---|---|---|---:|---:|
 | 1_ranks | 1440x720x200 / 1x1x1 | OUT_OF_MEMORY | OUT_OF_MEMORY | — | — |
-| 2_ranks | 1440x720x200 / 2x1x1 | PLANNED | PLANNED | — | — |
+| 2_ranks | 1440x720x200 / 2x1x1 | PLANNED | RUNNING | — | — |
 | 4_ranks | 1440x720x200 / 2x2x1 | PLANNED | PLANNED | — | — |
 | 8_ranks | 1440x720x200 / 4x2x1 | RESOURCE_LIMIT | RESOURCE_LIMIT | — | — |
 
@@ -150,7 +150,7 @@ No completed, validated pair is available.
 
 1_ranks: baseline: Execution failed; ERROR: LoadError: Out of GPU memory trying to allocate 1.702 GiB; dagger: Execution failed; ERROR: LoadError: Out of GPU memory trying to allocate 1.702 GiB
 
-2_ranks: baseline: ; dagger: 
+2_ranks: baseline: ; dagger: Local allocation started; see job.out
 
 4_ranks: baseline: ; dagger: 
 
