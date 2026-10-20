@@ -8,3 +8,4 @@ Latest accepted measurement for each case. Configuration links record the actual
 |---|---:|---:|---:|---|
 | [1x2x1](1x2x1/configuration.md) | 2 | 87.229127 | 94.713975 | Current suite checks |
 | [1x4x1](1x4x1/configuration.md) | 4 | 60.987246 | 64.411970 | Current suite checks |
+| [4x1x1](4x1x1/configuration.md) | 4 | 149.820548 | 151.927963 | Current suite checks |
