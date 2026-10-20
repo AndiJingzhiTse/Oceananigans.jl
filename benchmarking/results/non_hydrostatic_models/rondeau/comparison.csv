@@ -54,7 +54,7 @@ gpu_partition_super_fine,2x8x1,16,1440x720x200,2x8x1,LatitudeLongitudeGrid,False
 gpu_partition_super_fine,32x1x1,32,1440x720x200,32x1x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 32; configured capacity is 4; dagger: Requires 32; configured capacity is 4
 gpu_partition_super_fine,32x2x1,64,1440x720x200,32x2x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 64; configured capacity is 4; dagger: Requires 64; configured capacity is 4
 gpu_partition_super_fine,4x16x1,64,1440x720x200,4x16x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 64; configured capacity is 4; dagger: Requires 64; configured capacity is 4
-gpu_partition_super_fine,4x1x1,4,1440x720x200,4x1x1,LatitudeLongitudeGrid,False,PLANNED,COMPLETED,,,,,,,"baseline: ; dagger: Rank results, finite fields and resource placement verified"
+gpu_partition_super_fine,4x1x1,4,1440x720x200,4x1x1,LatitudeLongitudeGrid,False,RUNNING,COMPLETED,,,,,,,"baseline: Local allocation started; see job.out; dagger: Rank results, finite fields and resource placement verified"
 gpu_partition_super_fine,4x2x1,8,1440x720x200,4x2x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 8; configured capacity is 4; dagger: Requires 8; configured capacity is 4
 gpu_partition_super_fine,4x4x1,16,1440x720x200,4x4x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 16; configured capacity is 4; dagger: Requires 16; configured capacity is 4
 gpu_partition_super_fine,4x8x1,32,1440x720x200,4x8x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,baseline: Requires 32; configured capacity is 4; dagger: Requires 32; configured capacity is 4
