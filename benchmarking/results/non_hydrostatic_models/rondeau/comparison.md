@@ -169,7 +169,7 @@ No completed, validated pair is available.
 | 1x1x1 | 1440x720x200 / 1x1x1 | OUT_OF_MEMORY | OUT_OF_MEMORY | — | — |
 | 1x2x1 | 1440x720x200 / 1x2x1 | COMPLETED | COMPLETED | 94.3716 / 94.714 | 0.9964 |
 | 1x32x1 |  /  | GEOMETRY_LIMIT | GEOMETRY_LIMIT | — | — |
-| 1x4x1 | 1440x720x200 / 1x4x1 | PLANNED | COMPLETED | — | — |
+| 1x4x1 | 1440x720x200 / 1x4x1 | RUNNING | COMPLETED | — | — |
 | 1x64x1 |  /  | GEOMETRY_LIMIT | GEOMETRY_LIMIT | — | — |
 | 1x8x1 | 1440x720x200 / 1x8x1 | RESOURCE_LIMIT | RESOURCE_LIMIT | — | — |
 | 2x16x1 | 1440x720x200 / 2x16x1 | RESOURCE_LIMIT | RESOURCE_LIMIT | — | — |
@@ -203,7 +203,7 @@ No completed, validated pair is available.
 
 1x32x1: baseline: Partition [1, 32, 1] has fewer than 23 local cells per horizontal direction; dagger: Partition [1, 32, 1] has fewer than 23 local cells per horizontal direction
 
-1x4x1: baseline: ; dagger: Rank results, finite fields and resource placement verified
+1x4x1: baseline: Local allocation started; see job.out; dagger: Rank results, finite fields and resource placement verified
 
 1x64x1: baseline: Partition [1, 64, 1] has fewer than 23 local cells per horizontal direction; dagger: Partition [1, 64, 1] has fewer than 23 local cells per horizontal direction
 
