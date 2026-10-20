@@ -486,8 +486,8 @@
     "resolution": "1440x720x200",
     "partition": "2x2x1",
     "grid_type": "LatitudeLongitudeGrid",
-    "dagger_state": "RUNNING",
-    "details": "baseline: Execution failed; ERROR: ERROR: LoadError: LoadError: ERROR: LoadError: ERROR: LoadError: Recomputed pressure residual exceeds tolerance; dagger: Local allocation started; see job.out"
+    "dagger_state": "FAILED",
+    "details": "baseline: Execution failed; ERROR: ERROR: LoadError: LoadError: ERROR: LoadError: ERROR: LoadError: Recomputed pressure residual exceeds tolerance; dagger: Execution failed; ERROR: ERROR: ERROR: LoadError: LoadError: LoadError: ERROR: LoadError: Recomputed pressure residual exceeds tolerance"
   },
   {
     "series": "gpu_partition_super_fine",
