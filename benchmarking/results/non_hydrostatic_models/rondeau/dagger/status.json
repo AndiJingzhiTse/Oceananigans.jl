@@ -477,7 +477,7 @@
     "partition": "2x1x1",
     "grid_type": "LatitudeLongitudeGrid",
     "dagger_state": "PLANNED",
-    "details": "baseline: Local allocation started; see job.out; dagger: "
+    "details": "baseline: Execution failed; ERROR: LoadError: Out of GPU memory trying to allocate 880.820 MiB; dagger: "
   },
   {
     "series": "gpu_partition_super_fine",
