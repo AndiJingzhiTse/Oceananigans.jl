@@ -12,6 +12,7 @@ Latest accepted measurement for each case. Configuration links record the actual
 | [default](default/configuration.md) | 1 | 12.666954 | 12.674764 | Current suite checks |
 | [fine](fine/configuration.md) | 1 | 104.432778 | 104.815036 | Current suite checks |
 | [super_fine](super_fine/configuration.md) | 1 | 971.087729 | 972.828508 | Current suite checks |
+| [2880x1440x400](2880x1440x400/configuration.md) | 1 | 8529.267294 | 8541.961095 | Current suite checks |
 
 <!-- current-rerun -->
 ## Current rerun
@@ -20,10 +21,11 @@ Study: `/local_scratch/ajtse/benchmark_studies/hydrostatic_free_surface_models/2
 Two untimed steps, then five synchronized windows of ten steps; one Julia thread per MPI rank.
 This rerun validates all rank results, MPI communication, distinct resources and finite model fields.
 
-Highest completed case: **super_fine**.
+Highest completed case: **2880x1440x400**.
 
 | Case | Global resolution | MPI partition | Outcome | Details |
 |---|---|---|---|---|
 | default | 360 × 180 × 50 | 1 × 1 × 1 | COMPLETED | Rank results, finite fields and resource placement verified |
 | fine | 720 × 360 × 100 | 1 × 1 × 1 | COMPLETED | Rank results, finite fields and resource placement verified |
 | super_fine | 1440 × 720 × 200 | 1 × 1 × 1 | COMPLETED | Rank results, finite fields and resource placement verified |
+| 2880x1440x400 | 2880 × 1440 × 400 | 1 × 1 × 1 | COMPLETED | Rank results, finite fields and resource placement verified |

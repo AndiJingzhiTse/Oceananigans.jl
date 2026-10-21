@@ -509,6 +509,92 @@
         "submitted_at": "2026-10-14T20:14:22.685242+00:00",
         "measured_at": "2026-10-15T12:15:56.246"
       }
+    },
+    {
+      "id": "2880x1440x400",
+      "series": "cpu_resolution",
+      "ranks": 1,
+      "grid_name": "2880x1440x400",
+      "partition": [
+        1,
+        1,
+        1
+      ],
+      "configuration": {
+        "series": "cpu_resolution",
+        "model_type": "HydrostaticFreeSurfaceModel",
+        "device": "CPU",
+        "ranks": 1,
+        "threads_per_rank": 1,
+        "grid_name": "2880x1440x400",
+        "global_resolution": [
+          2880,
+          1440,
+          400
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "partition": [
+          1,
+          1,
+          1
+        ],
+        "x_sizes": [
+          2880
+        ],
+        "y_sizes": [
+          1440
+        ],
+        "float_type": "Float64",
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "viscosity": null,
+        "diffusivity": null,
+        "coriolis": "HydrostaticSphericalCoriolis",
+        "buoyancy": "SeawaterBuoyancy(TEOS10)",
+        "timestepper": "SplitRungeKutta3",
+        "free_surface": "SplitExplicitFreeSurface",
+        "pressure_solver": null,
+        "pressure_preconditioner": null,
+        "pressure_max_iterations": null,
+        "pressure_reltol": null,
+        "pressure_abstol": null,
+        "pressure_diagnostics": false,
+        "pressure_preserve_residual": false,
+        "pressure_check_true_residual": false,
+        "pressure_preconditioner_check": false,
+        "initial_condition_seed": null,
+        "dt": 30.0,
+        "free_surface_substeps": 30,
+        "extend_free_surface_halos": false,
+        "warmup_steps": 2,
+        "samples": 5,
+        "time_steps": 10,
+        "profile": false,
+        "scaling_type": "comparison",
+        "baseline_ranks": 1
+      },
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
+      "job_id": "",
+      "measurement": {
+        "fastest": 8529.2672937157,
+        "median": 8541.9610954159,
+        "maximum": 11653.6417566203,
+        "retained_substeps": [
+          21
+        ],
+        "nodes": 1
+      },
+      "provenance": {
+        "source": "/local_scratch/ajtse/benchmark_studies/hydrostatic_free_surface_models/2026-10-13T193658Z/rondeau/cpu_resolution",
+        "submitted_at": "2026-10-14T20:14:22.685242+00:00",
+        "measured_at": "2026-10-21T02:25:55.208"
+      }
     }
   ],
   "submitted_at": "2026-10-14T20:14:22.685242+00:00",

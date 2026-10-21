@@ -6,7 +6,7 @@ Each series folder contains its configurations, measurements and provenance. Onl
 |---|---:|---|
 | `cpu_mpi_scaling_super_fine` | 7 | [Details](cpu_mpi_scaling_super_fine/plot.md) |
 | `cpu_profiling` | 1 | [Details](cpu_profiling/plot.md) |
-| `cpu_resolution` | 6 | [Details](cpu_resolution/plot.md) |
+| `cpu_resolution` | 7 | [Details](cpu_resolution/plot.md) |
 | `cpu_scaling_360x180x50` | 8 | [Details](cpu_scaling_360x180x50/plot.md) |
 | `cpu_scaling_720x360x50` | 8 | [Details](cpu_scaling_720x360x50/plot.md) |
 | `gpu_component_ablation` | 6 | [Details](gpu_component_ablation/plot.md) |
@@ -46,6 +46,7 @@ Each series folder contains its configurations, measurements and provenance. Onl
 | Case | Ranks | Global resolution | Partition | Fastest / median s per step | Median MPI efficiency | Validation |
 |---|---:|---|---|---:|---:|---|
 | [180x90x50](cpu_resolution/180x90x50/configuration.md) | 1 | 180 × 90 × 50 | 1 × 1 × 1 | 3.126001 / 3.136650 | — | Historical: complete ranks and timing aggregates checked; finite-state/placement checks unavailable |
+| [2880x1440x400](cpu_resolution/2880x1440x400/configuration.md) | 1 | 2880 × 1440 × 400 | 1 × 1 × 1 | 8529.267294 / 8541.961095 | — | Current suite checks |
 | [360x180x50](cpu_resolution/360x180x50/configuration.md) | 1 | 360 × 180 × 50 | 1 × 1 × 1 | 12.734940 / 12.780053 | — | Historical: complete ranks and timing aggregates checked; finite-state/placement checks unavailable |
 | [720x360x50](cpu_resolution/720x360x50/configuration.md) | 1 | 720 × 360 × 50 | 1 × 1 × 1 | 96.617069 / 96.688752 | — | Historical: complete ranks and timing aggregates checked; finite-state/placement checks unavailable |
 | [default](cpu_resolution/default/configuration.md) | 1 | 360 × 180 × 50 | 1 × 1 × 1 | 12.666954 / 12.674764 | — | Current suite checks |
@@ -180,4 +181,4 @@ Historical measurements retain their original validation labels until comparable
 | gpu_scaling_super_super_super_fine | 0 | 0 | [gpu_scaling_super_super_super_fine](gpu_scaling_super_super_super_fine/plot.md) |
 | cpu_partition_cores_super_fine | 0 | 0 | [cpu_partition_cores_super_fine](cpu_partition_cores_super_fine/plot.md) |
 | cpu_mpi_scaling_super_fine | 7 | 0 | [cpu_mpi_scaling_super_fine](cpu_mpi_scaling_super_fine/plot.md) |
-| cpu_resolution | 3 | 0 | [cpu_resolution](cpu_resolution/plot.md) |
+| cpu_resolution | 4 | 0 | [cpu_resolution](cpu_resolution/plot.md) |
