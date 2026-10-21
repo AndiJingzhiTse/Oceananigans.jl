@@ -12,6 +12,8 @@ Raw study and execution logs: `/local_scratch/ajtse/benchmark_studies/non_hydros
 
 ## cpu_mpi_scaling_super_fine
 
+![Timing and speedup](comparisons/cpu_mpi_scaling_super_fine.svg)
+
 | Case | Resolution / partition | Baseline outcome | Dagger outcome | Median s/step baseline / Dagger | Speedup |
 |---|---|---|---|---:|---:|
 | 12_ranks | 1440x720x200 / 4x3x1 | PLANNED | PLANNED | — | — |
@@ -21,9 +23,7 @@ Raw study and execution logs: `/local_scratch/ajtse/benchmark_studies/non_hydros
 | 3_ranks | 1440x720x200 / 3x1x1 | PLANNED | PLANNED | — | — |
 | 48_ranks | 1440x720x200 / 8x6x1 | PLANNED | PLANNED | — | — |
 | 6_ranks | 1440x720x200 / 3x2x1 | PLANNED | PLANNED | — | — |
-| 96_ranks | 1440x720x200 / 12x8x1 | RUNNING | COMPLETED | — | — |
-
-No completed, validated pair is available.
+| 96_ranks | 1440x720x200 / 12x8x1 | COMPLETED | COMPLETED | 435.539 / 435.238 | 1.0007 |
 
 12_ranks: baseline: ; dagger: 
 
@@ -38,8 +38,6 @@ No completed, validated pair is available.
 48_ranks: baseline: ; dagger: 
 
 6_ranks: baseline: ; dagger: 
-
-96_ranks: baseline: Local allocation started; see job.out; dagger: Rank results, finite fields and resource placement verified
 
 ## gpu_scaling_super_fine
 

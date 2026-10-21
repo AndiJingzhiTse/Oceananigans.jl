@@ -2,7 +2,7 @@
   "model": "NonhydrostaticModel",
   "machine": "rondeau",
   "started_at": "2026-10-19T20:48:16.364091+00:00",
-  "controller_pid": 2902117,
+  "controller_pid": 448801,
   "controller_log": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-19-dagger/rondeau/controller.log",
   "command": [
     "/usr/bin/python3",
@@ -33,5 +33,6 @@
   "physical_cpu_cores": 128,
   "available_gpus": 4,
   "gpu_type": "NVIDIA A100-SXM4-40GB",
-  "resource_exclusivity": "Shared host; existing unrelated simulations were preserved"
+  "resource_exclusivity": "Shared host; existing unrelated simulations were preserved",
+  "controller_revision_after_storage_fix": "140a316d28fb2fcafc7611e3277bea9a434dad33"
 }

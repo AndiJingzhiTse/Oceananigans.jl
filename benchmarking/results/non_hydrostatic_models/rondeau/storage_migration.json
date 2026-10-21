@@ -1,5 +1,5 @@
 {
-  "cpu_cleanup": "Waiting for active allocation to finish",
+  "cpu_cleanup": "MPI already removed /tmp/ompi.rondeau.8193/pid.261607 on exit",
   "active_case": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-19-dagger/rondeau/baseline/cpu_mpi_scaling_super_fine/96_ranks",
   "allocation_pid": 261594,
   "previous_controller": 2902117,
@@ -11,5 +11,7 @@
   "profiles_relocated_at": "2026-10-21T19:48:15.578554+00:00",
   "old_profile_directory_removed": "/tmp/benchmark_traces",
   "future_cpu_storage": "<variant>/<series>/run_records/<case>/",
-  "future_temporary_storage": "<variant>/<series>/.runtime/<case>/ via short ~/.ocean-tmp/ symlinks"
+  "future_temporary_storage": "<variant>/<series>/.runtime/<case>/ via short ~/.ocean-tmp/ symlinks",
+  "cleanup_at": "2026-10-21T22:26:33.420258+00:00",
+  "resumed_controller": 448801
 }
