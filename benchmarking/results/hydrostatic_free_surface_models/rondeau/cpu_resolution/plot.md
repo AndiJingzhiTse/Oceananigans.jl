@@ -29,3 +29,4 @@ Highest completed case: **2880x1440x400**.
 | fine | 720 × 360 × 100 | 1 × 1 × 1 | COMPLETED | Rank results, finite fields and resource placement verified |
 | super_fine | 1440 × 720 × 200 | 1 × 1 × 1 | COMPLETED | Rank results, finite fields and resource placement verified |
 | 2880x1440x400 | 2880 × 1440 × 400 | 1 × 1 × 1 | COMPLETED | Rank results, finite fields and resource placement verified |
+| 5760x2880x800 | 5760 × 2880 × 800 | 1 × 1 × 1 | FAILED | Host allocation failed under the available-memory address-space limit; see allocation.out and job.out in scratch study |
