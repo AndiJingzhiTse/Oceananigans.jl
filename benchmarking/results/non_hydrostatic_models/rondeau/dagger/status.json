@@ -696,7 +696,7 @@
     "resolution": "2880x1440x200",
     "partition": "2x2x1",
     "grid_type": "LatitudeLongitudeGrid",
-    "dagger_state": "RUNNING",
-    "details": "baseline: ; dagger: Local allocation started; see job.out"
+    "dagger_state": "OUT_OF_MEMORY",
+    "details": "baseline: ; dagger: Execution failed; ERROR: LoadError: ERROR: LoadError: ERROR: LoadError: ERROR: LoadError: Out of GPU memory trying to allocate 1.710 GiB"
   }
 ]
