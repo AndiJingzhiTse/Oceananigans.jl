@@ -336,8 +336,8 @@
     "resolution": "1440x720x200",
     "partition": "2x1x1",
     "grid_type": "LatitudeLongitudeGrid",
-    "baseline_state": "RUNNING",
-    "details": "baseline: Local allocation started; see job.out; dagger: Execution failed; ERROR: Capture range started in the application."
+    "baseline_state": "FAILED",
+    "details": "baseline: Execution failed; ERROR: LoadError: Recomputed pressure residual exceeds tolerance; dagger: Execution failed; ERROR: Capture range started in the application."
   },
   {
     "series": "gpu_nsight_scaling_super_fine",
