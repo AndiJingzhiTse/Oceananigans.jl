@@ -245,12 +245,12 @@ No completed, validated pair is available.
 
 | Case | Resolution / partition | Baseline outcome | Dagger outcome | Median s/step baseline / Dagger | Speedup |
 |---|---|---|---|---:|---:|
-| 4_ranks | 2880x1440x200 / 2x2x1 | RUNNING | PLANNED | — | — |
+| 4_ranks | 2880x1440x200 / 2x2x1 | OUT_OF_MEMORY | PLANNED | — | — |
 | 8_ranks | 2880x1440x200 / 4x2x1 | RESOURCE_LIMIT | RESOURCE_LIMIT | — | — |
 
 No completed, validated pair is available.
 
-4_ranks: baseline: Local allocation started; see job.out; dagger: 
+4_ranks: baseline: Execution failed; ERROR: ERROR: LoadError: LoadError: ERROR: LoadError: ERROR: LoadError: Out of GPU memory trying to allocate 1.710 GiB; dagger: 
 
 8_ranks: baseline: Requires 8; configured capacity is 4; dagger: Requires 8; configured capacity is 4
 
