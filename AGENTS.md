@@ -153,6 +153,37 @@ clean tree, preserve them and explicitly report the remaining paths and why
 they could not be cleared. Recheck the working tree immediately before the
 final response.
 
+## Temporary Files and Storage
+
+**Never write repository-related files to `/tmp` or `/var/tmp`.** This applies
+to benchmarks, tests, profiling, package setup, downloads, scripts, logs, and
+temporary files created by child processes. Do not use symlinks whose targets
+resolve to these system temporary directories.
+
+Use project-controlled directories on a data filesystem instead. On Rondeau,
+use `/local_scratch/ajtse/` for working studies and
+`benchmarking/results/<model_family>/<machine>/` for retained artifacts.
+Before launching tools or tests, explicitly set `TMPDIR`, `TMP`, and `TEMP`
+to an existing directory there. Configure library-specific temporary storage
+as well, including `OMPI_MCA_orte_tmpdir_base` for OpenMPI, and verify that
+child processes inherit the settings. An unset `SCRATCH` must never cause a
+fallback to `/tmp`. Python `tempfile` and Julia temporary-file helpers must
+also use the configured data-filesystem directory.
+
+Set Nsight output paths and the benchmark `trace_root` explicitly. Retain
+captures under `<variant>/<series>/raw_profiles/` inside the machine's results
+folder, with paths, byte sizes, and SHA-256 checksums recorded in manifests.
+Keep large raw captures out of Git. Use case-specific `.runtime/` directories
+for active temporary files and `run_records/<case>/` for closed CPU/GPU logs
+and other execution evidence. Short aliases under `~/.ocean-tmp/` are allowed
+when they resolve into these directories and are needed for MPI socket limits.
+
+Never move or delete temporary files belonging to a running process. After
+the owning run exits, verify archived copies before removing their temporary
+originals. Clean up only files belonging to the task; preserve unrelated users'
+files and active sessions. Check the resolved output and temporary paths before
+starting any long run.
+
 ## Benchmark Records
 
 For standard benchmark series, use `benchmarking/scripts/benchmark_suite.py`
