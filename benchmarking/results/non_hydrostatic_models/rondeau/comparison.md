@@ -143,7 +143,7 @@ No completed, validated pair is available.
 |---|---|---|---|---:|---:|
 | 1_ranks | 1440x720x200 / 1x1x1 | OUT_OF_MEMORY | OUT_OF_MEMORY | — | — |
 | 2_ranks | 1440x720x200 / 2x1x1 | FAILED | FAILED | — | — |
-| 4_ranks | 1440x720x200 / 2x2x1 | RUNNING | PLANNED | — | — |
+| 4_ranks | 1440x720x200 / 2x2x1 | FAILED | PLANNED | — | — |
 | 8_ranks | 1440x720x200 / 4x2x1 | RESOURCE_LIMIT | RESOURCE_LIMIT | — | — |
 
 No completed, validated pair is available.
@@ -152,7 +152,7 @@ No completed, validated pair is available.
 
 2_ranks: baseline: Execution failed; ERROR: LoadError: Recomputed pressure residual exceeds tolerance; dagger: Execution failed; ERROR: Capture range started in the application.
 
-4_ranks: baseline: Local allocation started; see job.out; dagger: 
+4_ranks: baseline: Execution failed; ERROR: LoadError: Recomputed pressure residual exceeds tolerance; dagger: 
 
 8_ranks: baseline: Requires 8; configured capacity is 4; dagger: Requires 8; configured capacity is 4
 
