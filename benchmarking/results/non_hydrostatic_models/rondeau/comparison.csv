@@ -4,7 +4,7 @@ cpu_mpi_scaling_super_fine,192_ranks,192,1440x720x200,16x12x1,LatitudeLongitudeG
 cpu_mpi_scaling_super_fine,1_ranks,1,1440x720x200,1x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
 cpu_mpi_scaling_super_fine,24_ranks,24,1440x720x200,6x4x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
 cpu_mpi_scaling_super_fine,3_ranks,3,1440x720x200,3x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
-cpu_mpi_scaling_super_fine,48_ranks,48,1440x720x200,8x6x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
+cpu_mpi_scaling_super_fine,48_ranks,48,1440x720x200,8x6x1,LatitudeLongitudeGrid,False,RUNNING,PLANNED,,,,,,,baseline: Local allocation started; see job.out; dagger: 
 cpu_mpi_scaling_super_fine,6_ranks,6,1440x720x200,3x2x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger: 
 cpu_mpi_scaling_super_fine,96_ranks,96,1440x720x200,12x8x1,LatitudeLongitudeGrid,False,COMPLETED,COMPLETED,400.3821480641,402.88418705929996,435.5390566782,435.238376151,0.9937896818103916,1.000690841027988,"baseline: Rank results, finite fields and resource placement verified; dagger: Rank results, finite fields and resource placement verified"
 gpu_scaling_super_fine,1_ranks,1,1440x720x200,1x1x1,LatitudeLongitudeGrid,False,OUT_OF_MEMORY,OUT_OF_MEMORY,,,,,,,baseline: Execution failed; ERROR: LoadError: Out of GPU memory trying to allocate 1.702 GiB; dagger: Execution failed; ERROR: LoadError: Out of GPU memory trying to allocate 1.702 GiB

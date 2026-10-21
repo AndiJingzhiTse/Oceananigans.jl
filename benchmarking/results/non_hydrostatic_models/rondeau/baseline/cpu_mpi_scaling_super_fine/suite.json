@@ -36,7 +36,12 @@
     "report_modules": [],
     "reference_suites": [],
     "replacement_suites": [],
-    "environment": {},
+    "environment": {
+      "TMPDIR": "/u/ajtse/.ocean-tmp/291f7e48f5e7",
+      "TMP": "/u/ajtse/.ocean-tmp/291f7e48f5e7",
+      "TEMP": "/u/ajtse/.ocean-tmp/291f7e48f5e7",
+      "OMPI_MCA_orte_tmpdir_base": "/u/ajtse/.ocean-tmp/291f7e48f5e7"
+    },
     "gpu_scaling_partition": "balanced",
     "model_type": "NonhydrostaticModel",
     "comparison_suites": [],
