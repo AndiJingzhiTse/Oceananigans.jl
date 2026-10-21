@@ -296,6 +296,26 @@ protocols, and retain separate baselines for the two models.
 
 ### Matched baseline and Dagger runs
 
+Raw Nsight captures belong in the results tree, under each variant's
+`gpu_nsight_scaling_super_fine/raw_profiles/`. Captures stay on disk and are
+excluded from Git; `profile_manifest.json` records relocated paths, sizes and
+SHA-256 checksums. Captures from failed runs remain diagnostic evidence and
+are not accepted timing results.
+
+The paired controller archives closed case files, including CPU logs and
+failure evidence, in `<variant>/<series>/run_records/<case>/`. Its versioned
+`run_records_manifest.json` records file checksums. Future processes use a
+case-specific `.runtime/` directory in the same results tree for `TMPDIR`,
+`TMP`, `TEMP` and OpenMPI session files. On exit, leftover runtime files are
+verified, archived into the case's run records, and removed from `.runtime/`.
+An active MPI session must finish before its temporary files are moved.
+Short symlinks in `~/.ocean-tmp/` point into these directories to keep MPI
+Unix socket names within the operating system's pathname limit.
+
+Standard controller launches also default profiler output and temporary
+storage to the results tree instead of `/tmp`. Explicit machine environment
+settings can override these paths.
+
 `--execution-mode baseline` (the default) calls the timestep window directly.
 `--execution-mode dagger` submits the same window as one `Dagger.@spawn` task
 and fetches its completion. The task stays on the current MPI process and its

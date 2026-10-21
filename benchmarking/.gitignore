@@ -20,3 +20,7 @@ results/**/.plot-*
 results/**/*.out
 
 # Nsight captures/databases are ignored by the repository-wide rules.
+# Raw evidence stays locally in the results tree; manifests are versioned.
+results/**/raw_profiles/
+results/**/.runtime/
+results/**/run_records/

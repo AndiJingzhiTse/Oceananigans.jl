@@ -14,6 +14,7 @@ import benchmark_suite as runner
 from suite.plan import SERIES
 from suite.catalog import publish_series, write_machine_report
 from suite.variants import write_comparison
+from suite.storage import archive_finished_case, archive_runtime, runtime_environment
 
 
 def annotate_failures(folder, data):
@@ -83,11 +84,16 @@ def main():
                     settings = copy.deepcopy(server)
                     settings['execution_mode'] = mode
                     data = runner.prepare(folder, settings, (series,))
+                # Applies to resumed suites too: old snapshots can retain a
+                # /tmp trace root even when the study itself is on scratch.
+                data['server']['trace_root'] = str(destination / mode / 'raw_profiles')
                 studies[mode, series] = (folder, data)
 
         def publish():
             for (mode, series), (folder, data) in studies.items():
                 annotate_failures(folder, data)
+                for case in data['cases']:
+                    archive_finished_case(folder, case, destination / mode)
                 publish_series(folder, destination / mode / series)
             for mode in ('baseline', 'dagger'):
                 (destination / mode).mkdir(parents=True, exist_ok=True)
@@ -117,6 +123,8 @@ def main():
                     if target['state'] != 'PLANNED':
                         continue
                     case_dir = folder / case['id']
+                    runtime = destination / mode / series / '.runtime' / case['id']
+                    data['server']['environment'].update(runtime_environment(runtime))
                     for tool, command in (
                         ('processes', ['ps', '-eo', 'user,pid,psr,pcpu,rss,args', '--sort=-pcpu']),
                         ('gpu_activity', ['nvidia-smi', '--query-gpu=uuid,memory.used,utilization.gpu', '--format=csv']),
@@ -126,6 +134,7 @@ def main():
                             (case_dir / f'{tool}_before.txt').write_text(result.stdout)
                     print(f"{datetime.now(timezone.utc).isoformat()} {mode}/{series}/{case['id']}", flush=True)
                     runner.execute(folder, data, case_ids={case['id']}, on_start=publish)
+                    archive_runtime(runtime, destination / mode / series / 'run_records' / case['id'] / 'runtime')
                     publish()
         print('All planned baseline and Dagger cases have reached terminal outcomes.', flush=True)
 

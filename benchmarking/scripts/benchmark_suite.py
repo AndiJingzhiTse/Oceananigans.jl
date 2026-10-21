@@ -67,7 +67,8 @@ def load_server(path=None, model_type=None):
                   cpu_time='03:00:00', gpu_time='00:45:00', partition_time='03:00:00',
                   gpu_memory='128G', cpu_memory_base_gb=64, cpu_memory_per_rank_gb=4,
                   cpu_sbatch_extra=[], gpu_sbatch_extra=[],
-                  trace_root=str(Path(os.environ.get('SCRATCH', '/tmp')) / 'benchmark_traces'),
+                  trace_root=str(ROOT / 'results' / MODEL_FOLDERS[user.get('model_type', 'HydrostaticFreeSurfaceModel')] /
+                                 user.get('machine', machine) / 'raw_profiles'),
                   case_timeout_seconds=86400, matplotlib=True, python='python3', report_modules=[],
                   reference_suites=[], replacement_suites=[], environment={}, gpu_scaling_partition='balanced',
                   model_type='HydrostaticFreeSurfaceModel', comparison_suites=[], comparison_report='',
@@ -207,7 +208,19 @@ def launch_command(server, config, case_dir, metadata, trace_root):
 
 def environment_lines(server):
     lines = ['set -eo pipefail']
-    for key, value in server['environment'].items():
+    environment = dict(server['environment'])
+    runtime = str(Path(server['trace_root']).parent / '.runtime')
+    if 'TMPDIR' not in environment:
+        alias = Path.home() / '.ocean-tmp' / hashlib.sha256(runtime.encode()).hexdigest()[:12]
+        lines += ['mkdir -p ' + shlex.quote(runtime) + ' ' + shlex.quote(str(alias.parent)),
+                  'if [ ! -e ' + shlex.quote(str(alias)) + ' ] && [ ! -L ' + shlex.quote(str(alias)) +
+                  ' ]; then ln -s ' + shlex.quote(runtime) + ' ' + shlex.quote(str(alias)) + '; fi',
+                  'test ' + shlex.quote(str(alias)) + ' -ef ' + shlex.quote(runtime)]
+        environment['TMPDIR'] = str(alias)
+    for name in ('TMP', 'TEMP', 'OMPI_MCA_orte_tmpdir_base'):
+        environment.setdefault(name, environment['TMPDIR'])
+    lines.append('mkdir -p ' + shlex.quote(os.path.expandvars(os.path.expanduser(environment['TMPDIR']))))
+    for key, value in environment.items():
         if not re.fullmatch(r'[A-Za-z_][A-Za-z0-9_]*', key) or key in {'HOME', 'CODEX_HOME'}:
             raise ValueError('Invalid environment variable name: ' + key)
         lines.append('export ' + key + '=' + shlex.quote(os.path.expandvars(os.path.expanduser(value))))
