@@ -21,7 +21,7 @@ Raw study and execution logs: `/local_scratch/ajtse/benchmark_studies/non_hydros
 | 3_ranks | 1440x720x200 / 3x1x1 | PLANNED | PLANNED | — | — |
 | 48_ranks | 1440x720x200 / 8x6x1 | PLANNED | PLANNED | — | — |
 | 6_ranks | 1440x720x200 / 3x2x1 | PLANNED | PLANNED | — | — |
-| 96_ranks | 1440x720x200 / 12x8x1 | PLANNED | COMPLETED | — | — |
+| 96_ranks | 1440x720x200 / 12x8x1 | RUNNING | COMPLETED | — | — |
 
 No completed, validated pair is available.
 
@@ -39,7 +39,7 @@ No completed, validated pair is available.
 
 6_ranks: baseline: ; dagger: 
 
-96_ranks: baseline: ; dagger: Rank results, finite fields and resource placement verified
+96_ranks: baseline: Local allocation started; see job.out; dagger: Rank results, finite fields and resource placement verified
 
 ## gpu_scaling_super_fine
 
