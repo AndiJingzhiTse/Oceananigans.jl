@@ -270,7 +270,7 @@ No completed, validated pair is available.
 |---|---|---|---|---:|---:|
 | 16_ranks | 5760x2880x200 / 4x4x1 | RESOURCE_LIMIT | RESOURCE_LIMIT | — | — |
 | 1_ranks | 1440x720x200 / 1x1x1 | OUT_OF_MEMORY | OUT_OF_MEMORY | — | — |
-| 4_ranks | 2880x1440x200 / 2x2x1 | PLANNED | OUT_OF_MEMORY | — | — |
+| 4_ranks | 2880x1440x200 / 2x2x1 | RUNNING | OUT_OF_MEMORY | — | — |
 
 No completed, validated pair is available.
 
@@ -278,5 +278,5 @@ No completed, validated pair is available.
 
 1_ranks: baseline: Execution failed; ERROR: LoadError: Out of GPU memory trying to allocate 1.702 GiB; dagger: Execution failed; ERROR: LoadError: Out of GPU memory trying to allocate 1.702 GiB
 
-4_ranks: baseline: ; dagger: Execution failed; ERROR: LoadError: ERROR: LoadError: ERROR: LoadError: ERROR: LoadError: Out of GPU memory trying to allocate 1.710 GiB
+4_ranks: baseline: Local allocation started; see job.out; dagger: Execution failed; ERROR: LoadError: ERROR: LoadError: ERROR: LoadError: ERROR: LoadError: Out of GPU memory trying to allocate 1.710 GiB
 
