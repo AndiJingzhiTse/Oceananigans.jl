@@ -21,7 +21,7 @@ Raw study and execution logs: `/local_scratch/ajtse/benchmark_studies/non_hydros
 | 1_ranks | 1440x720x200 / 1x1x1 | PLANNED | PLANNED | — | — |
 | 24_ranks | 1440x720x200 / 6x4x1 | PLANNED | PLANNED | — | — |
 | 3_ranks | 1440x720x200 / 3x1x1 | PLANNED | PLANNED | — | — |
-| 48_ranks | 1440x720x200 / 8x6x1 | COMPLETED | RUNNING | — | — |
+| 48_ranks | 1440x720x200 / 8x6x1 | COMPLETED | COMPLETED | 888.295 / 885.571 | 1.0031 |
 | 6_ranks | 1440x720x200 / 3x2x1 | PLANNED | PLANNED | — | — |
 | 96_ranks | 1440x720x200 / 12x8x1 | COMPLETED | COMPLETED | 435.539 / 435.238 | 1.0007 |
 
@@ -34,8 +34,6 @@ Raw study and execution logs: `/local_scratch/ajtse/benchmark_studies/non_hydros
 24_ranks: baseline: ; dagger: 
 
 3_ranks: baseline: ; dagger: 
-
-48_ranks: baseline: Rank results, finite fields and resource placement verified; dagger: Local allocation started; see job.out
 
 6_ranks: baseline: ; dagger: 
 
