@@ -7,3 +7,4 @@ Latest accepted measurement for each case. Configuration links record the actual
 | Case | MPI ranks | Fastest s/step | Median s/step | Validation |
 |---|---:|---:|---:|---|
 | [96_ranks](96_ranks/configuration.md) | 96 | 400.382148 | 435.539057 | Current suite checks |
+| [48_ranks](48_ranks/configuration.md) | 48 | 815.748859 | 888.295249 | Current suite checks |
