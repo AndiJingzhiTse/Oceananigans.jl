@@ -251,8 +251,104 @@
         "submitted_at": "2026-10-23T18:32:32.732598+00:00",
         "measured_at": "2026-10-23T18:30:57.791"
       }
+    },
+    {
+      "id": "4_ranks",
+      "series": "gpu_nsight_scaling_default",
+      "ranks": 4,
+      "grid_name": "default",
+      "partition": [
+        2,
+        2,
+        1
+      ],
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
+      "job_id": "",
+      "configuration": {
+        "series": "gpu_nsight_scaling_default",
+        "model_type": "NonhydrostaticModel",
+        "device": "GPU",
+        "ranks": 4,
+        "threads_per_rank": 1,
+        "grid_name": "default",
+        "global_resolution": [
+          360,
+          180,
+          50
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "partition": [
+          2,
+          2,
+          1
+        ],
+        "x_sizes": [
+          180,
+          180
+        ],
+        "y_sizes": [
+          90,
+          90
+        ],
+        "float_type": "Float64",
+        "momentum_advection": "WENO7",
+        "tracer_advection": "WENO7",
+        "closure": "ScalarDiffusivity",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "viscosity": 0.001,
+        "diffusivity": 1e-05,
+        "coriolis": "HydrostaticSphericalCoriolis",
+        "buoyancy": "SeawaterBuoyancy(TEOS10)",
+        "timestepper": "RungeKutta3",
+        "free_surface": "RigidLid",
+        "pressure_solver": "ConjugateGradientPoissonSolver",
+        "pressure_preconditioner": "LocalFFTPreconditioner",
+        "pressure_max_iterations": 5000,
+        "pressure_reltol": 1.4901161193847656e-08,
+        "pressure_abstol": 1.4901161193847656e-08,
+        "pressure_diagnostics": false,
+        "pressure_preserve_residual": false,
+        "pressure_check_true_residual": true,
+        "pressure_preconditioner_check": true,
+        "initial_condition_seed": 1234,
+        "dt": 60,
+        "free_surface_substeps": null,
+        "extend_free_surface_halos": false,
+        "warmup_steps": 2,
+        "samples": 5,
+        "time_steps": 10,
+        "profile": true,
+        "scaling_type": "strong",
+        "baseline_ranks": 1,
+        "execution_mode": "dagger"
+      },
+      "measurement": {
+        "fastest": 1.6846656427,
+        "median": 2.7815535035,
+        "maximum": 3.0170400716,
+        "retained_substeps": [],
+        "nodes": 1,
+        "gpu_memory_used_bytes": 11998330880,
+        "gpu_memory_max_gib": 11.17431640625,
+        "kernel_nanoseconds": {
+          "Gc": 421177773,
+          "Gu": 272015224,
+          "Gv": 348819268,
+          "Gw": 316424007,
+          "Others": 57739662304
+        }
+      },
+      "provenance": {
+        "source": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau/dagger/gpu_nsight_scaling_default",
+        "submitted_at": "2026-10-23T19:03:18.387965+00:00",
+        "measured_at": "2026-10-23T19:01:31.004"
+      }
     }
   ],
-  "submitted_at": "2026-10-23T18:32:32.732598+00:00",
+  "submitted_at": "2026-10-23T19:03:18.387965+00:00",
   "curated": true
 }

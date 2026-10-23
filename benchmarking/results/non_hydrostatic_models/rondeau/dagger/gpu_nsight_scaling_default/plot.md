@@ -10,3 +10,4 @@ Latest accepted measurement for each case. Configuration links record the actual
 |---|---:|---:|---:|---|
 | [1_ranks](1_ranks/configuration.md) | 1 | 0.511977 | 1.008002 | Current suite checks |
 | [2_ranks](2_ranks/configuration.md) | 2 | 1.587921 | 2.540774 | Current suite checks |
+| [4_ranks](4_ranks/configuration.md) | 4 | 1.684666 | 2.781554 | Current suite checks |

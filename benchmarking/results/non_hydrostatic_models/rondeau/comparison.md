@@ -42,9 +42,7 @@ Requested GPU weak-scaling sequence: 360 × 180 × 50 on 1 GPU, 720 × 360 × 10
 |---|---|---|---|---:|---:|
 | 1_ranks | 360x180x50 / 1x1x1 | COMPLETED | COMPLETED | 1.12796 / 1.008 | 1.1190 |
 | 2_ranks | 360x180x50 / 2x1x1 | COMPLETED | COMPLETED | 2.82837 / 2.54077 | 1.1132 |
-| 4_ranks | 360x180x50 / 2x2x1 | COMPLETED | RUNNING | — | — |
-
-4_ranks: baseline: Rank results, finite fields and resource placement verified; dagger: Local allocation started; see job.out
+| 4_ranks | 360x180x50 / 2x2x1 | COMPLETED | COMPLETED | 2.86175 / 2.78155 | 1.0288 |
 
 ## gpu_resolution
 
