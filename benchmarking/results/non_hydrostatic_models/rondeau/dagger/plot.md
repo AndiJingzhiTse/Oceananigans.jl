@@ -4,8 +4,19 @@ Each series folder contains its configurations, measurements and provenance. Onl
 
 | Series | Completed cases | Report |
 |---|---:|---|
+| `gpu_nsight_scaling_default` | 1 | [Details](gpu_nsight_scaling_default/plot.md) |
 | `gpu_scaling_fine` | 3 | [Details](gpu_scaling_fine/plot.md) |
 | `gpu_weak_scaling` | 2 | [Details](gpu_weak_scaling/plot.md) |
+
+## gpu_nsight_scaling_default
+
+![gpu_nsight_scaling_default](gpu_nsight_scaling_default/gpu_nsight_scaling_default.svg)
+
+![gpu_nsight_scaling_default_kernels](gpu_nsight_scaling_default/gpu_nsight_scaling_default_kernels.svg)
+
+| Case | Ranks | Global resolution | Partition | Fastest / median s per step | Median MPI efficiency | Validation |
+|---|---:|---|---|---:|---:|---|
+| [1_ranks](gpu_nsight_scaling_default/1_ranks/configuration.md) | 1 | 360 × 180 × 50 | 1 × 1 × 1 | 0.511977 / 1.008002 | 100.0% | Current suite checks |
 
 ## gpu_scaling_fine
 
