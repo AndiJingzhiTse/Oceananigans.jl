@@ -13,7 +13,7 @@ SERIES = ('cpu_mpi_scaling_super_fine', 'gpu_scaling_super_fine', 'cpu_resolutio
           'gpu_scaling_super_super_fine', 'gpu_scaling_super_super_super_fine',
           'gpu_weak_scaling_super_fine')
 RONDEAU_SERIES = ('gpu_weak_scaling', 'gpu_scaling_fine', 'gpu_nsight_scaling_default',
-                  'gpu_resolution', 'cpu_mpiscaling_default', 'cpu_partition_default', 'cpu_resolution')
+                  'gpu_resolution')
 ALL_SERIES = tuple(dict.fromkeys((*SERIES, *RONDEAU_SERIES)))
 
 

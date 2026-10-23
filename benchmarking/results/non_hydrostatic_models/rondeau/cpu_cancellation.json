@@ -1,0 +1,86 @@
+{
+  "requested_at": "2026-10-23T15:27:10.575019+00:00",
+  "removed_cpu_suites": [
+    {
+      "mode": "baseline",
+      "series": "cpu_resolution",
+      "states": [
+        "PLANNED",
+        "PLANNED",
+        "PLANNED"
+      ]
+    },
+    {
+      "mode": "baseline",
+      "series": "cpu_mpiscaling_default",
+      "states": [
+        "PLANNED",
+        "PLANNED",
+        "PLANNED",
+        "PLANNED",
+        "PLANNED",
+        "PLANNED",
+        "PLANNED",
+        "PLANNED"
+      ]
+    },
+    {
+      "mode": "baseline",
+      "series": "cpu_partition_default",
+      "states": [
+        "GEOMETRY_LIMIT",
+        "GEOMETRY_LIMIT",
+        "PLANNED",
+        "PLANNED",
+        "PLANNED",
+        "GEOMETRY_LIMIT",
+        "GEOMETRY_LIMIT",
+        "GEOMETRY_LIMIT"
+      ]
+    },
+    {
+      "mode": "dagger",
+      "series": "cpu_mpiscaling_default",
+      "states": [
+        "PLANNED",
+        "PLANNED",
+        "PLANNED",
+        "PLANNED",
+        "PLANNED",
+        "PLANNED",
+        "PLANNED",
+        "PLANNED"
+      ]
+    },
+    {
+      "mode": "dagger",
+      "series": "cpu_partition_default",
+      "states": [
+        "GEOMETRY_LIMIT",
+        "GEOMETRY_LIMIT",
+        "PLANNED",
+        "PLANNED",
+        "PLANNED",
+        "GEOMETRY_LIMIT",
+        "GEOMETRY_LIMIT",
+        "GEOMETRY_LIMIT"
+      ]
+    },
+    {
+      "mode": "dagger",
+      "series": "cpu_resolution",
+      "states": [
+        "PLANNED",
+        "PLANNED",
+        "PLANNED"
+      ]
+    }
+  ],
+  "remaining_series": [
+    "gpu_weak_scaling",
+    "gpu_scaling_fine",
+    "gpu_nsight_scaling_default",
+    "gpu_resolution"
+  ],
+  "note": "No CPU case had started; GPU allocation preserved. Historical superseded study remains archived."
+}

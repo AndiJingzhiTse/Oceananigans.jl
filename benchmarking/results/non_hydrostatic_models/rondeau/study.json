@@ -11,13 +11,10 @@
     "gpu_weak_scaling",
     "gpu_scaling_fine",
     "gpu_nsight_scaling_default",
-    "gpu_resolution",
-    "cpu_mpiscaling_default",
-    "cpu_partition_default",
-    "cpu_resolution"
+    "gpu_resolution"
   ],
-  "planned_cases_per_variant": 26,
-  "geometry_limits_per_variant": 5,
+  "planned_cases_per_variant": 12,
+  "geometry_limits_per_variant": 0,
   "max_cpu_cores": 128,
   "max_gpus": 4,
   "case_timeout_seconds": 86400,
@@ -77,5 +74,7 @@
       ]
     }
   ],
-  "weak_reference": "Increasing cells/GPU 1:4:16; linear cell-count normalized efficiency, not constant-work weak efficiency"
+  "weak_reference": "Increasing cells/GPU 1:4:16; linear cell-count normalized efficiency, not constant-work weak efficiency",
+  "cpu_benchmarks_cancelled_at": "2026-10-23T15:28:02.824140+00:00",
+  "cpu_benchmark_policy": "Cancelled and removed at user request; GPU-only study"
 }

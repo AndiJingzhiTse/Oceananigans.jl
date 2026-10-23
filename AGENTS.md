@@ -243,10 +243,10 @@ For GPU MPI runs, verify distinct GPUs and CUDA-aware MPI communication.
 
 ### Benchmark Reporting and Completion
 
-Rondeau NonhydrostaticModel uses the reduced seven-series plan documented in
+Rondeau NonhydrostaticModel uses the GPU-only four-series plan documented in
 `benchmarking/README.md`: `gpu_weak_scaling` first, `gpu_scaling_fine`,
-`gpu_nsight_scaling_default`, `gpu_resolution`, `cpu_mpiscaling_default`,
-`cpu_partition_default` (exactly 128 CPU cores), and `cpu_resolution`.
+`gpu_nsight_scaling_default`, and `gpu_resolution`. CPU benchmarks are cancelled
+and removed from the Rondeau study; do not recreate or launch CPU suites there.
 Use default/fine/super_fine resolutions only for these resolution studies.
 The requested GPU weak sequence is default/1 GPU, fine/2 GPUs, super_fine/4 GPUs;
 cells per GPU increase 1:4:16. Label its linear cell-count reference explicitly;

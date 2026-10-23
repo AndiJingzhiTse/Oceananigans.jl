@@ -84,19 +84,14 @@ class VariantTests(unittest.TestCase):
         cases = plan.build_plan(server)
         self.assertEqual(tuple(dict.fromkeys(c['series'] for c in cases)), plan.RONDEAU_SERIES)
         self.assertEqual(cases[0]['series'], 'gpu_weak_scaling')
+        self.assertEqual(len(cases), 12)
+        self.assertTrue(all(c['series'].startswith('gpu_') for c in cases))
         weak = [c for c in cases if c['series'] == 'gpu_weak_scaling']
         self.assertEqual([(c['ranks'], c['configuration']['global_resolution']) for c in weak],
                          [(1, [360,180,50]), (2, [720,360,100]), (4, [1440,720,200])])
         for case, seconds in zip(weak, (1, 4, 16)):
             case.update(state='COMPLETED', measurement=dict(fastest=seconds, median=seconds))
             self.assertEqual(efficiencies(case, weak[0]), (1, 1))
-        cpu = [c for c in cases if c['series'] == 'cpu_mpiscaling_default']
-        self.assertEqual([c['ranks'] for c in cpu], [1,2,4,8,16,32,64,128])
-        self.assertTrue(all(c['configuration']['global_resolution'] == plan.GRIDS['default'] for c in cpu))
-        partition = [c for c in cases if c['series'] == 'cpu_partition_default']
-        self.assertEqual({c['ranks'] for c in partition}, {128})
-        self.assertEqual([c['partition'] for c in partition if c['state']=='PLANNED'],
-                         [[32,4,1],[16,8,1],[8,16,1]])
         for name, grid in (('gpu_scaling_fine', 'fine'), ('gpu_nsight_scaling_default','default')):
             selected = [c for c in cases if c['series']==name]
             self.assertEqual([c['ranks'] for c in selected], [1,2,4])

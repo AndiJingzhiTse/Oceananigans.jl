@@ -134,7 +134,7 @@ ten series below; Rondeau NonhydrostaticModel uses the smaller plan described af
 | `gpu_scaling_super_super_super_fine` | Strong scaling on the largest grid, starting at sixteen GPUs |
 | `gpu_weak_scaling_super_fine` | Weak scaling: 1, 4, 16, … GPUs; fixed interior cells per GPU |
 
-Rondeau's NonhydrostaticModel plan (also used by the paired Dagger runner):
+Rondeau's GPU-only NonhydrostaticModel plan (also used by the paired Dagger runner):
 
 | Series | Configuration |
 |---|---|
@@ -142,17 +142,14 @@ Rondeau's NonhydrostaticModel plan (also used by the paired Dagger runner):
 | `gpu_scaling_fine` | 720 × 360 × 100; 1, 2, 4 GPUs |
 | `gpu_nsight_scaling_default` | 360 × 180 × 50; 1, 2, 4 GPUs, profiled |
 | `gpu_resolution` | 360 × 180 × 50, 720 × 360 × 100, 1440 × 720 × 200; 1 GPU |
-| `cpu_mpiscaling_default` | 360 × 180 × 50; 1, 2, 4, 8, 16, 32, 64, 128 CPU ranks |
-| `cpu_partition_default` | 360 × 180 × 50; exactly 128 CPU ranks, horizontal partitions |
-| `cpu_resolution` | 360 × 180 × 50, 720 × 360 × 100, 1440 × 720 × 200; 1 CPU rank |
 
 The requested `gpu_weak_scaling` sequence increases cells per GPU in the ratio
 1:4:16, rather than holding them fixed. Its timing reference scales linearly with
 cells per GPU; its reported efficiency is `(baseline time / time) ×
 (cells per GPU / baseline cells per GPU)`. This reference does not account for
 changes in pressure-solver iteration count. Each variant runs one case at a time;
-baseline and Dagger alternate order between cases. Invalid 128-rank partitions
-are recorded as geometry limits and are not launched. The Rondeau plan stops at
+baseline and Dagger alternate order between cases. CPU benchmarks were cancelled
+and removed from this study. The Rondeau plan stops at
 the listed sizes, overriding the general extension guidance below.
 
 Each benchmark series must be performed to the maximum feasible scale for the
