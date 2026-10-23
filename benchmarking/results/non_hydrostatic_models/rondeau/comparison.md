@@ -52,7 +52,7 @@ Requested GPU weak-scaling sequence: 360 × 180 × 50 on 1 GPU, 720 × 360 × 10
 |---|---|---|---|---:|---:|
 | default | 360x180x50 / 1x1x1 | COMPLETED | COMPLETED | 0.384814 / 0.390843 | 0.9846 |
 | fine | 720x360x100 / 1x1x1 | COMPLETED | COMPLETED | 4.35142 / 4.09083 | 1.0637 |
-| super_fine | 1440x720x200 / 1x1x1 | OUT_OF_MEMORY | PLANNED | — | — |
+| super_fine | 1440x720x200 / 1x1x1 | OUT_OF_MEMORY | RUNNING | — | — |
 
-super_fine: baseline: Execution failed; ERROR: LoadError: Out of GPU memory trying to allocate 1.702 GiB; dagger:
+super_fine: baseline: Execution failed; ERROR: LoadError: Out of GPU memory trying to allocate 1.702 GiB; dagger: Local allocation started; see job.out
 
