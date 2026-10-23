@@ -1,0 +1,156 @@
+{
+  "server": {
+    "machine": "rondeau",
+    "backend": "local",
+    "project": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau/environment",
+    "julia": "julia",
+    "mpi": [
+      "mpiexec"
+    ],
+    "max_cpu_cores": 128,
+    "max_gpus": 4,
+    "cpu_cores_per_node": 128,
+    "gpus_per_node": 4,
+    "gpu_host_cores": 8,
+    "cpu_account": "",
+    "gpu_account": "",
+    "cpu_partition": "",
+    "gpu_partition": "",
+    "gpu_type": "",
+    "cpu_constraint": "",
+    "exclusive_cpu": true,
+    "environment_script": "",
+    "mpi_init": "",
+    "cpu_time": "08:00:00",
+    "gpu_time": "06:00:00",
+    "partition_time": "03:00:00",
+    "gpu_memory": "128G",
+    "cpu_memory_base_gb": 64,
+    "cpu_memory_per_rank_gb": 4,
+    "cpu_sbatch_extra": [],
+    "gpu_sbatch_extra": [],
+    "trace_root": "/u/ajtse/Oceananigans.jl/benchmarking/results/non_hydrostatic_models/rondeau/dagger",
+    "case_timeout_seconds": 86400,
+    "matplotlib": true,
+    "python": "python3",
+    "report_modules": [],
+    "reference_suites": [],
+    "replacement_suites": [],
+    "environment": {
+      "TMPDIR": "/u/ajtse/.ocean-tmp/d2f45c313f8c",
+      "TMP": "/u/ajtse/.ocean-tmp/d2f45c313f8c",
+      "TEMP": "/u/ajtse/.ocean-tmp/d2f45c313f8c",
+      "OMPI_MCA_orte_tmpdir_base": "/u/ajtse/.ocean-tmp/d2f45c313f8c"
+    },
+    "gpu_scaling_partition": "balanced",
+    "model_type": "NonhydrostaticModel",
+    "comparison_suites": [],
+    "comparison_report": "",
+    "execution_mode": "dagger",
+    "profile_layout": "series",
+    "pressure_preconditioner": "LocalFFTPreconditioner",
+    "pressure_max_iterations": 5000,
+    "pressure_diagnostics": false,
+    "pressure_preserve_residual": false,
+    "pressure_check_true_residual": true,
+    "separate_partitions": true,
+    "cpu_time_overrides": {
+      "1": "72:00:00",
+      "3": "48:00:00",
+      "6": "24:00:00",
+      "12": "12:00:00"
+    },
+    "full_gpu_nodes": false
+  },
+  "cases": [
+    {
+      "id": "1_ranks",
+      "series": "gpu_weak_scaling",
+      "ranks": 1,
+      "grid_name": "default",
+      "partition": [
+        1,
+        1,
+        1
+      ],
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
+      "job_id": "",
+      "configuration": {
+        "series": "gpu_weak_scaling",
+        "model_type": "NonhydrostaticModel",
+        "device": "GPU",
+        "ranks": 1,
+        "threads_per_rank": 1,
+        "grid_name": "default",
+        "global_resolution": [
+          360,
+          180,
+          50
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "partition": [
+          1,
+          1,
+          1
+        ],
+        "x_sizes": [
+          360
+        ],
+        "y_sizes": [
+          180
+        ],
+        "float_type": "Float64",
+        "momentum_advection": "WENO7",
+        "tracer_advection": "WENO7",
+        "closure": "ScalarDiffusivity",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "viscosity": 0.001,
+        "diffusivity": 1e-05,
+        "coriolis": "HydrostaticSphericalCoriolis",
+        "buoyancy": "SeawaterBuoyancy(TEOS10)",
+        "timestepper": "RungeKutta3",
+        "free_surface": "RigidLid",
+        "pressure_solver": "ConjugateGradientPoissonSolver",
+        "pressure_preconditioner": "LocalFFTPreconditioner",
+        "pressure_max_iterations": 5000,
+        "pressure_reltol": 1.4901161193847656e-08,
+        "pressure_abstol": 1.4901161193847656e-08,
+        "pressure_diagnostics": false,
+        "pressure_preserve_residual": false,
+        "pressure_check_true_residual": true,
+        "pressure_preconditioner_check": true,
+        "initial_condition_seed": 1234,
+        "dt": 60,
+        "free_surface_substeps": null,
+        "extend_free_surface_halos": false,
+        "warmup_steps": 2,
+        "samples": 5,
+        "time_steps": 10,
+        "profile": false,
+        "scaling_type": "increasing_load",
+        "baseline_ranks": 1,
+        "execution_mode": "dagger"
+      },
+      "measurement": {
+        "fastest": 0.3416723461,
+        "median": 0.3799114446,
+        "maximum": 0.43331786809999995,
+        "retained_substeps": [],
+        "nodes": 1,
+        "gpu_memory_used_bytes": 11100553216,
+        "gpu_memory_max_gib": 10.33819580078125
+      },
+      "provenance": {
+        "source": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau/dagger/gpu_weak_scaling",
+        "submitted_at": "2026-10-23T15:16:04.454035+00:00",
+        "measured_at": "2026-10-23T15:15:59.787"
+      }
+    }
+  ],
+  "submitted_at": "2026-10-23T15:16:04.454035+00:00",
+  "curated": true
+}
