@@ -214,5 +214,107 @@
         "sha256": "f00532581628b8ac8ce3b8966d14e95c23a94306e7c884a4fde7e5c283cac6ff"
       }
     ]
+  },
+  "4_ranks": {
+    "path": "/u/ajtse/Oceananigans.jl/benchmarking/results/non_hydrostatic_models/rondeau/baseline/gpu_weak_scaling/run_records/4_ranks",
+    "state": "FAILED",
+    "files": [
+      {
+        "source": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau/baseline/gpu_weak_scaling/4_ranks/allocation.out",
+        "path": "/u/ajtse/Oceananigans.jl/benchmarking/results/non_hydrostatic_models/rondeau/baseline/gpu_weak_scaling/run_records/4_ranks/allocation.out",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "source": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau/baseline/gpu_weak_scaling/4_ranks/allocation.sh",
+        "path": "/u/ajtse/Oceananigans.jl/benchmarking/results/non_hydrostatic_models/rondeau/baseline/gpu_weak_scaling/run_records/4_ranks/allocation.sh",
+        "bytes": 2467,
+        "sha256": "53235702f4043433a81ce568a7116730ec3ef551d9e8faa8e8db271701213a50"
+      },
+      {
+        "source": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau/baseline/gpu_weak_scaling/4_ranks/command.txt",
+        "path": "/u/ajtse/Oceananigans.jl/benchmarking/results/non_hydrostatic_models/rondeau/baseline/gpu_weak_scaling/run_records/4_ranks/command.txt",
+        "bytes": 737,
+        "sha256": "80f7f78156998329dc5c80299ee4af9957f5b6f331d00628da4be8b4f129fbf3"
+      },
+      {
+        "source": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau/baseline/gpu_weak_scaling/4_ranks/configuration.json",
+        "path": "/u/ajtse/Oceananigans.jl/benchmarking/results/non_hydrostatic_models/rondeau/baseline/gpu_weak_scaling/run_records/4_ranks/configuration.json",
+        "bytes": 1406,
+        "sha256": "d72f4f788780dc36f695a828c9063ad9acb96f0ff76a3eec3adeb1d469971d3b"
+      },
+      {
+        "source": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau/baseline/gpu_weak_scaling/4_ranks/configuration.md",
+        "path": "/u/ajtse/Oceananigans.jl/benchmarking/results/non_hydrostatic_models/rondeau/baseline/gpu_weak_scaling/run_records/4_ranks/configuration.md",
+        "bytes": 791,
+        "sha256": "e7e65a38bdebf87c7271cb10237820fcb18d7adadcd166f5b808e302bca764c6"
+      },
+      {
+        "source": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau/baseline/gpu_weak_scaling/4_ranks/exit_code.txt",
+        "path": "/u/ajtse/Oceananigans.jl/benchmarking/results/non_hydrostatic_models/rondeau/baseline/gpu_weak_scaling/run_records/4_ranks/exit_code.txt",
+        "bytes": 2,
+        "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+      },
+      {
+        "source": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau/baseline/gpu_weak_scaling/4_ranks/finished.txt",
+        "path": "/u/ajtse/Oceananigans.jl/benchmarking/results/non_hydrostatic_models/rondeau/baseline/gpu_weak_scaling/run_records/4_ranks/finished.txt",
+        "bytes": 21,
+        "sha256": "22e4ae281dbc5de33747fc550be2dda4431ac05ba9eede04c45d932f922947ff"
+      },
+      {
+        "source": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau/baseline/gpu_weak_scaling/4_ranks/gpu_activity_before.txt",
+        "path": "/u/ajtse/Oceananigans.jl/benchmarking/results/non_hydrostatic_models/rondeau/baseline/gpu_weak_scaling/run_records/4_ranks/gpu_activity_before.txt",
+        "bytes": 260,
+        "sha256": "4f695491107376a72fb48048b9d0caa847abc4bb0473690064e8fe9560162d70"
+      },
+      {
+        "source": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau/baseline/gpu_weak_scaling/4_ranks/job.out",
+        "path": "/u/ajtse/Oceananigans.jl/benchmarking/results/non_hydrostatic_models/rondeau/baseline/gpu_weak_scaling/run_records/4_ranks/job.out",
+        "bytes": 5682,
+        "sha256": "2395f00058800bb5720bd2a4b2f5e1792dd61a5e00c1087aa9751c17b0132520"
+      },
+      {
+        "source": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau/baseline/gpu_weak_scaling/4_ranks/julia_version.txt",
+        "path": "/u/ajtse/Oceananigans.jl/benchmarking/results/non_hydrostatic_models/rondeau/baseline/gpu_weak_scaling/run_records/4_ranks/julia_version.txt",
+        "bytes": 21,
+        "sha256": "9ba550834c0be073ec12552f4ba8197ce22db73feb59e632b244268620510530"
+      },
+      {
+        "source": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau/baseline/gpu_weak_scaling/4_ranks/layout.json",
+        "path": "/u/ajtse/Oceananigans.jl/benchmarking/results/non_hydrostatic_models/rondeau/baseline/gpu_weak_scaling/run_records/4_ranks/layout.json",
+        "bytes": 870,
+        "sha256": "3027c43079f12db1ccd6193d455c2a3e89fd284b2ad3bfa265b9654adb3ae30c"
+      },
+      {
+        "source": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau/baseline/gpu_weak_scaling/4_ranks/modules.txt",
+        "path": "/u/ajtse/Oceananigans.jl/benchmarking/results/non_hydrostatic_models/rondeau/baseline/gpu_weak_scaling/run_records/4_ranks/modules.txt",
+        "bytes": 48,
+        "sha256": "2849b281df4da58acb53c0b12fa24e6a1eed768f4c7f434e83da48d65f45cc7e"
+      },
+      {
+        "source": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau/baseline/gpu_weak_scaling/4_ranks/nsight_version.txt",
+        "path": "/u/ajtse/Oceananigans.jl/benchmarking/results/non_hydrostatic_models/rondeau/baseline/gpu_weak_scaling/run_records/4_ranks/nsight_version.txt",
+        "bytes": 58,
+        "sha256": "e3e151e9013001f3576cd1a3159cecc0a74fa3e0aa1002b9b22178ab49e12ecf"
+      },
+      {
+        "source": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau/baseline/gpu_weak_scaling/4_ranks/preconditioner_validation.json",
+        "path": "/u/ajtse/Oceananigans.jl/benchmarking/results/non_hydrostatic_models/rondeau/baseline/gpu_weak_scaling/run_records/4_ranks/preconditioner_validation.json",
+        "bytes": 164,
+        "sha256": "9127c17f94e6e177c59bda21118cd20744c5c65ad3931dbeed8a11074e1d927a"
+      },
+      {
+        "source": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau/baseline/gpu_weak_scaling/4_ranks/processes_before.txt",
+        "path": "/u/ajtse/Oceananigans.jl/benchmarking/results/non_hydrostatic_models/rondeau/baseline/gpu_weak_scaling/run_records/4_ranks/processes_before.txt",
+        "bytes": 183718,
+        "sha256": "f3ba1c28d19e9ac94f3bdb2bdbaca7234f9d3ef530e2e6eae7c7664310535bc0"
+      },
+      {
+        "source": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau/baseline/gpu_weak_scaling/4_ranks/started.txt",
+        "path": "/u/ajtse/Oceananigans.jl/benchmarking/results/non_hydrostatic_models/rondeau/baseline/gpu_weak_scaling/run_records/4_ranks/started.txt",
+        "bytes": 21,
+        "sha256": "5b846e3f5560939af07e72fd77b0f8ed215eca895ffb22b4c85625257775db5b"
+      }
+    ]
   }
 }
