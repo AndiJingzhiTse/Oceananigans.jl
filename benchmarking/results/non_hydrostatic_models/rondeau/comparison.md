@@ -32,9 +32,9 @@ Requested GPU weak-scaling sequence: 360 × 180 × 50 on 1 GPU, 720 × 360 × 10
 |---|---|---|---|---:|---:|
 | 1_ranks | 720x360x100 / 1x1x1 | COMPLETED | COMPLETED | 4.0236 / 4.1777 | 0.9631 |
 | 2_ranks | 720x360x100 / 2x1x1 | COMPLETED | COMPLETED | 8.38828 / 8.34384 | 1.0053 |
-| 4_ranks | 720x360x100 / 2x2x1 | COMPLETED | PLANNED | — | — |
+| 4_ranks | 720x360x100 / 2x2x1 | COMPLETED | RUNNING | — | — |
 
-4_ranks: baseline: Rank results, finite fields and resource placement verified; dagger:
+4_ranks: baseline: Rank results, finite fields and resource placement verified; dagger: Local allocation started; see job.out
 
 ## gpu_nsight_scaling_default
 
