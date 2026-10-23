@@ -21,7 +21,7 @@ ROOT = Path(__file__).resolve().parents[1]
 REPO = ROOT.parent
 sys.path.insert(0, str(ROOT / 'src'))
 
-from suite.plan import SERIES, GRIDS, MODEL_FOLDERS, build_plan, allocation_groups
+from suite.plan import SERIES, ALL_SERIES, GRIDS, MODEL_FOLDERS, build_plan, allocation_groups, machine_series
 from suite.report import TERMINAL, validate, write_report, write_model_comparison
 from suite.catalog import MACHINES, write_machine_report, write_series_report, publish_series
 
@@ -72,7 +72,7 @@ def load_server(path=None, model_type=None):
                   case_timeout_seconds=86400, matplotlib=True, python='python3', report_modules=[],
                   reference_suites=[], replacement_suites=[], environment={}, gpu_scaling_partition='balanced',
                   model_type='HydrostaticFreeSurfaceModel', comparison_suites=[], comparison_report='',
-                  execution_mode='baseline')
+                  execution_mode='baseline', profile_layout='study')
     server.update(pressure_preconditioner='DiagonallyDominantPreconditioner',
                   pressure_max_iterations=5000, pressure_diagnostics=False,
                   pressure_preserve_residual=False, pressure_check_true_residual=True, separate_partitions=False)
@@ -103,6 +103,8 @@ def load_server(path=None, model_type=None):
         raise ValueError('Unknown model_type')
     if server['execution_mode'] not in ('baseline', 'dagger'):
         raise ValueError('execution_mode must be baseline or dagger')
+    if server['profile_layout'] not in ('study', 'series'):
+        raise ValueError('profile_layout must be study or series')
     if server['pressure_preconditioner'] not in ('DiagonallyDominantPreconditioner', 'ColumnwiseTridiagonalPreconditioner', 'VerticalLinePreconditioner', 'LocalFFTPreconditioner'):
         raise ValueError('Unknown pressure_preconditioner')
     if not isinstance(server['pressure_max_iterations'], int) or server['pressure_max_iterations'] < 1:
@@ -184,7 +186,8 @@ def prepare(folder, server, selected):
             atomic_json(destination / 'configuration.json', case['configuration'])
             (destination / 'configuration.md').write_text(config_markdown(case['configuration']))
         else:
-            (destination / 'limit.md').write_text(f"# Unavailable partition\n\nGlobal grid: 1440 × 720 × 200 LatitudeLongitudeGrid.\nRanks: {case['ranks']}; partition: {case['partition']}.\n{case['details']}\n")
+            grid = ' × '.join(map(str, GRIDS[case['grid_name']])) if case['grid_name'] in GRIDS else case['grid_name']
+            (destination / 'limit.md').write_text(f"# Unavailable partition\n\nGlobal grid: {grid} LatitudeLongitudeGrid.\nRanks: {case['ranks']}; partition: {case['partition']}.\n{case['details']}\n")
     snapshot(folder, server)
     data = dict(server=server, cases=cases, submitted_at=None)
     atomic_json(folder / 'suite.json', data)
@@ -197,7 +200,9 @@ def launch_command(server, config, case_dir, metadata, trace_root):
     rank_script = metadata / 'src/suite/rank.sh'
     worker = metadata / 'src/suite/worker.jl'
     args = ['bash', str(rank_script), str(case_dir), server['project'], str(worker),
-            str(trace_root / config['series'] / case_dir.name), server['julia']]
+            str(trace_root / config['series'] / 'raw_profiles' / case_dir.name
+                if server.get('profile_layout') == 'series' else
+                trace_root / config['series'] / case_dir.name), server['julia']]
     if server['backend'] == 'slurm':
         return ['srun', '--kill-on-bad-exit=1', '--distribution=block:block',
                 '--cpu-bind=cores' if config['device'] == 'CPU' else '--cpu-bind=none',
@@ -240,6 +245,8 @@ def group_script(folder, server, cases):
     model_type = first['configuration'].get('model_type', 'HydrostaticFreeSurfaceModel')
     study = hashlib.sha256(str(folder.parent).encode()).hexdigest()[:16]
     traces = Path(server['trace_root']) / MODEL_FOLDERS[model_type] / server['machine'] / study / folder.name
+    if server.get('profile_layout') == 'series':
+        traces = Path(server['trace_root'])
     lines = ['#!/usr/bin/env bash', *environment_lines(server), 'failed=0']
     lines += ['if type module >/dev/null 2>&1; then module -t list > ' + shlex.quote(str(destination.parent / 'modules.txt')) + ' 2>&1; fi',
               shlex.join([server['julia'], '--version']) + ' > ' + shlex.quote(str(destination.parent / 'julia_version.txt')),
@@ -495,7 +502,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--config', type=Path, help='Server resource and environment JSON file')
     parser.add_argument('--output', type=Path, help='Machine directory; each selected series gets its own subfolder')
-    parser.add_argument('--series', default=','.join(SERIES), help='Comma-separated subset; default all series')
+    parser.add_argument('--series', help='Comma-separated subset; default machine/model series')
     parser.add_argument('--max-cpu-cores', type=int)
     parser.add_argument('--max-gpus', type=int)
     parser.add_argument('--model', choices=tuple(MODEL_FOLDERS), help='Model for a new suite; default hydrostatic')
@@ -518,16 +525,17 @@ def main():
         parser.error('--refresh/--resume requires --output')
     if args.watch and args.plan:
         parser.error('--watch cannot be used with --plan')
-    selected = tuple(args.series.split(','))
-    if not selected or len(set(selected)) != len(selected) or set(selected) - set(SERIES):
-        parser.error('Choose unique series names from: ' + ', '.join(SERIES))
     server = None if args.refresh or args.resume else load_server(args.config, args.model)
+    selected = tuple(args.series.split(',')) if args.series else machine_series(server or {})
+    if not selected or len(set(selected)) != len(selected) or set(selected) - set(ALL_SERIES):
+        parser.error('Choose unique series names from: ' + ', '.join(ALL_SERIES))
     model_type = args.model or (server['model_type'] if server else 'HydrostaticFreeSurfaceModel')
     default_folder = None
     if server:
         if args.execution_mode:
             server['execution_mode'] = args.execution_mode
-        default_folder = (Path(os.environ.get('SCRATCH', '/tmp')) / 'benchmark_studies' /
+        scratch = os.environ.get('SCRATCH') or str(REPO / '.benchmark_scratch')
+        default_folder = (Path(scratch) / 'benchmark_studies' /
                           MODEL_FOLDERS[model_type] /
                           (datetime.now(timezone.utc).strftime('%Y-%m-%dT%H%M%SZ') + '_' + str(os.getpid())) /
                           server['machine'])
@@ -539,8 +547,8 @@ def main():
     machine_folder.mkdir(parents=True, exist_ok=True)
     if args.refresh or args.resume:
         available = {p.parent.name for p in machine_folder.glob('*/suite.json')}
-        if args.series == ','.join(SERIES):
-            selected = tuple(s for s in SERIES if s in available)
+        if not args.series:
+            selected = tuple(s for s in ALL_SERIES if s in available)
         if not selected or set(selected) - available:
             parser.error('Selected series must exist in the machine directory')
     if server:

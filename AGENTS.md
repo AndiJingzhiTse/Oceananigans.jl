@@ -243,6 +243,17 @@ For GPU MPI runs, verify distinct GPUs and CUDA-aware MPI communication.
 
 ### Benchmark Reporting and Completion
 
+Rondeau NonhydrostaticModel uses the reduced seven-series plan documented in
+`benchmarking/README.md`: `gpu_weak_scaling` first, `gpu_scaling_fine`,
+`gpu_nsight_scaling_default`, `gpu_resolution`, `cpu_mpiscaling_default`,
+`cpu_partition_default` (exactly 128 CPU cores), and `cpu_resolution`.
+Use default/fine/super_fine resolutions only for these resolution studies.
+The requested GPU weak sequence is default/1 GPU, fine/2 GPUs, super_fine/4 GPUs;
+cells per GPU increase 1:4:16. Label its linear cell-count reference explicitly;
+do not describe it as constant-work-per-GPU weak scaling. This machine-specific
+plan supersedes the generic maximum-size and weak-sequence guidance below.
+Hide CUDA devices before starting CPU Julia ranks, including Dagger CPU runs.
+
 Report fastest and median seconds per step: divide each rank's minimum
 and median window durations by the number of steps per window, then use
 the maximum across ranks for each reported statistic. Plot timing and MPI

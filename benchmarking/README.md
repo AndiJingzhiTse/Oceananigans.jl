@@ -118,7 +118,8 @@ remain with the cases. Older attempts and controllers are available in Git histo
 
 ## Series
 
-Use `--series` with a comma-separated subset; the default selects all ten series.
+Use `--series` with a comma-separated subset. The standard default selects the
+ten series below; Rondeau NonhydrostaticModel uses the smaller plan described after the table.
 
 | Series | Measurement |
 |---|---|
@@ -132,6 +133,27 @@ Use `--series` with a comma-separated subset; the default selects all ten series
 | `gpu_scaling_super_super_fine` | Strong scaling on the larger grid, starting at four GPUs |
 | `gpu_scaling_super_super_super_fine` | Strong scaling on the largest grid, starting at sixteen GPUs |
 | `gpu_weak_scaling_super_fine` | Weak scaling: 1, 4, 16, … GPUs; fixed interior cells per GPU |
+
+Rondeau's NonhydrostaticModel plan (also used by the paired Dagger runner):
+
+| Series | Configuration |
+|---|---|
+| `gpu_weak_scaling` (first) | 360 × 180 × 50 / 1 GPU; 720 × 360 × 100 / 2 GPUs; 1440 × 720 × 200 / 4 GPUs |
+| `gpu_scaling_fine` | 720 × 360 × 100; 1, 2, 4 GPUs |
+| `gpu_nsight_scaling_default` | 360 × 180 × 50; 1, 2, 4 GPUs, profiled |
+| `gpu_resolution` | 360 × 180 × 50, 720 × 360 × 100, 1440 × 720 × 200; 1 GPU |
+| `cpu_mpiscaling_default` | 360 × 180 × 50; 1, 2, 4, 8, 16, 32, 64, 128 CPU ranks |
+| `cpu_partition_default` | 360 × 180 × 50; exactly 128 CPU ranks, horizontal partitions |
+| `cpu_resolution` | 360 × 180 × 50, 720 × 360 × 100, 1440 × 720 × 200; 1 CPU rank |
+
+The requested `gpu_weak_scaling` sequence increases cells per GPU in the ratio
+1:4:16, rather than holding them fixed. Its timing reference scales linearly with
+cells per GPU; its reported efficiency is `(baseline time / time) ×
+(cells per GPU / baseline cells per GPU)`. This reference does not account for
+changes in pressure-solver iteration count. Each variant runs one case at a time;
+baseline and Dagger alternate order between cases. Invalid 128-rank partitions
+are recorded as geometry limits and are not launched. The Rondeau plan stops at
+the listed sizes, overriding the general extension guidance below.
 
 Each benchmark series must be performed to the maximum feasible scale for the
 available resources. This applies to both model types, CPU and GPU runs, and
@@ -297,7 +319,7 @@ protocols, and retain separate baselines for the two models.
 ### Matched baseline and Dagger runs
 
 Raw Nsight captures belong in the results tree, under each variant's
-`gpu_nsight_scaling_super_fine/raw_profiles/`. Captures stay on disk and are
+`<series>/raw_profiles/`. Captures stay on disk and are
 excluded from Git; `profile_manifest.json` records relocated paths, sizes and
 SHA-256 checksums. Captures from failed runs remain diagnostic evidence and
 are not accepted timing results.
@@ -305,7 +327,7 @@ are not accepted timing results.
 The paired controller archives closed case files, including CPU logs and
 failure evidence, in `<variant>/<series>/run_records/<case>/`. Its versioned
 `run_records_manifest.json` records file checksums. Future processes use a
-case-specific `.runtime/` directory in the same results tree for `TMPDIR`,
+case-specific `.runtime/` directory in the local scratch study for `TMPDIR`,
 `TMP`, `TEMP` and OpenMPI session files. On exit, leftover runtime files are
 verified, archived into the case's run records, and removed from `.runtime/`.
 An active MPI session must finish before its temporary files are moved.
@@ -326,8 +348,9 @@ parallelism inside a timestep to Dagger.
 
 Install Dagger in an isolated environment alongside the local Oceananigans and
 OceananigansBenchmarks packages. Use that same environment for both variants;
-the baseline does not import Dagger. The paired local runner covers all ten
-nonhydrostatic series and alternates variant order between cases:
+the baseline does not import Dagger. CPU rank launchers hide CUDA devices before
+Julia starts, so CPU Dagger initialization cannot allocate GPU contexts. The paired
+local runner uses the machine's nonhydrostatic plan and alternates variant order:
 
 ```bash
 python3 benchmarking/scripts/compare_dagger.py \

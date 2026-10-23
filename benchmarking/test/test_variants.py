@@ -25,7 +25,7 @@ class VariantTests(unittest.TestCase):
                 self.assertTrue((root / 'results' / mode / 'plot.md').exists())
                 self.assertTrue((root / 'results' / mode / 'status.json').exists())
             rows = comparison_rows(root / 'study')
-            self.assertEqual({r['series'] for r in rows}, set(plan.SERIES))
+            self.assertEqual({r['series'] for r in rows}, set(plan.RONDEAU_SERIES))
 
     def test_nested_gpu_memory_error_is_reported_after_refresh(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -45,7 +45,7 @@ class VariantTests(unittest.TestCase):
         for mode in ('baseline', 'dagger'):
             server['execution_mode'] = mode
             cases = plan.build_plan(server)
-            self.assertEqual({c['series'] for c in cases}, set(plan.SERIES))
+            self.assertEqual({c['series'] for c in cases}, set(plan.RONDEAU_SERIES))
             self.assertTrue(all(c['configuration']['execution_mode'] == mode
                                 for c in cases if 'configuration' in c))
 
@@ -77,6 +77,57 @@ class VariantTests(unittest.TestCase):
             self.assertIn('Pressure solver did not converge', text)
             self.assertTrue((output / 'dagger/status.json').is_file())
             self.assertIn('Equal time (1)', (output / 'comparisons/cpu_resolution.svg').read_text())
+
+    def test_rondeau_reduced_plan_and_increasing_load_reference(self):
+        from suite.report import efficiencies
+        server = dict(machine='rondeau', model_type='NonhydrostaticModel', max_cpu_cores=128, max_gpus=4)
+        cases = plan.build_plan(server)
+        self.assertEqual(tuple(dict.fromkeys(c['series'] for c in cases)), plan.RONDEAU_SERIES)
+        self.assertEqual(cases[0]['series'], 'gpu_weak_scaling')
+        weak = [c for c in cases if c['series'] == 'gpu_weak_scaling']
+        self.assertEqual([(c['ranks'], c['configuration']['global_resolution']) for c in weak],
+                         [(1, [360,180,50]), (2, [720,360,100]), (4, [1440,720,200])])
+        for case, seconds in zip(weak, (1, 4, 16)):
+            case.update(state='COMPLETED', measurement=dict(fastest=seconds, median=seconds))
+            self.assertEqual(efficiencies(case, weak[0]), (1, 1))
+        cpu = [c for c in cases if c['series'] == 'cpu_mpiscaling_default']
+        self.assertEqual([c['ranks'] for c in cpu], [1,2,4,8,16,32,64,128])
+        self.assertTrue(all(c['configuration']['global_resolution'] == plan.GRIDS['default'] for c in cpu))
+        partition = [c for c in cases if c['series'] == 'cpu_partition_default']
+        self.assertEqual({c['ranks'] for c in partition}, {128})
+        self.assertEqual([c['partition'] for c in partition if c['state']=='PLANNED'],
+                         [[32,4,1],[16,8,1],[8,16,1]])
+        for name, grid in (('gpu_scaling_fine', 'fine'), ('gpu_nsight_scaling_default','default')):
+            selected = [c for c in cases if c['series']==name]
+            self.assertEqual([c['ranks'] for c in selected], [1,2,4])
+            self.assertTrue(all(c['configuration']['global_resolution']==plan.GRIDS[grid] for c in selected))
+            self.assertEqual({c['configuration']['profile'] for c in selected}, {'nsight' in name})
+
+    def test_cpu_rank_disables_cuda_before_starting_julia(self):
+        import os, subprocess
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root/'configuration.json').write_text(json.dumps(dict(device='CPU',profile=False)))
+            fake = root/'fake-julia'
+            fake.write_text('#!/bin/bash\nprintf "visible=%s\\n" "$CUDA_VISIBLE_DEVICES"\n')
+            fake.chmod(0o700)
+            result = subprocess.run(['bash',str(runner.ROOT/'src/suite/rank.sh'), str(root),str(root),
+                                     'worker.jl',str(root/'profiles'),str(fake)],
+                                    env=dict(os.environ,CUDA_VISIBLE_DEVICES='0,1,2,3'),capture_output=True,text=True)
+            self.assertEqual(result.returncode,0,result.stderr)
+            self.assertEqual(result.stdout.strip(),'visible=')
+            (root/'configuration.json').write_text(json.dumps(dict(device='GPU',profile=False)))
+            result = subprocess.run(['bash',str(runner.ROOT/'src/suite/rank.sh'), str(root),str(root),
+                                     'worker.jl',str(root/'profiles'),str(fake)],
+                                    env=dict(os.environ,CUDA_VISIBLE_DEVICES='2,3'),capture_output=True,text=True)
+            self.assertEqual(result.stdout.strip(),'visible=2,3')
+
+    def test_paired_profiles_use_retained_series_folder(self):
+        server=runner.load_server()
+        server['profile_layout']='series'
+        cfg=plan.configuration('gpu_nsight_scaling_default',1,'default')
+        command=runner.launch_command(server,cfg,Path('/study/1_ranks'),Path('/metadata'),Path('/results/baseline'))
+        self.assertEqual(command[-2],'/results/baseline/gpu_nsight_scaling_default/raw_profiles/1_ranks')
 
 
 if __name__ == '__main__':

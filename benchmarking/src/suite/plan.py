@@ -12,6 +12,15 @@ SERIES = ('cpu_mpi_scaling_super_fine', 'gpu_scaling_super_fine', 'cpu_resolutio
           'gpu_nsight_scaling_super_fine', 'gpu_partition_super_fine',
           'gpu_scaling_super_super_fine', 'gpu_scaling_super_super_super_fine',
           'gpu_weak_scaling_super_fine')
+RONDEAU_SERIES = ('gpu_weak_scaling', 'gpu_scaling_fine', 'gpu_nsight_scaling_default',
+                  'gpu_resolution', 'cpu_mpiscaling_default', 'cpu_partition_default', 'cpu_resolution')
+ALL_SERIES = tuple(dict.fromkeys((*SERIES, *RONDEAU_SERIES)))
+
+
+def machine_series(server):
+    if server.get('machine') == 'rondeau' and server.get('model_type') == 'NonhydrostaticModel':
+        return RONDEAU_SERIES
+    return SERIES
 
 
 def doubling(maximum, cpu=False):
@@ -80,19 +89,30 @@ def configuration(series, ranks, grid_name='super_fine', partition=None, global_
                 dt=60 * min(1, 1440 / grid[0]), free_surface_substeps=30 if hydrostatic else None,
                 extend_free_surface_halos=gpu if hydrostatic else False,
                 warmup_steps=2, samples=5, time_steps=10,
-                profile=series == 'gpu_nsight_scaling_super_fine',
+                profile=series.startswith('gpu_nsight_scaling_'),
                 scaling_type='weak' if series == 'gpu_weak_scaling_super_fine' else
+                             'increasing_load' if series == 'gpu_weak_scaling' else
                              'strong' if 'scaling' in series else 'comparison',
                 baseline_ranks=GPU_BASELINES.get(series, 1))
 
 
-def build_plan(server, selected=SERIES):
+def build_plan(server, selected=None):
     cases = []
-    for series in selected:
+    for series in machine_series(server) if selected is None else selected:
         gpu = series.startswith('gpu_')
         maximum = server['max_gpus' if gpu else 'max_cpu_cores']
         if series.endswith('resolution'):
             specs = [(1, name, None) for name in RESOLUTION_GRIDS]
+        elif series == 'cpu_partition_default':
+            specs = [(128, 'default', [x, 128 // x, 1])
+                     for x in range(128, 0, -1) if 128 % x == 0]
+        elif series == 'gpu_weak_scaling':
+            specs = [(1, 'default', None), (2, 'fine', None), (4, 'super_fine', None)]
+        elif series in ('cpu_mpiscaling_default', 'gpu_scaling_fine', 'gpu_nsight_scaling_default'):
+            grid_name = 'fine' if series == 'gpu_scaling_fine' else 'default'
+            specs = [(n, grid_name, None) for n in doubling(maximum)]
+            if maximum and maximum not in [n for n, _, _ in specs]:
+                specs.append((maximum, grid_name, None))
         elif series == 'cpu_partition_cores_super_fine':
             specs = [(192, 'super_fine', [x, 192 // x, 1])
                      for x in range(192, 0, -1) if 192 % x == 0]

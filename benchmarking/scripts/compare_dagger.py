@@ -11,10 +11,17 @@ import sys
 from datetime import datetime, timezone
 
 import benchmark_suite as runner
-from suite.plan import SERIES
+from suite.plan import machine_series
 from suite.catalog import publish_series, write_machine_report
 from suite.variants import write_comparison
-from suite.storage import archive_finished_case, archive_runtime, runtime_environment
+from suite.storage import archive_finished_case, archive_runtime, runtime_environment, digest
+
+
+def profile_manifest(destination):
+    files = [dict(path=str(path), bytes=path.stat().st_size, sha256=digest(path))
+             for path in sorted((destination / 'raw_profiles').rglob('*')) if path.is_file()]
+    if files:
+        runner.atomic_json(destination / 'profile_manifest.json', files)
 
 
 def annotate_failures(folder, data):
@@ -69,9 +76,10 @@ def main():
         if server['backend'] != 'local':
             raise ValueError('The paired runner currently supports local execution only')
         server['project'] = str(args.project.resolve())
+        selected = machine_series(server)
         studies = {}
         for mode in ('baseline', 'dagger'):
-            for series in SERIES:
+            for series in selected:
                 folder = study / mode / series
                 if (folder / 'suite.json').exists():
                     data = json.loads((folder / 'suite.json').read_text())
@@ -86,7 +94,8 @@ def main():
                     data = runner.prepare(folder, settings, (series,))
                 # Applies to resumed suites too: old snapshots can retain a
                 # /tmp trace root even when the study itself is on scratch.
-                data['server']['trace_root'] = str(destination / mode / 'raw_profiles')
+                data['server']['trace_root'] = str(destination / mode)
+                data['server']['profile_layout'] = 'series'
                 studies[mode, series] = (folder, data)
 
         def publish():
@@ -99,7 +108,7 @@ def main():
                 (destination / mode).mkdir(parents=True, exist_ok=True)
                 write_machine_report(destination / mode)
                 write_machine_report(study / mode)
-            write_comparison(study, destination)
+            write_comparison(study, destination, selected=selected)
             if args.commit:
                 commit_records(destination)
 
@@ -108,10 +117,11 @@ def main():
             return
         # Exercise every feasible GPU series before the potentially multi-day
         # CPU cases. Large-rank CPU runs go first, then single-core resolutions.
-        order = ('gpu_resolution', 'gpu_scaling_super_fine', 'gpu_partition_super_fine',
-                 'gpu_nsight_scaling_super_fine', 'gpu_weak_scaling_super_fine',
-                 'gpu_scaling_super_super_fine', 'gpu_scaling_super_super_super_fine',
-                 'cpu_partition_cores_super_fine', 'cpu_mpi_scaling_super_fine', 'cpu_resolution')
+        order = (selected if 'gpu_weak_scaling' in selected else
+                 ('gpu_resolution', 'gpu_scaling_super_fine', 'gpu_partition_super_fine',
+                  'gpu_nsight_scaling_super_fine', 'gpu_weak_scaling_super_fine',
+                  'gpu_scaling_super_super_fine', 'gpu_scaling_super_super_super_fine',
+                  'cpu_partition_cores_super_fine', 'cpu_mpi_scaling_super_fine', 'cpu_resolution'))
         for series in order:
             base_cases = studies['baseline', series][1]['cases']
             cases = sorted(base_cases, key=lambda c: (-c['ranks'] if series.startswith('cpu_') else c['ranks'], c['id']))
@@ -123,7 +133,7 @@ def main():
                     if target['state'] != 'PLANNED':
                         continue
                     case_dir = folder / case['id']
-                    runtime = destination / mode / series / '.runtime' / case['id']
+                    runtime = study / mode / series / '.runtime' / case['id']
                     data['server']['environment'].update(runtime_environment(runtime))
                     for tool, command in (
                         ('processes', ['ps', '-eo', 'user,pid,psr,pcpu,rss,args', '--sort=-pcpu']),
@@ -134,6 +144,8 @@ def main():
                             (case_dir / f'{tool}_before.txt').write_text(result.stdout)
                     print(f"{datetime.now(timezone.utc).isoformat()} {mode}/{series}/{case['id']}", flush=True)
                     runner.execute(folder, data, case_ids={case['id']}, on_start=publish)
+                    if target.get('configuration', {}).get('profile'):
+                        profile_manifest(destination / mode / series)
                     archive_runtime(runtime, destination / mode / series / 'run_records' / case['id'] / 'runtime')
                     publish()
         print('All planned baseline and Dagger cases have reached terminal outcomes.', flush=True)

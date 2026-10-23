@@ -11,6 +11,10 @@ rank_dir="$case_dir/rank_$rank"
 mkdir -p "$rank_dir"
 export JULIA_NUM_THREADS=1 JULIA_NUM_GC_THREADS=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1
 export JULIA_PKG_PRECOMPILE_AUTO=0
+device=$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["device"])' "$case_dir/configuration.json")
+if [[ "$device" == CPU ]]; then
+    export CUDA_VISIBLE_DEVICES=""
+fi
 profile=$(python3 -c 'import json,sys; print(int(json.load(open(sys.argv[1]))["profile"]))' "$case_dir/configuration.json")
 if [[ "$profile" == 0 ]]; then
     exec "$julia_bin" --threads=1 --project="$project" "$worker" "$case_dir"

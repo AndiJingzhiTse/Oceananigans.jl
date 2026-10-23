@@ -1,6 +1,8 @@
 {
   "machine": "rondeau",
   "backend": "local",
+  "max_cpu_cores": 128,
+  "max_gpus": 4,
   "project": "benchmarking",
   "mpi": [
     "mpiexec"

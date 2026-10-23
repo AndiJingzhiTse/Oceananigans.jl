@@ -146,7 +146,8 @@ def efficiencies(case, baseline):
     cfg, base_cfg = case['configuration'], baseline['configuration']
     if cfg.get('execution_mode', 'baseline') != base_cfg.get('execution_mode', 'baseline'):
         return None, None
-    weak = cfg.get('scaling_type') == 'weak' or case['series'] == 'gpu_weak_scaling_super_fine'
+    increasing = cfg.get('scaling_type') == 'increasing_load'
+    weak = increasing or cfg.get('scaling_type') == 'weak' or case['series'] == 'gpu_weak_scaling_super_fine'
     common = ('model_type', 'device', 'grid_type', 'float_type', 'threads_per_rank',
               'momentum_advection', 'tracer_advection', 'closure', 'tracers', 'timestepper',
               'warmup_steps', 'samples', 'time_steps', 'profile', 'pressure_preconditioner',
@@ -157,6 +158,9 @@ def efficiencies(case, baseline):
     if not weak and any(cfg.get(k) != base_cfg.get(k) for k in ('global_resolution', 'dt')):
         return None, None
     divisor = 1 if (case['configuration'].get('scaling_type') == 'weak' or case['series'] == 'gpu_weak_scaling_super_fine') else case['ranks'] / baseline['ranks']
+    if increasing:
+        divisor = ((math.prod(base_cfg['global_resolution']) / baseline['ranks']) /
+                   (math.prod(cfg['global_resolution']) / case['ranks']))
     return tuple(baseline['measurement'][s] / (case['measurement'][s] * divisor)
                  for s in ('fastest', 'median'))
 
@@ -306,6 +310,7 @@ def write_report(folder, cases, plotting=True, reference_suites=(), replacement_
              ('One MPI rank per CPU core or GPU, one Julia computation thread per rank. Hydrostatic geometry bounds are retained to match partitions between models.' if nonhydrostatic else 'One MPI rank per CPU core or GPU, one Julia computation thread per rank. CPU extended halos=false; GPU=true.'),
              'Window boundaries synchronize MPI ranks and GPUs. Fastest/median statistics use the maximum across ranks.',
              'Strong efficiency = baseline time × baseline ranks / (time × ranks); weak efficiency = baseline time / time.',
+             'For gpu_weak_scaling on Rondeau, cells/GPU increase 1:4:16; efficiency = (baseline time / time) × (cells/GPU / baseline cells/GPU). This is a linear cell-count reference, not constant-work weak scaling.',
              'Standard baselines use one rank; the larger GPU grids use 4 and 16 ranks. Missing baselines have no efficiency estimate.',
              'Reference lines show ideal inverse-rank strong timing, constant weak timing, and 100% efficiency.',
              'Resolution plots show previous-grid / next-grid time; doubling each grid dimension ideally gives 1/8.',
@@ -385,7 +390,7 @@ def write_report(folder, cases, plotting=True, reference_suites=(), replacement_
 
 def scaling_tables(folder, cases, reference_suites, plotting=False, combined=None):
     combined = combined if combined is not None else report_cases(folder, cases, reference_suites)
-    if not any(c['series'].startswith('gpu_scaling_') or c['series'] == 'gpu_weak_scaling_super_fine'
+    if not any(c['series'].startswith('gpu_scaling_') or c['series'].startswith('gpu_weak_scaling')
                for c, _ in combined):
         return []
     baselines = scaling_baselines([c for c, _ in combined])
@@ -400,14 +405,18 @@ def scaling_tables(folder, cases, reference_suites, plotting=False, combined=Non
     for weak in (False, True):
         selected = [(c, root) for c, root in combined if 'configuration' in c
                     and c['state'] not in {'RESOURCE_LIMIT', 'GEOMETRY_LIMIT'}
-                    and (c['series'] == 'gpu_weak_scaling_super_fine' if weak
+                    and (c['series'].startswith('gpu_weak_scaling') if weak
                          else c['series'].startswith('gpu_scaling_'))]
         if not selected:
             continue
         selected.sort(key=lambda item: (math.prod(item[0]['configuration']['global_resolution']), item[0]['ranks']))
+        increasing = any(c['configuration'].get('scaling_type') == 'increasing_load' for c, _ in selected)
+        baseline_labels = ', '.join(sorted({f"{c['configuration']['grid_name']} {c['configuration'].get('baseline_ranks', 1)} GPUs"
+                                            for c, _ in selected}))
         lines += ['### Weak scaling' if weak else '### Strong scaling', '',
-                  'Weak efficiency = one-GPU baseline time / measured time; ideal = 100%. Interior cells/GPU = 207,360,000.' if weak else
-                  'Strong efficiency = baseline time × baseline GPUs / (measured time × GPUs); ideal = 100%. Baselines: super_fine 1 GPU, super_super_fine 4 GPUs, super_super_super_fine 16 GPUs.', '',
+                  ('Requested increasing-load sequence: cells/GPU = 3,240,000; 12,960,000; 51,840,000. Efficiency = (baseline time / time) × (cells/GPU / baseline cells/GPU); 100% is a linear cell-count reference.' if increasing else
+                   'Weak efficiency = one-GPU baseline time / measured time; ideal = 100%. Interior cells/GPU = 207,360,000.' if weak else
+                   'Strong efficiency = baseline time × baseline GPUs / (measured time × GPUs); ideal = 100%. Baselines: ' + baseline_labels + '.'), '',
                   '| Grid | Global resolution (cells) | GPUs | Nodes | Partition | Δt (s) | Median s/step | Efficiency | Throughput (cells/s) | Memory/GPU (GiB) | State |',
                   '|---|---|---:|---:|---|---:|---:|---:|---:|---:|---|']
         for case, root in selected:
@@ -439,12 +448,12 @@ def plot_scaling_efficiency(folder, cases):
     groups = {}
     for case in cases:
         if case['state'] != 'COMPLETED' or not (case['series'].startswith('gpu_scaling_')
-                                              or case['series'] == 'gpu_weak_scaling_super_fine'):
+                                              or case['series'].startswith('gpu_weak_scaling')):
             continue
         _, efficiency = efficiencies(case, baselines.get(case['series']))
         if efficiency is not None:
             groups.setdefault(case['series'], []).append((case['ranks'], 100 * efficiency))
-    if 'gpu_weak_scaling_super_fine' not in groups:
+    if not any(name.startswith('gpu_weak_scaling') for name in groups):
         return False
     import matplotlib
     matplotlib.use('Agg')
@@ -453,12 +462,13 @@ def plot_scaling_efficiency(folder, cases):
     plt.rcParams.update({'svg.hashsalt': 'benchmark-suite', 'svg.fonttype': 'none'})
     fig, axes = plt.subplots(1, 2, figsize=(12, 4.5))
     for series, points in sorted(groups.items(), key=lambda item: baselines[item[0]]['ranks']):
-        weak = series == 'gpu_weak_scaling_super_fine'
+        weak = series.startswith('gpu_weak_scaling')
         points.sort()
         ax = axes[1 if weak else 0]
         baseline = baselines[series]
         grid = ' × '.join(map(str, baseline['configuration']['global_resolution']))
-        label = '207,360,000 cells/GPU' if weak else f"{grid} ({baseline['ranks']}-GPU baseline)"
+        label = ('Increasing cells/GPU; cell-count reference' if series == 'gpu_weak_scaling' else
+                 '207,360,000 cells/GPU' if weak else f"{grid} ({baseline['ranks']}-GPU baseline)")
         ax.plot([p[0] for p in points], [p[1] for p in points], 'o-', label=label)
     for i, ax in enumerate(axes):
         ax.axhline(100, color='black', linestyle=':', label='Ideal: 100%')
@@ -486,7 +496,8 @@ def plot_series(folder, series, rows):
     plt.rcParams.update({'svg.hashsalt': 'benchmark-suite', 'svg.fonttype': 'none'})
     rows = [r for r in rows if r['state'] == 'COMPLETED']
     scaling = 'scaling' in series
-    weak = series == 'gpu_weak_scaling_super_fine'
+    increasing = series == 'gpu_weak_scaling'
+    weak = increasing or series == 'gpu_weak_scaling_super_fine'
     resolution = series.endswith('resolution')
     partition_efficiency = series == 'gpu_partition_super_fine'
     fig, axes = plt.subplots(1, 2 if scaling else 1, figsize=(11 if scaling else 8, 4.5), squeeze=False)
@@ -543,14 +554,21 @@ def plot_series(folder, series, rows):
         baseline = next((r for r in rows if r['efficiency_fastest'] is not None
                          and math.isclose(r['efficiency_fastest'], 1)), None)
         if baseline and all(r['efficiency_fastest'] is not None for r in rows):
-            ideal = [baseline['fastest'] if weak else baseline['fastest'] * baseline['ranks'] / n for n in x]
-            label = ('Ideal: constant time' if weak else 'Ideal: one-rank fastest / ranks'
+            ideal = ([baseline['fastest'] *
+                      (math.prod(map(int, r['resolution'].split('x'))) / r['ranks']) /
+                      (math.prod(map(int, baseline['resolution'].split('x'))) / baseline['ranks'])
+                      for r in rows] if increasing else
+                     [baseline['fastest'] if weak else baseline['fastest'] * baseline['ranks'] / n for n in x])
+            label = ('Reference: linear cells/GPU' if increasing else
+                     'Ideal: constant time' if weak else 'Ideal: one-rank fastest / ranks'
                      if baseline['ranks'] == 1 else f"Ideal: {baseline['ranks']}-rank fastest × {baseline['ranks']} / ranks")
             ax.plot(x, ideal, ':', color='black', label=label)
         eff = [r for r in rows if r['efficiency_fastest'] is not None]
         axes[0, 1].plot([r['ranks'] for r in eff], [100*r['efficiency_fastest'] for r in eff], 'o-', label='Fastest')
         axes[0, 1].plot([r['ranks'] for r in eff], [100*r['efficiency_median'] for r in eff], 's--', label='Median')
         axes[0, 1].set(xlabel='MPI ranks', ylabel='Efficiency (%)', xscale='log')
+        if increasing:
+            axes[0, 1].set_ylabel('Cell-count-normalized efficiency (%)')
         if weak:
             for axis in (ax, axes[0, 1]):
                 axis.set_xticks(x)

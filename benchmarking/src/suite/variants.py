@@ -3,12 +3,12 @@ import csv
 import json
 from pathlib import Path
 
-from .plan import SERIES
+from .plan import ALL_SERIES
 
 
-def comparison_rows(study):
+def comparison_rows(study, selected=ALL_SERIES):
     rows = []
-    for series in SERIES:
+    for series in selected:
         variants = {}
         for mode in ('baseline', 'dagger'):
             path = Path(study) / mode / series / 'suite.json'
@@ -40,10 +40,10 @@ def comparison_rows(study):
     return rows
 
 
-def write_comparison(study, output, plotting=True):
+def write_comparison(study, output, plotting=True, selected=ALL_SERIES):
     study, output = Path(study), Path(output)
     output.mkdir(parents=True, exist_ok=True)
-    rows = comparison_rows(study)
+    rows = comparison_rows(study, selected)
     if rows:
         with (output / 'comparison.csv').open('w', newline='') as stream:
             writer = csv.DictWriter(stream, fieldnames=list(rows[0]), lineterminator='\n')
@@ -58,13 +58,18 @@ def write_comparison(study, output, plotting=True):
              'these are paired runs, not exclusive-node measurements.', '',
              f'Raw study and execution logs: `{study}`.', '',
              '[Baseline records](baseline/plot.md) · [Dagger records](dagger/plot.md) · [All outcomes as CSV](comparison.csv)', '']
+    if 'gpu_weak_scaling' in selected:
+        lines += ['Requested GPU weak-scaling sequence: 360 × 180 × 50 on 1 GPU, '
+                  '720 × 360 × 100 on 2 GPUs, and 1440 × 720 × 200 on 4 GPUs. '
+                  'Cells/GPU are 3,240,000, 12,960,000 and 51,840,000: this increases work per GPU. '
+                  'Efficiency uses a linear cell-count reference, not constant-work weak efficiency.', '']
     for mode in ('baseline', 'dagger'):
         destination = output / mode
         destination.mkdir(exist_ok=True)
-        selected = [{k: r[k] for k in ('series', 'case', 'ranks', 'resolution', 'partition', 'grid_type',
+        status_rows = [{k: r[k] for k in ('series', 'case', 'ranks', 'resolution', 'partition', 'grid_type',
                                       mode + '_state', 'details')} for r in rows]
-        (destination / 'status.json').write_text(json.dumps(selected, indent=2) + '\n')
-    for series in SERIES:
+        (destination / 'status.json').write_text(json.dumps(status_rows, indent=2) + '\n')
+    for series in selected:
         selected = [r for r in rows if r['series'] == series]
         paired = [r for r in selected if r['speedup_median'] != '']
         lines += [f'## {series}', '']
