@@ -25,7 +25,7 @@ def comparison_rows(study, selected=ALL_SERIES):
                        baseline_fastest='', dagger_fastest='', baseline_median='', dagger_median='',
                        speedup_fastest='', speedup_median='',
                        details='; '.join(f'{m}: {c.get("details", "")}' for m, c in
-                                         (('baseline', base), ('dagger', dagger))))
+                                         (('baseline', base), ('dagger', dagger))).rstrip())
             configurations = [{k: v for k, v in c.get('configuration', {}).items()
                                if k != 'execution_mode'} for c in (base, dagger)]
             if base.get('state') == dagger.get('state') == 'COMPLETED':
