@@ -1,0 +1,32 @@
+series,case,ranks,resolution,partition,grid_type,profile,baseline_state,dagger_state,baseline_fastest,dagger_fastest,baseline_median,dagger_median,speedup_fastest,speedup_median,details
+gpu_weak_scaling,1_ranks,1,360x180x50,1x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger:
+gpu_weak_scaling,2_ranks,2,720x360x100,2x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger:
+gpu_weak_scaling,4_ranks,4,1440x720x200,2x2x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger:
+gpu_scaling_fine,1_ranks,1,720x360x100,1x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger:
+gpu_scaling_fine,2_ranks,2,720x360x100,2x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger:
+gpu_scaling_fine,4_ranks,4,720x360x100,2x2x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger:
+gpu_nsight_scaling_default,1_ranks,1,360x180x50,1x1x1,LatitudeLongitudeGrid,True,PLANNED,PLANNED,,,,,,,baseline: ; dagger:
+gpu_nsight_scaling_default,2_ranks,2,360x180x50,2x1x1,LatitudeLongitudeGrid,True,PLANNED,PLANNED,,,,,,,baseline: ; dagger:
+gpu_nsight_scaling_default,4_ranks,4,360x180x50,2x2x1,LatitudeLongitudeGrid,True,PLANNED,PLANNED,,,,,,,baseline: ; dagger:
+gpu_resolution,default,1,360x180x50,1x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger:
+gpu_resolution,fine,1,720x360x100,1x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger:
+gpu_resolution,super_fine,1,1440x720x200,1x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger:
+cpu_mpiscaling_default,128_ranks,128,360x180x50,8x16x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger:
+cpu_mpiscaling_default,16_ranks,16,360x180x50,4x4x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger:
+cpu_mpiscaling_default,1_ranks,1,360x180x50,1x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger:
+cpu_mpiscaling_default,2_ranks,2,360x180x50,2x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger:
+cpu_mpiscaling_default,32_ranks,32,360x180x50,8x4x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger:
+cpu_mpiscaling_default,4_ranks,4,360x180x50,2x2x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger:
+cpu_mpiscaling_default,64_ranks,64,360x180x50,8x8x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger:
+cpu_mpiscaling_default,8_ranks,8,360x180x50,4x2x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger:
+cpu_partition_default,128x1x1,128,,,,False,GEOMETRY_LIMIT,GEOMETRY_LIMIT,,,,,,,"baseline: Partition [128, 1, 1] has fewer than 7 local cells per horizontal direction; dagger: Partition [128, 1, 1] has fewer than 7 local cells per horizontal direction"
+cpu_partition_default,16x8x1,128,360x180x50,16x8x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger:
+cpu_partition_default,1x128x1,128,,,,False,GEOMETRY_LIMIT,GEOMETRY_LIMIT,,,,,,,"baseline: Partition [1, 128, 1] has fewer than 7 local cells per horizontal direction; dagger: Partition [1, 128, 1] has fewer than 7 local cells per horizontal direction"
+cpu_partition_default,2x64x1,128,,,,False,GEOMETRY_LIMIT,GEOMETRY_LIMIT,,,,,,,"baseline: Partition [2, 64, 1] has fewer than 7 local cells per horizontal direction; dagger: Partition [2, 64, 1] has fewer than 7 local cells per horizontal direction"
+cpu_partition_default,32x4x1,128,360x180x50,32x4x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger:
+cpu_partition_default,4x32x1,128,,,,False,GEOMETRY_LIMIT,GEOMETRY_LIMIT,,,,,,,"baseline: Partition [4, 32, 1] has fewer than 7 local cells per horizontal direction; dagger: Partition [4, 32, 1] has fewer than 7 local cells per horizontal direction"
+cpu_partition_default,64x2x1,128,,,,False,GEOMETRY_LIMIT,GEOMETRY_LIMIT,,,,,,,"baseline: Partition [64, 2, 1] has fewer than 7 local cells per horizontal direction; dagger: Partition [64, 2, 1] has fewer than 7 local cells per horizontal direction"
+cpu_partition_default,8x16x1,128,360x180x50,8x16x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger:
+cpu_resolution,default,1,360x180x50,1x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger:
+cpu_resolution,fine,1,720x360x100,1x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger:
+cpu_resolution,super_fine,1,1440x720x200,1x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger:

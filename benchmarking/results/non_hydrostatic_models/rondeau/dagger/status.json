@@ -1,0 +1,312 @@
+[
+  {
+    "series": "gpu_weak_scaling",
+    "case": "1_ranks",
+    "ranks": 1,
+    "resolution": "360x180x50",
+    "partition": "1x1x1",
+    "grid_type": "LatitudeLongitudeGrid",
+    "dagger_state": "PLANNED",
+    "details": "baseline: ; dagger:"
+  },
+  {
+    "series": "gpu_weak_scaling",
+    "case": "2_ranks",
+    "ranks": 2,
+    "resolution": "720x360x100",
+    "partition": "2x1x1",
+    "grid_type": "LatitudeLongitudeGrid",
+    "dagger_state": "PLANNED",
+    "details": "baseline: ; dagger:"
+  },
+  {
+    "series": "gpu_weak_scaling",
+    "case": "4_ranks",
+    "ranks": 4,
+    "resolution": "1440x720x200",
+    "partition": "2x2x1",
+    "grid_type": "LatitudeLongitudeGrid",
+    "dagger_state": "PLANNED",
+    "details": "baseline: ; dagger:"
+  },
+  {
+    "series": "gpu_scaling_fine",
+    "case": "1_ranks",
+    "ranks": 1,
+    "resolution": "720x360x100",
+    "partition": "1x1x1",
+    "grid_type": "LatitudeLongitudeGrid",
+    "dagger_state": "PLANNED",
+    "details": "baseline: ; dagger:"
+  },
+  {
+    "series": "gpu_scaling_fine",
+    "case": "2_ranks",
+    "ranks": 2,
+    "resolution": "720x360x100",
+    "partition": "2x1x1",
+    "grid_type": "LatitudeLongitudeGrid",
+    "dagger_state": "PLANNED",
+    "details": "baseline: ; dagger:"
+  },
+  {
+    "series": "gpu_scaling_fine",
+    "case": "4_ranks",
+    "ranks": 4,
+    "resolution": "720x360x100",
+    "partition": "2x2x1",
+    "grid_type": "LatitudeLongitudeGrid",
+    "dagger_state": "PLANNED",
+    "details": "baseline: ; dagger:"
+  },
+  {
+    "series": "gpu_nsight_scaling_default",
+    "case": "1_ranks",
+    "ranks": 1,
+    "resolution": "360x180x50",
+    "partition": "1x1x1",
+    "grid_type": "LatitudeLongitudeGrid",
+    "dagger_state": "PLANNED",
+    "details": "baseline: ; dagger:"
+  },
+  {
+    "series": "gpu_nsight_scaling_default",
+    "case": "2_ranks",
+    "ranks": 2,
+    "resolution": "360x180x50",
+    "partition": "2x1x1",
+    "grid_type": "LatitudeLongitudeGrid",
+    "dagger_state": "PLANNED",
+    "details": "baseline: ; dagger:"
+  },
+  {
+    "series": "gpu_nsight_scaling_default",
+    "case": "4_ranks",
+    "ranks": 4,
+    "resolution": "360x180x50",
+    "partition": "2x2x1",
+    "grid_type": "LatitudeLongitudeGrid",
+    "dagger_state": "PLANNED",
+    "details": "baseline: ; dagger:"
+  },
+  {
+    "series": "gpu_resolution",
+    "case": "default",
+    "ranks": 1,
+    "resolution": "360x180x50",
+    "partition": "1x1x1",
+    "grid_type": "LatitudeLongitudeGrid",
+    "dagger_state": "PLANNED",
+    "details": "baseline: ; dagger:"
+  },
+  {
+    "series": "gpu_resolution",
+    "case": "fine",
+    "ranks": 1,
+    "resolution": "720x360x100",
+    "partition": "1x1x1",
+    "grid_type": "LatitudeLongitudeGrid",
+    "dagger_state": "PLANNED",
+    "details": "baseline: ; dagger:"
+  },
+  {
+    "series": "gpu_resolution",
+    "case": "super_fine",
+    "ranks": 1,
+    "resolution": "1440x720x200",
+    "partition": "1x1x1",
+    "grid_type": "LatitudeLongitudeGrid",
+    "dagger_state": "PLANNED",
+    "details": "baseline: ; dagger:"
+  },
+  {
+    "series": "cpu_mpiscaling_default",
+    "case": "128_ranks",
+    "ranks": 128,
+    "resolution": "360x180x50",
+    "partition": "8x16x1",
+    "grid_type": "LatitudeLongitudeGrid",
+    "dagger_state": "PLANNED",
+    "details": "baseline: ; dagger:"
+  },
+  {
+    "series": "cpu_mpiscaling_default",
+    "case": "16_ranks",
+    "ranks": 16,
+    "resolution": "360x180x50",
+    "partition": "4x4x1",
+    "grid_type": "LatitudeLongitudeGrid",
+    "dagger_state": "PLANNED",
+    "details": "baseline: ; dagger:"
+  },
+  {
+    "series": "cpu_mpiscaling_default",
+    "case": "1_ranks",
+    "ranks": 1,
+    "resolution": "360x180x50",
+    "partition": "1x1x1",
+    "grid_type": "LatitudeLongitudeGrid",
+    "dagger_state": "PLANNED",
+    "details": "baseline: ; dagger:"
+  },
+  {
+    "series": "cpu_mpiscaling_default",
+    "case": "2_ranks",
+    "ranks": 2,
+    "resolution": "360x180x50",
+    "partition": "2x1x1",
+    "grid_type": "LatitudeLongitudeGrid",
+    "dagger_state": "PLANNED",
+    "details": "baseline: ; dagger:"
+  },
+  {
+    "series": "cpu_mpiscaling_default",
+    "case": "32_ranks",
+    "ranks": 32,
+    "resolution": "360x180x50",
+    "partition": "8x4x1",
+    "grid_type": "LatitudeLongitudeGrid",
+    "dagger_state": "PLANNED",
+    "details": "baseline: ; dagger:"
+  },
+  {
+    "series": "cpu_mpiscaling_default",
+    "case": "4_ranks",
+    "ranks": 4,
+    "resolution": "360x180x50",
+    "partition": "2x2x1",
+    "grid_type": "LatitudeLongitudeGrid",
+    "dagger_state": "PLANNED",
+    "details": "baseline: ; dagger:"
+  },
+  {
+    "series": "cpu_mpiscaling_default",
+    "case": "64_ranks",
+    "ranks": 64,
+    "resolution": "360x180x50",
+    "partition": "8x8x1",
+    "grid_type": "LatitudeLongitudeGrid",
+    "dagger_state": "PLANNED",
+    "details": "baseline: ; dagger:"
+  },
+  {
+    "series": "cpu_mpiscaling_default",
+    "case": "8_ranks",
+    "ranks": 8,
+    "resolution": "360x180x50",
+    "partition": "4x2x1",
+    "grid_type": "LatitudeLongitudeGrid",
+    "dagger_state": "PLANNED",
+    "details": "baseline: ; dagger:"
+  },
+  {
+    "series": "cpu_partition_default",
+    "case": "128x1x1",
+    "ranks": 128,
+    "resolution": "",
+    "partition": "",
+    "grid_type": "",
+    "dagger_state": "GEOMETRY_LIMIT",
+    "details": "baseline: Partition [128, 1, 1] has fewer than 7 local cells per horizontal direction; dagger: Partition [128, 1, 1] has fewer than 7 local cells per horizontal direction"
+  },
+  {
+    "series": "cpu_partition_default",
+    "case": "16x8x1",
+    "ranks": 128,
+    "resolution": "360x180x50",
+    "partition": "16x8x1",
+    "grid_type": "LatitudeLongitudeGrid",
+    "dagger_state": "PLANNED",
+    "details": "baseline: ; dagger:"
+  },
+  {
+    "series": "cpu_partition_default",
+    "case": "1x128x1",
+    "ranks": 128,
+    "resolution": "",
+    "partition": "",
+    "grid_type": "",
+    "dagger_state": "GEOMETRY_LIMIT",
+    "details": "baseline: Partition [1, 128, 1] has fewer than 7 local cells per horizontal direction; dagger: Partition [1, 128, 1] has fewer than 7 local cells per horizontal direction"
+  },
+  {
+    "series": "cpu_partition_default",
+    "case": "2x64x1",
+    "ranks": 128,
+    "resolution": "",
+    "partition": "",
+    "grid_type": "",
+    "dagger_state": "GEOMETRY_LIMIT",
+    "details": "baseline: Partition [2, 64, 1] has fewer than 7 local cells per horizontal direction; dagger: Partition [2, 64, 1] has fewer than 7 local cells per horizontal direction"
+  },
+  {
+    "series": "cpu_partition_default",
+    "case": "32x4x1",
+    "ranks": 128,
+    "resolution": "360x180x50",
+    "partition": "32x4x1",
+    "grid_type": "LatitudeLongitudeGrid",
+    "dagger_state": "PLANNED",
+    "details": "baseline: ; dagger:"
+  },
+  {
+    "series": "cpu_partition_default",
+    "case": "4x32x1",
+    "ranks": 128,
+    "resolution": "",
+    "partition": "",
+    "grid_type": "",
+    "dagger_state": "GEOMETRY_LIMIT",
+    "details": "baseline: Partition [4, 32, 1] has fewer than 7 local cells per horizontal direction; dagger: Partition [4, 32, 1] has fewer than 7 local cells per horizontal direction"
+  },
+  {
+    "series": "cpu_partition_default",
+    "case": "64x2x1",
+    "ranks": 128,
+    "resolution": "",
+    "partition": "",
+    "grid_type": "",
+    "dagger_state": "GEOMETRY_LIMIT",
+    "details": "baseline: Partition [64, 2, 1] has fewer than 7 local cells per horizontal direction; dagger: Partition [64, 2, 1] has fewer than 7 local cells per horizontal direction"
+  },
+  {
+    "series": "cpu_partition_default",
+    "case": "8x16x1",
+    "ranks": 128,
+    "resolution": "360x180x50",
+    "partition": "8x16x1",
+    "grid_type": "LatitudeLongitudeGrid",
+    "dagger_state": "PLANNED",
+    "details": "baseline: ; dagger:"
+  },
+  {
+    "series": "cpu_resolution",
+    "case": "default",
+    "ranks": 1,
+    "resolution": "360x180x50",
+    "partition": "1x1x1",
+    "grid_type": "LatitudeLongitudeGrid",
+    "dagger_state": "PLANNED",
+    "details": "baseline: ; dagger:"
+  },
+  {
+    "series": "cpu_resolution",
+    "case": "fine",
+    "ranks": 1,
+    "resolution": "720x360x100",
+    "partition": "1x1x1",
+    "grid_type": "LatitudeLongitudeGrid",
+    "dagger_state": "PLANNED",
+    "details": "baseline: ; dagger:"
+  },
+  {
+    "series": "cpu_resolution",
+    "case": "super_fine",
+    "ranks": 1,
+    "resolution": "1440x720x200",
+    "partition": "1x1x1",
+    "grid_type": "LatitudeLongitudeGrid",
+    "dagger_state": "PLANNED",
+    "details": "baseline: ; dagger:"
+  }
+]
