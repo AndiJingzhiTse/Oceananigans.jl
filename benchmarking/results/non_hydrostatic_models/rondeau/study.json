@@ -1,0 +1,81 @@
+{
+  "study": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau",
+  "source": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau/source",
+  "source_revision": "9c80687cb8ccd009fd75b668d183e14820b342db",
+  "model": "NonhydrostaticModel",
+  "variants": [
+    "baseline",
+    "dagger"
+  ],
+  "series_order": [
+    "gpu_weak_scaling",
+    "gpu_scaling_fine",
+    "gpu_nsight_scaling_default",
+    "gpu_resolution",
+    "cpu_mpiscaling_default",
+    "cpu_partition_default",
+    "cpu_resolution"
+  ],
+  "planned_cases_per_variant": 26,
+  "geometry_limits_per_variant": 5,
+  "max_cpu_cores": 128,
+  "max_gpus": 4,
+  "case_timeout_seconds": 86400,
+  "timing": {
+    "warmup_steps": 2,
+    "windows": 5,
+    "steps_per_window": 10
+  },
+  "command": [
+    "/usr/bin/python3",
+    "/u/ajtse/Oceananigans.jl/benchmarking/scripts/compare_dagger.py",
+    "--config",
+    "/u/ajtse/Oceananigans.jl/benchmarking/scripts/configs/rondeau.json",
+    "--project",
+    "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau/environment",
+    "--study",
+    "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau",
+    "--publish",
+    "/u/ajtse/Oceananigans.jl/benchmarking/results/non_hydrostatic_models/rondeau",
+    "--commit"
+  ],
+  "environment": {
+    "TMPDIR": "/u/ajtse/.ocean-tmp/cecd6723675a",
+    "TMP": "/u/ajtse/.ocean-tmp/cecd6723675a",
+    "TEMP": "/u/ajtse/.ocean-tmp/cecd6723675a",
+    "OMPI_MCA_orte_tmpdir_base": "/u/ajtse/.ocean-tmp/cecd6723675a"
+  },
+  "started_at": "2026-10-23T15:09:55.411908+00:00",
+  "preflight": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau/preflight_cpu.log",
+  "test_result": "58 Python controller tests passed; real Dagger CPU task passed with CUDA.functional() == false",
+  "previous_study": "archive/2026-10-19-dagger",
+  "controller_log": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau/controller.log",
+  "controller_pid_file": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau/controller.pid",
+  "weak_sequence": [
+    {
+      "gpus": 1,
+      "resolution": [
+        360,
+        180,
+        50
+      ]
+    },
+    {
+      "gpus": 2,
+      "resolution": [
+        720,
+        360,
+        100
+      ]
+    },
+    {
+      "gpus": 4,
+      "resolution": [
+        1440,
+        720,
+        200
+      ]
+    }
+  ],
+  "weak_reference": "Increasing cells/GPU 1:4:16; linear cell-count normalized efficiency, not constant-work weak efficiency"
+}
