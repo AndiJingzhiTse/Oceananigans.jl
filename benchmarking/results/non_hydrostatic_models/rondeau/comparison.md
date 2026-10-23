@@ -48,13 +48,13 @@ Requested GPU weak-scaling sequence: 360 × 180 × 50 on 1 GPU, 720 × 360 × 10
 
 | Case | Resolution / partition | Baseline outcome | Dagger outcome | Median s/step baseline / Dagger | Speedup |
 |---|---|---|---|---:|---:|
-| default | 360x180x50 / 1x1x1 | COMPLETED | PLANNED | — | — |
+| default | 360x180x50 / 1x1x1 | COMPLETED | RUNNING | — | — |
 | fine | 720x360x100 / 1x1x1 | PLANNED | PLANNED | — | — |
 | super_fine | 1440x720x200 / 1x1x1 | PLANNED | PLANNED | — | — |
 
 No completed, validated pair is available.
 
-default: baseline: Rank results, finite fields and resource placement verified; dagger:
+default: baseline: Rank results, finite fields and resource placement verified; dagger: Local allocation started; see job.out
 
 fine: baseline: ; dagger:
 
