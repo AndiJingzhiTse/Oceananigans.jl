@@ -4,7 +4,7 @@ Each series folder contains its configurations, measurements and provenance. Onl
 
 | Series | Completed cases | Report |
 |---|---:|---|
-| `gpu_scaling_fine` | 1 | [Details](gpu_scaling_fine/plot.md) |
+| `gpu_scaling_fine` | 2 | [Details](gpu_scaling_fine/plot.md) |
 | `gpu_weak_scaling` | 2 | [Details](gpu_weak_scaling/plot.md) |
 
 ## gpu_scaling_fine
@@ -14,6 +14,7 @@ Each series folder contains its configurations, measurements and provenance. Onl
 | Case | Ranks | Global resolution | Partition | Fastest / median s per step | Median MPI efficiency | Validation |
 |---|---:|---|---|---:|---:|---|
 | [1_ranks](gpu_scaling_fine/1_ranks/configuration.md) | 1 | 720 × 360 × 100 | 1 × 1 × 1 | 3.618161 / 4.177695 | 100.0% | Current suite checks |
+| [2_ranks](gpu_scaling_fine/2_ranks/configuration.md) | 2 | 720 × 360 × 100 | 2 × 1 × 1 | 7.743739 / 8.343843 | 25.0% | Current suite checks |
 
 ## gpu_weak_scaling
 
