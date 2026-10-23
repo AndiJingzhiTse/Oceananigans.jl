@@ -20,9 +20,9 @@ Requested GPU weak-scaling sequence: 360 × 180 × 50 on 1 GPU, 720 × 360 × 10
 |---|---|---|---|---:|---:|
 | 1_ranks | 360x180x50 / 1x1x1 | COMPLETED | COMPLETED | 0.383486 / 0.379911 | 1.0094 |
 | 2_ranks | 720x360x100 / 2x1x1 | COMPLETED | COMPLETED | 8.45362 / 8.35918 | 1.0113 |
-| 4_ranks | 1440x720x200 / 2x2x1 | FAILED | PLANNED | — | — |
+| 4_ranks | 1440x720x200 / 2x2x1 | FAILED | RUNNING | — | — |
 
-4_ranks: baseline: Execution failed; ERROR: ERROR: ERROR: LoadError: LoadError: LoadError: ERROR: LoadError: Recomputed pressure residual exceeds toleranceRecomputed pressure residual exceeds tolerance; dagger:
+4_ranks: baseline: Execution failed; ERROR: ERROR: ERROR: LoadError: LoadError: LoadError: ERROR: LoadError: Recomputed pressure residual exceeds toleranceRecomputed pressure residual exceeds tolerance; dagger: Local allocation started; see job.out
 
 ## gpu_scaling_fine
 
