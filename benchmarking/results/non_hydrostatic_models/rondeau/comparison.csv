@@ -1,5 +1,5 @@
 series,case,ranks,resolution,partition,grid_type,profile,baseline_state,dagger_state,baseline_fastest,dagger_fastest,baseline_median,dagger_median,speedup_fastest,speedup_median,details
-gpu_weak_scaling,1_ranks,1,360x180x50,1x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger:
+gpu_weak_scaling,1_ranks,1,360x180x50,1x1x1,LatitudeLongitudeGrid,False,RUNNING,PLANNED,,,,,,,baseline: Local allocation started; see job.out; dagger:
 gpu_weak_scaling,2_ranks,2,720x360x100,2x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger:
 gpu_weak_scaling,4_ranks,4,1440x720x200,2x2x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger:
 gpu_scaling_fine,1_ranks,1,720x360x100,1x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,baseline: ; dagger:
