@@ -1,0 +1,56 @@
+{
+  "directory": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau/baseline/gpu_ensemble/fine",
+  "project": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-26-gpu-ensemble/rondeau/environment",
+  "execution_mode": "baseline",
+  "members": [
+    {
+      "id": 1,
+      "directory": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau/baseline/gpu_ensemble/fine/member_1",
+      "gpu_uuid": "GPU-3cc138cf-9b95-c6e6-9b51-330b5d985885",
+      "cpu": 0,
+      "environment": {
+        "TMPDIR": "/u/ajtse/.ocean-tmp/09e07d7d884e",
+        "TMP": "/u/ajtse/.ocean-tmp/09e07d7d884e",
+        "TEMP": "/u/ajtse/.ocean-tmp/09e07d7d884e",
+        "OMPI_MCA_orte_tmpdir_base": "/u/ajtse/.ocean-tmp/09e07d7d884e"
+      }
+    },
+    {
+      "id": 2,
+      "directory": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau/baseline/gpu_ensemble/fine/member_2",
+      "gpu_uuid": "GPU-27b6f362-d593-fda1-e6fa-43275dcca7da",
+      "cpu": 1,
+      "environment": {
+        "TMPDIR": "/u/ajtse/.ocean-tmp/2a68b970caff",
+        "TMP": "/u/ajtse/.ocean-tmp/2a68b970caff",
+        "TEMP": "/u/ajtse/.ocean-tmp/2a68b970caff",
+        "OMPI_MCA_orte_tmpdir_base": "/u/ajtse/.ocean-tmp/2a68b970caff"
+      }
+    },
+    {
+      "id": 3,
+      "directory": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau/baseline/gpu_ensemble/fine/member_3",
+      "gpu_uuid": "GPU-0d23b51f-58fb-31df-e839-8dd85117df68",
+      "cpu": 2,
+      "environment": {
+        "TMPDIR": "/u/ajtse/.ocean-tmp/5485c533974a",
+        "TMP": "/u/ajtse/.ocean-tmp/5485c533974a",
+        "TEMP": "/u/ajtse/.ocean-tmp/5485c533974a",
+        "OMPI_MCA_orte_tmpdir_base": "/u/ajtse/.ocean-tmp/5485c533974a"
+      }
+    },
+    {
+      "id": 4,
+      "directory": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau/baseline/gpu_ensemble/fine/member_4",
+      "gpu_uuid": "GPU-628b07c6-4d27-afb0-6c71-f0b5ec437cab",
+      "cpu": 3,
+      "environment": {
+        "TMPDIR": "/u/ajtse/.ocean-tmp/2d73fce31ee2",
+        "TMP": "/u/ajtse/.ocean-tmp/2d73fce31ee2",
+        "TEMP": "/u/ajtse/.ocean-tmp/2d73fce31ee2",
+        "OMPI_MCA_orte_tmpdir_base": "/u/ajtse/.ocean-tmp/2d73fce31ee2"
+      }
+    }
+  ],
+  "worker_file": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau/baseline/gpu_ensemble/run_metadata/src/suite/worker.jl"
+}
