@@ -1,0 +1,93 @@
+{
+  "completed": [
+    {
+      "id": 1,
+      "pid": 231949,
+      "worker": 2
+    },
+    {
+      "id": 2,
+      "pid": 232375,
+      "worker": 3
+    },
+    {
+      "id": 3,
+      "pid": 233053,
+      "worker": 4
+    },
+    {
+      "id": 4,
+      "pid": 233928,
+      "worker": 5
+    }
+  ],
+  "dagger_version": null,
+  "dispatch_seconds": 328.195426112,
+  "events": [
+    [
+      "ready",
+      2,
+      1.793061351403427e9
+    ],
+    [
+      "ready",
+      3,
+      1.793061367639452e9
+    ],
+    [
+      "ready",
+      4,
+      1.793061373052899e9
+    ],
+    [
+      "ready",
+      1,
+      1.793061375359637e9
+    ],
+    [
+      "timing_started",
+      2,
+      1.793061376050754e9
+    ],
+    [
+      "timing_started",
+      3,
+      1.79306137605084e9
+    ],
+    [
+      "timing_started",
+      4,
+      1.793061376051546e9
+    ],
+    [
+      "timing_started",
+      1,
+      1.793061376182262e9
+    ],
+    [
+      "timed",
+      3,
+      1.793061465784997e9
+    ],
+    [
+      "timed",
+      4,
+      1.793061466146026e9
+    ],
+    [
+      "timed",
+      2,
+      1.793061466548113e9
+    ],
+    [
+      "timed",
+      1,
+      1.793061467808271e9
+    ]
+  ],
+  "execution_mode": "baseline",
+  "julia_version": "1.12.7",
+  "setup_seconds": 18.271414971,
+  "timed_seconds": 91.950929706,
+  "timed_start_epoch": 1.793061375858246e9
+}

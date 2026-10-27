@@ -64,10 +64,11 @@ Four independent models run concurrently on four GPUs. Each resolution is per mo
 
 | Resolution per simulation | GPUs | Baseline / Dagger outcome | Timed makespan (s), baseline / Dagger | Timed speedup | Dispatch time (s), baseline / Dagger | Dispatch speedup |
 |---|---:|---|---:|---:|---:|---:|
-| 360 × 180 × 50 | 4 | INVALID_RESULTS / RUNNING | — | — | — | — |
-
-baseline: Ensemble member used a different GPU or host core than assigned; dagger: Local allocation started; see job.out
+| 360 × 180 × 50 | 4 | COMPLETED / COMPLETED | 91.9509 / 92.1904 | 0.9974 | 328.1954 / 246.5704 | 1.3310 |
 | 720 × 360 × 100 | 4 | PLANNED / PLANNED | — | — | — | — |
 
 baseline: ; dagger:
+
+![Ensemble makespan and speedup](comparisons/gpu_ensemble.svg)
+
 

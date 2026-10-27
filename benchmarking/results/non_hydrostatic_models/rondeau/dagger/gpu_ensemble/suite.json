@@ -1,0 +1,200 @@
+{
+  "server": {
+    "machine": "rondeau",
+    "backend": "local",
+    "project": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-26-gpu-ensemble/rondeau/environment",
+    "julia": "julia",
+    "mpi": [
+      "mpiexec"
+    ],
+    "max_cpu_cores": 128,
+    "max_gpus": 4,
+    "cpu_cores_per_node": 128,
+    "gpus_per_node": 4,
+    "gpu_host_cores": 8,
+    "cpu_account": "",
+    "gpu_account": "",
+    "cpu_partition": "",
+    "gpu_partition": "",
+    "gpu_type": "",
+    "cpu_constraint": "",
+    "exclusive_cpu": true,
+    "environment_script": "",
+    "mpi_init": "",
+    "cpu_time": "08:00:00",
+    "gpu_time": "06:00:00",
+    "partition_time": "03:00:00",
+    "gpu_memory": "128G",
+    "cpu_memory_base_gb": 64,
+    "cpu_memory_per_rank_gb": 4,
+    "cpu_sbatch_extra": [],
+    "gpu_sbatch_extra": [],
+    "trace_root": "/u/ajtse/Oceananigans.jl/benchmarking/results/non_hydrostatic_models/rondeau/dagger",
+    "case_timeout_seconds": 3600,
+    "matplotlib": true,
+    "python": "python3",
+    "report_modules": [],
+    "reference_suites": [],
+    "replacement_suites": [],
+    "environment": {
+      "TMPDIR": "/u/ajtse/.ocean-tmp/90f74d6498cb",
+      "TMP": "/u/ajtse/.ocean-tmp/90f74d6498cb",
+      "TEMP": "/u/ajtse/.ocean-tmp/90f74d6498cb",
+      "OMPI_MCA_orte_tmpdir_base": "/u/ajtse/.ocean-tmp/90f74d6498cb"
+    },
+    "gpu_scaling_partition": "balanced",
+    "model_type": "NonhydrostaticModel",
+    "comparison_suites": [],
+    "comparison_report": "",
+    "execution_mode": "dagger",
+    "profile_layout": "series",
+    "pressure_preconditioner": "LocalFFTPreconditioner",
+    "pressure_max_iterations": 5000,
+    "pressure_diagnostics": false,
+    "pressure_preserve_residual": false,
+    "pressure_check_true_residual": true,
+    "separate_partitions": true,
+    "cpu_time_overrides": {
+      "1": "72:00:00",
+      "3": "48:00:00",
+      "6": "24:00:00",
+      "12": "12:00:00"
+    },
+    "full_gpu_nodes": false
+  },
+  "cases": [
+    {
+      "id": "default",
+      "series": "gpu_ensemble",
+      "ranks": 4,
+      "grid_name": "default",
+      "partition": [
+        1,
+        1,
+        1
+      ],
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
+      "job_id": "",
+      "configuration": {
+        "series": "gpu_ensemble",
+        "model_type": "NonhydrostaticModel",
+        "device": "GPU",
+        "ranks": 1,
+        "threads_per_rank": 1,
+        "grid_name": "default",
+        "global_resolution": [
+          360,
+          180,
+          50
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "partition": [
+          1,
+          1,
+          1
+        ],
+        "x_sizes": [
+          360
+        ],
+        "y_sizes": [
+          180
+        ],
+        "float_type": "Float64",
+        "momentum_advection": "WENO7",
+        "tracer_advection": "WENO7",
+        "closure": "ScalarDiffusivity",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "viscosity": 0.001,
+        "diffusivity": 1e-05,
+        "coriolis": "HydrostaticSphericalCoriolis",
+        "buoyancy": "SeawaterBuoyancy(TEOS10)",
+        "timestepper": "RungeKutta3",
+        "free_surface": "RigidLid",
+        "pressure_solver": "ConjugateGradientPoissonSolver",
+        "pressure_preconditioner": "LocalFFTPreconditioner",
+        "pressure_max_iterations": 5000,
+        "pressure_reltol": 1.4901161193847656e-08,
+        "pressure_abstol": 1.4901161193847656e-08,
+        "pressure_diagnostics": false,
+        "pressure_preserve_residual": false,
+        "pressure_check_true_residual": true,
+        "pressure_preconditioner_check": true,
+        "initial_condition_seed": 1234,
+        "dt": 60,
+        "free_surface_substeps": null,
+        "extend_free_surface_halos": false,
+        "warmup_steps": 2,
+        "samples": 5,
+        "time_steps": 10,
+        "profile": false,
+        "scaling_type": "comparison",
+        "baseline_ranks": 1,
+        "ensemble_size": 4,
+        "total_gpus": 4,
+        "ranks_per_simulation": 1,
+        "execution_mode": "dagger"
+      },
+      "measurement": {
+        "fastest": 1.5794432649,
+        "median": 1.9007753634,
+        "maximum": 1.9447751227,
+        "retained_substeps": [],
+        "nodes": 1,
+        "ensemble_timed_seconds": 92.190437723,
+        "ensemble_dispatch_seconds": 246.570385538,
+        "ensemble_setup_seconds": 22.746798141,
+        "ensemble_simulations_per_hour": 156.19841228291983,
+        "ensemble_steps_per_second": 2.169422392818331,
+        "ensemble_member_measurements": [
+          {
+            "fastest": 1.5794432649,
+            "median": 1.9007753634,
+            "maximum": 1.9447751227,
+            "retained_substeps": [],
+            "nodes": 1,
+            "gpu_memory_used_bytes": 1556348928,
+            "gpu_memory_max_gib": 1.449462890625
+          },
+          {
+            "fastest": 1.530638313,
+            "median": 1.8567821126,
+            "maximum": 1.8859821137000001,
+            "retained_substeps": [],
+            "nodes": 1,
+            "gpu_memory_used_bytes": 1554251776,
+            "gpu_memory_max_gib": 1.447509765625
+          },
+          {
+            "fastest": 1.561038728,
+            "median": 1.8415782722,
+            "maximum": 1.8931794946,
+            "retained_substeps": [],
+            "nodes": 1,
+            "gpu_memory_used_bytes": 1556348928,
+            "gpu_memory_max_gib": 1.449462890625
+          },
+          {
+            "fastest": 1.5570457426000002,
+            "median": 1.8599807433,
+            "maximum": 1.8815742331999998,
+            "retained_substeps": [],
+            "nodes": 1,
+            "gpu_memory_used_bytes": 1554251776,
+            "gpu_memory_max_gib": 1.447509765625
+          }
+        ]
+      },
+      "provenance": {
+        "source": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau/dagger/gpu_ensemble",
+        "submitted_at": null,
+        "measured_at": "2026-10-27T00:42:28.326"
+      }
+    }
+  ],
+  "submitted_at": null,
+  "curated": true
+}

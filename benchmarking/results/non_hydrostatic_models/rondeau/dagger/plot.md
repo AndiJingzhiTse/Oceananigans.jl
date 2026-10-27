@@ -4,10 +4,21 @@ Each series folder contains its configurations, measurements and provenance. Onl
 
 | Series | Completed cases | Report |
 |---|---:|---|
+| `gpu_ensemble` | 1 | [Details](gpu_ensemble/plot.md) |
 | `gpu_nsight_scaling_default` | 3 | [Details](gpu_nsight_scaling_default/plot.md) |
 | `gpu_resolution` | 2 | [Details](gpu_resolution/plot.md) |
 | `gpu_scaling_fine` | 3 | [Details](gpu_scaling_fine/plot.md) |
 | `gpu_weak_scaling` | 2 | [Details](gpu_weak_scaling/plot.md) |
+
+## gpu_ensemble
+
+Each case runs four independent simulations, one GPU and one MPI rank per simulation. Each has two warmup steps and five windows of ten steps. All four finish warmup before a common timing gate opens. Timed makespan ends when the slowest simulation finishes its windows. Dispatch time includes model construction, compilation, warmup and final validation; worker/package initialization is recorded separately as setup time.
+
+Both variants use direct CUDA/MPI timestepping inside each model. The baseline submits four concurrent Distributed calls; Dagger submits four full-simulation tasks before fetching any. Simulations/hour = 4 × 3600 / timed makespan; each simulation represents a 50-step timing block. These are ensemble throughput measurements on a shared server.
+
+| Resolution per simulation | GPUs / simulations | Outcome | Timed makespan (s) | Dispatch time (s) | Simulations/hour |
+|---|---:|---|---:|---:|---:|
+| [360 × 180 × 50](gpu_ensemble/default/configuration.md) | 4 / 4 | COMPLETED | 92.1904 | 246.5704 | 156.1984 |
 
 ## gpu_nsight_scaling_default
 
