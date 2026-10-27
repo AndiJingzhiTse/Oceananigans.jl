@@ -126,8 +126,8 @@
     "resolution": "360x180x50",
     "partition": "1x1x1",
     "grid_type": "LatitudeLongitudeGrid",
-    "baseline_state": "RUNNING",
-    "details": "baseline: Local allocation started; see job.out; dagger:"
+    "baseline_state": "INVALID_RESULTS",
+    "details": "baseline: Ensemble member used a different GPU or host core than assigned; dagger:"
   },
   {
     "series": "gpu_ensemble",
