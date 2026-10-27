@@ -94,7 +94,9 @@ def validate_ensemble(folder, config):
             raise ValueError('Ensemble aggregate differs from original member results')
         layout = json.loads((child / 'layout.json').read_text())[0]
         requested = next(m for m in placement if m['id'] == index)
-        if layout['gpu_uuid'] != requested['gpu_uuid'] or layout['affinity'] != str(requested['cpu']):
+        # CUDA.uuid prints the UUID alone; nvidia-smi adds a GPU- prefix.
+        if (layout['gpu_uuid'].removeprefix('GPU-') != requested['gpu_uuid'].removeprefix('GPU-') or
+                layout['affinity'] != str(requested['cpu'])):
             raise ValueError('Ensemble member used a different GPU or host core than assigned')
         layout['ensemble_member'] = index
         if layout != next(e for e in root_layout if e['ensemble_member'] == index):

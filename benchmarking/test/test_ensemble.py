@@ -66,6 +66,13 @@ class EnsembleTests(unittest.TestCase):
             m=validate_ensemble(root,cfg)
             self.assertAlmostEqual(m['ensemble_simulations_per_hour'],4*3600/61)
             self.assertEqual(m['median'],1.2)
+            # CUDA and nvidia-smi spell the same device UUID differently.
+            child=root/'member_1/layout.json'
+            child_layout=json.loads(child.read_text());child_layout[0]['gpu_uuid']='1'
+            child.write_text(json.dumps(child_layout))
+            layout=json.loads((root/'layout.json').read_text());layout[0]['gpu_uuid']='1'
+            (root/'layout.json').write_text(json.dumps(layout))
+            validate_ensemble(root,cfg)
             layout=json.loads((root/'layout.json').read_text())
             child=root/'member_4/layout.json'
             child_layout=json.loads(child.read_text());child_layout[0]['gpu_uuid']='GPU-1'
