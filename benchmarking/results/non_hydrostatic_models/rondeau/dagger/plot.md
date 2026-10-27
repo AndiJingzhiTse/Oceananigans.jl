@@ -4,7 +4,7 @@ Each series folder contains its configurations, measurements and provenance. Onl
 
 | Series | Completed cases | Report |
 |---|---:|---|
-| `gpu_ensemble` | 1 | [Details](gpu_ensemble/plot.md) |
+| `gpu_ensemble` | 2 | [Details](gpu_ensemble/plot.md) |
 | `gpu_nsight_scaling_default` | 3 | [Details](gpu_nsight_scaling_default/plot.md) |
 | `gpu_resolution` | 2 | [Details](gpu_resolution/plot.md) |
 | `gpu_scaling_fine` | 3 | [Details](gpu_scaling_fine/plot.md) |
@@ -19,6 +19,7 @@ Both variants use direct CUDA/MPI timestepping inside each model. The baseline s
 | Resolution per simulation | GPUs / simulations | Outcome | Timed makespan (s) | Dispatch time (s) | Simulations/hour |
 |---|---:|---|---:|---:|---:|
 | [360 × 180 × 50](gpu_ensemble/default/configuration.md) | 4 / 4 | COMPLETED | 92.1904 | 246.5704 | 156.1984 |
+| [720 × 360 × 100](gpu_ensemble/fine/configuration.md) | 4 / 4 | COMPLETED | 1501.8136 | 1701.9082 | 9.5884 |
 
 ## gpu_nsight_scaling_default
 

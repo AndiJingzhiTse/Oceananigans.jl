@@ -7,3 +7,4 @@ Both variants use direct CUDA/MPI timestepping inside each model. The baseline s
 | Resolution per simulation | GPUs / simulations | Outcome | Timed makespan (s) | Dispatch time (s) | Simulations/hour |
 |---|---:|---|---:|---:|---:|
 | [360 × 180 × 50](default/configuration.md) | 4 / 4 | COMPLETED | 92.1904 | 246.5704 | 156.1984 |
+| [720 × 360 × 100](fine/configuration.md) | 4 / 4 | COMPLETED | 1501.8136 | 1701.9082 | 9.5884 |
