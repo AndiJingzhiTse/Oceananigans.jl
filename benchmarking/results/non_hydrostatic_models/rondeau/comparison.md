@@ -64,9 +64,9 @@ Four independent models run concurrently on four GPUs. Each resolution is per mo
 
 | Resolution per simulation | GPUs | Baseline / Dagger outcome | Timed makespan (s), baseline / Dagger | Timed speedup | Dispatch time (s), baseline / Dagger | Dispatch speedup |
 |---|---:|---|---:|---:|---:|---:|
-| 360 × 180 × 50 | 4 | PLANNED / PLANNED | — | — | — | — |
+| 360 × 180 × 50 | 4 | RUNNING / PLANNED | — | — | — | — |
 
-baseline: ; dagger:
+baseline: Local allocation started; see job.out; dagger:
 | 720 × 360 × 100 | 4 | PLANNED / PLANNED | — | — | — | — |
 
 baseline: ; dagger:
