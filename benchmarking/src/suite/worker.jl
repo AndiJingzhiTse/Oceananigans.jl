@@ -192,7 +192,7 @@ if !isempty(mpi_hook)
 else
     MPI.Initialized() || MPI.Init()
 end
-case_dir = only(ARGS)
+case_dir = isdefined(@__MODULE__, :BENCHMARK_CASE_DIR) ? BENCHMARK_CASE_DIR : only(ARGS)
 config = JSON.parsefile(joinpath(case_dir, "configuration.json"))
 comm = MPI.COMM_WORLD
 rank = MPI.Comm_rank(comm)
@@ -377,6 +377,7 @@ preflight["samples"], preflight["time_steps"] = 1, 1
 timing_windows!(model, preflight, comm, is_gpu)
 synchronize_model(arch, comm, is_gpu)
 rank == 0 && println("WARMUP_FINISHED mode=$execution_mode")
+isdefined(@__MODULE__, :BENCHMARK_ON_READY) && BENCHMARK_ON_READY()
 config["profile"] && CUDA.CUDACore.cuProfilerStart()
 windows = try
     timing_windows!(model, config, comm, is_gpu)
@@ -384,6 +385,7 @@ finally
     is_gpu && CUDA.synchronize()
     config["profile"] && CUDA.CUDACore.cuProfilerStop()
 end
+isdefined(@__MODULE__, :BENCHMARK_ON_TIMED) && BENCHMARK_ON_TIMED()
 true_pressure_residual = nothing
 if !is_hydrostatic && get(config, "pressure_check_true_residual", false)
     solver = model.pressure_solver

@@ -84,7 +84,7 @@ class VariantTests(unittest.TestCase):
         cases = plan.build_plan(server)
         self.assertEqual(tuple(dict.fromkeys(c['series'] for c in cases)), plan.RONDEAU_SERIES)
         self.assertEqual(cases[0]['series'], 'gpu_weak_scaling')
-        self.assertEqual(len(cases), 12)
+        self.assertEqual(len(cases), 14)
         self.assertTrue(all(c['series'].startswith('gpu_') for c in cases))
         weak = [c for c in cases if c['series'] == 'gpu_weak_scaling']
         self.assertEqual([(c['ranks'], c['configuration']['global_resolution']) for c in weak],

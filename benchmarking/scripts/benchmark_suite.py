@@ -157,10 +157,13 @@ def snapshot(folder, server):
 
 
 def config_markdown(config):
+    dispatch = ('Four independent models, one GPU and MPI rank per model; '
+                'Dagger schedules complete simulations, baseline uses concurrent Distributed calls.'
+                if config.get('ensemble_size') else 'Dagger wraps one timing window in one local CPU task.')
     return ('# Benchmark configuration\n\n'
             f"Series: {config['series']}. Device: {config['device']}; MPI ranks: {config['ranks']}; one thread/rank.\n"
             f"Model: {config.get('model_type', 'HydrostaticFreeSurfaceModel')}; surface: {config.get('free_surface', 'SplitExplicitFreeSurface')}.\n"
-            f"Execution: {config.get('execution_mode', 'baseline')}; Dagger wraps one timing window in one local CPU task.\n"
+            f"Execution: {config.get('execution_mode', 'baseline')}; {dispatch}\n"
             f"Grid: {config['grid_name']}, {' × '.join(map(str, config['global_resolution']))}, {config['grid_type']}.\n"
             f"Partition: {' × '.join(map(str, config['partition']))}.\n"
             f"Local resolution: x {min(config['x_sizes'])}–{max(config['x_sizes'])}, y {min(config['y_sizes'])}–{max(config['y_sizes'])}, z {config['global_resolution'][2]}.\n"
@@ -197,6 +200,9 @@ def prepare(folder, server, selected):
 
 
 def launch_command(server, config, case_dir, metadata, trace_root):
+    if config.get('ensemble_size'):
+        from suite.ensemble import launch_command as ensemble_launch
+        return ensemble_launch(server, config, case_dir, metadata)
     rank_script = metadata / 'src/suite/rank.sh'
     worker = metadata / 'src/suite/worker.jl'
     args = ['bash', str(rank_script), str(case_dir), server['project'], str(worker),

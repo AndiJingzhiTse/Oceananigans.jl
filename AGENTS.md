@@ -243,9 +243,14 @@ For GPU MPI runs, verify distinct GPUs and CUDA-aware MPI communication.
 
 ### Benchmark Reporting and Completion
 
-Rondeau NonhydrostaticModel uses the GPU-only four-series plan documented in
+Rondeau NonhydrostaticModel uses the GPU-only five-series plan documented in
 `benchmarking/README.md`: `gpu_weak_scaling` first, `gpu_scaling_fine`,
-`gpu_nsight_scaling_default`, and `gpu_resolution`. CPU benchmarks are cancelled
+`gpu_nsight_scaling_default`, `gpu_resolution`, and `gpu_ensemble`. The ensemble
+runs four independent single-GPU models concurrently at default and fine
+resolution. Compare concurrent Distributed calls against four full-simulation
+Dagger tasks; retain both timed makespan and dispatch-to-completion time.
+Each simulation keeps partition 1 × 1 × 1 and the shared numerical validation.
+CPU benchmarks are cancelled
 and removed from the Rondeau study; do not recreate or launch CPU suites there.
 Use default/fine/super_fine resolutions only for these resolution studies.
 The requested GPU weak sequence is default/1 GPU, fine/2 GPUs, super_fine/4 GPUs;

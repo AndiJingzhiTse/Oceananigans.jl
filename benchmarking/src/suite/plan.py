@@ -13,7 +13,7 @@ SERIES = ('cpu_mpi_scaling_super_fine', 'gpu_scaling_super_fine', 'cpu_resolutio
           'gpu_scaling_super_super_fine', 'gpu_scaling_super_super_super_fine',
           'gpu_weak_scaling_super_fine')
 RONDEAU_SERIES = ('gpu_weak_scaling', 'gpu_scaling_fine', 'gpu_nsight_scaling_default',
-                  'gpu_resolution')
+                  'gpu_resolution', 'gpu_ensemble')
 ALL_SERIES = tuple(dict.fromkeys((*SERIES, *RONDEAU_SERIES)))
 
 
@@ -101,7 +101,9 @@ def build_plan(server, selected=None):
     for series in machine_series(server) if selected is None else selected:
         gpu = series.startswith('gpu_')
         maximum = server['max_gpus' if gpu else 'max_cpu_cores']
-        if series.endswith('resolution'):
+        if series == 'gpu_ensemble':
+            specs = [(4, name, None) for name in ('default', 'fine')]
+        elif series.endswith('resolution'):
             specs = [(1, name, None) for name in RESOLUTION_GRIDS]
         elif series == 'cpu_partition_default':
             specs = [(128, 'default', [x, 128 // x, 1])
@@ -135,7 +137,7 @@ def build_plan(server, selected=None):
         for ranks, grid_name, partition in specs:
             label = (f'{ranks}_ranks' if series == 'gpu_weak_scaling_super_fine' else
                      'x'.join(map(str, partition)) if partition else
-                     grid_name if series.endswith('resolution') else f'{ranks}_ranks')
+                     grid_name if series.endswith('resolution') or series == 'gpu_ensemble' else f'{ranks}_ranks')
             case = dict(id=f'{series}/{label}', series=series, ranks=ranks,
                         grid_name=grid_name, partition=partition, state='PLANNED', details='', job_id='')
             try:
@@ -143,8 +145,10 @@ def build_plan(server, selected=None):
                              if series == 'gpu_weak_scaling_super_fine' else None)
                 if series.startswith('gpu_scaling_') and server.get('gpu_scaling_partition') == 'x':
                     partition = [ranks, 1, 1]
-                case['configuration'] = configuration(series, ranks, grid_name, partition, weak_grid,
+                case['configuration'] = configuration(series, 1 if series == 'gpu_ensemble' else ranks, grid_name, partition, weak_grid,
                                                       server.get('model_type', 'HydrostaticFreeSurfaceModel'))
+                if series == 'gpu_ensemble':
+                    case['configuration'].update(ensemble_size=4, total_gpus=4, ranks_per_simulation=1)
                 case['configuration']['execution_mode'] = server.get('execution_mode', 'baseline')
                 if server.get('model_type') == 'NonhydrostaticModel':
                     for key in ('pressure_preconditioner', 'pressure_max_iterations', 'pressure_diagnostics', 'pressure_preserve_residual', 'pressure_check_true_residual'):

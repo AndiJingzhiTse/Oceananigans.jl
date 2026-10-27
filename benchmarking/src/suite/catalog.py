@@ -21,6 +21,9 @@ def write_series_report(folder, cases):
     if not cases:
         return
     series = cases[0]['series']
+    if series == 'gpu_ensemble':
+        from .ensemble import write_ensemble_report
+        return write_ensemble_report(folder, cases)
     accepted = [c for c in cases if c['state'] == 'COMPLETED' and 'measurement' in c]
     baselines = scaling_baselines(accepted)
     rows = []
@@ -86,6 +89,10 @@ def write_machine_report(folder):
         lines += ['', 'No validated measurements are available for this machine and model.']
     for name in series:
         lines += ['', f'## {name}', '']
+        if name == 'gpu_ensemble':
+            from .ensemble import ensemble_table
+            lines += ensemble_table([c for c in cases if c['series'] == name])
+            continue
         for suffix in ('', '_kernels'):
             image = folder / name / f'{name}{suffix}.svg'
             if image.exists():

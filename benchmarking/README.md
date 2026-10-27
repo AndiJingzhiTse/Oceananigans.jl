@@ -142,6 +142,7 @@ Rondeau's GPU-only NonhydrostaticModel plan (also used by the paired Dagger runn
 | `gpu_scaling_fine` | 720 × 360 × 100; 1, 2, 4 GPUs |
 | `gpu_nsight_scaling_default` | 360 × 180 × 50; 1, 2, 4 GPUs, profiled |
 | `gpu_resolution` | 360 × 180 × 50, 720 × 360 × 100, 1440 × 720 × 200; 1 GPU |
+| `gpu_ensemble` | Four independent single-GPU simulations concurrently, at 360 × 180 × 50 and 720 × 360 × 100 per simulation |
 
 The requested `gpu_weak_scaling` sequence increases cells per GPU in the ratio
 1:4:16, rather than holding them fixed. Its timing reference scales linearly with
@@ -358,6 +359,29 @@ python3 benchmarking/scripts/compare_dagger.py \
 ```
 
 Accepted records go into `baseline/<series>/` and `dagger/<series>/`.
+Use `--series gpu_ensemble` on the paired controller to append only the ensemble
+series to an existing study. Its other series remain in the combined comparison.
+
+The ensemble baseline submits four concurrent `Distributed.remotecall` jobs;
+Dagger submits four full-simulation tasks before fetching any result. Each job
+constructs its model on a separate Julia worker with one computation thread,
+one visible GPU and a single-rank MPI communicator. Each model has partition
+1 × 1 × 1. Seeds 1234–1237 are paired between variants. Both variants use direct
+timestepping inside the models, rather than the older per-window Dagger wrapper.
+The shared worker retains its pressure, MPI, field and finite-state checks.
+
+After every model completes two warmup steps, a common gate starts five windows
+of ten steps per model. **Timed makespan** runs from that gate until all four
+models finish their timing windows. Simulations/hour is `4 × 3600 / makespan`,
+where a simulation represents a 50-step timing block. **Dispatch time** covers
+submission through successful validation, including model construction,
+compilation and warmup. Worker and package initialization is recorded separately
+as setup time. The report includes both makespan and dispatch speedup, with
+baseline/Dagger = 1 as the equal-time reference. All four members must pass
+validation, use distinct GPUs and overlap before an ensemble is accepted.
+One batch is measured per resolution and variant; timings do not establish
+repeatability or exclusive access to the shared server.
+
 `comparison.md` and `comparison.csv` include every series and all outcomes;
 ratios and plots require completed pairs with identical configurations except
 for execution mode. Speedup is baseline time divided by Dagger time, with an

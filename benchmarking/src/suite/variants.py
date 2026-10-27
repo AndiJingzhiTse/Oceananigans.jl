@@ -24,6 +24,8 @@ def comparison_rows(study, selected=ALL_SERIES):
                        baseline_state=base.get('state', 'MISSING'), dagger_state=dagger.get('state', 'MISSING'),
                        baseline_fastest='', dagger_fastest='', baseline_median='', dagger_median='',
                        speedup_fastest='', speedup_median='',
+                       baseline_ensemble_timed='', dagger_ensemble_timed='', speedup_ensemble_timed='',
+                       baseline_ensemble_dispatch='', dagger_ensemble_dispatch='', speedup_ensemble_dispatch='',
                        details='; '.join(f'{m}: {c.get("details", "")}' for m, c in
                                          (('baseline', base), ('dagger', dagger))).rstrip())
             configurations = [{k: v for k, v in c.get('configuration', {}).items()
@@ -36,6 +38,11 @@ def comparison_rows(study, selected=ALL_SERIES):
                         row['baseline_' + stat] = base['measurement'][stat]
                         row['dagger_' + stat] = dagger['measurement'][stat]
                         row['speedup_' + stat] = base['measurement'][stat] / dagger['measurement'][stat]
+                    if cfg.get('ensemble_size'):
+                        for stat in ('timed', 'dispatch'):
+                            for mode, case in (('baseline', base), ('dagger', dagger)):
+                                row[f'{mode}_ensemble_{stat}'] = case['measurement'][f'ensemble_{stat}_seconds']
+                            row[f'speedup_ensemble_{stat}'] = row[f'baseline_ensemble_{stat}'] / row[f'dagger_ensemble_{stat}']
             rows.append(row)
     return rows
 
@@ -50,8 +57,10 @@ def write_comparison(study, output, plotting=True, selected=ALL_SERIES):
             writer.writeheader()
             writer.writerows(rows)
     lines = ['# Rondeau: nonhydrostatic baseline versus Dagger', '',
-             'Dagger submits one task per timing window, restricted to the current MPI process and its sole Julia computation thread. '
+             'For MPI series, Dagger submits one task per timing window, restricted to the current MPI process and its sole Julia computation thread. '
              'Oceananigans retains its existing MPI domain decomposition. Both paths synchronize CUDA before completing a window.', '',
+             'In gpu_ensemble, four independent single-GPU simulations run concurrently. Dagger schedules four complete simulations; '
+             'the baseline uses four concurrent Distributed calls. Ensemble speedups compare total timed makespan and dispatch-to-completion time.', '',
              'Speedup = baseline seconds per step / Dagger seconds per step. Above 1 favors Dagger; the equal-time reference is 1. '
              'Fastest and median timings are the maximum rank statistic. Only completed, validated pairs with matching configurations have ratios.', '',
              'Nsight timings are compared only against the matching profiled variant. Shared-machine activity can affect timings; '
@@ -73,6 +82,10 @@ def write_comparison(study, output, plotting=True, selected=ALL_SERIES):
         selected = [r for r in rows if r['series'] == series]
         paired = [r for r in selected if r['speedup_median'] != '']
         lines += [f'## {series}', '']
+        if series == 'gpu_ensemble':
+            from .ensemble import comparison_lines
+            lines += comparison_lines(selected, output, plotting)
+            continue
         if paired and plotting:
             import matplotlib
             matplotlib.use('Agg')

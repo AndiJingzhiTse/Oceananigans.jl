@@ -11,7 +11,7 @@ import sys
 from datetime import datetime, timezone
 
 import benchmark_suite as runner
-from suite.plan import machine_series
+from suite.plan import machine_series, ALL_SERIES
 from suite.catalog import publish_series, write_machine_report
 from suite.variants import write_comparison
 from suite.storage import archive_finished_case, archive_runtime, runtime_environment, digest
@@ -67,6 +67,7 @@ def main():
     parser.add_argument('--plan', action='store_true')
     parser.add_argument('--refresh', action='store_true')
     parser.add_argument('--commit', action='store_true')
+    parser.add_argument('--series', help='Comma-separated subset; existing other series remain in comparisons')
     args = parser.parse_args()
     study, destination = args.study.resolve(), args.publish.resolve()
     study.mkdir(parents=True, exist_ok=True)
@@ -76,7 +77,9 @@ def main():
         if server['backend'] != 'local':
             raise ValueError('The paired runner currently supports local execution only')
         server['project'] = str(args.project.resolve())
-        selected = machine_series(server)
+        selected = tuple(args.series.split(',')) if args.series else machine_series(server)
+        if not selected or len(selected) != len(set(selected)) or set(selected) - set(ALL_SERIES):
+            raise ValueError('Choose unique series names from the benchmark catalog')
         studies = {}
         for mode in ('baseline', 'dagger'):
             for series in selected:
@@ -108,7 +111,9 @@ def main():
                 (destination / mode).mkdir(parents=True, exist_ok=True)
                 write_machine_report(destination / mode)
                 write_machine_report(study / mode)
-            write_comparison(study, destination, selected=selected)
+            report_series = tuple(s for s in machine_series(server)
+                                  if any((study / mode / s / 'suite.json').exists() for mode in ('baseline', 'dagger')))
+            write_comparison(study, destination, selected=report_series)
             if args.commit:
                 commit_records(destination)
 
@@ -117,12 +122,12 @@ def main():
             return
         # Exercise every feasible GPU series before the potentially multi-day
         # CPU cases. Large-rank CPU runs go first, then single-core resolutions.
-        order = (selected if 'gpu_weak_scaling' in selected else
+        order = (selected if 'gpu_weak_scaling' in selected or 'gpu_ensemble' in selected else
                  ('gpu_resolution', 'gpu_scaling_super_fine', 'gpu_partition_super_fine',
                   'gpu_nsight_scaling_super_fine', 'gpu_weak_scaling_super_fine',
                   'gpu_scaling_super_super_fine', 'gpu_scaling_super_super_super_fine',
                   'cpu_partition_cores_super_fine', 'cpu_mpi_scaling_super_fine', 'cpu_resolution'))
-        for series in order:
+        for series in (s for s in order if s in selected):
             base_cases = studies['baseline', series][1]['cases']
             cases = sorted(base_cases, key=lambda c: (-c['ranks'] if series.startswith('cpu_') else c['ranks'], c['id']))
             for index, case in enumerate(cases):

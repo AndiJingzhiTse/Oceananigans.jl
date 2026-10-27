@@ -18,7 +18,10 @@ def kernel_categories(config):
     return ('Gc', 'Gu', 'Gv', 'Gw', 'Others') if config.get('model_type') == 'NonhydrostaticModel' else CATEGORIES
 
 
-def validate(case_dir, config, verify_traces=True):
+def validate(case_dir, config, verify_traces=True, ensemble_member=False):
+    if config.get('ensemble_size') and not ensemble_member:
+        from .ensemble import validate_ensemble
+        return validate_ensemble(case_dir, config)
     entries = json.loads((case_dir / 'results.json').read_text())
     ranks = config['ranks']
     if len(entries) != ranks or {e['rank'] for e in entries} != set(range(ranks)):
@@ -275,6 +278,9 @@ def write_model_comparison(path, folder, cases, comparison_suites):
 
 
 def write_report(folder, cases, plotting=True, reference_suites=(), replacement_suites=()):
+    if cases and all(c['series'] == 'gpu_ensemble' for c in cases):
+        from .ensemble import write_ensemble_report
+        return write_ensemble_report(folder, cases)
     combined = report_cases(folder, cases, reference_suites, replacement_suites)
     case_roots = {c['id']: root for c, root in combined}
     display_series = {c['series'] for c in cases}
