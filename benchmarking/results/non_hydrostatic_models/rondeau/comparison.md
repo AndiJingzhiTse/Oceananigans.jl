@@ -1,6 +1,8 @@
 # Rondeau: nonhydrostatic baseline versus Dagger
 
-Dagger submits one task per timing window, restricted to the current MPI process and its sole Julia computation thread. Oceananigans retains its existing MPI domain decomposition. Both paths synchronize CUDA before completing a window.
+For MPI series, Dagger submits one task per timing window, restricted to the current MPI process and its sole Julia computation thread. Oceananigans retains its existing MPI domain decomposition. Both paths synchronize CUDA before completing a window.
+
+In gpu_ensemble, four independent single-GPU simulations run concurrently. Dagger schedules four complete simulations; the baseline uses four concurrent Distributed calls. Ensemble speedups compare total timed makespan and dispatch-to-completion time.
 
 Speedup = baseline seconds per step / Dagger seconds per step. Above 1 favors Dagger; the equal-time reference is 1. Fastest and median timings are the maximum rank statistic. Only completed, validated pairs with matching configurations have ratios.
 
@@ -55,4 +57,17 @@ Requested GPU weak-scaling sequence: 360 × 180 × 50 on 1 GPU, 720 × 360 × 10
 | super_fine | 1440x720x200 / 1x1x1 | OUT_OF_MEMORY | OUT_OF_MEMORY | — | — |
 
 super_fine: baseline: Execution failed; ERROR: LoadError: Out of GPU memory trying to allocate 1.702 GiB; dagger: Execution failed; ERROR: LoadError: Out of GPU memory trying to allocate 1.702 GiB
+
+## gpu_ensemble
+
+Four independent models run concurrently on four GPUs. Each resolution is per model, with partition 1 × 1 × 1 and one MPI rank per model. Timed makespan covers all four 50-step timing blocks after a common post-warmup start gate. Dispatch time also includes construction, compilation, warmup and validation. Speedup = baseline / Dagger; equal time = 1. One ensemble batch is measured per variant and resolution.
+
+| Resolution per simulation | GPUs | Baseline / Dagger outcome | Timed makespan (s), baseline / Dagger | Timed speedup | Dispatch time (s), baseline / Dagger | Dispatch speedup |
+|---|---:|---|---:|---:|---:|---:|
+| 360 × 180 × 50 | 4 | PLANNED / PLANNED | — | — | — | — |
+
+baseline: ; dagger:
+| 720 × 360 × 100 | 4 | PLANNED / PLANNED | — | — | — | — |
+
+baseline: ; dagger:
 

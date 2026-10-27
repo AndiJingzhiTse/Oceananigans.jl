@@ -1,0 +1,81 @@
+{
+  "series": "gpu_ensemble",
+  "started_at": "2026-10-27T00:31:58.010609+00:00",
+  "source": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-26-gpu-ensemble/rondeau/source",
+  "source_revision": "e96959102499df2eec175b255bf6716aca6db65d",
+  "environment": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-26-gpu-ensemble/rondeau/environment",
+  "config": {
+    "machine": "rondeau",
+    "backend": "local",
+    "max_cpu_cores": 128,
+    "max_gpus": 4,
+    "project": "benchmarking",
+    "mpi": [
+      "mpiexec"
+    ],
+    "case_timeout_seconds": 3600
+  },
+  "command": [
+    "/usr/bin/python3",
+    "/u/ajtse/Oceananigans.jl/benchmarking/scripts/compare_dagger.py",
+    "--config",
+    "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-26-gpu-ensemble/rondeau/config.json",
+    "--project",
+    "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-26-gpu-ensemble/rondeau/environment",
+    "--study",
+    "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau",
+    "--publish",
+    "/u/ajtse/Oceananigans.jl/benchmarking/results/non_hydrostatic_models/rondeau",
+    "--series",
+    "gpu_ensemble",
+    "--commit"
+  ],
+  "controller_log": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-26-gpu-ensemble/rondeau/controller.log",
+  "controller_pid_file": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-26-gpu-ensemble/rondeau/controller.pid",
+  "raw_study": "/local_scratch/ajtse/benchmark_studies/non_hydrostatic_models/2026-10-23-rondeau-small/rondeau",
+  "models_per_batch": 4,
+  "ensemble_batches": 4,
+  "total_models": 16,
+  "grids": [
+    [
+      360,
+      180,
+      50
+    ],
+    [
+      720,
+      360,
+      100
+    ]
+  ],
+  "seeds": [
+    1234,
+    1235,
+    1236,
+    1237
+  ],
+  "variants": [
+    "baseline",
+    "dagger"
+  ],
+  "baseline_dispatch": "four concurrent Distributed.remotecall calls",
+  "dagger_dispatch": "four full-simulation Dagger tasks submitted before any fetch",
+  "validation": "Shared single-GPU model checks plus distinct GPUs/cores and verified overlap; tolerances unchanged",
+  "timing": {
+    "warmup_steps": 2,
+    "windows": 5,
+    "steps_per_window": 10,
+    "primary": "Common-start timed makespan across all four simulations",
+    "secondary": "Dispatch-to-completion wall time; worker/package setup reported separately"
+  },
+  "checks": {
+    "python_tests": 62,
+    "orchestration_smoke": "Baseline and Dagger each ran four concurrent mock tasks successfully"
+  },
+  "temporary_environment": {
+    "TMPDIR": "/u/ajtse/.ocean-tmp/eec48fa59597",
+    "TMP": "/u/ajtse/.ocean-tmp/eec48fa59597",
+    "TEMP": "/u/ajtse/.ocean-tmp/eec48fa59597",
+    "OMPI_MCA_orte_tmpdir_base": "/u/ajtse/.ocean-tmp/eec48fa59597"
+  }
+}

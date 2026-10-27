@@ -11,9 +11,10 @@
     "gpu_weak_scaling",
     "gpu_scaling_fine",
     "gpu_nsight_scaling_default",
-    "gpu_resolution"
+    "gpu_resolution",
+    "gpu_ensemble"
   ],
-  "planned_cases_per_variant": 12,
+  "planned_cases_per_variant": 14,
   "geometry_limits_per_variant": 0,
   "max_cpu_cores": 128,
   "max_gpus": 4,
@@ -79,5 +80,6 @@
   "cpu_benchmark_policy": "Cancelled and removed at user request; GPU-only study",
   "controller_revision": "c372444dccaa006bac831c7c9cd6a0d1668fb13c",
   "controller_pid": 1023656,
-  "gpu_only_handoff_completed_at": "2026-10-23T15:35:51.438504+00:00"
+  "gpu_only_handoff_completed_at": "2026-10-23T15:35:51.438504+00:00",
+  "ensemble_study": "ensemble_study.json"
 }

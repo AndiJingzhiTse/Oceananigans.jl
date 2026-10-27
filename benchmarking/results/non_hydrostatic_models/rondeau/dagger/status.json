@@ -118,5 +118,25 @@
     "grid_type": "LatitudeLongitudeGrid",
     "dagger_state": "OUT_OF_MEMORY",
     "details": "baseline: Execution failed; ERROR: LoadError: Out of GPU memory trying to allocate 1.702 GiB; dagger: Execution failed; ERROR: LoadError: Out of GPU memory trying to allocate 1.702 GiB"
+  },
+  {
+    "series": "gpu_ensemble",
+    "case": "default",
+    "ranks": 4,
+    "resolution": "360x180x50",
+    "partition": "1x1x1",
+    "grid_type": "LatitudeLongitudeGrid",
+    "dagger_state": "PLANNED",
+    "details": "baseline: ; dagger:"
+  },
+  {
+    "series": "gpu_ensemble",
+    "case": "fine",
+    "ranks": 4,
+    "resolution": "720x360x100",
+    "partition": "1x1x1",
+    "grid_type": "LatitudeLongitudeGrid",
+    "dagger_state": "PLANNED",
+    "details": "baseline: ; dagger:"
   }
 ]
