@@ -1,0 +1,29 @@
+JobId=23320834 JobName=nibi_cpu_cores_12288
+   UserId=anditse(3165591) GroupId=anditse(3165591) MCS_label=N/A
+   Priority=1413331 Nice=0 Account=def-fpoulin_cpu QOS=normal
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:00:11 TimeLimit=03:00:00 TimeMin=N/A
+   SubmitTime=2026-10-06T13:08:27 EligibleTime=2026-10-06T13:08:27
+   AccrueTime=2026-10-06T13:08:27
+   StartTime=2026-10-28T05:49:15 EndTime=2026-10-28T08:49:15 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-28T05:49:15 Scheduler=Backfill
+   Partition=cpubase_bynode_b1 AllocNode:Sid=l4:1054827
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=c[86,102,110,112,123,142,148,157,161,197,200,202,208,210,215,222,226-228,231,243,247,249,253,264-265,272,292,298,306,313-314,319,401,424-425,435,486,489-490,495-496,508,517,522,550-551,577,599,601,605,608,612,648,669-670,674,684,693,696-698,701-702]
+   BatchHost=c86
+   NumNodes=64 NumCPUs=12288 NumTasks=12288 CPUs/Task=1 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=12288,mem=47875G,node=64,billing=12288000
+   AllocTRES=cpu=12288,mem=47875G,node=64,billing=12288000
+   Socks/Node=* NtasksPerN:B:S:C=192:0:*:* CoreSpec=*
+   MinCPUsNode=192 MinMemoryNode=0 MinTmpDiskNode=0
+   Features=granite DelayBoot=00:00:00
+   OverSubscribe=NO Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)
+   Command=/home/anditse/Oceananigans.jl/benchmarking/results/nibi/cpu_core_benchmark.sbatch
+   SubmitLine=sbatch --parsable --account=def-fpoulin_cpu --constraint=granite --job-name=nibi_cpu_cores_12288 --nodes=64 --ntasks=12288 --ntasks-per-node=192 --cpus-per-task=1 --time=03:00:00 --output=/home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_scaling_cores_super_fine/12288_cores/job.out --exclusive --mem=0 /home/anditse/Oceananigans.jl/benchmarking/results/nibi/cpu_core_benchmark.sbatch /home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_scaling_cores_super_fine/12288_cores 128x96x1 /home/anditse/Oceananigans.jl/benchmarking/results/nibi
+   WorkDir=/home/anditse/Oceananigans.jl
+   StdErr=
+   StdIn=/dev/null
+   StdOut=/home/anditse/Oceananigans.jl/benchmarking/results/nibi/2026-10-06_cpu_scaling_cores_super_fine/12288_cores/job.out
+   TresPerTask=cpu=1
+
