@@ -1,0 +1,8 @@
+resolution = [32, 24, 16]
+partition = [1, 1, 1]
+float_type = "Float64"
+warmup_steps = 2
+windows = 5
+steps_per_window = 10
+timestep = 0.001
+viscosity = 0.01
