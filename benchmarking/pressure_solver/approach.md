@@ -111,6 +111,16 @@ This is a source-level compatibility concern, not a completed package-load
 test. The isolated upstream installation was stopped after 608 seconds while
 downloading dependencies; no upstream DaggerFFT execution result is claimed.
 
+A candidate explanation is the author's own Dagger fork:
+<https://github.com/sanatgp/Dagger.jl/tree/4a1b8fa7640918023117ff18eb7c21b39cc062ae>.
+Its `DaggerFFT` branch declares version 0.18.14 and includes the MPI acceleration
+API missing from the registered release. Pin and test this fork explicitly
+before attributing results to the authors' implementation; its relationship
+to the exact paper build has not been verified. An older Oceananigans integration
+is also available at <https://github.com/sanatgp/Oceananigans.jl/tree/06227c5bf215>.
+That source uses global host gathers and older solver signatures, so it requires
+an independent correctness and data-movement review before adaptation.
+
 The first prototype is our own benchmark-local chunked solver on Dagger 0.22.7.
 It does not vendor or modify DaggerFFT. Each chunk owns a CUDA stream, buffer
 and transform plans; the serial control waits after each chunk, while Dagger

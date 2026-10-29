@@ -119,6 +119,11 @@ end
 function run_case(configuration_path, output_directory; backend=:native)
     configuration = TOML.parsefile(configuration_path)
     validate_configuration(configuration)
+    source_root = realpath(joinpath(@__DIR__, "../.."))
+    realpath(pathof(Oceananigans)) == joinpath(source_root, "src", "Oceananigans.jl") ||
+        error("Develop this checkout in the benchmark environment before running")
+    source_revision = readchomp(`git -C $source_root rev-parse HEAD`)
+    source_dirty_at_start = !isempty(readchomp(`git -C $source_root status --porcelain`))
     MPI.Initialized() || MPI.Init()
     comm = MPI.COMM_WORLD
     rank, ranks = MPI.Comm_rank(comm), MPI.Comm_size(comm)
@@ -153,6 +158,11 @@ function run_case(configuration_path, output_directory; backend=:native)
     mkpath(output_directory)
     result = (; status="COMPLETED", backend, backend_metadata=backend_metadata(solver), configuration, grid_type="RectilinearGrid",
               topology=["Periodic", "Periodic", "Periodic"], local_resolution=size(grid), rank, ranks,
+              model_parameters=(; model="NonhydrostaticModel", global_extent=fill(float_type(2π), 3),
+                                  momentum_advection="Centered(order=2)", timestepper="RungeKutta3",
+                                  closure="ScalarDiffusivity", viscosity=configuration["viscosity"],
+                                  tracers=String[], buoyancy=nothing, coriolis=nothing, free_surface=nothing,
+                                  halo=(grid.Hx, grid.Hy, grid.Hz)),
               device=string(CUDA.device()), gpu_uuid=string(CUDA.uuid(CUDA.device())),
               julia_version=string(VERSION), oceananigans_version=string(pkgversion(Oceananigans)),
               cuda_version=string(pkgversion(CUDA)), mpi_library=MPI.Get_library_version(),
@@ -162,8 +172,9 @@ function run_case(configuration_path, output_directory; backend=:native)
               visible_devices=get(ENV, "CUDA_VISIBLE_DEVICES", ""),
               environment=Base.active_project(), solver_type=string(typeof(solver)),
               julia_threads=Threads.nthreads(), source_path=pathof(Oceananigans),
-              source_revision=readchomp(`git -C $(joinpath(@__DIR__, "../..")) rev-parse HEAD`),
-              source_dirty=!isempty(readchomp(`git -C $(joinpath(@__DIR__, "../..")) status --porcelain`)),
+              source_revision,
+              source_dirty=source_dirty_at_start || !isempty(readchomp(`git -C $source_root status --porcelain`)) ||
+                           source_revision != readchomp(`git -C $source_root rev-parse HEAD`),
               timestamp=string(now(UTC)), construction_seconds, pressure_timing, pressure_validation,
               timestep_timing, model_validation,
               temporary_directory=realpath(tempdir()), command=Base.PROGRAM_FILE * " " * join(ARGS, " "))
