@@ -1,0 +1,42 @@
+{
+  "daggerfft_repository": "https://github.com/sanatgp/DaggerFFT.jl",
+  "daggerfft_revision": "8c0230efb1aaec998570c40241aadfcec20f52be",
+  "declared_dagger_compat": "0.18.14",
+  "registered_dagger_source_inspected": "0.18.16",
+  "registered_source_has_acceleration_api": false,
+  "upstream_package_load_test": "not completed",
+  "dependency_setup": "stopped after 608 seconds during downloads",
+  "prototype_dagger_version": "0.22.7",
+  "source_files": {
+    "dagger_fork_Dagger.jl": {
+      "bytes": 5900,
+      "sha256": "a268908f01ba619595c4d8440264eaecc42de07a611dbaaee0c2b54a09bd2c62"
+    },
+    "dagger_fork_mpi.jl": {
+      "bytes": 24466,
+      "sha256": "07a807327b0044ad984b40a705909511f7dea8967c0b61912cec8fe00dfaa6b6"
+    },
+    "oceananigans_fork_project.toml": {
+      "bytes": 4458,
+      "sha256": "4bac787395bf9f96ddf2679ef57315773bedb218190ff9d3dd18f81f7b30ad11"
+    },
+    "oceananigans_fork_solver.jl": {
+      "bytes": 10996,
+      "sha256": "993ecde46ca389e2a5f66797453e776ce8e5156f6a5b1aed481600d14038fec5"
+    },
+    "dagger_fork_project.toml": {
+      "bytes": 2371,
+      "sha256": "c3ba4e3ecd5e2588945dfec3ff6b43f04f59a93d4b68b9f3f0e8e836665b3ac6"
+    }
+  },
+  "author_dagger_fork": {
+    "repository": "https://github.com/sanatgp/Dagger.jl",
+    "branch": "DaggerFFT",
+    "revision": "4a1b8fa7640918023117ff18eb7c21b39cc062ae"
+  },
+  "author_oceananigans_fork": {
+    "repository": "https://github.com/sanatgp/Oceananigans.jl",
+    "branch": "main",
+    "revision": "06227c5bf2151ac62c276629de398c2c7bf36f31"
+  }
+}

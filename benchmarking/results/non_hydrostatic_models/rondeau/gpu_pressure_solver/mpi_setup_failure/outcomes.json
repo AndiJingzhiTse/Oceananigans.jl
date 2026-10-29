@@ -1,0 +1,23 @@
+[
+  {
+    "backend": "native",
+    "directory": "/local_scratch/ajtse/dagger_poisson/2026-10-29/native_mpi_acceptance/repeat_1/native",
+    "command": [
+      "/opt/uw/openmpi/4.1.7-with-cuda/bin/mpiexec",
+      "--bind-to",
+      "core",
+      "-np",
+      "2",
+      "/u/ajtse/.local/bin/julia",
+      "--project=/local_scratch/ajtse/dagger_poisson/2026-10-29/environment",
+      "--threads=1",
+      "/local_scratch/ajtse/worktrees/oceananigans-dagger-pressure/benchmarking/scripts/benchmark_pressure_solver.jl",
+      "/local_scratch/ajtse/worktrees/oceananigans-dagger-pressure/benchmarking/pressure_solver/mpi_smoke.toml",
+      "/local_scratch/ajtse/dagger_poisson/2026-10-29/native_mpi_acceptance/repeat_1/native",
+      "native"
+    ],
+    "status": "FAILED",
+    "error": "Command '['/opt/uw/openmpi/4.1.7-with-cuda/bin/mpiexec', '--bind-to', 'core', '-np', '2', '/u/ajtse/.local/bin/julia', '--project=/local_scratch/ajtse/dagger_poisson/2026-10-29/environment', '--threads=1', '/local_scratch/ajtse/worktrees/oceananigans-dagger-pressure/benchmarking/scripts/benchmark_pressure_solver.jl', '/local_scratch/ajtse/worktrees/oceananigans-dagger-pressure/benchmarking/pressure_solver/mpi_smoke.toml', '/local_scratch/ajtse/dagger_poisson/2026-10-29/native_mpi_acceptance/repeat_1/native', 'native']' returned non-zero exit status 16.",
+    "wall_seconds": 17.036719854921103
+  }
+]

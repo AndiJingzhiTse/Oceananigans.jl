@@ -1,0 +1,206 @@
+[
+  {
+    "backend": "native",
+    "directory": "/local_scratch/ajtse/dagger_poisson/2026-10-29/prototype_comparison/repeat_1/native",
+    "command": [
+      "/u/ajtse/.local/bin/julia",
+      "--project=/local_scratch/ajtse/dagger_poisson/2026-10-29/environment",
+      "--threads=1",
+      "/local_scratch/ajtse/worktrees/oceananigans-dagger-pressure/benchmarking/scripts/benchmark_pressure_solver.jl",
+      "/local_scratch/ajtse/worktrees/oceananigans-dagger-pressure/benchmarking/pressure_solver/smoke.toml",
+      "/local_scratch/ajtse/dagger_poisson/2026-10-29/prototype_comparison/repeat_1/native",
+      "native"
+    ],
+    "status": "COMPLETED",
+    "pressure_seconds": 5.85812e-05,
+    "timestep_seconds": 0.0008913191,
+    "wall_seconds": 55.13601502031088
+  },
+  {
+    "backend": "serial_chunks",
+    "directory": "/local_scratch/ajtse/dagger_poisson/2026-10-29/prototype_comparison/repeat_1/serial_chunks",
+    "command": [
+      "/u/ajtse/.local/bin/julia",
+      "--project=/local_scratch/ajtse/dagger_poisson/2026-10-29/environment",
+      "--threads=1",
+      "/local_scratch/ajtse/worktrees/oceananigans-dagger-pressure/benchmarking/scripts/benchmark_pressure_solver.jl",
+      "/local_scratch/ajtse/worktrees/oceananigans-dagger-pressure/benchmarking/pressure_solver/smoke.toml",
+      "/local_scratch/ajtse/dagger_poisson/2026-10-29/prototype_comparison/repeat_1/serial_chunks",
+      "serial_chunks"
+    ],
+    "status": "COMPLETED",
+    "pressure_seconds": 0.0014645319000000001,
+    "timestep_seconds": 0.0051561838,
+    "wall_seconds": 64.84904459677637
+  },
+  {
+    "backend": "async_chunks",
+    "directory": "/local_scratch/ajtse/dagger_poisson/2026-10-29/prototype_comparison/repeat_1/async_chunks",
+    "command": [
+      "/u/ajtse/.local/bin/julia",
+      "--project=/local_scratch/ajtse/dagger_poisson/2026-10-29/environment",
+      "--threads=1",
+      "/local_scratch/ajtse/worktrees/oceananigans-dagger-pressure/benchmarking/scripts/benchmark_pressure_solver.jl",
+      "/local_scratch/ajtse/worktrees/oceananigans-dagger-pressure/benchmarking/pressure_solver/smoke.toml",
+      "/local_scratch/ajtse/dagger_poisson/2026-10-29/prototype_comparison/repeat_1/async_chunks",
+      "async_chunks"
+    ],
+    "status": "COMPLETED",
+    "pressure_seconds": 0.001543268,
+    "timestep_seconds": 0.0055486007,
+    "wall_seconds": 65.20005892962217
+  },
+  {
+    "backend": "dagger_chunks",
+    "directory": "/local_scratch/ajtse/dagger_poisson/2026-10-29/prototype_comparison/repeat_1/dagger_chunks",
+    "command": [
+      "/u/ajtse/.local/bin/julia",
+      "--project=/local_scratch/ajtse/dagger_poisson/2026-10-29/environment",
+      "--threads=1",
+      "/local_scratch/ajtse/worktrees/oceananigans-dagger-pressure/benchmarking/scripts/benchmark_pressure_solver.jl",
+      "/local_scratch/ajtse/worktrees/oceananigans-dagger-pressure/benchmarking/pressure_solver/smoke.toml",
+      "/local_scratch/ajtse/dagger_poisson/2026-10-29/prototype_comparison/repeat_1/dagger_chunks",
+      "dagger_chunks"
+    ],
+    "status": "COMPLETED",
+    "pressure_seconds": 0.0033176666,
+    "timestep_seconds": 0.0113354915,
+    "wall_seconds": 75.31325065903366
+  },
+  {
+    "backend": "dagger_chunks",
+    "directory": "/local_scratch/ajtse/dagger_poisson/2026-10-29/prototype_comparison/repeat_2/dagger_chunks",
+    "command": [
+      "/u/ajtse/.local/bin/julia",
+      "--project=/local_scratch/ajtse/dagger_poisson/2026-10-29/environment",
+      "--threads=1",
+      "/local_scratch/ajtse/worktrees/oceananigans-dagger-pressure/benchmarking/scripts/benchmark_pressure_solver.jl",
+      "/local_scratch/ajtse/worktrees/oceananigans-dagger-pressure/benchmarking/pressure_solver/smoke.toml",
+      "/local_scratch/ajtse/dagger_poisson/2026-10-29/prototype_comparison/repeat_2/dagger_chunks",
+      "dagger_chunks"
+    ],
+    "status": "COMPLETED",
+    "pressure_seconds": 0.0033750555000000002,
+    "timestep_seconds": 0.0108957656,
+    "wall_seconds": 75.51307333819568
+  },
+  {
+    "backend": "async_chunks",
+    "directory": "/local_scratch/ajtse/dagger_poisson/2026-10-29/prototype_comparison/repeat_2/async_chunks",
+    "command": [
+      "/u/ajtse/.local/bin/julia",
+      "--project=/local_scratch/ajtse/dagger_poisson/2026-10-29/environment",
+      "--threads=1",
+      "/local_scratch/ajtse/worktrees/oceananigans-dagger-pressure/benchmarking/scripts/benchmark_pressure_solver.jl",
+      "/local_scratch/ajtse/worktrees/oceananigans-dagger-pressure/benchmarking/pressure_solver/smoke.toml",
+      "/local_scratch/ajtse/dagger_poisson/2026-10-29/prototype_comparison/repeat_2/async_chunks",
+      "async_chunks"
+    ],
+    "status": "COMPLETED",
+    "pressure_seconds": 0.0016218959000000002,
+    "timestep_seconds": 0.0050469384,
+    "wall_seconds": 64.49867161177099
+  },
+  {
+    "backend": "serial_chunks",
+    "directory": "/local_scratch/ajtse/dagger_poisson/2026-10-29/prototype_comparison/repeat_2/serial_chunks",
+    "command": [
+      "/u/ajtse/.local/bin/julia",
+      "--project=/local_scratch/ajtse/dagger_poisson/2026-10-29/environment",
+      "--threads=1",
+      "/local_scratch/ajtse/worktrees/oceananigans-dagger-pressure/benchmarking/scripts/benchmark_pressure_solver.jl",
+      "/local_scratch/ajtse/worktrees/oceananigans-dagger-pressure/benchmarking/pressure_solver/smoke.toml",
+      "/local_scratch/ajtse/dagger_poisson/2026-10-29/prototype_comparison/repeat_2/serial_chunks",
+      "serial_chunks"
+    ],
+    "status": "COMPLETED",
+    "pressure_seconds": 0.0014733545,
+    "timestep_seconds": 0.005006886,
+    "wall_seconds": 65.55479811504483
+  },
+  {
+    "backend": "native",
+    "directory": "/local_scratch/ajtse/dagger_poisson/2026-10-29/prototype_comparison/repeat_2/native",
+    "command": [
+      "/u/ajtse/.local/bin/julia",
+      "--project=/local_scratch/ajtse/dagger_poisson/2026-10-29/environment",
+      "--threads=1",
+      "/local_scratch/ajtse/worktrees/oceananigans-dagger-pressure/benchmarking/scripts/benchmark_pressure_solver.jl",
+      "/local_scratch/ajtse/worktrees/oceananigans-dagger-pressure/benchmarking/pressure_solver/smoke.toml",
+      "/local_scratch/ajtse/dagger_poisson/2026-10-29/prototype_comparison/repeat_2/native",
+      "native"
+    ],
+    "status": "COMPLETED",
+    "pressure_seconds": 5.82988e-05,
+    "timestep_seconds": 0.0008658786,
+    "wall_seconds": 54.936204893514514
+  },
+  {
+    "backend": "native",
+    "directory": "/local_scratch/ajtse/dagger_poisson/2026-10-29/prototype_comparison/repeat_3/native",
+    "command": [
+      "/u/ajtse/.local/bin/julia",
+      "--project=/local_scratch/ajtse/dagger_poisson/2026-10-29/environment",
+      "--threads=1",
+      "/local_scratch/ajtse/worktrees/oceananigans-dagger-pressure/benchmarking/scripts/benchmark_pressure_solver.jl",
+      "/local_scratch/ajtse/worktrees/oceananigans-dagger-pressure/benchmarking/pressure_solver/smoke.toml",
+      "/local_scratch/ajtse/dagger_poisson/2026-10-29/prototype_comparison/repeat_3/native",
+      "native"
+    ],
+    "status": "COMPLETED",
+    "pressure_seconds": 5.8285699999999997e-05,
+    "timestep_seconds": 0.0008286643,
+    "wall_seconds": 54.585929507389665
+  },
+  {
+    "backend": "serial_chunks",
+    "directory": "/local_scratch/ajtse/dagger_poisson/2026-10-29/prototype_comparison/repeat_3/serial_chunks",
+    "command": [
+      "/u/ajtse/.local/bin/julia",
+      "--project=/local_scratch/ajtse/dagger_poisson/2026-10-29/environment",
+      "--threads=1",
+      "/local_scratch/ajtse/worktrees/oceananigans-dagger-pressure/benchmarking/scripts/benchmark_pressure_solver.jl",
+      "/local_scratch/ajtse/worktrees/oceananigans-dagger-pressure/benchmarking/pressure_solver/smoke.toml",
+      "/local_scratch/ajtse/dagger_poisson/2026-10-29/prototype_comparison/repeat_3/serial_chunks",
+      "serial_chunks"
+    ],
+    "status": "COMPLETED",
+    "pressure_seconds": 0.0014901259,
+    "timestep_seconds": 0.0048977339,
+    "wall_seconds": 65.24926499091089
+  },
+  {
+    "backend": "async_chunks",
+    "directory": "/local_scratch/ajtse/dagger_poisson/2026-10-29/prototype_comparison/repeat_3/async_chunks",
+    "command": [
+      "/u/ajtse/.local/bin/julia",
+      "--project=/local_scratch/ajtse/dagger_poisson/2026-10-29/environment",
+      "--threads=1",
+      "/local_scratch/ajtse/worktrees/oceananigans-dagger-pressure/benchmarking/scripts/benchmark_pressure_solver.jl",
+      "/local_scratch/ajtse/worktrees/oceananigans-dagger-pressure/benchmarking/pressure_solver/smoke.toml",
+      "/local_scratch/ajtse/dagger_poisson/2026-10-29/prototype_comparison/repeat_3/async_chunks",
+      "async_chunks"
+    ],
+    "status": "COMPLETED",
+    "pressure_seconds": 0.0015256076,
+    "timestep_seconds": 0.005247372,
+    "wall_seconds": 64.9490695875138
+  },
+  {
+    "backend": "dagger_chunks",
+    "directory": "/local_scratch/ajtse/dagger_poisson/2026-10-29/prototype_comparison/repeat_3/dagger_chunks",
+    "command": [
+      "/u/ajtse/.local/bin/julia",
+      "--project=/local_scratch/ajtse/dagger_poisson/2026-10-29/environment",
+      "--threads=1",
+      "/local_scratch/ajtse/worktrees/oceananigans-dagger-pressure/benchmarking/scripts/benchmark_pressure_solver.jl",
+      "/local_scratch/ajtse/worktrees/oceananigans-dagger-pressure/benchmarking/pressure_solver/smoke.toml",
+      "/local_scratch/ajtse/dagger_poisson/2026-10-29/prototype_comparison/repeat_3/dagger_chunks",
+      "dagger_chunks"
+    ],
+    "status": "COMPLETED",
+    "pressure_seconds": 0.003252339,
+    "timestep_seconds": 0.010554574399999999,
+    "wall_seconds": 75.31324772164226
+  }
+]

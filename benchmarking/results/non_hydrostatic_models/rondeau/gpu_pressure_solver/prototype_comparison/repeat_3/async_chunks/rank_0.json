@@ -1,0 +1,111 @@
+{
+  "status": "COMPLETED",
+  "backend": "async_chunks",
+  "backend_metadata": {
+    "dagger_version": "0.22.7",
+    "chunks_per_stage": 4,
+    "synchronization": "complete each stage before dependent transforms",
+    "scope": "owning process, computation thread 1, explicit CUDA streams"
+  },
+  "configuration": {
+    "float_type": "Float64",
+    "partition": [
+      1,
+      1,
+      1
+    ],
+    "resolution": [
+      32,
+      24,
+      16
+    ],
+    "steps_per_window": 10,
+    "timestep": 0.001,
+    "viscosity": 0.01,
+    "warmup_steps": 2,
+    "windows": 5
+  },
+  "grid_type": "RectilinearGrid",
+  "topology": [
+    "Periodic",
+    "Periodic",
+    "Periodic"
+  ],
+  "local_resolution": [
+    32,
+    24,
+    16
+  ],
+  "rank": 0,
+  "ranks": 1,
+  "device": "CUDACore.CuDevice(0)",
+  "gpu_uuid": "27b6f362-d593-fda1-e6fa-43275dcca7da",
+  "julia_version": "1.12.7",
+  "oceananigans_version": "0.113.0",
+  "cuda_version": "6.1.0",
+  "mpi_library": "MPICH Version:      5.0.1\nMPICH Release date: Fri Apr 10 09:45:31 AM CDT 2026\nMPICH ABI:          18:1:6\nMPICH Device:       ch4:ofi\nMPICH configure:    --build=x86_64-linux-musl --disable-dependency-tracking --disable-doc --enable-fast=ndebug,O3 --enable-static=no --host=x86_64-linux-gnu --prefix=/workspace/destdir --with-hwloc=/workspace/destdir\nMPICH CC:           cc     -DNDEBUG -DNVALGRIND -O3\nMPICH CXX:          c++   -DNDEBUG -DNVALGRIND -O3\nMPICH F77:          gfortran   -O3\nMPICH FC:           gfortran   -O3\nMPICH features:     threadcomm\n",
+  "cuda_runtime": "12.9.0",
+  "cuda_driver": "12.4.0",
+  "fftw_version": "1.10.0",
+  "cpu": "znver3",
+  "cpu_affinity": "0-254",
+  "visible_devices": "GPU-27b6f362-d593-fda1-e6fa-43275dcca7da",
+  "environment": "/local_scratch/ajtse/dagger_poisson/2026-10-29/environment/Project.toml",
+  "solver_type": "Main.ChunkedFFTPressureSolvers.ChunkedFFTBasedPoissonSolver{Oceananigans.Solvers.FFTBasedPoissonSolver{Oceananigans.Grids.RectilinearGrid{Float64, Oceananigans.Grids.Periodic, Oceananigans.Grids.Periodic, Oceananigans.Grids.Periodic, Oceananigans.Grids.StaticVerticalDiscretization{OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, Float64, Float64}, Float64, Float64, OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, Oceananigans.Architectures.GPU{CUDACore.CUDAKernels.CUDABackend}, Oceananigans.Grids.GridSize{32, 24, 16, 4, 4, 4}}, @NamedTuple{λx::CUDACore.CuArray{Float64, 3, CUDACore.DeviceMemory}, λy::CUDACore.CuArray{Float64, 3, CUDACore.DeviceMemory}, λz::CUDACore.CuArray{Float64, 3, CUDACore.DeviceMemory}}, CUDACore.CuArray{ComplexF64, 3, CUDACore.DeviceMemory}, Nothing, @NamedTuple{forward::Tuple{Oceananigans.Solvers.DiscreteTransform{Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing}, Oceananigans.Solvers.DiscreteTransform{cuFFT.CuFFTPlan{ComplexF64, ComplexF64, -1, true, 3, 3, Nothing}, Oceananigans.Solvers.Forward, Oceananigans.Grids.RectilinearGrid{Float64, Oceananigans.Grids.Periodic, Oceananigans.Grids.Periodic, Oceananigans.Grids.Periodic, Oceananigans.Grids.StaticVerticalDiscretization{OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, Float64, Float64}, Float64, Float64, OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, Oceananigans.Architectures.GPU{CUDACore.CUDAKernels.CUDABackend}, Oceananigans.Grids.GridSize{32, 24, 16, 4, 4, 4}}, Vector{Int64}, Vector{Oceananigans.Grids.Periodic}, Int64, Nothing, Nothing}}, backward::Tuple{Oceananigans.Solvers.DiscreteTransform{AbstractFFTs.ScaledPlan{ComplexF64, cuFFT.CuFFTPlan{ComplexF64, ComplexF64, 1, true, 3, 3, Nothing}, Float64}, Oceananigans.Solvers.Backward, Oceananigans.Grids.RectilinearGrid{Float64, Oceananigans.Grids.Periodic, Oceananigans.Grids.Periodic, Oceananigans.Grids.Periodic, Oceananigans.Grids.StaticVerticalDiscretization{OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, Float64, Float64}, Float64, Float64, OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, Oceananigans.Architectures.GPU{CUDACore.CUDAKernels.CUDABackend}, Oceananigans.Grids.GridSize{32, 24, 16, 4, 4, 4}}, Vector{Int64}, Vector{Oceananigans.Grids.Periodic}, Int64, Nothing, Nothing}, Oceananigans.Solvers.DiscreteTransform{Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing}}}}, Tuple{Vector{Main.ChunkedFFTPressureSolvers.FFTChunk{Tuple{Base.OneTo{Int64}, UnitRange{Int64}, Base.OneTo{Int64}}, CUDACore.CuArray{ComplexF64, 3, CUDACore.DeviceMemory}, cuFFT.CuFFTPlan{ComplexF64, ComplexF64, -1, true, 3, 1, Nothing}, AbstractFFTs.ScaledPlan{ComplexF64, cuFFT.CuFFTPlan{ComplexF64, ComplexF64, 1, true, 3, 1, Nothing}, Float64}, CUDACore.CuStream}}, Vector{Main.ChunkedFFTPressureSolvers.FFTChunk{Tuple{UnitRange{Int64}, Base.OneTo{Int64}, Base.OneTo{Int64}}, CUDACore.CuArray{ComplexF64, 3, CUDACore.DeviceMemory}, cuFFT.CuFFTPlan{ComplexF64, ComplexF64, -1, true, 3, 1, Nothing}, AbstractFFTs.ScaledPlan{ComplexF64, cuFFT.CuFFTPlan{ComplexF64, ComplexF64, 1, true, 3, 1, Nothing}, Float64}, CUDACore.CuStream}}, Vector{Main.ChunkedFFTPressureSolvers.FFTChunk{Tuple{UnitRange{Int64}, Base.OneTo{Int64}, Base.OneTo{Int64}}, CUDACore.CuArray{ComplexF64, 3, CUDACore.DeviceMemory}, cuFFT.CuFFTPlan{ComplexF64, ComplexF64, -1, true, 3, 1, Nothing}, AbstractFFTs.ScaledPlan{ComplexF64, cuFFT.CuFFTPlan{ComplexF64, ComplexF64, 1, true, 3, 1, Nothing}, Float64}, CUDACore.CuStream}}}, Main.ChunkedFFTPressureSolvers.AsyncChunks}",
+  "julia_threads": 1,
+  "source_path": "/local_scratch/ajtse/worktrees/oceananigans-dagger-pressure/src/Oceananigans.jl",
+  "source_revision": "eb60b37a5b06ad39ac04b2b238b7739e35505436",
+  "source_dirty": false,
+  "timestamp": "2026-10-29T21:50:25.653",
+  "construction_seconds": 5.606967142,
+  "pressure_timing": {
+    "local_seconds": [
+      0.015464317,
+      0.015266474,
+      0.015256076,
+      0.01521624,
+      0.015234424
+    ],
+    "maximum_rank_seconds": [
+      0.015464317,
+      0.015266474,
+      0.015256076,
+      0.01521624,
+      0.015234424
+    ],
+    "fastest_seconds_per_operation": 0.001521624,
+    "median_seconds_per_operation": 0.0015256076
+  },
+  "pressure_validation": {
+    "relative_residual": 1.0698654980870689e-15,
+    "relative_error": 6.411876576495754e-16,
+    "tolerance": 2.2737367544323206e-11,
+    "passed": true
+  },
+  "timestep_timing": {
+    "local_seconds": [
+      0.051937201,
+      0.052793162,
+      0.052675209,
+      0.05247372,
+      0.05213844
+    ],
+    "maximum_rank_seconds": [
+      0.051937201,
+      0.052793162,
+      0.052675209,
+      0.05247372,
+      0.05213844
+    ],
+    "fastest_seconds_per_operation": 0.0051937201,
+    "median_seconds_per_operation": 0.005247372
+  },
+  "model_validation": {
+    "finite": true,
+    "maximum_divergence": 1.0519107937642112e-15,
+    "tolerance": 2.2737367544323206e-11,
+    "passed": true
+  },
+  "temporary_directory": "/local_scratch/ajtse/dagger_poisson/2026-10-29/tmp",
+  "command": "/local_scratch/ajtse/worktrees/oceananigans-dagger-pressure/benchmarking/scripts/benchmark_pressure_solver.jl /local_scratch/ajtse/worktrees/oceananigans-dagger-pressure/benchmarking/pressure_solver/smoke.toml /local_scratch/ajtse/dagger_poisson/2026-10-29/prototype_comparison/repeat_3/async_chunks async_chunks"
+}

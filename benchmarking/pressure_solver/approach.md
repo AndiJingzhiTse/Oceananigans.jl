@@ -130,10 +130,10 @@ The `async_chunks` control submits the same work with Julia `@async`, retaining
 the same streams and waits. Dagger must also beat this concurrent control to
 support a claim about a benefit from its scheduler specifically.
 
-Prototype validation:
+Run the native and prototype GPU acceptance tests together:
 
 ```sh
-julia --threads=1 --project=benchmarking/pressure_solver benchmarking/test/test_chunked_fft_pressure_solver.jl
+julia --threads=1 --project=benchmarking/pressure_solver benchmarking/pressure_solver/runtests.jl
 python3 -m unittest discover -s benchmarking/test -p 'test_pressure_solver_study.py'
 ```
 

@@ -1,0 +1,21 @@
+Abort(1721616): Fatal error in internal_Init_thread: Internal MPI error!, error stack:
+internal_Init_thread(71)........: MPI_Init_thread(argc=(nil), argv=(nil), required=2, provided=0x7fffe70bc740) failed
+MPII_Init_thread(204)...........: 
+MPIR_pmi_init(225)..............: 
+check_MPIR_CVAR_PMI_VERSION(167):  Runtime environment uses unsupported PMI version PMIx. Aborting.
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+Abort(337265936): Fatal error in internal_Init_thread: Internal MPI error!, error stack:
+internal_Init_thread(71)........: MPI_Init_thread(argc=(nil), argv=(nil), required=2, provided=0x7ffc0e63b2b0) failed
+MPII_Init_thread(204)...........: 
+MPIR_pmi_init(225)..............: 
+check_MPIR_CVAR_PMI_VERSION(167):  Runtime environment uses unsupported PMI version PMIx. Aborting.
+--------------------------------------------------------------------------
+mpiexec detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[48958,1],1]
+  Exit code:    16
+--------------------------------------------------------------------------

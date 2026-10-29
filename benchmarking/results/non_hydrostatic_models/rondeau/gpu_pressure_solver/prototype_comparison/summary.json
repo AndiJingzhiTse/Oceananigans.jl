@@ -1,0 +1,58 @@
+{
+  "native": {
+    "pressure_seconds": 5.82988e-05,
+    "timestep_seconds": 0.0008658786,
+    "pressure_seconds_range": [
+      5.8285699999999997e-05,
+      5.85812e-05
+    ],
+    "timestep_seconds_range": [
+      0.0008286643,
+      0.0008913191
+    ],
+    "pressure_speedup": 1.0,
+    "timestep_speedup": 1.0
+  },
+  "serial_chunks": {
+    "pressure_seconds": 0.0014733545,
+    "timestep_seconds": 0.005006886,
+    "pressure_seconds_range": [
+      0.0014645319000000001,
+      0.0014901259
+    ],
+    "timestep_seconds_range": [
+      0.0048977339,
+      0.0051561838
+    ],
+    "pressure_speedup": 0.03956875280185454,
+    "timestep_speedup": 0.17293755040558142
+  },
+  "async_chunks": {
+    "pressure_seconds": 0.001543268,
+    "timestep_seconds": 0.005247372,
+    "pressure_seconds_range": [
+      0.0015256076,
+      0.0016218959000000002
+    ],
+    "timestep_seconds_range": [
+      0.0050469384,
+      0.0055486007
+    ],
+    "pressure_speedup": 0.03777619959721837,
+    "timestep_speedup": 0.16501185736402907
+  },
+  "dagger_chunks": {
+    "pressure_seconds": 0.0033176666,
+    "timestep_seconds": 0.0108957656,
+    "pressure_seconds_range": [
+      0.003252339,
+      0.0033750555000000002
+    ],
+    "timestep_seconds_range": [
+      0.010554574399999999,
+      0.0113354915
+    ],
+    "pressure_speedup": 0.017572229831653366,
+    "timestep_speedup": 0.07946927566062913
+  }
+}

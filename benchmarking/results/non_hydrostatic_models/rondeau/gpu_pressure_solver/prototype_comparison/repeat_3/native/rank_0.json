@@ -1,0 +1,106 @@
+{
+  "status": "COMPLETED",
+  "backend": "native",
+  "backend_metadata": {},
+  "configuration": {
+    "float_type": "Float64",
+    "partition": [
+      1,
+      1,
+      1
+    ],
+    "resolution": [
+      32,
+      24,
+      16
+    ],
+    "steps_per_window": 10,
+    "timestep": 0.001,
+    "viscosity": 0.01,
+    "warmup_steps": 2,
+    "windows": 5
+  },
+  "grid_type": "RectilinearGrid",
+  "topology": [
+    "Periodic",
+    "Periodic",
+    "Periodic"
+  ],
+  "local_resolution": [
+    32,
+    24,
+    16
+  ],
+  "rank": 0,
+  "ranks": 1,
+  "device": "CUDACore.CuDevice(0)",
+  "gpu_uuid": "27b6f362-d593-fda1-e6fa-43275dcca7da",
+  "julia_version": "1.12.7",
+  "oceananigans_version": "0.113.0",
+  "cuda_version": "6.1.0",
+  "mpi_library": "MPICH Version:      5.0.1\nMPICH Release date: Fri Apr 10 09:45:31 AM CDT 2026\nMPICH ABI:          18:1:6\nMPICH Device:       ch4:ofi\nMPICH configure:    --build=x86_64-linux-musl --disable-dependency-tracking --disable-doc --enable-fast=ndebug,O3 --enable-static=no --host=x86_64-linux-gnu --prefix=/workspace/destdir --with-hwloc=/workspace/destdir\nMPICH CC:           cc     -DNDEBUG -DNVALGRIND -O3\nMPICH CXX:          c++   -DNDEBUG -DNVALGRIND -O3\nMPICH F77:          gfortran   -O3\nMPICH FC:           gfortran   -O3\nMPICH features:     threadcomm\n",
+  "cuda_runtime": "12.9.0",
+  "cuda_driver": "12.4.0",
+  "fftw_version": "1.10.0",
+  "cpu": "znver3",
+  "cpu_affinity": "0-254",
+  "visible_devices": "GPU-27b6f362-d593-fda1-e6fa-43275dcca7da",
+  "environment": "/local_scratch/ajtse/dagger_poisson/2026-10-29/environment/Project.toml",
+  "solver_type": "Oceananigans.Solvers.FFTBasedPoissonSolver{Oceananigans.Grids.RectilinearGrid{Float64, Oceananigans.Grids.Periodic, Oceananigans.Grids.Periodic, Oceananigans.Grids.Periodic, Oceananigans.Grids.StaticVerticalDiscretization{OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, Float64, Float64}, Float64, Float64, OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, Oceananigans.Architectures.GPU{CUDACore.CUDAKernels.CUDABackend}, Oceananigans.Grids.GridSize{32, 24, 16, 4, 4, 4}}, @NamedTuple{λx::CUDACore.CuArray{Float64, 3, CUDACore.DeviceMemory}, λy::CUDACore.CuArray{Float64, 3, CUDACore.DeviceMemory}, λz::CUDACore.CuArray{Float64, 3, CUDACore.DeviceMemory}}, CUDACore.CuArray{ComplexF64, 3, CUDACore.DeviceMemory}, Nothing, @NamedTuple{forward::Tuple{Oceananigans.Solvers.DiscreteTransform{Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing}, Oceananigans.Solvers.DiscreteTransform{cuFFT.CuFFTPlan{ComplexF64, ComplexF64, -1, true, 3, 3, Nothing}, Oceananigans.Solvers.Forward, Oceananigans.Grids.RectilinearGrid{Float64, Oceananigans.Grids.Periodic, Oceananigans.Grids.Periodic, Oceananigans.Grids.Periodic, Oceananigans.Grids.StaticVerticalDiscretization{OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, Float64, Float64}, Float64, Float64, OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, Oceananigans.Architectures.GPU{CUDACore.CUDAKernels.CUDABackend}, Oceananigans.Grids.GridSize{32, 24, 16, 4, 4, 4}}, Vector{Int64}, Vector{Oceananigans.Grids.Periodic}, Int64, Nothing, Nothing}}, backward::Tuple{Oceananigans.Solvers.DiscreteTransform{AbstractFFTs.ScaledPlan{ComplexF64, cuFFT.CuFFTPlan{ComplexF64, ComplexF64, 1, true, 3, 3, Nothing}, Float64}, Oceananigans.Solvers.Backward, Oceananigans.Grids.RectilinearGrid{Float64, Oceananigans.Grids.Periodic, Oceananigans.Grids.Periodic, Oceananigans.Grids.Periodic, Oceananigans.Grids.StaticVerticalDiscretization{OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, Float64, Float64}, Float64, Float64, OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, OffsetArrays.OffsetVector{Float64, StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}}, Oceananigans.Architectures.GPU{CUDACore.CUDAKernels.CUDABackend}, Oceananigans.Grids.GridSize{32, 24, 16, 4, 4, 4}}, Vector{Int64}, Vector{Oceananigans.Grids.Periodic}, Int64, Nothing, Nothing}, Oceananigans.Solvers.DiscreteTransform{Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing}}}}",
+  "julia_threads": 1,
+  "source_path": "/local_scratch/ajtse/worktrees/oceananigans-dagger-pressure/src/Oceananigans.jl",
+  "source_revision": "eb60b37a5b06ad39ac04b2b238b7739e35505436",
+  "source_dirty": false,
+  "timestamp": "2026-10-29T21:48:16.432",
+  "construction_seconds": 4.639629773,
+  "pressure_timing": {
+    "local_seconds": [
+      0.000610639,
+      0.000582586,
+      0.000582857,
+      0.000581635,
+      0.00058468
+    ],
+    "maximum_rank_seconds": [
+      0.000610639,
+      0.000582586,
+      0.000582857,
+      0.000581635,
+      0.00058468
+    ],
+    "fastest_seconds_per_operation": 5.8163500000000006e-5,
+    "median_seconds_per_operation": 5.8285699999999997e-5
+  },
+  "pressure_validation": {
+    "relative_residual": 1.1469871858163415e-15,
+    "relative_error": 6.182149780472029e-16,
+    "tolerance": 2.2737367544323206e-11,
+    "passed": true
+  },
+  "timestep_timing": {
+    "local_seconds": [
+      0.008008992,
+      0.008286643,
+      0.008412801,
+      0.008508892,
+      0.00785958
+    ],
+    "maximum_rank_seconds": [
+      0.008008992,
+      0.008286643,
+      0.008412801,
+      0.008508892,
+      0.00785958
+    ],
+    "fastest_seconds_per_operation": 0.000785958,
+    "median_seconds_per_operation": 0.0008286643
+  },
+  "model_validation": {
+    "finite": true,
+    "maximum_divergence": 1.1069211671586378e-15,
+    "tolerance": 2.2737367544323206e-11,
+    "passed": true
+  },
+  "temporary_directory": "/local_scratch/ajtse/dagger_poisson/2026-10-29/tmp",
+  "command": "/local_scratch/ajtse/worktrees/oceananigans-dagger-pressure/benchmarking/scripts/benchmark_pressure_solver.jl /local_scratch/ajtse/worktrees/oceananigans-dagger-pressure/benchmarking/pressure_solver/smoke.toml /local_scratch/ajtse/dagger_poisson/2026-10-29/prototype_comparison/repeat_3/native native"
+}
