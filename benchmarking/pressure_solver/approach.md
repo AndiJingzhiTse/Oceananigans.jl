@@ -177,6 +177,23 @@ python3 benchmarking/scripts/pressure_solver_study.py \
 
 Use a fresh output directory: the controller refuses to overwrite a study.
 For MPI runs, provide one UUID per rank and an explicit compatible partition.
+Configure `MPIPreferences` in this isolated project and verify
+`MPI.Get_library_version()` against `mpiexec --version` before launching ranks.
+On Rondeau, use the CUDA-aware OpenMPI library and launcher together:
+
+```sh
+julia --project=benchmarking/pressure_solver -e 'using MPIPreferences; MPIPreferences.use_system_binary(library_names=["/opt/uw/openmpi/4.1.7-with-cuda/lib/libmpi.so"], mpiexec="/opt/uw/openmpi/4.1.7-with-cuda/bin/mpiexec")'
+julia --project=benchmarking/pressure_solver -e 'using MPI; println(MPI.Get_library_version())'
+/opt/uw/openmpi/4.1.7-with-cuda/bin/mpiexec --version
+```
+
+The initial two-rank acceptance attempt caught MPICH loaded under an OpenMPI
+launcher and stopped in MPI initialization. `MPIPreferences` is an explicit
+project dependency so the project's stored binding preferences are applied.
+Retain this setup failure separately from numerical failures. The completed
+single-GPU comparison used MPICH consistently for all four backends; it is
+not a cross-library MPI scaling comparison.
+
 Each rank records its GPU, thread count, MPI library, source revision, dirty
 state, configuration and accuracy checks. The study retains environment files,
 exact commands, logs, per-case outcomes and file checksums. Setup and compilation
