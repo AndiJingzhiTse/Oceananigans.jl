@@ -40,6 +40,9 @@ function make_solver(grid, ::Val{:native})
     return nonhydrostatic_pressure_solver(grid, nothing)
 end
 
+make_solver(grid, backend, configuration) = make_solver(grid, backend)
+backend_metadata(solver) = (;)
+
 solver_storage(solver::FFTBasedPoissonSolver) = solver.storage
 solver_storage(solver) = parent(solver.storage.zfield)
 
@@ -59,7 +62,7 @@ end
     @inbounds result[i, j, k] = divᶜᶜᶜ(i, j, k, grid, u, v, w)
 end
 
-function validate_pressure!(pressure, right_hand_side, exact_pressure, comm)
+function validate_pressure!(pressure, right_hand_side, exact_pressure, comm; resolution=size(pressure.grid))
     grid = pressure.grid
     laplacian = CenterField(grid)
     fill_halo_regions!(pressure)
@@ -70,7 +73,7 @@ function validate_pressure!(pressure, right_hand_side, exact_pressure, comm)
     difference = interior(pressure) .- interior(exact_pressure)
     relative_error = sqrt(MPI.Allreduce(sum(abs2, difference), +, comm) /
                           MPI.Allreduce(sum(abs2, interior(exact_pressure)), +, comm))
-    tolerance = 100 * eps(eltype(grid)) * maximum(size(grid))^2
+    tolerance = min(sqrt(eps(eltype(grid))), 100 * eps(eltype(grid)) * maximum(resolution)^2)
     passed = isfinite(relative_residual) && isfinite(relative_error) &&
              relative_residual <= tolerance && relative_error <= tolerance
     passed || error("Pressure validation failed: residual=$relative_residual error=$relative_error tolerance=$tolerance")
@@ -100,7 +103,7 @@ function measure_windows!(operation, configuration, comm)
             median_seconds_per_operation=median(maximum_rank_seconds) / steps)
 end
 
-function validate_model!(model, comm)
+function validate_model!(model, comm; resolution=size(model.grid))
     velocity = model.velocities
     divergence = CenterField(model.grid)
     foreach(fill_halo_regions!, values(velocity))
@@ -108,7 +111,7 @@ function validate_model!(model, comm)
             model.grid, velocity.u, velocity.v, velocity.w)
     maximum_divergence = MPI.Allreduce(maximum(abs, interior(divergence)), max, comm)
     finite = MPI.Allreduce(all(all(isfinite, interior(field)) for field in values(velocity)), &, comm)
-    tolerance = 100 * eps(eltype(model.grid)) * maximum(size(model.grid))^2
+    tolerance = min(sqrt(eps(eltype(model.grid))), 100 * eps(eltype(model.grid)) * maximum(resolution)^2)
     finite && maximum_divergence <= tolerance || error("Model validation failed: divergence=$maximum_divergence")
     return (; finite, maximum_divergence, tolerance, passed=true)
 end
@@ -128,7 +131,7 @@ function run_case(configuration_path, output_directory; backend=:native)
     grid = RectilinearGrid(arch, float_type; size=resolution, extent=(2π, 2π, 2π),
                            topology=(Periodic, Periodic, Periodic), halo=(4, 4, 4))
     started = time_ns()
-    solver = make_solver(grid, Val(backend))
+    solver = make_solver(grid, Val(backend), configuration)
     CUDA.synchronize()
     construction_seconds = (time_ns() - started) / 1e9
     pressure, exact_pressure, right_hand_side = CenterField(grid), CenterField(grid), CenterField(grid)
@@ -137,7 +140,7 @@ function run_case(configuration_path, output_directory; backend=:native)
     launch!(arch, grid, :xyz, _laplacian!, right_hand_side, grid, exact_pressure)
     source = copy(interior(right_hand_side))
     pressure_timing = measure_windows!(() -> solve_rhs!(pressure, solver, source), configuration, comm)
-    pressure_validation = validate_pressure!(pressure, right_hand_side, exact_pressure, comm)
+    pressure_validation = validate_pressure!(pressure, right_hand_side, exact_pressure, comm; resolution)
 
     model = NonhydrostaticModel(grid; pressure_solver=solver, timestepper=:RungeKutta3,
                                advection=Centered(order=2), buoyancy=nothing, coriolis=nothing,
@@ -146,9 +149,9 @@ function run_case(configuration_path, output_directory; backend=:native)
                 v=(x, y, z) -> -cos(x) * sin(y) * cos(z), w=0)
     timestep = float_type(configuration["timestep"])
     timestep_timing = measure_windows!(() -> time_step!(model, timestep), configuration, comm)
-    model_validation = validate_model!(model, comm)
+    model_validation = validate_model!(model, comm; resolution)
     mkpath(output_directory)
-    result = (; status="COMPLETED", backend, configuration, grid_type="RectilinearGrid",
+    result = (; status="COMPLETED", backend, backend_metadata=backend_metadata(solver), configuration, grid_type="RectilinearGrid",
               topology=["Periodic", "Periodic", "Periodic"], local_resolution=size(grid), rank, ranks,
               device=string(CUDA.device()), gpu_uuid=string(CUDA.uuid(CUDA.device())),
               julia_version=string(VERSION), oceananigans_version=string(pkgversion(Oceananigans)),

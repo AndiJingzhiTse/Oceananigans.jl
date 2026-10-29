@@ -41,9 +41,10 @@ The controller launches three fresh processes per backend, reversing backend
 order on alternate repetitions. Retain individual runs and report their spread;
 five windows in one process are not five independent experiments.
 
-Use native, a serial implementation of any new chunked algorithm, and its
-Dagger-scheduled counterpart. Comparing the last two isolates scheduling from
-changes to FFT batching, copying, workspaces and transform plans. The native
+Use native, serial chunks, Julia `@async` chunks, and Dagger-scheduled chunks.
+The three chunked variants share FFT batching, copying, workspaces and plans.
+Comparing asynchronous Julia tasks against Dagger distinguishes the benefit of
+concurrent CUDA streams from the choice of task scheduler. The native
 solver remains the practical performance reference. Claim a simulation speedup
 only from complete-timestep measurements.
 
@@ -53,7 +54,9 @@ only from complete-timestep measurements.
   generate the source with Oceananigans' **discrete** Laplacian.
 - Independently apply that operator to the solved pressure. Record relative
   residual and relative solution error; both must pass the declared roundoff
-  allowance `100 eps(FT) max(N)^2`. This is an accuracy gate for a direct FFT
+  allowance `min(sqrt(eps(FT)), 100 eps(FT) max(N)^2)` using the global resolution.
+  The cap prevents a meaningless large tolerance at Float32 and large grids.
+  This is an accuracy gate for a direct FFT
   inverse, not a modification of the latitude-longitude CG tolerance.
 - Require finite velocity fields and bounded absolute discrete divergence
   after the complete timestep sequence.
@@ -100,6 +103,33 @@ persistent workspaces; integration must follow the actual source API, rather
 than assume the high-level README example is sufficient. Package loading and
 runtime compatibility need experimental verification. Do not silently patch
 the dependency declarations and call the result the published implementation.
+
+The declared dependency resolved to Dagger 0.18.16 during the initial setup
+attempt. Its installed source has no `Acceleration`/`MPIAcceleration` API,
+while DaggerFFT imports `Acceleration` and uses the newer MPI interface.
+This is a source-level compatibility concern, not a completed package-load
+test. The isolated upstream installation was stopped after 608 seconds while
+downloading dependencies; no upstream DaggerFFT execution result is claimed.
+
+The first prototype is our own benchmark-local chunked solver on Dagger 0.22.7.
+It does not vendor or modify DaggerFFT. Each chunk owns a CUDA stream, buffer
+and transform plans; the serial control waits after each chunk, while Dagger
+submits all disjoint chunks in a stage before fetching. Both retain stage
+barriers. Multi-GPU redistribution and bounded transforms remain future work.
+The `async_chunks` control submits the same work with Julia `@async`, retaining
+the same streams and waits. Dagger must also beat this concurrent control to
+support a claim about a benefit from its scheduler specifically.
+
+Prototype validation:
+
+```sh
+julia --threads=1 --project=benchmarking/pressure_solver benchmarking/test/test_chunked_fft_pressure_solver.jl
+python3 -m unittest discover -s benchmarking/test -p 'test_pressure_solver_study.py'
+```
+
+For the first four-way comparison, add
+`--backends native serial_chunks async_chunks dagger_chunks` to the controller.
+The prototype supports one local GPU only; the native backend supports MPI.
 
 ## Running and storage
 

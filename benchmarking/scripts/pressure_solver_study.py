@@ -4,6 +4,7 @@
 import argparse
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import shutil
@@ -11,6 +12,7 @@ import signal
 import statistics
 import subprocess
 import sys
+import time
 
 
 def run_command(command, environment, log, timeout):
@@ -40,6 +42,18 @@ def accepted_records(directory, ranks, gpu_uuids):
             raise ValueError("Incomplete MPI results")
         if not record["pressure_validation"]["passed"] or not record["model_validation"]["passed"]:
             raise ValueError("Numerical validation failed")
+        for key, validation in (("pressure", record["pressure_validation"]), ("model", record["model_validation"])):
+            metrics = ("relative_residual", "relative_error") if key == "pressure" else ("maximum_divergence",)
+            tolerance = validation["tolerance"]
+            if not 0 < tolerance < 1 or any(not math.isfinite(validation[metric]) or
+                                           not 0 <= validation[metric] <= tolerance for metric in metrics):
+                raise ValueError("Numerical validation values do not satisfy the recorded tolerance")
+        if record["configuration"] != records[0]["configuration"]:
+            raise ValueError("MPI ranks used different configurations")
+        for key in ("pressure_timing", "timestep_timing"):
+            seconds = record[key]["maximum_rank_seconds"]
+            if len(seconds) != record["configuration"]["windows"] or not all(math.isfinite(value) and value > 0 for value in seconds):
+                raise ValueError("Incomplete or nonfinite timing windows")
         actual_devices.append(record["gpu_uuid"].removeprefix("GPU-"))
     expected_devices = [uuid.removeprefix("GPU-") for uuid in gpu_uuids]
     if len(set(actual_devices)) != ranks or set(actual_devices) != set(expected_devices):
@@ -53,7 +67,8 @@ def main():
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--project", type=Path, required=True)
     parser.add_argument("--gpus", required=True, help="Comma-separated GPU UUIDs")
-    parser.add_argument("--backends", nargs="+", default=["native"])
+    parser.add_argument("--backends", nargs="+", default=["native"],
+                        choices=["native", "serial_chunks", "async_chunks", "dagger_chunks"])
     parser.add_argument("--repeats", type=int, default=3)
     parser.add_argument("--timeout", type=int, default=600, help="Seconds per fresh process")
     parser.add_argument("--julia", default="julia")
@@ -62,6 +77,8 @@ def main():
     args = parser.parse_args()
     if args.repeats < 1 or args.timeout < 1:
         parser.error("Repeats and timeout must be positive")
+    if len(set(args.backends)) != len(args.backends):
+        parser.error("Backends must be distinct")
     for variable in ("TMPDIR", "TMP", "TEMP", "OMPI_MCA_orte_tmpdir_base"):
         directory = Path(os.environ.get(variable, "/tmp")).resolve()
         if not directory.is_dir() or any(directory == root or root in directory.parents
@@ -95,19 +112,27 @@ def main():
     environment = dict(os.environ, CUDA_VISIBLE_DEVICES=",".join(gpu_uuids),
                        OPENBLAS_NUM_THREADS="1", JULIA_NUM_THREADS="1", JULIA_NUM_PRECOMPILE_TASKS="1")
     outcomes = []
+    source_revision = None
     for directory, backend, command in commands:
         directory.mkdir(parents=True)
         outcome = dict(backend=backend, directory=str(directory), command=command, status="RUNNING")
+        started = time.monotonic()
         print("Running:", " ".join(command), flush=True)
         with (directory / "job.log").open("w") as log:
             try:
                 run_command(command, environment, log, args.timeout)
                 records = accepted_records(directory, len(gpu_uuids), gpu_uuids)
+                if any(record["source_dirty"] or record["backend"] != backend for record in records):
+                    raise ValueError("Measurements require a clean source tree and the requested backend")
+                if source_revision is not None and records[0]["source_revision"] != source_revision:
+                    raise ValueError("Source revision changed during the study")
+                source_revision = records[0]["source_revision"]
                 outcome.update(status="COMPLETED", pressure_seconds=records[0]["pressure_timing"]["median_seconds_per_operation"],
                                timestep_seconds=records[0]["timestep_timing"]["median_seconds_per_operation"])
             except (subprocess.SubprocessError, ValueError, OSError) as error:
                 outcome.update(status="FAILED", error=str(error))
         outcomes.append(outcome)
+        outcome["wall_seconds"] = time.monotonic() - started
         (args.output / "outcomes.json").write_text(json.dumps(outcomes, indent=2) + "\n")
         if outcome["status"] != "COMPLETED":
             sys.exit("Study stopped after a failed case; inspect job.log")
@@ -116,6 +141,9 @@ def main():
         selected = [outcome for outcome in outcomes if outcome["backend"] == backend]
         summary[backend] = {metric: statistics.median(outcome[metric] for outcome in selected)
                             for metric in ("pressure_seconds", "timestep_seconds")}
+        for metric in ("pressure_seconds", "timestep_seconds"):
+            summary[backend][metric + "_range"] = [min(outcome[metric] for outcome in selected),
+                                                   max(outcome[metric] for outcome in selected)]
     if "native" in summary:
         for values in summary.values():
             values["pressure_speedup"] = summary["native"]["pressure_seconds"] / values["pressure_seconds"]
