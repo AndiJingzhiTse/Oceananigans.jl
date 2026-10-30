@@ -1,0 +1,1 @@
+julia --project=benchmarking benchmarking/run_benchmarks.jl --device=CPU --size=720x360x50 --time_steps=10 --warmup_steps=2 --samples=5 --output=sample_benchmark.json

@@ -1,0 +1,1 @@
+nsys profile --trace=cuda,nvtx --sample=none --force-overwrite=true --output=earth_ocean_gpu_nsys julia --project=benchmarking benchmarking/run_benchmarks.jl --device=GPU --size=720x360x50 --time_steps=2 --warmup_steps=2 --samples=1 --output=nsys_benchmark.json

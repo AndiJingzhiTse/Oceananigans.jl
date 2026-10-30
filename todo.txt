@@ -1,3 +1,7 @@
 gpu partition on 8, 16
 weak scaling, different resolution
 reproduce drac
+
+traditional distributed FFT uses static decomposition and bulk syncrhonization, bad in heterogeneous clusters
+slab decomposition is limited to the size of one dimension, , so pencil decomposition is better in extreme number of nodes
+DaggerFFT is less efficient on small problem with large number of nodes
