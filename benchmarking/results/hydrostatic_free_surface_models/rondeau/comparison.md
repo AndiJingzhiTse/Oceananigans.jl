@@ -75,7 +75,7 @@ No completed, validated pair is available.
 | 1x64x1 |  /  | GEOMETRY_LIMIT | GEOMETRY_LIMIT | — | — |
 | 1x8x1 | 1440x720x200 / 1x8x1 | RESOURCE_LIMIT | RESOURCE_LIMIT | — | — |
 | 2x16x1 | 1440x720x200 / 2x16x1 | RESOURCE_LIMIT | RESOURCE_LIMIT | — | — |
-| 2x1x1 | 1440x720x200 / 2x1x1 | PLANNED | PLANNED | — | — |
+| 2x1x1 | 1440x720x200 / 2x1x1 | RUNNING | PLANNED | — | — |
 | 2x2x1 | 1440x720x200 / 2x2x1 | PLANNED | PLANNED | — | — |
 | 2x32x1 |  /  | GEOMETRY_LIMIT | GEOMETRY_LIMIT | — | — |
 | 2x4x1 | 1440x720x200 / 2x4x1 | RESOURCE_LIMIT | RESOURCE_LIMIT | — | — |
@@ -113,7 +113,7 @@ No completed, validated pair is available.
 
 2x16x1: baseline: Requires 32; configured capacity is 4; dagger: Requires 32; configured capacity is 4
 
-2x1x1: baseline: ; dagger:
+2x1x1: baseline: Local allocation started; see job.out; dagger:
 
 2x2x1: baseline: ; dagger:
 
