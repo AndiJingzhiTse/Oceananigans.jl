@@ -68,7 +68,7 @@ No completed, validated pair is available.
 | 16x2x1 | 1440x720x200 / 16x2x1 | RESOURCE_LIMIT | RESOURCE_LIMIT | — | — |
 | 16x4x1 | 1440x720x200 / 16x4x1 | RESOURCE_LIMIT | RESOURCE_LIMIT | — | — |
 | 1x16x1 | 1440x720x200 / 1x16x1 | RESOURCE_LIMIT | RESOURCE_LIMIT | — | — |
-| 1x1x1 | 1440x720x200 / 1x1x1 | RUNNING | PLANNED | — | — |
+| 1x1x1 | 1440x720x200 / 1x1x1 | OUT_OF_MEMORY | PLANNED | — | — |
 | 1x2x1 | 1440x720x200 / 1x2x1 | PLANNED | PLANNED | — | — |
 | 1x32x1 |  /  | GEOMETRY_LIMIT | GEOMETRY_LIMIT | — | — |
 | 1x4x1 | 1440x720x200 / 1x4x1 | PLANNED | PLANNED | — | — |
@@ -103,7 +103,7 @@ No completed, validated pair is available.
 
 1x16x1: baseline: Requires 16; configured capacity is 4; dagger: Requires 16; configured capacity is 4
 
-1x1x1: baseline: Local allocation started; see job.out; dagger:
+1x1x1: baseline: Execution failed; ERROR: LoadError: Out of GPU memory trying to allocate 1.702 GiB; dagger:
 
 1x2x1: baseline: ; dagger:
 
