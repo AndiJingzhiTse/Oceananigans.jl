@@ -13,6 +13,10 @@ on RectilinearGrid, LatitudeLongitudeGrid, CubedSphereGrid, and ImmersedBoundary
 - **Key packages**: KernelAbstractions.jl, CUDA.jl, Enzyme.jl, Reactant.jl
 - **Style**: ExplicitImports.jl for source code; `using Oceananigans` for examples/tests
 
+## Rondeau Server
+
+Obey to https://wiki.math.uwaterloo.ca/fluidswiki/index.php?title=info_specific_to_sutton,_rondeau,_pelee for server documentation
+
 ## Critical Rules
 
 ### Kernel Functions (GPU compatibility)
@@ -112,6 +116,29 @@ src/
 
 Follow [ColPrac](https://github.com/SciML/ColPrac). Feature branches, descriptive commits,
 update tests and docs with code changes, check CI before merging.
+
+Use one working checkout at `/u/ajtse/Oceananigans.jl`. Commit changes before
+switching branches in that folder. Do not create additional worktrees.
+Commit completed task changes after relevant checks and keep the working tree
+clean; preserve and explicitly report any unrelated edits.
+
+## Temporary Files and Storage
+
+Never write repository-related files to `/tmp`, `/var/tmp`, or `/local_scratch`,
+including through symlinks. This applies to code, environments, package setup,
+benchmarks, profiling, logs, archives, tests and child-process temporary files.
+Use `/u/ajtse/Oceananigans.jl/.runtime/` for ignored working data and environments,
+and `.runtime/tmp/` for temporary files. Before running tools or tests, set
+`TMPDIR`, `TMP`, `TEMP`, and `OMPI_MCA_orte_tmpdir_base` to that existing directory
+and verify child processes inherit them. For Julia, use
+`.runtime/julia_depot` as the first entry in `JULIA_DEPOT_PATH`; an existing
+user depot may remain as a cache fallback. Keep curated results under
+`benchmarking/results/<model_family>/<machine>/`.
+
+This explicit workspace preference supersedes older scratch-path examples.
+Historical provenance may retain original paths as evidence; do not rewrite
+original measurements. Never move or delete data belonging to active runs.
+Verify archived copies before removing their temporary originals.
 
 ## Design Principles
 

@@ -82,3 +82,9 @@ sandbox/
 
 # Local git worktrees
 .worktrees/
+
+# Local runtime data and generated benchmark execution records
+.runtime/
+__pycache__/
+benchmarking/results/**/run_records/
+benchmarking/results/**/.suite.lock

@@ -7,7 +7,8 @@ reduce complete timestep time at fixed physics, precision, resolution and GPU co
 
 This branch starts at `main`, commit `aca5970fa`. The earlier window-wrapper and
 four-model ensemble experiments are separate studies. Their timings are not a
-baseline for this experiment. The existing benchmark checkout is left intact.
+baseline for this experiment. Use the same checkout and switch branches after
+committing changes.
 Rondeau CPU benchmark studies remain cancelled.
 
 The initial problem uses a regular `RectilinearGrid`, periodic in all three
@@ -143,21 +144,26 @@ The prototype supports one local GPU only; the native backend supports MPI.
 
 ## Running and storage
 
-Execute from a data filesystem. All four temporary variables must resolve
-outside `/tmp` and `/var/tmp`, including through symlinks. Set them before
+Execute from `/u/ajtse/Oceananigans.jl`. Use this sole checkout and switch
+branches after committing changes; do not create additional worktrees. All four
+temporary variables must resolve
+inside the checkout and outside `/tmp`, `/var/tmp`, and `/local_scratch`,
+including through symlinks. Set them before
 Julia/package setup, tests or child processes start. Large files and environments
-belong under `/local_scratch/ajtse/dagger_poisson/`; only small validated records
-should be retained under
+belong under `/u/ajtse/Oceananigans.jl/.runtime/dagger_pressure/`; retain small
+validated records under
 `benchmarking/results/non_hydrostatic_models/rondeau/gpu_pressure_solver/`.
 
 Example setup (Julia 1.11+ supports `[sources]`; on 1.10 explicitly `Pkg.develop`
 the checkout path in the isolated environment):
 
 ```sh
-export TMPDIR=/local_scratch/ajtse/dagger_poisson/tmp
+export TMPDIR=/u/ajtse/Oceananigans.jl/.runtime/tmp
 mkdir -p "$TMPDIR"
 export TMP="$TMPDIR" TEMP="$TMPDIR" OMPI_MCA_orte_tmpdir_base="$TMPDIR"
 export JULIA_NUM_PRECOMPILE_TASKS=1 OPENBLAS_NUM_THREADS=1
+export JULIA_DEPOT_PATH="/u/ajtse/Oceananigans.jl/.runtime/julia_depot:/u/ajtse/.julia"
+mkdir -p /u/ajtse/Oceananigans.jl/.runtime/julia_depot
 julia --project=benchmarking/pressure_solver -e 'using Pkg; Pkg.instantiate()'
 export CUDA_VISIBLE_DEVICES=GPU_UUID_OF_AN_AVAILABLE_DEVICE
 julia --threads=1 --project=benchmarking/pressure_solver benchmarking/test/test_pressure_solver.jl
@@ -171,7 +177,7 @@ backend is explicitly selected:
 python3 benchmarking/scripts/pressure_solver_study.py \
   --config benchmarking/pressure_solver/smoke.toml \
   --project benchmarking/pressure_solver \
-  --output /local_scratch/ajtse/dagger_poisson/native-study \
+  --output /u/ajtse/Oceananigans.jl/.runtime/dagger_pressure/native-study \
   --gpus GPU_UUID_OF_AN_AVAILABLE_DEVICE --repeats 3 --timeout 600
 ```
 
@@ -204,3 +210,6 @@ Shared-server results do not establish exclusive access. Begin on one available
 GPU with a ten-minute per-process limit, record observed durations, and obtain
 resource availability before extending to larger allocations. No background
 multi-day run is needed for this first milestone.
+
+Storage and checkout consolidation is documented in [storage_migration.md](storage_migration.md).
+Historical results and environment snapshots retain their original source paths.
