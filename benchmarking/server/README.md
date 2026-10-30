@@ -2,7 +2,11 @@
 
 Each server has `config.json` (resources/software), `series.json` (exact workloads)
 and a README. The same series file supplies HydrostaticFreeSurfaceModel and
-NonhydrostaticModel, each with baseline and Dagger execution: four runs per server.
+NonhydrostaticModel, each with baseline and Dagger execution: four available
+combinations per server. The requested shared workflow must allow any subset,
+including all four, on either local or Slurm backends. See the
+[workflow requirements](../requirements.md) for selections and the replaceable
+Dagger integration contract.
 The baseline is the direct execution of these workloads. The new Dagger method
 will be specified later; no new compute jobs are launched by this reorganization.
 

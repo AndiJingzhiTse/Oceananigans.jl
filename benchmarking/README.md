@@ -4,11 +4,16 @@ One shared controller runs `HydrostaticFreeSurfaceModel` and `NonhydrostaticMode
 Server files define the workloads; model construction, execution, validation and
 reporting stay in shared code. Run commands from the repository root.
 
+[Workflow requirements](requirements.md) define the requested common local/Slurm
+entry point, selectable model/mode combinations and replaceable Dagger adapter.
+They distinguish future requirements from currently implemented capabilities.
+
 ## File structure
 
 ```text
 benchmarking/
 ├── README.md
+├── requirements.md                     Shared workflow and integration contract
 ├── Project.toml                         Julia benchmark package dependencies
 ├── server/
 │   ├── README.md                        Server plans and the four-run matrix
@@ -107,7 +112,12 @@ GPU doubles at each step. Their efficiency reference is
 This is a linear cell-count reference; solver work need not scale linearly.
 It is not constant-work-per-GPU weak scaling.
 
-## Four runs per server
+## Selectable model and execution combinations
+
+The full selection contains the four combinations below. The requested workflow
+must also allow any subset: one or both models, baseline or Dagger or both, and
+explicit mixed combinations. See [the requirements](requirements.md) for the
+shared local/Slurm workflow; the current CLI selects one combination per invocation.
 
 | Model | Execution | Result destination |
 |---|---|---|

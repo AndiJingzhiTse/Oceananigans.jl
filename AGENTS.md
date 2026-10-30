@@ -267,8 +267,15 @@ Rondeau excludes the partition series; only Nibi, Rorqual and Fir run it.
 The weak sequence doubles cells per GPU per step; label its linear cell-count
 reference explicitly. Do not call it constant-work-per-GPU weak scaling.
 
-Run the same server plan separately as hydrostatic baseline, hydrostatic Dagger,
-nonhydrostatic baseline and nonhydrostatic Dagger. Publish into
+Follow `benchmarking/requirements.md` for the requested shared local/Slurm workflow.
+One set of scripts must support configurable subsets of models and execution
+modes, including all four combinations. Keep Dagger behind a replaceable execution
+adapter; do not duplicate scheduler or model code for Dagger. Changing servers
+or scheduler availability must require configuration, not script modifications.
+These are documented requirements; the new integration is not implemented yet.
+
+Apply the same server plan to the selected hydrostatic baseline, hydrostatic
+Dagger, nonhydrostatic baseline and nonhydrostatic Dagger combinations. Publish into
 `benchmarking/results/<model_family>/<server>/{baseline,dagger}/<series>/`.
 Keep baseline/Dagger comparisons inside each model/server folder; match
 configurations within the same model. The future Dagger integration method is
