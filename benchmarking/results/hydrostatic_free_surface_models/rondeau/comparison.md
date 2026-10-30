@@ -36,10 +36,8 @@ No completed, validated pair is available.
 | Case | Resolution / partition | Baseline outcome | Dagger outcome | Median s/step baseline / Dagger | Speedup |
 |---|---|---|---|---:|---:|
 | default | 360x180x50 / 1x1x1 | COMPLETED | COMPLETED | 0.0340053 / 0.0340714 | 0.9981 |
-| fine | 720x360x100 / 1x1x1 | RUNNING | COMPLETED | — | — |
+| fine | 720x360x100 / 1x1x1 | COMPLETED | COMPLETED | 0.24857 / 0.248573 | 1.0000 |
 | super_fine | 1440x720x200 / 1x1x1 | PLANNED | PLANNED | — | — |
-
-fine: baseline: Local allocation started; see job.out; dagger: Rank results, finite fields and resource placement verified
 
 super_fine: baseline: ; dagger:
 
