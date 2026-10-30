@@ -1,0 +1,2 @@
+sbatch --parsable --job-name=bench_gpu_scaling_fine --nodes=2 --ntasks=16 --ntasks-per-node=8 --cpus-per-task=8 --output=/home/anditse/Oceananigans.jl/benchmarking/results/hydrostatic_free_surface_models/nibi/dagger/2026-10-30/allocations/gpu_scaling_fine/16_gpus/allocation.out --account=def-fpoulin --time=06:00:00 --gpus-per-task=h100:1 --mem=0 --kill-on-invalid-dep=yes --dependency=afterok:25389810 /home/anditse/Oceananigans.jl/benchmarking/results/hydrostatic_free_surface_models/nibi/dagger/2026-10-30/allocations/gpu_scaling_fine/16_gpus/paired.sh
+25389824

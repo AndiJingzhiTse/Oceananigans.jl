@@ -1,0 +1,12 @@
+{
+  "job_id": "25389810",
+  "account": "def-fpoulin",
+  "nodes": 1,
+  "ntasks": 1,
+  "cpus_per_task": 2,
+  "memory": "16G",
+  "time_limit": "01:00:00",
+  "command": "sbatch --parsable --account=def-fpoulin --nodes=1 --ntasks=1 --cpus-per-task=2 --mem=16G --time=01:00:00 --job-name=nibi_dagger_setup --chdir=/home/anditse/Oceananigans.jl --output=/home/anditse/Oceananigans.jl/.runtime/nibi_dagger/slurm_setup.out benchmarking/results/hydrostatic_free_surface_models/nibi/dagger/setup.sh",
+  "source_revision": "bc4040dc1c16b4f6d4eae364e17a7984c57c43e3",
+  "purpose": "Environment setup only; all GPU pairs depend afterok on this job."
+}
