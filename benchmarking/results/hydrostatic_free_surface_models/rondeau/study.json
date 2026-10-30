@@ -1,0 +1,49 @@
+{
+  "model_type": "HydrostaticFreeSurfaceModel",
+  "protocol": "Direct window versus Dagger.@spawn of the same synchronized window; immediate fetch",
+  "source_revision": "6f05abaf8198e13cee8baa7c934c4ea8995f5fda",
+  "source_trees": {
+    "src": "749ba35c2952c647dd05d42317519a386b307de6",
+    "Project.toml": "0928fb0af93e0897a978d38fd51875fa8c70c779",
+    "benchmarking/src": "c4bf1b86b42a57a27a978bc7053a59ee8b4654a3",
+    "benchmarking/Project.toml": "632e6d1ea4707635230121d66ede829c70124781"
+  },
+  "study": "/u/ajtse/Oceananigans.jl/.runtime/hydrostatic_dagger_2026-10-30/study",
+  "environment": "/u/ajtse/Oceananigans.jl/.runtime/hydrostatic_dagger_2026-10-30/environment",
+  "series": [
+    "gpu_resolution",
+    "gpu_scaling_super_fine",
+    "gpu_partition_super_fine",
+    "gpu_nsight_scaling_super_fine",
+    "gpu_weak_scaling_super_fine",
+    "gpu_scaling_super_super_fine",
+    "gpu_scaling_super_super_super_fine"
+  ],
+  "planned_executions": 36,
+  "capacity_gpus": 4,
+  "gpu_assignment": "Idle GPUs only; retain same UUIDs within each pair; wait for unavailable GPUs",
+  "case_timeout_seconds": 1800,
+  "initial_condition_seed": 1234,
+  "warmup_steps": 2,
+  "windows": 5,
+  "steps_per_window": 10,
+  "command": [
+    "/usr/bin/python3",
+    "/u/ajtse/Oceananigans.jl/benchmarking/scripts/compare_dagger.py",
+    "--config",
+    "/u/ajtse/Oceananigans.jl/.runtime/hydrostatic_dagger_2026-10-30/config.json",
+    "--project",
+    "/u/ajtse/Oceananigans.jl/.runtime/hydrostatic_dagger_2026-10-30/environment",
+    "--study",
+    "/u/ajtse/Oceananigans.jl/.runtime/hydrostatic_dagger_2026-10-30/study",
+    "--publish",
+    "/u/ajtse/Oceananigans.jl/benchmarking/results/hydrostatic_free_surface_models/rondeau",
+    "--model",
+    "HydrostaticFreeSurfaceModel",
+    "--gpu-only",
+    "--wait-for-gpus",
+    "--commit",
+    "--series",
+    "gpu_resolution,gpu_scaling_super_fine,gpu_partition_super_fine,gpu_nsight_scaling_super_fine,gpu_weak_scaling_super_fine,gpu_scaling_super_super_fine,gpu_scaling_super_super_super_fine"
+  ]
+}
