@@ -5,3 +5,5 @@ reproduce drac
 traditional distributed FFT uses static decomposition and bulk syncrhonization, bad in heterogeneous clusters
 slab decomposition is limited to the size of one dimension, , so pencil decomposition is better in extreme number of nodes
 DaggerFFT is less efficient on small problem with large number of nodes
+
+on nibi, do multi gpu fine, super fine 2, 4, 8, 16, try hydrostatic

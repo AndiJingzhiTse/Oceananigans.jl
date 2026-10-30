@@ -13,6 +13,10 @@ on RectilinearGrid, LatitudeLongitudeGrid, CubedSphereGrid, and ImmersedBoundary
 - **Key packages**: KernelAbstractions.jl, CUDA.jl, Enzyme.jl, Reactant.jl
 - **Style**: ExplicitImports.jl for source code; `using Oceananigans` for examples/tests
 
+## Rondeau Server
+
+Obey to https://wiki.math.uwaterloo.ca/fluidswiki/index.php?title=info_specific_to_sutton,_rondeau,_pelee for server documentation
+
 ## Nibi Server
 
 - Andi Tse's Nibi login username is `anditse`.
