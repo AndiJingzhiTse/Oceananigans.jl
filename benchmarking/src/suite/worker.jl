@@ -212,22 +212,12 @@ function synchronized_window!(model, Δt, steps, is_gpu, device)
     return nothing
 end
 
-# MPI communicators and mutable models must stay on this process. Each rank
-# has exactly one Julia computation thread; no Distributed workers are added.
-# Define this only for Dagger runs so baseline does not load its scheduler.
-if execution_mode == "dagger"
-    @eval using Dagger
-    @eval function execute_window!(model, Δt, steps, is_gpu, device, ::Val{:dagger})
-        task = Dagger.@spawn scope=Dagger.scope(worker=1, thread=1) synchronized_window!(model, Δt, steps, is_gpu, device)
-        fetch(task)
-        return nothing
-    end
-end
-
-function execute_window!(model, Δt, steps, is_gpu, device, ::Val{:baseline})
-    synchronized_window!(model, Δt, steps, is_gpu, device)
-    return nothing
-end
+# Adapters are captured with the worker. Only the selected adapter is loaded;
+# the baseline has no Dagger dependency or scheduler initialization.
+adapter_file = isnothing(get(config, "execution_adapter", nothing)) ?
+               joinpath(@__DIR__, "execution", execution_mode, "adapter.jl") :
+               joinpath(@__DIR__, "adapter", "adapter.jl")
+include(adapter_file)
 
 function affinity()
     if Sys.islinux()
@@ -358,12 +348,13 @@ end
 function timing_windows!(model, config, comm, is_gpu)
     # Compile this helper before profiling; the preflight supplies one untimed step.
     durations = Float64[]
-    mode = Val(Symbol(get(config, "execution_mode", "baseline")))
     device = is_gpu ? CUDA.device() : nothing
+    context = (is_gpu=is_gpu, device=device, comm=comm, rank=rank, ranks=ranks,
+               configuration=config, options=get(get(config, "execution_adapter", Dict()), "options", Dict()))
     for sample in 1:config["samples"]
         synchronize_model(architecture(model.grid), comm, is_gpu)
         start = time_ns()
-        execute_window!(model, config["dt"], config["time_steps"], is_gpu, device, mode)
+        BenchmarkAdapter.execute_window!(synchronized_window!, model, config["dt"], config["time_steps"], context)
         synchronize_model(architecture(model.grid), comm, is_gpu)
         push!(durations, (time_ns() - start) / 1e9)
         if rank == 0
@@ -413,7 +404,9 @@ MPI.Allreduce(finite_state ? 1 : 0, MPI.MIN, comm) == 1 || error("Nonfinite mode
 metadata = JSON.parse(JSON.json(OceananigansBenchmarks.BenchmarkMetadata(arch)))
 metadata["mpi_library_version"] = MPI.Get_library_version()
 metadata["execution_mode"] = execution_mode
-metadata["dagger_version"] = execution_mode == "dagger" ? string(pkgversion(Dagger)) : nothing
+metadata["execution_adapter"] = get(config, "execution_adapter", nothing)
+metadata["adapter_metadata"] = BenchmarkAdapter.metadata()
+metadata["dagger_version"] = get(metadata["adapter_metadata"]["package_versions"], "Dagger", nothing)
 metadata["mpi_thread_support"] = string(MPI.Query_thread())
 if Sys.islinux()
     peak_rss = match(r"(?m)^VmHWM:\s*(\d+) kB", read("/proc/self/status", String))

@@ -12,6 +12,9 @@ from .storage import atomic_json, runtime_environment
 
 def member_configuration(config, member):
     result = copy.deepcopy(config)
+    # Historical ensembles schedule complete simulations; member timestepping
+    # stays direct rather than inheriting the outer execution adapter.
+    result.pop('execution_adapter', None)
     result.update(execution_mode='baseline', ensemble_execution_mode=config['execution_mode'],
                   ensemble_member=member, initial_condition_seed=config['initial_condition_seed'] + member - 1)
     return result

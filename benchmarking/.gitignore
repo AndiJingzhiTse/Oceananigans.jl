@@ -10,6 +10,7 @@ __pycache__/
 
 # Root ignore rules exclude JSON and SVG; retain benchmark configuration/results.
 !server/**/*.json
+!src/suite/execution/**/adapter.json
 !results/**/*.json
 !results/**/*.svg
 

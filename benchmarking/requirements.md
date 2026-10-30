@@ -1,8 +1,8 @@
 # Shared benchmark workflow requirements
 
-These requirements describe the requested workflow. This document does not
-implement the workflow, select a new Dagger algorithm or authorize benchmark
-execution. The current implementation status is recorded below.
+These requirements define the shared workflow contract. The current
+implementation and verification scope are recorded below. A new internal
+Dagger algorithm is separate from this orchestration work.
 
 ## Shared scripts across servers
 
@@ -44,8 +44,9 @@ only Dagger was selected. A plan must list the resolved combinations, cases,
 resource requests and output destinations before execution. Resume and reporting
 must preserve these selections and the saved workload definitions.
 
-The exact CLI syntax for selecting multiple combinations remains an
-implementation choice; this document does not claim new flags already exist.
+Use `benchmark_suite.py --study ...` with `--models`, `--modes`,
+`--combinations`, or `--all`. `--plan`, `--execute`, `--resume` and `--refresh`
+share the same interface on local and Slurm servers.
 
 ## Scheduler-independent execution
 
@@ -77,7 +78,9 @@ Dagger executes the selected work.
 
 The adapter must receive the resolved workload/model settings, execution
 resources and timing protocol, and return measurements and validation evidence
-in the common format. The exact API and internal task granularity are deferred.
+in the common format. The API is documented in
+[execution_adapters.md](execution_adapters.md). Internal task granularity is owned
+by each adapter.
 Do not make the whole-function wrapper a permanent architectural requirement.
 
 Changing Dagger's scheduling strategy or replacing its implementation must not
@@ -120,7 +123,7 @@ modes. Keep active studies and temporary files in project-controlled storage;
 never use `/tmp`, `/var/tmp` or `/local_scratch`. Preserve raw profiles and
 execution evidence with checksum manifests and keep large captures out of Git.
 
-## Acceptance criteria for the future implementation
+## Acceptance criteria
 
 - The same entry point and unchanged scripts can plan and execute configured
   cases locally or through Slurm, using server configuration to choose the backend.
@@ -135,13 +138,19 @@ execution evidence with checksum manifests and keep large captures out of Git.
 
 ## Current status and scope
 
-Server configuration, shared workload definitions and the model/server result
-layout already exist. `benchmark_suite.py` supports one model and execution
-mode per invocation with local or Slurm launch paths. `compare_dagger.py` is
-currently a local-only paired controller using the historical Dagger method.
+`benchmark_suite.py --study ...` implements the selectable workflow using shared
+planning, local/Slurm backend adapters, validation, publication and comparisons.
+The study persists its selections and source/adapter fingerprints. Both execution
+modes use the same worker and backend interface. `compare_dagger.py` delegates to
+that workflow as a compatibility entry point.
 
-A unified selection interface for multiple model/mode combinations and the
-replaceable Dagger execution contract are requirements for future work. The
-local-only paired controller is not the intended final shared architecture.
-The new Dagger implementation remains unspecified. Documenting these requirements
-does not implement that integration or start new benchmark runs.
+The initial replaceable Dagger adapter preserves the existing whole-function
+wrapper. A future adapter can change the internal scheduling without replacing
+the workflow or scheduler code. No new Dagger speedup algorithm is claimed.
+
+Verification covers model/mode selections, local launch without Slurm, simulated
+Slurm submissions and finalizer refresh, restart behavior, adapter replacement,
+source/provenance checks and comparison compatibility. Julia adapter tests exercise
+the actual direct and Dagger execution interface. Slurm tests do not constitute
+a live deployment on Nibi, Fir or Rorqual; those cluster allocations still need
+execution validation when a benchmark run is requested.

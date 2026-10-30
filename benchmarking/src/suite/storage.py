@@ -68,9 +68,9 @@ def copy_verified(source, destination, remove=False):
     return record
 
 
-def archive_finished_case(folder, case, destination):
+def archive_finished_case(folder, case, destination, allocation_closed=False):
     source = Path(folder) / case['id']
-    closed = (source / 'finished.txt').exists() or (case['state'] in ('TIMEOUT', 'INTERRUPTED') and
+    closed = allocation_closed or (source / 'finished.txt').exists() or (case['state'] in ('TIMEOUT', 'INTERRUPTED') and
                                                      (source / 'started.txt').exists())
     if case['state'] in ('RUNNING', 'PLANNED') or not closed:
         return False

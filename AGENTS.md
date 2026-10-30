@@ -272,15 +272,18 @@ One set of scripts must support configurable subsets of models and execution
 modes, including all four combinations. Keep Dagger behind a replaceable execution
 adapter; do not duplicate scheduler or model code for Dagger. Changing servers
 or scheduler availability must require configuration, not script modifications.
-These are documented requirements; the new integration is not implemented yet.
+The shared entry point is `benchmark_suite.py --study ...`: select combinations
+with `--models`, `--modes`, `--combinations` or `--all`, then use `--execute` or
+`--resume --watch` on either backend. Plan with `--plan` before production runs.
 
 Apply the same server plan to the selected hydrostatic baseline, hydrostatic
 Dagger, nonhydrostatic baseline and nonhydrostatic Dagger combinations. Publish into
 `benchmarking/results/<model_family>/<server>/{baseline,dagger}/<series>/`.
 Keep baseline/Dagger comparisons inside each model/server folder; match
-configurations within the same model. The future Dagger integration method is
-awaiting user instructions; retain the existing whole-window wrapper as a
-historical method without launching new Dagger jobs for this reorganization.
+configurations within the same model and timing contract. The initial Dagger
+adapter preserves the whole-window wrapper; replacing it must use the captured,
+versioned adapter interface documented in `benchmarking/execution_adapters.md`.
+Do not launch full production series merely to validate implementation changes.
 Do not launch CPU benchmark series. Historical result folders and provenance
 remain evidence of their original workloads, not measurements of the new plans.
 

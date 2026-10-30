@@ -10,6 +10,16 @@ from suite.storage import copy_verified, archive_finished_case, archive_runtime,
 
 
 class StorageTests(unittest.TestCase):
+    def test_scheduler_terminal_allocation_allows_archiving_without_finish_marker(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            case = dict(id='1_ranks', series='gpu_scaling_default', state='TIMEOUT', job_id='123')
+            source = root / 'study/1_ranks'
+            source.mkdir(parents=True)
+            (source / 'job.out').write_text('Terminated by scheduler')
+            self.assertFalse(archive_finished_case(root / 'study', case, root / 'results'))
+            self.assertTrue(archive_finished_case(root / 'study', case, root / 'results', allocation_closed=True))
+
     def test_verified_move_and_mismatched_destination(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

@@ -70,10 +70,10 @@ class VariantTests(unittest.TestCase):
                                     for c in data['cases'] if 'configuration' in c))
                 self.assertTrue(all(c['configuration']['initial_condition_seed'] == 1234
                                     for c in data['cases'] if 'configuration' in c))
-            self.assertEqual((output / 'previous_results.md').read_text(), 'Previously accepted results\n')
-            self.assertIn('# Rondeau: hydrostatic baseline', (output / 'comparison.md').read_text())
+            self.assertEqual((output / 'plot.md').read_text(), 'Previously accepted results\n')
+            self.assertIn('# Rondeau: hydrostatic baseline', (root / 'study/comparison.md').read_text())
             self.assertFalse((root / 'study/baseline/cpu_resolution').exists())
-            self.assertNotIn('four independent single-GPU simulations', (output / 'comparison.md').read_text())
+            self.assertNotIn('four independent single-GPU simulations', (root / 'study/comparison.md').read_text())
 
     def test_idle_gpu_selection_rejects_occupied_devices(self):
         from types import SimpleNamespace
@@ -106,8 +106,9 @@ class VariantTests(unittest.TestCase):
             with patch('sys.argv', args), patch.object(runner, 'snapshot'):
                 compare_dagger.main()
             for mode in ('baseline', 'dagger'):
-                self.assertTrue((root / 'results' / mode / 'plot.md').exists())
-                self.assertTrue((root / 'results' / mode / 'status.json').exists())
+                self.assertTrue((root / 'study' / mode / 'plot.md').exists())
+                self.assertTrue((root / 'study' / mode / 'status.json').exists())
+            self.assertFalse((root / 'results').exists())
             rows = comparison_rows(root / 'study')
             self.assertEqual({r['series'] for r in rows}, set(plan.machine_series({'machine': 'rondeau'})))
 

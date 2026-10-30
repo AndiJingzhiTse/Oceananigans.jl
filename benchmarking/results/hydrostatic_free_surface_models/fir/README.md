@@ -6,7 +6,7 @@
 - [Dagger](dagger/README.md): the same model, workloads and numerical settings with Dagger.
 - `comparison.md`, `comparison.csv`, `comparisons/`: generated matched comparisons inside this model/server folder.
 
-This reorganization runs no new benchmarks. The new Dagger integration is deferred.
+This reorganization runs no new benchmarks. The shared workflow uses a replaceable Dagger adapter.
 Existing records, including any comparisons already present, retain their original
 series, dates, wrapper method and provenance. They are not certified as completed
 measurements of the new plan. Historical root-level series and their `plot.md`

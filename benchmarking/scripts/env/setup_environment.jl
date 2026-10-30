@@ -1,7 +1,10 @@
 using Pkg
 using TOML
 
-environment = abspath(only(ARGS))
+isempty(ARGS) && error("Usage: setup_environment.jl ENVIRONMENT [--adapter DIRECTORY]")
+length(ARGS) in (1, 3) || error("Expected ENVIRONMENT [--adapter DIRECTORY]")
+length(ARGS) == 3 && ARGS[2] != "--adapter" && error("Expected --adapter DIRECTORY")
+environment = abspath(first(ARGS))
 benchmark_dir = dirname(dirname(@__DIR__))
 repository = dirname(benchmark_dir)
 mkpath(environment)
@@ -19,8 +22,19 @@ Pkg.activate(environment)
 Pkg.develop([PackageSpec(path=repository), PackageSpec(path=benchmark_dir)])
 Pkg.instantiate()
 
+# Execution dependencies belong to the selected adapter, not the root package.
+if length(ARGS) == 3
+    @eval using JSON
+    manifest = JSON.parsefile(joinpath(abspath(ARGS[3]), "adapter.json"))
+    dependencies = get(manifest, "dependencies", Dict())
+    specs = [PackageSpec(name=name, uuid=dependency["uuid"], version=dependency["version"])
+             for (name, dependency) in dependencies]
+    isempty(specs) || Pkg.add(specs)
+end
+
 # MPIPreferences and OpenMPI_jll must both point to the module's MPI runtime.
-mpi_prefix = ENV["EBROOTOPENMPI"]
+mpi_prefix = get(ENV, "EBROOTOPENMPI", "")
+isempty(mpi_prefix) && exit() # Local installs retain their existing/default MPI preferences.
 preferences = Dict(
     "MPIPreferences" => Dict("_format" => "1.0", "binary" => "system", "abi" => "OpenMPI",
                              "libmpi" => joinpath(mpi_prefix, "lib", "libmpi"),

@@ -1,0 +1,13 @@
+{
+  "api_version": 1,
+  "id": "dagger_whole_function",
+  "version": "1",
+  "mode": "dagger",
+  "timing_contract": "oceananigans/timestep_window/v1",
+  "dependencies": {
+    "Dagger": {
+      "uuid": "d58978e5-989f-55fb-8d15-ea34adc7bf54",
+      "version": "0.22.7"
+    }
+  }
+}

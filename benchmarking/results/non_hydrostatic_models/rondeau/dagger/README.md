@@ -10,4 +10,4 @@ remain excluded from Git. Closed logs belong in `<series>/run_records/`.
 No new-plan measurements were executed as part of the reorganization.
 Existing records retain their original settings and validation limits.
 
-The new Dagger execution method awaits further user instructions. Existing whole-window wrapper results retain that historical method.
+The default adapter uses the existing whole-function wrapper. Future adapters record their own method, version and source. Existing wrapper results retain their historical provenance.

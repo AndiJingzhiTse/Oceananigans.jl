@@ -23,6 +23,8 @@ sys.path.insert(0, str(ROOT / 'src'))
 
 from suite.plan import SERIES, ALL_SERIES, GRIDS, MODEL_FOLDERS, build_plan, allocation_groups, machine_series
 from suite.servers import load_series, series_definitions
+from suite.execution import describe_adapter, snapshot_adapter
+from suite.backends import backend
 from suite.report import TERMINAL, validate, write_report, write_model_comparison
 from suite.catalog import MACHINES, write_machine_report, write_series_report, publish_series
 
@@ -75,7 +77,8 @@ def load_server(path=None, model_type=None, execution_mode=None):
                   case_timeout_seconds=86400, matplotlib=True, python='python3', report_modules=[],
                   reference_suites=[], replacement_suites=[], environment={}, gpu_scaling_partition='balanced',
                   model_type='HydrostaticFreeSurfaceModel', comparison_suites=[], comparison_report='',
-                  execution_mode='baseline', profile_layout='study', series_file='', series_definitions=None)
+                  execution_mode='baseline', profile_layout='study', series_file='', series_definitions=None,
+                  dagger_adapter='', dagger_options={}, execution_adapter=None, workflow_root='', trace_namespace='')
     server.update(pressure_preconditioner='DiagonallyDominantPreconditioner',
                   pressure_max_iterations=5000, pressure_diagnostics=False,
                   pressure_preserve_residual=False, pressure_check_true_residual=True, separate_partitions=False)
@@ -89,8 +92,13 @@ def load_server(path=None, model_type=None, execution_mode=None):
     if unknown:
         raise ValueError('Unknown server settings: ' + ', '.join(sorted(unknown)))
     server.update(user)
-    if server['machine'] not in ('Andi-5070ti', 'fir', 'nibi', 'rondeau', 'rorqual'):
-        raise ValueError('Choose one of the five machine profiles in benchmarking/server')
+    if server['dagger_adapter']:
+        adapter_path = Path(os.path.expandvars(server['dagger_adapter'])).expanduser()
+        if not adapter_path.is_absolute():
+            adapter_path = (Path(path).resolve().parent if path else REPO) / adapter_path
+        server['dagger_adapter'] = str(adapter_path.resolve())
+    if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9._-]*', server['machine']):
+        raise ValueError('Server name must be a safe directory name')
     if server['backend'] not in ('local', 'slurm'):
         raise ValueError('backend must be local or slurm')
     if any(not isinstance(server[k], int) or server[k] < 1 for k in ('max_cpu_cores', 'cpu_cores_per_node', 'gpus_per_node', 'gpu_host_cores')):
@@ -108,6 +116,8 @@ def load_server(path=None, model_type=None, execution_mode=None):
         raise ValueError('execution_mode must be baseline or dagger')
     if server['profile_layout'] not in ('study', 'series'):
         raise ValueError('profile_layout must be study or series')
+    if server['trace_namespace'] and not re.fullmatch(r'[A-Za-z0-9_-]+', server['trace_namespace']):
+        raise ValueError('Trace namespace must be a safe directory name')
     if server['series_file']:
         series_path = Path(server['series_file'])
         if not series_path.is_absolute():
@@ -153,6 +163,8 @@ def snapshot(folder, server):
         if source.exists():
             shutil.copy2(source, metadata / name)
     shutil.copytree(ROOT / 'src', metadata / 'src', ignore=shutil.ignore_patterns('__pycache__'))
+    if server.get('execution_adapter'):
+        snapshot_adapter(metadata, server)
     # Keep the resolved workload next to the executable snapshot, independently
     # of the mutable server files or paths on the submitting machine.
     atomic_json(metadata / 'series.json', server.get('series_definitions') or {})
@@ -173,7 +185,9 @@ def snapshot(folder, server):
 def config_markdown(config):
     dispatch = ('Four independent models, one GPU and MPI rank per model; '
                 'Dagger schedules complete simulations, baseline uses concurrent Distributed calls.'
-                if config.get('ensemble_size') else 'Dagger wraps one timing window in one local CPU task.')
+                if config.get('ensemble_size') else
+                f"Adapter {config.get('execution_adapter', {}).get('id', 'legacy')}; "
+                f"timing contract {config.get('execution_adapter', {}).get('timing_contract', 'legacy')}.")
     return ('# Benchmark configuration\n\n'
             f"Series: {config['series']}. Device: {config['device']}; MPI ranks: {config['ranks']}; one thread/rank.\n"
             f"Model: {config.get('model_type', 'HydrostaticFreeSurfaceModel')}; surface: {config.get('free_surface', 'SplitExplicitFreeSurface')}.\n"
@@ -195,12 +209,15 @@ def prepare(folder, server, selected):
     if (folder / 'suite.json').exists():
         raise ValueError('Suite exists; use --resume or --refresh, or choose a fresh output directory')
     folder.mkdir(parents=True, exist_ok=True)
+    server['execution_adapter'] = describe_adapter(server)
     cases = build_plan(server, selected)
     for case in cases:
         case['id'] = case['id'].split('/')[-1]
         destination = folder / case['id']
         destination.mkdir(parents=True)
         if 'configuration' in case:
+            if not case['configuration'].get('ensemble_size'):
+                case['configuration']['execution_adapter'] = server['execution_adapter']
             atomic_json(destination / 'configuration.json', case['configuration'])
             (destination / 'configuration.md').write_text(config_markdown(case['configuration']))
         else:
@@ -220,16 +237,14 @@ def launch_command(server, config, case_dir, metadata, trace_root):
         return ensemble_launch(server, config, case_dir, metadata)
     rank_script = metadata / 'src/suite/rank.sh'
     worker = metadata / 'src/suite/worker.jl'
+    traces = trace_root / config['series']
+    if server.get('profile_layout') == 'series':
+        traces = traces / 'raw_profiles'
+        if server.get('trace_namespace'):
+            traces = traces / server['trace_namespace']
     args = ['bash', str(rank_script), str(case_dir), server['project'], str(worker),
-            str(trace_root / config['series'] / 'raw_profiles' / case_dir.name
-                if server.get('profile_layout') == 'series' else
-                trace_root / config['series'] / case_dir.name), server['julia']]
-    if server['backend'] == 'slurm':
-        return ['srun', '--kill-on-bad-exit=1', '--distribution=block:block',
-                '--cpu-bind=cores' if config['device'] == 'CPU' else '--cpu-bind=none',
-                *(['--gpus-per-task=' + (server['gpu_type'] + ':' if server['gpu_type'] else '') + '1']
-                  if config['device'] == 'GPU' and server.get('full_gpu_nodes', False) else []), *args]
-    return [*server['mpi'], '-n', str(config['ranks']), '--map-by', 'core', '--bind-to', 'core', '--report-bindings', *args]
+            str(traces / case_dir.name), server['julia']]
+    return backend(server).launch(server, config, args)
 
 
 def environment_lines(server):
@@ -272,23 +287,24 @@ def group_script(folder, server, cases):
     lines += ['if type module >/dev/null 2>&1; then module -t list > ' + shlex.quote(str(destination.parent / 'modules.txt')) + ' 2>&1; fi',
               shlex.join([server['julia'], '--version']) + ' > ' + shlex.quote(str(destination.parent / 'julia_version.txt')),
               'if command -v nsys >/dev/null; then nsys --version > ' + shlex.quote(str(destination.parent / 'nsight_version.txt')) + '; fi']
-    if server['backend'] == 'slurm':
-        per_node = server['gpus_per_node' if first['configuration']['device'] == 'GPU' else 'cpu_cores_per_node']
-        nodes = math.ceil(first['ranks'] / per_node)
-        hardware = 'hostname; lscpu'
-        if first['configuration']['device'] == 'GPU':
-            hardware += '; nvidia-smi --query-gpu=name,uuid,driver_version,memory.total --format=csv; nvidia-smi topo -m'
-        info = ['srun', '--ntasks=' + str(nodes), '--ntasks-per-node=1', '--cpus-per-task=1',
-                'bash', '-c', hardware]
-        lines.append(shlex.join(info) + ' > ' + shlex.quote(str(destination.parent / 'compute_hardware.txt')))
-        lines.append('scontrol show job "$SLURM_JOB_ID" > ' + shlex.quote(str(destination.parent / 'slurm_job.txt')))
+    lines += backend(server).allocation_evidence(server, first['configuration'], destination)
     for case in cases:
         path = folder / case['id']
+        if server.get('workflow_root'):
+            from suite.storage import runtime_environment
+            for name, value in runtime_environment(folder / '.runtime' / case['id']).items():
+                lines.append('export ' + name + '=' + shlex.quote(value))
         launch = launch_command(server, case['configuration'], path, metadata, traces)
         (path / 'command.txt').write_text(shlex.join(launch) + '\n')
         prefix = shlex.quote(str(path))
+        verify = (shlex.join([server['python'], str(metadata / 'scripts/benchmark_suite.py'),
+                             '--verify-source', server['workflow_root'], '--verify-suite', str(folder)]) if server.get('workflow_root') else 'true')
+        # Both checks run inside the allocation; a change during a case excludes
+        # its timings rather than silently recording a different implementation.
         lines += [f'date -u +%FT%TZ > {prefix}/started.txt', 'status=0',
-                  shlex.join(launch) + f' > {prefix}/job.out 2>&1 || status=$?',
+                  f'{verify} > {prefix}/source_before.out 2>&1 || status=$?',
+                  f'if [[ "$status" == 0 ]]; then {shlex.join(launch)} > {prefix}/job.out 2>&1 || status=$?; fi',
+                  f'if [[ "$status" == 0 ]]; then {verify} > {prefix}/source_after.out 2>&1 || status=$?; fi',
                   f'printf "%s\\n" "$status" > {prefix}/exit_code.txt',
                   f'date -u +%FT%TZ > {prefix}/finished.txt',
                   'if [[ "$status" != 0 ]]; then failed=1; fi']
@@ -298,50 +314,8 @@ def group_script(folder, server, cases):
 
 
 def sbatch_command(server, group, script):
-    config = group[0]['configuration']
-    gpu = config['device'] == 'GPU'
-    per_node = server['gpus_per_node' if gpu else 'cpu_cores_per_node']
-    nodes = math.ceil(config['ranks'] / per_node)
-    # Slurm can distribute a non-multiple rank count evenly without allocating
-    # more ranks than requested. Recorded layouts verify the actual mapping.
-    tasks_per_node = math.ceil(config['ranks'] / nodes)
-    prefix = 'bench_nh_' if config.get('model_type') == 'NonhydrostaticModel' else 'bench_'
-    args = ['sbatch', '--parsable', f'--job-name={prefix}{config["series"][:30]}',
-            f'--nodes={nodes}', f'--ntasks={config["ranks"]}', f'--ntasks-per-node={tasks_per_node}',
-            f'--cpus-per-task={server["gpu_host_cores"] if gpu else 1}',
-            f'--output={script.parent}/allocation.out']
-    account, partition = server['gpu_account' if gpu else 'cpu_account'], server['gpu_partition' if gpu else 'cpu_partition']
-    if account:
-        args.append('--account=' + account)
-    if partition:
-        args.append('--partition=' + partition)
-    limit = server['partition_time'] if len(group) > 1 else server['gpu_time' if gpu else 'cpu_time']
-    if not gpu and config['ranks'] < 24 and len(group) == 1:
-        limit = f'{max(3, min(24, math.ceil(72 / config["ranks"]))):02}:00:00'
-    if not gpu:
-        limit = server.get('cpu_time_overrides', {}).get(str(config['ranks']), limit)
-    args.append('--time=' + limit)
-    if gpu:
-        kind = server['gpu_type'] + ':' if server['gpu_type'] else ''
-        full_nodes = server.get('full_gpu_nodes', False)
-        memory = '0' if tasks_per_node == per_node or full_nodes else server['gpu_memory']
-        assigned = per_node // tasks_per_node if full_nodes and tasks_per_node < per_node else 1
-        args += [f'--gpus-per-task={kind}{assigned}', '--mem=' + memory]
-        if full_nodes and tasks_per_node < per_node:
-            args += ['--exclusive']
-    else:
-        args.append('--hint=nomultithread')
-        if server['cpu_constraint']:
-            args.append('--constraint=' + server['cpu_constraint'])
-        if server['exclusive_cpu']:
-            args += ['--exclusive', '--mem=0']
-        else:
-            memory = server['cpu_memory_base_gb'] + server['cpu_memory_per_rank_gb'] * tasks_per_node
-            args.append(f'--mem={memory}G')
-    extra = server['gpu_sbatch_extra' if gpu else 'cpu_sbatch_extra']
-    if any(a.startswith('--dependency=afterok:') for a in extra):
-        args.append('--kill-on-invalid-dep=yes')
-    return args + extra + [str(script)]
+    from suite.backends import sbatch_command as build_sbatch
+    return build_sbatch(server, group, script)
 
 
 def execute(folder, data, case_ids=None, on_start=None):
@@ -349,81 +323,17 @@ def execute(folder, data, case_ids=None, on_start=None):
     selected = cases if case_ids is None else [c for c in cases if c['id'] in case_ids]
     for key, group in allocation_groups(selected, server.get('separate_partitions', False)).items():
         script = group_script(folder, server, group)
-        if server['backend'] == 'slurm':
-            args = sbatch_command(server, group, script)
-            submitted = command(args)
-            (script.parent / 'submission.txt').write_text(shlex.join(args) + '\n' + submitted.stdout)
-            job = next((line.split(';')[0] for line in reversed(submitted.stdout.splitlines())
-                        if re.fullmatch(r'\d+(;\S+)?', line.strip())), '')
-            for case in group:
-                case.update(state='SUBMITTED' if not submitted.returncode and job else 'SUBMISSION_FAILED',
-                            job_id=job, details=submitted.stdout.strip())
-            print(f'{key}: {group[0]["state"]} {job}', flush=True)
-        else:
-            # Local execution occupies the supplied resources synchronously.
-            with (script.parent / 'allocation.out').open('w') as log:
-                try:
-                    process = subprocess.Popen(['bash', str(script)], stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
-                    for case in group:
-                        case.update(state='RUNNING', details='Local allocation started; see job.out')
-                    atomic_json(folder / 'suite.json', data)
-                    if on_start is not None:
-                        on_start()
-                    status = process.wait(timeout=server['case_timeout_seconds'] * len(group))
-                    for case in group:
-                        if not (folder / case['id'] / 'finished.txt').exists():
-                            case.update(state='INTERRUPTED', details=f'Allocation exited {status} without a case completion marker; see allocation.out')
-                except subprocess.TimeoutExpired:
-                    os.killpg(process.pid, signal.SIGTERM)
-                    try:
-                        process.wait(timeout=5)
-                    except subprocess.TimeoutExpired:
-                        os.killpg(process.pid, signal.SIGKILL)
-                        process.wait()
-                    # Kill the whole launcher/rank process group rather than
-                    # leaving orphaned MPI processes on allocated resources.
-                    for case in group:
-                        if not (folder / case['id'] / 'finished.txt').exists():
-                            case.update(state='TIMEOUT', details='Local allocation exceeded configured time limit')
-            refresh(folder, data, query_slurm=False)
+        backend(server).execute_group(sys.modules[__name__], folder, data, group, script, on_start)
         atomic_json(folder / 'suite.json', data)
-    if server['backend'] == 'slurm':
-        submit_finalizer(folder, data)
+    backend(server).finalize(sys.modules[__name__], folder, data)
     data['submitted_at'] = datetime.now(timezone.utc).isoformat()
     atomic_json(folder / 'suite.json', data)
     refresh(folder, data)
 
 
 def submit_finalizer(folder, data):
-    ids = sorted({c['job_id'] for c in data['cases'] if c['job_id']})
-    if not ids or data.get('finalizer_job_id'):
-        return
-    server = data['server']
-    metadata = folder / 'run_metadata'
-    path = metadata / 'finalize.sh'
-    lines = ['#!/usr/bin/env bash', *environment_lines(server)]
-    if server['report_modules']:
-        lines.append(shlex.join(['module', 'load', *server['report_modules']]))
-    args = [server['python'], str(metadata / 'scripts/benchmark_suite.py'),
-            '--output', str(folder.parent), '--series', folder.name, '--refresh']
-    if data.get('commit'):
-        args.append('--commit')
-    if data.get('publish_to'):
-        args += ['--publish', data['publish_to']]
-    lines.append(shlex.join(args))
-    path.write_text('\n'.join(lines) + '\n')
-    args = ['sbatch', '--parsable', '--nodes=1', '--ntasks=1', '--cpus-per-task=1',
-            '--mem=4G', '--time=00:30:00', '--job-name=benchmark_finalize',
-            '--dependency=afterany:' + ':'.join(ids), '--output=' + str(metadata / 'finalize.out')]
-    if server['cpu_account']:
-        args.append('--account=' + server['cpu_account'])
-    args.append(str(path))
-    result = command(args)
-    (metadata / 'finalizer_submission.txt').write_text(shlex.join(args) + '\n' + result.stdout)
-    job = next((line.split(';')[0] for line in reversed(result.stdout.splitlines()) if re.fullmatch(r'\d+(;\S+)?', line.strip())), '')
-    data['finalizer_job_id'] = job
-    if result.returncode or not job:
-        print('Finalizer submission failed; run --refresh manually. ' + result.stdout, flush=True)
+    from suite.backends import submit_finalizer as finalize
+    return finalize(sys.modules[__name__], folder, data)
 
 
 def refresh(folder, data, query_slurm=True):
@@ -433,21 +343,8 @@ def refresh(folder, data, query_slurm=True):
     cases = data['cases']
     records = {}
     ids = sorted({c['job_id'] for c in cases if c['job_id'] and c['state'] not in TERMINAL})
-    if query_slurm and data['server']['backend'] == 'slurm' and ids:
-        # Do not query purged completed IDs with squeue; sacct is a fallback,
-        # while finished/exit markers remain authoritative if accounting fails.
-        accounting = command(['sacct', '-X', '-n', '-P', '-j', ','.join(ids), '--format=JobIDRaw,State%40,ExitCode,Reason%200'])
-        (folder / ('accounting.txt' if not accounting.returncode else 'accounting_error.txt')).write_text(accounting.stdout)
-        if not accounting.returncode:
-            records = {row[0]: (row[1].split()[0].rstrip('+'), f'Exit {row[2]}; {row[3]}')
-                       for line in accounting.stdout.splitlines() if len(row := line.split('|')) >= 4}
-        queue = command(['squeue', '--start', '-h', '-u', os.environ.get('USER', ''), '-o', '%i|%T|%R|%S'])
-        (folder / 'queue.txt').write_text(queue.stdout)
-        if not queue.returncode:
-            for line in queue.stdout.splitlines():
-                row = line.split('|')
-                if len(row) >= 4 and row[0] in ids:
-                    records[row[0]] = (row[1], f'{row[2]}; estimated start {row[3]} (scheduler timezone)')
+    if query_slurm:
+        records = backend(data['server']).accounting(sys.modules[__name__], folder, ids)
     for case in cases:
         destination = folder / case['id']
         if case['state'] in {'RESOURCE_LIMIT', 'GEOMETRY_LIMIT'}:
@@ -520,6 +417,14 @@ def commit_artifacts_locked(folder, repo):
 
 
 def main():
+    if '--verify-source' in sys.argv:
+        from suite.workflow import verify_source
+        suite = Path(sys.argv[sys.argv.index('--verify-suite') + 1]) if '--verify-suite' in sys.argv else None
+        verify_source(Path(sys.argv[sys.argv.index('--verify-source') + 1]), suite)
+        return
+    if any(arg.split('=', 1)[0] in ('--study', '--models', '--modes', '--combinations', '--all', '--execute', '--help', '-h') for arg in sys.argv[1:]):
+        from suite.workflow import main as workflow_main
+        return workflow_main(sys.modules[__name__])
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--config', type=Path, help='Server resource and environment JSON file')
     parser.add_argument('--output', type=Path, help='Machine directory; each selected series gets its own subfolder')

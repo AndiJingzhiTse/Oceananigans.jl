@@ -6,7 +6,7 @@ reporting stay in shared code. Run commands from the repository root.
 
 [Workflow requirements](requirements.md) define the requested common local/Slurm
 entry point, selectable model/mode combinations and replaceable Dagger adapter.
-They distinguish future requirements from currently implemented capabilities.
+The shared workflow implements these selections through backend and execution adapters.
 
 ## File structure
 
@@ -28,7 +28,7 @@ benchmarking/
 │   └── Andi-5070ti/                     Retained local config; no new server plan
 ├── scripts/
 │   ├── benchmark_suite.py               Shared local/Slurm controller
-│   ├── compare_dagger.py                Existing local whole-window wrapper study
+│   ├── compare_dagger.py                Compatibility wrapper for the shared workflow
 │   ├── run_benchmarks.jl                Configurable model and I/O benchmarks
 │   ├── generate_bathymetry.jl           Optional bathymetry preparation
 │   └── env/                            Shared Julia/MPI/module setup
@@ -36,6 +36,10 @@ benchmarking/
 │   ├── OceananigansBenchmarks.jl
 │   ├── earth_ocean.jl                   Shared benchmark model construction
 │   └── suite/
+│       ├── workflow.py                 Persisted model/mode studies and comparisons
+│       ├── backends.py                 Local and Slurm allocation/launch adapters
+│       ├── execution.py                Execution adapter discovery and snapshots
+│       ├── execution/                  Direct and Dagger Julia adapters
 │       ├── servers.py                  Server workload loader and schema checks
 │       ├── plan.py                     Common case and resource planning
 │       ├── rank.sh                     MPI launcher and profiler capture
@@ -114,10 +118,9 @@ It is not constant-work-per-GPU weak scaling.
 
 ## Selectable model and execution combinations
 
-The full selection contains the four combinations below. The requested workflow
-must also allow any subset: one or both models, baseline or Dagger or both, and
-explicit mixed combinations. See [the requirements](requirements.md) for the
-shared local/Slurm workflow; the current CLI selects one combination per invocation.
+The shared workflow supports any subset of the four combinations below. Select
+models with `--models`, modes with `--modes`, explicit pairs with `--combinations`,
+or all four with `--all`. The same entry point handles local and Slurm execution.
 
 | Model | Execution | Result destination |
 |---|---|---|
@@ -133,50 +136,102 @@ Compare Dagger against the matching baseline **within the same model and server*
 Speedup is baseline time / Dagger time; equal time is 1. Compare profiled cases
 only against profiled cases. Failures and missing measurements have no ratio.
 
-**The new Dagger execution method is deferred until the user's next instructions.**
-This reorganization creates plans and documents destinations; it launches no new
-benchmarks. The existing whole-window `Dagger.@spawn` implementation is retained
-as a historical wrapper method. `--execution-mode dagger --plan` can record the
-matching planned configurations; it does not choose or validate a new integration.
-The earlier hydrostatic Rondeau study was stopped while waiting for GPUs; see its
+The default Dagger adapter uses the existing whole-function wrapper. It has the
+same model and numerical kernels as baseline. [Execution adapters](execution_adapters.md)
+describes the replaceable interface, dependencies and method provenance. Baseline
+execution does not load Dagger. No new internal Dagger parallelization is claimed.
+The earlier hydrostatic Rondeau study remains stopped; see its
 [historical runbook](server/rondeau/history/hydrostatic_dagger_2026-10-30.md).
 
-## Plan without running
+## Plan and execute the shared workflow
 
-Server resource/software settings moved from `scripts/configs/<server>.json` to
-`server/<server>/config.json`. A `series_file` path is resolved relative to that
-config. Resolved definitions are embedded in `suite.json` and saved beside the
-executable snapshot as `run_metadata/series.json`; later edits do not change
-an existing study's cases. Review cluster accounts, modules and capacities before
-any future submission. Cluster environment preparation remains in `scripts/env/`.
-The retained `Andi-5070ti` profile is outside the new four-server GPU plans.
+Set project-controlled temporary storage before setup, testing or execution:
 
 ```bash
 export TMPDIR="$PWD/.runtime/tmp"
 mkdir -p "$TMPDIR"
 export TMP="$TMPDIR" TEMP="$TMPDIR" OMPI_MCA_orte_tmpdir_base="$TMPDIR"
 export PYTHONDONTWRITEBYTECODE=1
-
-python3 benchmarking/scripts/benchmark_suite.py \
-  --config benchmarking/server/rondeau/config.json \
-  --model HydrostaticFreeSurfaceModel --execution-mode baseline \
-  --output .runtime/benchmark_studies/new-plan/hydrostatic_free_surface_models/rondeau/baseline \
-  --plan
 ```
 
-Change `--model` to `NonhydrostaticModel` and `--execution-mode` to `dagger`
-to prepare each of the other three combinations in its own study directory.
-Use `--series` for a configured subset. A new plan refuses unconfigured series;
-legacy definitions remain available to read/refresh historical studies.
-The default publication destination includes the execution mode.
+Plan both models and both execution modes:
 
-The existing baseline controller supports `--run` for local execution and
-`--submit` for Slurm, followed by `--resume --watch`. These are future execution
-steps, not part of this reorganization. Rondeau has no scheduler: check live GPU
-usage and wait for occupied GPUs without holding resources. The existing local
-paired wrapper controller supports cooperative `--wait-for-gpus` checks and source
-guards; it is not a Slurm submission controller. Do not switch branches or edit
-library/benchmark/server definitions while jobs from this checkout run.
+```bash
+python3 benchmarking/scripts/benchmark_suite.py \
+  --study .runtime/benchmark_studies/rondeau-study \
+  --config benchmarking/server/rondeau/config.json \
+  --models both --modes both --plan
+```
+
+The same command works for Nibi, Fir or Rorqual by selecting that server's config
+and a new study directory. No executable scripts need editing. The config's
+`backend` chooses local execution or Slurm submission. For a fresh study,
+`--execute` replaces `--plan` to prepare and execute through that backend.
+For an already reviewed plan, use the same resume command on every server:
+
+```bash
+python3 benchmarking/scripts/benchmark_suite.py \
+  --study .runtime/benchmark_studies/rondeau-study --resume --watch
+```
+
+Local execution waits for idle GPUs without holding devices and runs cases
+serially. Paired modes reuse physical GPU UUIDs, with alternating order between
+cases. Slurm execution records `sbatch` requests and launches workers with `srun`
+inside the allocation. Without `--watch`, submission returns after queueing;
+captured finalizers refresh the full study and publish validated results when
+allocations end. `--refresh` updates reports without launching jobs. Resume uses
+saved selections and settings and never resubmits live or queued cases.
+
+Selection examples (add the chosen flags when creating the study):
+
+| Desired runs | Flags |
+|---|---|
+| Both models, baseline only | `--models both --modes baseline` |
+| Both models, Dagger only | `--models both --modes dagger` |
+| Hydrostatic model, both modes | `--models hydrostatic --modes both` |
+| All four combinations | `--all` |
+| Hydrostatic baseline plus nonhydrostatic Dagger | `--combinations hydrostatic:baseline,nonhydrostatic:dagger` |
+
+The default selection is hydrostatic baseline. `--models` also accepts the full
+Julia model names. `--series` selects a configured subset. Dagger-only selection
+does not add a baseline job; comparisons can use compatible retained baseline
+records, with their source paths included in the comparison CSV.
+
+`study.json` records selections, source fingerprints, adapter snapshots, status
+and output destinations. Each `<model_family>/<server>/<mode>/<series>/suite.json`
+records cases and resource requests. Captured code, environments and workload
+files keep queued jobs independent of later helper edits. Source/configuration
+checks before and after execution exclude measurements if the library or captured
+worker/adapter changes. Stop a study before switching branches or editing source.
+
+Use `--project /absolute/environment` to select a shared isolated Julia environment
+for the chosen modes. Prepare cluster environments with the shared setup helper;
+selecting the Dagger adapter installs its declared dependencies in that isolated
+environment, without changing the root package project:
+
+```bash
+bash benchmarking/scripts/env/setup.sh nibi \
+  --adapter benchmarking/src/suite/execution/dagger
+```
+
+The Julia helper `scripts/env/setup_environment.jl ENVIRONMENT [--adapter DIRECTORY]`
+also supports local setup; existing/default MPI preferences are retained when
+`EBROOTOPENMPI` is unset. Review the config's accounts, modules, MPI and environment
+paths before future cluster runs. Local runs require no Slurm commands.
+
+Publication defaults to `benchmarking/results/`. `--publish` overrides this **root**
+for a shared study; the workflow appends `<model_family>/<server>/<mode>/`.
+Each model/server folder gets baseline/Dagger comparisons. `--reference-root`
+selects a different retained result root. `--commit` commits scientific records
+without raw profiles or unrelated changes. Plans never publish performance data.
+
+`compare_dagger.py` is a compatibility wrapper selecting both modes through this
+same workflow. Its old `--publish` argument still names a single model/server
+folder, and its study layout remains flat for compatibility. It no longer has
+an independent scheduler or a local-only execution restriction. Historical studies
+must use their captured controller; do not resume superseded plans automatically.
+The legacy single-suite `--output` interface remains for captured reports and
+existing callers; use `--study` for new portable model/mode studies.
 
 ## Measurement and validation
 
@@ -239,6 +294,7 @@ With the project-local temporary environment above:
 
 ```bash
 python3 -m unittest discover -s benchmarking/test -v
+julia --threads=1 --project=/path/to/environment benchmarking/test/test_execution_adapters.jl
 ```
 
 These tests cover exact server workloads, both models and execution modes,

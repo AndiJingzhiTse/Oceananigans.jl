@@ -8,7 +8,7 @@ source "$script_dir/modules.sh"
 environment="${SCRATCH:-/scratch/$USER}/oceananigans_benchmark_environments/$machine"
 export JULIA_DEPOT_PATH="${JULIA_DEPOT_PATH:-${SCRATCH:-/scratch/$USER}/julia_depot:}"
 export JULIA_NUM_PRECOMPILE_TASKS="${JULIA_NUM_PRECOMPILE_TASKS:-4}"
-julia "$script_dir/setup_environment.jl" "$environment"
+julia "$script_dir/setup_environment.jl" "$environment" "${@:2}"
 julia --project="$environment" -e 'using Pkg; Pkg.precompile()'
 # Load NetCDF/CUDA before selecting the system OpenMPI runtime.
 julia --project="$environment" -e 'using OceananigansBenchmarks, CUDA, NCDatasets; include(ARGS[1]); drac_mpi_init(); println("PASS: benchmark environment")' "$script_dir/drac_mpi.jl"

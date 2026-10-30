@@ -3,8 +3,9 @@
 [Resource/software settings](config.json) · [Authoritative workloads](series.json) · [Shared instructions](../../README.md)
 
 This plan applies to both HydrostaticFreeSurfaceModel and NonhydrostaticModel,
-each once as baseline and once with Dagger. The new Dagger execution method is
-awaiting user instructions. This folder contains inputs and documentation, not measurements.
+with selectable baseline/Dagger combinations. The shared workflow uses the
+configured local or Slurm backend and a replaceable Dagger execution adapter.
+This folder contains inputs and documentation; measurements belong in results/.
 
 | Series | Cases |
 |---|---|

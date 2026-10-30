@@ -25,7 +25,7 @@ def fixture(folder, config):
         py = config['partition'][1]
         shape = [config['x_sizes'][rank // py], config['y_sizes'][rank % py], config['global_resolution'][2]]
         entries.append(dict(rank=rank, grid_size=shape, float_type='Float64', configuration=config,
-                            metadata={'num_threads': 1}, finite_state=True, retained_free_surface_substeps=21,
+                            metadata={'num_threads': 1, 'execution_adapter': config.get('execution_adapter')}, finite_state=True, retained_free_surface_substeps=21,
                             window_seconds=[10, 11, 12, 13, 14], time_per_step_seconds=1.0,
                             time_per_step_median_seconds=1.2, time_per_step_max_seconds=1.4))
         if config.get('model_type') == 'NonhydrostaticModel':

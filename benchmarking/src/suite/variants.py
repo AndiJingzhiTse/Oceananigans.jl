@@ -5,16 +5,31 @@ import math
 from pathlib import Path
 
 from .plan import ALL_SERIES
+from .execution import comparable_configuration
 
 
-def comparison_rows(study, selected=ALL_SERIES):
+def comparison_rows(study, selected=ALL_SERIES, references=None):
     rows = []
     for series in selected:
         variants = {}
+        sources = {}
+        retained = {}
         for mode in ('baseline', 'dagger'):
             path = Path(study) / mode / series / 'suite.json'
             data = json.loads(path.read_text()) if path.exists() else {'cases': []}
             variants[mode] = {c['id']: c for c in data['cases']}
+            sources[mode] = {c['id']: str(path) for c in data['cases']}
+            retained[mode] = {}
+            if references:
+                reference = Path(references) / mode / series / 'suite.json'
+                if reference.exists() and reference.resolve() != path.resolve():
+                    retained[mode] = {c['id']: c for c in json.loads(reference.read_text())['cases']}
+        local_ids = tuple(dict.fromkeys((*variants['baseline'], *variants['dagger'])))
+        for mode in ('baseline', 'dagger'):
+            for case_id in local_ids:
+                if case_id not in variants[mode] and case_id in retained[mode]:
+                    variants[mode][case_id] = retained[mode][case_id]
+                    sources[mode][case_id] = str(Path(references) / mode / series / 'suite.json')
         for case_id in dict.fromkeys((*variants['baseline'], *variants['dagger'])):
             base, dagger = (variants[m].get(case_id, {}) for m in ('baseline', 'dagger'))
             cfg = base.get('configuration', dagger.get('configuration', {}))
@@ -23,14 +38,16 @@ def comparison_rows(study, selected=ALL_SERIES):
                        partition='x'.join(map(str, cfg.get('partition', []))),
                        grid_type=cfg.get('grid_type', ''), profile=cfg.get('profile', False),
                        baseline_state=base.get('state', 'MISSING'), dagger_state=dagger.get('state', 'MISSING'),
+                       baseline_source=sources['baseline'].get(case_id, ''), dagger_source=sources['dagger'].get(case_id, ''),
+                       baseline_method=base.get('configuration', {}).get('execution_adapter', {}).get('id', 'legacy'),
+                       dagger_method=dagger.get('configuration', {}).get('execution_adapter', {}).get('id', 'legacy'),
                        baseline_fastest='', dagger_fastest='', baseline_median='', dagger_median='',
                        speedup_fastest='', speedup_median='',
                        baseline_ensemble_timed='', dagger_ensemble_timed='', speedup_ensemble_timed='',
                        baseline_ensemble_dispatch='', dagger_ensemble_dispatch='', speedup_ensemble_dispatch='',
                        details='; '.join(f'{m}: {c.get("details", "")}' for m, c in
                                          (('baseline', base), ('dagger', dagger))).rstrip())
-            configurations = [{k: v for k, v in c.get('configuration', {}).items()
-                               if k != 'execution_mode'} for c in (base, dagger)]
+            configurations = [comparable_configuration(c.get('configuration', {})) for c in (base, dagger)]
             if base.get('state') == dagger.get('state') == 'COMPLETED':
                 if configurations[0] != configurations[1]:
                     row['details'] = 'Incompatible configurations; no timing ratio'
@@ -48,10 +65,10 @@ def comparison_rows(study, selected=ALL_SERIES):
     return rows
 
 
-def write_comparison(study, output, plotting=True, selected=ALL_SERIES, model_type='NonhydrostaticModel', machine='rondeau'):
+def write_comparison(study, output, plotting=True, selected=ALL_SERIES, model_type='NonhydrostaticModel', machine='rondeau', references=None):
     study, output = Path(study), Path(output)
     output.mkdir(parents=True, exist_ok=True)
-    rows = comparison_rows(study, selected)
+    rows = comparison_rows(study, selected, references)
     if rows:
         with (output / 'comparison.csv').open('w', newline='') as stream:
             writer = csv.DictWriter(stream, fieldnames=list(rows[0]), lineterminator='\n')
@@ -63,8 +80,9 @@ def write_comparison(study, output, plotting=True, selected=ALL_SERIES, model_ty
         if not previous.exists():
             previous.write_text((output / 'plot.md').read_text())
     lines = [f'# {machine.capitalize()}: {model_label} baseline versus Dagger', '',
-             'For MPI series, Dagger submits one task per timing window, restricted to the current MPI process and its sole Julia computation thread. '
-             'Oceananigans retains its existing MPI domain decomposition. Both paths synchronize CUDA before completing a window.', '',
+             'Each case records its execution adapter, version, source hash and options. '
+             'Ratios require equivalent workload settings and timing contracts; adapter identity may differ. '
+             'The CSV records the source of each measurement, including any retained reference.', '',
              'Speedup = baseline seconds per step / Dagger seconds per step. Above 1 favors Dagger; the equal-time reference is 1. '
              'Fastest and median timings are the maximum rank statistic. Only completed, validated pairs with matching configurations have ratios.', '',
              'Nsight timings are compared only against the matching profiled variant. Shared-machine activity can affect timings; '

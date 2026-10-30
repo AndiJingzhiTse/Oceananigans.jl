@@ -38,6 +38,8 @@ def validate(case_dir, config, verify_traces=True, ensemble_member=False):
     if not gpu and any(not str(l['affinity']).isdigit() or not l['physical_core'] for l in layout):
         raise ValueError('CPU rank is not pinned to one core')
     for entry in entries:
+        if config.get('execution_adapter') and entry.get('metadata', {}).get('execution_adapter') != config['execution_adapter']:
+            raise ValueError('Execution adapter provenance does not match the planned configuration')
         # Oceananigans rank ordering is z fastest, then y, then x.
         rank = entry['rank']
         py = config['partition'][1]

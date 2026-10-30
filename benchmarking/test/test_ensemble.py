@@ -57,7 +57,9 @@ class EnsembleTests(unittest.TestCase):
     def test_members_use_direct_timestepping_and_reproducible_distinct_seeds(self):
         for mode in ('baseline','dagger'):
             cfg=self.config(mode)
+            cfg['execution_adapter'] = {'id': 'outer-simulation-scheduler'}
             members=[member_configuration(cfg,i) for i in range(1,5)]
+            self.assertTrue(all('execution_adapter' not in m for m in members))
             self.assertEqual([m['initial_condition_seed'] for m in members],[1234,1235,1236,1237])
             self.assertTrue(all(m['execution_mode']=='baseline' and m['ensemble_execution_mode']==mode for m in members))
 
