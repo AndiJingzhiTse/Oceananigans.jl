@@ -139,6 +139,12 @@ src/
 Follow [ColPrac](https://github.com/SciML/ColPrac). Feature branches, descriptive commits,
 update tests and docs with code changes, check CI before merging.
 
+Use one working checkout at `/u/ajtse/Oceananigans.jl`. Commit changes before
+switching branches in that folder. Do not create additional worktrees or put
+code, environments, benchmarks, logs, archives, or temporary files in
+`/local_scratch`. This explicit workspace preference supersedes older storage
+examples and historical benchmark paths.
+
 Make a descriptive git commit for every finished task that changes repository
 files, including code, documentation, instructions, and benchmark results.
 Complete the relevant checks before committing, stage only files belonging
@@ -164,9 +170,12 @@ to benchmarks, tests, profiling, package setup, downloads, scripts, logs, and
 temporary files created by child processes. Do not use symlinks whose targets
 resolve to these system temporary directories.
 
-Use project-controlled directories on a data filesystem instead. On Rondeau,
-use `/local_scratch/ajtse/` for working studies and
+Use project-controlled directories inside the sole working checkout. Use
+`/u/ajtse/Oceananigans.jl/.runtime/tmp/` for temporary files, `.runtime/` for
+ignored environments, studies and archives, and
 `benchmarking/results/<model_family>/<machine>/` for retained artifacts.
+Never use `/local_scratch`, including through a symlink. Historical provenance
+may retain old paths as evidence; do not rewrite original measurements.
 Before launching tools or tests, explicitly set `TMPDIR`, `TMP`, and `TEMP`
 to an existing directory there. Configure library-specific temporary storage
 as well, including `OMPI_MCA_orte_tmpdir_base` for OpenMPI, and verify that
