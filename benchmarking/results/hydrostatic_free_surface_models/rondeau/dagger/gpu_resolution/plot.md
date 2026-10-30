@@ -7,3 +7,4 @@ Latest accepted measurement for each case. Configuration links record the actual
 | Case | MPI ranks | Fastest s/step | Median s/step | Validation |
 |---|---:|---:|---:|---|
 | [default](default/configuration.md) | 1 | 0.034043 | 0.034071 | Current suite checks |
+| [fine](fine/configuration.md) | 1 | 0.248474 | 0.248573 | Current suite checks |
