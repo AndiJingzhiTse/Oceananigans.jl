@@ -52,12 +52,12 @@ class VariantTests(unittest.TestCase):
             output = root / 'hydrostatic_free_surface_models/rondeau'
             output.mkdir(parents=True)
             (output / 'plot.md').write_text('Previously accepted results\n')
-            args = ['compare_dagger.py', '--config', str(runner.ROOT / 'scripts/configs/rondeau.json'),
+            args = ['compare_dagger.py', '--config', str(runner.ROOT / 'server/rondeau/config.json'),
                     '--project', str(root / 'environment'), '--study', str(root / 'study'),
                     '--publish', str(output), '--model', 'HydrostaticFreeSurfaceModel', '--gpu-only', '--plan']
             with patch('sys.argv', args), patch.object(runner, 'snapshot'):
                 compare_dagger.main()
-            expected = {s for s in plan.SERIES if s.startswith('gpu_')}
+            expected = set(plan.machine_series({'machine': 'rondeau'}))
             rows = comparison_rows(root / 'study')
             self.assertEqual({r['series'] for r in rows}, expected)
             self.assertEqual(len(expected), 7)
@@ -100,7 +100,7 @@ class VariantTests(unittest.TestCase):
     def test_paired_plan_creates_empty_variant_destinations(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
-            args = ['compare_dagger.py', '--config', str(runner.ROOT / 'scripts/configs/rondeau.json'),
+            args = ['compare_dagger.py', '--config', str(runner.ROOT / 'server/rondeau/config.json'),
                     '--project', str(root / 'environment'), '--study', str(root / 'study'),
                     '--publish', str(root / 'results'), '--plan']
             with patch('sys.argv', args), patch.object(runner, 'snapshot'):
@@ -109,7 +109,7 @@ class VariantTests(unittest.TestCase):
                 self.assertTrue((root / 'results' / mode / 'plot.md').exists())
                 self.assertTrue((root / 'results' / mode / 'status.json').exists())
             rows = comparison_rows(root / 'study')
-            self.assertEqual({r['series'] for r in rows}, set(plan.RONDEAU_SERIES))
+            self.assertEqual({r['series'] for r in rows}, set(plan.machine_series({'machine': 'rondeau'})))
 
     def test_nested_gpu_memory_error_is_reported_after_refresh(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -125,11 +125,11 @@ class VariantTests(unittest.TestCase):
             self.assertEqual(case['details'].count('Execution failed'), 1)
 
     def test_execution_mode_reaches_every_configuration(self):
-        server = runner.load_server(runner.ROOT / 'scripts/configs/rondeau.json', 'NonhydrostaticModel')
+        server = runner.load_server(runner.ROOT / 'server/rondeau/config.json', 'NonhydrostaticModel')
         for mode in ('baseline', 'dagger'):
             server['execution_mode'] = mode
             cases = plan.build_plan(server)
-            self.assertEqual({c['series'] for c in cases}, set(plan.RONDEAU_SERIES))
+            self.assertEqual({c['series'] for c in cases}, set(plan.machine_series({'machine': 'rondeau'})))
             self.assertTrue(all(c['configuration']['execution_mode'] == mode
                                 for c in cases if 'configuration' in c))
 
@@ -162,18 +162,18 @@ class VariantTests(unittest.TestCase):
             self.assertTrue((output / 'dagger/status.json').is_file())
             self.assertIn('Equal time (1)', (output / 'comparisons/cpu_resolution.svg').read_text())
 
-    def test_rondeau_reduced_plan_and_increasing_load_reference(self):
+    def test_rondeau_server_plan_and_increasing_load_reference(self):
         from suite.report import efficiencies
         server = dict(machine='rondeau', model_type='NonhydrostaticModel', max_cpu_cores=128, max_gpus=4)
         cases = plan.build_plan(server)
-        self.assertEqual(tuple(dict.fromkeys(c['series'] for c in cases)), plan.RONDEAU_SERIES)
-        self.assertEqual(cases[0]['series'], 'gpu_weak_scaling')
-        self.assertEqual(len(cases), 14)
+        self.assertEqual(tuple(dict.fromkeys(c['series'] for c in cases)), plan.machine_series({'machine': 'rondeau'}))
+        self.assertEqual(cases[0]['series'], 'gpu_resolution')
+        self.assertEqual(len(cases), 22)
         self.assertTrue(all(c['series'].startswith('gpu_') for c in cases))
         weak = [c for c in cases if c['series'] == 'gpu_weak_scaling']
         self.assertEqual([(c['ranks'], c['configuration']['global_resolution']) for c in weak],
-                         [(1, [360,180,50]), (2, [720,360,100]), (4, [1440,720,200])])
-        for case, seconds in zip(weak, (1, 4, 16)):
+                         [(1, [360,180,50]), (4, [720,360,100])])
+        for case, seconds in zip(weak, (1, 2)):
             case.update(state='COMPLETED', measurement=dict(fastest=seconds, median=seconds))
             self.assertEqual(efficiencies(case, weak[0]), (1, 1))
         for name, grid in (('gpu_scaling_fine', 'fine'), ('gpu_nsight_scaling_default','default')):

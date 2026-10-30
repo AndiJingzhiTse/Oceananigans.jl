@@ -101,7 +101,7 @@ def pending_pairs(studies, selected):
 
 
 def source_fingerprint():
-    paths = ('src', 'Project.toml', 'benchmarking/src', 'benchmarking/Project.toml')
+    paths = ('src', 'Project.toml', 'benchmarking/src', 'benchmarking/Project.toml', 'benchmarking/server')
     if subprocess.run(['git', '-C', str(runner.REPO), 'diff', '--quiet', 'HEAD', '--', *paths]).returncode:
         raise RuntimeError('Benchmark source has uncommitted changes; stop the study before editing code')
     return dict(zip(paths, subprocess.check_output(
@@ -186,7 +186,7 @@ def main():
                 write_machine_report(study / mode)
             report_series = tuple(s for s in machine_series(server)
                                   if any((study / mode / s / 'suite.json').exists() for mode in ('baseline', 'dagger')))
-            write_comparison(study, destination, selected=report_series, model_type=args.model)
+            write_comparison(study, destination, selected=report_series, model_type=args.model, machine=server['machine'])
             if args.commit:
                 commit_records(destination)
 

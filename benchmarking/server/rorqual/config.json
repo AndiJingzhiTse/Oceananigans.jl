@@ -12,7 +12,6 @@
   "gpu_type": "h100",
   "exclusive_cpu": true,
   "gpu_memory": "256G",
-  "trace_root": "/scratch/$USER/benchmark_traces",
   "report_modules": [
     "python/3.11",
     "scipy-stack/2025a"
@@ -24,5 +23,7 @@
     "--export=ALL,JULIA_DEPOT_PATH=/scratch/$USER/julia_depot:"
   ],
   "machine": "rorqual",
-  "environment_script": "$HOME/Oceananigans.jl/benchmarking/scripts/env/modules.sh"
+  "environment_script": "$HOME/Oceananigans.jl/benchmarking/scripts/env/modules.sh",
+  "series_file": "series.json",
+  "profile_layout": "series"
 }

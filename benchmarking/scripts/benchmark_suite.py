@@ -22,6 +22,7 @@ REPO = ROOT.parent
 sys.path.insert(0, str(ROOT / 'src'))
 
 from suite.plan import SERIES, ALL_SERIES, GRIDS, MODEL_FOLDERS, build_plan, allocation_groups, machine_series
+from suite.servers import load_series, series_definitions
 from suite.report import TERMINAL, validate, write_report, write_model_comparison
 from suite.catalog import MACHINES, write_machine_report, write_series_report, publish_series
 
@@ -37,10 +38,12 @@ def atomic_json(path, data):
     temporary.replace(path)
 
 
-def load_server(path=None, model_type=None):
+def load_server(path=None, model_type=None, execution_mode=None):
     user = json.loads(Path(path).read_text()) if path else {}
     if model_type:
         user['model_type'] = model_type
+    if execution_mode:
+        user['execution_mode'] = execution_mode
     backend = user.get('backend', 'local')
     assigned_cpus = os.sched_getaffinity(0) if hasattr(os, 'sched_getaffinity') else range(os.cpu_count())
     physical_cores = set()
@@ -68,11 +71,11 @@ def load_server(path=None, model_type=None):
                   gpu_memory='128G', cpu_memory_base_gb=64, cpu_memory_per_rank_gb=4,
                   cpu_sbatch_extra=[], gpu_sbatch_extra=[],
                   trace_root=str(ROOT / 'results' / MODEL_FOLDERS[user.get('model_type', 'HydrostaticFreeSurfaceModel')] /
-                                 user.get('machine', machine) / 'raw_profiles'),
+                                 user.get('machine', machine) / user.get('execution_mode', 'baseline')),
                   case_timeout_seconds=86400, matplotlib=True, python='python3', report_modules=[],
                   reference_suites=[], replacement_suites=[], environment={}, gpu_scaling_partition='balanced',
                   model_type='HydrostaticFreeSurfaceModel', comparison_suites=[], comparison_report='',
-                  execution_mode='baseline', profile_layout='study')
+                  execution_mode='baseline', profile_layout='study', series_file='', series_definitions=None)
     server.update(pressure_preconditioner='DiagonallyDominantPreconditioner',
                   pressure_max_iterations=5000, pressure_diagnostics=False,
                   pressure_preserve_residual=False, pressure_check_true_residual=True, separate_partitions=False)
@@ -87,7 +90,7 @@ def load_server(path=None, model_type=None):
         raise ValueError('Unknown server settings: ' + ', '.join(sorted(unknown)))
     server.update(user)
     if server['machine'] not in ('Andi-5070ti', 'fir', 'nibi', 'rondeau', 'rorqual'):
-        raise ValueError('Choose one of the five machine profiles in scripts/configs')
+        raise ValueError('Choose one of the five machine profiles in benchmarking/server')
     if server['backend'] not in ('local', 'slurm'):
         raise ValueError('backend must be local or slurm')
     if any(not isinstance(server[k], int) or server[k] < 1 for k in ('max_cpu_cores', 'cpu_cores_per_node', 'gpus_per_node', 'gpu_host_cores')):
@@ -105,6 +108,14 @@ def load_server(path=None, model_type=None):
         raise ValueError('execution_mode must be baseline or dagger')
     if server['profile_layout'] not in ('study', 'series'):
         raise ValueError('profile_layout must be study or series')
+    if server['series_file']:
+        series_path = Path(server['series_file'])
+        if not series_path.is_absolute():
+            series_path = Path(path).resolve().parent / series_path
+        server['series_file'] = str(series_path.resolve())
+        server['series_definitions'] = load_series(series_path)
+    else:
+        server['series_definitions'] = series_definitions(server)
     if server['pressure_preconditioner'] not in ('DiagonallyDominantPreconditioner', 'ColumnwiseTridiagonalPreconditioner', 'VerticalLinePreconditioner', 'LocalFFTPreconditioner'):
         raise ValueError('Unknown pressure_preconditioner')
     if not isinstance(server['pressure_max_iterations'], int) or server['pressure_max_iterations'] < 1:
@@ -142,6 +153,9 @@ def snapshot(folder, server):
         if source.exists():
             shutil.copy2(source, metadata / name)
     shutil.copytree(ROOT / 'src', metadata / 'src', ignore=shutil.ignore_patterns('__pycache__'))
+    # Keep the resolved workload next to the executable snapshot, independently
+    # of the mutable server files or paths on the submitting machine.
+    atomic_json(metadata / 'series.json', server.get('series_definitions') or {})
     (metadata / 'revision.txt').write_text(command(['git', '-C', REPO, 'rev-parse', 'HEAD']).stdout)
     (metadata / 'working_tree.txt').write_text(command(['git', '-C', REPO, 'status', '--short']).stdout)
     for setting in ('environment_script', 'mpi_init'):
@@ -532,7 +546,7 @@ def main():
         parser.error('--refresh/--resume requires --output')
     if args.watch and args.plan:
         parser.error('--watch cannot be used with --plan')
-    server = None if args.refresh or args.resume else load_server(args.config, args.model)
+    server = None if args.refresh or args.resume else load_server(args.config, args.model, args.execution_mode)
     selected = tuple(args.series.split(',')) if args.series else machine_series(server or {})
     if not selected or len(set(selected)) != len(selected) or set(selected) - set(ALL_SERIES):
         parser.error('Choose unique series names from: ' + ', '.join(ALL_SERIES))
@@ -547,7 +561,7 @@ def main():
                           (datetime.now(timezone.utc).strftime('%Y-%m-%dT%H%M%SZ') + '_' + str(os.getpid())) /
                           server['machine'])
         if not args.output and not args.publish:
-            args.publish = ROOT / 'results' / MODEL_FOLDERS[model_type] / server['machine']
+            args.publish = ROOT / 'results' / MODEL_FOLDERS[model_type] / server['machine'] / server['execution_mode']
     machine_folder = (args.output or default_folder).resolve()
     if args.publish and args.publish.resolve() == machine_folder:
         parser.error('--publish must differ from the live study directory')

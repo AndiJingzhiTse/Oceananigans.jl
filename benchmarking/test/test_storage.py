@@ -57,8 +57,8 @@ class StorageTests(unittest.TestCase):
             self.assertEqual((root / 'run_records/runtime/mpi_session').read_bytes(), b'MPI evidence')
 
     def test_default_trace_and_temporary_paths_do_not_use_tmp(self):
-        server = runner.load_server(runner.ROOT / 'scripts/configs/rondeau.json', 'NonhydrostaticModel')
-        self.assertIn('results/non_hydrostatic_models/rondeau/raw_profiles', server['trace_root'])
+        server = runner.load_server(runner.ROOT / 'server/rondeau/config.json', 'NonhydrostaticModel')
+        self.assertTrue(server['trace_root'].endswith('results/non_hydrostatic_models/rondeau/baseline'))
         script = '\n'.join(runner.environment_lines(server))
         self.assertIn('export TMPDIR=', script)
         self.assertIn('export OMPI_MCA_orte_tmpdir_base=', script)

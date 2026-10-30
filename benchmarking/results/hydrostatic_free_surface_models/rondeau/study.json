@@ -45,5 +45,10 @@
     "--commit",
     "--series",
     "gpu_resolution,gpu_scaling_super_fine,gpu_partition_super_fine,gpu_nsight_scaling_super_fine,gpu_weak_scaling_super_fine,gpu_scaling_super_super_fine,gpu_scaling_super_super_super_fine"
-  ]
+  ],
+  "controller_state": "STOPPED_REORGANIZATION",
+  "status_recorded_at": "2026-10-30T15:48:18.857491+00:00",
+  "stop_reason": "Controller stopped while waiting for GPUs before reorganizing server plans; completed measurements and provenance retained. Superseded queued cases will not launch.",
+  "pending_pairs_at_stop": 7,
+  "current_server_plan": "benchmarking/server/rondeau/series.json"
 }

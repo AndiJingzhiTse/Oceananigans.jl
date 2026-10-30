@@ -12,7 +12,6 @@
   "cpu_constraint": "granite",
   "gpu_type": "h100",
   "exclusive_cpu": true,
-  "trace_root": "/scratch/$USER/benchmark_traces",
   "report_modules": [
     "python/3.11",
     "scipy-stack/2025a"
@@ -20,6 +19,7 @@
   "environment": {
     "JULIA_DEPOT_PATH": "/scratch/$USER/julia_depot"
   },
-  "gpu_scaling_partition": "x",
-  "machine": "nibi"
+  "machine": "nibi",
+  "series_file": "series.json",
+  "profile_layout": "series"
 }

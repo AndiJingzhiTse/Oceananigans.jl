@@ -9,7 +9,7 @@ __pycache__/
 *.html
 
 # Root ignore rules exclude JSON and SVG; retain benchmark configuration/results.
-!scripts/configs/*.json
+!server/**/*.json
 !results/**/*.json
 !results/**/*.svg
 

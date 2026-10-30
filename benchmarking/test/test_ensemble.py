@@ -13,7 +13,8 @@ from suite.variants import comparison_rows, write_comparison
 class EnsembleTests(unittest.TestCase):
     def config(self, mode='baseline'):
         server = dict(machine='rondeau', model_type='NonhydrostaticModel', max_cpu_cores=128,
-                      max_gpus=4, execution_mode=mode, pressure_preconditioner='LocalFFTPreconditioner')
+                      max_gpus=4, execution_mode=mode, pressure_preconditioner='LocalFFTPreconditioner',
+                      series_definitions={})
         return plan.build_plan(server, ('gpu_ensemble',))[0]['configuration']
 
     def artifacts(self, folder, config):

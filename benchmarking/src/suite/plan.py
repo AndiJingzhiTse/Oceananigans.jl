@@ -1,5 +1,6 @@
 """Server-independent definitions for the standard benchmark series."""
 import math
+from .servers import GPU_SERIES, series_definitions
 
 GRIDS = {'default': [360, 180, 50], 'fine': [720, 360, 100], 'super_fine': [1440, 720, 200],
          'super_super_fine': [2880, 1440, 200], 'super_super_super_fine': [5760, 2880, 200]}
@@ -12,15 +13,11 @@ SERIES = ('cpu_mpi_scaling_super_fine', 'gpu_scaling_super_fine', 'cpu_resolutio
           'gpu_nsight_scaling_super_fine', 'gpu_partition_super_fine',
           'gpu_scaling_super_super_fine', 'gpu_scaling_super_super_super_fine',
           'gpu_weak_scaling_super_fine')
-RONDEAU_SERIES = ('gpu_weak_scaling', 'gpu_scaling_fine', 'gpu_nsight_scaling_default',
-                  'gpu_resolution', 'gpu_ensemble')
-ALL_SERIES = tuple(dict.fromkeys((*SERIES, *RONDEAU_SERIES)))
+ALL_SERIES = tuple(dict.fromkeys((*SERIES, *GPU_SERIES, 'gpu_ensemble')))
 
 
 def machine_series(server):
-    if server.get('machine') == 'rondeau' and server.get('model_type') == 'NonhydrostaticModel':
-        return RONDEAU_SERIES
-    return SERIES
+    return tuple(series_definitions(server)) or SERIES
 
 
 def doubling(maximum, cpu=False):
@@ -98,10 +95,24 @@ def configuration(series, ranks, grid_name='super_fine', partition=None, global_
 
 def build_plan(server, selected=None):
     cases = []
+    definitions = series_definitions(server)
     for series in machine_series(server) if selected is None else selected:
+        if definitions and series not in definitions:
+            raise ValueError(f'{series} is not configured for {server["machine"]}')
+        definition = definitions.get(series)
         gpu = series.startswith('gpu_')
         maximum = server['max_gpus' if gpu else 'max_cpu_cores']
-        if series == 'gpu_ensemble':
+        if definition:
+            kind = definition['kind']
+            if kind == 'resolution':
+                specs = [(1, grid, None) for grid in definition['grids']]
+            elif kind == 'partition':
+                specs = [(math.prod(p), definition['grid'], p) for p in definition['partitions']]
+            elif kind == 'weak_scaling':
+                specs = [(c['gpus'], c['grid'], c['partition']) for c in definition['cases']]
+            else:
+                specs = [(n, definition['grid'], None) for n in definition['gpus']]
+        elif series == 'gpu_ensemble':
             specs = [(4, name, None) for name in ('default', 'fine')]
         elif series.endswith('resolution'):
             specs = [(1, name, None) for name in RESOLUTION_GRIDS]
@@ -135,7 +146,7 @@ def build_plan(server, selected=None):
             next_count = 3 if not gpu and last == 1 else max(baseline, last * 2)
             specs.append((next_count, grid_name, None))
         for ranks, grid_name, partition in specs:
-            label = (f'{ranks}_ranks' if series == 'gpu_weak_scaling_super_fine' else
+            label = (f'{ranks}_ranks' if series in ('gpu_weak_scaling', 'gpu_weak_scaling_super_fine') else
                      'x'.join(map(str, partition)) if partition else
                      grid_name if series.endswith('resolution') or series == 'gpu_ensemble' else f'{ranks}_ranks')
             case = dict(id=f'{series}/{label}', series=series, ranks=ranks,
@@ -143,13 +154,17 @@ def build_plan(server, selected=None):
             try:
                 weak_grid = ([1440 * math.isqrt(ranks), 720 * math.isqrt(ranks), 200]
                              if series == 'gpu_weak_scaling_super_fine' else None)
-                if series.startswith('gpu_scaling_') and server.get('gpu_scaling_partition') == 'x':
+                if not definition and series.startswith('gpu_scaling_') and server.get('gpu_scaling_partition') == 'x':
                     partition = [ranks, 1, 1]
                 case['configuration'] = configuration(series, 1 if series == 'gpu_ensemble' else ranks, grid_name, partition, weak_grid,
                                                       server.get('model_type', 'HydrostaticFreeSurfaceModel'))
                 if series == 'gpu_ensemble':
                     case['configuration'].update(ensemble_size=4, total_gpus=4, ranks_per_simulation=1)
                 case['configuration']['execution_mode'] = server.get('execution_mode', 'baseline')
+                if definition:
+                    case['configuration']['scaling_type'] = (
+                        'increasing_load' if definition['kind'] == 'weak_scaling' else
+                        'strong' if definition['kind'] in ('strong_scaling', 'profiled_scaling') else 'comparison')
                 if server.get('model_type') == 'NonhydrostaticModel':
                     for key in ('pressure_preconditioner', 'pressure_max_iterations', 'pressure_diagnostics', 'pressure_preserve_residual', 'pressure_check_true_residual'):
                         if key in server:

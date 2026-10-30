@@ -48,11 +48,11 @@ def fixture(folder, config):
 
 class SuiteTests(unittest.TestCase):
     def test_each_machine_profile_loads_for_both_models(self):
-        profiles = BENCHMARK_ROOT / 'scripts/configs'
-        self.assertEqual({p.stem for p in profiles.glob('*.json')}, set(catalog.MACHINES))
+        profiles = BENCHMARK_ROOT / 'server'
+        self.assertEqual({p.parent.name for p in profiles.glob('*/config.json')}, set(catalog.MACHINES))
         for machine in catalog.MACHINES:
             for model in plan.MODEL_FOLDERS:
-                server = runner.load_server(profiles / f'{machine}.json', model)
+                server = runner.load_server(profiles / machine / 'config.json', model)
                 self.assertEqual(server['machine'], machine)
                 self.assertEqual(server['model_type'], model)
 

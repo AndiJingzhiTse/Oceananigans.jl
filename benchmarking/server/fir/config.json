@@ -12,10 +12,11 @@
   "gpu_account": "def-fpoulin_gpu",
   "gpu_type": "h100",
   "exclusive_cpu": true,
-  "trace_root": "/scratch/$USER/benchmark_traces",
   "report_modules": [
     "python/3.11",
     "scipy-stack/2025a"
   ],
-  "machine": "fir"
+  "machine": "fir",
+  "series_file": "series.json",
+  "profile_layout": "series"
 }

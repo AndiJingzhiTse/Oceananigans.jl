@@ -200,7 +200,7 @@ starting any long run.
 ## Benchmark Records
 
 For standard benchmark series, use `benchmarking/scripts/benchmark_suite.py`
-with a machine configuration under `benchmarking/scripts/configs/`. Shared planning,
+with a machine configuration under `benchmarking/server/<server>/config.json`. Shared planning,
 execution and reporting live in `benchmarking/src/suite/`; tests are in
 `benchmarking/test/`. One controller supports HydrostaticFreeSurfaceModel and
 NonhydrostaticModel. Legacy controllers and launchers have been removed.
@@ -256,30 +256,32 @@ For GPU MPI runs, verify distinct GPUs and CUDA-aware MPI communication.
 
 ### Benchmark Reporting and Completion
 
-For the Rondeau hydrostatic baseline/Dagger study, use the shared paired
-controller with `--model HydrostaticFreeSurfaceModel --gpu-only --wait-for-gpus`.
-Run the seven standard GPU series described in `benchmarking/hydrostatic_dagger.md`.
-Publish under `hydrostatic_free_surface_models/rondeau/{baseline,dagger}/`.
-Use project-local `.runtime/` storage, paired seeds and GPU assignments, and
-the original whole-window wrapper. Do not change solver kernels or launch CPU
-benchmark series. Wait for occupied GPUs without holding resources. Stop the
-controller before changing branches or benchmark/library source.
+Server workload definitions live in `benchmarking/server/<server>/series.json`,
+next to `config.json` and a README. These files are authoritative for Rondeau,
+Nibi, Rorqual and Fir and apply to both model types. Use the exact listed grids,
+GPU counts and partitions; do not extend them to larger sizes automatically.
+The supported series are GPU resolution, strong scaling at default and fine,
+Nsight scaling at default and fine, partition comparisons at fine, and the
+explicit default/1, fine/4, super_fine/16 weak sequence (Rondeau stops at fine/4).
+The weak sequence doubles cells per GPU per step; label its linear cell-count
+reference explicitly. Do not call it constant-work-per-GPU weak scaling.
 
-Rondeau NonhydrostaticModel uses the GPU-only five-series plan documented in
-`benchmarking/README.md`: `gpu_weak_scaling` first, `gpu_scaling_fine`,
-`gpu_nsight_scaling_default`, `gpu_resolution`, and `gpu_ensemble`. The ensemble
-runs four independent single-GPU models concurrently at default and fine
-resolution. Compare concurrent Distributed calls against four full-simulation
-Dagger tasks; retain both timed makespan and dispatch-to-completion time.
-Each simulation keeps partition 1 × 1 × 1 and the shared numerical validation.
-CPU benchmarks are cancelled
-and removed from the Rondeau study; do not recreate or launch CPU suites there.
-Use default/fine/super_fine resolutions only for these resolution studies.
-The requested GPU weak sequence is default/1 GPU, fine/2 GPUs, super_fine/4 GPUs;
-cells per GPU increase 1:4:16. Label its linear cell-count reference explicitly;
-do not describe it as constant-work-per-GPU weak scaling. This machine-specific
-plan supersedes the generic maximum-size and weak-sequence guidance below.
-Hide CUDA devices before starting CPU Julia ranks, including Dagger CPU runs.
+Run the same server plan separately as hydrostatic baseline, hydrostatic Dagger,
+nonhydrostatic baseline and nonhydrostatic Dagger. Publish into
+`benchmarking/results/<model_family>/<server>/{baseline,dagger}/<series>/`.
+Keep baseline/Dagger comparisons inside each model/server folder; match
+configurations within the same model. The future Dagger integration method is
+awaiting user instructions; retain the existing whole-window wrapper as a
+historical method without launching new Dagger jobs for this reorganization.
+Do not launch CPU benchmark series. Historical result folders and provenance
+remain evidence of their original workloads, not measurements of the new plans.
+
+The earlier hydrostatic Rondeau controller was stopped while waiting for GPUs
+when the server plans were reorganized. Do not resume its superseded queued
+series automatically. Stop active controllers before editing benchmark/library
+source or switching branches. Use project-local `.runtime/` storage on Rondeau;
+never use `/tmp`, `/var/tmp` or `/local_scratch`. Hide CUDA devices before
+starting any explicitly requested CPU validation ranks.
 
 Report fastest and median seconds per step: divide each rank's minimum
 and median window durations by the number of steps per window, then use
@@ -299,13 +301,9 @@ For resolution studies, account for all grid dimensions: doubling Nx, Ny, and
 Nz gives previous-grid/next-grid time = 1/8 under linear cell-count scaling.
 Plot this raw time ratio with an expected 1/8 reference; do not apply a cube root.
 
-For GPU weak scaling starting at `super_fine`, hold 207,360,000 interior cells
-per GPU fixed: use 1, 4, 16, 64, … GPUs, double both horizontal dimensions at
-each step, and retain 200 vertical levels. Weak efficiency is baseline step
-time / measured step time, with ideal efficiency 100% and constant ideal step
-time. Larger horizontal grids use Δt = 60 × 1440 / Nx seconds. Strong scaling
-on `super_super_fine` and `super_super_super_fine` starts at memory-feasible
-4- and 16-GPU baselines respectively; record those measured baselines explicitly.
+Historical GPU weak-scaling series starting at `super_fine` hold 207,360,000
+interior cells per GPU fixed and use 1, 4, 16, … GPUs. Those legacy definitions
+remain available for reading older studies; they do not override server plans.
 Include a DRAC-style GPU comparison table with resolution, ranks, actual nodes,
 partition, Δt, median seconds per step, efficiency, throughput, measured device
 memory per GPU and outcome. Never substitute reference-cluster timings for

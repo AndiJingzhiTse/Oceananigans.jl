@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "models": [
+    "HydrostaticFreeSurfaceModel",
+    "NonhydrostaticModel"
+  ],
+  "execution_modes": [
+    "baseline",
+    "dagger"
+  ],
+  "series": {
+    "gpu_resolution": {
+      "kind": "resolution",
+      "grids": [
+        "default",
+        "fine",
+        "super_fine"
+      ],
+      "gpus": [
+        1
+      ]
+    },
+    "gpu_scaling_default": {
+      "kind": "strong_scaling",
+      "grid": "default",
+      "gpus": [
+        1,
+        2,
+        4,
+        8,
+        16
+      ]
+    },
+    "gpu_scaling_fine": {
+      "kind": "strong_scaling",
+      "grid": "fine",
+      "gpus": [
+        1,
+        2,
+        4,
+        8,
+        16
+      ]
+    },
+    "gpu_nsight_scaling_default": {
+      "kind": "profiled_scaling",
+      "grid": "default",
+      "gpus": [
+        1,
+        2,
+        4,
+        8,
+        16
+      ]
+    },
+    "gpu_nsight_scaling_fine": {
+      "kind": "profiled_scaling",
+      "grid": "fine",
+      "gpus": [
+        1,
+        2,
+        4,
+        8,
+        16
+      ]
+    },
+    "gpu_partition_fine": {
+      "kind": "partition",
+      "grid": "fine",
+      "partitions": [
+        [
+          16,
+          1,
+          1
+        ],
+        [
+          8,
+          2,
+          1
+        ],
+        [
+          4,
+          4,
+          1
+        ],
+        [
+          2,
+          8,
+          1
+        ]
+      ]
+    },
+    "gpu_weak_scaling": {
+      "kind": "weak_scaling",
+      "cases": [
+        {
+          "grid": "default",
+          "gpus": 1,
+          "partition": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "grid": "fine",
+          "gpus": 4,
+          "partition": [
+            2,
+            2,
+            1
+          ]
+        },
+        {
+          "grid": "super_fine",
+          "gpus": 16,
+          "partition": [
+            4,
+            4,
+            1
+          ]
+        }
+      ]
+    }
+  }
+}

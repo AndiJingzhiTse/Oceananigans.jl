@@ -1,6 +1,7 @@
 """Compare matched direct and Dagger timing windows, including failed cases."""
 import csv
 import json
+import math
 from pathlib import Path
 
 from .plan import ALL_SERIES
@@ -14,7 +15,7 @@ def comparison_rows(study, selected=ALL_SERIES):
             path = Path(study) / mode / series / 'suite.json'
             data = json.loads(path.read_text()) if path.exists() else {'cases': []}
             variants[mode] = {c['id']: c for c in data['cases']}
-        for case_id in sorted(set(variants['baseline']) | set(variants['dagger'])):
+        for case_id in dict.fromkeys((*variants['baseline'], *variants['dagger'])):
             base, dagger = (variants[m].get(case_id, {}) for m in ('baseline', 'dagger'))
             cfg = base.get('configuration', dagger.get('configuration', {}))
             row = dict(series=series, case=case_id, ranks=base.get('ranks', dagger.get('ranks')),
@@ -47,7 +48,7 @@ def comparison_rows(study, selected=ALL_SERIES):
     return rows
 
 
-def write_comparison(study, output, plotting=True, selected=ALL_SERIES, model_type='NonhydrostaticModel'):
+def write_comparison(study, output, plotting=True, selected=ALL_SERIES, model_type='NonhydrostaticModel', machine='rondeau'):
     study, output = Path(study), Path(output)
     output.mkdir(parents=True, exist_ok=True)
     rows = comparison_rows(study, selected)
@@ -61,7 +62,7 @@ def write_comparison(study, output, plotting=True, selected=ALL_SERIES, model_ty
     if model_type == 'HydrostaticFreeSurfaceModel' and (output / 'plot.md').exists() and not (output / 'comparison.md').exists():
         if not previous.exists():
             previous.write_text((output / 'plot.md').read_text())
-    lines = [f'# Rondeau: {model_label} baseline versus Dagger', '',
+    lines = [f'# {machine.capitalize()}: {model_label} baseline versus Dagger', '',
              'For MPI series, Dagger submits one task per timing window, restricted to the current MPI process and its sole Julia computation thread. '
              'Oceananigans retains its existing MPI domain decomposition. Both paths synchronize CUDA before completing a window.', '',
              'Speedup = baseline seconds per step / Dagger seconds per step. Above 1 favors Dagger; the equal-time reference is 1. '
@@ -75,10 +76,13 @@ def write_comparison(study, output, plotting=True, selected=ALL_SERIES, model_ty
                   'Dagger schedules four complete simulations; the baseline uses four concurrent Distributed calls. '
                   'Ensemble speedups compare total timed makespan and dispatch-to-completion time.', '']
     if 'gpu_weak_scaling' in selected:
-        lines += ['Requested GPU weak-scaling sequence: 360 × 180 × 50 on 1 GPU, '
-                  '720 × 360 × 100 on 2 GPUs, and 1440 × 720 × 200 on 4 GPUs. '
-                  'Cells/GPU are 3,240,000, 12,960,000 and 51,840,000: this increases work per GPU. '
-                  'Efficiency uses a linear cell-count reference, not constant-work weak efficiency.', '']
+        weak_rows = [r for r in rows if r['series'] == 'gpu_weak_scaling' and r['resolution']]
+        sequence = '; '.join(f"{r['resolution'].replace('x', ' × ')} on {r['ranks']} GPU(s)"
+                             for r in weak_rows)
+        cells = ', '.join(f"{math.prod(map(int, r['resolution'].split('x'))) / r['ranks']:,.0f}"
+                          for r in weak_rows)
+        lines += [f'Requested GPU weak-scaling sequence: {sequence}. Cells/GPU: {cells}. '
+                  'Efficiency uses a linear cell-count reference when work per GPU increases.', '']
     for mode in ('baseline', 'dagger'):
         destination = output / mode
         destination.mkdir(exist_ok=True)
@@ -133,7 +137,7 @@ def write_comparison(study, output, plotting=True, selected=ALL_SERIES, model_ty
                 lines += ['', f"{row['case']}: {row['details']}"]
         lines += ['']
     (output / 'comparison.md').write_text('\n'.join(lines) + '\n')
-    (output / 'plot.md').write_text(f'# Rondeau {model_label} benchmarks\n\n'
+    (output / 'plot.md').write_text(f'# {machine.capitalize()} {model_label} benchmarks\n\n'
         '[Baseline versus Dagger: all series](comparison.md)\n\n'
         '[Baseline](baseline/plot.md) · [Dagger](dagger/plot.md)\n' +
         ('\n[Previously retained results](previous_results.md)\n' if previous.exists() else ''))

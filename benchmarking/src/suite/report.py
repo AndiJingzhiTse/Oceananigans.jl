@@ -139,7 +139,7 @@ def validate(case_dir, config, verify_traces=True, ensemble_member=False):
 
 def scaling_baselines(cases):
     return {c['series']: c for c in cases if c['state'] == 'COMPLETED'
-            and 'measurement' in c and ('scaling' in c['series'] or c['series'] == 'gpu_partition_super_fine')
+            and 'measurement' in c and ('scaling' in c['series'] or c['series'].startswith('gpu_partition_'))
             and c['ranks'] == c['configuration'].get('baseline_ranks', GPU_BASELINES.get(c['series'], 1))}
 
 
@@ -316,7 +316,7 @@ def write_report(folder, cases, plotting=True, reference_suites=(), replacement_
              ('One MPI rank per CPU core or GPU, one Julia computation thread per rank. Hydrostatic geometry bounds are retained to match partitions between models.' if nonhydrostatic else 'One MPI rank per CPU core or GPU, one Julia computation thread per rank. CPU extended halos=false; GPU=true.'),
              'Window boundaries synchronize MPI ranks and GPUs. Fastest/median statistics use the maximum across ranks.',
              'Strong efficiency = baseline time × baseline ranks / (time × ranks); weak efficiency = baseline time / time.',
-             'For gpu_weak_scaling on Rondeau, cells/GPU increase 1:4:16; efficiency = (baseline time / time) × (cells/GPU / baseline cells/GPU). This is a linear cell-count reference, not constant-work weak scaling.',
+             'For increasing-load weak sequences, efficiency = (baseline time / time) × (cells/GPU / baseline cells/GPU). This is a linear cell-count reference, not constant-work weak scaling; the configured sequence determines cells/GPU.',
              'Standard baselines use one rank; the larger GPU grids use 4 and 16 ranks. Missing baselines have no efficiency estimate.',
              'Reference lines show ideal inverse-rank strong timing, constant weak timing, and 100% efficiency.',
              'Resolution plots show previous-grid / next-grid time; doubling each grid dimension ideally gives 1/8.',
@@ -417,11 +417,13 @@ def scaling_tables(folder, cases, reference_suites, plotting=False, combined=Non
             continue
         selected.sort(key=lambda item: (math.prod(item[0]['configuration']['global_resolution']), item[0]['ranks']))
         increasing = any(c['configuration'].get('scaling_type') == 'increasing_load' for c, _ in selected)
+        cells_per_gpu = '; '.join(f"{math.prod(c['configuration']['global_resolution']) / c['ranks']:,.0f}"
+                                 for c, _ in selected)
         baseline_labels = ', '.join(sorted({f"{c['configuration']['grid_name']} {c['configuration'].get('baseline_ranks', 1)} GPUs"
                                             for c, _ in selected}))
         lines += ['### Weak scaling' if weak else '### Strong scaling', '',
-                  ('Requested increasing-load sequence: cells/GPU = 3,240,000; 12,960,000; 51,840,000. Efficiency = (baseline time / time) × (cells/GPU / baseline cells/GPU); 100% is a linear cell-count reference.' if increasing else
-                   'Weak efficiency = one-GPU baseline time / measured time; ideal = 100%. Interior cells/GPU = 207,360,000.' if weak else
+                  (f'Requested increasing-load sequence: cells/GPU = {cells_per_gpu}. Efficiency = (baseline time / time) × (cells/GPU / baseline cells/GPU); 100% is a linear cell-count reference.' if increasing else
+                   f'Weak efficiency = one-GPU baseline time / measured time; ideal = 100%. Interior cells/GPU = {cells_per_gpu}.' if weak else
                    'Strong efficiency = baseline time × baseline GPUs / (measured time × GPUs); ideal = 100%. Baselines: ' + baseline_labels + '.'), '',
                   '| Grid | Global resolution (cells) | GPUs | Nodes | Partition | Δt (s) | Median s/step | Efficiency | Throughput (cells/s) | Memory/GPU (GiB) | State |',
                   '|---|---|---:|---:|---|---:|---:|---:|---:|---:|---|']
@@ -473,8 +475,8 @@ def plot_scaling_efficiency(folder, cases):
         ax = axes[1 if weak else 0]
         baseline = baselines[series]
         grid = ' × '.join(map(str, baseline['configuration']['global_resolution']))
-        label = ('Increasing cells/GPU; cell-count reference' if series == 'gpu_weak_scaling' else
-                 '207,360,000 cells/GPU' if weak else f"{grid} ({baseline['ranks']}-GPU baseline)")
+        label = ('Increasing cells/GPU; cell-count reference' if baseline['configuration'].get('scaling_type') == 'increasing_load' else
+                 f"{math.prod(baseline['configuration']['global_resolution']) / baseline['ranks']:,.0f} cells/GPU" if weak else f"{grid} ({baseline['ranks']}-GPU baseline)")
         ax.plot([p[0] for p in points], [p[1] for p in points], 'o-', label=label)
     for i, ax in enumerate(axes):
         ax.axhline(100, color='black', linestyle=':', label='Ideal: 100%')
@@ -505,7 +507,8 @@ def plot_series(folder, series, rows):
     increasing = series == 'gpu_weak_scaling'
     weak = increasing or series == 'gpu_weak_scaling_super_fine'
     resolution = series.endswith('resolution')
-    partition_efficiency = series == 'gpu_partition_super_fine'
+    # The 16-GPU partition study has no one-GPU case; report its times directly.
+    partition_efficiency = series.startswith('gpu_partition_') and any(r['ranks'] == 1 for r in rows)
     fig, axes = plt.subplots(1, 2 if scaling else 1, figsize=(11 if scaling else 8, 4.5), squeeze=False)
     ax = axes[0, 0]
     x = [r['ranks'] for r in rows] if scaling else list(range(len(rows)))

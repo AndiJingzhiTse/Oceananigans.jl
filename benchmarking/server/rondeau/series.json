@@ -1,0 +1,118 @@
+{
+  "schema_version": 1,
+  "models": [
+    "HydrostaticFreeSurfaceModel",
+    "NonhydrostaticModel"
+  ],
+  "execution_modes": [
+    "baseline",
+    "dagger"
+  ],
+  "series": {
+    "gpu_resolution": {
+      "kind": "resolution",
+      "grids": [
+        "default",
+        "fine"
+      ],
+      "gpus": [
+        1
+      ]
+    },
+    "gpu_scaling_default": {
+      "kind": "strong_scaling",
+      "grid": "default",
+      "gpus": [
+        1,
+        2,
+        4
+      ]
+    },
+    "gpu_scaling_fine": {
+      "kind": "strong_scaling",
+      "grid": "fine",
+      "gpus": [
+        1,
+        2,
+        4
+      ]
+    },
+    "gpu_nsight_scaling_default": {
+      "kind": "profiled_scaling",
+      "grid": "default",
+      "gpus": [
+        1,
+        2,
+        4
+      ]
+    },
+    "gpu_nsight_scaling_fine": {
+      "kind": "profiled_scaling",
+      "grid": "fine",
+      "gpus": [
+        1,
+        2,
+        4
+      ]
+    },
+    "gpu_partition_fine": {
+      "kind": "partition",
+      "grid": "fine",
+      "partitions": [
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          2,
+          1,
+          1
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          4,
+          1,
+          1
+        ],
+        [
+          2,
+          2,
+          1
+        ],
+        [
+          1,
+          4,
+          1
+        ]
+      ]
+    },
+    "gpu_weak_scaling": {
+      "kind": "weak_scaling",
+      "cases": [
+        {
+          "grid": "default",
+          "gpus": 1,
+          "partition": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "grid": "fine",
+          "gpus": 4,
+          "partition": [
+            2,
+            2,
+            1
+          ]
+        }
+      ]
+    }
+  }
+}
