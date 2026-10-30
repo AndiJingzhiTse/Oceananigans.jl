@@ -45,14 +45,14 @@ super_fine: baseline: Execution failed; ERROR: LoadError: Out of GPU memory tryi
 
 | Case | Resolution / partition | Baseline outcome | Dagger outcome | Median s/step baseline / Dagger | Speedup |
 |---|---|---|---|---:|---:|
-| 1_ranks | 1440x720x200 / 1x1x1 | PLANNED | PLANNED | — | — |
+| 1_ranks | 1440x720x200 / 1x1x1 | RUNNING | PLANNED | — | — |
 | 2_ranks | 1440x720x200 / 2x1x1 | PLANNED | PLANNED | — | — |
 | 4_ranks | 1440x720x200 / 2x2x1 | PLANNED | PLANNED | — | — |
 | 8_ranks | 1440x720x200 / 4x2x1 | RESOURCE_LIMIT | RESOURCE_LIMIT | — | — |
 
 No completed, validated pair is available.
 
-1_ranks: baseline: ; dagger:
+1_ranks: baseline: Local allocation started; see job.out; dagger:
 
 2_ranks: baseline: ; dagger:
 
