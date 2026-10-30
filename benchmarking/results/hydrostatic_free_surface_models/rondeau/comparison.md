@@ -37,9 +37,9 @@ No completed, validated pair is available.
 |---|---|---|---|---:|---:|
 | default | 360x180x50 / 1x1x1 | COMPLETED | COMPLETED | 0.0340053 / 0.0340714 | 0.9981 |
 | fine | 720x360x100 / 1x1x1 | COMPLETED | COMPLETED | 0.24857 / 0.248573 | 1.0000 |
-| super_fine | 1440x720x200 / 1x1x1 | OUT_OF_MEMORY | PLANNED | — | — |
+| super_fine | 1440x720x200 / 1x1x1 | OUT_OF_MEMORY | RUNNING | — | — |
 
-super_fine: baseline: Execution failed; ERROR: LoadError: Out of GPU memory trying to allocate 1.702 GiB; dagger:
+super_fine: baseline: Execution failed; ERROR: LoadError: Out of GPU memory trying to allocate 1.702 GiB; dagger: Local allocation started; see job.out
 
 ## gpu_nsight_scaling_super_fine
 
