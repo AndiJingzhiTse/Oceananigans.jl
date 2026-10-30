@@ -14,7 +14,7 @@ gpu_partition_super_fine,16x1x1,16,1440x720x200,16x1x1,LatitudeLongitudeGrid,Fal
 gpu_partition_super_fine,16x2x1,32,1440x720x200,16x2x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,,,,,,,baseline: Requires 32; configured capacity is 4; dagger: Requires 32; configured capacity is 4
 gpu_partition_super_fine,16x4x1,64,1440x720x200,16x4x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,,,,,,,baseline: Requires 64; configured capacity is 4; dagger: Requires 64; configured capacity is 4
 gpu_partition_super_fine,1x16x1,16,1440x720x200,1x16x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,,,,,,,baseline: Requires 16; configured capacity is 4; dagger: Requires 16; configured capacity is 4
-gpu_partition_super_fine,1x1x1,1,1440x720x200,1x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,,,,,,,baseline: ; dagger:
+gpu_partition_super_fine,1x1x1,1,1440x720x200,1x1x1,LatitudeLongitudeGrid,False,RUNNING,PLANNED,,,,,,,,,,,,,baseline: Local allocation started; see job.out; dagger:
 gpu_partition_super_fine,1x2x1,2,1440x720x200,1x2x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,,,,,,,baseline: ; dagger:
 gpu_partition_super_fine,1x32x1,32,,,,False,GEOMETRY_LIMIT,GEOMETRY_LIMIT,,,,,,,,,,,,,"baseline: Partition [1, 32, 1] has fewer than 23 local cells per horizontal direction; dagger: Partition [1, 32, 1] has fewer than 23 local cells per horizontal direction"
 gpu_partition_super_fine,1x4x1,4,1440x720x200,1x4x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,,,,,,,baseline: ; dagger:
