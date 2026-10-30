@@ -18,8 +18,8 @@ def load_series(path):
     if data.get('execution_modes') != ['baseline', 'dagger']:
         raise ValueError('Server series must support baseline and dagger')
     definitions = data.get('series', {})
-    if set(definitions) != set(GPU_SERIES):
-        raise ValueError('Server series must define the seven standard GPU series')
+    if not definitions or set(definitions) - set(GPU_SERIES):
+        raise ValueError('Server series must be a nonempty subset of supported GPU series')
     kinds = dict(zip(GPU_SERIES, ('resolution', 'strong_scaling', 'strong_scaling',
                                 'profiled_scaling', 'profiled_scaling', 'partition', 'weak_scaling')))
     grids = {'default', 'fine', 'super_fine'}

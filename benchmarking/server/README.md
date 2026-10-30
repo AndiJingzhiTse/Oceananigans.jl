@@ -8,11 +8,13 @@ will be specified later; no new compute jobs are launched by this reorganization
 
 | Server | Configuration | Series | Cases per model/variant |
 |---|---|---|---:|
-| [Rondeau](rondeau/README.md) | [config.json](rondeau/config.json) | [series.json](rondeau/series.json) | 22 |
+| [Rondeau](rondeau/README.md) | [config.json](rondeau/config.json) | [series.json](rondeau/series.json) | 16 |
 | [Nibi](nibi/README.md) | [config.json](nibi/config.json) | [series.json](nibi/series.json) | 30 |
 | [Rorqual](rorqual/README.md) | [config.json](rorqual/config.json) | [series.json](rorqual/series.json) | 30 |
 | [Fir](fir/README.md) | [config.json](fir/config.json) | [series.json](fir/series.json) | 30 |
 
+Rondeau has six series and excludes partition benchmarks. The three clusters
+retain seven series including their fine-grid partition comparisons.
 No extra boundary cases, CPU series, ensembles or resolution extensions are
 appended. Lower capacity produces explicit RESOURCE_LIMIT outcomes.
 

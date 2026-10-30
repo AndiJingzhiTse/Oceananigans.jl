@@ -17,8 +17,8 @@ class ServerPlanTests(unittest.TestCase):
             local = machine == 'rondeau'
             counts = [1, 2, 4] if local else [1, 2, 4, 8, 16]
             grids = ['default', 'fine'] if local else ['default', 'fine', 'super_fine']
-            partitions = ([[1, 1, 1], [2, 1, 1], [1, 2, 1], [4, 1, 1], [2, 2, 1], [1, 4, 1]]
-                          if local else [[16, 1, 1], [8, 2, 1], [4, 4, 1], [2, 8, 1]])
+            partitions = [] if local else [[16, 1, 1], [8, 2, 1], [4, 4, 1], [2, 8, 1]]
+            expected_series = tuple(s for s in GPU_SERIES if not local or s != 'gpu_partition_fine')
             physical_workloads = []
             for model in plan.MODEL_FOLDERS:
                 variants = []
@@ -27,8 +27,8 @@ class ServerPlanTests(unittest.TestCase):
                         server = runner.load_server(runner.ROOT / 'server' / machine / 'config.json', model)
                         server['execution_mode'] = mode
                         cases = plan.build_plan(server)
-                        self.assertEqual(plan.machine_series(server), GPU_SERIES)
-                        self.assertEqual(len(cases), 22 if local else 30)
+                        self.assertEqual(plan.machine_series(server), expected_series)
+                        self.assertEqual(len(cases), 16 if local else 30)
                         grouped = {s: [c for c in cases if c['series'] == s] for s in GPU_SERIES}
                         self.assertEqual([c['grid_name'] for c in grouped['gpu_resolution']], grids)
                         self.assertTrue(all(c['ranks'] == 1 for c in grouped['gpu_resolution']))
@@ -41,6 +41,9 @@ class ServerPlanTests(unittest.TestCase):
                                 self.assertEqual({c['configuration']['profile'] for c in selected},
                                                  {prefix == 'gpu_nsight_scaling_'})
                         self.assertEqual([c['partition'] for c in grouped['gpu_partition_fine']], partitions)
+                        if local:
+                            with self.assertRaisesRegex(ValueError, 'not configured'):
+                                plan.build_plan(server, ('gpu_partition_fine',))
                         weak = grouped['gpu_weak_scaling']
                         self.assertEqual([(c['grid_name'], c['ranks']) for c in weak], list(zip(grids, [1, 4, 16])))
                         for case, seconds in zip(weak, (1, 2, 4)):

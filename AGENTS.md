@@ -263,6 +263,7 @@ GPU counts and partitions; do not extend them to larger sizes automatically.
 The supported series are GPU resolution, strong scaling at default and fine,
 Nsight scaling at default and fine, partition comparisons at fine, and the
 explicit default/1, fine/4, super_fine/16 weak sequence (Rondeau stops at fine/4).
+Rondeau excludes the partition series; only Nibi, Rorqual and Fir run it.
 The weak sequence doubles cells per GPU per step; label its linear cell-count
 reference explicitly. Do not call it constant-work-per-GPU weak scaling.
 

@@ -13,13 +13,13 @@ awaiting user instructions. This folder contains inputs and documentation, not m
 | `gpu_scaling_fine` | 720 × 360 × 100; 1, 2, 4 GPUs |
 | `gpu_nsight_scaling_default` | 360 × 180 × 50; 1, 2, 4 GPUs, profiled |
 | `gpu_nsight_scaling_fine` | 720 × 360 × 100; 1, 2, 4 GPUs, profiled |
-| `gpu_partition_fine` | 720 × 360 × 100; 1 × 1 × 1; 2 × 1 × 1; 1 × 2 × 1; 4 × 1 × 1; 2 × 2 × 1; 1 × 4 × 1 |
 | `gpu_weak_scaling` | default / 1 GPU(s), partition 1 × 1 × 1; fine / 4 GPU(s), partition 2 × 2 × 1 |
 
 Default = 360 × 180 × 50; fine = 720 × 360 × 100;
 super_fine = 1440 × 720 × 200. All grids use LatitudeLongitudeGrid.
 Unspecified scaling partitions are balanced. No cases beyond the listed bounds
-are appended. CPU benchmarks and ensembles are not selected.
+are appended. Partition benchmarks, CPU benchmarks and ensembles are not selected.
+The six series contain 16 cases per model and execution mode.
 
 Weak scaling doubles cells/GPU at each step: 3,240,000; 6,480,000.
 Use the documented linear cell-count reference, not constant-work weak efficiency.

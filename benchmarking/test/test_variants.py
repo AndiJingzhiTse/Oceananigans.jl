@@ -60,7 +60,7 @@ class VariantTests(unittest.TestCase):
             expected = set(plan.machine_series({'machine': 'rondeau'}))
             rows = comparison_rows(root / 'study')
             self.assertEqual({r['series'] for r in rows}, expected)
-            self.assertEqual(len(expected), 7)
+            self.assertEqual(len(expected), 6)
             for path in (root / 'study').glob('*/*/suite.json'):
                 data = json.loads(path.read_text())
                 self.assertEqual(data['server']['model_type'], 'HydrostaticFreeSurfaceModel')
@@ -168,7 +168,7 @@ class VariantTests(unittest.TestCase):
         cases = plan.build_plan(server)
         self.assertEqual(tuple(dict.fromkeys(c['series'] for c in cases)), plan.machine_series({'machine': 'rondeau'}))
         self.assertEqual(cases[0]['series'], 'gpu_resolution')
-        self.assertEqual(len(cases), 22)
+        self.assertEqual(len(cases), 16)
         self.assertTrue(all(c['series'].startswith('gpu_') for c in cases))
         weak = [c for c in cases if c['series'] == 'gpu_weak_scaling']
         self.assertEqual([(c['ranks'], c['configuration']['global_resolution']) for c in weak],

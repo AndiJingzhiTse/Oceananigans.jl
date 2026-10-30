@@ -81,11 +81,10 @@ CPU series and ensembles are excluded from these server plans.
 | `gpu_scaling_fine` | fine: 1, 2, 4 GPUs | fine: 1, 2, 4, 8, 16 GPUs |
 | `gpu_nsight_scaling_default` | default: 1, 2, 4 GPUs | default: 1, 2, 4, 8, 16 GPUs |
 | `gpu_nsight_scaling_fine` | fine: 1, 2, 4 GPUs | fine: 1, 2, 4, 8, 16 GPUs |
-| `gpu_partition_fine` | fine: six explicit partitions below | fine: four explicit partitions below |
+| `gpu_partition_fine` | Excluded | fine: four explicit partitions below |
 | `gpu_weak_scaling` | default / 1 GPU; fine / 4 GPUs | default / 1 GPU; fine / 4 GPUs; super_fine / 16 GPUs |
 
-Rondeau partitions: **1 × 1 × 1, 2 × 1 × 1, 1 × 2 × 1, 4 × 1 × 1,
-2 × 2 × 1, 1 × 4 × 1**.
+Rondeau has no partition benchmark series.
 
 Nibi, Rorqual and Fir partitions: **16 × 1 × 1, 8 × 2 × 1, 4 × 4 × 1,
 2 × 8 × 1**.
