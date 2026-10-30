@@ -12,18 +12,16 @@ Raw study and execution logs: `/u/ajtse/Oceananigans.jl/.runtime/hydrostatic_dag
 
 ## gpu_scaling_super_fine
 
+![Timing and speedup](comparisons/gpu_scaling_super_fine.svg)
+
 | Case | Resolution / partition | Baseline outcome | Dagger outcome | Median s/step baseline / Dagger | Speedup |
 |---|---|---|---|---:|---:|
 | 1_ranks | 1440x720x200 / 1x1x1 | OUT_OF_MEMORY | OUT_OF_MEMORY | — | — |
-| 2_ranks | 1440x720x200 / 2x1x1 | RUNNING | COMPLETED | — | — |
+| 2_ranks | 1440x720x200 / 2x1x1 | COMPLETED | COMPLETED | 0.951745 / 0.952097 | 0.9996 |
 | 4_ranks | 1440x720x200 / 2x2x1 | PLANNED | PLANNED | — | — |
 | 8_ranks | 1440x720x200 / 4x2x1 | RESOURCE_LIMIT | RESOURCE_LIMIT | — | — |
 
-No completed, validated pair is available.
-
 1_ranks: baseline: Execution failed; ERROR: LoadError: Out of GPU memory trying to allocate 1.702 GiB; dagger: Execution failed; ERROR: LoadError: Out of GPU memory trying to allocate 1.702 GiB
-
-2_ranks: baseline: Local allocation started; see job.out; dagger: Rank results, finite fields and resource placement verified
 
 4_ranks: baseline: ; dagger:
 
