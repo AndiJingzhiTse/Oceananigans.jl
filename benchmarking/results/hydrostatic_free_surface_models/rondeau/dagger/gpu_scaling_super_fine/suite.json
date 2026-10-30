@@ -1,0 +1,161 @@
+{
+  "server": {
+    "machine": "rondeau",
+    "backend": "local",
+    "project": "/u/ajtse/Oceananigans.jl/.runtime/hydrostatic_dagger_2026-10-30/environment",
+    "julia": "/u/ajtse/.local/bin/julia",
+    "mpi": [
+      "/opt/uw/openmpi/4.1.7-with-cuda/bin/mpiexec",
+      "--bind-to",
+      "core"
+    ],
+    "max_cpu_cores": 128,
+    "max_gpus": 4,
+    "cpu_cores_per_node": 128,
+    "gpus_per_node": 4,
+    "gpu_host_cores": 8,
+    "cpu_account": "",
+    "gpu_account": "",
+    "cpu_partition": "",
+    "gpu_partition": "",
+    "gpu_type": "",
+    "cpu_constraint": "",
+    "exclusive_cpu": true,
+    "environment_script": "",
+    "mpi_init": "",
+    "cpu_time": "03:00:00",
+    "gpu_time": "00:45:00",
+    "partition_time": "03:00:00",
+    "gpu_memory": "128G",
+    "cpu_memory_base_gb": 64,
+    "cpu_memory_per_rank_gb": 4,
+    "cpu_sbatch_extra": [],
+    "gpu_sbatch_extra": [],
+    "trace_root": "/u/ajtse/Oceananigans.jl/benchmarking/results/hydrostatic_free_surface_models/rondeau/dagger",
+    "case_timeout_seconds": 1800,
+    "matplotlib": true,
+    "python": "python3",
+    "report_modules": [],
+    "reference_suites": [],
+    "replacement_suites": [],
+    "environment": {
+      "TMPDIR": "/u/ajtse/.ocean-tmp/becbcef98236",
+      "TMP": "/u/ajtse/.ocean-tmp/becbcef98236",
+      "TEMP": "/u/ajtse/.ocean-tmp/becbcef98236",
+      "OMPI_MCA_orte_tmpdir_base": "/u/ajtse/.ocean-tmp/becbcef98236",
+      "JULIA_DEPOT_PATH": "/u/ajtse/Oceananigans.jl/.runtime/julia_depot:/u/ajtse/.julia",
+      "JULIA_NUM_PRECOMPILE_TASKS": "1",
+      "JULIA_PKG_PRECOMPILE_AUTO": "0",
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "CUDA_VISIBLE_DEVICES": "GPU-3cc138cf-9b95-c6e6-9b51-330b5d985885,GPU-27b6f362-d593-fda1-e6fa-43275dcca7da"
+    },
+    "gpu_scaling_partition": "balanced",
+    "model_type": "HydrostaticFreeSurfaceModel",
+    "comparison_suites": [],
+    "comparison_report": "",
+    "execution_mode": "dagger",
+    "profile_layout": "series",
+    "pressure_preconditioner": "DiagonallyDominantPreconditioner",
+    "pressure_max_iterations": 5000,
+    "pressure_diagnostics": false,
+    "pressure_preserve_residual": false,
+    "pressure_check_true_residual": true,
+    "separate_partitions": false,
+    "cpu_time_overrides": {},
+    "full_gpu_nodes": false
+  },
+  "cases": [
+    {
+      "id": "2_ranks",
+      "series": "gpu_scaling_super_fine",
+      "ranks": 2,
+      "grid_name": "super_fine",
+      "partition": [
+        2,
+        1,
+        1
+      ],
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
+      "job_id": "",
+      "configuration": {
+        "series": "gpu_scaling_super_fine",
+        "model_type": "HydrostaticFreeSurfaceModel",
+        "device": "GPU",
+        "ranks": 2,
+        "threads_per_rank": 1,
+        "grid_name": "super_fine",
+        "global_resolution": [
+          1440,
+          720,
+          200
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "partition": [
+          2,
+          1,
+          1
+        ],
+        "x_sizes": [
+          720,
+          720
+        ],
+        "y_sizes": [
+          720
+        ],
+        "float_type": "Float64",
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "viscosity": null,
+        "diffusivity": null,
+        "coriolis": "HydrostaticSphericalCoriolis",
+        "buoyancy": "SeawaterBuoyancy(TEOS10)",
+        "timestepper": "SplitRungeKutta3",
+        "free_surface": "SplitExplicitFreeSurface",
+        "pressure_solver": null,
+        "pressure_preconditioner": null,
+        "pressure_max_iterations": null,
+        "pressure_reltol": null,
+        "pressure_abstol": null,
+        "pressure_diagnostics": false,
+        "pressure_preserve_residual": false,
+        "pressure_check_true_residual": false,
+        "pressure_preconditioner_check": false,
+        "initial_condition_seed": 1234,
+        "dt": 60,
+        "free_surface_substeps": 30,
+        "extend_free_surface_halos": true,
+        "warmup_steps": 2,
+        "samples": 5,
+        "time_steps": 10,
+        "profile": false,
+        "scaling_type": "strong",
+        "baseline_ranks": 1,
+        "execution_mode": "dagger"
+      },
+      "measurement": {
+        "fastest": 0.9512659375,
+        "median": 0.9520971040999999,
+        "maximum": 0.9613250999,
+        "retained_substeps": [
+          21
+        ],
+        "nodes": 1,
+        "gpu_memory_used_bytes": 26978091008,
+        "gpu_memory_max_gib": 25.12530517578125
+      },
+      "provenance": {
+        "source": "/u/ajtse/Oceananigans.jl/.runtime/hydrostatic_dagger_2026-10-30/study/dagger/gpu_scaling_super_fine",
+        "submitted_at": "2026-10-30T04:56:52.682651+00:00",
+        "measured_at": "2026-10-30T04:56:48.312"
+      }
+    }
+  ],
+  "submitted_at": "2026-10-30T04:56:52.682651+00:00",
+  "curated": true
+}
