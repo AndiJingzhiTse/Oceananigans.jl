@@ -4,9 +4,20 @@ Each series folder contains its configurations, measurements and provenance. Onl
 
 | Series | Completed cases | Report |
 |---|---:|---|
+| `gpu_nsight_scaling_super_fine` | 1 | [Details](gpu_nsight_scaling_super_fine/plot.md) |
 | `gpu_partition_super_fine` | 2 | [Details](gpu_partition_super_fine/plot.md) |
 | `gpu_resolution` | 2 | [Details](gpu_resolution/plot.md) |
 | `gpu_scaling_super_fine` | 1 | [Details](gpu_scaling_super_fine/plot.md) |
+
+## gpu_nsight_scaling_super_fine
+
+![gpu_nsight_scaling_super_fine](gpu_nsight_scaling_super_fine/gpu_nsight_scaling_super_fine.svg)
+
+![gpu_nsight_scaling_super_fine_kernels](gpu_nsight_scaling_super_fine/gpu_nsight_scaling_super_fine_kernels.svg)
+
+| Case | Ranks | Global resolution | Partition | Fastest / median s per step | Median MPI efficiency | Validation |
+|---|---:|---|---|---:|---:|---|
+| [2_ranks](gpu_nsight_scaling_super_fine/2_ranks/configuration.md) | 2 | 1440 × 720 × 200 | 2 × 1 × 1 | 0.995786 / 1.000455 | — | Current suite checks |
 
 ## gpu_partition_super_fine
 
