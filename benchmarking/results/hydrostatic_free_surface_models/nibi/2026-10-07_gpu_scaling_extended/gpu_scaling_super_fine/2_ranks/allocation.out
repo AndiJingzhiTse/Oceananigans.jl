@@ -1,0 +1,5 @@
+Oceananigans-DRAC environment (nibi): repo=/home/anditse/Oceananigans-DRAC, depot=/scratch/anditse/julia_depot
+srun: plugin_load_from_file: Incompatible Slurm plugin /opt/software/slurm/25.11.8/lib/slurm/auth_munge.so version (25.11.9)
+srun: error: Couldn't load specified plugin name for auth/munge: Incompatible plugin version
+srun: error: cannot create auth context for auth/munge
+srun: fatal: failed to initialize auth plugin
