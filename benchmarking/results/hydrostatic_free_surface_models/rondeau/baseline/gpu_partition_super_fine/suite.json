@@ -154,8 +154,98 @@
         "submitted_at": "2026-10-30T05:08:28.553622+00:00",
         "measured_at": "2026-10-30T05:08:25.576"
       }
+    },
+    {
+      "id": "2x1x1",
+      "series": "gpu_partition_super_fine",
+      "ranks": 2,
+      "grid_name": "super_fine",
+      "partition": [
+        2,
+        1,
+        1
+      ],
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
+      "job_id": "",
+      "configuration": {
+        "series": "gpu_partition_super_fine",
+        "model_type": "HydrostaticFreeSurfaceModel",
+        "device": "GPU",
+        "ranks": 2,
+        "threads_per_rank": 1,
+        "grid_name": "super_fine",
+        "global_resolution": [
+          1440,
+          720,
+          200
+        ],
+        "grid_type": "LatitudeLongitudeGrid",
+        "partition": [
+          2,
+          1,
+          1
+        ],
+        "x_sizes": [
+          720,
+          720
+        ],
+        "y_sizes": [
+          720
+        ],
+        "float_type": "Float64",
+        "momentum_advection": "WENOVectorInvariantDefault",
+        "tracer_advection": "WENO7",
+        "closure": "CATKE",
+        "tracers": [
+          "T",
+          "S"
+        ],
+        "viscosity": null,
+        "diffusivity": null,
+        "coriolis": "HydrostaticSphericalCoriolis",
+        "buoyancy": "SeawaterBuoyancy(TEOS10)",
+        "timestepper": "SplitRungeKutta3",
+        "free_surface": "SplitExplicitFreeSurface",
+        "pressure_solver": null,
+        "pressure_preconditioner": null,
+        "pressure_max_iterations": null,
+        "pressure_reltol": null,
+        "pressure_abstol": null,
+        "pressure_diagnostics": false,
+        "pressure_preserve_residual": false,
+        "pressure_check_true_residual": false,
+        "pressure_preconditioner_check": false,
+        "initial_condition_seed": 1234,
+        "dt": 60,
+        "free_surface_substeps": 30,
+        "extend_free_surface_halos": true,
+        "warmup_steps": 2,
+        "samples": 5,
+        "time_steps": 10,
+        "profile": false,
+        "scaling_type": "comparison",
+        "baseline_ranks": 1,
+        "execution_mode": "baseline"
+      },
+      "measurement": {
+        "fastest": 0.95034001,
+        "median": 0.9515226261,
+        "maximum": 0.954817176,
+        "retained_substeps": [
+          21
+        ],
+        "nodes": 1,
+        "gpu_memory_used_bytes": 26537623552,
+        "gpu_memory_max_gib": 24.715087890625
+      },
+      "provenance": {
+        "source": "/u/ajtse/Oceananigans.jl/.runtime/hydrostatic_dagger_2026-10-30/study/baseline/gpu_partition_super_fine",
+        "submitted_at": "2026-10-30T05:12:21.694301+00:00",
+        "measured_at": "2026-10-30T05:12:18.668"
+      }
     }
   ],
-  "submitted_at": "2026-10-30T05:08:28.553622+00:00",
+  "submitted_at": "2026-10-30T05:12:21.694301+00:00",
   "curated": true
 }
