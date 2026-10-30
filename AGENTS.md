@@ -204,7 +204,11 @@ with a machine configuration under `benchmarking/server/<server>/config.json`. S
 execution and reporting live in `benchmarking/src/suite/`; tests are in
 `benchmarking/test/`. One controller supports HydrostaticFreeSurfaceModel and
 NonhydrostaticModel. Legacy controllers and launchers have been removed.
-See `benchmarking/README.md` for the series table and setup instructions.
+See `benchmarking/benchmarking_guide.md` for the series table and setup instructions.
+
+Use descriptive filenames for benchmarking documentation. Server guides identify
+the server; result guides also identify the model and execution mode where
+applicable. Do not add generic README.md filenames under `benchmarking/`.
 
 Curated results use `benchmarking/results/<model_family>/<machine>/<series>/`,
 with a combined `plot.md` inside each machine folder. The two model families are

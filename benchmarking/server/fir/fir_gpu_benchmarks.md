@@ -1,6 +1,6 @@
-# Nibi GPU benchmark plan
+# Fir GPU benchmark plan
 
-[Resource/software settings](config.json) · [Authoritative workloads](series.json) · [Shared instructions](../../README.md)
+[Resource/software settings](config.json) · [Authoritative workloads](series.json) · [Shared instructions](../../benchmarking_guide.md)
 
 This plan applies to both HydrostaticFreeSurfaceModel and NonhydrostaticModel,
 with selectable baseline/Dagger combinations. The shared workflow uses the
@@ -29,8 +29,8 @@ The GPU count here is a study limit, independent of the larger configured
 cluster capacity. Software/account settings are retained from the existing
 configuration; review them before a future Slurm submission.
 
-- [hydrostatic_free_surface_models baseline, Dagger and comparisons](../../results/hydrostatic_free_surface_models/nibi/README.md)
-- [non_hydrostatic_models baseline, Dagger and comparisons](../../results/non_hydrostatic_models/nibi/README.md)
+- [hydrostatic_free_surface_models baseline, Dagger and comparisons](../../results/hydrostatic_free_surface_models/fir/fir_hydrostatic_results_guide.md)
+- [non_hydrostatic_models baseline, Dagger and comparisons](../../results/non_hydrostatic_models/fir/fir_nonhydrostatic_results_guide.md)
 
 Each model/server results folder contains `baseline/`, `dagger/` and generated
 comparison reports when matched measurements exist. Existing root-level historical

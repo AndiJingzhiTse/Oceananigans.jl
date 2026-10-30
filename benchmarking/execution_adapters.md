@@ -89,7 +89,8 @@ julia benchmarking/scripts/env/setup_environment.jl \
   .runtime/environments/benchmark --adapter /absolute/path/to/adapter
 ```
 
-Set project-controlled temporary storage first, as shown in the main README.
+Set project-controlled temporary storage first, as shown in the
+[benchmarking guide](benchmarking_guide.md).
 Local setup keeps existing/default MPI preferences when `EBROOTOPENMPI` is unset;
 set that variable to the configured system MPI prefix when needed. Select the
 resulting environment with the workflow's `--project` option.

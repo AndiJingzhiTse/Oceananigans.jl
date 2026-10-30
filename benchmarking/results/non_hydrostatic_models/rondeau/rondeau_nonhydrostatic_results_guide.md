@@ -1,9 +1,9 @@
-# Rorqual: non_hydrostatic_models
+# Rondeau: non_hydrostatic_models
 
-[Current server plan](../../../server/rorqual/README.md) · [Workload definition](../../../server/rorqual/series.json)
+[Current server plan](../../../server/rondeau/rondeau_gpu_benchmarks.md) · [Workload definition](../../../server/rondeau/series.json)
 
-- [Baseline](baseline/README.md): direct execution of the server workloads.
-- [Dagger](dagger/README.md): the same model, workloads and numerical settings with Dagger.
+- [Baseline](baseline/rondeau_nonhydrostatic_baseline_records.md): direct execution of the server workloads.
+- [Dagger](dagger/rondeau_nonhydrostatic_dagger_records.md): the same model, workloads and numerical settings with Dagger.
 - `comparison.md`, `comparison.csv`, `comparisons/`: generated matched comparisons inside this model/server folder.
 
 This reorganization runs no new benchmarks. The shared workflow uses a replaceable Dagger adapter.

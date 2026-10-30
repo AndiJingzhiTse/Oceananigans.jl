@@ -1,6 +1,6 @@
-# Rondeau non_hydrostatic_models: dagger
+# Fir hydrostatic_free_surface_models: dagger
 
-[Server/model overview](../README.md) · [Current workloads](../../../../server/rondeau/series.json)
+[Server/model overview](../fir_hydrostatic_results_guide.md) · [Current workloads](../../../../server/fir/series.json)
 
 Retained measurements belong in `<series>/<case>/`, with configurations,
 per-rank results, validation evidence and source/environment provenance.

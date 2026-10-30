@@ -1,6 +1,6 @@
 # Fir non_hydrostatic_models: dagger
 
-[Server/model overview](../README.md) · [Current workloads](../../../../server/fir/series.json)
+[Server/model overview](../fir_nonhydrostatic_results_guide.md) · [Current workloads](../../../../server/fir/series.json)
 
 Retained measurements belong in `<series>/<case>/`, with configurations,
 per-rank results, validation evidence and source/environment provenance.

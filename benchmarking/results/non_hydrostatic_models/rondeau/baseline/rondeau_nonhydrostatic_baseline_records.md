@@ -1,6 +1,6 @@
 # Rondeau non_hydrostatic_models: baseline
 
-[Server/model overview](../README.md) · [Current workloads](../../../../server/rondeau/series.json)
+[Server/model overview](../rondeau_nonhydrostatic_results_guide.md) · [Current workloads](../../../../server/rondeau/series.json)
 
 Retained measurements belong in `<series>/<case>/`, with configurations,
 per-rank results, validation evidence and source/environment provenance.

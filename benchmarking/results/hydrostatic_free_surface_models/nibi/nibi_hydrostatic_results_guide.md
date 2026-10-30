@@ -1,9 +1,9 @@
-# Rondeau: non_hydrostatic_models
+# Nibi: hydrostatic_free_surface_models
 
-[Current server plan](../../../server/rondeau/README.md) · [Workload definition](../../../server/rondeau/series.json)
+[Current server plan](../../../server/nibi/nibi_gpu_benchmarks.md) · [Workload definition](../../../server/nibi/series.json)
 
-- [Baseline](baseline/README.md): direct execution of the server workloads.
-- [Dagger](dagger/README.md): the same model, workloads and numerical settings with Dagger.
+- [Baseline](baseline/nibi_hydrostatic_baseline_records.md): direct execution of the server workloads.
+- [Dagger](dagger/nibi_hydrostatic_dagger_records.md): the same model, workloads and numerical settings with Dagger.
 - `comparison.md`, `comparison.csv`, `comparisons/`: generated matched comparisons inside this model/server folder.
 
 This reorganization runs no new benchmarks. The shared workflow uses a replaceable Dagger adapter.

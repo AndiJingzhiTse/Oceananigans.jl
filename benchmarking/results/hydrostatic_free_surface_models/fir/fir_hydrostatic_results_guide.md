@@ -1,9 +1,9 @@
 # Fir: hydrostatic_free_surface_models
 
-[Current server plan](../../../server/fir/README.md) · [Workload definition](../../../server/fir/series.json)
+[Current server plan](../../../server/fir/fir_gpu_benchmarks.md) · [Workload definition](../../../server/fir/series.json)
 
-- [Baseline](baseline/README.md): direct execution of the server workloads.
-- [Dagger](dagger/README.md): the same model, workloads and numerical settings with Dagger.
+- [Baseline](baseline/fir_hydrostatic_baseline_records.md): direct execution of the server workloads.
+- [Dagger](dagger/fir_hydrostatic_dagger_records.md): the same model, workloads and numerical settings with Dagger.
 - `comparison.md`, `comparison.csv`, `comparisons/`: generated matched comparisons inside this model/server folder.
 
 This reorganization runs no new benchmarks. The shared workflow uses a replaceable Dagger adapter.

@@ -1,6 +1,6 @@
-# Rorqual hydrostatic_free_surface_models: baseline
+# Nibi hydrostatic_free_surface_models: baseline
 
-[Server/model overview](../README.md) · [Current workloads](../../../../server/rorqual/series.json)
+[Server/model overview](../nibi_hydrostatic_results_guide.md) · [Current workloads](../../../../server/nibi/series.json)
 
 Retained measurements belong in `<series>/<case>/`, with configurations,
 per-rank results, validation evidence and source/environment provenance.

@@ -1,6 +1,6 @@
-# Nibi non_hydrostatic_models: dagger
+# Rorqual non_hydrostatic_models: dagger
 
-[Server/model overview](../README.md) · [Current workloads](../../../../server/nibi/series.json)
+[Server/model overview](../rorqual_nonhydrostatic_results_guide.md) · [Current workloads](../../../../server/rorqual/series.json)
 
 Retained measurements belong in `<series>/<case>/`, with configurations,
 per-rank results, validation evidence and source/environment provenance.

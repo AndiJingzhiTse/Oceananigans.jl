@@ -5,7 +5,7 @@ controller was stopped while waiting for GPUs during the server reorganization;
 completed results and execution evidence are retained. Do not run the command
 below against the new configuration. The original resolved configuration and
 workload are recorded in `.runtime/hydrostatic_dagger_2026-10-30/study/`.
-See [the current server plan](../README.md) for new studies.
+See [the current server plan](../rondeau_gpu_benchmarks.md) for new studies.
 
 This study used the original whole-function wrapper in `src/suite/worker.jl`:
 baseline calls `synchronized_window!` directly; Dagger spawns that same function

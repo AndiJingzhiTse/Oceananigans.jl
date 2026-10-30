@@ -12,20 +12,20 @@ The shared workflow implements these selections through backend and execution ad
 
 ```text
 benchmarking/
-├── README.md
+├── benchmarking_guide.md               Commands, workloads and result layout
 ├── requirements.md                     Shared workflow and integration contract
 ├── Project.toml                         Julia benchmark package dependencies
 ├── server/
-│   ├── README.md                        Server plans and the four-run matrix
+│   ├── server_benchmark_plans.md        Server plans and model/mode selections
 │   ├── rondeau/
 │   │   ├── config.json                  Resources, launcher and environment
 │   │   ├── series.json                  Exact grids, GPU counts and partitions
-│   │   ├── README.md                    Human-readable server plan
+│   │   ├── rondeau_gpu_benchmarks.md    Human-readable server plan
 │   │   └── history/                     Superseded study instructions
-│   ├── nibi/                            config.json, series.json, README.md
-│   ├── rorqual/                         config.json, series.json, README.md
-│   ├── fir/                             config.json, series.json, README.md
-│   └── Andi-5070ti/                     Retained local config; no new server plan
+│   ├── nibi/                            config.json, series.json, nibi_gpu_benchmarks.md
+│   ├── rorqual/                         config.json, series.json, rorqual_gpu_benchmarks.md
+│   ├── fir/                             config.json, series.json, fir_gpu_benchmarks.md
+│   └── Andi-5070ti/                     config.json, andi_5070ti_local_profile.md
 ├── scripts/
 │   ├── benchmark_suite.py               Shared local/Slurm controller
 │   ├── compare_dagger.py                Compatibility wrapper for the shared workflow
@@ -52,9 +52,13 @@ benchmarking/
 └── results/
     ├── hydrostatic_free_surface_models/
     │   └── <server>/
-    │       ├── README.md                Current plan and retained-result status
-    │       ├── baseline/<series>/<case>/
-    │       ├── dagger/<series>/<case>/
+    │       ├── <server>_hydrostatic_results_guide.md
+    │       ├── baseline/
+    │       │   ├── <server>_hydrostatic_baseline_records.md
+    │       │   └── <series>/<case>/
+    │       ├── dagger/
+    │       │   ├── <server>_hydrostatic_dagger_records.md
+    │       │   └── <series>/<case>/
     │       ├── comparison.md            Generated after matched measurements
     │       ├── comparison.csv           Generated all-outcome comparison
     │       └── comparisons/             Generated timing and speedup plots

@@ -1,7 +1,7 @@
 # Server benchmark plans
 
 Each server has `config.json` (resources/software), `series.json` (exact workloads)
-and a README. The same series file supplies HydrostaticFreeSurfaceModel and
+and a server benchmark guide. The same series file supplies HydrostaticFreeSurfaceModel and
 NonhydrostaticModel, each with baseline and Dagger execution: four available
 combinations per server. The shared workflow supports any subset,
 including all four, on either local or Slurm backends. See the
@@ -15,10 +15,10 @@ launch the full production benchmark series.
 
 | Server | Configuration | Series | Cases per model/variant |
 |---|---|---|---:|
-| [Rondeau](rondeau/README.md) | [config.json](rondeau/config.json) | [series.json](rondeau/series.json) | 16 |
-| [Nibi](nibi/README.md) | [config.json](nibi/config.json) | [series.json](nibi/series.json) | 30 |
-| [Rorqual](rorqual/README.md) | [config.json](rorqual/config.json) | [series.json](rorqual/series.json) | 30 |
-| [Fir](fir/README.md) | [config.json](fir/config.json) | [series.json](fir/series.json) | 30 |
+| [Rondeau](rondeau/rondeau_gpu_benchmarks.md) | [config.json](rondeau/config.json) | [series.json](rondeau/series.json) | 16 |
+| [Nibi](nibi/nibi_gpu_benchmarks.md) | [config.json](nibi/config.json) | [series.json](nibi/series.json) | 30 |
+| [Rorqual](rorqual/rorqual_gpu_benchmarks.md) | [config.json](rorqual/config.json) | [series.json](rorqual/series.json) | 30 |
+| [Fir](fir/fir_gpu_benchmarks.md) | [config.json](fir/config.json) | [series.json](fir/series.json) | 30 |
 
 Rondeau has six series and excludes partition benchmarks. The three clusters
 retain seven series including their fine-grid partition comparisons.
@@ -34,7 +34,7 @@ and weak-scaling cases retain their listed decompositions.
 Results stay under `../results/<model_family>/<server>/baseline/` and `dagger/`.
 Comparisons belong in the enclosing model/server folder and match equivalent
 cases within that model. Historical result locations remain unchanged.
-See [the main instructions](../README.md) for the result tree, timing protocol,
+See [the main instructions](../benchmarking_guide.md) for the result tree, timing protocol,
 planning commands and the replaceable Dagger integration.
 
 [Andi-5070ti](Andi-5070ti/config.json) retains its existing local configuration;

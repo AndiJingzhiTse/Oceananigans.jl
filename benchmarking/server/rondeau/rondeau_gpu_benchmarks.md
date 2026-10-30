@@ -1,6 +1,6 @@
 # Rondeau GPU benchmark plan
 
-[Resource/software settings](config.json) · [Authoritative workloads](series.json) · [Shared instructions](../../README.md)
+[Resource/software settings](config.json) · [Authoritative workloads](series.json) · [Shared instructions](../../benchmarking_guide.md)
 
 This plan applies to both HydrostaticFreeSurfaceModel and NonhydrostaticModel,
 with selectable baseline/Dagger combinations. The shared workflow uses the
@@ -31,8 +31,8 @@ The superseded hydrostatic wrapper controller was stopped while waiting for GPUs
 Its [historical runbook](history/hydrostatic_dagger_2026-10-30.md) and completed
 measurements are retained. No replacement jobs have been launched.
 
-- [hydrostatic_free_surface_models baseline, Dagger and comparisons](../../results/hydrostatic_free_surface_models/rondeau/README.md)
-- [non_hydrostatic_models baseline, Dagger and comparisons](../../results/non_hydrostatic_models/rondeau/README.md)
+- [hydrostatic_free_surface_models baseline, Dagger and comparisons](../../results/hydrostatic_free_surface_models/rondeau/rondeau_hydrostatic_results_guide.md)
+- [non_hydrostatic_models baseline, Dagger and comparisons](../../results/non_hydrostatic_models/rondeau/rondeau_nonhydrostatic_results_guide.md)
 
 Each model/server results folder contains `baseline/`, `dagger/` and generated
 comparison reports when matched measurements exist. Existing root-level historical
