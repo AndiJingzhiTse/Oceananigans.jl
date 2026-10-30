@@ -4,7 +4,7 @@ gpu_scaling_super_fine,2_ranks,2,1440x720x200,2x1x1,LatitudeLongitudeGrid,False,
 gpu_scaling_super_fine,4_ranks,4,1440x720x200,2x2x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,,,,,,,baseline: ; dagger:
 gpu_scaling_super_fine,8_ranks,8,1440x720x200,4x2x1,LatitudeLongitudeGrid,False,RESOURCE_LIMIT,RESOURCE_LIMIT,,,,,,,,,,,,,baseline: Requires 8; configured capacity is 4; dagger: Requires 8; configured capacity is 4
 gpu_resolution,default,1,360x180x50,1x1x1,LatitudeLongitudeGrid,False,COMPLETED,COMPLETED,0.033996449299999995,0.034043001,0.034005274,0.0340713755,0.9986325618002946,0.9980599110241382,,,,,,,"baseline: Rank results, finite fields and resource placement verified; dagger: Rank results, finite fields and resource placement verified"
-gpu_resolution,fine,1,720x360x100,1x1x1,LatitudeLongitudeGrid,False,PLANNED,COMPLETED,,,,,,,,,,,,,"baseline: ; dagger: Rank results, finite fields and resource placement verified"
+gpu_resolution,fine,1,720x360x100,1x1x1,LatitudeLongitudeGrid,False,RUNNING,COMPLETED,,,,,,,,,,,,,"baseline: Local allocation started; see job.out; dagger: Rank results, finite fields and resource placement verified"
 gpu_resolution,super_fine,1,1440x720x200,1x1x1,LatitudeLongitudeGrid,False,PLANNED,PLANNED,,,,,,,,,,,,,baseline: ; dagger:
 gpu_nsight_scaling_super_fine,1_ranks,1,1440x720x200,1x1x1,LatitudeLongitudeGrid,True,PLANNED,PLANNED,,,,,,,,,,,,,baseline: ; dagger:
 gpu_nsight_scaling_super_fine,2_ranks,2,1440x720x200,2x1x1,LatitudeLongitudeGrid,True,PLANNED,PLANNED,,,,,,,,,,,,,baseline: ; dagger:
