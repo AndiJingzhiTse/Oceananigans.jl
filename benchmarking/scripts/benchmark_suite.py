@@ -171,6 +171,7 @@ def config_markdown(config):
             f"Viscosity={config.get('viscosity')}; diffusivity={config.get('diffusivity')} m²/s; pressure solver={config.get('pressure_solver')}.\n"
             f"Pressure preconditioner={config.get('pressure_preconditioner')}; iteration cap={config.get('pressure_max_iterations')}; relative/absolute tolerances={config.get('pressure_reltol')}/{config.get('pressure_abstol')}.\n"
             f"Δt={config['dt']} s; free-surface substeps={config['free_surface_substeps']} requested; extend_halos={config['extend_free_surface_halos']}.\n"
+            f"Initial-condition seed={config.get('initial_condition_seed')} plus MPI rank when set.\n"
             f"Two untimed steps, {config['samples']} windows of {config['time_steps']} steps. Profile={config['profile']}.\n")
 
 

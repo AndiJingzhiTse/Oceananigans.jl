@@ -256,6 +256,15 @@ For GPU MPI runs, verify distinct GPUs and CUDA-aware MPI communication.
 
 ### Benchmark Reporting and Completion
 
+For the Rondeau hydrostatic baseline/Dagger study, use the shared paired
+controller with `--model HydrostaticFreeSurfaceModel --gpu-only --wait-for-gpus`.
+Run the seven standard GPU series described in `benchmarking/hydrostatic_dagger.md`.
+Publish under `hydrostatic_free_surface_models/rondeau/{baseline,dagger}/`.
+Use project-local `.runtime/` storage, paired seeds and GPU assignments, and
+the original whole-window wrapper. Do not change solver kernels or launch CPU
+benchmark series. Wait for occupied GPUs without holding resources. Stop the
+controller before changing branches or benchmark/library source.
+
 Rondeau NonhydrostaticModel uses the GPU-only five-series plan documented in
 `benchmarking/README.md`: `gpu_weak_scaling` first, `gpu_scaling_fine`,
 `gpu_nsight_scaling_default`, `gpu_resolution`, and `gpu_ensemble`. The ensemble

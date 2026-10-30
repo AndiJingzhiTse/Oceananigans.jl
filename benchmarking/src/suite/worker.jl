@@ -288,6 +288,11 @@ if rank == 0
     flush(stdout)
 end
 model = if is_hydrostatic
+    initial_seed = get(config, "initial_condition_seed", nothing)
+    if !isnothing(initial_seed)
+        seed!(initial_seed + rank)
+        is_gpu && CUDA.seed!(initial_seed + rank)
+    end
     earth_ocean(arch; Nx, Ny, Nz, float_type=Float64, grid_type="lat_lon",
                     momentum_advection=WENOVectorInvariant(Float64), tracer_advection=WENO(Float64; order=7),
                     timestepper=:SplitRungeKutta3, tracers=(:T, :S),

@@ -47,7 +47,7 @@ def comparison_rows(study, selected=ALL_SERIES):
     return rows
 
 
-def write_comparison(study, output, plotting=True, selected=ALL_SERIES):
+def write_comparison(study, output, plotting=True, selected=ALL_SERIES, model_type='NonhydrostaticModel'):
     study, output = Path(study), Path(output)
     output.mkdir(parents=True, exist_ok=True)
     rows = comparison_rows(study, selected)
@@ -56,17 +56,24 @@ def write_comparison(study, output, plotting=True, selected=ALL_SERIES):
             writer = csv.DictWriter(stream, fieldnames=list(rows[0]), lineterminator='\n')
             writer.writeheader()
             writer.writerows(rows)
-    lines = ['# Rondeau: nonhydrostatic baseline versus Dagger', '',
+    model_label = 'hydrostatic' if model_type == 'HydrostaticFreeSurfaceModel' else 'nonhydrostatic'
+    previous = output / 'previous_results.md'
+    if model_type == 'HydrostaticFreeSurfaceModel' and (output / 'plot.md').exists() and not (output / 'comparison.md').exists():
+        if not previous.exists():
+            previous.write_text((output / 'plot.md').read_text())
+    lines = [f'# Rondeau: {model_label} baseline versus Dagger', '',
              'For MPI series, Dagger submits one task per timing window, restricted to the current MPI process and its sole Julia computation thread. '
              'Oceananigans retains its existing MPI domain decomposition. Both paths synchronize CUDA before completing a window.', '',
-             'In gpu_ensemble, four independent single-GPU simulations run concurrently. Dagger schedules four complete simulations; '
-             'the baseline uses four concurrent Distributed calls. Ensemble speedups compare total timed makespan and dispatch-to-completion time.', '',
              'Speedup = baseline seconds per step / Dagger seconds per step. Above 1 favors Dagger; the equal-time reference is 1. '
              'Fastest and median timings are the maximum rank statistic. Only completed, validated pairs with matching configurations have ratios.', '',
              'Nsight timings are compared only against the matching profiled variant. Shared-machine activity can affect timings; '
              'these are paired runs, not exclusive-node measurements.', '',
              f'Raw study and execution logs: `{study}`.', '',
              '[Baseline records](baseline/plot.md) · [Dagger records](dagger/plot.md) · [All outcomes as CSV](comparison.csv)', '']
+    if 'gpu_ensemble' in selected:
+        lines += ['In gpu_ensemble, four independent single-GPU simulations run concurrently. '
+                  'Dagger schedules four complete simulations; the baseline uses four concurrent Distributed calls. '
+                  'Ensemble speedups compare total timed makespan and dispatch-to-completion time.', '']
     if 'gpu_weak_scaling' in selected:
         lines += ['Requested GPU weak-scaling sequence: 360 × 180 × 50 on 1 GPU, '
                   '720 × 360 × 100 on 2 GPUs, and 1440 × 720 × 200 on 4 GPUs. '
@@ -126,7 +133,8 @@ def write_comparison(study, output, plotting=True, selected=ALL_SERIES):
                 lines += ['', f"{row['case']}: {row['details']}"]
         lines += ['']
     (output / 'comparison.md').write_text('\n'.join(lines) + '\n')
-    (output / 'plot.md').write_text('# Rondeau nonhydrostatic benchmarks\n\n'
+    (output / 'plot.md').write_text(f'# Rondeau {model_label} benchmarks\n\n'
         '[Baseline versus Dagger: all series](comparison.md)\n\n'
-        '[Baseline](baseline/plot.md) · [Dagger](dagger/plot.md)\n')
+        '[Baseline](baseline/plot.md) · [Dagger](dagger/plot.md)\n' +
+        ('\n[Previously retained results](previous_results.md)\n' if previous.exists() else ''))
     return rows

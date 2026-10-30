@@ -85,7 +85,7 @@ def configuration(series, ranks, grid_name='super_fine', partition=None, global_
                 pressure_diagnostics=False, pressure_preserve_residual=False,
                 pressure_check_true_residual=not hydrostatic,
                 pressure_preconditioner_check=not hydrostatic,
-                initial_condition_seed=None if hydrostatic else 1234,
+                initial_condition_seed=1234,
                 dt=60 * min(1, 1440 / grid[0]), free_surface_substeps=30 if hydrostatic else None,
                 extend_free_surface_halos=gpu if hydrostatic else False,
                 warmup_steps=2, samples=5, time_steps=10,

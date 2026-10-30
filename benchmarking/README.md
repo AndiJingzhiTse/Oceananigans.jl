@@ -325,7 +325,7 @@ are not accepted timing results.
 The paired controller archives closed case files, including CPU logs and
 failure evidence, in `<variant>/<series>/run_records/<case>/`. Its versioned
 `run_records_manifest.json` records file checksums. Future processes use a
-case-specific `.runtime/` directory in the local scratch study for `TMPDIR`,
+case-specific `.runtime/` directory inside the project-local study for `TMPDIR`,
 `TMP`, `TEMP` and OpenMPI session files. On exit, leftover runtime files are
 verified, archived into the case's run records, and removed from `.runtime/`.
 An active MPI session must finish before its temporary files are moved.
@@ -348,17 +348,37 @@ Install Dagger in an isolated environment alongside the local Oceananigans and
 OceananigansBenchmarks packages. Use that same environment for both variants;
 the baseline does not import Dagger. CPU rank launchers hide CUDA devices before
 Julia starts, so CPU Dagger initialization cannot allocate GPU contexts. The paired
-local runner uses the machine's nonhydrostatic plan and alternates variant order:
+local runner defaults to the machine's nonhydrostatic plan and alternates variant order:
 
 ```bash
 python3 benchmarking/scripts/compare_dagger.py \
   --config benchmarking/scripts/configs/rondeau.json \
   --project /absolute/path/to/isolated/environment \
-  --study /local_scratch/$USER/benchmark_studies/nonhydrostatic_dagger/rondeau \
+  --study .runtime/benchmark_studies/nonhydrostatic_dagger/rondeau \
   --publish benchmarking/results/non_hydrostatic_models/rondeau
 ```
 
 Accepted records go into `baseline/<series>/` and `dagger/<series>/`.
+For the same whole-window wrapper on hydrostatic models, select
+`--model HydrostaticFreeSurfaceModel --gpu-only`. This selects the seven
+standard GPU series, including resource-limit outcomes for counts exceeding
+the machine's capacity; it creates no CPU suites. Use a fresh study and publish
+into `results/hydrostatic_free_surface_models/rondeau`.
+
+`--wait-for-gpus` runs smaller eligible allocations first, excludes GPUs with
+existing compute processes or more than 256 MiB in use, and waits without
+holding devices when the requested allocation is unavailable. Both members of
+a pair use the same GPU UUIDs, recorded under `allocations/` in the study.
+`progress.json` records running cases and resource waits. This is cooperative
+availability checking on a shared server, not a hardware reservation.
+Do not switch branches or edit benchmark/library code while the study runs;
+source fingerprints stop the controller when the implementation changes.
+
+Hydrostatic initial T/S perturbations use seed 1234 plus MPI rank, paired across
+the two variants. The solver, numerical kernels and MPI decomposition are shared.
+The hydrostatic setup and exact launch command are documented in
+[hydrostatic_dagger.md](hydrostatic_dagger.md).
+
 Use `--series gpu_ensemble` on the paired controller to append only the ensemble
 series to an existing study. Its other series remain in the combined comparison.
 

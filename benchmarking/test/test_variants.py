@@ -13,6 +13,90 @@ import compare_dagger
 
 
 class VariantTests(unittest.TestCase):
+    def test_automatic_commits_include_new_metadata_but_exclude_raw_profiles(self):
+        import subprocess
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            subprocess.run(['git', 'init', '-q', '-b', 'main', str(root)], check=True)
+            subprocess.run(['git', '-C', str(root), 'config', 'user.name', 'Benchmark test'], check=True)
+            subprocess.run(['git', '-C', str(root), 'config', 'user.email', 'benchmark@example.invalid'], check=True)
+            (root / '.gitignore').write_text('*.json\n*.md\n')
+            subprocess.run(['git', '-C', str(root), 'add', '.gitignore'], check=True)
+            subprocess.run(['git', '-C', str(root), 'commit', '-qm', 'Initial'], check=True)
+            destination = root / 'results/hydrostatic_free_surface_models/rondeau'
+            case = destination / 'baseline/gpu_resolution/default'
+            case.mkdir(parents=True)
+            (case / 'results.json').write_text('{}')
+            raw = destination / 'baseline/gpu_resolution/raw_profiles'
+            raw.mkdir()
+            (raw / 'capture.json').write_text('must remain untracked')
+            (root / 'user.txt').write_text('Unrelated user work')
+            with patch.object(runner, 'REPO', root):
+                compare_dagger.commit_records(destination)
+            tracked = subprocess.check_output(['git', '-C', str(root), 'ls-files'], text=True)
+            self.assertIn('default/results.json', tracked)
+            self.assertNotIn('capture.json', tracked)
+            self.assertNotIn('user.txt', tracked)
+
+    def test_source_change_records_a_stopped_state(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            with patch.object(compare_dagger, 'source_fingerprint', return_value={'src': 'changed'}):
+                with self.assertRaises(RuntimeError):
+                    compare_dagger.verify_source({'src': 'original'}, root)
+            self.assertEqual(json.loads((root / 'progress.json').read_text())['state'], 'STOPPED_SOURCE_CHANGE')
+
+    def test_hydrostatic_gpu_only_plan_and_report(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            output = root / 'hydrostatic_free_surface_models/rondeau'
+            output.mkdir(parents=True)
+            (output / 'plot.md').write_text('Previously accepted results\n')
+            args = ['compare_dagger.py', '--config', str(runner.ROOT / 'scripts/configs/rondeau.json'),
+                    '--project', str(root / 'environment'), '--study', str(root / 'study'),
+                    '--publish', str(output), '--model', 'HydrostaticFreeSurfaceModel', '--gpu-only', '--plan']
+            with patch('sys.argv', args), patch.object(runner, 'snapshot'):
+                compare_dagger.main()
+            expected = {s for s in plan.SERIES if s.startswith('gpu_')}
+            rows = comparison_rows(root / 'study')
+            self.assertEqual({r['series'] for r in rows}, expected)
+            self.assertEqual(len(expected), 7)
+            for path in (root / 'study').glob('*/*/suite.json'):
+                data = json.loads(path.read_text())
+                self.assertEqual(data['server']['model_type'], 'HydrostaticFreeSurfaceModel')
+                self.assertTrue(all(c['configuration']['model_type'] == 'HydrostaticFreeSurfaceModel'
+                                    for c in data['cases'] if 'configuration' in c))
+                self.assertTrue(all(c['configuration']['free_surface'] == 'SplitExplicitFreeSurface'
+                                    for c in data['cases'] if 'configuration' in c))
+                self.assertTrue(all(c['configuration']['initial_condition_seed'] == 1234
+                                    for c in data['cases'] if 'configuration' in c))
+            self.assertEqual((output / 'previous_results.md').read_text(), 'Previously accepted results\n')
+            self.assertIn('# Rondeau: hydrostatic baseline', (output / 'comparison.md').read_text())
+            self.assertFalse((root / 'study/baseline/cpu_resolution').exists())
+            self.assertNotIn('four independent single-GPU simulations', (output / 'comparison.md').read_text())
+
+    def test_idle_gpu_selection_rejects_occupied_devices(self):
+        from types import SimpleNamespace
+        responses = [SimpleNamespace(returncode=0, stdout='0, GPU-a, 5\n1, GPU-b, 4096\n2, GPU-c, 5\n3, GPU-d, 5\n'),
+                     SimpleNamespace(returncode=0, stdout='GPU-b\nGPU-d\n')]
+        with patch.object(runner, 'command', side_effect=responses), patch.dict('os.environ', {}, clear=True):
+            self.assertEqual(compare_dagger.free_gpu_uuids(), ['GPU-a', 'GPU-c'])
+        responses = [SimpleNamespace(returncode=0, stdout='0, GPU-a, 5\n2, GPU-c, 5\n'),
+                     SimpleNamespace(returncode=0, stdout='')]
+        with patch.object(runner, 'command', side_effect=responses), patch.dict('os.environ', {'CUDA_VISIBLE_DEVICES': '2'}, clear=True):
+            self.assertEqual(compare_dagger.free_gpu_uuids(), ['GPU-c'])
+
+    def test_pending_pairs_prioritize_smaller_allocations_and_skip_terminal_cases(self):
+        studies = {}
+        for mode in ('baseline', 'dagger'):
+            studies[mode, 'gpu_scaling_super_fine'] = (Path('/unused'), {'cases': [
+                dict(id='4_ranks', ranks=4, state='PLANNED'),
+                dict(id='2_ranks', ranks=2, state='PLANNED'),
+                dict(id='1_ranks', ranks=1, state='COMPLETED'),
+                dict(id='8_ranks', ranks=8, state='RESOURCE_LIMIT')]})
+        pairs = compare_dagger.pending_pairs(studies, ('gpu_scaling_super_fine',))
+        self.assertEqual([p[0] for p in pairs], [2, 4])
+
     def test_paired_plan_creates_empty_variant_destinations(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
