@@ -22,6 +22,9 @@ COUNTS = (1, 2, 4, 8, 16)
 
 
 def report(root, suites):
+    setup_log = REPO / '.runtime/nibi_dagger/slurm_setup.out'
+    if setup_log.exists():
+        (root / 'setup.out').write_text(setup_log.read_text(errors='replace'))
     for folder, data in suites.values():
         runner.refresh(folder, data)
     rows = comparison_rows(root, SERIES)
@@ -63,7 +66,10 @@ def report(root, suites):
             axes[2].plot([r['ranks'] for r in selected], [r['speedup_median'] for r in selected], 'o-', label='baseline / Dagger')
             axes[2].axhline(1, linestyle='--', color='gray', label='Equal time 1')
             for ax, ylabel in zip(axes, ('Median seconds/step', 'MPI efficiency (%)', 'Speedup')):
-                ax.set_xlabel('GPUs / MPI ranks'); ax.set_ylabel(ylabel); ax.legend(); ax.grid(alpha=0.3)
+                ax.set_xlabel('GPUs / MPI ranks')
+                ax.set_ylabel(ylabel)
+                ax.legend()
+                ax.grid(alpha=0.3)
             fig.savefig(root / f'{series}_comparison.svg', metadata={'Date': None})
             plt.close(fig)
             lines += ['', f'![{series}]({series}_comparison.svg)']
@@ -155,16 +161,18 @@ def main():
                     if result.returncode:
                         raise RuntimeError('Finalizer submission failed: ' + result.stdout)
         if args.commit:
-            if runner.command(['git', '-C', REPO, 'diff', '--cached', '--quiet']).returncode:
-                raise RuntimeError('Unrelated staged changes; refusing automatic commit')
-            for family in MODEL_FOLDERS.values():
-                destination = REPO / 'benchmarking/results' / family / 'nibi/dagger'
-                subprocess.run(['git', '-C', str(REPO), 'add', '--', str(destination)], check=True)
-                logs = list(destination.rglob('*.out'))
-                if logs:
-                    subprocess.run(['git', '-C', str(REPO), 'add', '-f', '--', *map(str, logs)], check=True)
-            if runner.command(['git', '-C', REPO, 'diff', '--cached', '--quiet']).returncode:
-                subprocess.run(['git', '-C', str(REPO), 'commit', '-m', 'Record Nibi paired baseline and Dagger benchmark outcomes'], check=True)
+            with (REPO / '.git/benchmark_artifacts.lock').open('a') as artifact_lock:
+                fcntl.flock(artifact_lock, fcntl.LOCK_EX)
+                if runner.command(['git', '-C', REPO, 'diff', '--cached', '--quiet']).returncode:
+                    raise RuntimeError('Unrelated staged changes; refusing automatic commit')
+                for family in MODEL_FOLDERS.values():
+                    destination = REPO / 'benchmarking/results' / family / 'nibi/dagger'
+                    subprocess.run(['git', '-C', str(REPO), 'add', '--', str(destination)], check=True)
+                    logs = list(destination.rglob('*.out'))
+                    if logs:
+                        subprocess.run(['git', '-C', str(REPO), 'add', '-f', '--', *map(str, logs)], check=True)
+                if runner.command(['git', '-C', REPO, 'diff', '--cached', '--quiet']).returncode:
+                    subprocess.run(['git', '-C', str(REPO), 'commit', '-m', 'Record Nibi paired baseline and Dagger benchmark outcomes'], check=True)
 
 
 if __name__ == '__main__':
