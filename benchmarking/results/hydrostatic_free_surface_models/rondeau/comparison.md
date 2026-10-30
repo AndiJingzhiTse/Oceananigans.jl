@@ -36,10 +36,10 @@ No completed, validated pair is available.
 | Case | Resolution / partition | Baseline outcome | Dagger outcome | Median s/step baseline / Dagger | Speedup |
 |---|---|---|---|---:|---:|
 | default | 360x180x50 / 1x1x1 | COMPLETED | COMPLETED | 0.0340053 / 0.0340714 | 0.9981 |
-| fine | 720x360x100 / 1x1x1 | PLANNED | PLANNED | — | — |
+| fine | 720x360x100 / 1x1x1 | PLANNED | RUNNING | — | — |
 | super_fine | 1440x720x200 / 1x1x1 | PLANNED | PLANNED | — | — |
 
-fine: baseline: ; dagger:
+fine: baseline: ; dagger: Local allocation started; see job.out
 
 super_fine: baseline: ; dagger:
 
