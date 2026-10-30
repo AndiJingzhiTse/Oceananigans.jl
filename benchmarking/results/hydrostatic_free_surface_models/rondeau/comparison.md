@@ -60,6 +60,8 @@ No completed, validated pair is available.
 
 ## gpu_partition_super_fine
 
+![Timing and speedup](comparisons/gpu_partition_super_fine.svg)
+
 | Case | Resolution / partition | Baseline outcome | Dagger outcome | Median s/step baseline / Dagger | Speedup |
 |---|---|---|---|---:|---:|
 | 16x1x1 | 1440x720x200 / 16x1x1 | RESOURCE_LIMIT | RESOURCE_LIMIT | — | — |
@@ -67,7 +69,7 @@ No completed, validated pair is available.
 | 16x4x1 | 1440x720x200 / 16x4x1 | RESOURCE_LIMIT | RESOURCE_LIMIT | — | — |
 | 1x16x1 | 1440x720x200 / 1x16x1 | RESOURCE_LIMIT | RESOURCE_LIMIT | — | — |
 | 1x1x1 | 1440x720x200 / 1x1x1 | OUT_OF_MEMORY | OUT_OF_MEMORY | — | — |
-| 1x2x1 | 1440x720x200 / 1x2x1 | RUNNING | COMPLETED | — | — |
+| 1x2x1 | 1440x720x200 / 1x2x1 | COMPLETED | COMPLETED | 0.992297 / 0.992706 | 0.9996 |
 | 1x32x1 |  /  | GEOMETRY_LIMIT | GEOMETRY_LIMIT | — | — |
 | 1x4x1 | 1440x720x200 / 1x4x1 | PLANNED | PLANNED | — | — |
 | 1x64x1 |  /  | GEOMETRY_LIMIT | GEOMETRY_LIMIT | — | — |
@@ -91,8 +93,6 @@ No completed, validated pair is available.
 | 8x4x1 | 1440x720x200 / 8x4x1 | RESOURCE_LIMIT | RESOURCE_LIMIT | — | — |
 | 8x8x1 | 1440x720x200 / 8x8x1 | RESOURCE_LIMIT | RESOURCE_LIMIT | — | — |
 
-No completed, validated pair is available.
-
 16x1x1: baseline: Requires 16; configured capacity is 4; dagger: Requires 16; configured capacity is 4
 
 16x2x1: baseline: Requires 32; configured capacity is 4; dagger: Requires 32; configured capacity is 4
@@ -102,8 +102,6 @@ No completed, validated pair is available.
 1x16x1: baseline: Requires 16; configured capacity is 4; dagger: Requires 16; configured capacity is 4
 
 1x1x1: baseline: Execution failed; ERROR: LoadError: Out of GPU memory trying to allocate 1.702 GiB; dagger: Execution failed; ERROR: LoadError: Out of GPU memory trying to allocate 1.702 GiB
-
-1x2x1: baseline: Local allocation started; see job.out; dagger: Rank results, finite fields and resource placement verified
 
 1x32x1: baseline: Partition [1, 32, 1] has fewer than 23 local cells per horizontal direction; dagger: Partition [1, 32, 1] has fewer than 23 local cells per horizontal direction
 
