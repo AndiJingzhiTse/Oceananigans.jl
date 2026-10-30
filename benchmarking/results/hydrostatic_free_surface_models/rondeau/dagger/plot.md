@@ -4,7 +4,7 @@ Each series folder contains its configurations, measurements and provenance. Onl
 
 | Series | Completed cases | Report |
 |---|---:|---|
-| `gpu_partition_super_fine` | 1 | [Details](gpu_partition_super_fine/plot.md) |
+| `gpu_partition_super_fine` | 2 | [Details](gpu_partition_super_fine/plot.md) |
 | `gpu_resolution` | 2 | [Details](gpu_resolution/plot.md) |
 | `gpu_scaling_super_fine` | 1 | [Details](gpu_scaling_super_fine/plot.md) |
 
@@ -15,6 +15,7 @@ Each series folder contains its configurations, measurements and provenance. Onl
 | Case | Ranks | Global resolution | Partition | Fastest / median s per step | Median MPI efficiency | Validation |
 |---|---:|---|---|---:|---:|---|
 | [1x2x1](gpu_partition_super_fine/1x2x1/configuration.md) | 2 | 1440 × 720 × 200 | 1 × 2 × 1 | 0.991599 / 0.992706 | — | Current suite checks |
+| [2x1x1](gpu_partition_super_fine/2x1x1/configuration.md) | 2 | 1440 × 720 × 200 | 2 × 1 × 1 | 0.950305 / 0.951837 | — | Current suite checks |
 
 ## gpu_resolution
 
