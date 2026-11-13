@@ -1,0 +1,52 @@
+[
+  {
+    "series": "gpu_weak_scaling_512_x",
+    "case": "1_ranks",
+    "ranks": 1,
+    "resolution": "512x512x512",
+    "partition": "1x1x1",
+    "grid_type": "RectilinearGrid",
+    "dagger_state": "MISSING",
+    "details": "baseline: ; dagger:"
+  },
+  {
+    "series": "gpu_weak_scaling_512_x",
+    "case": "2_ranks",
+    "ranks": 2,
+    "resolution": "1024x512x512",
+    "partition": "2x1x1",
+    "grid_type": "RectilinearGrid",
+    "dagger_state": "MISSING",
+    "details": "baseline: ; dagger:"
+  },
+  {
+    "series": "gpu_weak_scaling_512_x",
+    "case": "4_ranks",
+    "ranks": 4,
+    "resolution": "2048x512x512",
+    "partition": "4x1x1",
+    "grid_type": "RectilinearGrid",
+    "dagger_state": "MISSING",
+    "details": "baseline: ; dagger:"
+  },
+  {
+    "series": "gpu_weak_scaling_512_x",
+    "case": "8_ranks",
+    "ranks": 8,
+    "resolution": "4096x512x512",
+    "partition": "8x1x1",
+    "grid_type": "RectilinearGrid",
+    "dagger_state": "MISSING",
+    "details": "baseline: ; dagger:"
+  },
+  {
+    "series": "gpu_weak_scaling_512_x",
+    "case": "16_ranks",
+    "ranks": 16,
+    "resolution": "8192x512x512",
+    "partition": "16x1x1",
+    "grid_type": "RectilinearGrid",
+    "dagger_state": "MISSING",
+    "details": "baseline: ; dagger:"
+  }
+]
