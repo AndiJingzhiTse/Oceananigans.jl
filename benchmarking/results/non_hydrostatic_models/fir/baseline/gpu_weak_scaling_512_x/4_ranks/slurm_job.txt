@@ -1,0 +1,30 @@
+JobId=3695790 JobName=bench_nh_gpu_weak_scaling_512_x
+   UserId=anditse(3165591) GroupId=anditse(3165591) MCS_label=N/A
+   Priority=1730572 Nice=0 Account=def-fpoulin_gpu QOS=normal
+   JobState=RUNNING Reason=None Dependency=(null)
+   Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0
+   RunTime=00:00:06 TimeLimit=00:45:00 TimeMin=N/A
+   SubmitTime=2026-11-12T18:51:05 EligibleTime=2026-11-12T18:51:05
+   AccrueTime=2026-11-12T18:51:05
+   StartTime=2026-11-12T19:03:53 EndTime=2026-11-12T19:48:53 Deadline=N/A
+   SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-11-12T19:03:53 Scheduler=Main
+   Partition=gpubase_bynode_b1 AllocNode:Sid=login3:2943089
+   ReqNodeList=(null) ExcNodeList=(null)
+   NodeList=fc10111
+   BatchHost=fc10111
+   NumNodes=1 NumCPUs=32 NumTasks=4 CPUs/Task=8 ReqB:S:C:T=0:0:*:*
+   ReqTRES=cpu=32,mem=1125G,node=1,billing=48800,gres/gpu=4,gres/gpu:h100=4
+   AllocTRES=cpu=32,mem=1125G,node=1,billing=48800,gres/gpu=4,gres/gpu:h100=4
+   Socks/Node=* NtasksPerN:B:S:C=4:0:*:* CoreSpec=*
+   MinCPUsNode=32 MinMemoryNode=0 MinTmpDiskNode=0
+   Features=(null) DelayBoot=00:00:00
+   OverSubscribe=NO Exclusive=NO Contiguous=0 Licenses=(null) LicensesAlloc=(null) Network=(null)
+   Command=/home/anditse/Oceananigans.jl/.runtime/studies/2026-11-12_fir_weak512/non_hydrostatic_models/fir/baseline/gpu_weak_scaling_512_x/4_ranks/allocation.sh
+   SubmitLine=sbatch --parsable --job-name=bench_nh_gpu_weak_scaling_512_x --nodes=1 --ntasks=4 --ntasks-per-node=4 --cpus-per-task=8 --output=/home/anditse/Oceananigans.jl/.runtime/studies/2026-11-12_fir_weak512/non_hydrostatic_models/fir/baseline/gpu_weak_scaling_512_x/4_ranks/allocation.out --account=def-fpoulin_gpu --time=00:45:00 --gpus-per-task=h100:1 --mem=0 /home/anditse/Oceananigans.jl/.runtime/studies/2026-11-12_fir_weak512/non_hydrostatic_models/fir/baseline/gpu_weak_scaling_512_x/4_ranks/allocation.sh
+   WorkDir=/home/anditse/Oceananigans.jl
+   StdErr=
+   StdIn=/dev/null
+   StdOut=/home/anditse/Oceananigans.jl/.runtime/studies/2026-11-12_fir_weak512/non_hydrostatic_models/fir/baseline/gpu_weak_scaling_512_x/4_ranks/allocation.out
+   TresBind=gres/gpu:per_task:1
+   TresPerTask=cpu=8,gres/gpu:h100:1
+
