@@ -1,0 +1,26 @@
+[
+  {
+    "model": "HydrostaticFreeSurfaceModel",
+    "gpus": 1,
+    "returncode": 0,
+    "output": "sbatch: NOTE: Your memory request of 131072.0M was likely submitted as 128.0G. Please note that Slurm interprets memory requests denominated in G as multiples of 1024M, not 1000M.\nsbatch: Job 3695747 to start at 2026-11-12T18:57:34 a using 8 processors on nodes fc10517 in partition gpubase_bygpu_b1\n"
+  },
+  {
+    "model": "HydrostaticFreeSurfaceModel",
+    "gpus": 16,
+    "returncode": 0,
+    "output": "sbatch: Job 3695748 to start at 2026-11-12T19:30:56 a using 128 processors on nodes fc[10117,10204,10210,10506] in partition gpubase_bynode_b1\n"
+  },
+  {
+    "model": "NonhydrostaticModel",
+    "gpus": 1,
+    "returncode": 0,
+    "output": "sbatch: NOTE: Your memory request of 131072.0M was likely submitted as 128.0G. Please note that Slurm interprets memory requests denominated in G as multiples of 1024M, not 1000M.\nsbatch: Job 3695749 to start at 2026-11-12T18:57:34 a using 8 processors on nodes fc10517 in partition gpubase_bygpu_b1\n"
+  },
+  {
+    "model": "NonhydrostaticModel",
+    "gpus": 16,
+    "returncode": 0,
+    "output": "sbatch: Job 3695750 to start at 2026-11-12T19:30:56 a using 128 processors on nodes fc[10117,10204,10210,10506] in partition gpubase_bynode_b1\n"
+  }
+]

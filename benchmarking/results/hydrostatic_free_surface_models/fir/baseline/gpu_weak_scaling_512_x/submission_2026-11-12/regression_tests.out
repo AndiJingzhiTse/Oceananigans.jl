@@ -1,0 +1,39 @@
+...................[main (root-commit) 974df93] Record validated benchmark suite results and job outcomes
+ 1 file changed, 1 insertion(+)
+ create mode 100644 first/suite.json
+
+[main 7feec62] Record validated benchmark suite results and job outcomes
+ 1 file changed, 1 insertion(+)
+ create mode 100644 second/suite.json
+
+...........................................[main a742691] Record rondeau hydrostatic_free_surface_models baseline and Dagger outcomes
+ 1 file changed, 1 insertion(+)
+ create mode 100644 results/hydrostatic_free_surface_models/rondeau/baseline/gpu_resolution/default/results.json
+...rondeau (local): HydrostaticFreeSurfaceModel / baseline: 16 cases -> /home/anditse/Oceananigans.jl/.runtime/tmp/weak512/tmpc0zkglal/hydrostatic_free_surface_models/rondeau/baseline
+rondeau (local): HydrostaticFreeSurfaceModel / dagger: 16 cases -> /home/anditse/Oceananigans.jl/.runtime/tmp/weak512/tmpc0zkglal/hydrostatic_free_surface_models/rondeau/dagger
+...rondeau (local): NonhydrostaticModel / baseline: 16 cases -> /home/anditse/Oceananigans.jl/.runtime/tmp/weak512/tmpdmgbpk8w/results/baseline
+rondeau (local): NonhydrostaticModel / dagger: 16 cases -> /home/anditse/Oceananigans.jl/.runtime/tmp/weak512/tmpdmgbpk8w/results/dagger
+..........testbox (local): HydrostaticFreeSurfaceModel / dagger: 2 cases -> /home/anditse/Oceananigans.jl/.runtime/tmp/weak512/tmp614cx5kp/results/hydrostatic_free_surface_models/testbox/dagger
+.testbox (local): HydrostaticFreeSurfaceModel / baseline: 2 cases -> /home/anditse/Oceananigans.jl/.runtime/tmp/weak512/tmp67bxqp1r/results/hydrostatic_free_surface_models/testbox/baseline
+testbox (local): HydrostaticFreeSurfaceModel / dagger: 2 cases -> /home/anditse/Oceananigans.jl/.runtime/tmp/weak512/tmp67bxqp1r/results/hydrostatic_free_surface_models/testbox/dagger
+.testbox (local): HydrostaticFreeSurfaceModel / dagger: 2 cases -> /home/anditse/Oceananigans.jl/.runtime/tmp/weak512/tmp_zggzmw2/results/hydrostatic_free_surface_models/testbox/dagger
+testbox (local): NonhydrostaticModel / dagger: 2 cases -> /home/anditse/Oceananigans.jl/.runtime/tmp/weak512/tmp_zggzmw2/results/non_hydrostatic_models/testbox/dagger
+.testbox (local): HydrostaticFreeSurfaceModel / baseline: 2 cases -> /home/anditse/Oceananigans.jl/.runtime/tmp/weak512/tmp5i8h7589/results/hydrostatic_free_surface_models/testbox/baseline
+testbox (local): HydrostaticFreeSurfaceModel / dagger: 2 cases -> /home/anditse/Oceananigans.jl/.runtime/tmp/weak512/tmp5i8h7589/results/hydrostatic_free_surface_models/testbox/dagger
+.testbox (local): HydrostaticFreeSurfaceModel / baseline: 3 cases -> /home/anditse/Oceananigans.jl/.runtime/tmp/weak512/tmpfl5iqczf/results/hydrostatic_free_surface_models/testbox/baseline
+testbox (local): HydrostaticFreeSurfaceModel / baseline: 3 cases -> /home/anditse/Oceananigans.jl/.runtime/tmp/weak512/tmpfl5iqczf/results/hydrostatic_free_surface_models/testbox/baseline
+...testbox (slurm): HydrostaticFreeSurfaceModel / baseline: 2 cases -> /home/anditse/Oceananigans.jl/.runtime/tmp/weak512/tmpuj5vkf2b/results/hydrostatic_free_surface_models/testbox/baseline
+testbox (slurm): HydrostaticFreeSurfaceModel / dagger: 2 cases -> /home/anditse/Oceananigans.jl/.runtime/tmp/weak512/tmpuj5vkf2b/results/hydrostatic_free_surface_models/testbox/dagger
+gpu_resolution: SUBMITTED 1001
+gpu_resolution: SUBMITTED 1002
+gpu_resolution: SUBMITTED 1004
+gpu_resolution: SUBMITTED 1005
+testbox (slurm): HydrostaticFreeSurfaceModel / baseline: 2 cases -> /home/anditse/Oceananigans.jl/.runtime/tmp/weak512/tmpuj5vkf2b/results/hydrostatic_free_surface_models/testbox/baseline
+testbox (slurm): HydrostaticFreeSurfaceModel / dagger: 2 cases -> /home/anditse/Oceananigans.jl/.runtime/tmp/weak512/tmpuj5vkf2b/results/hydrostatic_free_surface_models/testbox/dagger
+testbox (slurm): HydrostaticFreeSurfaceModel / baseline: 2 cases -> /home/anditse/Oceananigans.jl/.runtime/tmp/weak512/tmpuj5vkf2b/results/hydrostatic_free_surface_models/testbox/baseline
+testbox (slurm): HydrostaticFreeSurfaceModel / dagger: 2 cases -> /home/anditse/Oceananigans.jl/.runtime/tmp/weak512/tmpuj5vkf2b/results/hydrostatic_free_surface_models/testbox/dagger
+..
+----------------------------------------------------------------------
+Ran 87 tests in 118.602s
+
+OK
