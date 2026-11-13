@@ -14,21 +14,21 @@ Raw study and execution logs: `/home/anditse/Oceananigans.jl/.runtime/studies/20
 
 | Case | Resolution / partition | Baseline outcome | Dagger outcome | Median s/step baseline / Dagger | Speedup |
 |---|---|---|---|---:|---:|
-| 1_ranks | 512x512x512 / 1x1x1 | PLANNED | MISSING | — | — |
-| 2_ranks | 1024x512x512 / 2x1x1 | PLANNED | MISSING | — | — |
-| 4_ranks | 2048x512x512 / 4x1x1 | PLANNED | MISSING | — | — |
-| 8_ranks | 4096x512x512 / 8x1x1 | PLANNED | MISSING | — | — |
-| 16_ranks | 8192x512x512 / 16x1x1 | PLANNED | MISSING | — | — |
+| 1_ranks | 512x512x512 / 1x1x1 | PENDING | MISSING | — | — |
+| 2_ranks | 1024x512x512 / 2x1x1 | PENDING | MISSING | — | — |
+| 4_ranks | 2048x512x512 / 4x1x1 | PENDING | MISSING | — | — |
+| 8_ranks | 4096x512x512 / 8x1x1 | PENDING | MISSING | — | — |
+| 16_ranks | 8192x512x512 / 16x1x1 | PENDING | MISSING | — | — |
 
 No completed, validated pair is available.
 
-1_ranks: baseline: ; dagger:
+1_ranks: baseline: (None); estimated start N/A (scheduler timezone); dagger:
 
-2_ranks: baseline: ; dagger:
+2_ranks: baseline: (None); estimated start N/A (scheduler timezone); dagger:
 
-4_ranks: baseline: ; dagger:
+4_ranks: baseline: (None); estimated start N/A (scheduler timezone); dagger:
 
-8_ranks: baseline: ; dagger:
+8_ranks: baseline: (None); estimated start N/A (scheduler timezone); dagger:
 
-16_ranks: baseline: ; dagger:
+16_ranks: baseline: (None); estimated start N/A (scheduler timezone); dagger:
 
