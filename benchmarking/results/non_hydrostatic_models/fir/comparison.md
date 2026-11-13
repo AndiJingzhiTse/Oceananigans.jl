@@ -24,7 +24,7 @@ No completed, validated pair is available.
 
 1_ranks: baseline: Rank results, finite fields and resource placement verified; dagger:
 
-2_ranks: baseline: (ReqNodeNotAvail, UnavailableNodes:fc11013); estimated start 2026-11-12T23:53:29 (scheduler timezone); dagger:
+2_ranks: baseline: (ReqNodeNotAvail, UnavailableNodes:fc11013); estimated start 2026-11-12T22:11:54 (scheduler timezone); dagger:
 
 4_ranks: baseline: Rank results, finite fields and resource placement verified; dagger:
 
