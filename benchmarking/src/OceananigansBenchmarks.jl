@@ -66,5 +66,6 @@ include("utils.jl")
 
 # Benchmark cases
 include("earth_ocean.jl")
+include("rectilinear_buoyancy.jl")
 
 end # module

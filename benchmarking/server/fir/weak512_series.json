@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "models": ["HydrostaticFreeSurfaceModel", "NonhydrostaticModel"],
+  "execution_modes": ["baseline", "dagger"],
+  "series": {
+    "gpu_weak_scaling_512_x": {
+      "kind": "weak_scaling",
+      "constant_cells_per_gpu": true,
+      "cases": [
+        {"grid": "512x512x512", "global_resolution": [512, 512, 512], "gpus": 1, "partition": [1, 1, 1]},
+        {"grid": "1024x512x512", "global_resolution": [1024, 512, 512], "gpus": 2, "partition": [2, 1, 1]},
+        {"grid": "2048x512x512", "global_resolution": [2048, 512, 512], "gpus": 4, "partition": [4, 1, 1]},
+        {"grid": "4096x512x512", "global_resolution": [4096, 512, 512], "gpus": 8, "partition": [8, 1, 1]},
+        {"grid": "8192x512x512", "global_resolution": [8192, 512, 512], "gpus": 16, "partition": [16, 1, 1]}
+      ]
+    }
+  }
+}

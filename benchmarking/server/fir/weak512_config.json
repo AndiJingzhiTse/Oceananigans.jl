@@ -1,0 +1,27 @@
+{
+  "machine": "fir",
+  "backend": "slurm",
+  "max_cpu_cores": 165120,
+  "max_gpus": 16,
+  "cpu_cores_per_node": 192,
+  "gpus_per_node": 4,
+  "project": "$HOME/Oceananigans.jl/.runtime/environments/fir_weak512",
+  "julia": "/cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/julia",
+  "environment_script": "$HOME/Oceananigans.jl/benchmarking/scripts/env/modules.sh",
+  "mpi_init": "$HOME/Oceananigans.jl/benchmarking/scripts/env/drac_mpi.jl",
+  "cpu_account": "def-fpoulin_cpu",
+  "gpu_account": "def-fpoulin_gpu",
+  "gpu_type": "h100",
+  "full_gpu_nodes": false,
+  "gpu_time": "00:45:00",
+  "model_setup": "rectilinear_buoyancy",
+  "series_file": "weak512_series.json",
+  "profile_layout": "series",
+  "report_modules": ["python/3.11", "scipy-stack/2025a"],
+  "environment": {
+    "TMPDIR": "$HOME/Oceananigans.jl/.runtime/tmp/weak512",
+    "TMP": "$HOME/Oceananigans.jl/.runtime/tmp/weak512",
+    "TEMP": "$HOME/Oceananigans.jl/.runtime/tmp/weak512",
+    "OMPI_MCA_orte_tmpdir_base": "$HOME/.ocean-tmp/weak512"
+  }
+}

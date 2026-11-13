@@ -72,6 +72,13 @@ def validate(case_dir, config, verify_traces=True, ensemble_member=False):
             if config.get('pressure_preconditioner') == 'LocalFFTPreconditioner' and config.get('pressure_preconditioner_check'):
                 if entry.get('pressure_preconditioner_validation', {}).get('passed') is not True:
                     raise ValueError('Missing preconditioner symmetry/definiteness check')
+        if nonhydrostatic and config.get('model_setup') == 'rectilinear_buoyancy':
+            check = entry.get('pressure_projection_validation') or {}
+            divergence = check.get('maximum_divergence_per_second')
+            if (check.get('passed') is not True or not isinstance(divergence, (int, float)) or
+                    not math.isfinite(divergence) or not 0 <= divergence <= config['pressure_divergence_tolerance'] or
+                    check.get('tolerance_per_second') != config['pressure_divergence_tolerance']):
+                raise ValueError('Missing or invalid FFT pressure projection check')
         if (entry['configuration'] != config or entry['grid_size'] != expected or
                 entry['float_type'] != 'Float64' or entry['finite_state'] is not True or
                 entry['metadata']['num_threads'] != 1 or not substeps_valid):
@@ -154,6 +161,7 @@ def efficiencies(case, baseline):
     increasing = cfg.get('scaling_type') == 'increasing_load'
     weak = increasing or cfg.get('scaling_type') == 'weak' or case['series'] == 'gpu_weak_scaling_super_fine'
     common = ('model_type', 'device', 'grid_type', 'float_type', 'threads_per_rank',
+              'model_setup', 'topology', 'cell_spacing_m',
               'momentum_advection', 'tracer_advection', 'closure', 'tracers', 'timestepper',
               'warmup_steps', 'samples', 'time_steps', 'profile', 'pressure_preconditioner',
               'pressure_solver', 'pressure_reltol', 'pressure_abstol', 'viscosity', 'diffusivity',
@@ -297,9 +305,10 @@ def write_report(folder, cases, plotting=True, reference_suites=(), replacement_
         row = dict(series=case['series'], case=case['id'].split('/')[-1], ranks=case['ranks'],
                    partition='x'.join(map(str, case.get('partition') or [])),
                    resolution='x'.join(map(str, cfg.get('global_resolution', [1440, 720, 200]))),
-                   grid_type='LatitudeLongitudeGrid', state=case['state'], job_id=case['job_id'],
+                   grid_type=cfg.get('grid_type', 'LatitudeLongitudeGrid'), state=case['state'], job_id=case['job_id'],
                    fastest=measurement.get('fastest'), median=measurement.get('median'),
                    efficiency_fastest=None, efficiency_median=None, details=case['details'])
+        row['scaling_type'] = cfg.get('scaling_type', '')
         row['efficiency_fastest'], row['efficiency_median'] = efficiencies(case, baseline)
         rows.append(row)
     with (folder / 'results.csv').open('w', newline='') as stream:
@@ -309,10 +318,16 @@ def write_report(folder, cases, plotting=True, reference_suites=(), replacement_
     protocols = sorted({(c['configuration']['warmup_steps'], c['configuration']['samples'],
                          c['configuration']['time_steps']) for c in cases if 'configuration' in c})
     timing_protocol = '; '.join(f'{w} untimed steps, {s} windows of {t} steps' for w, s, t in protocols)
+    rectilinear = any(c.get('configuration', {}).get('model_setup') == 'rectilinear_buoyancy' for c in cases)
+    setup_description = ('RectilinearGrid; Float64; periodic x/y, bounded z; WENO5 momentum/tracers, '
+                         'BuoyancyTracer with tracer b, no closure or Coriolis. '
+                         'Cell spacing 1000 × 1000 × 10 m; x extent grows with GPU count. '
+                         'Nonhydrostatic: RungeKutta3, rigid lid, default distributed FFT pressure solver. '
+                         'Hydrostatic: SplitRungeKutta3, split-explicit free surface.' if rectilinear else None)
     lines = ['# Benchmark suite', '',
-             ('NonhydrostaticModel; rigid lid; LatitudeLongitudeGrid without bathymetry; Float64, WENO7 momentum/tracers, ScalarDiffusivity (ν=1e-3, κ=1e-5 m²/s), T/S, RungeKutta3. Pressure: ConjugateGradientPoissonSolver; traditional spherical Coriolis and TEOS10 buoyancy.' if nonhydrostatic else
+             setup_description or ('NonhydrostaticModel; rigid lid; LatitudeLongitudeGrid without bathymetry; Float64, WENO7 momentum/tracers, ScalarDiffusivity (ν=1e-3, κ=1e-5 m²/s), T/S, RungeKutta3. Pressure: ConjugateGradientPoissonSolver; traditional spherical Coriolis and TEOS10 buoyancy.' if nonhydrostatic else
               'HydrostaticFreeSurfaceModel; LatitudeLongitudeGrid without bathymetry; Float64, WENOVectorInvariantDefault, WENO7, CATKE, T/S, SplitRungeKutta3.'),
-             'Δt=60 s on the standard grids; larger horizontal grids reduce Δt in proportion to grid spacing (see each configuration).',
+             'Δt=10 s at every GPU count.' if rectilinear else 'Δt=60 s on the standard grids; larger horizontal grids reduce Δt in proportion to grid spacing (see each configuration).',
              ('No free-surface substeps or extended free-surface halos.' if nonhydrostatic else '30 requested free-surface substeps.'),
              f'Actual timing protocols: {timing_protocol}.',
              ('One MPI rank per CPU core or GPU, one Julia computation thread per rank. Hydrostatic geometry bounds are retained to match partitions between models.' if nonhydrostatic else 'One MPI rank per CPU core or GPU, one Julia computation thread per rank. CPU extended halos=false; GPU=true.'),
@@ -366,7 +381,8 @@ def write_report(folder, cases, plotting=True, reference_suites=(), replacement_
             lines += ['', f"[{case['id'].split('/')[-1]} configuration]({configuration_path}): local resolution **{local}**, {solver_note}."]
     if nonhydrostatic:
         lines += ['', '## Pressure convergence checks', '',
-                  'Validation pilots are separate from production comparisons. Each new accepted result checks every pressure stage and the independently recomputed final residual.', '',
+                  ('FFT cases validate the maximum absolute velocity divergence after the final pressure projection (tolerance 1e-10 s⁻¹).' if rectilinear else
+                   'Validation pilots are separate from production comparisons. Each new accepted result checks every pressure stage and the independently recomputed final residual.'), '',
                   '| Case | Preconditioner | Recorded solves | Maximum iterations | Last residual / tolerance | Recomputed final residual | Outcome |',
                   '|---|---|---:|---:|---|---|---|']
         for case in cases:
@@ -379,7 +395,7 @@ def write_report(folder, cases, plotting=True, reference_suites=(), replacement_
             try:
                 if result.exists() and case['state'] in TERMINAL:
                     entry = json.loads(result.read_text())[0]
-                    records, true_residual = entry.get('pressure_solves', []), entry.get('pressure_final_true_residual')
+                    records, true_residual = entry.get('pressure_solves') or [], entry.get('pressure_final_true_residual')
                 elif failure.exists():
                     records = [json.loads(failure.read_text())]
             except (ValueError, IndexError):
@@ -391,6 +407,9 @@ def write_report(folder, cases, plotting=True, reference_suites=(), replacement_
                         if records else '—')
             recomputed = f'{true_residual:.3e}' if true_residual is not None else '—'
             lines.append(f"| {case['id']} | {cfg.get('pressure_preconditioner', 'historical default')} | {len(records) or '—'} | {iterations if iterations is not None else '—'} | {residual} | {recomputed} | {case['state']} |")
+            if result.exists() and rectilinear and case['state'] == 'COMPLETED':
+                check = json.loads(result.read_text())[0]['pressure_projection_validation']
+                lines += ['', f"{case['id']}: maximum absolute velocity divergence = {check['maximum_divergence_per_second']:.3e} s⁻¹.", '']
     lines += scaling_tables(folder, cases, reference_suites, plotting=plotting,
                             combined=combined)
     (folder / 'plot.md').write_text('\n'.join(lines) + '\n')
@@ -404,7 +423,7 @@ def scaling_tables(folder, cases, reference_suites, plotting=False, combined=Non
     baselines = scaling_baselines([c for c, _ in combined])
     lines = ['', '## GPU scaling comparison (DRAC table format)', '',
              'Timing protocols are recorded per case. Tables use median seconds per step.',
-             'LatitudeLongitudeGrid; partitions are Px × Py × Pz. Nodes are measured from rank placement.',
+             'Grid types are recorded per case; partitions are Px × Py × Pz. Nodes are measured from rank placement.',
              'Throughput = global interior cells / median step time. Memory is maximum device-used GiB across ranks after timing, including CUDA context and buffers; it is not peak memory.',
              'Missing memory measurements and unfinished timings are shown as —.', '']
     if plotting and plot_scaling_efficiency(folder, [c for c, _ in combined]):
@@ -506,8 +525,8 @@ def plot_series(folder, series, rows):
     plt.rcParams.update({'svg.hashsalt': 'benchmark-suite', 'svg.fonttype': 'none'})
     rows = [r for r in rows if r['state'] == 'COMPLETED']
     scaling = 'scaling' in series
-    increasing = series == 'gpu_weak_scaling'
-    weak = increasing or series == 'gpu_weak_scaling_super_fine'
+    increasing = series == 'gpu_weak_scaling' and not any(r.get('scaling_type') == 'weak' for r in rows)
+    weak = series.startswith('gpu_weak_scaling')
     resolution = series.endswith('resolution')
     # The 16-GPU partition study has no one-GPU case; report its times directly.
     partition_efficiency = series.startswith('gpu_partition_') and any(r['ranks'] == 1 for r in rows)

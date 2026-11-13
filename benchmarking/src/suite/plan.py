@@ -1,6 +1,6 @@
 """Server-independent definitions for the standard benchmark series."""
 import math
-from .servers import GPU_SERIES, series_definitions
+from .servers import GPU_SERIES, CUSTOM_GPU_SERIES, series_definitions
 
 GRIDS = {'default': [360, 180, 50], 'fine': [720, 360, 100], 'super_fine': [1440, 720, 200],
          'super_super_fine': [2880, 1440, 200], 'super_super_super_fine': [5760, 2880, 200]}
@@ -13,7 +13,7 @@ SERIES = ('cpu_mpi_scaling_super_fine', 'gpu_scaling_super_fine', 'cpu_resolutio
           'gpu_nsight_scaling_super_fine', 'gpu_partition_super_fine',
           'gpu_scaling_super_super_fine', 'gpu_scaling_super_super_super_fine',
           'gpu_weak_scaling_super_fine')
-ALL_SERIES = tuple(dict.fromkeys((*SERIES, *GPU_SERIES, 'gpu_ensemble')))
+ALL_SERIES = tuple(dict.fromkeys((*SERIES, *GPU_SERIES, *CUSTOM_GPU_SERIES, 'gpu_ensemble')))
 
 
 def machine_series(server):
@@ -52,7 +52,7 @@ def partition_for(ranks, grid, extended=False):
 
 
 def configuration(series, ranks, grid_name='super_fine', partition=None, global_resolution=None,
-                  model_type='HydrostaticFreeSurfaceModel'):
+                  model_type='HydrostaticFreeSurfaceModel', model_setup='earth_ocean'):
     if model_type not in MODEL_FOLDERS:
         raise ValueError('Unknown benchmark model: ' + model_type)
     grid = global_resolution if global_resolution is not None else GRIDS[grid_name]
@@ -65,7 +65,7 @@ def configuration(series, ranks, grid_name='super_fine', partition=None, global_
     if min(xs) < minimum or min(ys) < minimum:
         raise ValueError(f'Partition {partition} has fewer than {minimum} local cells per horizontal direction')
     hydrostatic = model_type == 'HydrostaticFreeSurfaceModel'
-    return dict(series=series, model_type=model_type, device='GPU' if gpu else 'CPU', ranks=ranks,
+    config = dict(series=series, model_type=model_type, device='GPU' if gpu else 'CPU', ranks=ranks,
                 threads_per_rank=1, grid_name=grid_name, global_resolution=list(grid),
                 grid_type='LatitudeLongitudeGrid', partition=partition, x_sizes=xs, y_sizes=ys,
                 float_type='Float64', momentum_advection='WENOVectorInvariantDefault' if hydrostatic else 'WENO7',
@@ -91,6 +91,24 @@ def configuration(series, ranks, grid_name='super_fine', partition=None, global_
                              'increasing_load' if series == 'gpu_weak_scaling' else
                              'strong' if 'scaling' in series else 'comparison',
                 baseline_ranks=GPU_BASELINES.get(series, 1))
+    if model_setup == 'rectilinear_buoyancy':
+        config.update(model_setup=model_setup, grid_type='RectilinearGrid',
+                      topology=['Periodic', 'Periodic', 'Bounded'],
+                      cell_spacing_m=[1000, 1000, 10],
+                      domain_extent_m=[1000 * grid[0], 1000 * grid[1], 10 * grid[2]],
+                      momentum_advection='WENO5', tracer_advection='WENO5',
+                      closure=None, viscosity=None, diffusivity=None, tracers=['b'],
+                      coriolis=None, buoyancy='BuoyancyTracer', dt=10,
+                      initial_condition_seed=None,
+                      initial_condition='b=1e-5*z+1e-6*cospi(x/64000)*cospi(y/64000)*sinpi(z/5120); u=0.1; v=0.05; w=0',
+                      pressure_solver=None if hydrostatic else 'DistributedFFTBasedPoissonSolver',
+                      pressure_preconditioner=None, pressure_max_iterations=None,
+                      pressure_reltol=None, pressure_abstol=None,
+                      pressure_check_true_residual=False, pressure_preconditioner_check=False,
+                      pressure_divergence_tolerance=None if hydrostatic else 1e-10)
+    elif model_setup != 'earth_ocean':
+        raise ValueError('Unknown model_setup: ' + model_setup)
+    return config
 
 
 def build_plan(server, selected=None):
@@ -146,7 +164,7 @@ def build_plan(server, selected=None):
             next_count = 3 if not gpu and last == 1 else max(baseline, last * 2)
             specs.append((next_count, grid_name, None))
         for ranks, grid_name, partition in specs:
-            label = (f'{ranks}_ranks' if series in ('gpu_weak_scaling', 'gpu_weak_scaling_super_fine') else
+            label = (f'{ranks}_ranks' if series.startswith('gpu_weak_scaling') else
                      'x'.join(map(str, partition)) if partition else
                      grid_name if series.endswith('resolution') or series == 'gpu_ensemble' else f'{ranks}_ranks')
             case = dict(id=f'{series}/{label}', series=series, ranks=ranks,
@@ -154,18 +172,21 @@ def build_plan(server, selected=None):
             try:
                 weak_grid = ([1440 * math.isqrt(ranks), 720 * math.isqrt(ranks), 200]
                              if series == 'gpu_weak_scaling_super_fine' else None)
+                if definition and definition['kind'] == 'weak_scaling':
+                    weak_grid = next(c.get('global_resolution') for c in definition['cases'] if c['gpus'] == ranks)
                 if not definition and series.startswith('gpu_scaling_') and server.get('gpu_scaling_partition') == 'x':
                     partition = [ranks, 1, 1]
                 case['configuration'] = configuration(series, 1 if series == 'gpu_ensemble' else ranks, grid_name, partition, weak_grid,
-                                                      server.get('model_type', 'HydrostaticFreeSurfaceModel'))
+                                                      server.get('model_type', 'HydrostaticFreeSurfaceModel'),
+                                                      server.get('model_setup', 'earth_ocean'))
                 if series == 'gpu_ensemble':
                     case['configuration'].update(ensemble_size=4, total_gpus=4, ranks_per_simulation=1)
                 case['configuration']['execution_mode'] = server.get('execution_mode', 'baseline')
                 if definition:
                     case['configuration']['scaling_type'] = (
-                        'increasing_load' if definition['kind'] == 'weak_scaling' else
+                        ('weak' if definition.get('constant_cells_per_gpu') else 'increasing_load') if definition['kind'] == 'weak_scaling' else
                         'strong' if definition['kind'] in ('strong_scaling', 'profiled_scaling') else 'comparison')
-                if server.get('model_type') == 'NonhydrostaticModel':
+                if server.get('model_type') == 'NonhydrostaticModel' and server.get('model_setup', 'earth_ocean') == 'earth_ocean':
                     for key in ('pressure_preconditioner', 'pressure_max_iterations', 'pressure_diagnostics', 'pressure_preserve_residual', 'pressure_check_true_residual'):
                         if key in server:
                             case['configuration'][key] = server[key]

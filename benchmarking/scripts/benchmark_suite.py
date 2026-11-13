@@ -76,7 +76,7 @@ def load_server(path=None, model_type=None, execution_mode=None):
                                  user.get('machine', machine) / user.get('execution_mode', 'baseline')),
                   case_timeout_seconds=86400, matplotlib=True, python='python3', report_modules=[],
                   reference_suites=[], replacement_suites=[], environment={}, gpu_scaling_partition='balanced',
-                  model_type='HydrostaticFreeSurfaceModel', comparison_suites=[], comparison_report='',
+                  model_type='HydrostaticFreeSurfaceModel', model_setup='earth_ocean', comparison_suites=[], comparison_report='',
                   execution_mode='baseline', profile_layout='study', series_file='', series_definitions=None,
                   dagger_adapter='', dagger_options={}, execution_adapter=None, workflow_root='', trace_namespace='')
     server.update(pressure_preconditioner='DiagonallyDominantPreconditioner',
@@ -112,6 +112,8 @@ def load_server(path=None, model_type=None, execution_mode=None):
         raise ValueError('gpu_scaling_partition must be balanced or x')
     if server['model_type'] not in MODEL_FOLDERS:
         raise ValueError('Unknown model_type')
+    if server['model_setup'] not in ('earth_ocean', 'rectilinear_buoyancy'):
+        raise ValueError('Unknown model_setup')
     if server['execution_mode'] not in ('baseline', 'dagger'):
         raise ValueError('execution_mode must be baseline or dagger')
     if server['profile_layout'] not in ('study', 'series'):
@@ -195,7 +197,9 @@ def config_markdown(config):
             f"Grid: {config['grid_name']}, {' × '.join(map(str, config['global_resolution']))}, {config['grid_type']}.\n"
             f"Partition: {' × '.join(map(str, config['partition']))}.\n"
             f"Local resolution: x {min(config['x_sizes'])}–{max(config['x_sizes'])}, y {min(config['y_sizes'])}–{max(config['y_sizes'])}, z {config['global_resolution'][2]}.\n"
-            f"Float64; momentum {config['momentum_advection']}, tracers {config['tracer_advection']}, {config['closure']}, T/S, {config['timestepper']}.\n"
+            f"Domain extent (m): {config.get('domain_extent_m', 'see model setup')}; cell spacing (m): {config.get('cell_spacing_m', 'see model setup')}; topology: {config.get('topology', 'see model setup')}.\n"
+            f"Float64; momentum {config['momentum_advection']}, tracer advection {config['tracer_advection']}, closure={config['closure']}, tracers={config['tracers']}, {config['timestepper']}.\n"
+            f"Buoyancy={config.get('buoyancy')}; Coriolis={config.get('coriolis')}; initial condition={config.get('initial_condition', 'seeded Earth-ocean fields')}.\n"
             f"Viscosity={config.get('viscosity')}; diffusivity={config.get('diffusivity')} m²/s; pressure solver={config.get('pressure_solver')}.\n"
             f"Pressure preconditioner={config.get('pressure_preconditioner')}; iteration cap={config.get('pressure_max_iterations')}; relative/absolute tolerances={config.get('pressure_reltol')}/{config.get('pressure_abstol')}.\n"
             f"Δt={config['dt']} s; free-surface substeps={config['free_surface_substeps']} requested; extend_halos={config['extend_free_surface_halos']}.\n"

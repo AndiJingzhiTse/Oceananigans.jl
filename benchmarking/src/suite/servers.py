@@ -1,5 +1,6 @@
 """Read bounded, model-independent workloads from benchmarking/server/."""
 import json
+import math
 from pathlib import Path
 
 
@@ -7,6 +8,7 @@ SERVER_ROOT = Path(__file__).resolve().parents[2] / 'server'
 GPU_SERIES = ('gpu_resolution', 'gpu_scaling_default', 'gpu_scaling_fine',
               'gpu_nsight_scaling_default', 'gpu_nsight_scaling_fine',
               'gpu_partition_fine', 'gpu_weak_scaling')
+CUSTOM_GPU_SERIES = ('gpu_weak_scaling_512_x',)
 
 
 def load_series(path):
@@ -18,10 +20,11 @@ def load_series(path):
     if data.get('execution_modes') != ['baseline', 'dagger']:
         raise ValueError('Server series must support baseline and dagger')
     definitions = data.get('series', {})
-    if not definitions or set(definitions) - set(GPU_SERIES):
+    if not definitions or set(definitions) - set((*GPU_SERIES, *CUSTOM_GPU_SERIES)):
         raise ValueError('Server series must be a nonempty subset of supported GPU series')
     kinds = dict(zip(GPU_SERIES, ('resolution', 'strong_scaling', 'strong_scaling',
                                 'profiled_scaling', 'profiled_scaling', 'partition', 'weak_scaling')))
+    kinds.update({name: 'weak_scaling' for name in CUSTOM_GPU_SERIES})
     grids = {'default', 'fine', 'super_fine'}
     for name, spec in definitions.items():
         if spec.get('kind') != kinds[name]:
@@ -35,10 +38,23 @@ def load_series(path):
                 raise ValueError('Weak scaling requires explicit grid/GPU cases')
             validate_counts([case.get('gpus') for case in spec['cases']])
             for case in spec['cases']:
-                if case.get('grid') not in grids:
+                resolution = case.get('global_resolution')
+                if resolution is not None:
+                    if (not isinstance(resolution, list) or len(resolution) != 3 or
+                            any(type(n) is not int or n < 1 for n in resolution)):
+                        raise ValueError('Explicit resolution requires three positive integers')
+                    if case.get('grid') != 'x'.join(map(str, resolution)):
+                        raise ValueError('Explicit grid label must match its resolution')
+                elif case.get('grid') not in grids:
                     raise ValueError('Unknown weak-scaling grid')
                 validate_counts([case.get('gpus')])
                 validate_partition(case.get('partition'), case['gpus'])
+            if spec.get('constant_cells_per_gpu', False):
+                if any('global_resolution' not in c for c in spec['cases']):
+                    raise ValueError('Constant-work weak scaling requires explicit resolutions')
+                loads = [math.prod(c['global_resolution']) / c['gpus'] for c in spec['cases']]
+                if len(set(loads)) != 1:
+                    raise ValueError('Constant-work weak scaling must preserve cells per GPU')
         else:
             if spec.get('grid') not in grids:
                 raise ValueError(f'Unknown grid for {name}')

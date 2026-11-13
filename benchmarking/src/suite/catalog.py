@@ -33,6 +33,7 @@ def write_series_report(folder, cases):
         rows.append(dict(case=case['id'], ranks=case['ranks'], state='COMPLETED',
                          fastest=measured['fastest'], median=measured['median'],
                          efficiency_fastest=fastest, efficiency_median=median,
+                         scaling_type=cfg.get('scaling_type', ''),
                          resolution='x'.join(map(str, cfg['global_resolution']))))
     lines = [f'# {folder.parent.name}: {series}', '',
              'Latest accepted measurement for each case. Configuration links record '

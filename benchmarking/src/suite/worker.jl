@@ -277,7 +277,9 @@ if rank == 0
     println("MODEL_BUILD_START mode=$execution_mode resolution=$(config["global_resolution"]) partition=$(config["partition"])")
     flush(stdout)
 end
-model = if is_hydrostatic
+model = if get(config, "model_setup", "earth_ocean") == "rectilinear_buoyancy"
+    OceananigansBenchmarks.rectilinear_buoyancy(arch, config)
+elseif is_hydrostatic
     initial_seed = get(config, "initial_condition_seed", nothing)
     if !isnothing(initial_seed)
         seed!(initial_seed + rank)
@@ -333,6 +335,11 @@ else
 end
 expected = (config["x_sizes"][arch.local_index[1]], config["y_sizes"][arch.local_index[2]], Nz)
 size(model.grid) == expected || error("Unexpected local resolution")
+iterative_pressure = !is_hydrostatic && model.pressure_solver isa CheckedPressureSolver
+if !is_hydrostatic
+    actual_solver = iterative_pressure ? model.pressure_solver.native : model.pressure_solver
+    string(nameof(typeof(actual_solver))) == config["pressure_solver"] || error("Unexpected pressure solver")
+end
 retained_substeps = is_hydrostatic ? length(model.free_surface.substepping.averaging_weights) : nothing
 if rank == 0
     println("MODEL_BUILD_FINISHED mode=$execution_mode")
@@ -383,7 +390,7 @@ finally
 end
 isdefined(@__MODULE__, :BENCHMARK_ON_TIMED) && BENCHMARK_ON_TIMED()
 true_pressure_residual = nothing
-if !is_hydrostatic && get(config, "pressure_check_true_residual", false)
+if iterative_pressure && get(config, "pressure_check_true_residual", false)
     solver = model.pressure_solver
     cg = solver.native.conjugate_gradient_solver
     compute_symmetric_laplacian!(cg.linear_operator_product, model.pressures.pNHS)
@@ -395,6 +402,21 @@ if !is_hydrostatic && get(config, "pressure_check_true_residual", false)
     tolerance = last(solver.records)["tolerance"]
     rank == 0 && println("PRESSURE_TRUE_RESIDUAL value=$true_pressure_residual tolerance=$tolerance")
     isfinite(true_pressure_residual) && true_pressure_residual <= tolerance || error("Recomputed pressure residual exceeds tolerance")
+end
+pressure_projection_validation = nothing
+if !is_hydrostatic && !iterative_pressure
+    u, v, w = model.velocities
+    fill_halo_regions!(u)
+    fill_halo_regions!(v)
+    fill_halo_regions!(w)
+    divergence = Field(∂x(u) + ∂y(v) + ∂z(w))
+    compute!(divergence)
+    max_divergence = MPI.Allreduce(maximum(abs, interior(divergence)), MPI.MAX, comm)
+    tolerance = config["pressure_divergence_tolerance"]
+    passed = isfinite(max_divergence) && max_divergence <= tolerance
+    pressure_projection_validation = Dict("passed" => passed,
+        "maximum_divergence_per_second" => max_divergence, "tolerance_per_second" => tolerance)
+    passed || error("FFT pressure projection left excessive velocity divergence: $max_divergence")
 end
 finite_state = all(all(isfinite, interior(t)) for t in values(model.tracers)) &&
                all(all(isfinite, interior(v)) for v in values(model.velocities)) &&
@@ -419,14 +441,17 @@ if is_gpu
 end
 steps = config["time_steps"]
 entry = Dict("rank" => rank, "grid_size" => collect(size(model.grid)), "float_type" => "Float64",
+             "grid_type" => string(nameof(typeof(model.grid))),
+             "grid_halo" => collect(Oceananigans.Grids.halo_size(model.grid)),
              "model_type" => model_type, "free_surface" => is_hydrostatic ? "SplitExplicitFreeSurface" : "RigidLid",
-             "pressure_solver" => is_hydrostatic ? nothing : string(nameof(typeof(model.pressure_solver.native))),
-             "pressure_preconditioner" => is_hydrostatic ? nothing : string(nameof(typeof(model.pressure_solver.native.conjugate_gradient_solver.preconditioner))),
-             "pressure_solver_converged" => is_hydrostatic ? nothing : all(r["converged"] for r in model.pressure_solver.records),
-             "pressure_solver_iterations" => is_hydrostatic ? nothing : model.pressure_solver.native.conjugate_gradient_solver.iteration,
-             "pressure_solves" => is_hydrostatic ? nothing : model.pressure_solver.records,
+             "pressure_solver" => is_hydrostatic ? nothing : string(nameof(typeof(iterative_pressure ? model.pressure_solver.native : model.pressure_solver))),
+             "pressure_preconditioner" => iterative_pressure ? string(nameof(typeof(model.pressure_solver.native.conjugate_gradient_solver.preconditioner))) : nothing,
+             "pressure_solver_converged" => is_hydrostatic ? nothing : iterative_pressure ? all(r["converged"] for r in model.pressure_solver.records) : pressure_projection_validation["passed"],
+             "pressure_solver_iterations" => iterative_pressure ? model.pressure_solver.native.conjugate_gradient_solver.iteration : nothing,
+             "pressure_solves" => iterative_pressure ? model.pressure_solver.records : nothing,
+             "pressure_projection_validation" => pressure_projection_validation,
              "pressure_final_true_residual" => true_pressure_residual,
-             "pressure_preconditioner_details" => !is_hydrostatic && model.pressure_solver.native.conjugate_gradient_solver.preconditioner isa LocalFFTPreconditioner ? model.pressure_solver.native.conjugate_gradient_solver.preconditioner.details : nothing,
+             "pressure_preconditioner_details" => iterative_pressure && model.pressure_solver.native.conjugate_gradient_solver.preconditioner isa LocalFFTPreconditioner ? model.pressure_solver.native.conjugate_gradient_solver.preconditioner.details : nothing,
              "pressure_preconditioner_validation" => preconditioner_validation,
              "configuration" => config, "metadata" => metadata, "finite_state" => finite_state,
              "retained_free_surface_substeps" => retained_substeps,
