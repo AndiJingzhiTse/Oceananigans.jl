@@ -1,0 +1,2802 @@
+[
+  {
+    "configuration": {
+      "series": "gpu_weak_scaling_512_x",
+      "model_type": "HydrostaticFreeSurfaceModel",
+      "device": "GPU",
+      "ranks": 16,
+      "threads_per_rank": 1,
+      "grid_name": "8192x512x512",
+      "global_resolution": [
+        8192,
+        512,
+        512
+      ],
+      "grid_type": "RectilinearGrid",
+      "partition": [
+        16,
+        1,
+        1
+      ],
+      "x_sizes": [
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512
+      ],
+      "y_sizes": [
+        512
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENO5",
+      "tracer_advection": "WENO5",
+      "closure": null,
+      "tracers": [
+        "b"
+      ],
+      "viscosity": null,
+      "diffusivity": null,
+      "coriolis": null,
+      "buoyancy": "BuoyancyTracer",
+      "timestepper": "SplitRungeKutta3",
+      "free_surface": "SplitExplicitFreeSurface",
+      "pressure_solver": null,
+      "pressure_preconditioner": null,
+      "pressure_max_iterations": null,
+      "pressure_reltol": null,
+      "pressure_abstol": null,
+      "pressure_diagnostics": false,
+      "pressure_preserve_residual": false,
+      "pressure_check_true_residual": false,
+      "pressure_preconditioner_check": false,
+      "initial_condition_seed": null,
+      "dt": 10,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": true,
+      "warmup_steps": 2,
+      "samples": 5,
+      "time_steps": 10,
+      "profile": false,
+      "scaling_type": "weak",
+      "baseline_ranks": 1,
+      "model_setup": "rectilinear_buoyancy",
+      "topology": [
+        "Periodic",
+        "Periodic",
+        "Bounded"
+      ],
+      "cell_spacing_m": [
+        1000,
+        1000,
+        10
+      ],
+      "domain_extent_m": [
+        8192000,
+        512000,
+        5120
+      ],
+      "initial_condition": "b=1e-5*z+1e-6*cospi(x/64000)*cospi(y/64000)*sinpi(z/5120); u=0.1; v=0.05; w=0",
+      "pressure_divergence_tolerance": null,
+      "execution_mode": "baseline",
+      "execution_adapter": {
+        "api_version": 1,
+        "id": "direct",
+        "version": "1",
+        "mode": "baseline",
+        "timing_contract": "oceananigans/timestep_window/v1",
+        "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+        "options": {}
+      }
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "free_surface": "SplitExplicitFreeSurface",
+    "gpu_memory_used_bytes": 16750149632,
+    "grid_halo": [
+      3,
+      3,
+      3
+    ],
+    "grid_size": [
+      512,
+      512,
+      512
+    ],
+    "grid_type": "RectilinearGrid",
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Sizes{NTuple{16, Int64}}, Sizes{Int64}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": "NVIDIA H100 80GB HBM3",
+      "cuda_version": "13.2.0",
+      "cpu_model": "AMD EPYC 9454 48-Core Processor (znver4)",
+      "num_threads": 1,
+      "hostname": "fc10103",
+      "package_versions": {
+        "Adapt": "4.8.0",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.46",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-11-13T02:02:56.441",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023",
+      "execution_mode": "baseline",
+      "execution_adapter": {
+        "api_version": 1,
+        "id": "direct",
+        "version": "1",
+        "mode": "baseline",
+        "timing_contract": "oceananigans/timestep_window/v1",
+        "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+        "options": {}
+      },
+      "adapter_metadata": {
+        "package_versions": {}
+      },
+      "dagger_version": null,
+      "mpi_thread_support": "MPI.ThreadLevel(2)",
+      "process_peak_rss_bytes": 3680804864
+    },
+    "model_type": "HydrostaticFreeSurfaceModel",
+    "pressure_final_true_residual": null,
+    "pressure_preconditioner": null,
+    "pressure_preconditioner_details": null,
+    "pressure_preconditioner_validation": null,
+    "pressure_projection_validation": null,
+    "pressure_solver": null,
+    "pressure_solver_converged": null,
+    "pressure_solver_iterations": null,
+    "pressure_solves": null,
+    "rank": 0,
+    "retained_free_surface_substeps": 21,
+    "time_per_step_max_seconds": 0.17848877130000002,
+    "time_per_step_median_seconds": 0.1614715524,
+    "time_per_step_seconds": 0.1578269396,
+    "window_seconds": [
+      1.614715524,
+      1.578269396,
+      1.784887713,
+      1.666167233,
+      1.580060169
+    ]
+  },
+  {
+    "configuration": {
+      "series": "gpu_weak_scaling_512_x",
+      "model_type": "HydrostaticFreeSurfaceModel",
+      "device": "GPU",
+      "ranks": 16,
+      "threads_per_rank": 1,
+      "grid_name": "8192x512x512",
+      "global_resolution": [
+        8192,
+        512,
+        512
+      ],
+      "grid_type": "RectilinearGrid",
+      "partition": [
+        16,
+        1,
+        1
+      ],
+      "x_sizes": [
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512
+      ],
+      "y_sizes": [
+        512
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENO5",
+      "tracer_advection": "WENO5",
+      "closure": null,
+      "tracers": [
+        "b"
+      ],
+      "viscosity": null,
+      "diffusivity": null,
+      "coriolis": null,
+      "buoyancy": "BuoyancyTracer",
+      "timestepper": "SplitRungeKutta3",
+      "free_surface": "SplitExplicitFreeSurface",
+      "pressure_solver": null,
+      "pressure_preconditioner": null,
+      "pressure_max_iterations": null,
+      "pressure_reltol": null,
+      "pressure_abstol": null,
+      "pressure_diagnostics": false,
+      "pressure_preserve_residual": false,
+      "pressure_check_true_residual": false,
+      "pressure_preconditioner_check": false,
+      "initial_condition_seed": null,
+      "dt": 10,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": true,
+      "warmup_steps": 2,
+      "samples": 5,
+      "time_steps": 10,
+      "profile": false,
+      "scaling_type": "weak",
+      "baseline_ranks": 1,
+      "model_setup": "rectilinear_buoyancy",
+      "topology": [
+        "Periodic",
+        "Periodic",
+        "Bounded"
+      ],
+      "cell_spacing_m": [
+        1000,
+        1000,
+        10
+      ],
+      "domain_extent_m": [
+        8192000,
+        512000,
+        5120
+      ],
+      "initial_condition": "b=1e-5*z+1e-6*cospi(x/64000)*cospi(y/64000)*sinpi(z/5120); u=0.1; v=0.05; w=0",
+      "pressure_divergence_tolerance": null,
+      "execution_mode": "baseline",
+      "execution_adapter": {
+        "api_version": 1,
+        "id": "direct",
+        "version": "1",
+        "mode": "baseline",
+        "timing_contract": "oceananigans/timestep_window/v1",
+        "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+        "options": {}
+      }
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "free_surface": "SplitExplicitFreeSurface",
+    "gpu_memory_used_bytes": 16750149632,
+    "grid_halo": [
+      3,
+      3,
+      3
+    ],
+    "grid_size": [
+      512,
+      512,
+      512
+    ],
+    "grid_type": "RectilinearGrid",
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Sizes{NTuple{16, Int64}}, Sizes{Int64}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": "NVIDIA H100 80GB HBM3",
+      "cuda_version": "13.2.0",
+      "cpu_model": "AMD EPYC 9454 48-Core Processor (znver4)",
+      "num_threads": 1,
+      "hostname": "fc10103",
+      "package_versions": {
+        "Adapt": "4.8.0",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.46",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-11-13T02:02:56.441",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023",
+      "execution_mode": "baseline",
+      "execution_adapter": {
+        "api_version": 1,
+        "id": "direct",
+        "version": "1",
+        "mode": "baseline",
+        "timing_contract": "oceananigans/timestep_window/v1",
+        "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+        "options": {}
+      },
+      "adapter_metadata": {
+        "package_versions": {}
+      },
+      "dagger_version": null,
+      "mpi_thread_support": "MPI.ThreadLevel(2)",
+      "process_peak_rss_bytes": 3771293696
+    },
+    "model_type": "HydrostaticFreeSurfaceModel",
+    "pressure_final_true_residual": null,
+    "pressure_preconditioner": null,
+    "pressure_preconditioner_details": null,
+    "pressure_preconditioner_validation": null,
+    "pressure_projection_validation": null,
+    "pressure_solver": null,
+    "pressure_solver_converged": null,
+    "pressure_solver_iterations": null,
+    "pressure_solves": null,
+    "rank": 1,
+    "retained_free_surface_substeps": 21,
+    "time_per_step_max_seconds": 0.1784891133,
+    "time_per_step_median_seconds": 0.1614712705,
+    "time_per_step_seconds": 0.1578274006,
+    "window_seconds": [
+      1.614712705,
+      1.578274006,
+      1.784891133,
+      1.666163924,
+      1.580077959
+    ]
+  },
+  {
+    "configuration": {
+      "series": "gpu_weak_scaling_512_x",
+      "model_type": "HydrostaticFreeSurfaceModel",
+      "device": "GPU",
+      "ranks": 16,
+      "threads_per_rank": 1,
+      "grid_name": "8192x512x512",
+      "global_resolution": [
+        8192,
+        512,
+        512
+      ],
+      "grid_type": "RectilinearGrid",
+      "partition": [
+        16,
+        1,
+        1
+      ],
+      "x_sizes": [
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512
+      ],
+      "y_sizes": [
+        512
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENO5",
+      "tracer_advection": "WENO5",
+      "closure": null,
+      "tracers": [
+        "b"
+      ],
+      "viscosity": null,
+      "diffusivity": null,
+      "coriolis": null,
+      "buoyancy": "BuoyancyTracer",
+      "timestepper": "SplitRungeKutta3",
+      "free_surface": "SplitExplicitFreeSurface",
+      "pressure_solver": null,
+      "pressure_preconditioner": null,
+      "pressure_max_iterations": null,
+      "pressure_reltol": null,
+      "pressure_abstol": null,
+      "pressure_diagnostics": false,
+      "pressure_preserve_residual": false,
+      "pressure_check_true_residual": false,
+      "pressure_preconditioner_check": false,
+      "initial_condition_seed": null,
+      "dt": 10,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": true,
+      "warmup_steps": 2,
+      "samples": 5,
+      "time_steps": 10,
+      "profile": false,
+      "scaling_type": "weak",
+      "baseline_ranks": 1,
+      "model_setup": "rectilinear_buoyancy",
+      "topology": [
+        "Periodic",
+        "Periodic",
+        "Bounded"
+      ],
+      "cell_spacing_m": [
+        1000,
+        1000,
+        10
+      ],
+      "domain_extent_m": [
+        8192000,
+        512000,
+        5120
+      ],
+      "initial_condition": "b=1e-5*z+1e-6*cospi(x/64000)*cospi(y/64000)*sinpi(z/5120); u=0.1; v=0.05; w=0",
+      "pressure_divergence_tolerance": null,
+      "execution_mode": "baseline",
+      "execution_adapter": {
+        "api_version": 1,
+        "id": "direct",
+        "version": "1",
+        "mode": "baseline",
+        "timing_contract": "oceananigans/timestep_window/v1",
+        "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+        "options": {}
+      }
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "free_surface": "SplitExplicitFreeSurface",
+    "gpu_memory_used_bytes": 16750149632,
+    "grid_halo": [
+      3,
+      3,
+      3
+    ],
+    "grid_size": [
+      512,
+      512,
+      512
+    ],
+    "grid_type": "RectilinearGrid",
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Sizes{NTuple{16, Int64}}, Sizes{Int64}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": "NVIDIA H100 80GB HBM3",
+      "cuda_version": "13.2.0",
+      "cpu_model": "AMD EPYC 9454 48-Core Processor (znver4)",
+      "num_threads": 1,
+      "hostname": "fc10103",
+      "package_versions": {
+        "Adapt": "4.8.0",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.46",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-11-13T02:02:56.441",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023",
+      "execution_mode": "baseline",
+      "execution_adapter": {
+        "api_version": 1,
+        "id": "direct",
+        "version": "1",
+        "mode": "baseline",
+        "timing_contract": "oceananigans/timestep_window/v1",
+        "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+        "options": {}
+      },
+      "adapter_metadata": {
+        "package_versions": {}
+      },
+      "dagger_version": null,
+      "mpi_thread_support": "MPI.ThreadLevel(2)",
+      "process_peak_rss_bytes": 3750060032
+    },
+    "model_type": "HydrostaticFreeSurfaceModel",
+    "pressure_final_true_residual": null,
+    "pressure_preconditioner": null,
+    "pressure_preconditioner_details": null,
+    "pressure_preconditioner_validation": null,
+    "pressure_projection_validation": null,
+    "pressure_solver": null,
+    "pressure_solver_converged": null,
+    "pressure_solver_iterations": null,
+    "pressure_solves": null,
+    "rank": 2,
+    "retained_free_surface_substeps": 21,
+    "time_per_step_max_seconds": 0.1784888163,
+    "time_per_step_median_seconds": 0.1614717835,
+    "time_per_step_seconds": 0.1578270036,
+    "window_seconds": [
+      1.614717835,
+      1.578270036,
+      1.784888163,
+      1.666167323,
+      1.580060479
+    ]
+  },
+  {
+    "configuration": {
+      "series": "gpu_weak_scaling_512_x",
+      "model_type": "HydrostaticFreeSurfaceModel",
+      "device": "GPU",
+      "ranks": 16,
+      "threads_per_rank": 1,
+      "grid_name": "8192x512x512",
+      "global_resolution": [
+        8192,
+        512,
+        512
+      ],
+      "grid_type": "RectilinearGrid",
+      "partition": [
+        16,
+        1,
+        1
+      ],
+      "x_sizes": [
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512
+      ],
+      "y_sizes": [
+        512
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENO5",
+      "tracer_advection": "WENO5",
+      "closure": null,
+      "tracers": [
+        "b"
+      ],
+      "viscosity": null,
+      "diffusivity": null,
+      "coriolis": null,
+      "buoyancy": "BuoyancyTracer",
+      "timestepper": "SplitRungeKutta3",
+      "free_surface": "SplitExplicitFreeSurface",
+      "pressure_solver": null,
+      "pressure_preconditioner": null,
+      "pressure_max_iterations": null,
+      "pressure_reltol": null,
+      "pressure_abstol": null,
+      "pressure_diagnostics": false,
+      "pressure_preserve_residual": false,
+      "pressure_check_true_residual": false,
+      "pressure_preconditioner_check": false,
+      "initial_condition_seed": null,
+      "dt": 10,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": true,
+      "warmup_steps": 2,
+      "samples": 5,
+      "time_steps": 10,
+      "profile": false,
+      "scaling_type": "weak",
+      "baseline_ranks": 1,
+      "model_setup": "rectilinear_buoyancy",
+      "topology": [
+        "Periodic",
+        "Periodic",
+        "Bounded"
+      ],
+      "cell_spacing_m": [
+        1000,
+        1000,
+        10
+      ],
+      "domain_extent_m": [
+        8192000,
+        512000,
+        5120
+      ],
+      "initial_condition": "b=1e-5*z+1e-6*cospi(x/64000)*cospi(y/64000)*sinpi(z/5120); u=0.1; v=0.05; w=0",
+      "pressure_divergence_tolerance": null,
+      "execution_mode": "baseline",
+      "execution_adapter": {
+        "api_version": 1,
+        "id": "direct",
+        "version": "1",
+        "mode": "baseline",
+        "timing_contract": "oceananigans/timestep_window/v1",
+        "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+        "options": {}
+      }
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "free_surface": "SplitExplicitFreeSurface",
+    "gpu_memory_used_bytes": 16750149632,
+    "grid_halo": [
+      3,
+      3,
+      3
+    ],
+    "grid_size": [
+      512,
+      512,
+      512
+    ],
+    "grid_type": "RectilinearGrid",
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Sizes{NTuple{16, Int64}}, Sizes{Int64}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": "NVIDIA H100 80GB HBM3",
+      "cuda_version": "13.2.0",
+      "cpu_model": "AMD EPYC 9454 48-Core Processor (znver4)",
+      "num_threads": 1,
+      "hostname": "fc10103",
+      "package_versions": {
+        "Adapt": "4.8.0",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.46",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-11-13T02:02:56.441",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023",
+      "execution_mode": "baseline",
+      "execution_adapter": {
+        "api_version": 1,
+        "id": "direct",
+        "version": "1",
+        "mode": "baseline",
+        "timing_contract": "oceananigans/timestep_window/v1",
+        "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+        "options": {}
+      },
+      "adapter_metadata": {
+        "package_versions": {}
+      },
+      "dagger_version": null,
+      "mpi_thread_support": "MPI.ThreadLevel(2)",
+      "process_peak_rss_bytes": 3845935104
+    },
+    "model_type": "HydrostaticFreeSurfaceModel",
+    "pressure_final_true_residual": null,
+    "pressure_preconditioner": null,
+    "pressure_preconditioner_details": null,
+    "pressure_preconditioner_validation": null,
+    "pressure_projection_validation": null,
+    "pressure_solver": null,
+    "pressure_solver_converged": null,
+    "pressure_solver_iterations": null,
+    "pressure_solves": null,
+    "rank": 3,
+    "retained_free_surface_substeps": 21,
+    "time_per_step_max_seconds": 0.1784890213,
+    "time_per_step_median_seconds": 0.1614712784,
+    "time_per_step_seconds": 0.1578271886,
+    "window_seconds": [
+      1.614712784,
+      1.578271886,
+      1.784890213,
+      1.666161073,
+      1.580076429
+    ]
+  },
+  {
+    "configuration": {
+      "series": "gpu_weak_scaling_512_x",
+      "model_type": "HydrostaticFreeSurfaceModel",
+      "device": "GPU",
+      "ranks": 16,
+      "threads_per_rank": 1,
+      "grid_name": "8192x512x512",
+      "global_resolution": [
+        8192,
+        512,
+        512
+      ],
+      "grid_type": "RectilinearGrid",
+      "partition": [
+        16,
+        1,
+        1
+      ],
+      "x_sizes": [
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512
+      ],
+      "y_sizes": [
+        512
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENO5",
+      "tracer_advection": "WENO5",
+      "closure": null,
+      "tracers": [
+        "b"
+      ],
+      "viscosity": null,
+      "diffusivity": null,
+      "coriolis": null,
+      "buoyancy": "BuoyancyTracer",
+      "timestepper": "SplitRungeKutta3",
+      "free_surface": "SplitExplicitFreeSurface",
+      "pressure_solver": null,
+      "pressure_preconditioner": null,
+      "pressure_max_iterations": null,
+      "pressure_reltol": null,
+      "pressure_abstol": null,
+      "pressure_diagnostics": false,
+      "pressure_preserve_residual": false,
+      "pressure_check_true_residual": false,
+      "pressure_preconditioner_check": false,
+      "initial_condition_seed": null,
+      "dt": 10,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": true,
+      "warmup_steps": 2,
+      "samples": 5,
+      "time_steps": 10,
+      "profile": false,
+      "scaling_type": "weak",
+      "baseline_ranks": 1,
+      "model_setup": "rectilinear_buoyancy",
+      "topology": [
+        "Periodic",
+        "Periodic",
+        "Bounded"
+      ],
+      "cell_spacing_m": [
+        1000,
+        1000,
+        10
+      ],
+      "domain_extent_m": [
+        8192000,
+        512000,
+        5120
+      ],
+      "initial_condition": "b=1e-5*z+1e-6*cospi(x/64000)*cospi(y/64000)*sinpi(z/5120); u=0.1; v=0.05; w=0",
+      "pressure_divergence_tolerance": null,
+      "execution_mode": "baseline",
+      "execution_adapter": {
+        "api_version": 1,
+        "id": "direct",
+        "version": "1",
+        "mode": "baseline",
+        "timing_contract": "oceananigans/timestep_window/v1",
+        "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+        "options": {}
+      }
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "free_surface": "SplitExplicitFreeSurface",
+    "gpu_memory_used_bytes": 16750084096,
+    "grid_halo": [
+      3,
+      3,
+      3
+    ],
+    "grid_size": [
+      512,
+      512,
+      512
+    ],
+    "grid_type": "RectilinearGrid",
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Sizes{NTuple{16, Int64}}, Sizes{Int64}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": "NVIDIA H100 80GB HBM3",
+      "cuda_version": "13.2.0",
+      "cpu_model": "AMD EPYC 9454 48-Core Processor (znver4)",
+      "num_threads": 1,
+      "hostname": "fc10111",
+      "package_versions": {
+        "Adapt": "4.8.0",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.46",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-11-13T02:02:56.446",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023",
+      "execution_mode": "baseline",
+      "execution_adapter": {
+        "api_version": 1,
+        "id": "direct",
+        "version": "1",
+        "mode": "baseline",
+        "timing_contract": "oceananigans/timestep_window/v1",
+        "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+        "options": {}
+      },
+      "adapter_metadata": {
+        "package_versions": {}
+      },
+      "dagger_version": null,
+      "mpi_thread_support": "MPI.ThreadLevel(2)",
+      "process_peak_rss_bytes": 3779801088
+    },
+    "model_type": "HydrostaticFreeSurfaceModel",
+    "pressure_final_true_residual": null,
+    "pressure_preconditioner": null,
+    "pressure_preconditioner_details": null,
+    "pressure_preconditioner_validation": null,
+    "pressure_projection_validation": null,
+    "pressure_solver": null,
+    "pressure_solver_converged": null,
+    "pressure_solver_iterations": null,
+    "pressure_solves": null,
+    "rank": 4,
+    "retained_free_surface_substeps": 21,
+    "time_per_step_max_seconds": 0.1784888015,
+    "time_per_step_median_seconds": 0.16147108910000002,
+    "time_per_step_seconds": 0.15782712270000002,
+    "window_seconds": [
+      1.614710891,
+      1.578271227,
+      1.784888015,
+      1.666162636,
+      1.580061829
+    ]
+  },
+  {
+    "configuration": {
+      "series": "gpu_weak_scaling_512_x",
+      "model_type": "HydrostaticFreeSurfaceModel",
+      "device": "GPU",
+      "ranks": 16,
+      "threads_per_rank": 1,
+      "grid_name": "8192x512x512",
+      "global_resolution": [
+        8192,
+        512,
+        512
+      ],
+      "grid_type": "RectilinearGrid",
+      "partition": [
+        16,
+        1,
+        1
+      ],
+      "x_sizes": [
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512
+      ],
+      "y_sizes": [
+        512
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENO5",
+      "tracer_advection": "WENO5",
+      "closure": null,
+      "tracers": [
+        "b"
+      ],
+      "viscosity": null,
+      "diffusivity": null,
+      "coriolis": null,
+      "buoyancy": "BuoyancyTracer",
+      "timestepper": "SplitRungeKutta3",
+      "free_surface": "SplitExplicitFreeSurface",
+      "pressure_solver": null,
+      "pressure_preconditioner": null,
+      "pressure_max_iterations": null,
+      "pressure_reltol": null,
+      "pressure_abstol": null,
+      "pressure_diagnostics": false,
+      "pressure_preserve_residual": false,
+      "pressure_check_true_residual": false,
+      "pressure_preconditioner_check": false,
+      "initial_condition_seed": null,
+      "dt": 10,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": true,
+      "warmup_steps": 2,
+      "samples": 5,
+      "time_steps": 10,
+      "profile": false,
+      "scaling_type": "weak",
+      "baseline_ranks": 1,
+      "model_setup": "rectilinear_buoyancy",
+      "topology": [
+        "Periodic",
+        "Periodic",
+        "Bounded"
+      ],
+      "cell_spacing_m": [
+        1000,
+        1000,
+        10
+      ],
+      "domain_extent_m": [
+        8192000,
+        512000,
+        5120
+      ],
+      "initial_condition": "b=1e-5*z+1e-6*cospi(x/64000)*cospi(y/64000)*sinpi(z/5120); u=0.1; v=0.05; w=0",
+      "pressure_divergence_tolerance": null,
+      "execution_mode": "baseline",
+      "execution_adapter": {
+        "api_version": 1,
+        "id": "direct",
+        "version": "1",
+        "mode": "baseline",
+        "timing_contract": "oceananigans/timestep_window/v1",
+        "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+        "options": {}
+      }
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "free_surface": "SplitExplicitFreeSurface",
+    "gpu_memory_used_bytes": 16750084096,
+    "grid_halo": [
+      3,
+      3,
+      3
+    ],
+    "grid_size": [
+      512,
+      512,
+      512
+    ],
+    "grid_type": "RectilinearGrid",
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Sizes{NTuple{16, Int64}}, Sizes{Int64}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": "NVIDIA H100 80GB HBM3",
+      "cuda_version": "13.2.0",
+      "cpu_model": "AMD EPYC 9454 48-Core Processor (znver4)",
+      "num_threads": 1,
+      "hostname": "fc10111",
+      "package_versions": {
+        "Adapt": "4.8.0",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.46",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-11-13T02:02:56.446",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023",
+      "execution_mode": "baseline",
+      "execution_adapter": {
+        "api_version": 1,
+        "id": "direct",
+        "version": "1",
+        "mode": "baseline",
+        "timing_contract": "oceananigans/timestep_window/v1",
+        "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+        "options": {}
+      },
+      "adapter_metadata": {
+        "package_versions": {}
+      },
+      "dagger_version": null,
+      "mpi_thread_support": "MPI.ThreadLevel(2)",
+      "process_peak_rss_bytes": 3730989056
+    },
+    "model_type": "HydrostaticFreeSurfaceModel",
+    "pressure_final_true_residual": null,
+    "pressure_preconditioner": null,
+    "pressure_preconditioner_details": null,
+    "pressure_preconditioner_validation": null,
+    "pressure_projection_validation": null,
+    "pressure_solver": null,
+    "pressure_solver_converged": null,
+    "pressure_solver_iterations": null,
+    "pressure_solves": null,
+    "rank": 5,
+    "retained_free_surface_substeps": 21,
+    "time_per_step_max_seconds": 0.1784892015,
+    "time_per_step_median_seconds": 0.1614707651,
+    "time_per_step_seconds": 0.1578275308,
+    "window_seconds": [
+      1.614707651,
+      1.578275308,
+      1.784892015,
+      1.666159196,
+      1.580078599
+    ]
+  },
+  {
+    "configuration": {
+      "series": "gpu_weak_scaling_512_x",
+      "model_type": "HydrostaticFreeSurfaceModel",
+      "device": "GPU",
+      "ranks": 16,
+      "threads_per_rank": 1,
+      "grid_name": "8192x512x512",
+      "global_resolution": [
+        8192,
+        512,
+        512
+      ],
+      "grid_type": "RectilinearGrid",
+      "partition": [
+        16,
+        1,
+        1
+      ],
+      "x_sizes": [
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512
+      ],
+      "y_sizes": [
+        512
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENO5",
+      "tracer_advection": "WENO5",
+      "closure": null,
+      "tracers": [
+        "b"
+      ],
+      "viscosity": null,
+      "diffusivity": null,
+      "coriolis": null,
+      "buoyancy": "BuoyancyTracer",
+      "timestepper": "SplitRungeKutta3",
+      "free_surface": "SplitExplicitFreeSurface",
+      "pressure_solver": null,
+      "pressure_preconditioner": null,
+      "pressure_max_iterations": null,
+      "pressure_reltol": null,
+      "pressure_abstol": null,
+      "pressure_diagnostics": false,
+      "pressure_preserve_residual": false,
+      "pressure_check_true_residual": false,
+      "pressure_preconditioner_check": false,
+      "initial_condition_seed": null,
+      "dt": 10,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": true,
+      "warmup_steps": 2,
+      "samples": 5,
+      "time_steps": 10,
+      "profile": false,
+      "scaling_type": "weak",
+      "baseline_ranks": 1,
+      "model_setup": "rectilinear_buoyancy",
+      "topology": [
+        "Periodic",
+        "Periodic",
+        "Bounded"
+      ],
+      "cell_spacing_m": [
+        1000,
+        1000,
+        10
+      ],
+      "domain_extent_m": [
+        8192000,
+        512000,
+        5120
+      ],
+      "initial_condition": "b=1e-5*z+1e-6*cospi(x/64000)*cospi(y/64000)*sinpi(z/5120); u=0.1; v=0.05; w=0",
+      "pressure_divergence_tolerance": null,
+      "execution_mode": "baseline",
+      "execution_adapter": {
+        "api_version": 1,
+        "id": "direct",
+        "version": "1",
+        "mode": "baseline",
+        "timing_contract": "oceananigans/timestep_window/v1",
+        "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+        "options": {}
+      }
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "free_surface": "SplitExplicitFreeSurface",
+    "gpu_memory_used_bytes": 16750084096,
+    "grid_halo": [
+      3,
+      3,
+      3
+    ],
+    "grid_size": [
+      512,
+      512,
+      512
+    ],
+    "grid_type": "RectilinearGrid",
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Sizes{NTuple{16, Int64}}, Sizes{Int64}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": "NVIDIA H100 80GB HBM3",
+      "cuda_version": "13.2.0",
+      "cpu_model": "AMD EPYC 9454 48-Core Processor (znver4)",
+      "num_threads": 1,
+      "hostname": "fc10111",
+      "package_versions": {
+        "Adapt": "4.8.0",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.46",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-11-13T02:02:56.446",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023",
+      "execution_mode": "baseline",
+      "execution_adapter": {
+        "api_version": 1,
+        "id": "direct",
+        "version": "1",
+        "mode": "baseline",
+        "timing_contract": "oceananigans/timestep_window/v1",
+        "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+        "options": {}
+      },
+      "adapter_metadata": {
+        "package_versions": {}
+      },
+      "dagger_version": null,
+      "mpi_thread_support": "MPI.ThreadLevel(2)",
+      "process_peak_rss_bytes": 3733262336
+    },
+    "model_type": "HydrostaticFreeSurfaceModel",
+    "pressure_final_true_residual": null,
+    "pressure_preconditioner": null,
+    "pressure_preconditioner_details": null,
+    "pressure_preconditioner_validation": null,
+    "pressure_projection_validation": null,
+    "pressure_solver": null,
+    "pressure_solver_converged": null,
+    "pressure_solver_iterations": null,
+    "pressure_solves": null,
+    "rank": 6,
+    "retained_free_surface_substeps": 21,
+    "time_per_step_max_seconds": 0.17848891849999998,
+    "time_per_step_median_seconds": 0.1614710911,
+    "time_per_step_seconds": 0.1578271717,
+    "window_seconds": [
+      1.614710911,
+      1.578271717,
+      1.784889185,
+      1.666161886,
+      1.580061119
+    ]
+  },
+  {
+    "configuration": {
+      "series": "gpu_weak_scaling_512_x",
+      "model_type": "HydrostaticFreeSurfaceModel",
+      "device": "GPU",
+      "ranks": 16,
+      "threads_per_rank": 1,
+      "grid_name": "8192x512x512",
+      "global_resolution": [
+        8192,
+        512,
+        512
+      ],
+      "grid_type": "RectilinearGrid",
+      "partition": [
+        16,
+        1,
+        1
+      ],
+      "x_sizes": [
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512
+      ],
+      "y_sizes": [
+        512
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENO5",
+      "tracer_advection": "WENO5",
+      "closure": null,
+      "tracers": [
+        "b"
+      ],
+      "viscosity": null,
+      "diffusivity": null,
+      "coriolis": null,
+      "buoyancy": "BuoyancyTracer",
+      "timestepper": "SplitRungeKutta3",
+      "free_surface": "SplitExplicitFreeSurface",
+      "pressure_solver": null,
+      "pressure_preconditioner": null,
+      "pressure_max_iterations": null,
+      "pressure_reltol": null,
+      "pressure_abstol": null,
+      "pressure_diagnostics": false,
+      "pressure_preserve_residual": false,
+      "pressure_check_true_residual": false,
+      "pressure_preconditioner_check": false,
+      "initial_condition_seed": null,
+      "dt": 10,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": true,
+      "warmup_steps": 2,
+      "samples": 5,
+      "time_steps": 10,
+      "profile": false,
+      "scaling_type": "weak",
+      "baseline_ranks": 1,
+      "model_setup": "rectilinear_buoyancy",
+      "topology": [
+        "Periodic",
+        "Periodic",
+        "Bounded"
+      ],
+      "cell_spacing_m": [
+        1000,
+        1000,
+        10
+      ],
+      "domain_extent_m": [
+        8192000,
+        512000,
+        5120
+      ],
+      "initial_condition": "b=1e-5*z+1e-6*cospi(x/64000)*cospi(y/64000)*sinpi(z/5120); u=0.1; v=0.05; w=0",
+      "pressure_divergence_tolerance": null,
+      "execution_mode": "baseline",
+      "execution_adapter": {
+        "api_version": 1,
+        "id": "direct",
+        "version": "1",
+        "mode": "baseline",
+        "timing_contract": "oceananigans/timestep_window/v1",
+        "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+        "options": {}
+      }
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "free_surface": "SplitExplicitFreeSurface",
+    "gpu_memory_used_bytes": 16750084096,
+    "grid_halo": [
+      3,
+      3,
+      3
+    ],
+    "grid_size": [
+      512,
+      512,
+      512
+    ],
+    "grid_type": "RectilinearGrid",
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Sizes{NTuple{16, Int64}}, Sizes{Int64}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": "NVIDIA H100 80GB HBM3",
+      "cuda_version": "13.2.0",
+      "cpu_model": "AMD EPYC 9454 48-Core Processor (znver4)",
+      "num_threads": 1,
+      "hostname": "fc10111",
+      "package_versions": {
+        "Adapt": "4.8.0",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.46",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-11-13T02:02:56.446",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023",
+      "execution_mode": "baseline",
+      "execution_adapter": {
+        "api_version": 1,
+        "id": "direct",
+        "version": "1",
+        "mode": "baseline",
+        "timing_contract": "oceananigans/timestep_window/v1",
+        "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+        "options": {}
+      },
+      "adapter_metadata": {
+        "package_versions": {}
+      },
+      "dagger_version": null,
+      "mpi_thread_support": "MPI.ThreadLevel(2)",
+      "process_peak_rss_bytes": 3704991744
+    },
+    "model_type": "HydrostaticFreeSurfaceModel",
+    "pressure_final_true_residual": null,
+    "pressure_preconditioner": null,
+    "pressure_preconditioner_details": null,
+    "pressure_preconditioner_validation": null,
+    "pressure_projection_validation": null,
+    "pressure_solver": null,
+    "pressure_solver_converged": null,
+    "pressure_solver_iterations": null,
+    "pressure_solves": null,
+    "rank": 7,
+    "retained_free_surface_substeps": 21,
+    "time_per_step_max_seconds": 0.1784891216,
+    "time_per_step_median_seconds": 0.16147085109999998,
+    "time_per_step_seconds": 0.15782734380000002,
+    "window_seconds": [
+      1.614708511,
+      1.578273438,
+      1.784891216,
+      1.666156346,
+      1.580077729
+    ]
+  },
+  {
+    "configuration": {
+      "series": "gpu_weak_scaling_512_x",
+      "model_type": "HydrostaticFreeSurfaceModel",
+      "device": "GPU",
+      "ranks": 16,
+      "threads_per_rank": 1,
+      "grid_name": "8192x512x512",
+      "global_resolution": [
+        8192,
+        512,
+        512
+      ],
+      "grid_type": "RectilinearGrid",
+      "partition": [
+        16,
+        1,
+        1
+      ],
+      "x_sizes": [
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512
+      ],
+      "y_sizes": [
+        512
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENO5",
+      "tracer_advection": "WENO5",
+      "closure": null,
+      "tracers": [
+        "b"
+      ],
+      "viscosity": null,
+      "diffusivity": null,
+      "coriolis": null,
+      "buoyancy": "BuoyancyTracer",
+      "timestepper": "SplitRungeKutta3",
+      "free_surface": "SplitExplicitFreeSurface",
+      "pressure_solver": null,
+      "pressure_preconditioner": null,
+      "pressure_max_iterations": null,
+      "pressure_reltol": null,
+      "pressure_abstol": null,
+      "pressure_diagnostics": false,
+      "pressure_preserve_residual": false,
+      "pressure_check_true_residual": false,
+      "pressure_preconditioner_check": false,
+      "initial_condition_seed": null,
+      "dt": 10,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": true,
+      "warmup_steps": 2,
+      "samples": 5,
+      "time_steps": 10,
+      "profile": false,
+      "scaling_type": "weak",
+      "baseline_ranks": 1,
+      "model_setup": "rectilinear_buoyancy",
+      "topology": [
+        "Periodic",
+        "Periodic",
+        "Bounded"
+      ],
+      "cell_spacing_m": [
+        1000,
+        1000,
+        10
+      ],
+      "domain_extent_m": [
+        8192000,
+        512000,
+        5120
+      ],
+      "initial_condition": "b=1e-5*z+1e-6*cospi(x/64000)*cospi(y/64000)*sinpi(z/5120); u=0.1; v=0.05; w=0",
+      "pressure_divergence_tolerance": null,
+      "execution_mode": "baseline",
+      "execution_adapter": {
+        "api_version": 1,
+        "id": "direct",
+        "version": "1",
+        "mode": "baseline",
+        "timing_contract": "oceananigans/timestep_window/v1",
+        "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+        "options": {}
+      }
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "free_surface": "SplitExplicitFreeSurface",
+    "gpu_memory_used_bytes": 16750084096,
+    "grid_halo": [
+      3,
+      3,
+      3
+    ],
+    "grid_size": [
+      512,
+      512,
+      512
+    ],
+    "grid_type": "RectilinearGrid",
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Sizes{NTuple{16, Int64}}, Sizes{Int64}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": "NVIDIA H100 80GB HBM3",
+      "cuda_version": "13.2.0",
+      "cpu_model": "AMD EPYC 9454 48-Core Processor (znver4)",
+      "num_threads": 1,
+      "hostname": "fc10201",
+      "package_versions": {
+        "Adapt": "4.8.0",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.46",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-11-13T02:02:56.441",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023",
+      "execution_mode": "baseline",
+      "execution_adapter": {
+        "api_version": 1,
+        "id": "direct",
+        "version": "1",
+        "mode": "baseline",
+        "timing_contract": "oceananigans/timestep_window/v1",
+        "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+        "options": {}
+      },
+      "adapter_metadata": {
+        "package_versions": {}
+      },
+      "dagger_version": null,
+      "mpi_thread_support": "MPI.ThreadLevel(2)",
+      "process_peak_rss_bytes": 3732652032
+    },
+    "model_type": "HydrostaticFreeSurfaceModel",
+    "pressure_final_true_residual": null,
+    "pressure_preconditioner": null,
+    "pressure_preconditioner_details": null,
+    "pressure_preconditioner_validation": null,
+    "pressure_projection_validation": null,
+    "pressure_solver": null,
+    "pressure_solver_converged": null,
+    "pressure_solver_iterations": null,
+    "pressure_solves": null,
+    "rank": 8,
+    "retained_free_surface_substeps": 21,
+    "time_per_step_max_seconds": 0.1784888352,
+    "time_per_step_median_seconds": 0.1614714938,
+    "time_per_step_seconds": 0.1578263742,
+    "window_seconds": [
+      1.614714938,
+      1.578263742,
+      1.784888352,
+      1.666162232,
+      1.580055582
+    ]
+  },
+  {
+    "configuration": {
+      "series": "gpu_weak_scaling_512_x",
+      "model_type": "HydrostaticFreeSurfaceModel",
+      "device": "GPU",
+      "ranks": 16,
+      "threads_per_rank": 1,
+      "grid_name": "8192x512x512",
+      "global_resolution": [
+        8192,
+        512,
+        512
+      ],
+      "grid_type": "RectilinearGrid",
+      "partition": [
+        16,
+        1,
+        1
+      ],
+      "x_sizes": [
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512
+      ],
+      "y_sizes": [
+        512
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENO5",
+      "tracer_advection": "WENO5",
+      "closure": null,
+      "tracers": [
+        "b"
+      ],
+      "viscosity": null,
+      "diffusivity": null,
+      "coriolis": null,
+      "buoyancy": "BuoyancyTracer",
+      "timestepper": "SplitRungeKutta3",
+      "free_surface": "SplitExplicitFreeSurface",
+      "pressure_solver": null,
+      "pressure_preconditioner": null,
+      "pressure_max_iterations": null,
+      "pressure_reltol": null,
+      "pressure_abstol": null,
+      "pressure_diagnostics": false,
+      "pressure_preserve_residual": false,
+      "pressure_check_true_residual": false,
+      "pressure_preconditioner_check": false,
+      "initial_condition_seed": null,
+      "dt": 10,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": true,
+      "warmup_steps": 2,
+      "samples": 5,
+      "time_steps": 10,
+      "profile": false,
+      "scaling_type": "weak",
+      "baseline_ranks": 1,
+      "model_setup": "rectilinear_buoyancy",
+      "topology": [
+        "Periodic",
+        "Periodic",
+        "Bounded"
+      ],
+      "cell_spacing_m": [
+        1000,
+        1000,
+        10
+      ],
+      "domain_extent_m": [
+        8192000,
+        512000,
+        5120
+      ],
+      "initial_condition": "b=1e-5*z+1e-6*cospi(x/64000)*cospi(y/64000)*sinpi(z/5120); u=0.1; v=0.05; w=0",
+      "pressure_divergence_tolerance": null,
+      "execution_mode": "baseline",
+      "execution_adapter": {
+        "api_version": 1,
+        "id": "direct",
+        "version": "1",
+        "mode": "baseline",
+        "timing_contract": "oceananigans/timestep_window/v1",
+        "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+        "options": {}
+      }
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "free_surface": "SplitExplicitFreeSurface",
+    "gpu_memory_used_bytes": 16750084096,
+    "grid_halo": [
+      3,
+      3,
+      3
+    ],
+    "grid_size": [
+      512,
+      512,
+      512
+    ],
+    "grid_type": "RectilinearGrid",
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Sizes{NTuple{16, Int64}}, Sizes{Int64}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": "NVIDIA H100 80GB HBM3",
+      "cuda_version": "13.2.0",
+      "cpu_model": "AMD EPYC 9454 48-Core Processor (znver4)",
+      "num_threads": 1,
+      "hostname": "fc10201",
+      "package_versions": {
+        "Adapt": "4.8.0",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.46",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-11-13T02:02:56.441",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023",
+      "execution_mode": "baseline",
+      "execution_adapter": {
+        "api_version": 1,
+        "id": "direct",
+        "version": "1",
+        "mode": "baseline",
+        "timing_contract": "oceananigans/timestep_window/v1",
+        "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+        "options": {}
+      },
+      "adapter_metadata": {
+        "package_versions": {}
+      },
+      "dagger_version": null,
+      "mpi_thread_support": "MPI.ThreadLevel(2)",
+      "process_peak_rss_bytes": 3733245952
+    },
+    "model_type": "HydrostaticFreeSurfaceModel",
+    "pressure_final_true_residual": null,
+    "pressure_preconditioner": null,
+    "pressure_preconditioner_details": null,
+    "pressure_preconditioner_validation": null,
+    "pressure_projection_validation": null,
+    "pressure_solver": null,
+    "pressure_solver_converged": null,
+    "pressure_solver_iterations": null,
+    "pressure_solves": null,
+    "rank": 9,
+    "retained_free_surface_substeps": 21,
+    "time_per_step_max_seconds": 0.1784892411,
+    "time_per_step_median_seconds": 0.1614711078,
+    "time_per_step_seconds": 0.1578268942,
+    "window_seconds": [
+      1.614711078,
+      1.578268942,
+      1.784892411,
+      1.666159382,
+      1.580073322
+    ]
+  },
+  {
+    "configuration": {
+      "series": "gpu_weak_scaling_512_x",
+      "model_type": "HydrostaticFreeSurfaceModel",
+      "device": "GPU",
+      "ranks": 16,
+      "threads_per_rank": 1,
+      "grid_name": "8192x512x512",
+      "global_resolution": [
+        8192,
+        512,
+        512
+      ],
+      "grid_type": "RectilinearGrid",
+      "partition": [
+        16,
+        1,
+        1
+      ],
+      "x_sizes": [
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512
+      ],
+      "y_sizes": [
+        512
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENO5",
+      "tracer_advection": "WENO5",
+      "closure": null,
+      "tracers": [
+        "b"
+      ],
+      "viscosity": null,
+      "diffusivity": null,
+      "coriolis": null,
+      "buoyancy": "BuoyancyTracer",
+      "timestepper": "SplitRungeKutta3",
+      "free_surface": "SplitExplicitFreeSurface",
+      "pressure_solver": null,
+      "pressure_preconditioner": null,
+      "pressure_max_iterations": null,
+      "pressure_reltol": null,
+      "pressure_abstol": null,
+      "pressure_diagnostics": false,
+      "pressure_preserve_residual": false,
+      "pressure_check_true_residual": false,
+      "pressure_preconditioner_check": false,
+      "initial_condition_seed": null,
+      "dt": 10,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": true,
+      "warmup_steps": 2,
+      "samples": 5,
+      "time_steps": 10,
+      "profile": false,
+      "scaling_type": "weak",
+      "baseline_ranks": 1,
+      "model_setup": "rectilinear_buoyancy",
+      "topology": [
+        "Periodic",
+        "Periodic",
+        "Bounded"
+      ],
+      "cell_spacing_m": [
+        1000,
+        1000,
+        10
+      ],
+      "domain_extent_m": [
+        8192000,
+        512000,
+        5120
+      ],
+      "initial_condition": "b=1e-5*z+1e-6*cospi(x/64000)*cospi(y/64000)*sinpi(z/5120); u=0.1; v=0.05; w=0",
+      "pressure_divergence_tolerance": null,
+      "execution_mode": "baseline",
+      "execution_adapter": {
+        "api_version": 1,
+        "id": "direct",
+        "version": "1",
+        "mode": "baseline",
+        "timing_contract": "oceananigans/timestep_window/v1",
+        "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+        "options": {}
+      }
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "free_surface": "SplitExplicitFreeSurface",
+    "gpu_memory_used_bytes": 16750084096,
+    "grid_halo": [
+      3,
+      3,
+      3
+    ],
+    "grid_size": [
+      512,
+      512,
+      512
+    ],
+    "grid_type": "RectilinearGrid",
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Sizes{NTuple{16, Int64}}, Sizes{Int64}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": "NVIDIA H100 80GB HBM3",
+      "cuda_version": "13.2.0",
+      "cpu_model": "AMD EPYC 9454 48-Core Processor (znver4)",
+      "num_threads": 1,
+      "hostname": "fc10201",
+      "package_versions": {
+        "Adapt": "4.8.0",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.46",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-11-13T02:02:56.441",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023",
+      "execution_mode": "baseline",
+      "execution_adapter": {
+        "api_version": 1,
+        "id": "direct",
+        "version": "1",
+        "mode": "baseline",
+        "timing_contract": "oceananigans/timestep_window/v1",
+        "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+        "options": {}
+      },
+      "adapter_metadata": {
+        "package_versions": {}
+      },
+      "dagger_version": null,
+      "mpi_thread_support": "MPI.ThreadLevel(2)",
+      "process_peak_rss_bytes": 3711832064
+    },
+    "model_type": "HydrostaticFreeSurfaceModel",
+    "pressure_final_true_residual": null,
+    "pressure_preconditioner": null,
+    "pressure_preconditioner_details": null,
+    "pressure_preconditioner_validation": null,
+    "pressure_projection_validation": null,
+    "pressure_solver": null,
+    "pressure_solver_converged": null,
+    "pressure_solver_iterations": null,
+    "pressure_solves": null,
+    "rank": 10,
+    "retained_free_surface_substeps": 21,
+    "time_per_step_max_seconds": 0.1784888682,
+    "time_per_step_median_seconds": 0.1614717007,
+    "time_per_step_seconds": 0.1578264942,
+    "window_seconds": [
+      1.614717007,
+      1.578264942,
+      1.784888682,
+      1.666162332,
+      1.580055742
+    ]
+  },
+  {
+    "configuration": {
+      "series": "gpu_weak_scaling_512_x",
+      "model_type": "HydrostaticFreeSurfaceModel",
+      "device": "GPU",
+      "ranks": 16,
+      "threads_per_rank": 1,
+      "grid_name": "8192x512x512",
+      "global_resolution": [
+        8192,
+        512,
+        512
+      ],
+      "grid_type": "RectilinearGrid",
+      "partition": [
+        16,
+        1,
+        1
+      ],
+      "x_sizes": [
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512
+      ],
+      "y_sizes": [
+        512
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENO5",
+      "tracer_advection": "WENO5",
+      "closure": null,
+      "tracers": [
+        "b"
+      ],
+      "viscosity": null,
+      "diffusivity": null,
+      "coriolis": null,
+      "buoyancy": "BuoyancyTracer",
+      "timestepper": "SplitRungeKutta3",
+      "free_surface": "SplitExplicitFreeSurface",
+      "pressure_solver": null,
+      "pressure_preconditioner": null,
+      "pressure_max_iterations": null,
+      "pressure_reltol": null,
+      "pressure_abstol": null,
+      "pressure_diagnostics": false,
+      "pressure_preserve_residual": false,
+      "pressure_check_true_residual": false,
+      "pressure_preconditioner_check": false,
+      "initial_condition_seed": null,
+      "dt": 10,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": true,
+      "warmup_steps": 2,
+      "samples": 5,
+      "time_steps": 10,
+      "profile": false,
+      "scaling_type": "weak",
+      "baseline_ranks": 1,
+      "model_setup": "rectilinear_buoyancy",
+      "topology": [
+        "Periodic",
+        "Periodic",
+        "Bounded"
+      ],
+      "cell_spacing_m": [
+        1000,
+        1000,
+        10
+      ],
+      "domain_extent_m": [
+        8192000,
+        512000,
+        5120
+      ],
+      "initial_condition": "b=1e-5*z+1e-6*cospi(x/64000)*cospi(y/64000)*sinpi(z/5120); u=0.1; v=0.05; w=0",
+      "pressure_divergence_tolerance": null,
+      "execution_mode": "baseline",
+      "execution_adapter": {
+        "api_version": 1,
+        "id": "direct",
+        "version": "1",
+        "mode": "baseline",
+        "timing_contract": "oceananigans/timestep_window/v1",
+        "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+        "options": {}
+      }
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "free_surface": "SplitExplicitFreeSurface",
+    "gpu_memory_used_bytes": 16750084096,
+    "grid_halo": [
+      3,
+      3,
+      3
+    ],
+    "grid_size": [
+      512,
+      512,
+      512
+    ],
+    "grid_type": "RectilinearGrid",
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Sizes{NTuple{16, Int64}}, Sizes{Int64}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": "NVIDIA H100 80GB HBM3",
+      "cuda_version": "13.2.0",
+      "cpu_model": "AMD EPYC 9454 48-Core Processor (znver4)",
+      "num_threads": 1,
+      "hostname": "fc10201",
+      "package_versions": {
+        "Adapt": "4.8.0",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.46",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-11-13T02:02:56.441",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023",
+      "execution_mode": "baseline",
+      "execution_adapter": {
+        "api_version": 1,
+        "id": "direct",
+        "version": "1",
+        "mode": "baseline",
+        "timing_contract": "oceananigans/timestep_window/v1",
+        "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+        "options": {}
+      },
+      "adapter_metadata": {
+        "package_versions": {}
+      },
+      "dagger_version": null,
+      "mpi_thread_support": "MPI.ThreadLevel(2)",
+      "process_peak_rss_bytes": 3745091584
+    },
+    "model_type": "HydrostaticFreeSurfaceModel",
+    "pressure_final_true_residual": null,
+    "pressure_preconditioner": null,
+    "pressure_preconditioner_details": null,
+    "pressure_preconditioner_validation": null,
+    "pressure_projection_validation": null,
+    "pressure_solver": null,
+    "pressure_solver_converged": null,
+    "pressure_solver_iterations": null,
+    "pressure_solves": null,
+    "rank": 11,
+    "retained_free_surface_substeps": 21,
+    "time_per_step_max_seconds": 0.17848908219999998,
+    "time_per_step_median_seconds": 0.1614710978,
+    "time_per_step_seconds": 0.1578266822,
+    "window_seconds": [
+      1.614710978,
+      1.578266822,
+      1.784890822,
+      1.666156042,
+      1.580071982
+    ]
+  },
+  {
+    "configuration": {
+      "series": "gpu_weak_scaling_512_x",
+      "model_type": "HydrostaticFreeSurfaceModel",
+      "device": "GPU",
+      "ranks": 16,
+      "threads_per_rank": 1,
+      "grid_name": "8192x512x512",
+      "global_resolution": [
+        8192,
+        512,
+        512
+      ],
+      "grid_type": "RectilinearGrid",
+      "partition": [
+        16,
+        1,
+        1
+      ],
+      "x_sizes": [
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512
+      ],
+      "y_sizes": [
+        512
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENO5",
+      "tracer_advection": "WENO5",
+      "closure": null,
+      "tracers": [
+        "b"
+      ],
+      "viscosity": null,
+      "diffusivity": null,
+      "coriolis": null,
+      "buoyancy": "BuoyancyTracer",
+      "timestepper": "SplitRungeKutta3",
+      "free_surface": "SplitExplicitFreeSurface",
+      "pressure_solver": null,
+      "pressure_preconditioner": null,
+      "pressure_max_iterations": null,
+      "pressure_reltol": null,
+      "pressure_abstol": null,
+      "pressure_diagnostics": false,
+      "pressure_preserve_residual": false,
+      "pressure_check_true_residual": false,
+      "pressure_preconditioner_check": false,
+      "initial_condition_seed": null,
+      "dt": 10,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": true,
+      "warmup_steps": 2,
+      "samples": 5,
+      "time_steps": 10,
+      "profile": false,
+      "scaling_type": "weak",
+      "baseline_ranks": 1,
+      "model_setup": "rectilinear_buoyancy",
+      "topology": [
+        "Periodic",
+        "Periodic",
+        "Bounded"
+      ],
+      "cell_spacing_m": [
+        1000,
+        1000,
+        10
+      ],
+      "domain_extent_m": [
+        8192000,
+        512000,
+        5120
+      ],
+      "initial_condition": "b=1e-5*z+1e-6*cospi(x/64000)*cospi(y/64000)*sinpi(z/5120); u=0.1; v=0.05; w=0",
+      "pressure_divergence_tolerance": null,
+      "execution_mode": "baseline",
+      "execution_adapter": {
+        "api_version": 1,
+        "id": "direct",
+        "version": "1",
+        "mode": "baseline",
+        "timing_contract": "oceananigans/timestep_window/v1",
+        "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+        "options": {}
+      }
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "free_surface": "SplitExplicitFreeSurface",
+    "gpu_memory_used_bytes": 16750084096,
+    "grid_halo": [
+      3,
+      3,
+      3
+    ],
+    "grid_size": [
+      512,
+      512,
+      512
+    ],
+    "grid_type": "RectilinearGrid",
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Sizes{NTuple{16, Int64}}, Sizes{Int64}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": "NVIDIA H100 80GB HBM3",
+      "cuda_version": "13.2.0",
+      "cpu_model": "AMD EPYC 9454 48-Core Processor (znver4)",
+      "num_threads": 1,
+      "hostname": "fc10507",
+      "package_versions": {
+        "Adapt": "4.8.0",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.46",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-11-13T02:02:56.446",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023",
+      "execution_mode": "baseline",
+      "execution_adapter": {
+        "api_version": 1,
+        "id": "direct",
+        "version": "1",
+        "mode": "baseline",
+        "timing_contract": "oceananigans/timestep_window/v1",
+        "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+        "options": {}
+      },
+      "adapter_metadata": {
+        "package_versions": {}
+      },
+      "dagger_version": null,
+      "mpi_thread_support": "MPI.ThreadLevel(2)",
+      "process_peak_rss_bytes": 3758460928
+    },
+    "model_type": "HydrostaticFreeSurfaceModel",
+    "pressure_final_true_residual": null,
+    "pressure_preconditioner": null,
+    "pressure_preconditioner_details": null,
+    "pressure_preconditioner_validation": null,
+    "pressure_projection_validation": null,
+    "pressure_solver": null,
+    "pressure_solver_converged": null,
+    "pressure_solver_iterations": null,
+    "pressure_solves": null,
+    "rank": 12,
+    "retained_free_surface_substeps": 21,
+    "time_per_step_max_seconds": 0.1784888485,
+    "time_per_step_median_seconds": 0.1614710303,
+    "time_per_step_seconds": 0.15782662590000002,
+    "window_seconds": [
+      1.614710303,
+      1.578266259,
+      1.784888485,
+      1.666156977,
+      1.580056691
+    ]
+  },
+  {
+    "configuration": {
+      "series": "gpu_weak_scaling_512_x",
+      "model_type": "HydrostaticFreeSurfaceModel",
+      "device": "GPU",
+      "ranks": 16,
+      "threads_per_rank": 1,
+      "grid_name": "8192x512x512",
+      "global_resolution": [
+        8192,
+        512,
+        512
+      ],
+      "grid_type": "RectilinearGrid",
+      "partition": [
+        16,
+        1,
+        1
+      ],
+      "x_sizes": [
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512
+      ],
+      "y_sizes": [
+        512
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENO5",
+      "tracer_advection": "WENO5",
+      "closure": null,
+      "tracers": [
+        "b"
+      ],
+      "viscosity": null,
+      "diffusivity": null,
+      "coriolis": null,
+      "buoyancy": "BuoyancyTracer",
+      "timestepper": "SplitRungeKutta3",
+      "free_surface": "SplitExplicitFreeSurface",
+      "pressure_solver": null,
+      "pressure_preconditioner": null,
+      "pressure_max_iterations": null,
+      "pressure_reltol": null,
+      "pressure_abstol": null,
+      "pressure_diagnostics": false,
+      "pressure_preserve_residual": false,
+      "pressure_check_true_residual": false,
+      "pressure_preconditioner_check": false,
+      "initial_condition_seed": null,
+      "dt": 10,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": true,
+      "warmup_steps": 2,
+      "samples": 5,
+      "time_steps": 10,
+      "profile": false,
+      "scaling_type": "weak",
+      "baseline_ranks": 1,
+      "model_setup": "rectilinear_buoyancy",
+      "topology": [
+        "Periodic",
+        "Periodic",
+        "Bounded"
+      ],
+      "cell_spacing_m": [
+        1000,
+        1000,
+        10
+      ],
+      "domain_extent_m": [
+        8192000,
+        512000,
+        5120
+      ],
+      "initial_condition": "b=1e-5*z+1e-6*cospi(x/64000)*cospi(y/64000)*sinpi(z/5120); u=0.1; v=0.05; w=0",
+      "pressure_divergence_tolerance": null,
+      "execution_mode": "baseline",
+      "execution_adapter": {
+        "api_version": 1,
+        "id": "direct",
+        "version": "1",
+        "mode": "baseline",
+        "timing_contract": "oceananigans/timestep_window/v1",
+        "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+        "options": {}
+      }
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "free_surface": "SplitExplicitFreeSurface",
+    "gpu_memory_used_bytes": 16750084096,
+    "grid_halo": [
+      3,
+      3,
+      3
+    ],
+    "grid_size": [
+      512,
+      512,
+      512
+    ],
+    "grid_type": "RectilinearGrid",
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Sizes{NTuple{16, Int64}}, Sizes{Int64}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": "NVIDIA H100 80GB HBM3",
+      "cuda_version": "13.2.0",
+      "cpu_model": "AMD EPYC 9454 48-Core Processor (znver4)",
+      "num_threads": 1,
+      "hostname": "fc10507",
+      "package_versions": {
+        "Adapt": "4.8.0",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.46",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-11-13T02:02:56.446",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023",
+      "execution_mode": "baseline",
+      "execution_adapter": {
+        "api_version": 1,
+        "id": "direct",
+        "version": "1",
+        "mode": "baseline",
+        "timing_contract": "oceananigans/timestep_window/v1",
+        "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+        "options": {}
+      },
+      "adapter_metadata": {
+        "package_versions": {}
+      },
+      "dagger_version": null,
+      "mpi_thread_support": "MPI.ThreadLevel(2)",
+      "process_peak_rss_bytes": 3752992768
+    },
+    "model_type": "HydrostaticFreeSurfaceModel",
+    "pressure_final_true_residual": null,
+    "pressure_preconditioner": null,
+    "pressure_preconditioner_details": null,
+    "pressure_preconditioner_validation": null,
+    "pressure_projection_validation": null,
+    "pressure_solver": null,
+    "pressure_solver_converged": null,
+    "pressure_solver_iterations": null,
+    "pressure_solves": null,
+    "rank": 13,
+    "retained_free_surface_substeps": 21,
+    "time_per_step_max_seconds": 0.1784892735,
+    "time_per_step_median_seconds": 0.1614707973,
+    "time_per_step_seconds": 0.1578270239,
+    "window_seconds": [
+      1.614707973,
+      1.578270239,
+      1.784892735,
+      1.666153127,
+      1.58007388
+    ]
+  },
+  {
+    "configuration": {
+      "series": "gpu_weak_scaling_512_x",
+      "model_type": "HydrostaticFreeSurfaceModel",
+      "device": "GPU",
+      "ranks": 16,
+      "threads_per_rank": 1,
+      "grid_name": "8192x512x512",
+      "global_resolution": [
+        8192,
+        512,
+        512
+      ],
+      "grid_type": "RectilinearGrid",
+      "partition": [
+        16,
+        1,
+        1
+      ],
+      "x_sizes": [
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512
+      ],
+      "y_sizes": [
+        512
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENO5",
+      "tracer_advection": "WENO5",
+      "closure": null,
+      "tracers": [
+        "b"
+      ],
+      "viscosity": null,
+      "diffusivity": null,
+      "coriolis": null,
+      "buoyancy": "BuoyancyTracer",
+      "timestepper": "SplitRungeKutta3",
+      "free_surface": "SplitExplicitFreeSurface",
+      "pressure_solver": null,
+      "pressure_preconditioner": null,
+      "pressure_max_iterations": null,
+      "pressure_reltol": null,
+      "pressure_abstol": null,
+      "pressure_diagnostics": false,
+      "pressure_preserve_residual": false,
+      "pressure_check_true_residual": false,
+      "pressure_preconditioner_check": false,
+      "initial_condition_seed": null,
+      "dt": 10,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": true,
+      "warmup_steps": 2,
+      "samples": 5,
+      "time_steps": 10,
+      "profile": false,
+      "scaling_type": "weak",
+      "baseline_ranks": 1,
+      "model_setup": "rectilinear_buoyancy",
+      "topology": [
+        "Periodic",
+        "Periodic",
+        "Bounded"
+      ],
+      "cell_spacing_m": [
+        1000,
+        1000,
+        10
+      ],
+      "domain_extent_m": [
+        8192000,
+        512000,
+        5120
+      ],
+      "initial_condition": "b=1e-5*z+1e-6*cospi(x/64000)*cospi(y/64000)*sinpi(z/5120); u=0.1; v=0.05; w=0",
+      "pressure_divergence_tolerance": null,
+      "execution_mode": "baseline",
+      "execution_adapter": {
+        "api_version": 1,
+        "id": "direct",
+        "version": "1",
+        "mode": "baseline",
+        "timing_contract": "oceananigans/timestep_window/v1",
+        "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+        "options": {}
+      }
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "free_surface": "SplitExplicitFreeSurface",
+    "gpu_memory_used_bytes": 16750084096,
+    "grid_halo": [
+      3,
+      3,
+      3
+    ],
+    "grid_size": [
+      512,
+      512,
+      512
+    ],
+    "grid_type": "RectilinearGrid",
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Sizes{NTuple{16, Int64}}, Sizes{Int64}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": "NVIDIA H100 80GB HBM3",
+      "cuda_version": "13.2.0",
+      "cpu_model": "AMD EPYC 9454 48-Core Processor (znver4)",
+      "num_threads": 1,
+      "hostname": "fc10507",
+      "package_versions": {
+        "Adapt": "4.8.0",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.46",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-11-13T02:02:56.446",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023",
+      "execution_mode": "baseline",
+      "execution_adapter": {
+        "api_version": 1,
+        "id": "direct",
+        "version": "1",
+        "mode": "baseline",
+        "timing_contract": "oceananigans/timestep_window/v1",
+        "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+        "options": {}
+      },
+      "adapter_metadata": {
+        "package_versions": {}
+      },
+      "dagger_version": null,
+      "mpi_thread_support": "MPI.ThreadLevel(2)",
+      "process_peak_rss_bytes": 3779448832
+    },
+    "model_type": "HydrostaticFreeSurfaceModel",
+    "pressure_final_true_residual": null,
+    "pressure_preconditioner": null,
+    "pressure_preconditioner_details": null,
+    "pressure_preconditioner_validation": null,
+    "pressure_projection_validation": null,
+    "pressure_solver": null,
+    "pressure_solver_converged": null,
+    "pressure_solver_iterations": null,
+    "pressure_solves": null,
+    "rank": 14,
+    "retained_free_surface_substeps": 21,
+    "time_per_step_max_seconds": 0.1784889125,
+    "time_per_step_median_seconds": 0.1614711303,
+    "time_per_step_seconds": 0.15782667690000002,
+    "window_seconds": [
+      1.614711303,
+      1.578266769,
+      1.784889125,
+      1.666156766,
+      1.58005644
+    ]
+  },
+  {
+    "configuration": {
+      "series": "gpu_weak_scaling_512_x",
+      "model_type": "HydrostaticFreeSurfaceModel",
+      "device": "GPU",
+      "ranks": 16,
+      "threads_per_rank": 1,
+      "grid_name": "8192x512x512",
+      "global_resolution": [
+        8192,
+        512,
+        512
+      ],
+      "grid_type": "RectilinearGrid",
+      "partition": [
+        16,
+        1,
+        1
+      ],
+      "x_sizes": [
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512,
+        512
+      ],
+      "y_sizes": [
+        512
+      ],
+      "float_type": "Float64",
+      "momentum_advection": "WENO5",
+      "tracer_advection": "WENO5",
+      "closure": null,
+      "tracers": [
+        "b"
+      ],
+      "viscosity": null,
+      "diffusivity": null,
+      "coriolis": null,
+      "buoyancy": "BuoyancyTracer",
+      "timestepper": "SplitRungeKutta3",
+      "free_surface": "SplitExplicitFreeSurface",
+      "pressure_solver": null,
+      "pressure_preconditioner": null,
+      "pressure_max_iterations": null,
+      "pressure_reltol": null,
+      "pressure_abstol": null,
+      "pressure_diagnostics": false,
+      "pressure_preserve_residual": false,
+      "pressure_check_true_residual": false,
+      "pressure_preconditioner_check": false,
+      "initial_condition_seed": null,
+      "dt": 10,
+      "free_surface_substeps": 30,
+      "extend_free_surface_halos": true,
+      "warmup_steps": 2,
+      "samples": 5,
+      "time_steps": 10,
+      "profile": false,
+      "scaling_type": "weak",
+      "baseline_ranks": 1,
+      "model_setup": "rectilinear_buoyancy",
+      "topology": [
+        "Periodic",
+        "Periodic",
+        "Bounded"
+      ],
+      "cell_spacing_m": [
+        1000,
+        1000,
+        10
+      ],
+      "domain_extent_m": [
+        8192000,
+        512000,
+        5120
+      ],
+      "initial_condition": "b=1e-5*z+1e-6*cospi(x/64000)*cospi(y/64000)*sinpi(z/5120); u=0.1; v=0.05; w=0",
+      "pressure_divergence_tolerance": null,
+      "execution_mode": "baseline",
+      "execution_adapter": {
+        "api_version": 1,
+        "id": "direct",
+        "version": "1",
+        "mode": "baseline",
+        "timing_contract": "oceananigans/timestep_window/v1",
+        "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+        "options": {}
+      }
+    },
+    "finite_state": true,
+    "float_type": "Float64",
+    "free_surface": "SplitExplicitFreeSurface",
+    "gpu_memory_used_bytes": 16750084096,
+    "grid_halo": [
+      3,
+      3,
+      3
+    ],
+    "grid_size": [
+      512,
+      512,
+      512
+    ],
+    "grid_type": "RectilinearGrid",
+    "metadata": {
+      "julia_version": "1.12.5",
+      "oceananigans_version": "0.113.0",
+      "architecture": "Distributed{GPU{CUDABackend}, false, Partition{Sizes{NTuple{16, Int64}}, Sizes{Int64}, Int64}, Tuple{Int64, Int64, Int64}, Int64, Tuple{Int64, Int64, Int64}, Oceananigans.DistributedComputations.NeighboringRanks{Int64, Int64, Nothing, Nothing, Nothing, Nothing, Nothing, Nothing}, MPI.Comm, Vector{MPI.Request}, Base.RefValue{Int64}, Nothing}",
+      "gpu_name": "NVIDIA H100 80GB HBM3",
+      "cuda_version": "13.2.0",
+      "cpu_model": "AMD EPYC 9454 48-Core Processor (znver4)",
+      "num_threads": 1,
+      "hostname": "fc10507",
+      "package_versions": {
+        "Adapt": "4.8.0",
+        "CUDA": "6.1.0",
+        "GPUArrays": "11.5.16",
+        "GPUCompiler": "1.17.1",
+        "KernelAbstractions": "0.9.46",
+        "LLVM": "9.13.2"
+      },
+      "timestamp": "2026-11-13T02:02:56.446",
+      "mpi_library_version": "Open MPI v4.1.5, package: Open MPI ebuser@build-node2.computecanada.ca Distribution, ident: 4.1.5, repo rev: v4.1.5, Feb 23, 2023",
+      "execution_mode": "baseline",
+      "execution_adapter": {
+        "api_version": 1,
+        "id": "direct",
+        "version": "1",
+        "mode": "baseline",
+        "timing_contract": "oceananigans/timestep_window/v1",
+        "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+        "options": {}
+      },
+      "adapter_metadata": {
+        "package_versions": {}
+      },
+      "dagger_version": null,
+      "mpi_thread_support": "MPI.ThreadLevel(2)",
+      "process_peak_rss_bytes": 3712483328
+    },
+    "model_type": "HydrostaticFreeSurfaceModel",
+    "pressure_final_true_residual": null,
+    "pressure_preconditioner": null,
+    "pressure_preconditioner_details": null,
+    "pressure_preconditioner_validation": null,
+    "pressure_projection_validation": null,
+    "pressure_solver": null,
+    "pressure_solver_converged": null,
+    "pressure_solver_iterations": null,
+    "pressure_solves": null,
+    "rank": 15,
+    "retained_free_surface_substeps": 21,
+    "time_per_step_max_seconds": 0.17848918149999998,
+    "time_per_step_median_seconds": 0.1614707533,
+    "time_per_step_seconds": 0.1578268589,
+    "window_seconds": [
+      1.614707533,
+      1.578268589,
+      1.784891815,
+      1.666150958,
+      1.58007302
+    ]
+  }
+]

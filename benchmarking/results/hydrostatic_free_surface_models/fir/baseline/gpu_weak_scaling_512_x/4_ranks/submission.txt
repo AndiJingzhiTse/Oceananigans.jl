@@ -1,0 +1,2 @@
+sbatch --parsable --job-name=bench_gpu_weak_scaling_512_x --nodes=1 --ntasks=4 --ntasks-per-node=4 --cpus-per-task=8 --output=/home/anditse/Oceananigans.jl/.runtime/studies/2026-11-12_fir_weak512/hydrostatic_free_surface_models/fir/baseline/gpu_weak_scaling_512_x/4_ranks/allocation.out --account=def-fpoulin_gpu --time=00:45:00 --gpus-per-task=h100:1 --mem=0 /home/anditse/Oceananigans.jl/.runtime/studies/2026-11-12_fir_weak512/hydrostatic_free_surface_models/fir/baseline/gpu_weak_scaling_512_x/4_ranks/allocation.sh
+3695782

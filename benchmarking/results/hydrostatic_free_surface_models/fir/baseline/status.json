@@ -6,8 +6,8 @@
     "resolution": "512x512x512",
     "partition": "1x1x1",
     "grid_type": "RectilinearGrid",
-    "baseline_state": "PENDING",
-    "details": "baseline: (None); estimated start N/A (scheduler timezone); dagger:"
+    "baseline_state": "COMPLETED",
+    "details": "baseline: Rank results, finite fields and resource placement verified; dagger:"
   },
   {
     "series": "gpu_weak_scaling_512_x",
@@ -17,7 +17,7 @@
     "partition": "2x1x1",
     "grid_type": "RectilinearGrid",
     "baseline_state": "PENDING",
-    "details": "baseline: (None); estimated start N/A (scheduler timezone); dagger:"
+    "details": "baseline: (ReqNodeNotAvail, UnavailableNodes:fc11013); estimated start 2026-11-12T23:45:00 (scheduler timezone); dagger:"
   },
   {
     "series": "gpu_weak_scaling_512_x",
@@ -26,8 +26,8 @@
     "resolution": "2048x512x512",
     "partition": "4x1x1",
     "grid_type": "RectilinearGrid",
-    "baseline_state": "PENDING",
-    "details": "baseline: (None); estimated start N/A (scheduler timezone); dagger:"
+    "baseline_state": "COMPLETED",
+    "details": "baseline: Rank results, finite fields and resource placement verified; dagger:"
   },
   {
     "series": "gpu_weak_scaling_512_x",
@@ -36,8 +36,8 @@
     "resolution": "4096x512x512",
     "partition": "8x1x1",
     "grid_type": "RectilinearGrid",
-    "baseline_state": "PENDING",
-    "details": "baseline: (None); estimated start N/A (scheduler timezone); dagger:"
+    "baseline_state": "COMPLETED",
+    "details": "baseline: Rank results, finite fields and resource placement verified; dagger:"
   },
   {
     "series": "gpu_weak_scaling_512_x",
@@ -46,7 +46,7 @@
     "resolution": "8192x512x512",
     "partition": "16x1x1",
     "grid_type": "RectilinearGrid",
-    "baseline_state": "PENDING",
-    "details": "baseline: (None); estimated start N/A (scheduler timezone); dagger:"
+    "baseline_state": "COMPLETED",
+    "details": "baseline: Rank results, finite fields and resource placement verified; dagger:"
   }
 ]

@@ -1,0 +1,759 @@
+{
+  "server": {
+    "machine": "fir",
+    "backend": "slurm",
+    "project": "/home/anditse/Oceananigans.jl/.runtime/environments/fir_weak512",
+    "julia": "/cvmfs/soft.computecanada.ca/easybuild/software/2023/x86-64-v3/Core/julia/1.12.5/bin/julia",
+    "mpi": [
+      "mpiexec"
+    ],
+    "max_cpu_cores": 165120,
+    "max_gpus": 16,
+    "cpu_cores_per_node": 192,
+    "gpus_per_node": 4,
+    "gpu_host_cores": 8,
+    "cpu_account": "def-fpoulin_cpu",
+    "gpu_account": "def-fpoulin_gpu",
+    "cpu_partition": "",
+    "gpu_partition": "",
+    "gpu_type": "h100",
+    "cpu_constraint": "",
+    "exclusive_cpu": true,
+    "environment_script": "/home/anditse/Oceananigans.jl/benchmarking/scripts/env/modules.sh",
+    "mpi_init": "/home/anditse/Oceananigans.jl/benchmarking/scripts/env/drac_mpi.jl",
+    "cpu_time": "03:00:00",
+    "gpu_time": "00:45:00",
+    "partition_time": "03:00:00",
+    "gpu_memory": "128G",
+    "cpu_memory_base_gb": 64,
+    "cpu_memory_per_rank_gb": 4,
+    "cpu_sbatch_extra": [],
+    "gpu_sbatch_extra": [],
+    "trace_root": "/home/anditse/Oceananigans.jl/benchmarking/results/hydrostatic_free_surface_models/fir/baseline",
+    "case_timeout_seconds": 86400,
+    "matplotlib": true,
+    "python": "python3",
+    "report_modules": [
+      "python/3.11",
+      "scipy-stack/2025a"
+    ],
+    "reference_suites": [],
+    "replacement_suites": [],
+    "environment": {
+      "TMPDIR": "$HOME/Oceananigans.jl/.runtime/tmp/weak512",
+      "TMP": "$HOME/Oceananigans.jl/.runtime/tmp/weak512",
+      "TEMP": "$HOME/Oceananigans.jl/.runtime/tmp/weak512",
+      "OMPI_MCA_orte_tmpdir_base": "$HOME/.ocean-tmp/weak512"
+    },
+    "gpu_scaling_partition": "balanced",
+    "model_type": "HydrostaticFreeSurfaceModel",
+    "model_setup": "rectilinear_buoyancy",
+    "comparison_suites": [],
+    "comparison_report": "",
+    "execution_mode": "baseline",
+    "profile_layout": "series",
+    "series_file": "/home/anditse/Oceananigans.jl/benchmarking/server/fir/weak512_series.json",
+    "series_definitions": {
+      "gpu_weak_scaling_512_x": {
+        "kind": "weak_scaling",
+        "constant_cells_per_gpu": true,
+        "cases": [
+          {
+            "grid": "512x512x512",
+            "global_resolution": [
+              512,
+              512,
+              512
+            ],
+            "gpus": 1,
+            "partition": [
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "grid": "1024x512x512",
+            "global_resolution": [
+              1024,
+              512,
+              512
+            ],
+            "gpus": 2,
+            "partition": [
+              2,
+              1,
+              1
+            ]
+          },
+          {
+            "grid": "2048x512x512",
+            "global_resolution": [
+              2048,
+              512,
+              512
+            ],
+            "gpus": 4,
+            "partition": [
+              4,
+              1,
+              1
+            ]
+          },
+          {
+            "grid": "4096x512x512",
+            "global_resolution": [
+              4096,
+              512,
+              512
+            ],
+            "gpus": 8,
+            "partition": [
+              8,
+              1,
+              1
+            ]
+          },
+          {
+            "grid": "8192x512x512",
+            "global_resolution": [
+              8192,
+              512,
+              512
+            ],
+            "gpus": 16,
+            "partition": [
+              16,
+              1,
+              1
+            ]
+          }
+        ]
+      }
+    },
+    "dagger_adapter": "",
+    "dagger_options": {},
+    "execution_adapter": {
+      "api_version": 1,
+      "id": "direct",
+      "version": "1",
+      "mode": "baseline",
+      "timing_contract": "oceananigans/timestep_window/v1",
+      "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+      "options": {}
+    },
+    "workflow_root": "/home/anditse/Oceananigans.jl/.runtime/studies/2026-11-12_fir_weak512",
+    "trace_namespace": "ae12d21def695b12",
+    "pressure_preconditioner": "DiagonallyDominantPreconditioner",
+    "pressure_max_iterations": 5000,
+    "pressure_diagnostics": false,
+    "pressure_preserve_residual": false,
+    "pressure_check_true_residual": true,
+    "separate_partitions": false,
+    "cpu_time_overrides": {},
+    "full_gpu_nodes": false
+  },
+  "cases": [
+    {
+      "id": "1_ranks",
+      "series": "gpu_weak_scaling_512_x",
+      "ranks": 1,
+      "grid_name": "512x512x512",
+      "partition": [
+        1,
+        1,
+        1
+      ],
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
+      "job_id": "3695780",
+      "configuration": {
+        "series": "gpu_weak_scaling_512_x",
+        "model_type": "HydrostaticFreeSurfaceModel",
+        "device": "GPU",
+        "ranks": 1,
+        "threads_per_rank": 1,
+        "grid_name": "512x512x512",
+        "global_resolution": [
+          512,
+          512,
+          512
+        ],
+        "grid_type": "RectilinearGrid",
+        "partition": [
+          1,
+          1,
+          1
+        ],
+        "x_sizes": [
+          512
+        ],
+        "y_sizes": [
+          512
+        ],
+        "float_type": "Float64",
+        "momentum_advection": "WENO5",
+        "tracer_advection": "WENO5",
+        "closure": null,
+        "tracers": [
+          "b"
+        ],
+        "viscosity": null,
+        "diffusivity": null,
+        "coriolis": null,
+        "buoyancy": "BuoyancyTracer",
+        "timestepper": "SplitRungeKutta3",
+        "free_surface": "SplitExplicitFreeSurface",
+        "pressure_solver": null,
+        "pressure_preconditioner": null,
+        "pressure_max_iterations": null,
+        "pressure_reltol": null,
+        "pressure_abstol": null,
+        "pressure_diagnostics": false,
+        "pressure_preserve_residual": false,
+        "pressure_check_true_residual": false,
+        "pressure_preconditioner_check": false,
+        "initial_condition_seed": null,
+        "dt": 10,
+        "free_surface_substeps": 30,
+        "extend_free_surface_halos": true,
+        "warmup_steps": 2,
+        "samples": 5,
+        "time_steps": 10,
+        "profile": false,
+        "scaling_type": "weak",
+        "baseline_ranks": 1,
+        "model_setup": "rectilinear_buoyancy",
+        "topology": [
+          "Periodic",
+          "Periodic",
+          "Bounded"
+        ],
+        "cell_spacing_m": [
+          1000,
+          1000,
+          10
+        ],
+        "domain_extent_m": [
+          512000,
+          512000,
+          5120
+        ],
+        "initial_condition": "b=1e-5*z+1e-6*cospi(x/64000)*cospi(y/64000)*sinpi(z/5120); u=0.1; v=0.05; w=0",
+        "pressure_divergence_tolerance": null,
+        "execution_mode": "baseline",
+        "execution_adapter": {
+          "api_version": 1,
+          "id": "direct",
+          "version": "1",
+          "mode": "baseline",
+          "timing_contract": "oceananigans/timestep_window/v1",
+          "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+          "options": {}
+        }
+      },
+      "measurement": {
+        "fastest": 0.1431196903,
+        "median": 0.1431390791,
+        "maximum": 0.1576438148,
+        "retained_substeps": [
+          21
+        ],
+        "nodes": 1,
+        "gpu_memory_used_bytes": 16276127744,
+        "gpu_memory_max_gib": 15.1583251953125
+      },
+      "provenance": {
+        "source": "/home/anditse/Oceananigans.jl/.runtime/studies/2026-11-12_fir_weak512/hydrostatic_free_surface_models/fir/baseline/gpu_weak_scaling_512_x",
+        "submitted_at": "2026-11-13T01:51:03.788550+00:00",
+        "measured_at": "2026-11-13T02:00:09.770"
+      }
+    },
+    {
+      "id": "4_ranks",
+      "series": "gpu_weak_scaling_512_x",
+      "ranks": 4,
+      "grid_name": "2048x512x512",
+      "partition": [
+        4,
+        1,
+        1
+      ],
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
+      "job_id": "3695782",
+      "configuration": {
+        "series": "gpu_weak_scaling_512_x",
+        "model_type": "HydrostaticFreeSurfaceModel",
+        "device": "GPU",
+        "ranks": 4,
+        "threads_per_rank": 1,
+        "grid_name": "2048x512x512",
+        "global_resolution": [
+          2048,
+          512,
+          512
+        ],
+        "grid_type": "RectilinearGrid",
+        "partition": [
+          4,
+          1,
+          1
+        ],
+        "x_sizes": [
+          512,
+          512,
+          512,
+          512
+        ],
+        "y_sizes": [
+          512
+        ],
+        "float_type": "Float64",
+        "momentum_advection": "WENO5",
+        "tracer_advection": "WENO5",
+        "closure": null,
+        "tracers": [
+          "b"
+        ],
+        "viscosity": null,
+        "diffusivity": null,
+        "coriolis": null,
+        "buoyancy": "BuoyancyTracer",
+        "timestepper": "SplitRungeKutta3",
+        "free_surface": "SplitExplicitFreeSurface",
+        "pressure_solver": null,
+        "pressure_preconditioner": null,
+        "pressure_max_iterations": null,
+        "pressure_reltol": null,
+        "pressure_abstol": null,
+        "pressure_diagnostics": false,
+        "pressure_preserve_residual": false,
+        "pressure_check_true_residual": false,
+        "pressure_preconditioner_check": false,
+        "initial_condition_seed": null,
+        "dt": 10,
+        "free_surface_substeps": 30,
+        "extend_free_surface_halos": true,
+        "warmup_steps": 2,
+        "samples": 5,
+        "time_steps": 10,
+        "profile": false,
+        "scaling_type": "weak",
+        "baseline_ranks": 1,
+        "model_setup": "rectilinear_buoyancy",
+        "topology": [
+          "Periodic",
+          "Periodic",
+          "Bounded"
+        ],
+        "cell_spacing_m": [
+          1000,
+          1000,
+          10
+        ],
+        "domain_extent_m": [
+          2048000,
+          512000,
+          5120
+        ],
+        "initial_condition": "b=1e-5*z+1e-6*cospi(x/64000)*cospi(y/64000)*sinpi(z/5120); u=0.1; v=0.05; w=0",
+        "pressure_divergence_tolerance": null,
+        "execution_mode": "baseline",
+        "execution_adapter": {
+          "api_version": 1,
+          "id": "direct",
+          "version": "1",
+          "mode": "baseline",
+          "timing_contract": "oceananigans/timestep_window/v1",
+          "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+          "options": {}
+        }
+      },
+      "measurement": {
+        "fastest": 0.1574957583,
+        "median": 0.1593928063,
+        "maximum": 0.1641166929,
+        "retained_substeps": [
+          21
+        ],
+        "nodes": 1,
+        "gpu_memory_used_bytes": 16750084096,
+        "gpu_memory_max_gib": 15.5997314453125
+      },
+      "provenance": {
+        "source": "/home/anditse/Oceananigans.jl/.runtime/studies/2026-11-12_fir_weak512/hydrostatic_free_surface_models/fir/baseline/gpu_weak_scaling_512_x",
+        "submitted_at": "2026-11-13T01:51:03.788550+00:00",
+        "measured_at": "2026-11-13T02:00:31.107"
+      }
+    },
+    {
+      "id": "8_ranks",
+      "series": "gpu_weak_scaling_512_x",
+      "ranks": 8,
+      "grid_name": "4096x512x512",
+      "partition": [
+        8,
+        1,
+        1
+      ],
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
+      "job_id": "3695784",
+      "configuration": {
+        "series": "gpu_weak_scaling_512_x",
+        "model_type": "HydrostaticFreeSurfaceModel",
+        "device": "GPU",
+        "ranks": 8,
+        "threads_per_rank": 1,
+        "grid_name": "4096x512x512",
+        "global_resolution": [
+          4096,
+          512,
+          512
+        ],
+        "grid_type": "RectilinearGrid",
+        "partition": [
+          8,
+          1,
+          1
+        ],
+        "x_sizes": [
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512
+        ],
+        "y_sizes": [
+          512
+        ],
+        "float_type": "Float64",
+        "momentum_advection": "WENO5",
+        "tracer_advection": "WENO5",
+        "closure": null,
+        "tracers": [
+          "b"
+        ],
+        "viscosity": null,
+        "diffusivity": null,
+        "coriolis": null,
+        "buoyancy": "BuoyancyTracer",
+        "timestepper": "SplitRungeKutta3",
+        "free_surface": "SplitExplicitFreeSurface",
+        "pressure_solver": null,
+        "pressure_preconditioner": null,
+        "pressure_max_iterations": null,
+        "pressure_reltol": null,
+        "pressure_abstol": null,
+        "pressure_diagnostics": false,
+        "pressure_preserve_residual": false,
+        "pressure_check_true_residual": false,
+        "pressure_preconditioner_check": false,
+        "initial_condition_seed": null,
+        "dt": 10,
+        "free_surface_substeps": 30,
+        "extend_free_surface_halos": true,
+        "warmup_steps": 2,
+        "samples": 5,
+        "time_steps": 10,
+        "profile": false,
+        "scaling_type": "weak",
+        "baseline_ranks": 1,
+        "model_setup": "rectilinear_buoyancy",
+        "topology": [
+          "Periodic",
+          "Periodic",
+          "Bounded"
+        ],
+        "cell_spacing_m": [
+          1000,
+          1000,
+          10
+        ],
+        "domain_extent_m": [
+          4096000,
+          512000,
+          5120
+        ],
+        "initial_condition": "b=1e-5*z+1e-6*cospi(x/64000)*cospi(y/64000)*sinpi(z/5120); u=0.1; v=0.05; w=0",
+        "pressure_divergence_tolerance": null,
+        "execution_mode": "baseline",
+        "execution_adapter": {
+          "api_version": 1,
+          "id": "direct",
+          "version": "1",
+          "mode": "baseline",
+          "timing_contract": "oceananigans/timestep_window/v1",
+          "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+          "options": {}
+        }
+      },
+      "measurement": {
+        "fastest": 0.157666039,
+        "median": 0.1617090427,
+        "maximum": 0.163184787,
+        "retained_substeps": [
+          21
+        ],
+        "nodes": 2,
+        "gpu_memory_used_bytes": 16750084096,
+        "gpu_memory_max_gib": 15.5997314453125
+      },
+      "provenance": {
+        "source": "/home/anditse/Oceananigans.jl/.runtime/studies/2026-11-12_fir_weak512/hydrostatic_free_surface_models/fir/baseline/gpu_weak_scaling_512_x",
+        "submitted_at": "2026-11-13T01:51:03.788550+00:00",
+        "measured_at": "2026-11-13T02:04:34.083"
+      }
+    },
+    {
+      "id": "16_ranks",
+      "series": "gpu_weak_scaling_512_x",
+      "ranks": 16,
+      "grid_name": "8192x512x512",
+      "partition": [
+        16,
+        1,
+        1
+      ],
+      "state": "COMPLETED",
+      "details": "Rank results, finite fields and resource placement verified",
+      "job_id": "3695785",
+      "configuration": {
+        "series": "gpu_weak_scaling_512_x",
+        "model_type": "HydrostaticFreeSurfaceModel",
+        "device": "GPU",
+        "ranks": 16,
+        "threads_per_rank": 1,
+        "grid_name": "8192x512x512",
+        "global_resolution": [
+          8192,
+          512,
+          512
+        ],
+        "grid_type": "RectilinearGrid",
+        "partition": [
+          16,
+          1,
+          1
+        ],
+        "x_sizes": [
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512,
+          512
+        ],
+        "y_sizes": [
+          512
+        ],
+        "float_type": "Float64",
+        "momentum_advection": "WENO5",
+        "tracer_advection": "WENO5",
+        "closure": null,
+        "tracers": [
+          "b"
+        ],
+        "viscosity": null,
+        "diffusivity": null,
+        "coriolis": null,
+        "buoyancy": "BuoyancyTracer",
+        "timestepper": "SplitRungeKutta3",
+        "free_surface": "SplitExplicitFreeSurface",
+        "pressure_solver": null,
+        "pressure_preconditioner": null,
+        "pressure_max_iterations": null,
+        "pressure_reltol": null,
+        "pressure_abstol": null,
+        "pressure_diagnostics": false,
+        "pressure_preserve_residual": false,
+        "pressure_check_true_residual": false,
+        "pressure_preconditioner_check": false,
+        "initial_condition_seed": null,
+        "dt": 10,
+        "free_surface_substeps": 30,
+        "extend_free_surface_halos": true,
+        "warmup_steps": 2,
+        "samples": 5,
+        "time_steps": 10,
+        "profile": false,
+        "scaling_type": "weak",
+        "baseline_ranks": 1,
+        "model_setup": "rectilinear_buoyancy",
+        "topology": [
+          "Periodic",
+          "Periodic",
+          "Bounded"
+        ],
+        "cell_spacing_m": [
+          1000,
+          1000,
+          10
+        ],
+        "domain_extent_m": [
+          8192000,
+          512000,
+          5120
+        ],
+        "initial_condition": "b=1e-5*z+1e-6*cospi(x/64000)*cospi(y/64000)*sinpi(z/5120); u=0.1; v=0.05; w=0",
+        "pressure_divergence_tolerance": null,
+        "execution_mode": "baseline",
+        "execution_adapter": {
+          "api_version": 1,
+          "id": "direct",
+          "version": "1",
+          "mode": "baseline",
+          "timing_contract": "oceananigans/timestep_window/v1",
+          "source_sha256": "f0b9ef009ba197c5eb5027d7b0c05aac84eff486c88482b23859d193d566130e",
+          "options": {}
+        }
+      },
+      "measurement": {
+        "fastest": 0.1578275308,
+        "median": 0.1614717835,
+        "maximum": 0.1784892735,
+        "retained_substeps": [
+          21
+        ],
+        "nodes": 4,
+        "gpu_memory_used_bytes": 16750149632,
+        "gpu_memory_max_gib": 15.59979248046875
+      },
+      "provenance": {
+        "source": "/home/anditse/Oceananigans.jl/.runtime/studies/2026-11-12_fir_weak512/hydrostatic_free_surface_models/fir/baseline/gpu_weak_scaling_512_x",
+        "submitted_at": "2026-11-13T01:51:03.788550+00:00",
+        "measured_at": "2026-11-13T02:02:56.446"
+      }
+    }
+  ],
+  "submitted_at": "2026-11-13T01:51:03.788550+00:00",
+  "workflow_root": "/home/anditse/Oceananigans.jl/.runtime/studies/2026-11-12_fir_weak512",
+  "resource_requests": [
+    {
+      "cases": [
+        "1_ranks"
+      ],
+      "ranks": 1,
+      "active_gpus": 1,
+      "submission": [
+        "sbatch",
+        "--parsable",
+        "--job-name=bench_gpu_weak_scaling_512_x",
+        "--nodes=1",
+        "--ntasks=1",
+        "--ntasks-per-node=1",
+        "--cpus-per-task=8",
+        "--output=/home/anditse/Oceananigans.jl/.runtime/studies/2026-11-12_fir_weak512/hydrostatic_free_surface_models/fir/baseline/gpu_weak_scaling_512_x/1_ranks/allocation.out",
+        "--account=def-fpoulin_gpu",
+        "--time=00:45:00",
+        "--gpus-per-task=h100:1",
+        "--mem=128G",
+        "/home/anditse/Oceananigans.jl/.runtime/studies/2026-11-12_fir_weak512/hydrostatic_free_surface_models/fir/baseline/gpu_weak_scaling_512_x/1_ranks/allocation.sh"
+      ]
+    },
+    {
+      "cases": [
+        "2_ranks"
+      ],
+      "ranks": 2,
+      "active_gpus": 2,
+      "submission": [
+        "sbatch",
+        "--parsable",
+        "--job-name=bench_gpu_weak_scaling_512_x",
+        "--nodes=1",
+        "--ntasks=2",
+        "--ntasks-per-node=2",
+        "--cpus-per-task=8",
+        "--output=/home/anditse/Oceananigans.jl/.runtime/studies/2026-11-12_fir_weak512/hydrostatic_free_surface_models/fir/baseline/gpu_weak_scaling_512_x/2_ranks/allocation.out",
+        "--account=def-fpoulin_gpu",
+        "--time=00:45:00",
+        "--gpus-per-task=h100:1",
+        "--mem=128G",
+        "/home/anditse/Oceananigans.jl/.runtime/studies/2026-11-12_fir_weak512/hydrostatic_free_surface_models/fir/baseline/gpu_weak_scaling_512_x/2_ranks/allocation.sh"
+      ]
+    },
+    {
+      "cases": [
+        "4_ranks"
+      ],
+      "ranks": 4,
+      "active_gpus": 4,
+      "submission": [
+        "sbatch",
+        "--parsable",
+        "--job-name=bench_gpu_weak_scaling_512_x",
+        "--nodes=1",
+        "--ntasks=4",
+        "--ntasks-per-node=4",
+        "--cpus-per-task=8",
+        "--output=/home/anditse/Oceananigans.jl/.runtime/studies/2026-11-12_fir_weak512/hydrostatic_free_surface_models/fir/baseline/gpu_weak_scaling_512_x/4_ranks/allocation.out",
+        "--account=def-fpoulin_gpu",
+        "--time=00:45:00",
+        "--gpus-per-task=h100:1",
+        "--mem=0",
+        "/home/anditse/Oceananigans.jl/.runtime/studies/2026-11-12_fir_weak512/hydrostatic_free_surface_models/fir/baseline/gpu_weak_scaling_512_x/4_ranks/allocation.sh"
+      ]
+    },
+    {
+      "cases": [
+        "8_ranks"
+      ],
+      "ranks": 8,
+      "active_gpus": 8,
+      "submission": [
+        "sbatch",
+        "--parsable",
+        "--job-name=bench_gpu_weak_scaling_512_x",
+        "--nodes=2",
+        "--ntasks=8",
+        "--ntasks-per-node=4",
+        "--cpus-per-task=8",
+        "--output=/home/anditse/Oceananigans.jl/.runtime/studies/2026-11-12_fir_weak512/hydrostatic_free_surface_models/fir/baseline/gpu_weak_scaling_512_x/8_ranks/allocation.out",
+        "--account=def-fpoulin_gpu",
+        "--time=00:45:00",
+        "--gpus-per-task=h100:1",
+        "--mem=0",
+        "/home/anditse/Oceananigans.jl/.runtime/studies/2026-11-12_fir_weak512/hydrostatic_free_surface_models/fir/baseline/gpu_weak_scaling_512_x/8_ranks/allocation.sh"
+      ]
+    },
+    {
+      "cases": [
+        "16_ranks"
+      ],
+      "ranks": 16,
+      "active_gpus": 16,
+      "submission": [
+        "sbatch",
+        "--parsable",
+        "--job-name=bench_gpu_weak_scaling_512_x",
+        "--nodes=4",
+        "--ntasks=16",
+        "--ntasks-per-node=4",
+        "--cpus-per-task=8",
+        "--output=/home/anditse/Oceananigans.jl/.runtime/studies/2026-11-12_fir_weak512/hydrostatic_free_surface_models/fir/baseline/gpu_weak_scaling_512_x/16_ranks/allocation.out",
+        "--account=def-fpoulin_gpu",
+        "--time=00:45:00",
+        "--gpus-per-task=h100:1",
+        "--mem=0",
+        "/home/anditse/Oceananigans.jl/.runtime/studies/2026-11-12_fir_weak512/hydrostatic_free_surface_models/fir/baseline/gpu_weak_scaling_512_x/16_ranks/allocation.sh"
+      ]
+    }
+  ],
+  "finalizer_job_id": "3695786",
+  "curated": true
+}
