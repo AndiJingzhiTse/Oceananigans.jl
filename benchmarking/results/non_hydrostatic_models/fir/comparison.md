@@ -15,7 +15,7 @@ Raw study and execution logs: `/home/anditse/Oceananigans.jl/.runtime/studies/20
 | Case | Resolution / partition | Baseline outcome | Dagger outcome | Median s/step baseline / Dagger | Speedup |
 |---|---|---|---|---:|---:|
 | 1_ranks | 512x512x512 / 1x1x1 | COMPLETED | MISSING | — | — |
-| 2_ranks | 1024x512x512 / 2x1x1 | PENDING | MISSING | — | — |
+| 2_ranks | 1024x512x512 / 2x1x1 | COMPLETED | MISSING | — | — |
 | 4_ranks | 2048x512x512 / 4x1x1 | COMPLETED | MISSING | — | — |
 | 8_ranks | 4096x512x512 / 8x1x1 | COMPLETED | MISSING | — | — |
 | 16_ranks | 8192x512x512 / 16x1x1 | COMPLETED | MISSING | — | — |
@@ -24,7 +24,7 @@ No completed, validated pair is available.
 
 1_ranks: baseline: Rank results, finite fields and resource placement verified; dagger:
 
-2_ranks: baseline: (ReqNodeNotAvail, UnavailableNodes:fc11013); estimated start 2026-11-12T22:11:54 (scheduler timezone); dagger:
+2_ranks: baseline: Rank results, finite fields and resource placement verified; dagger:
 
 4_ranks: baseline: Rank results, finite fields and resource placement verified; dagger:
 
